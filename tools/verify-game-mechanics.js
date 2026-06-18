@@ -406,6 +406,52 @@ function testPrLoopRewardsDoNotEvictRunGoalChainRewards() {
   assert(afterRestoreSave.runGoalState.chain.rewardKeys.includes('3'), 'third-step chain reward key should still be present after restore');
 }
 
+function testMetaRewardsDoNotEvictRunGoalChainRewards() {
+  const context = createGameContext();
+
+  context.selectCareer('ai');
+  context.action('learn-ai');
+  context.action('side-project');
+  context.action('learn-ai');
+  let save = parseSave(context);
+
+  assert(save.runGoalState.chain.rewardKeys.includes('2'), 'fixture should have claimed second-step chain reward');
+  assert(save.runGoalState.chain.rewardKeys.includes('3'), 'fixture should have claimed third-step chain reward');
+
+  for (let week = 1; week <= 8; week++) {
+    context.applySaveData({
+      ...save,
+      stats: { ...save.stats, day: (week - 1) * 7 + 1, skill: 80, ai: 80, mental: 80, money: 80 },
+      weeklyActionCounts: { 'learn-ai': 0, overtime: 0, rest: 0, interview: 0, 'side-project': 0, networking: 0 },
+      isGameOver: false,
+      gameOverState: null
+    });
+    context.action('rest');
+    context.action('rest');
+    context.action('rest');
+    context.action('rest');
+    context.action('rest');
+    context.action('rest');
+    context.action('rest');
+    save = parseSave(context);
+  }
+
+  assert(save.runGoalState.chain.rewardKeys.includes('2'), 'weekly stickers should not evict second-step chain reward');
+  assert(save.runGoalState.chain.rewardKeys.includes('3'), 'weekly stickers should not evict third-step chain reward');
+  assert(save.runGoalState.chain.metaRewardKeys.some(key => key.startsWith('weekly-sticker-')), 'weekly sticker keys should live in metaRewardKeys');
+
+  const restored = createGameContext({ [saveKey]: JSON.stringify(save) });
+  assert.equal(restored.loadGameFromStorage(), true);
+  const beforeSecondStepEvents = countGoalEvents(restored.buildSaveData(), /连续围绕.*行动了 2 次/);
+  const beforeThirdStepEvents = countGoalEvents(restored.buildSaveData(), /连成 3 步/);
+  restored.action('learn-ai');
+  restored.action('side-project');
+  const afterRestoreSave = parseSave(restored);
+
+  assert.equal(countGoalEvents(afterRestoreSave, /连续围绕.*行动了 2 次/), beforeSecondStepEvents, 'second-step chain reward should not be paid again after many meta rewards');
+  assert.equal(countGoalEvents(afterRestoreSave, /连成 3 步/), beforeThirdStepEvents, 'third-step chain reward should not be paid again after many meta rewards');
+}
+
 function testRandomEventsFilterUntriggerableBuiltInEvents() {
   const randomValues = [0.1, 0.99, 0.1, 0, 0.1, 0.99, 0.1];
   const math = Object.create(Math);
@@ -650,6 +696,7 @@ const tests = [
   testEndingSummaryComparesHistoricalBestScore,
   testEndedRunIgnoresStateChangingEntrypoints,
   testEndedRunShowsDisabledShopButtons,
+  testMetaRewardsDoNotEvictRunGoalChainRewards,
   testCorruptMainSaveIsQuarantinedDuringNewRun
 ];
 

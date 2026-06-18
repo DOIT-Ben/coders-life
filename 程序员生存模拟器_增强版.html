@@ -662,7 +662,7 @@
         }
 
         function getInitialRunGoalChain() {
-            return { lastActionType: '', previousActionType: '', count: 0, rewardKeys: [], prLoopRewardKeys: [] };
+            return { lastActionType: '', previousActionType: '', count: 0, rewardKeys: [], prLoopRewardKeys: [], metaRewardKeys: [] };
         }
 
         function getInitialRunGoalState() {
@@ -897,6 +897,12 @@
             const base = getInitialRunGoalChain();
             const data = value && typeof value === 'object' && !Array.isArray(value) ? value : {};
             const allowedActions = Object.keys(getInitialActionCounts());
+            const isPrLoopKey = key => typeof key === 'string' && key.startsWith('pr-loop-week-');
+            const isMetaRewardKey = key => typeof key === 'string' && (
+                key === 'previous-run-recovery' ||
+                key.startsWith('weekly-sticker-') ||
+                key.startsWith('interview-networking-week-')
+            );
             if (typeof data.lastActionType === 'string' && allowedActions.includes(data.lastActionType)) {
                 base.lastActionType = data.lastActionType;
             }
@@ -907,14 +913,21 @@
                 base.count = Math.max(0, Math.min(3, Math.floor(Number(data.count))));
             }
             if (Array.isArray(data.rewardKeys)) {
-                base.rewardKeys = Array.from(new Set(data.rewardKeys.filter(key => typeof key === 'string' && !key.startsWith('pr-loop-week-')))).slice(-6);
-                base.prLoopRewardKeys = Array.from(new Set(data.rewardKeys.filter(key => typeof key === 'string' && key.startsWith('pr-loop-week-')))).slice(-8);
+                base.rewardKeys = Array.from(new Set(data.rewardKeys.filter(key => typeof key === 'string' && !isPrLoopKey(key) && !isMetaRewardKey(key)))).slice(-6);
+                base.prLoopRewardKeys = Array.from(new Set(data.rewardKeys.filter(isPrLoopKey))).slice(-8);
+                base.metaRewardKeys = Array.from(new Set(data.rewardKeys.filter(isMetaRewardKey))).slice(-30);
             }
             if (Array.isArray(data.prLoopRewardKeys)) {
                 base.prLoopRewardKeys = Array.from(new Set([
                     ...base.prLoopRewardKeys,
-                    ...data.prLoopRewardKeys.filter(key => typeof key === 'string' && key.startsWith('pr-loop-week-'))
+                    ...data.prLoopRewardKeys.filter(isPrLoopKey)
                 ])).slice(-8);
+            }
+            if (Array.isArray(data.metaRewardKeys)) {
+                base.metaRewardKeys = Array.from(new Set([
+                    ...base.metaRewardKeys,
+                    ...data.metaRewardKeys.filter(isMetaRewardKey)
+                ])).slice(-30);
             }
             return base;
         }
@@ -1952,11 +1965,17 @@
         function addWeeklyReviewSticker(topAction, topCount) {
             const week = Math.max(1, Math.ceil(stats.day / 7));
             const rewardKey = `weekly-sticker-${week}`;
-            if (runGoalState.chain.rewardKeys.includes(rewardKey)) return;
-            runGoalState.chain.rewardKeys = Array.from(new Set([
-                ...(runGoalState.chain.rewardKeys || []),
+            runGoalState = normalizeRunGoalState(runGoalState, stats);
+            const chain = normalizeRunGoalChain(runGoalState.chain);
+            if (chain.metaRewardKeys.includes(rewardKey)) {
+                runGoalState.chain = chain;
+                return;
+            }
+            chain.metaRewardKeys = Array.from(new Set([
+                ...chain.metaRewardKeys,
                 rewardKey
-            ])).slice(-6);
+            ])).slice(-30);
+            runGoalState.chain = chain;
             addEvent(`🏷️ 本周标签：${getWeeklyReviewSticker(topAction, topCount)}（${getActionLabel(topAction)} ×${topCount}）`, 'special');
         }
 
@@ -2115,9 +2134,29 @@
                 stats.mental = Math.min(100, stats.mental + 6);
                 addEvent('🛟 恢复触发：你在过载后主动停手，精神 +6', 'special');
             }
+            applyInterviewDebriefFeedback(actionType);
             applySmallPrLoopFeedback(actionType);
             applyPreviousRunRecoveryRelay(actionType);
             applyToolHabitFeedback(actionType);
+        }
+
+        function applyInterviewDebriefFeedback(actionType) {
+            if (actionType !== 'networking') return;
+            runGoalState = normalizeRunGoalState(runGoalState, stats);
+            const chain = normalizeRunGoalChain(runGoalState.chain);
+            const previousActionType = chain.lastActionType || chain.previousActionType;
+            const week = Math.max(1, Math.ceil(stats.day / 7));
+            const rewardKey = `interview-networking-week-${week}`;
+            if (previousActionType !== 'interview' || chain.metaRewardKeys.includes(rewardKey)) {
+                runGoalState.chain = chain;
+                return;
+            }
+
+            stats.mental = Math.min(100, stats.mental + 2);
+            stats.money = Math.min(200, stats.money + 1);
+            chain.metaRewardKeys = Array.from(new Set([...chain.metaRewardKeys, rewardKey])).slice(-30);
+            runGoalState.chain = chain;
+            addEvent('🤝 面试复盘变人脉：你把一次面试复盘成弱连接，精神 +2，存款 +1', 'special');
         }
 
         function applyPreviousRunRecoveryRelay(actionType) {
@@ -2127,28 +2166,28 @@
             runGoalState = normalizeRunGoalState(runGoalState, stats);
             const chain = normalizeRunGoalChain(runGoalState.chain);
             const rewardKey = 'previous-run-recovery';
-            if (chain.rewardKeys.includes(rewardKey)) {
+            if (chain.metaRewardKeys.includes(rewardKey)) {
                 runGoalState.chain = chain;
                 return;
             }
 
             if (previousRun.endingType.includes('精神') && actionCounts.rest >= 2) {
                 stats.mental = Math.min(100, stats.mental + 4);
-                chain.rewardKeys = Array.from(new Set([...chain.rewardKeys, rewardKey])).slice(-6);
+                chain.metaRewardKeys = Array.from(new Set([...chain.metaRewardKeys, rewardKey])).slice(-30);
                 runGoalState.chain = chain;
                 addEvent('🧾 复盘接力：上局倒在精神透支，这局你先把人救回来，精神 +4', 'special');
                 return;
             }
             if (previousRun.endingType.includes('破产') && actionCounts.interview >= 2) {
                 stats.money = Math.min(200, stats.money + 4);
-                chain.rewardKeys = Array.from(new Set([...chain.rewardKeys, rewardKey])).slice(-6);
+                chain.metaRewardKeys = Array.from(new Set([...chain.metaRewardKeys, rewardKey])).slice(-30);
                 runGoalState.chain = chain;
                 addEvent('🧾 复盘接力：上局现金流断了，这局你先打开市场窗口，存款 +4', 'special');
                 return;
             }
             if (previousRun.endingType.includes('淘汰') && actionCounts['learn-ai'] >= 2) {
                 stats.ai = Math.min(100, stats.ai + 4);
-                chain.rewardKeys = Array.from(new Set([...chain.rewardKeys, rewardKey])).slice(-6);
+                chain.metaRewardKeys = Array.from(new Set([...chain.metaRewardKeys, rewardKey])).slice(-30);
                 runGoalState.chain = chain;
                 addEvent('🧾 复盘接力：上局被 AI 追上，这局你把工具练进日课，AI熟练度 +4', 'special');
                 return;
@@ -2156,7 +2195,7 @@
             if ((previousRun.goalCompleted || previousRun.score >= 75) && stats.day <= 10 && buildProjectState.progress >= 20) {
                 stats.skill = Math.min(100, stats.skill + 1);
                 buildProjectState = normalizeBuildProjectState({ ...buildProjectState, progress: buildProjectState.progress + 2 });
-                chain.rewardKeys = Array.from(new Set([...chain.rewardKeys, rewardKey])).slice(-6);
+                chain.metaRewardKeys = Array.from(new Set([...chain.metaRewardKeys, rewardKey])).slice(-30);
                 runGoalState.chain = chain;
                 addEvent('🧾 复盘接力：你没有只复刻结局，而是更早把长期 Build 接上，技术 +1，长期项目进度 +2', 'special');
             }

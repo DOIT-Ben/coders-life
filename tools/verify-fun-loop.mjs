@@ -347,6 +347,32 @@ function testSmallPrLoopClosesOncePerWeekAndSurvivesRestore() {
   assert.ok(afterRestore.runGoalState.chain.prLoopRewardKeys.includes('pr-loop-week-1'), 'restored run should keep the claimed PR loop reward key');
 }
 
+function testInterviewDebriefTurnsIntoWeakConnectionOncePerWeek() {
+  const context = createGameContext();
+
+  context.selectCareer('frontend');
+  context.action('interview');
+  const afterInterview = parseSave(context);
+  context.action('networking');
+  const saved = parseSave(context);
+
+  assert.equal(saved.schemaVersion, 2, 'interview debrief loop should not bump save schema');
+  assert.equal(Object.hasOwn(saved, 'interviewDebriefState'), false, 'interview debrief loop should not add a top-level save field');
+  assert.equal(saved.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('面试复盘变人脉')).length, 1, 'interview then networking should create one debrief feedback');
+  assert.ok(saved.stats.mental >= afterInterview.stats.mental, 'debriefing an interview into networking should offset networking stress with a small mental reward');
+  assert.ok(saved.stats.money >= afterInterview.stats.money, 'debriefing an interview into networking should leave a small opportunity reward');
+  assert.ok(saved.runGoalState.chain.metaRewardKeys.includes('interview-networking-week-1'), 'interview debrief reward key should persist in existing run goal chain metadata');
+
+  const restored = createGameContext({ [SAVE_KEY]: JSON.stringify(saved) });
+  assert.equal(restored.loadGameFromStorage(), true);
+  restored.action('interview');
+  restored.action('networking');
+  const afterRestore = parseSave(restored);
+
+  assert.equal(afterRestore.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('面试复盘变人脉')).length, 1, 'claimed interview debrief should not repeat in the same week after restore');
+  assert.ok(afterRestore.runGoalState.chain.metaRewardKeys.includes('interview-networking-week-1'), 'interview debrief reward key should survive restore');
+}
+
 function testPreviousRunRecoveryRelayRewardsOnceAndPersists() {
   const previousRuns = [{
     endingType: '精神崩溃结局',
@@ -378,7 +404,7 @@ function testPreviousRunRecoveryRelayRewardsOnceAndPersists() {
   assert.equal(saved.schemaVersion, 2, 'previous-run recovery relay should not bump save schema');
   assert.equal(Object.hasOwn(saved, 'previousRunRecoveryState'), false, 'previous-run recovery relay should not add a top-level save field');
   assert.equal(saved.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('复盘接力')).length, 1, 'second matching action should complete the relay once');
-  assert.ok(saved.runGoalState.chain.rewardKeys.includes('previous-run-recovery'), 'relay reward key should persist in existing run goal chain');
+  assert.ok(saved.runGoalState.chain.metaRewardKeys.includes('previous-run-recovery'), 'relay reward key should persist in existing run goal chain metadata');
   assert.ok(saved.stats.mental >= 82, 'mental-collapse recovery relay should grant a small mental reward');
 
   const restored = createGameContext({ [SAVE_KEY]: JSON.stringify(saved) });
@@ -387,7 +413,7 @@ function testPreviousRunRecoveryRelayRewardsOnceAndPersists() {
   const afterRestore = parseSave(restored);
 
   assert.equal(afterRestore.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('复盘接力')).length, 1, 'claimed relay reward should not repeat after restore');
-  assert.ok(afterRestore.runGoalState.chain.rewardKeys.includes('previous-run-recovery'), 'relay reward key should survive restore');
+  assert.ok(afterRestore.runGoalState.chain.metaRewardKeys.includes('previous-run-recovery'), 'relay reward key should survive restore');
 }
 
 function testWeeklyReviewStickerAddsFlavorOnceAndPersists() {
@@ -406,14 +432,14 @@ function testWeeklyReviewStickerAddsFlavorOnceAndPersists() {
   assert.equal(Object.hasOwn(saved, 'weeklyReviewStickerState'), false, 'weekly review sticker should not add a top-level save field');
   assert.equal(saved.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('本周标签')).length, 1, 'week 1 should create exactly one weekly review sticker');
   assert.ok(saved.eventLog.some(entry => entry.text.includes('本周标签：边界防火墙正在冒烟')), 'overtime-heavy week should get a resonant boundary sticker');
-  assert.ok(saved.runGoalState.chain.rewardKeys.includes('weekly-sticker-1'), 'weekly sticker claimed key should persist in existing run goal chain');
+  assert.ok(saved.runGoalState.chain.metaRewardKeys.includes('weekly-sticker-1'), 'weekly sticker claimed key should persist in existing run goal chain metadata');
 
   const restored = createGameContext({ [SAVE_KEY]: JSON.stringify(saved) });
   assert.equal(restored.loadGameFromStorage(), true);
   const afterRestore = restored.buildSaveData();
 
   assert.equal(afterRestore.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('本周标签')).length, 1, 'weekly review sticker should not repeat after restore');
-  assert.ok(afterRestore.runGoalState.chain.rewardKeys.includes('weekly-sticker-1'), 'weekly sticker claimed key should survive restore');
+  assert.ok(afterRestore.runGoalState.chain.metaRewardKeys.includes('weekly-sticker-1'), 'weekly sticker claimed key should survive restore');
 
   for (let index = 0; index < 7; index++) {
     restored.action('learn-ai');
@@ -422,7 +448,7 @@ function testWeeklyReviewStickerAddsFlavorOnceAndPersists() {
 
   assert.equal(secondWeek.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('本周标签')).length, 2, 'week 2 should create a second weekly review sticker');
   assert.ok(secondWeek.eventLog.some(entry => entry.text.includes('本周标签：收藏夹架构师')), 'learning-heavy week should get a tool-learning sticker');
-  assert.ok(secondWeek.runGoalState.chain.rewardKeys.includes('weekly-sticker-2'), 'week 2 sticker key should persist in existing run goal chain');
+  assert.ok(secondWeek.runGoalState.chain.metaRewardKeys.includes('weekly-sticker-2'), 'week 2 sticker key should persist in existing run goal chain metadata');
 }
 
 const tests = [
@@ -433,6 +459,7 @@ const tests = [
   testLongBuildDebtCanBePaidDownOncePerDayAndPersists,
   testShippedBuildNetworkingTurnsExposureIntoFeedbackWithoutReshipping,
   testSmallPrLoopClosesOncePerWeekAndSurvivesRestore,
+  testInterviewDebriefTurnsIntoWeakConnectionOncePerWeek,
   testPreviousRunRecoveryRelayRewardsOnceAndPersists,
   testWeeklyReviewStickerAddsFlavorOnceAndPersists
 ];
