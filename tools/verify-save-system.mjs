@@ -500,6 +500,148 @@ function testPerfectEndingDoesNotIncrementDeaths() {
   assert.ok(saved.gameData.endings.includes('✨ 完美结局'), '完美结局应记录到 endings');
 }
 
+function testEndingPersistsCompactRunSummary() {
+  const h = createHarness();
+  h.context.selectCareer('ai');
+  h.context.applySaveData({
+    schemaVersion: 2,
+    savedAt: new Date().toISOString(),
+    stats: { skill: 82, mental: 70, money: 130, ai: 85, day: 365, age: 42, career: 'ai', items: [] },
+    actionCounts: { 'learn-ai': 20, overtime: 4, rest: 18, interview: 3, 'side-project': 12, networking: 8 },
+    weeklyActionCounts: {},
+    runState: { focus: 74, fatigue: 24, boundaryScore: 76, lastBoundaryFeedbackDay: 350, lastCareerStageFeedbackDay: 360 },
+    buildProjectState: { progress: 100, quality: 78, debt: 22, exposure: 44, stage: 'portfolio', shipped: true, lastFeedbackDay: 350 },
+    dailyGoalState: { day: 365, targetAction: 'learn-ai', completed: true, streak: 8, totalCompleted: 80 },
+    runGoalState: { id: 'ai_compound', title: '把 AI 练成复利', description: '把 AI 熟练度、技术和长期项目一起推上去', createdDay: 0 },
+    gameData: { achievements: ['first_day'], deaths: 0, maxDay: 364, endings: [], runs: [] },
+    achievements: ['first_day'],
+    shopItems: []
+  });
+
+  h.context.checkGameOver();
+  const saved = readSave(h);
+
+  assert.equal(saved.schemaVersion, 2, '结局复盘收藏不应 bump SAVE_SCHEMA_VERSION');
+  assert.ok(Array.isArray(saved.gameData.runs), 'gameData.runs 应保存结局复盘列表');
+  assert.equal(saved.gameData.runs.length, 1, '每次结局应追加一条 run summary');
+  assert.deepEqual(Object.keys(saved.gameData.runs[0]).sort(), ['career', 'day', 'endingType', 'goalCompleted', 'score', 'title'].sort(), 'run summary 应保持短结构');
+  assert.equal(saved.gameData.runs[0].endingType, '✨ 完美结局');
+  assert.equal(saved.gameData.runs[0].career, 'ai');
+  assert.equal(saved.gameData.runs[0].day, 365);
+  assert.equal(saved.gameData.runs[0].goalCompleted, true);
+  assert.equal(typeof saved.gameData.runs[0].score, 'number');
+  assert.equal(typeof saved.gameData.runs[0].title, 'string');
+}
+
+function testRunSummariesSurviveRestoreAndRestart() {
+  const existingRuns = [{
+    endingType: '精神崩溃结局',
+    score: 31,
+    title: '还在 debug 人生的人',
+    goalCompleted: false,
+    day: 18,
+    career: 'frontend'
+  }];
+  const h = createHarness();
+  h.localStorage.setItem('codersLifeSave.v2', JSON.stringify({
+    schemaVersion: 2,
+    savedAt: new Date().toISOString(),
+    stats: { career: 'backend', day: 4, skill: 70, mental: 72, money: 55, ai: 36, age: 30, items: [] },
+    actionCounts: {},
+    gameData: { achievements: [], deaths: 1, maxDay: 18, endings: ['精神崩溃结局'], runs: existingRuns },
+    achievements: [],
+    shopItems: []
+  }));
+
+  assert.equal(h.context.loadGameFromStorage(), true);
+  h.context.restart();
+  h.context.selectCareer('ai');
+  const saved = readSave(h);
+
+  assert.deepEqual(saved.gameData.runs, existingRuns, '读档后重开局不应丢失历史 run summaries');
+}
+
+function testRunSummariesPersistAfterRestartBeforeCareerSelection() {
+  const existingRuns = [{
+    endingType: '精神崩溃结局',
+    score: 31,
+    title: '还在 debug 人生的人',
+    goalCompleted: false,
+    day: 18,
+    career: 'frontend'
+  }];
+  const h = createHarness();
+  h.localStorage.setItem('codersLifeSave.v2', JSON.stringify({
+    schemaVersion: 2,
+    savedAt: new Date().toISOString(),
+    stats: { career: 'backend', day: 4, skill: 70, mental: 72, money: 55, ai: 36, age: 30, items: [] },
+    actionCounts: {},
+    gameData: { achievements: [], deaths: 1, maxDay: 18, endings: ['精神崩溃结局'], runs: existingRuns },
+    achievements: [],
+    shopItems: []
+  }));
+
+  assert.equal(h.context.loadGameFromStorage(), true);
+  h.context.restart();
+
+  const restartedRaw = h.localStorage.getItem('codersLifeSave.v2');
+  assert.ok(restartedRaw, '重开后未选职业前也应持久化历史 run summaries');
+  const restartedSave = JSON.parse(restartedRaw);
+  assert.equal(restartedSave.stats.career, '', '重开后的元数据存档不应伪造 active run');
+  assert.deepEqual(restartedSave.gameData.runs, existingRuns, '重开后刷新/关闭不应丢失历史 run summaries');
+  assert.equal(h.context.hasSavedGame(), false, '仅元数据存档不应显示继续游戏入口');
+
+  const reloaded = createHarness();
+  reloaded.localStorage.setItem('codersLifeSave.v2', restartedRaw);
+  assert.equal(reloaded.context.loadGameFromStorage(), false, '仅元数据存档不应进入游戏区域');
+  assert.deepEqual(reloaded.context.buildSaveData().gameData.runs, existingRuns, '刷新后应能恢复历史 run summaries 到内存');
+}
+
+function testLegacySaveWithoutRunsRestoresWithEmptyRuns() {
+  const h = createHarness();
+  h.localStorage.setItem('codersLifeSave.v2', JSON.stringify({
+    schemaVersion: 2,
+    savedAt: new Date().toISOString(),
+    stats: { career: 'backend', day: 4, skill: 70, mental: 72, money: 55, ai: 36, age: 30, items: [] },
+    actionCounts: {},
+    gameData: { achievements: [], deaths: 0, maxDay: 4, endings: [] },
+    achievements: [],
+    shopItems: []
+  }));
+
+  assert.equal(h.context.loadGameFromStorage(), true);
+  const saved = h.context.buildSaveData();
+
+  assert.deepEqual(saved.gameData.runs, [], '旧存档缺失 runs 时应兼容为空数组');
+}
+
+function testRunSummariesKeepLatestTen() {
+  const oldRuns = Array.from({ length: 10 }, (_, index) => ({
+    endingType: `旧结局${index}`,
+    score: index,
+    title: `旧标题${index}`,
+    goalCompleted: false,
+    day: index + 1,
+    career: 'backend'
+  }));
+  const h = createHarness();
+  h.context.applySaveData({
+    schemaVersion: 2,
+    stats: { skill: 10, mental: 0, money: 20, ai: 30, day: 99, age: 30, career: 'backend', items: [] },
+    actionCounts: {},
+    gameData: { achievements: [], deaths: 0, maxDay: 98, endings: [], runs: oldRuns },
+    achievements: [],
+    shopItems: []
+  });
+
+  h.context.checkGameOver();
+  const saved = h.context.buildSaveData();
+
+  assert.equal(saved.gameData.runs.length, 10, 'run summaries 最多保留最近 10 局');
+  assert.equal(saved.gameData.runs[0].endingType, '旧结局1', '超过 10 条时应丢弃最旧记录');
+  assert.equal(saved.gameData.runs[9].endingType, '精神崩溃结局', '最新结局应保留在末尾');
+}
+
 const tests = [
   testNewCareerDoesNotOverwriteWhenUserCancels,
   testFutureSchemaRequiresConfirmationBeforeNewCareer,
@@ -520,7 +662,12 @@ const tests = [
   testLegacyStatsItemsRestoreShopOwnership,
   testGameOverRestoreKeepsEndingUi,
   testGameOverStateForcesEndedRunOnRestore,
-  testPerfectEndingDoesNotIncrementDeaths
+  testPerfectEndingDoesNotIncrementDeaths,
+  testEndingPersistsCompactRunSummary,
+  testRunSummariesSurviveRestoreAndRestart,
+  testRunSummariesPersistAfterRestartBeforeCareerSelection,
+  testLegacySaveWithoutRunsRestoresWithEmptyRuns,
+  testRunSummariesKeepLatestTen
 ];
 
 for (const test of tests) {

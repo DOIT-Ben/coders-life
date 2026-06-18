@@ -514,7 +514,8 @@
             achievements: [],
             deaths: 0,
             maxDay: 0,
-            endings: []
+            endings: [],
+            runs: []
         };
 
         const popupPool = Array.isArray(window.PROGRAMMER_POPUP_POOL) ? window.PROGRAMMER_POPUP_POOL : [];
@@ -652,10 +653,10 @@
 
         function getRunGoalForCareer(career) {
             const goals = {
-                frontend: { id: 'ship_portfolio', title: '把作品做成作品集', description: '发布长期 Build，并让曝光和质量都站得住', createdDay: 0 },
-                backend: { id: 'pay_down_debt', title: '别让技术债反向管理你', description: '把长期 Build 的技术债控制在可维护范围', createdDay: 0 },
-                fullstack: { id: 'balanced_builder', title: '全栈但不全栈崩溃', description: '同时守住精神、存款和长期 Build 进度', createdDay: 0 },
-                ai: { id: 'ai_compound', title: '把 AI 练成复利', description: '把 AI 熟练度、技术和长期项目一起推上去', createdDay: 0 }
+                frontend: { id: 'ship_portfolio', title: '把作品做成作品集', description: '发布长期 Build，并让曝光和质量都站得住', createdDay: 0, halfwayFeedbackShown: false, completionFeedbackShown: false },
+                backend: { id: 'pay_down_debt', title: '别让技术债反向管理你', description: '把长期 Build 的技术债控制在可维护范围', createdDay: 0, halfwayFeedbackShown: false, completionFeedbackShown: false },
+                fullstack: { id: 'balanced_builder', title: '全栈但不全栈崩溃', description: '同时守住精神、存款和长期 Build 进度', createdDay: 0, halfwayFeedbackShown: false, completionFeedbackShown: false },
+                ai: { id: 'ai_compound', title: '把 AI 练成复利', description: '把 AI 熟练度、技术和长期项目一起推上去', createdDay: 0, halfwayFeedbackShown: false, completionFeedbackShown: false }
             };
             return { ...(goals[career] || goals.fullstack) };
         }
@@ -665,7 +666,7 @@
         }
 
         function getInitialGameData() {
-            return { achievements: [], deaths: 0, maxDay: 0, endings: [] };
+            return { achievements: [], deaths: 0, maxDay: 0, endings: [], runs: [] };
         }
 
         function getCareerName(career) {
@@ -693,6 +694,21 @@
             } catch (error) {
                 return fallback;
             }
+        }
+
+        function normalizeRunSummaries(runs) {
+            if (!Array.isArray(runs)) return [];
+            return runs
+                .filter(run => run && typeof run === 'object' && !Array.isArray(run))
+                .map(run => ({
+                    endingType: typeof run.endingType === 'string' ? run.endingType : '',
+                    score: Number.isFinite(Number(run.score)) ? Math.max(0, Math.min(100, Math.round(Number(run.score)))) : 0,
+                    title: typeof run.title === 'string' ? run.title : '',
+                    goalCompleted: run.goalCompleted === true,
+                    day: Number.isFinite(Number(run.day)) ? Math.max(0, Math.floor(Number(run.day))) : 0,
+                    career: typeof run.career === 'string' ? run.career : ''
+                }))
+                .slice(-10);
         }
 
         function clamp(value, min, max) {
@@ -823,7 +839,9 @@
                 id: typeof data.id === 'string' && data.id ? data.id : fallback.id,
                 title: typeof data.title === 'string' && data.title ? data.title : fallback.title,
                 description: typeof data.description === 'string' && data.description ? data.description : fallback.description,
-                createdDay: Number.isFinite(Number(data.createdDay)) ? Math.max(0, Math.floor(Number(data.createdDay))) : 0
+                createdDay: Number.isFinite(Number(data.createdDay)) ? Math.max(0, Math.floor(Number(data.createdDay))) : 0,
+                halfwayFeedbackShown: data.halfwayFeedbackShown === true,
+                completionFeedbackShown: data.completionFeedbackShown === true
             };
         }
 
@@ -1116,6 +1134,7 @@
             gameData.endings = Array.isArray(gameData.endings)
                 ? Array.from(new Set(gameData.endings.filter(ending => typeof ending === 'string')))
                 : [];
+            gameData.runs = normalizeRunSummaries(gameData.runs);
             gameData.deaths = Number.isFinite(Number(gameData.deaths)) ? Math.max(0, Math.floor(Number(gameData.deaths))) : 0;
             gameData.maxDay = Number.isFinite(Number(gameData.maxDay)) ? Math.max(0, Math.floor(Number(gameData.maxDay))) : 0;
 
@@ -1604,6 +1623,7 @@
         }
 
         function action(type) {
+            if (isGameOver) return;
             stats.day++;
             actionCounts[type]++;
             weeklyActionCounts[type] = (weeklyActionCounts[type] || 0) + 1;
@@ -1635,6 +1655,7 @@
             applyFunLoopFeedback(type);
             applyResumeFollowup(type);
             applyBuildProject(type);
+            applyRunGoalFeedback();
             addCareerStageFeedback();
 
             if (stats.day % 7 === 0) {
@@ -2107,6 +2128,38 @@
             };
         }
 
+        function getRunGoalProgressPercent(goal = normalizeRunGoalState(runGoalState, stats)) {
+            const projectProgress = clamp(buildProjectState.progress, 0, 100);
+            const qualityProgress = clamp(buildProjectState.quality / 60 * 100, 0, 100);
+            const debtProgress = buildProjectState.progress >= 30 ? clamp((35 - buildProjectState.debt) / 35 * 100, 0, 100) : 0;
+            const checks = {
+                ship_portfolio: Math.round((projectProgress + qualityProgress) / 2),
+                pay_down_debt: Math.round((clamp(buildProjectState.progress / 30 * 100, 0, 100) + debtProgress) / 2),
+                balanced_builder: Math.round((clamp(stats.mental / 60 * 100, 0, 100) + clamp(stats.money / 60 * 100, 0, 100) + clamp(buildProjectState.progress / 60 * 100, 0, 100)) / 3),
+                ai_compound: Math.round((clamp(stats.ai / 80 * 100, 0, 100) + clamp(stats.skill / 65 * 100, 0, 100) + clamp(buildProjectState.progress / 50 * 100, 0, 100)) / 3),
+                steady_year: Math.round((clamp(stats.day / 365 * 100, 0, 100) + clamp(stats.mental / 60 * 100, 0, 100) + clamp(stats.money / 60 * 100, 0, 100) + clamp(stats.ai / 60 * 100, 0, 100)) / 4)
+            };
+            return clamp(checks[goal.id] || 0, 0, 100);
+        }
+
+        function applyRunGoalFeedback() {
+            runGoalState = normalizeRunGoalState(runGoalState, stats);
+            const goal = getRunGoalResult();
+            const progress = getRunGoalProgressPercent(goal);
+
+            if (!runGoalState.halfwayFeedbackShown && progress >= 50) {
+                runGoalState.halfwayFeedbackShown = true;
+                stats.mental = Math.min(100, stats.mental + 2);
+                addEvent('🎯 目标推进：你已经把本局目标推进到一半，精神 +2', 'special');
+            }
+
+            if (!runGoalState.completionFeedbackShown && goal.completed) {
+                runGoalState.completionFeedbackShown = true;
+                stats.skill = Math.min(100, stats.skill + 1);
+                addEvent(`🏁 目标完成：${goal.title}已经达成，技术 +1`, 'special');
+            }
+        }
+
         function calculateRunScore() {
             const survivalScore = Math.min(30, Math.floor(stats.day / 365 * 30));
             const statScore = Math.round((stats.skill + stats.mental + Math.min(100, stats.money) + stats.ai) / 4 * 0.35);
@@ -2128,6 +2181,20 @@
             const goal = getRunGoalResult();
             const projectText = `长期 Build：进度${Math.round(buildProjectState.progress)}%，质量${Math.round(buildProjectState.quality)}，债务${Math.round(buildProjectState.debt)}`;
             return `${reason} 本局评分：${score}/100。本局称号：${getRunTitle(score)}。${goal.text}。${projectText}。`;
+        }
+
+        function recordRunSummary(endingType) {
+            const score = calculateRunScore();
+            const goal = getRunGoalResult();
+            const summary = {
+                endingType,
+                score,
+                title: getRunTitle(score),
+                goalCompleted: goal.completed === true,
+                day: Number.isFinite(Number(stats.day)) ? Math.max(0, Math.floor(Number(stats.day))) : 0,
+                career: typeof stats.career === 'string' ? stats.career : ''
+            };
+            gameData.runs = normalizeRunSummaries([...(Array.isArray(gameData.runs) ? gameData.runs : []), summary]);
         }
 
         function unlockAchievement(id) {
@@ -2162,6 +2229,7 @@
             }
 
             if (reason) {
+                applyRunGoalFeedback();
                 reason = buildEndingSummary(reason);
                 isGameOver = true;
                 gameOverState = { reason, endingType };
@@ -2172,6 +2240,7 @@
                 if (!gameData.endings.includes(endingType)) {
                     gameData.endings.push(endingType);
                 }
+                recordRunSummary(endingType);
                 
                 document.getElementById('game-over-reason').textContent = reason;
                 document.getElementById('ending-type').innerHTML = '<h3 style="color: #667eea; margin-top: 15px;">' + endingType + '</h3>';
@@ -2221,6 +2290,7 @@
         }
 
         function buyItem(id) {
+            if (isGameOver) return;
             const item = shopItems.find(i => i.id === id);
             if (!item || item.owned) return;
             
@@ -2274,6 +2344,46 @@
                 achievements: achievements.filter(a => a.unlocked).map(a => a.id),
                 shopItems: shopItems.filter(i => i.owned).map(i => i.id)
             };
+        }
+
+        function buildMetaSaveData() {
+            return {
+                ...buildSaveData(),
+                stats: getInitialStats(),
+                actionCounts: getInitialActionCounts(),
+                consecutiveEvents: getInitialConsecutiveEvents(),
+                weeklyActionCounts: getInitialWeeklyActionCounts(),
+                streakRewards: getInitialStreakRewards(),
+                runState: getInitialRunState(),
+                rarePopupCooldowns: getInitialRarePopupCooldowns(),
+                displayTextHistory: [],
+                dailyGoalState: getInitialDailyGoalState(),
+                buildProjectState: getInitialBuildProjectState(),
+                toolHabitState: getInitialToolHabitState(),
+                runGoalState: getInitialRunGoalState(),
+                resumeContext: undefined,
+                resumeFollowupState: getInitialResumeFollowupState(),
+                popupHistory: [],
+                popupCategoryHistory: [],
+                eventLog: [],
+                isGameOver: false,
+                gameOverState: null,
+                gameData: clonePlain(gameData, getInitialGameData()),
+                achievements: achievements.filter(a => a.unlocked).map(a => a.id),
+                shopItems: shopItems.filter(i => i.owned).map(i => i.id)
+            };
+        }
+
+        function saveMetaSnapshot() {
+            if (!Array.isArray(gameData.runs) || gameData.runs.length === 0) return false;
+            try {
+                const serializedSave = JSON.stringify(buildMetaSaveData());
+                localStorage.setItem(SAVE_KEY, serializedSave);
+                return true;
+            } catch (error) {
+                console.warn('历史复盘保存失败', error);
+                return false;
+            }
         }
 
         function saveGame(options = {}) {
@@ -2734,11 +2844,12 @@
             resumeReminderText = '';
             isGameOver = false;
             gameOverState = null;
-            gameData = getInitialGameData();
+            gameData = { ...getInitialGameData(), runs: normalizeRunSummaries(gameData.runs) };
             resetMetaState();
             safeRemoveStorageKey(SAVE_KEY, '清理主存档失败');
             safeRemoveStorageKey(SAVE_BACKUP_KEY, '清理备份存档失败');
             safeRemoveStorageKey(LEGACY_SAVE_KEY, '清理旧存档失败');
+            saveMetaSnapshot();
             
             document.getElementById('event-log').innerHTML = '';
             document.getElementById('game-over').style.display = 'none';

@@ -377,11 +377,22 @@ function testBuildProjectStateResetsWhenStartingNewCareer() {
 
 function testBuildProjectShippingCreatesFeedback() {
   const context = createGameContext();
-  context.selectCareer('fullstack');
+  context.applySaveData({
+    schemaVersion: 2,
+    stats: { career: 'fullstack', day: 8, skill: 88, mental: 100, money: 140, ai: 70, age: 30, items: [] },
+    actionCounts: {},
+    buildProjectState: {
+      progress: 88,
+      quality: 80,
+      debt: 20,
+      exposure: 40,
+      stage: 'usable',
+      shipped: false,
+      lastFeedbackDay: 0
+    }
+  });
 
-  for (let index = 0; index < 9; index += 1) {
-    context.action('side-project');
-  }
+  context.action('side-project');
   const saved = parseSave(context);
 
   assert.equal(saved.buildProjectState.progress, 100);

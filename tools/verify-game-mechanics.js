@@ -159,6 +159,10 @@ function parseSave(context) {
   return JSON.parse(raw);
 }
 
+function countGoalEvents(save, pattern) {
+  return (save.eventLog || []).filter(entry => pattern.test(entry.text || '')).length;
+}
+
 function testCoreActionSaveAndRestoreFlow() {
   const context = createGameContext();
 
@@ -184,6 +188,54 @@ function testCoreActionSaveAndRestoreFlow() {
   assert.equal(restored.document.getElementById('day-count').textContent, '3');
   assert.deepEqual(restored.buildSaveData().runGoalState, saved.runGoalState);
   assert.deepEqual(restored.buildSaveData().buildProjectState, saved.buildProjectState);
+}
+
+function testRunGoalProgressFeedbackPersistsAcrossSaveRestore() {
+  const context = createGameContext();
+
+  context.selectCareer('ai');
+  context.applySaveData({
+    schemaVersion: 2,
+    stats: { skill: 65, mental: 72, money: 80, ai: 78, day: 9, age: 30, career: 'ai', items: [] },
+    actionCounts: {},
+    weeklyActionCounts: {},
+    runState: { focus: 70, fatigue: 20, boundaryScore: 75 },
+    buildProjectState: { progress: 47, quality: 70, debt: 10, exposure: 10, stage: 'usable', shipped: false, lastFeedbackDay: 0 },
+    dailyGoalState: { day: 9, targetAction: 'rest', completed: true, streak: 2, totalCompleted: 6 },
+    runGoalState: { id: 'ai_compound', title: '把 AI 练成复利', description: '把 AI 熟练度、技术和长期项目一起推上去', createdDay: 0 }
+  });
+
+  context.action('learn-ai');
+  const halfSave = parseSave(context);
+
+  assert.equal(countGoalEvents(halfSave, /目标推进/), 1, 'first crossing around 50% should write one goal progress event');
+  assert.equal(halfSave.runGoalState.halfwayFeedbackShown, true, 'halfway feedback flag should persist in run goal state');
+  assert(halfSave.stats.mental > 72 || halfSave.stats.skill > 65, 'halfway feedback should grant a small mental or skill reward');
+
+  const restored = createGameContext({ [saveKey]: JSON.stringify(halfSave) });
+  assert.equal(restored.loadGameFromStorage(), true);
+  restored.action('learn-ai');
+  const afterRestoreSave = parseSave(restored);
+
+  assert.equal(countGoalEvents(afterRestoreSave, /目标推进/), 1, 'restored run should not repeat the halfway goal event');
+
+  restored.applySaveData({
+    ...afterRestoreSave,
+    stats: { ...afterRestoreSave.stats, skill: 70, ai: 80, mental: 74, money: 90 },
+    buildProjectState: { ...afterRestoreSave.buildProjectState, progress: 49, quality: 74, debt: 12 }
+  });
+  restored.action('learn-ai');
+  const completeSave = parseSave(restored);
+
+  assert.equal(countGoalEvents(completeSave, /目标完成/), 1, 'goal completion should write one special event before ending');
+  assert.equal(completeSave.runGoalState.completionFeedbackShown, true, 'completion feedback flag should persist in run goal state');
+
+  const completeRestore = createGameContext({ [saveKey]: JSON.stringify(completeSave) });
+  assert.equal(completeRestore.loadGameFromStorage(), true);
+  completeRestore.action('rest');
+  completeRestore.checkGameOver();
+  const repeatedSave = parseSave(completeRestore);
+  assert.equal(countGoalEvents(repeatedSave, /目标完成/), 1, 'goal completion event should not repeat when game over is checked again');
 }
 
 function testEndingSummaryShowsScoreTitleAndGoalResult() {
@@ -213,6 +265,37 @@ function testEndingSummaryShowsScoreTitleAndGoalResult() {
   assert.match(endingHtml, /完美结局/, 'ending panel should keep the existing ending type');
 }
 
+function testEndedRunIgnoresStateChangingEntrypoints() {
+  const context = createGameContext();
+
+  context.selectCareer('ai');
+  context.applySaveData({
+    schemaVersion: 2,
+    stats: { skill: 82, mental: 70, money: 130, ai: 85, day: 365, age: 42, career: 'ai', items: [] },
+    actionCounts: { 'learn-ai': 20, overtime: 4, rest: 18, interview: 3, 'side-project': 12, networking: 8 },
+    weeklyActionCounts: {},
+    runState: { focus: 74, fatigue: 24, boundaryScore: 76, lastBoundaryFeedbackDay: 350, lastCareerStageFeedbackDay: 360 },
+    buildProjectState: { progress: 100, quality: 78, debt: 22, exposure: 44, stage: 'portfolio', shipped: true, lastFeedbackDay: 350 },
+    dailyGoalState: { day: 365, targetAction: 'learn-ai', completed: true, streak: 8, totalCompleted: 80 },
+    runGoalState: { id: 'ship_portfolio', title: '把长期 Build 做成作品', description: '发布一个能展示的长期项目', createdDay: 0 },
+    gameData: { achievements: [], deaths: 0, maxDay: 364, endings: [], runs: [] },
+    shopItems: []
+  });
+  context.checkGameOver();
+  const endedSave = parseSave(context);
+
+  context.action('rest');
+  context.buyItem('keyboard');
+  const afterEntrypoints = context.buildSaveData();
+
+  assert.equal(afterEntrypoints.stats.day, endedSave.stats.day, 'ended run should ignore extra actions');
+  assert.equal(afterEntrypoints.stats.money, endedSave.stats.money, 'ended run should ignore shop purchases');
+  assert.deepEqual(afterEntrypoints.stats.items, endedSave.stats.items, 'ended run should not add purchased items');
+  assert.deepEqual(afterEntrypoints.eventLog, endedSave.eventLog, 'ended run should not append post-ending events');
+  assert.deepEqual(afterEntrypoints.gameData.runs, endedSave.gameData.runs, 'ended run should not append or mutate run summaries');
+  assert.deepEqual(afterEntrypoints.gameOverState, endedSave.gameOverState, 'ended run should keep original ending state');
+}
+
 function testCorruptMainSaveIsQuarantinedDuringNewRun() {
   const context = createGameContext({ [saveKey]: '{bad-json' });
 
@@ -226,7 +309,9 @@ function testCorruptMainSaveIsQuarantinedDuringNewRun() {
 
 const tests = [
   testCoreActionSaveAndRestoreFlow,
+  testRunGoalProgressFeedbackPersistsAcrossSaveRestore,
   testEndingSummaryShowsScoreTitleAndGoalResult,
+  testEndedRunIgnoresStateChangingEntrypoints,
   testCorruptMainSaveIsQuarantinedDuringNewRun
 ];
 
