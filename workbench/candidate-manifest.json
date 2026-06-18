@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-06-18",
+  "description": "Tracks research candidate batches before they are reviewed, merged into the structured popup source, or rejected.",
+  "files": [
+    {
+      "path": "workbench/agent-research-ai-tools-round21-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-career-stage-round22-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-career-stage-round23-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-health-round20-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-learning-round13-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-learning-round14-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-learning-round15-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-learning-round16-candidates.md",
+      "status": "pending",
+      "candidateCount": 150
+    },
+    {
+      "path": "workbench/agent-research-learning-round17-candidates.md",
+      "status": "pending",
+      "candidateCount": 150
+    },
+    {
+      "path": "workbench/agent-research-learning-round18-candidates.md",
+      "status": "pending",
+      "candidateCount": 150
+    },
+    {
+      "path": "workbench/agent-research-learning-round19-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-life-learning-round22-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-life-learning-round23-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-life-round12-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-life-round14-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-life-round15-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-life-round16-candidates.md",
+      "status": "pending",
+      "candidateCount": 150
+    },
+    {
+      "path": "workbench/agent-research-life-round17-candidates.md",
+      "status": "pending",
+      "candidateCount": 150
+    },
+    {
+      "path": "workbench/agent-research-life-round18-candidates.md",
+      "status": "pending",
+      "candidateCount": 150
+    },
+    {
+      "path": "workbench/agent-research-life-round19-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-oss-sideproject-round21-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-team-round20-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    }
+  ]
+}

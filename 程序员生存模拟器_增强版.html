@@ -693,7 +693,11 @@
         }
 
         function isResumeSystemEvent(text) {
-            return isResumeContextEvent(text) || (typeof text === 'string' && text.startsWith('🔁 接住读档建议'));
+            return isResumeContextEvent(text) ||
+                (typeof text === 'string' && (
+                    text.startsWith('🔁 接住读档建议') ||
+                    text.startsWith('✅ 今日续玩任务完成')
+                ));
         }
 
         function clonePlain(value, fallback) {
@@ -1168,8 +1172,10 @@
         function buildResumeReminderText(data) {
             const context = normalizeResumeContext(data?.resumeContext, data || {});
             const noteText = context.noteText ? `，${context.noteText}` : '';
+            const suggestionAction = getActionFromResumeSuggestion(context.nextSuggestion);
+            const taskText = suggestionAction ? `，今日续玩任务：先做【${getActionLabel(suggestionAction)}】接上上次断点` : '';
             const suggestionText = context.nextSuggestion ? `，建议下一步：${context.nextSuggestion}` : '';
-            return `${RESUME_CONTEXT_EVENT_PREFIX}${context.summary}${noteText}${suggestionText}`;
+            return `${RESUME_CONTEXT_EVENT_PREFIX}${context.summary}${noteText}${taskText}${suggestionText}`;
         }
 
         function getResumeFollowupFingerprint(context) {
@@ -2186,7 +2192,7 @@
             if (Number.isFinite(Number(reward.skill))) stats.skill = Math.min(100, Math.max(0, stats.skill + reward.skill));
             if (Number.isFinite(Number(reward.ai))) stats.ai = Math.min(100, Math.max(0, stats.ai + reward.ai));
             if (Number.isFinite(Number(reward.fatigue))) runState.fatigue = Math.min(100, Math.max(0, runState.fatigue + reward.fatigue));
-            addEvent(`🔁 接住读档建议：${reward.text}`, 'special');
+            addEvent(`✅ 今日续玩任务完成：${reward.text}`, 'special');
         }
 
         function applyToolHabitFeedback(actionType) {

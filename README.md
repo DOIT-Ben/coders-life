@@ -39,6 +39,7 @@
 - `tools/verify-save-system.mjs`
 - `tools/verify-save-flow.mjs`
 - `tools/verify-save-resume-context.mjs`
+- `tools/verify-candidate-manifest.mjs`
 - `tools/verify-career-boundary-loop.cjs`
 
 ## 说明
@@ -56,6 +57,7 @@ node .\tools\verify-save-system.mjs
 node .\tools\verify-save-flow.mjs
 node .\tools\verify-fun-loop.mjs
 node .\tools\verify-save-resume-context.mjs
+node .\tools\verify-candidate-manifest.mjs
 node .\tools\verify-career-boundary-loop.cjs
 ```
 
@@ -67,6 +69,7 @@ node .\tools\verify-career-boundary-loop.cjs
 - 内部有隐藏状态 `focus/fatigue/boundaryScore`，用于影响周报、边界复盘和即时事件反馈，不新增前端组件。
 - 内部有隐藏状态 `buildProjectState/toolHabitState`，用于长期 Build 项目和工具学习转化反馈，会随存档保存和恢复。
 - 读档后会在事件流顶部生成一条“接着玩提示”，提示上次停在哪、当前弱项和长期项目状态。
+- `workbench\candidate-manifest.json` 管理调研候选素材状态；`pending` 表示研究 backlog，不会自动合入正式弹窗池。
 - 游戏会在职业阶段里程碑生成隐藏阶段反馈，不新增前端组件，只写入事件日志和存档。
 - 已有有效存档时误点职业卡会二次确认，避免覆盖上次进度。
 - 隐藏状态也会解锁少量成就，例如深度专注、恢复意识、边界守护者、稳定节奏。

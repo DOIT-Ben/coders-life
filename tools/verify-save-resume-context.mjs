@@ -200,8 +200,10 @@ function testOldSaveGetsResumeReminderFromExistingState() {
   assert.ok(reminderText.includes('第18天'), 'reminder should mention restored day');
   assert.ok(reminderText.includes('精神值偏低'), 'reminder should mention the weakest restored stat');
   assert.ok(reminderText.includes('技术债较高'), 'reminder should surface long-term project recovery risk');
+  assert.ok(reminderText.includes('今日续玩任务：先做【休息恢复】接上上次断点'), 'reminder should turn the next suggestion into a daily resume task');
   assert.ok(reminderText.includes('建议下一步：'), 'reminder should include a concrete next action suggestion');
   assert.equal(restoredSave.eventLog.some(entry => entry.text.includes('接着玩提示')), false, 'context reminder should not consume persistent event log slots');
+  assert.equal(restoredSave.eventLog.some(entry => entry.text.includes('今日续玩任务')), false, 'daily resume task prompt should stay render-only');
   assert.equal(Object.hasOwn(restoredSave, 'saveHealthSnapshot'), false, 'feature should not add another top-level health schema field');
 }
 
@@ -302,12 +304,12 @@ function testFollowingResumeSuggestionCreatesOneShotFeedback() {
 
   context.action('rest');
   const firstFollowupSave = context.buildSaveData();
-  assert.ok(firstFollowupSave.eventLog.some(entry => entry.text.includes('接住读档建议')), 'matching the resume suggestion should create a one-shot feedback event');
-  assert.equal(firstFollowupSave.eventLog.filter(entry => entry.text.includes('接住读档建议')).length, 1, 'resume suggestion feedback should happen once');
+  assert.ok(firstFollowupSave.eventLog.some(entry => entry.text.includes('今日续玩任务完成')), 'matching the resume suggestion should create a one-shot task-completion event');
+  assert.equal(firstFollowupSave.eventLog.filter(entry => entry.text.includes('今日续玩任务完成')).length, 1, 'resume task completion feedback should happen once');
 
   context.action('rest');
   const secondFollowupSave = context.buildSaveData();
-  assert.equal(secondFollowupSave.eventLog.filter(entry => entry.text.includes('接住读档建议')).length, 1, 'resume suggestion feedback should not repeat after being consumed');
+  assert.equal(secondFollowupSave.eventLog.filter(entry => entry.text.includes('今日续玩任务完成')).length, 1, 'resume task completion feedback should not repeat after being consumed');
 }
 
 function testConsumedResumeSuggestionDoesNotRepeatAfterReload() {
@@ -328,7 +330,7 @@ function testConsumedResumeSuggestionDoesNotRepeatAfterReload() {
   assert.ok(first.document.getElementById('event-log').children[0].textContent.includes('建议下一步：副业/作品'), 'fixture should recommend side project');
   first.action('side-project');
   const afterFollowup = first.localStorage.getItem(SAVE_KEY);
-  assert.ok(JSON.parse(afterFollowup).eventLog.some(entry => entry.text.includes('接住读档建议')), 'fixture should persist consumed followup event');
+  assert.ok(JSON.parse(afterFollowup).eventLog.some(entry => entry.text.includes('今日续玩任务完成')), 'fixture should persist consumed followup event');
 
   const second = createGameContext({ [SAVE_KEY]: afterFollowup });
   assert.equal(second.loadGameFromStorage(), true);
@@ -336,8 +338,8 @@ function testConsumedResumeSuggestionDoesNotRepeatAfterReload() {
   second.action('side-project');
   const reloadedSave = parseSave(second);
 
-  assert.equal(reloadedSave.eventLog.filter(entry => entry.text.includes('接住读档建议')).length, 1, 'consumed resume suggestion should not repeat after reload');
-  assert.ok(!reloadedSave.resumeContext.lastEventText.includes('接住读档建议'), 'resume context should not use followup meta events as the last real event');
+  assert.equal(reloadedSave.eventLog.filter(entry => entry.text.includes('今日续玩任务完成')).length, 1, 'consumed resume suggestion should not repeat after reload');
+  assert.ok(!reloadedSave.resumeContext.lastEventText.includes('今日续玩任务完成'), 'resume context should not use followup meta events as the last real event');
 }
 
 function testResumeSuggestionCanRecoverMissedDailyGoalOnce() {
@@ -372,7 +374,7 @@ function testResumeSuggestionCanRecoverMissedDailyGoalOnce() {
   const recovered = parseSave(first);
 
   assert.equal(recovered.eventLog.filter(entry => entry.text.includes('补救日课')).length, 1, 'following resume suggestion after a miss should create one recovery event');
-  assert.equal(recovered.eventLog.filter(entry => entry.text.includes('接住读档建议')).length, 1, 'existing resume followup event should still happen once');
+  assert.equal(recovered.eventLog.filter(entry => entry.text.includes('今日续玩任务完成')).length, 1, 'existing resume followup event should still happen once');
 
   const second = createGameContext({ [SAVE_KEY]: JSON.stringify(recovered) });
   assert.equal(second.loadGameFromStorage(), true);
