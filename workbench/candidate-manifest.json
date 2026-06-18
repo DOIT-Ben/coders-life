@@ -34,6 +34,11 @@
       "candidateCount": 120
     },
     {
+      "path": "workbench/agent-research-career-stage-round27-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
       "path": "workbench/agent-research-health-round20-candidates.md",
       "status": "pending",
       "candidateCount": 120
@@ -95,6 +100,11 @@
     },
     {
       "path": "workbench/agent-research-life-learning-round26-candidates.md",
+      "status": "pending",
+      "candidateCount": 120
+    },
+    {
+      "path": "workbench/agent-research-life-learning-round27-candidates.md",
       "status": "pending",
       "candidateCount": 120
     },

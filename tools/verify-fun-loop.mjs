@@ -399,6 +399,35 @@ function testWeakConnectionTurnsIntoBetaFeedbackOncePerWeek() {
   assert.ok(afterRestore.runGoalState.chain.metaRewardKeys.includes('networking-beta-week-1'), 'beta feedback reward key should survive restore');
 }
 
+function testAiBuildReviewLoopRewardsOnceAndPersists() {
+  const context = createGameContext();
+
+  context.selectCareer('frontend');
+  context.action('learn-ai');
+  context.action('side-project');
+  const beforeReview = parseSave(context);
+  context.action('rest');
+  const saved = parseSave(context);
+
+  assert.equal(saved.schemaVersion, 2, 'AI build review loop should not bump save schema');
+  assert.equal(Object.hasOwn(saved, 'aiReviewState'), false, 'AI build review loop should not add a top-level save field');
+  assert.equal(saved.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('Review 闭环')).length, 1, 'learning, building, then reviewing should create one review feedback event');
+  assert.ok(saved.buildProjectState.quality >= beforeReview.buildProjectState.quality + 2, 'review loop should add project quality');
+  assert.ok(saved.buildProjectState.debt <= beforeReview.buildProjectState.debt - 3, 'review loop should reduce project debt');
+  assert.ok(saved.runGoalState.chain.metaRewardKeys.includes('ai-review-week-1'), 'review reward key should persist in existing run goal chain metadata');
+  assert.deepEqual(saved.runGoalState.chain.reviewActions, ['learn-ai', 'side-project', 'rest'], 'review action sequence should be stored inside existing chain state');
+
+  const restored = createGameContext({ [SAVE_KEY]: JSON.stringify(saved) });
+  assert.equal(restored.loadGameFromStorage(), true);
+  restored.action('learn-ai');
+  restored.action('side-project');
+  restored.action('rest');
+  const afterRestore = parseSave(restored);
+
+  assert.equal(afterRestore.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('Review 闭环')).length, 1, 'claimed review feedback should not repeat in the same week after restore');
+  assert.ok(afterRestore.runGoalState.chain.metaRewardKeys.includes('ai-review-week-1'), 'review reward key should survive restore');
+}
+
 function testPreviousRunRecoveryRelayRewardsOnceAndPersists() {
   const previousRuns = [{
     endingType: '精神崩溃结局',
@@ -487,6 +516,7 @@ const tests = [
   testSmallPrLoopClosesOncePerWeekAndSurvivesRestore,
   testInterviewDebriefTurnsIntoWeakConnectionOncePerWeek,
   testWeakConnectionTurnsIntoBetaFeedbackOncePerWeek,
+  testAiBuildReviewLoopRewardsOnceAndPersists,
   testPreviousRunRecoveryRelayRewardsOnceAndPersists,
   testWeeklyReviewStickerAddsFlavorOnceAndPersists
 ];

@@ -662,7 +662,7 @@
         }
 
         function getInitialRunGoalChain() {
-            return { lastActionType: '', previousActionType: '', count: 0, rewardKeys: [], prLoopRewardKeys: [], metaRewardKeys: [] };
+            return { lastActionType: '', previousActionType: '', count: 0, rewardKeys: [], prLoopRewardKeys: [], metaRewardKeys: [], reviewActions: [] };
         }
 
         function getInitialRunGoalState() {
@@ -902,7 +902,8 @@
                 key === 'previous-run-recovery' ||
                 key.startsWith('weekly-sticker-') ||
                 key.startsWith('interview-networking-week-') ||
-                key.startsWith('networking-beta-week-')
+                key.startsWith('networking-beta-week-') ||
+                key.startsWith('ai-review-week-')
             );
             if (typeof data.lastActionType === 'string' && allowedActions.includes(data.lastActionType)) {
                 base.lastActionType = data.lastActionType;
@@ -929,6 +930,11 @@
                     ...base.metaRewardKeys,
                     ...data.metaRewardKeys.filter(isMetaRewardKey)
                 ])).slice(-30);
+            }
+            if (Array.isArray(data.reviewActions)) {
+                base.reviewActions = data.reviewActions
+                    .filter(actionType => typeof actionType === 'string' && allowedActions.includes(actionType))
+                    .slice(-3);
             }
             return base;
         }
@@ -2137,6 +2143,7 @@
             }
             applyInterviewDebriefFeedback(actionType);
             applyWeakConnectionBetaFeedback(actionType);
+            applyAiBuildReviewFeedback(actionType);
             applySmallPrLoopFeedback(actionType);
             applyPreviousRunRecoveryRelay(actionType);
             applyToolHabitFeedback(actionType);
@@ -2181,6 +2188,32 @@
             chain.metaRewardKeys = Array.from(new Set([...chain.metaRewardKeys, rewardKey])).slice(-30);
             runGoalState.chain = chain;
             addEvent('🧪 人脉变内测：你把弱连接变成早期反馈，曝光 +2，质量 +1', 'special');
+        }
+
+        function applyAiBuildReviewFeedback(actionType) {
+            runGoalState = normalizeRunGoalState(runGoalState, stats);
+            const chain = normalizeRunGoalChain(runGoalState.chain);
+            const reviewActions = [...(chain.reviewActions || []), actionType].slice(-3);
+            const week = Math.max(1, Math.ceil(stats.day / 7));
+            const rewardKey = `ai-review-week-${week}`;
+            const closesReviewLoop = reviewActions[0] === 'learn-ai' &&
+                reviewActions[1] === 'side-project' &&
+                ['rest', 'learn-ai'].includes(reviewActions[2]);
+
+            chain.reviewActions = reviewActions;
+            if (!closesReviewLoop || chain.metaRewardKeys.includes(rewardKey)) {
+                runGoalState.chain = chain;
+                return;
+            }
+
+            buildProjectState = normalizeBuildProjectState({
+                ...buildProjectState,
+                quality: buildProjectState.quality + 2,
+                debt: buildProjectState.debt - 3
+            });
+            chain.metaRewardKeys = Array.from(new Set([...chain.metaRewardKeys, rewardKey])).slice(-30);
+            runGoalState.chain = chain;
+            addEvent('🧪 Review 闭环：你没有只堆功能，而是把 AI 产物过了一遍 review，质量 +2，技术债 -3', 'special');
         }
 
         function applyPreviousRunRecoveryRelay(actionType) {
