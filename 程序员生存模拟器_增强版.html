@@ -901,7 +901,8 @@
             const isMetaRewardKey = key => typeof key === 'string' && (
                 key === 'previous-run-recovery' ||
                 key.startsWith('weekly-sticker-') ||
-                key.startsWith('interview-networking-week-')
+                key.startsWith('interview-networking-week-') ||
+                key.startsWith('networking-beta-week-')
             );
             if (typeof data.lastActionType === 'string' && allowedActions.includes(data.lastActionType)) {
                 base.lastActionType = data.lastActionType;
@@ -2135,6 +2136,7 @@
                 addEvent('🛟 恢复触发：你在过载后主动停手，精神 +6', 'special');
             }
             applyInterviewDebriefFeedback(actionType);
+            applyWeakConnectionBetaFeedback(actionType);
             applySmallPrLoopFeedback(actionType);
             applyPreviousRunRecoveryRelay(actionType);
             applyToolHabitFeedback(actionType);
@@ -2157,6 +2159,28 @@
             chain.metaRewardKeys = Array.from(new Set([...chain.metaRewardKeys, rewardKey])).slice(-30);
             runGoalState.chain = chain;
             addEvent('🤝 面试复盘变人脉：你把一次面试复盘成弱连接，精神 +2，存款 +1', 'special');
+        }
+
+        function applyWeakConnectionBetaFeedback(actionType) {
+            if (actionType !== 'side-project') return;
+            runGoalState = normalizeRunGoalState(runGoalState, stats);
+            const chain = normalizeRunGoalChain(runGoalState.chain);
+            const previousActionType = chain.lastActionType || chain.previousActionType;
+            const week = Math.max(1, Math.ceil(stats.day / 7));
+            const rewardKey = `networking-beta-week-${week}`;
+            if (previousActionType !== 'networking' || chain.metaRewardKeys.includes(rewardKey)) {
+                runGoalState.chain = chain;
+                return;
+            }
+
+            buildProjectState = normalizeBuildProjectState({
+                ...buildProjectState,
+                exposure: buildProjectState.exposure + 2,
+                quality: buildProjectState.quality + 1
+            });
+            chain.metaRewardKeys = Array.from(new Set([...chain.metaRewardKeys, rewardKey])).slice(-30);
+            runGoalState.chain = chain;
+            addEvent('🧪 人脉变内测：你把弱连接变成早期反馈，曝光 +2，质量 +1', 'special');
         }
 
         function applyPreviousRunRecoveryRelay(actionType) {

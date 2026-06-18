@@ -373,6 +373,32 @@ function testInterviewDebriefTurnsIntoWeakConnectionOncePerWeek() {
   assert.ok(afterRestore.runGoalState.chain.metaRewardKeys.includes('interview-networking-week-1'), 'interview debrief reward key should survive restore');
 }
 
+function testWeakConnectionTurnsIntoBetaFeedbackOncePerWeek() {
+  const context = createGameContext();
+
+  context.selectCareer('frontend');
+  context.action('networking');
+  const afterNetworking = parseSave(context);
+  context.action('side-project');
+  const saved = parseSave(context);
+
+  assert.equal(saved.schemaVersion, 2, 'weak-connection beta loop should not bump save schema');
+  assert.equal(Object.hasOwn(saved, 'betaFeedbackState'), false, 'weak-connection beta loop should not add a top-level save field');
+  assert.equal(saved.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('人脉变内测')).length, 1, 'networking then side project should create one beta feedback event');
+  assert.ok(saved.buildProjectState.exposure >= afterNetworking.buildProjectState.exposure + 2, 'turning weak connections into beta feedback should add project exposure');
+  assert.ok(saved.buildProjectState.quality >= afterNetworking.buildProjectState.quality + 1, 'turning weak connections into beta feedback should add project quality');
+  assert.ok(saved.runGoalState.chain.metaRewardKeys.includes('networking-beta-week-1'), 'beta feedback reward key should persist in existing run goal chain metadata');
+
+  const restored = createGameContext({ [SAVE_KEY]: JSON.stringify(saved) });
+  assert.equal(restored.loadGameFromStorage(), true);
+  restored.action('networking');
+  restored.action('side-project');
+  const afterRestore = parseSave(restored);
+
+  assert.equal(afterRestore.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('人脉变内测')).length, 1, 'claimed beta feedback should not repeat in the same week after restore');
+  assert.ok(afterRestore.runGoalState.chain.metaRewardKeys.includes('networking-beta-week-1'), 'beta feedback reward key should survive restore');
+}
+
 function testPreviousRunRecoveryRelayRewardsOnceAndPersists() {
   const previousRuns = [{
     endingType: '精神崩溃结局',
@@ -460,6 +486,7 @@ const tests = [
   testShippedBuildNetworkingTurnsExposureIntoFeedbackWithoutReshipping,
   testSmallPrLoopClosesOncePerWeekAndSurvivesRestore,
   testInterviewDebriefTurnsIntoWeakConnectionOncePerWeek,
+  testWeakConnectionTurnsIntoBetaFeedbackOncePerWeek,
   testPreviousRunRecoveryRelayRewardsOnceAndPersists,
   testWeeklyReviewStickerAddsFlavorOnceAndPersists
 ];
