@@ -392,6 +392,51 @@ function testGameDataStatsAreClampedAndDedupedOnRestore() {
   assert.deepEqual(saved.gameData.achievements, ['first_day'], '成就记录应过滤非字符串并去重');
 }
 
+function testUnknownCareerNormalizesToFullstackOnRestore() {
+  const h = createHarness();
+  h.localStorage.setItem('codersLifeSave.v2', JSON.stringify({
+    schemaVersion: 2,
+    savedAt: new Date().toISOString(),
+    stats: { skill: 70, mental: 75, money: 55, ai: 40, day: 20, age: 30, career: 'unknown-career', items: [] },
+    actionCounts: {},
+    runGoalState: { id: 'ship_portfolio', title: '把作品做成作品集', description: '旧档里残留的前端目标', createdDay: 0 },
+    gameData: { achievements: [], deaths: 0, maxDay: 20, endings: [], runs: [] },
+    achievements: [],
+    shopItems: []
+  }));
+
+  assert.equal(h.context.loadGameFromStorage(), true);
+  const saved = h.context.buildSaveData();
+
+  assert.equal(saved.schemaVersion, 2, '归一化未知职业不应 bump schema');
+  assert.equal(saved.stats.career, 'fullstack', '未知职业应回落到可预期的 fullstack');
+  assert.equal(h.elements.get('player-career').textContent, '全栈工程师', 'UI 职业名应与归一化后的职业一致');
+  assert.equal(saved.runGoalState.id, 'balanced_builder', '本局目标应与 fullstack 职业一致');
+  assert.equal(h.localStorage.keys().some(key => key.startsWith('codersLifeSave.v2.corrupt.')), false, '未知职业兼容恢复不应隔离用户存档');
+}
+
+function testLegacyMonthlyAgeIsClampedOnRestore() {
+  const h = createHarness();
+  h.localStorage.setItem('codersLifeSave.v2', JSON.stringify({
+    schemaVersion: 2,
+    savedAt: new Date().toISOString(),
+    stats: { skill: 90, mental: 90, money: 150, ai: 90, day: 365, age: 42, career: 'ai', items: [] },
+    actionCounts: {},
+    runState: { focus: 80, fatigue: 10, boundaryScore: 80 },
+    buildProjectState: { progress: 90, quality: 80, debt: 10, exposure: 40, stage: 'portfolio', shipped: true, lastFeedbackDay: 350 },
+    gameData: { achievements: [], deaths: 0, maxDay: 364, endings: [], runs: [] },
+    achievements: [],
+    shopItems: []
+  }));
+
+  assert.equal(h.context.loadGameFromStorage(), true);
+  const saved = h.context.buildSaveData();
+
+  assert.equal(saved.stats.age, 31, '旧版本按月增长得到的虚高年龄应按一年尺度校正');
+  assert.equal(saved.achievements.includes('old_dog'), false, '旧虚高年龄不应在读档后保留或触发 40 岁成就');
+  assert.equal(saved.schemaVersion, 2, '年龄兼容迁移不应 bump schema');
+}
+
 function testLegacyStatsItemsRestoreShopOwnership() {
   const h = createHarness();
   h.localStorage.setItem('codersLifeSave.v2', JSON.stringify({
@@ -473,7 +518,7 @@ function testPerfectEndingDoesNotIncrementDeaths() {
   const nearPerfectSave = {
     schemaVersion: 2,
     savedAt: new Date().toISOString(),
-    stats: { skill: 75, mental: 80, money: 120, ai: 80, day: 365, age: 42, career: 'ai', items: [] },
+    stats: { skill: 75, mental: 80, money: 120, ai: 80, day: 365, age: 31, career: 'ai', items: [] },
     actionCounts: {},
     consecutiveEvents: {},
     weeklyActionCounts: {},
@@ -506,7 +551,7 @@ function testEndingPersistsCompactRunSummary() {
   h.context.applySaveData({
     schemaVersion: 2,
     savedAt: new Date().toISOString(),
-    stats: { skill: 82, mental: 70, money: 130, ai: 85, day: 365, age: 42, career: 'ai', items: [] },
+    stats: { skill: 82, mental: 70, money: 130, ai: 85, day: 365, age: 31, career: 'ai', items: [] },
     actionCounts: { 'learn-ai': 20, overtime: 4, rest: 18, interview: 3, 'side-project': 12, networking: 8 },
     weeklyActionCounts: {},
     runState: { focus: 74, fatigue: 24, boundaryScore: 76, lastBoundaryFeedbackDay: 350, lastCareerStageFeedbackDay: 360 },
@@ -741,6 +786,8 @@ const tests = [
   testMalformedLegacyShapeIsBackedUpAndCleared,
   testSaveContainsHiddenStateLogAndAchievements,
   testGameDataStatsAreClampedAndDedupedOnRestore,
+  testUnknownCareerNormalizesToFullstackOnRestore,
+  testLegacyMonthlyAgeIsClampedOnRestore,
   testLegacyStatsItemsRestoreShopOwnership,
   testGameOverRestoreKeepsEndingUi,
   testGameOverStateForcesEndedRunOnRestore,

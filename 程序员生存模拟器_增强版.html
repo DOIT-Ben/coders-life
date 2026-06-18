@@ -683,6 +683,11 @@
             return names[career] || '程序员';
         }
 
+        function normalizeCareerId(career, fallback = 'fullstack') {
+            const validCareers = ['frontend', 'backend', 'fullstack', 'ai'];
+            return validCareers.includes(career) ? career : fallback;
+        }
+
         function isResumeContextEvent(text) {
             return typeof text === 'string' && text.startsWith(RESUME_CONTEXT_EVENT_PREFIX);
         }
@@ -710,7 +715,7 @@
                     title: typeof run.title === 'string' ? run.title : '',
                     goalCompleted: run.goalCompleted === true,
                     day: Number.isFinite(Number(run.day)) ? Math.max(0, Math.floor(Number(run.day))) : 0,
-                    career: typeof run.career === 'string' ? run.career : ''
+                    career: normalizeCareerId(run.career, '')
                 }))
                 .slice(-10);
         }
@@ -751,14 +756,17 @@
         function normalizeStats(value) {
             const base = getInitialStats();
             const data = value && typeof value === 'object' ? value : {};
+            const day = Number.isFinite(Number(data.day)) ? Math.max(0, Math.floor(Number(data.day))) : base.day;
+            const rawAge = Number.isFinite(Number(data.age)) ? Math.max(18, Math.floor(Number(data.age))) : base.age;
+            const expectedAgeByDay = 30 + Math.floor(day / 365);
             return {
                 skill: Number.isFinite(Number(data.skill)) ? Math.max(0, Math.min(100, Number(data.skill))) : base.skill,
                 mental: Number.isFinite(Number(data.mental)) ? Math.max(0, Math.min(100, Number(data.mental))) : base.mental,
                 money: Number.isFinite(Number(data.money)) ? Math.max(0, Math.min(200, Number(data.money))) : base.money,
                 ai: Number.isFinite(Number(data.ai)) ? Math.max(0, Math.min(100, Number(data.ai))) : base.ai,
-                day: Number.isFinite(Number(data.day)) ? Math.max(0, Math.floor(Number(data.day))) : base.day,
-                age: Number.isFinite(Number(data.age)) ? Math.max(18, Math.floor(Number(data.age))) : base.age,
-                career: typeof data.career === 'string' ? data.career : base.career,
+                day,
+                age: rawAge > expectedAgeByDay ? expectedAgeByDay : rawAge,
+                career: typeof data.career === 'string' && data.career ? normalizeCareerId(data.career) : base.career,
                 items: Array.isArray(data.items) ? data.items.filter(id => typeof id === 'string') : []
             };
         }
@@ -887,10 +895,11 @@
         function normalizeRunGoalState(value, sourceStats = stats) {
             const fallback = getRunGoalForCareer(sourceStats?.career || stats?.career || 'fullstack');
             const data = value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+            const shouldUseFallbackGoal = data.id !== fallback.id;
             return {
-                id: typeof data.id === 'string' && data.id ? data.id : fallback.id,
-                title: typeof data.title === 'string' && data.title ? data.title : fallback.title,
-                description: typeof data.description === 'string' && data.description ? data.description : fallback.description,
+                id: shouldUseFallbackGoal ? fallback.id : data.id,
+                title: shouldUseFallbackGoal ? fallback.title : (typeof data.title === 'string' && data.title ? data.title : fallback.title),
+                description: shouldUseFallbackGoal ? fallback.description : (typeof data.description === 'string' && data.description ? data.description : fallback.description),
                 createdDay: Number.isFinite(Number(data.createdDay)) ? Math.max(0, Math.floor(Number(data.createdDay))) : 0,
                 halfwayFeedbackShown: data.halfwayFeedbackShown === true,
                 completionFeedbackShown: data.completionFeedbackShown === true,
@@ -1691,7 +1700,7 @@
             weeklyActionCounts[type] = (weeklyActionCounts[type] || 0) + 1;
             applyActionState(type);
 
-            if (stats.day % 30 === 0) {
+            if (stats.day % 365 === 0) {
                 stats.age++;
             }
 
@@ -2331,12 +2340,32 @@
             return `上局复盘：第${previousRun.day}天${getCareerName(previousRun.career)}，以${previousRun.endingType}结束，评分${previousRun.score}/100。`;
         }
 
+        function getNextRunTodoText(reason, goal) {
+            if (reason.includes('精神崩溃')) {
+                return '下一局 TODO：前 7 天先安排 2 次休息，再推进长期 Build。';
+            }
+            if (reason.includes('破产')) {
+                return '下一局 TODO：先补现金流和面试机会，再开副项目。';
+            }
+            if (reason.includes('被AI淘汰')) {
+                return '下一局 TODO：前期把 AI 学习接进日课，不要等市场提醒。';
+            }
+            if (goal.completed) {
+                return '下一局 TODO：换个职业复用这套节奏，看看能不能更早达成目标。';
+            }
+            if (buildProjectState.debt >= 50) {
+                return '下一局 TODO：副项目每推进两步，就安排一次还债动作。';
+            }
+            return '下一局 TODO：前 3 步先稳精神、补现金流，再把长期 Build 接上。';
+        }
+
         function buildEndingSummary(reason) {
             const score = calculateRunScore();
             const goal = getRunGoalResult();
             const projectText = `长期 Build：进度${Math.round(buildProjectState.progress)}%，质量${Math.round(buildProjectState.quality)}，债务${Math.round(buildProjectState.debt)}`;
             const previousRunText = getPreviousRunRecapText();
-            return `${reason} 本局评分：${score}/100。本局称号：${getRunTitle(score)}。${goal.text}。${projectText}。${previousRunText}`;
+            const nextRunTodoText = getNextRunTodoText(reason, goal);
+            return `${reason} 本局评分：${score}/100。本局称号：${getRunTitle(score)}。${goal.text}。${projectText}。${nextRunTodoText}${previousRunText}`;
         }
 
         function recordRunSummary(endingType) {

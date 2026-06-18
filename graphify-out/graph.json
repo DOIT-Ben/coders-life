@@ -9,7 +9,7 @@
       "source_file": "E:\\desktop\\coders-life\\\u7a0b\u5e8f\u5458\u751f\u5b58\u6a21\u62df\u5668_\u5f39\u7a97\u5e93_2026-06-18.js",
       "source_location": "L1",
       "id": "e_desktop_coders_life_2026_06_18_js",
-      "community": 15,
+      "community": 14,
       "norm_label": "\u7a0b\u5e8f\u5458\u751f\u5b58\u6a21\u62df\u5668_\u5f39\u7a97\u5e93_2026-06-18.js"
     },
     {
@@ -504,7 +504,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_ct",
-      "community": 14,
+      "community": 13,
       "norm_label": "ct()"
     },
     {
@@ -603,7 +603,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_tc",
-      "community": 13,
+      "community": 10,
       "norm_label": "tc()"
     },
     {
@@ -612,7 +612,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_cc",
-      "community": 13,
+      "community": 10,
       "norm_label": "cc()"
     },
     {
@@ -621,7 +621,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_ec",
-      "community": 13,
+      "community": 10,
       "norm_label": "ec()"
     },
     {
@@ -639,7 +639,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_oc",
-      "community": 13,
+      "community": 10,
       "norm_label": "oc()"
     },
     {
@@ -648,7 +648,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_nc",
-      "community": 13,
+      "community": 10,
       "norm_label": "nc()"
     },
     {
@@ -675,7 +675,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_lc",
-      "community": 7,
+      "community": 8,
       "norm_label": "lc()"
     },
     {
@@ -1026,7 +1026,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_so",
-      "community": 9,
+      "community": 8,
       "norm_label": "so()"
     },
     {
@@ -1053,7 +1053,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_mo",
-      "community": 0,
+      "community": 1,
       "norm_label": "mo()"
     },
     {
@@ -1575,7 +1575,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ch",
-      "community": 12,
+      "community": 11,
       "norm_label": "ch()"
     },
     {
@@ -1611,7 +1611,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_oh",
-      "community": 12,
+      "community": 11,
       "norm_label": "oh()"
     },
     {
@@ -1620,7 +1620,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_nh",
-      "community": 12,
+      "community": 11,
       "norm_label": "nh()"
     },
     {
@@ -1629,7 +1629,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_sh",
-      "community": 12,
+      "community": 11,
       "norm_label": "sh()"
     },
     {
@@ -1638,7 +1638,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_rh",
-      "community": 12,
+      "community": 11,
       "norm_label": "rh()"
     },
     {
@@ -1647,7 +1647,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ah",
-      "community": 12,
+      "community": 11,
       "norm_label": "ah()"
     },
     {
@@ -1656,7 +1656,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_dh",
-      "community": 12,
+      "community": 11,
       "norm_label": "dh()"
     },
     {
@@ -1665,7 +1665,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_hh",
-      "community": 12,
+      "community": 11,
       "norm_label": "hh()"
     },
     {
@@ -1674,7 +1674,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lh",
-      "community": 12,
+      "community": 11,
       "norm_label": "lh()"
     },
     {
@@ -1683,7 +1683,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_uh",
-      "community": 12,
+      "community": 11,
       "norm_label": "uh()"
     },
     {
@@ -1692,7 +1692,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ph",
-      "community": 12,
+      "community": 11,
       "norm_label": "ph()"
     },
     {
@@ -1701,7 +1701,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_fh",
-      "community": 12,
+      "community": 11,
       "norm_label": "fh()"
     },
     {
@@ -1719,7 +1719,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_mh",
-      "community": 12,
+      "community": 11,
       "norm_label": "mh()"
     },
     {
@@ -1728,7 +1728,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_th",
-      "community": 12,
+      "community": 11,
       "norm_label": "th()"
     },
     {
@@ -1737,7 +1737,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_kh",
-      "community": 12,
+      "community": 11,
       "norm_label": "kh()"
     },
     {
@@ -1782,7 +1782,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_il",
-      "community": 12,
+      "community": 11,
       "norm_label": "il()"
     },
     {
@@ -1791,7 +1791,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_el",
-      "community": 9,
+      "community": 8,
       "norm_label": "el()"
     },
     {
@@ -1800,7 +1800,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_nl",
-      "community": 9,
+      "community": 8,
       "norm_label": "nl()"
     },
     {
@@ -1890,7 +1890,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ol",
-      "community": 9,
+      "community": 8,
       "norm_label": "ol()"
     },
     {
@@ -1899,7 +1899,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tl",
-      "community": 9,
+      "community": 8,
       "norm_label": "tl()"
     },
     {
@@ -1989,7 +1989,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ql",
-      "community": 9,
+      "community": 8,
       "norm_label": "ql()"
     },
     {
@@ -2007,7 +2007,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_pc",
-      "community": 13,
+      "community": 10,
       "norm_label": "pc()"
     },
     {
@@ -2016,7 +2016,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_bc",
-      "community": 13,
+      "community": 10,
       "norm_label": "bc()"
     },
     {
@@ -2025,7 +2025,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_mc",
-      "community": 13,
+      "community": 10,
       "norm_label": "mc()"
     },
     {
@@ -2034,7 +2034,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xc",
-      "community": 13,
+      "community": 10,
       "norm_label": "xc()"
     },
     {
@@ -2043,7 +2043,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_dc",
-      "community": 13,
+      "community": 10,
       "norm_label": "dc()"
     },
     {
@@ -2052,7 +2052,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_rc",
-      "community": 13,
+      "community": 10,
       "norm_label": "rc()"
     },
     {
@@ -2079,7 +2079,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_gc_init",
-      "community": 2,
+      "community": 1,
       "norm_label": ".init()"
     },
     {
@@ -2088,7 +2088,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_gc_initialized",
-      "community": 2,
+      "community": 1,
       "norm_label": ".initialized()"
     },
     {
@@ -2097,7 +2097,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_gc_fillmipmap",
-      "community": 2,
+      "community": 1,
       "norm_label": "._fillmipmap()"
     },
     {
@@ -2106,7 +2106,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_gc_drawimageatposition",
-      "community": 2,
+      "community": 1,
       "norm_label": ".drawimageatposition()"
     },
     {
@@ -2115,7 +2115,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lc_constructor",
-      "community": 7,
+      "community": 8,
       "norm_label": ".constructor()"
     },
     {
@@ -2124,7 +2124,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lc_tryloadbrokenurl",
-      "community": 7,
+      "community": 8,
       "norm_label": "._tryloadbrokenurl()"
     },
     {
@@ -2133,7 +2133,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lc_redrawwithimage",
-      "community": 7,
+      "community": 8,
       "norm_label": "._redrawwithimage()"
     },
     {
@@ -2142,7 +2142,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lc_load",
-      "community": 7,
+      "community": 8,
       "norm_label": ".load()"
     },
     {
@@ -2151,7 +2151,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lc_fiximagecoordinates",
-      "community": 7,
+      "community": 8,
       "norm_label": "._fiximagecoordinates()"
     },
     {
@@ -2511,7 +2511,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_uf",
-      "community": 7,
+      "community": 12,
       "norm_label": "uf()"
     },
     {
@@ -2565,7 +2565,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wf",
-      "community": 7,
+      "community": 12,
       "norm_label": "wf()"
     },
     {
@@ -2574,7 +2574,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qf",
-      "community": 7,
+      "community": 12,
       "norm_label": "qf()"
     },
     {
@@ -2583,7 +2583,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_kf",
-      "community": 7,
+      "community": 12,
       "norm_label": "kf()"
     },
     {
@@ -2682,7 +2682,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qv",
-      "community": 3,
+      "community": 6,
       "norm_label": "qv()"
     },
     {
@@ -2736,7 +2736,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eb",
-      "community": 3,
+      "community": 6,
       "norm_label": "eb()"
     },
     {
@@ -2745,7 +2745,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ib",
-      "community": 3,
+      "community": 6,
       "norm_label": "ib()"
     },
     {
@@ -3150,7 +3150,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_w_constructor",
-      "community": 3,
+      "community": 6,
       "norm_label": ".constructor()"
     },
     {
@@ -3294,7 +3294,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tx_constructor",
-      "community": 3,
+      "community": 6,
       "norm_label": ".constructor()"
     },
     {
@@ -3393,7 +3393,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_cx_on",
-      "community": 3,
+      "community": 1,
       "norm_label": ".on()"
     },
     {
@@ -3564,7 +3564,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_map",
-      "community": 3,
+      "community": 10,
       "norm_label": ".map()"
     },
     {
@@ -3627,7 +3627,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ex_constructor",
-      "community": 3,
+      "community": 6,
       "norm_label": ".constructor()"
     },
     {
@@ -3924,7 +3924,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx",
-      "community": 8,
+      "community": 7,
       "norm_label": "yx()"
     },
     {
@@ -3960,7 +3960,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_fx",
-      "community": 8,
+      "community": 7,
       "norm_label": "fx()"
     },
     {
@@ -3969,7 +3969,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx",
-      "community": 8,
+      "community": 7,
       "norm_label": "lx"
     },
     {
@@ -3978,7 +3978,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_constructor",
-      "community": 8,
+      "community": 7,
       "norm_label": ".constructor()"
     },
     {
@@ -3987,7 +3987,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_add",
-      "community": 8,
+      "community": 7,
       "norm_label": "._add()"
     },
     {
@@ -3996,7 +3996,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_curwidth",
-      "community": 8,
+      "community": 7,
       "norm_label": ".curwidth()"
     },
     {
@@ -4005,7 +4005,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_append",
-      "community": 8,
+      "community": 7,
       "norm_label": ".append()"
     },
     {
@@ -4014,7 +4014,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_newline",
-      "community": 8,
+      "community": 7,
       "norm_label": ".newline()"
     },
     {
@@ -4023,7 +4023,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_determinelineheights",
-      "community": 8,
+      "community": 7,
       "norm_label": ".determinelineheights()"
     },
     {
@@ -4032,7 +4032,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_determinelabelsize",
-      "community": 8,
+      "community": 7,
       "norm_label": ".determinelabelsize()"
     },
     {
@@ -4041,7 +4041,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_removeemptyblocks",
-      "community": 8,
+      "community": 7,
       "norm_label": ".removeemptyblocks()"
     },
     {
@@ -4050,7 +4050,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_finalize",
-      "community": 8,
+      "community": 7,
       "norm_label": ".finalize()"
     },
     {
@@ -4059,7 +4059,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx",
-      "community": 8,
+      "community": 7,
       "norm_label": "vx"
     },
     {
@@ -4068,7 +4068,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_constructor",
-      "community": 8,
+      "community": 7,
       "norm_label": ".constructor()"
     },
     {
@@ -4077,7 +4077,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_mod",
-      "community": 8,
+      "community": 7,
       "norm_label": ".mod()"
     },
     {
@@ -4086,7 +4086,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_modname",
-      "community": 8,
+      "community": 7,
       "norm_label": ".modname()"
     },
     {
@@ -4095,7 +4095,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_emitblock",
-      "community": 8,
+      "community": 7,
       "norm_label": ".emitblock()"
     },
     {
@@ -4104,7 +4104,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_add",
-      "community": 8,
+      "community": 7,
       "norm_label": ".add()"
     },
     {
@@ -4113,7 +4113,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_parsews",
-      "community": 8,
+      "community": 7,
       "norm_label": ".parsews()"
     },
     {
@@ -4122,7 +4122,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_settag",
-      "community": 8,
+      "community": 7,
       "norm_label": ".settag()"
     },
     {
@@ -4131,7 +4131,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_unsettag",
-      "community": 8,
+      "community": 7,
       "norm_label": ".unsettag()"
     },
     {
@@ -4140,7 +4140,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_parsestarttag",
-      "community": 8,
+      "community": 7,
       "norm_label": ".parsestarttag()"
     },
     {
@@ -4149,7 +4149,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_match",
-      "community": 8,
+      "community": 7,
       "norm_label": ".match()"
     },
     {
@@ -4158,7 +4158,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_parseendtag",
-      "community": 8,
+      "community": 7,
       "norm_label": ".parseendtag()"
     },
     {
@@ -4167,7 +4167,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_replace",
-      "community": 8,
+      "community": 7,
       "norm_label": ".replace()"
     },
     {
@@ -4176,7 +4176,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_prepareregexp",
-      "community": 8,
+      "community": 7,
       "norm_label": ".prepareregexp()"
     },
     {
@@ -4185,7 +4185,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_constructor",
-      "community": 8,
+      "community": 7,
       "norm_label": ".constructor()"
     },
     {
@@ -4194,7 +4194,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_process",
-      "community": 8,
+      "community": 7,
       "norm_label": ".process()"
     },
     {
@@ -4203,7 +4203,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_decodemarkupsystem",
-      "community": 8,
+      "community": 7,
       "norm_label": ".decodemarkupsystem()"
     },
     {
@@ -4212,7 +4212,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_splithtmlblocks",
-      "community": 8,
+      "community": 7,
       "norm_label": ".splithtmlblocks()"
     },
     {
@@ -4221,7 +4221,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_splitmarkdownblocks",
-      "community": 8,
+      "community": 7,
       "norm_label": ".splitmarkdownblocks()"
     },
     {
@@ -4230,7 +4230,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_splitblocks",
-      "community": 8,
+      "community": 7,
       "norm_label": ".splitblocks()"
     },
     {
@@ -4239,7 +4239,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_overmaxwidth",
-      "community": 8,
+      "community": 7,
       "norm_label": ".overmaxwidth()"
     },
     {
@@ -4248,7 +4248,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_getlongestfit",
-      "community": 8,
+      "community": 7,
       "norm_label": ".getlongestfit()"
     },
     {
@@ -4257,7 +4257,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_getlongestfitword",
-      "community": 8,
+      "community": 7,
       "norm_label": ".getlongestfitword()"
     },
     {
@@ -4266,7 +4266,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_splitstringintolines",
-      "community": 8,
+      "community": 7,
       "norm_label": ".splitstringintolines()"
     },
     {
@@ -4446,7 +4446,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_gettextsize",
-      "community": 7,
+      "community": 2,
       "norm_label": ".gettextsize()"
     },
     {
@@ -4473,7 +4473,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_getformattingvalues",
-      "community": 6,
+      "community": 7,
       "norm_label": ".getformattingvalues()"
     },
     {
@@ -4653,7 +4653,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux_getdimensionsfromlabel",
-      "community": 7,
+      "community": 8,
       "norm_label": ".getdimensionsfromlabel()"
     },
     {
@@ -4797,7 +4797,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_jx",
-      "community": 7,
+      "community": 2,
       "norm_label": "jx"
     },
     {
@@ -4806,7 +4806,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_jx_resize",
-      "community": 7,
+      "community": 2,
       "norm_label": ".resize()"
     },
     {
@@ -4878,7 +4878,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ae_resize",
-      "community": 7,
+      "community": 8,
       "norm_label": ".resize()"
     },
     {
@@ -4905,7 +4905,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce",
-      "community": 7,
+      "community": 8,
       "norm_label": "ce"
     },
     {
@@ -4932,7 +4932,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ie_resize",
-      "community": 7,
+      "community": 8,
       "norm_label": ".resize()"
     },
     {
@@ -4968,7 +4968,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ee_resize",
-      "community": 7,
+      "community": 8,
       "norm_label": ".resize()"
     },
     {
@@ -5103,7 +5103,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_re_resize",
-      "community": 7,
+      "community": 2,
       "norm_label": ".resize()"
     },
     {
@@ -5157,7 +5157,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_le",
-      "community": 7,
+      "community": 2,
       "norm_label": "le()"
     },
     {
@@ -5175,7 +5175,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_attachedge",
-      "community": 7,
+      "community": 8,
       "norm_label": ".attachedge()"
     },
     {
@@ -5184,7 +5184,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_detachedge",
-      "community": 7,
+      "community": 8,
       "norm_label": ".detachedge()"
     },
     {
@@ -5193,7 +5193,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_setoptions",
-      "community": 7,
+      "community": 8,
       "norm_label": ".setoptions()"
     },
     {
@@ -5202,7 +5202,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_load_images",
-      "community": 7,
+      "community": 8,
       "norm_label": "._load_images()"
     },
     {
@@ -5211,7 +5211,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_checkopacity",
-      "community": 7,
+      "community": 8,
       "norm_label": ".checkopacity()"
     },
     {
@@ -5220,7 +5220,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_checkcoordinateorigin",
-      "community": 7,
+      "community": 8,
       "norm_label": ".checkcoordinateorigin()"
     },
     {
@@ -5229,7 +5229,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_updategroupoptions",
-      "community": 7,
+      "community": 8,
       "norm_label": ".updategroupoptions()"
     },
     {
@@ -5238,7 +5238,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_parseoptions",
-      "community": 7,
+      "community": 8,
       "norm_label": ".parseoptions()"
     },
     {
@@ -5256,7 +5256,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_updatelabelmodule",
-      "community": 7,
+      "community": 2,
       "norm_label": ".updatelabelmodule()"
     },
     {
@@ -5265,7 +5265,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_updateshape",
-      "community": 7,
+      "community": 8,
       "norm_label": ".updateshape()"
     },
     {
@@ -5274,7 +5274,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_select",
-      "community": 7,
+      "community": 8,
       "norm_label": ".select()"
     },
     {
@@ -5283,7 +5283,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_unselect",
-      "community": 7,
+      "community": 8,
       "norm_label": ".unselect()"
     },
     {
@@ -5292,7 +5292,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_needsrefresh",
-      "community": 7,
+      "community": 8,
       "norm_label": ".needsrefresh()"
     },
     {
@@ -5301,7 +5301,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_gettitle",
-      "community": 7,
+      "community": 8,
       "norm_label": ".gettitle()"
     },
     {
@@ -5310,7 +5310,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_isfixed",
-      "community": 7,
+      "community": 8,
       "norm_label": ".isfixed()"
     },
     {
@@ -5319,7 +5319,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_isselected",
-      "community": 7,
+      "community": 8,
       "norm_label": ".isselected()"
     },
     {
@@ -5328,7 +5328,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_getvalue",
-      "community": 7,
+      "community": 8,
       "norm_label": ".getvalue()"
     },
     {
@@ -5346,7 +5346,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_setvaluerange",
-      "community": 7,
+      "community": 8,
       "norm_label": ".setvaluerange()"
     },
     {
@@ -5382,7 +5382,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_isoverlappingwith",
-      "community": 7,
+      "community": 8,
       "norm_label": ".isoverlappingwith()"
     },
     {
@@ -5391,7 +5391,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_isboundingboxoverlappingwith",
-      "community": 7,
+      "community": 1,
       "norm_label": ".isboundingboxoverlappingwith()"
     },
     {
@@ -5400,7 +5400,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_checkmass",
-      "community": 7,
+      "community": 8,
       "norm_label": ".checkmass()"
     },
     {
@@ -5409,7 +5409,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue",
-      "community": 7,
+      "community": 12,
       "norm_label": "ue"
     },
     {
@@ -5427,7 +5427,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_bindeventlisteners",
-      "community": 7,
+      "community": 12,
       "norm_label": ".bindeventlisteners()"
     },
     {
@@ -5436,7 +5436,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_setoptions",
-      "community": 7,
+      "community": 8,
       "norm_label": ".setoptions()"
     },
     {
@@ -5472,7 +5472,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_remove",
-      "community": 7,
+      "community": 12,
       "norm_label": ".remove()"
     },
     {
@@ -5481,7 +5481,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_create",
-      "community": 7,
+      "community": 12,
       "norm_label": ".create()"
     },
     {
@@ -5499,7 +5499,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_getpositions",
-      "community": 7,
+      "community": 12,
       "norm_label": ".getpositions()"
     },
     {
@@ -5508,7 +5508,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_getposition",
-      "community": 7,
+      "community": 12,
       "norm_label": ".getposition()"
     },
     {
@@ -5517,7 +5517,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_storepositions",
-      "community": 7,
+      "community": 12,
       "norm_label": ".storepositions()"
     },
     {
@@ -5526,7 +5526,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_getboundingbox",
-      "community": 7,
+      "community": 12,
       "norm_label": ".getboundingbox()"
     },
     {
@@ -5535,7 +5535,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_getconnectednodes",
-      "community": 7,
+      "community": 12,
       "norm_label": ".getconnectednodes()"
     },
     {
@@ -5544,7 +5544,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_getconnectededges",
-      "community": 7,
+      "community": 12,
       "norm_label": ".getconnectededges()"
     },
     {
@@ -5553,7 +5553,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_movenode",
-      "community": 7,
+      "community": 12,
       "norm_label": ".movenode()"
     },
     {
@@ -5670,7 +5670,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_le_draw",
-      "community": 7,
+      "community": 2,
       "norm_label": ".draw()"
     },
     {
@@ -5715,7 +5715,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_constructor",
-      "community": 3,
+      "community": 6,
       "norm_label": ".constructor()"
     },
     {
@@ -5958,7 +5958,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_he_constructor",
-      "community": 3,
+      "community": 2,
       "norm_label": ".constructor()"
     },
     {
@@ -6246,7 +6246,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_setoptions",
-      "community": 7,
+      "community": 8,
       "norm_label": ".setoptions()"
     },
     {
@@ -6273,7 +6273,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_updatelabelmodule",
-      "community": 7,
+      "community": 8,
       "norm_label": ".updatelabelmodule()"
     },
     {
@@ -6282,7 +6282,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_updateedgetype",
-      "community": 7,
+      "community": 8,
       "norm_label": ".updateedgetype()"
     },
     {
@@ -6291,7 +6291,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_connect",
-      "community": 7,
+      "community": 8,
       "norm_label": ".connect()"
     },
     {
@@ -6300,7 +6300,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_disconnect",
-      "community": 7,
+      "community": 8,
       "norm_label": ".disconnect()"
     },
     {
@@ -6336,7 +6336,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_setvaluerange",
-      "community": 7,
+      "community": 8,
       "norm_label": ".setvaluerange()"
     },
     {
@@ -6345,7 +6345,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_setinteractionwidths",
-      "community": 7,
+      "community": 8,
       "norm_label": "._setinteractionwidths()"
     },
     {
@@ -6435,7 +6435,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_cleanup",
-      "community": 7,
+      "community": 8,
       "norm_label": ".cleanup()"
     },
     {
@@ -6444,7 +6444,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_remove",
-      "community": 7,
+      "community": 8,
       "norm_label": ".remove()"
     },
     {
@@ -6480,7 +6480,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_go_bindeventlisteners",
-      "community": 6,
+      "community": 1,
       "norm_label": ".bindeventlisteners()"
     },
     {
@@ -6489,7 +6489,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_go_setoptions",
-      "community": 7,
+      "community": 8,
       "norm_label": ".setoptions()"
     },
     {
@@ -6516,7 +6516,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_go_update",
-      "community": 7,
+      "community": 8,
       "norm_label": ".update()"
     },
     {
@@ -6552,7 +6552,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_go_reconnectedges",
-      "community": 7,
+      "community": 8,
       "norm_label": ".reconnectedges()"
     },
     {
@@ -6939,7 +6939,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_bindeventlisteners",
-      "community": 3,
+      "community": 1,
       "norm_label": ".bindeventlisteners()"
     },
     {
@@ -6948,7 +6948,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_setoptions",
-      "community": 9,
+      "community": 8,
       "norm_label": ".setoptions()"
     },
     {
@@ -6957,7 +6957,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_init",
-      "community": 9,
+      "community": 8,
       "norm_label": ".init()"
     },
     {
@@ -6966,7 +6966,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_initphysics",
-      "community": 9,
+      "community": 8,
       "norm_label": ".initphysics()"
     },
     {
@@ -6975,7 +6975,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_startsimulation",
-      "community": 9,
+      "community": 8,
       "norm_label": ".startsimulation()"
     },
     {
@@ -6984,7 +6984,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_stopsimulation",
-      "community": 9,
+      "community": 8,
       "norm_label": ".stopsimulation()"
     },
     {
@@ -6993,7 +6993,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_simulationstep",
-      "community": 9,
+      "community": 8,
       "norm_label": ".simulationstep()"
     },
     {
@@ -7002,7 +7002,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_emitstabilized",
-      "community": 9,
+      "community": 8,
       "norm_label": "._emitstabilized()"
     },
     {
@@ -7011,7 +7011,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_physicsstep",
-      "community": 9,
+      "community": 8,
       "norm_label": ".physicsstep()"
     },
     {
@@ -7020,7 +7020,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_adjusttimestep",
-      "community": 9,
+      "community": 8,
       "norm_label": ".adjusttimestep()"
     },
     {
@@ -7029,7 +7029,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_physicstick",
-      "community": 9,
+      "community": 8,
       "norm_label": ".physicstick()"
     },
     {
@@ -7038,7 +7038,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_updatephysicsdata",
-      "community": 9,
+      "community": 8,
       "norm_label": ".updatephysicsdata()"
     },
     {
@@ -7047,7 +7047,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_revert",
-      "community": 9,
+      "community": 8,
       "norm_label": ".revert()"
     },
     {
@@ -7056,7 +7056,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_evaluatestepquality",
-      "community": 9,
+      "community": 8,
       "norm_label": "._evaluatestepquality()"
     },
     {
@@ -7065,7 +7065,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_movenodes",
-      "community": 9,
+      "community": 8,
       "norm_label": ".movenodes()"
     },
     {
@@ -7074,7 +7074,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_calculatecomponentvelocity",
-      "community": 9,
+      "community": 8,
       "norm_label": ".calculatecomponentvelocity()"
     },
     {
@@ -7083,7 +7083,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_performstep",
-      "community": 9,
+      "community": 8,
       "norm_label": "._performstep()"
     },
     {
@@ -7092,7 +7092,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_freezenodes",
-      "community": 9,
+      "community": 8,
       "norm_label": "._freezenodes()"
     },
     {
@@ -7101,7 +7101,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_restorefrozennodes",
-      "community": 9,
+      "community": 8,
       "norm_label": "._restorefrozennodes()"
     },
     {
@@ -7110,7 +7110,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_stabilize",
-      "community": 9,
+      "community": 8,
       "norm_label": ".stabilize()"
     },
     {
@@ -7119,7 +7119,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_startstabilizing",
-      "community": 9,
+      "community": 8,
       "norm_label": "._startstabilizing()"
     },
     {
@@ -7128,7 +7128,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_stabilizationbatch",
-      "community": 9,
+      "community": 8,
       "norm_label": "._stabilizationbatch()"
     },
     {
@@ -7137,7 +7137,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_finalizestabilization",
-      "community": 9,
+      "community": 8,
       "norm_label": "._finalizestabilization()"
     },
     {
@@ -7209,7 +7209,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_constructor",
-      "community": 3,
+      "community": 1,
       "norm_label": ".constructor()"
     },
     {
@@ -7479,7 +7479,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho",
-      "community": 2,
+      "community": 1,
       "norm_label": "ho"
     },
     {
@@ -7497,7 +7497,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_bindeventlisteners",
-      "community": 3,
+      "community": 1,
       "norm_label": ".bindeventlisteners()"
     },
     {
@@ -7515,7 +7515,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_startrendering",
-      "community": 2,
+      "community": 1,
       "norm_label": "._startrendering()"
     },
     {
@@ -7524,7 +7524,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_renderstep",
-      "community": 2,
+      "community": 1,
       "norm_label": "._renderstep()"
     },
     {
@@ -7533,7 +7533,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_redraw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".redraw()"
     },
     {
@@ -7542,7 +7542,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_requestredraw",
-      "community": 2,
+      "community": 1,
       "norm_label": "._requestredraw()"
     },
     {
@@ -7551,7 +7551,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_resizenodes",
-      "community": 2,
+      "community": 1,
       "norm_label": "._resizenodes()"
     },
     {
@@ -7560,7 +7560,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_drawnodes",
-      "community": 2,
+      "community": 1,
       "norm_label": "._drawnodes()"
     },
     {
@@ -7569,7 +7569,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_drawedges",
-      "community": 2,
+      "community": 1,
       "norm_label": "._drawedges()"
     },
     {
@@ -7578,7 +7578,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_drawarrows",
-      "community": 2,
+      "community": 1,
       "norm_label": "._drawarrows()"
     },
     {
@@ -7587,7 +7587,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_drawselectionbox",
-      "community": 2,
+      "community": 1,
       "norm_label": "._drawselectionbox()"
     },
     {
@@ -7614,7 +7614,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_bindeventlisteners",
-      "community": 3,
+      "community": 1,
       "norm_label": ".bindeventlisteners()"
     },
     {
@@ -7686,7 +7686,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_bindhammer",
-      "community": 3,
+      "community": 1,
       "norm_label": "._bindhammer()"
     },
     {
@@ -7704,7 +7704,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_getcontext",
-      "community": 2,
+      "community": 1,
       "norm_label": ".getcontext()"
     },
     {
@@ -7731,7 +7731,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_settransform",
-      "community": 2,
+      "community": 1,
       "norm_label": ".settransform()"
     },
     {
@@ -7794,7 +7794,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo",
-      "community": 3,
+      "community": 10,
       "norm_label": "wo"
     },
     {
@@ -7803,7 +7803,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_constructor",
-      "community": 3,
+      "community": 1,
       "norm_label": ".constructor()"
     },
     {
@@ -7812,7 +7812,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_setoptions",
-      "community": 3,
+      "community": 10,
       "norm_label": ".setoptions()"
     },
     {
@@ -7830,7 +7830,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_focus",
-      "community": 1,
+      "community": 10,
       "norm_label": ".focus()"
     },
     {
@@ -7839,7 +7839,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_moveto",
-      "community": 4,
+      "community": 10,
       "norm_label": ".moveto()"
     },
     {
@@ -7848,7 +7848,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_animateview",
-      "community": 3,
+      "community": 10,
       "norm_label": ".animateview()"
     },
     {
@@ -7857,7 +7857,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_lockedredraw",
-      "community": 3,
+      "community": 10,
       "norm_label": "._lockedredraw()"
     },
     {
@@ -7866,7 +7866,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_releasenode",
-      "community": 3,
+      "community": 10,
       "norm_label": ".releasenode()"
     },
     {
@@ -7875,7 +7875,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_transitionredraw",
-      "community": 3,
+      "community": 10,
       "norm_label": "._transitionredraw()"
     },
     {
@@ -7884,7 +7884,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_getscale",
-      "community": 3,
+      "community": 10,
       "norm_label": ".getscale()"
     },
     {
@@ -7893,7 +7893,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_getviewposition",
-      "community": 4,
+      "community": 10,
       "norm_label": ".getviewposition()"
     },
     {
@@ -8037,7 +8037,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_oo_bindeventlisteners",
-      "community": 3,
+      "community": 1,
       "norm_label": ".bindeventlisteners()"
     },
     {
@@ -8046,7 +8046,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_oo_setoptions",
-      "community": 9,
+      "community": 8,
       "norm_label": ".setoptions()"
     },
     {
@@ -8271,7 +8271,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_jo_add",
-      "community": 8,
+      "community": 7,
       "norm_label": ".add()"
     },
     {
@@ -8280,7 +8280,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_jo_delete",
-      "community": 1,
+      "community": 3,
       "norm_label": ".delete()"
     },
     {
@@ -8433,7 +8433,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tt_constructor",
-      "community": 3,
+      "community": 1,
       "norm_label": ".constructor()"
     },
     {
@@ -8748,7 +8748,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_abstract",
-      "community": 14,
+      "community": 13,
       "norm_label": ".abstract()"
     },
     {
@@ -8757,7 +8757,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_fake_use",
-      "community": 14,
+      "community": 13,
       "norm_label": ".fake_use()"
     },
     {
@@ -8766,7 +8766,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_curvetype",
-      "community": 14,
+      "community": 13,
       "norm_label": ".curvetype()"
     },
     {
@@ -8775,7 +8775,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_getposition",
-      "community": 14,
+      "community": 13,
       "norm_label": ".getposition()"
     },
     {
@@ -8784,7 +8784,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_setposition",
-      "community": 14,
+      "community": 13,
       "norm_label": ".setposition()"
     },
     {
@@ -8793,7 +8793,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_gettreesize",
-      "community": 14,
+      "community": 13,
       "norm_label": ".gettreesize()"
     },
     {
@@ -8802,7 +8802,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_sort",
-      "community": 14,
+      "community": 13,
       "norm_label": ".sort()"
     },
     {
@@ -8811,7 +8811,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_fix",
-      "community": 14,
+      "community": 13,
       "norm_label": ".fix()"
     },
     {
@@ -8820,7 +8820,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_shift",
-      "community": 14,
+      "community": 13,
       "norm_label": ".shift()"
     },
     {
@@ -8964,7 +8964,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_et_shift",
-      "community": 13,
+      "community": 10,
       "norm_label": ".shift()"
     },
     {
@@ -9180,7 +9180,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wt_layoutnetwork",
-      "community": 4,
+      "community": 6,
       "norm_label": ".layoutnetwork()"
     },
     {
@@ -9198,7 +9198,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wt_declusterall",
-      "community": 4,
+      "community": 6,
       "norm_label": "._declusterall()"
     },
     {
@@ -9909,7 +9909,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L1",
       "id": "e_desktop_coders_life_tools_build_popup_datasets_ps1",
-      "community": 10,
+      "community": 9,
       "norm_label": "build-popup-datasets.ps1"
     },
     {
@@ -9918,7 +9918,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L22",
       "id": "build_popup_datasets_decode_sourcename",
-      "community": 10,
+      "community": 9,
       "norm_label": "decode-sourcename()"
     },
     {
@@ -9927,7 +9927,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L27",
       "id": "build_popup_datasets_resolve_sourcedoc",
-      "community": 10,
+      "community": 9,
       "norm_label": "resolve-sourcedoc()"
     },
     {
@@ -9936,7 +9936,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L37",
       "id": "build_popup_datasets_new_tempoutputpath",
-      "community": 10,
+      "community": 9,
       "norm_label": "new-tempoutputpath()"
     },
     {
@@ -9945,7 +9945,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L46",
       "id": "build_popup_datasets_commit_atomicfile",
-      "community": 10,
+      "community": 9,
       "norm_label": "commit-atomicfile()"
     },
     {
@@ -9954,7 +9954,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L74",
       "id": "build_popup_datasets_write_atomictextfile",
-      "community": 10,
+      "community": 9,
       "norm_label": "write-atomictextfile()"
     },
     {
@@ -9963,7 +9963,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L96",
       "id": "build_popup_datasets_write_atomiccsvfile",
-      "community": 10,
+      "community": 9,
       "norm_label": "write-atomiccsvfile()"
     },
     {
@@ -9972,7 +9972,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L118",
       "id": "build_popup_datasets_assert_jsonarrayfilecount",
-      "community": 10,
+      "community": 9,
       "norm_label": "assert-jsonarrayfilecount()"
     },
     {
@@ -9981,7 +9981,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L130",
       "id": "build_popup_datasets_assert_runtimefilecount",
-      "community": 10,
+      "community": 9,
       "norm_label": "assert-runtimefilecount()"
     },
     {
@@ -9990,7 +9990,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L176",
       "id": "build_popup_datasets_get_structureditems",
-      "community": 10,
+      "community": 9,
       "norm_label": "get-structureditems()"
     },
     {
@@ -9999,7 +9999,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L228",
       "id": "build_popup_datasets_get_kind",
-      "community": 10,
+      "community": 9,
       "norm_label": "get-kind()"
     },
     {
@@ -10008,7 +10008,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L254",
       "id": "build_popup_datasets_get_tone",
-      "community": 10,
+      "community": 9,
       "norm_label": "get-tone()"
     },
     {
@@ -10017,7 +10017,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L271",
       "id": "build_popup_datasets_get_rarity",
-      "community": 10,
+      "community": 9,
       "norm_label": "get-rarity()"
     },
     {
@@ -10026,7 +10026,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L279",
       "id": "build_popup_datasets_get_baseeffects",
-      "community": 10,
+      "community": 9,
       "norm_label": "get-baseeffects()"
     },
     {
@@ -10035,7 +10035,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L331",
       "id": "build_popup_datasets_get_trigger",
-      "community": 10,
+      "community": 9,
       "norm_label": "get-trigger()"
     },
     {
@@ -10044,7 +10044,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L368",
       "id": "build_popup_datasets_decode_utf8base64",
-      "community": 10,
+      "community": 9,
       "norm_label": "decode-utf8base64()"
     },
     {
@@ -10053,7 +10053,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L373",
       "id": "build_popup_datasets_try_parsejsonline",
-      "community": 10,
+      "community": 9,
       "norm_label": "try-parsejsonline()"
     },
     {
@@ -10062,7 +10062,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L389",
       "id": "build_popup_datasets_get_lifeextensionitems",
-      "community": 10,
+      "community": 9,
       "norm_label": "get-lifeextensionitems()"
     },
     {
@@ -10071,7 +10071,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L486",
       "id": "build_popup_datasets_get_researchextensionitems",
-      "community": 10,
+      "community": 9,
       "norm_label": "get-researchextensionitems()"
     },
     {
@@ -10080,7 +10080,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L578",
       "id": "build_popup_datasets_get_round7communityitems",
-      "community": 10,
+      "community": 9,
       "norm_label": "get-round7communityitems()"
     },
     {
@@ -10089,7 +10089,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L666",
       "id": "build_popup_datasets_get_round8communityitems",
-      "community": 10,
+      "community": 9,
       "norm_label": "get-round8communityitems()"
     },
     {
@@ -10098,7 +10098,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L754",
       "id": "build_popup_datasets_get_round9lifeitems",
-      "community": 10,
+      "community": 9,
       "norm_label": "get-round9lifeitems()"
     },
     {
@@ -10107,7 +10107,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L829",
       "id": "build_popup_datasets_get_round9learningitems",
-      "community": 10,
+      "community": 9,
       "norm_label": "get-round9learningitems()"
     },
     {
@@ -10116,7 +10116,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L913",
       "id": "build_popup_datasets_get_round10learningitems",
-      "community": 10,
+      "community": 9,
       "norm_label": "get-round10learningitems()"
     },
     {
@@ -10125,7 +10125,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L997",
       "id": "build_popup_datasets_get_round11lifeitems",
-      "community": 10,
+      "community": 9,
       "norm_label": "get-round11lifeitems()"
     },
     {
@@ -10206,7 +10206,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\extract-subagent-jsonl-candidates.mjs",
       "source_location": "L114",
       "id": "extract_subagent_jsonl_candidates_normalizetext",
-      "community": 5,
+      "community": 7,
       "norm_label": "normalizetext()"
     },
     {
@@ -10224,7 +10224,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\parse-popup-pool.ps1",
       "source_location": "L1",
       "id": "e_desktop_coders_life_tools_parse_popup_pool_ps1",
-      "community": 16,
+      "community": 15,
       "norm_label": "parse-popup-pool.ps1"
     },
     {
@@ -10233,7 +10233,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L1",
       "id": "e_desktop_coders_life_tools_verify_build_script_mjs",
-      "community": 8,
+      "community": 7,
       "norm_label": "verify-build-script.mjs"
     },
     {
@@ -10242,7 +10242,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L25",
       "id": "verify_build_script_copyrecursive",
-      "community": 8,
+      "community": 7,
       "norm_label": "copyrecursive()"
     },
     {
@@ -10251,7 +10251,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L37",
       "id": "verify_build_script_makeworkspace",
-      "community": 8,
+      "community": 7,
       "norm_label": "makeworkspace()"
     },
     {
@@ -10260,7 +10260,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L45",
       "id": "verify_build_script_runbuild",
-      "community": 8,
+      "community": 7,
       "norm_label": "runbuild()"
     },
     {
@@ -10278,7 +10278,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L97",
       "id": "verify_build_script_assertbuildsucceeded",
-      "community": 8,
+      "community": 7,
       "norm_label": "assertbuildsucceeded()"
     },
     {
@@ -10287,7 +10287,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L106",
       "id": "verify_build_script_assertbuildfailedwith",
-      "community": 8,
+      "community": 7,
       "norm_label": "assertbuildfailedwith()"
     },
     {
@@ -10305,7 +10305,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L122",
       "id": "verify_build_script_appendjsonline",
-      "community": 8,
+      "community": 7,
       "norm_label": "appendjsonline()"
     },
     {
@@ -10314,7 +10314,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L127",
       "id": "verify_build_script_appendlifejsonline",
-      "community": 8,
+      "community": 7,
       "norm_label": "appendlifejsonline()"
     },
     {
@@ -10323,7 +10323,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L132",
       "id": "verify_build_script_appendround8jsonline",
-      "community": 8,
+      "community": 7,
       "norm_label": "appendround8jsonline()"
     },
     {
@@ -10332,7 +10332,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L137",
       "id": "verify_build_script_duplicatefirstround8jsonline",
-      "community": 8,
+      "community": 7,
       "norm_label": "duplicatefirstround8jsonline()"
     },
     {
@@ -10341,7 +10341,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L146",
       "id": "verify_build_script_appendround9lifejsonline",
-      "community": 8,
+      "community": 7,
       "norm_label": "appendround9lifejsonline()"
     },
     {
@@ -10350,7 +10350,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L151",
       "id": "verify_build_script_duplicatefirstround9lifejsonline",
-      "community": 8,
+      "community": 7,
       "norm_label": "duplicatefirstround9lifejsonline()"
     },
     {
@@ -10359,7 +10359,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L160",
       "id": "verify_build_script_appendround9learningjsonline",
-      "community": 8,
+      "community": 7,
       "norm_label": "appendround9learningjsonline()"
     },
     {
@@ -10368,7 +10368,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L165",
       "id": "verify_build_script_duplicatefirstround9learningjsonline",
-      "community": 8,
+      "community": 7,
       "norm_label": "duplicatefirstround9learningjsonline()"
     },
     {
@@ -10377,7 +10377,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L174",
       "id": "verify_build_script_appendround10learningjsonline",
-      "community": 8,
+      "community": 7,
       "norm_label": "appendround10learningjsonline()"
     },
     {
@@ -10386,7 +10386,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L179",
       "id": "verify_build_script_duplicatefirstround10learningjsonline",
-      "community": 8,
+      "community": 7,
       "norm_label": "duplicatefirstround10learningjsonline()"
     },
     {
@@ -10395,7 +10395,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L188",
       "id": "verify_build_script_appendround11lifejsonline",
-      "community": 8,
+      "community": 7,
       "norm_label": "appendround11lifejsonline()"
     },
     {
@@ -10404,7 +10404,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L193",
       "id": "verify_build_script_duplicatefirstround11lifejsonline",
-      "community": 8,
+      "community": 7,
       "norm_label": "duplicatefirstround11lifejsonline()"
     },
     {
@@ -10782,7 +10782,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L1",
       "id": "e_desktop_coders_life_tools_verify_game_mechanics_js",
-      "community": 11,
+      "community": 7,
       "norm_label": "verify-game-mechanics.js"
     },
     {
@@ -10791,7 +10791,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L11",
       "id": "verify_game_mechanics_fakeelement",
-      "community": 11,
+      "community": 7,
       "norm_label": "fakeelement"
     },
     {
@@ -10800,7 +10800,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L12",
       "id": "verify_game_mechanics_fakeelement_constructor",
-      "community": 11,
+      "community": 7,
       "norm_label": ".constructor()"
     },
     {
@@ -10809,7 +10809,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L22",
       "id": "verify_game_mechanics_fakeelement_textcontent",
-      "community": 11,
+      "community": 7,
       "norm_label": ".textcontent()"
     },
     {
@@ -10818,7 +10818,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L30",
       "id": "verify_game_mechanics_fakeelement_innerhtml",
-      "community": 11,
+      "community": 7,
       "norm_label": ".innerhtml()"
     },
     {
@@ -10827,7 +10827,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L39",
       "id": "verify_game_mechanics_fakeelement_firstchild",
-      "community": 11,
+      "community": 7,
       "norm_label": ".firstchild()"
     },
     {
@@ -10836,7 +10836,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L43",
       "id": "verify_game_mechanics_fakeelement_appendchild",
-      "community": 11,
+      "community": 7,
       "norm_label": ".appendchild()"
     },
     {
@@ -10845,7 +10845,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L48",
       "id": "verify_game_mechanics_fakeelement_insertbefore",
-      "community": 11,
+      "community": 7,
       "norm_label": ".insertbefore()"
     },
     {
@@ -10854,7 +10854,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L60",
       "id": "verify_game_mechanics_createlocalstorage",
-      "community": 11,
+      "community": 7,
       "norm_label": "createlocalstorage()"
     },
     {
@@ -10863,7 +10863,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L78",
       "id": "verify_game_mechanics_createdocument",
-      "community": 11,
+      "community": 7,
       "norm_label": "createdocument()"
     },
     {
@@ -10872,7 +10872,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L119",
       "id": "verify_game_mechanics_extractinlinescript",
-      "community": 11,
+      "community": 7,
       "norm_label": "extractinlinescript()"
     },
     {
@@ -10881,7 +10881,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L125",
       "id": "verify_game_mechanics_createstablemath",
-      "community": 11,
+      "community": 7,
       "norm_label": "createstablemath()"
     },
     {
@@ -10890,7 +10890,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L131",
       "id": "verify_game_mechanics_creategamecontext",
-      "community": 11,
+      "community": 7,
       "norm_label": "creategamecontext()"
     },
     {
@@ -10899,7 +10899,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L156",
       "id": "verify_game_mechanics_parsesave",
-      "community": 11,
+      "community": 7,
       "norm_label": "parsesave()"
     },
     {
@@ -10908,7 +10908,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L162",
       "id": "verify_game_mechanics_countgoalevents",
-      "community": 11,
+      "community": 7,
       "norm_label": "countgoalevents()"
     },
     {
@@ -10917,7 +10917,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L166",
       "id": "verify_game_mechanics_testcoreactionsaveandrestoreflow",
-      "community": 11,
+      "community": 7,
       "norm_label": "testcoreactionsaveandrestoreflow()"
     },
     {
@@ -10926,7 +10926,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L193",
       "id": "verify_game_mechanics_testrungoalprogressfeedbackpersistsacrosssaverestore",
-      "community": 11,
+      "community": 7,
       "norm_label": "testrungoalprogressfeedbackpersistsacrosssaverestore()"
     },
     {
@@ -10935,7 +10935,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L241",
       "id": "verify_game_mechanics_testrungoalactionchainpersistsanddoesnotrepeatrewards",
-      "community": 11,
+      "community": 7,
       "norm_label": "testrungoalactionchainpersistsanddoesnotrepeatrewards()"
     },
     {
@@ -10944,43 +10944,52 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L277",
       "id": "verify_game_mechanics_testpreviousrunexperienceseedsnewcareer",
-      "community": 11,
+      "community": 7,
       "norm_label": "testpreviousrunexperienceseedsnewcareer()"
+    },
+    {
+      "label": "testAgeAdvancesByOneYearAfter365Days()",
+      "file_type": "code",
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
+      "source_location": "L313",
+      "id": "verify_game_mechanics_testageadvancesbyoneyearafter365days",
+      "community": 7,
+      "norm_label": "testageadvancesbyoneyearafter365days()"
     },
     {
       "label": "testEndingSummaryShowsScoreTitleAndGoalResult()",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
-      "source_location": "L313",
+      "source_location": "L353",
       "id": "verify_game_mechanics_testendingsummaryshowsscoretitleandgoalresult",
-      "community": 11,
+      "community": 7,
       "norm_label": "testendingsummaryshowsscoretitleandgoalresult()"
     },
     {
       "label": "testEndingSummaryShowsPreviousRunRecap()",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
-      "source_location": "L340",
+      "source_location": "L381",
       "id": "verify_game_mechanics_testendingsummaryshowspreviousrunrecap",
-      "community": 11,
+      "community": 7,
       "norm_label": "testendingsummaryshowspreviousrunrecap()"
     },
     {
       "label": "testEndedRunIgnoresStateChangingEntrypoints()",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
-      "source_location": "L378",
+      "source_location": "L419",
       "id": "verify_game_mechanics_testendedrunignoresstatechangingentrypoints",
-      "community": 11,
+      "community": 7,
       "norm_label": "testendedrunignoresstatechangingentrypoints()"
     },
     {
       "label": "testCorruptMainSaveIsQuarantinedDuringNewRun()",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
-      "source_location": "L409",
+      "source_location": "L450",
       "id": "verify_game_mechanics_testcorruptmainsaveisquarantinedduringnewrun",
-      "community": 11,
+      "community": 7,
       "norm_label": "testcorruptmainsaveisquarantinedduringnewrun()"
     },
     {
@@ -10989,7 +10998,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-popup-pool.mjs",
       "source_location": "L1",
       "id": "e_desktop_coders_life_tools_verify_popup_pool_mjs",
-      "community": 8,
+      "community": 7,
       "norm_label": "verify-popup-pool.mjs"
     },
     {
@@ -10998,7 +11007,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-popup-pool.mjs",
       "source_location": "L28",
       "id": "verify_popup_pool_readjson",
-      "community": 8,
+      "community": 7,
       "norm_label": "readjson()"
     },
     {
@@ -11007,7 +11016,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-popup-pool.mjs",
       "source_location": "L32",
       "id": "verify_popup_pool_loadruntimepool",
-      "community": 8,
+      "community": 7,
       "norm_label": "loadruntimepool()"
     },
     {
@@ -11016,7 +11025,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-popup-pool.mjs",
       "source_location": "L40",
       "id": "verify_popup_pool_findduplicates",
-      "community": 8,
+      "community": 7,
       "norm_label": "findduplicates()"
     },
     {
@@ -11025,7 +11034,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-popup-pool.mjs",
       "source_location": "L50",
       "id": "verify_popup_pool_normalizetext",
-      "community": 8,
+      "community": 7,
       "norm_label": "normalizetext()"
     },
     {
@@ -11043,7 +11052,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-popup-pool.mjs",
       "source_location": "L69",
       "id": "verify_popup_pool_formatduplicategroups",
-      "community": 8,
+      "community": 7,
       "norm_label": "formatduplicategroups()"
     },
     {
@@ -11848,10 +11857,28 @@
       "norm_label": "testgamedatastatsareclampedanddedupedonrestore()"
     },
     {
-      "label": "testLegacyStatsItemsRestoreShopOwnership()",
+      "label": "testUnknownCareerNormalizesToFullstackOnRestore()",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
       "source_location": "L395",
+      "id": "verify_save_system_testunknowncareernormalizestofullstackonrestore",
+      "community": 3,
+      "norm_label": "testunknowncareernormalizestofullstackonrestore()"
+    },
+    {
+      "label": "testLegacyMonthlyAgeIsClampedOnRestore()",
+      "file_type": "code",
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
+      "source_location": "L418",
+      "id": "verify_save_system_testlegacymonthlyageisclampedonrestore",
+      "community": 3,
+      "norm_label": "testlegacymonthlyageisclampedonrestore()"
+    },
+    {
+      "label": "testLegacyStatsItemsRestoreShopOwnership()",
+      "file_type": "code",
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
+      "source_location": "L440",
       "id": "verify_save_system_testlegacystatsitemsrestoreshopownership",
       "community": 3,
       "norm_label": "testlegacystatsitemsrestoreshopownership()"
@@ -11860,7 +11887,7 @@
       "label": "testGameOverRestoreKeepsEndingUi()",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L411",
+      "source_location": "L456",
       "id": "verify_save_system_testgameoverrestorekeepsendingui",
       "community": 3,
       "norm_label": "testgameoverrestorekeepsendingui()"
@@ -11869,7 +11896,7 @@
       "label": "testGameOverStateForcesEndedRunOnRestore()",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L440",
+      "source_location": "L485",
       "id": "verify_save_system_testgameoverstateforcesendedrunonrestore",
       "community": 3,
       "norm_label": "testgameoverstateforcesendedrunonrestore()"
@@ -11878,7 +11905,7 @@
       "label": "testPerfectEndingDoesNotIncrementDeaths()",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L471",
+      "source_location": "L516",
       "id": "verify_save_system_testperfectendingdoesnotincrementdeaths",
       "community": 3,
       "norm_label": "testperfectendingdoesnotincrementdeaths()"
@@ -11887,7 +11914,7 @@
       "label": "testEndingPersistsCompactRunSummary()",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L503",
+      "source_location": "L548",
       "id": "verify_save_system_testendingpersistscompactrunsummary",
       "community": 3,
       "norm_label": "testendingpersistscompactrunsummary()"
@@ -11896,7 +11923,7 @@
       "label": "testRunSummariesSurviveRestoreAndRestart()",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L536",
+      "source_location": "L581",
       "id": "verify_save_system_testrunsummariessurviverestoreandrestart",
       "community": 3,
       "norm_label": "testrunsummariessurviverestoreandrestart()"
@@ -11905,7 +11932,7 @@
       "label": "testRestartPreservesCareerMetaHistory()",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L564",
+      "source_location": "L609",
       "id": "verify_save_system_testrestartpreservescareermetahistory",
       "community": 3,
       "norm_label": "testrestartpreservescareermetahistory()"
@@ -11914,7 +11941,7 @@
       "label": "testRestartMetaSaveKeepsAchievementUnlockState()",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L602",
+      "source_location": "L647",
       "id": "verify_save_system_testrestartmetasavekeepsachievementunlockstate",
       "community": 3,
       "norm_label": "testrestartmetasavekeepsachievementunlockstate()"
@@ -11923,7 +11950,7 @@
       "label": "testRunSummariesPersistAfterRestartBeforeCareerSelection()",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L646",
+      "source_location": "L691",
       "id": "verify_save_system_testrunsummariespersistafterrestartbeforecareerselection",
       "community": 3,
       "norm_label": "testrunsummariespersistafterrestartbeforecareerselection()"
@@ -11932,7 +11959,7 @@
       "label": "testLegacySaveWithoutRunsRestoresWithEmptyRuns()",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L682",
+      "source_location": "L727",
       "id": "verify_save_system_testlegacysavewithoutrunsrestoreswithemptyruns",
       "community": 3,
       "norm_label": "testlegacysavewithoutrunsrestoreswithemptyruns()"
@@ -11941,7 +11968,7 @@
       "label": "testRunSummariesKeepLatestTen()",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L700",
+      "source_location": "L745",
       "id": "verify_save_system_testrunsummarieskeeplatestten",
       "community": 3,
       "norm_label": "testrunsummarieskeeplatestten()"
@@ -42229,6 +42256,18 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
+      "source_location": "L415",
+      "weight": 1.0,
+      "_src": "verify_save_system_testunknowncareernormalizestofullstackonrestore",
+      "_tgt": "vis_network_min_ix_keys",
+      "source": "vis_network_min_ix_keys",
+      "target": "verify_save_system_testunknowncareernormalizestofullstackonrestore"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
       "source_location": "L527",
       "weight": 1.0,
       "_src": "vis_network_min_ix_keys",
@@ -42375,8 +42414,8 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-fun-loop.mjs",
       "source_location": "L346",
       "weight": 1.0,
-      "_src": "verify_fun_loop_testsmallprloopclosesonceperweekandsurvivesrestore",
-      "_tgt": "vis_network_min_ix_filter",
+      "_src": "vis_network_min_ix_filter",
+      "_tgt": "verify_fun_loop_testsmallprloopclosesonceperweekandsurvivesrestore",
       "source": "vis_network_min_ix_filter",
       "target": "verify_fun_loop_testsmallprloopclosesonceperweekandsurvivesrestore"
     },
@@ -44011,6 +44050,18 @@
       "_tgt": "verify_save_system_testfutureschemaispreservedwithoutquarantine",
       "source": "vis_network_min_ix_get",
       "target": "verify_save_system_testfutureschemaispreservedwithoutquarantine"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
+      "source_location": "L413",
+      "weight": 1.0,
+      "_src": "verify_save_system_testunknowncareernormalizestofullstackonrestore",
+      "_tgt": "vis_network_min_ix_get",
+      "source": "vis_network_min_ix_get",
+      "target": "verify_save_system_testunknowncareernormalizestofullstackonrestore"
     },
     {
       "relation": "calls",
@@ -57207,8 +57258,8 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
       "source_location": "L634",
       "weight": 1.0,
-      "_src": "verify_save_system_testrestartmetasavekeepsachievementunlockstate",
-      "_tgt": "vis_network_min_et_sort",
+      "_src": "vis_network_min_et_sort",
+      "_tgt": "verify_save_system_testrestartmetasavekeepsachievementunlockstate",
       "source": "vis_network_min_et_sort",
       "target": "verify_save_system_testrestartmetasavekeepsachievementunlockstate"
     },
@@ -61803,6 +61854,18 @@
       "source_location": "L313",
       "weight": 1.0,
       "_src": "e_desktop_coders_life_tools_verify_game_mechanics_js",
+      "_tgt": "verify_game_mechanics_testageadvancesbyoneyearafter365days",
+      "source": "e_desktop_coders_life_tools_verify_game_mechanics_js",
+      "target": "verify_game_mechanics_testageadvancesbyoneyearafter365days",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
+      "source_location": "L353",
+      "weight": 1.0,
+      "_src": "e_desktop_coders_life_tools_verify_game_mechanics_js",
       "_tgt": "verify_game_mechanics_testendingsummaryshowsscoretitleandgoalresult",
       "source": "e_desktop_coders_life_tools_verify_game_mechanics_js",
       "target": "verify_game_mechanics_testendingsummaryshowsscoretitleandgoalresult",
@@ -61812,7 +61875,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
-      "source_location": "L340",
+      "source_location": "L381",
       "weight": 1.0,
       "_src": "e_desktop_coders_life_tools_verify_game_mechanics_js",
       "_tgt": "verify_game_mechanics_testendingsummaryshowspreviousrunrecap",
@@ -61824,7 +61887,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
-      "source_location": "L378",
+      "source_location": "L419",
       "weight": 1.0,
       "_src": "e_desktop_coders_life_tools_verify_game_mechanics_js",
       "_tgt": "verify_game_mechanics_testendedrunignoresstatechangingentrypoints",
@@ -61836,7 +61899,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
-      "source_location": "L409",
+      "source_location": "L450",
       "weight": 1.0,
       "_src": "e_desktop_coders_life_tools_verify_game_mechanics_js",
       "_tgt": "verify_game_mechanics_testcorruptmainsaveisquarantinedduringnewrun",
@@ -62018,6 +62081,18 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L314",
       "weight": 1.0,
+      "_src": "verify_game_mechanics_testageadvancesbyoneyearafter365days",
+      "_tgt": "verify_game_mechanics_creategamecontext",
+      "source": "verify_game_mechanics_creategamecontext",
+      "target": "verify_game_mechanics_testageadvancesbyoneyearafter365days",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
+      "source_location": "L354",
+      "weight": 1.0,
       "_src": "verify_game_mechanics_testendingsummaryshowsscoretitleandgoalresult",
       "_tgt": "verify_game_mechanics_creategamecontext",
       "source": "verify_game_mechanics_creategamecontext",
@@ -62028,7 +62103,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
-      "source_location": "L341",
+      "source_location": "L382",
       "weight": 1.0,
       "_src": "verify_game_mechanics_testendingsummaryshowspreviousrunrecap",
       "_tgt": "verify_game_mechanics_creategamecontext",
@@ -62040,7 +62115,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
-      "source_location": "L379",
+      "source_location": "L420",
       "weight": 1.0,
       "_src": "verify_game_mechanics_testendedrunignoresstatechangingentrypoints",
       "_tgt": "verify_game_mechanics_creategamecontext",
@@ -62052,7 +62127,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
-      "source_location": "L410",
+      "source_location": "L451",
       "weight": 1.0,
       "_src": "verify_game_mechanics_testcorruptmainsaveisquarantinedduringnewrun",
       "_tgt": "verify_game_mechanics_creategamecontext",
@@ -62112,7 +62187,19 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
-      "source_location": "L329",
+      "source_location": "L331",
+      "weight": 1.0,
+      "_src": "verify_game_mechanics_testageadvancesbyoneyearafter365days",
+      "_tgt": "verify_game_mechanics_parsesave",
+      "source": "verify_game_mechanics_parsesave",
+      "target": "verify_game_mechanics_testageadvancesbyoneyearafter365days",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
+      "source_location": "L369",
       "weight": 1.0,
       "_src": "verify_game_mechanics_testendingsummaryshowsscoretitleandgoalresult",
       "_tgt": "verify_game_mechanics_parsesave",
@@ -62124,7 +62211,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
-      "source_location": "L372",
+      "source_location": "L413",
       "weight": 1.0,
       "_src": "verify_game_mechanics_testendingsummaryshowspreviousrunrecap",
       "_tgt": "verify_game_mechanics_parsesave",
@@ -62136,7 +62223,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
-      "source_location": "L395",
+      "source_location": "L436",
       "weight": 1.0,
       "_src": "verify_game_mechanics_testendedrunignoresstatechangingentrypoints",
       "_tgt": "verify_game_mechanics_parsesave",
@@ -63831,6 +63918,30 @@
       "source_location": "L395",
       "weight": 1.0,
       "_src": "e_desktop_coders_life_tools_verify_save_system_mjs",
+      "_tgt": "verify_save_system_testunknowncareernormalizestofullstackonrestore",
+      "source": "e_desktop_coders_life_tools_verify_save_system_mjs",
+      "target": "verify_save_system_testunknowncareernormalizestofullstackonrestore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
+      "source_location": "L418",
+      "weight": 1.0,
+      "_src": "e_desktop_coders_life_tools_verify_save_system_mjs",
+      "_tgt": "verify_save_system_testlegacymonthlyageisclampedonrestore",
+      "source": "e_desktop_coders_life_tools_verify_save_system_mjs",
+      "target": "verify_save_system_testlegacymonthlyageisclampedonrestore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
+      "source_location": "L440",
+      "weight": 1.0,
+      "_src": "e_desktop_coders_life_tools_verify_save_system_mjs",
       "_tgt": "verify_save_system_testlegacystatsitemsrestoreshopownership",
       "source": "e_desktop_coders_life_tools_verify_save_system_mjs",
       "target": "verify_save_system_testlegacystatsitemsrestoreshopownership",
@@ -63840,7 +63951,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L411",
+      "source_location": "L456",
       "weight": 1.0,
       "_src": "e_desktop_coders_life_tools_verify_save_system_mjs",
       "_tgt": "verify_save_system_testgameoverrestorekeepsendingui",
@@ -63852,7 +63963,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L440",
+      "source_location": "L485",
       "weight": 1.0,
       "_src": "e_desktop_coders_life_tools_verify_save_system_mjs",
       "_tgt": "verify_save_system_testgameoverstateforcesendedrunonrestore",
@@ -63864,7 +63975,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L471",
+      "source_location": "L516",
       "weight": 1.0,
       "_src": "e_desktop_coders_life_tools_verify_save_system_mjs",
       "_tgt": "verify_save_system_testperfectendingdoesnotincrementdeaths",
@@ -63876,7 +63987,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L503",
+      "source_location": "L548",
       "weight": 1.0,
       "_src": "e_desktop_coders_life_tools_verify_save_system_mjs",
       "_tgt": "verify_save_system_testendingpersistscompactrunsummary",
@@ -63888,7 +63999,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L536",
+      "source_location": "L581",
       "weight": 1.0,
       "_src": "e_desktop_coders_life_tools_verify_save_system_mjs",
       "_tgt": "verify_save_system_testrunsummariessurviverestoreandrestart",
@@ -63900,7 +64011,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L564",
+      "source_location": "L609",
       "weight": 1.0,
       "_src": "e_desktop_coders_life_tools_verify_save_system_mjs",
       "_tgt": "verify_save_system_testrestartpreservescareermetahistory",
@@ -63912,7 +64023,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L602",
+      "source_location": "L647",
       "weight": 1.0,
       "_src": "e_desktop_coders_life_tools_verify_save_system_mjs",
       "_tgt": "verify_save_system_testrestartmetasavekeepsachievementunlockstate",
@@ -63924,7 +64035,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L646",
+      "source_location": "L691",
       "weight": 1.0,
       "_src": "e_desktop_coders_life_tools_verify_save_system_mjs",
       "_tgt": "verify_save_system_testrunsummariespersistafterrestartbeforecareerselection",
@@ -63936,7 +64047,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L682",
+      "source_location": "L727",
       "weight": 1.0,
       "_src": "e_desktop_coders_life_tools_verify_save_system_mjs",
       "_tgt": "verify_save_system_testlegacysavewithoutrunsrestoreswithemptyruns",
@@ -63948,7 +64059,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L700",
+      "source_location": "L745",
       "weight": 1.0,
       "_src": "e_desktop_coders_life_tools_verify_save_system_mjs",
       "_tgt": "verify_save_system_testrunsummarieskeeplatestten",
@@ -64238,6 +64349,30 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
       "source_location": "L396",
       "weight": 1.0,
+      "_src": "verify_save_system_testunknowncareernormalizestofullstackonrestore",
+      "_tgt": "verify_save_system_createharness",
+      "source": "verify_save_system_createharness",
+      "target": "verify_save_system_testunknowncareernormalizestofullstackonrestore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
+      "source_location": "L419",
+      "weight": 1.0,
+      "_src": "verify_save_system_testlegacymonthlyageisclampedonrestore",
+      "_tgt": "verify_save_system_createharness",
+      "source": "verify_save_system_createharness",
+      "target": "verify_save_system_testlegacymonthlyageisclampedonrestore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
+      "source_location": "L441",
+      "weight": 1.0,
       "_src": "verify_save_system_testlegacystatsitemsrestoreshopownership",
       "_tgt": "verify_save_system_createharness",
       "source": "verify_save_system_createharness",
@@ -64248,7 +64383,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L412",
+      "source_location": "L457",
       "weight": 1.0,
       "_src": "verify_save_system_testgameoverrestorekeepsendingui",
       "_tgt": "verify_save_system_createharness",
@@ -64260,7 +64395,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L441",
+      "source_location": "L486",
       "weight": 1.0,
       "_src": "verify_save_system_testgameoverstateforcesendedrunonrestore",
       "_tgt": "verify_save_system_createharness",
@@ -64272,7 +64407,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L472",
+      "source_location": "L517",
       "weight": 1.0,
       "_src": "verify_save_system_testperfectendingdoesnotincrementdeaths",
       "_tgt": "verify_save_system_createharness",
@@ -64284,7 +64419,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L504",
+      "source_location": "L549",
       "weight": 1.0,
       "_src": "verify_save_system_testendingpersistscompactrunsummary",
       "_tgt": "verify_save_system_createharness",
@@ -64296,7 +64431,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L545",
+      "source_location": "L590",
       "weight": 1.0,
       "_src": "verify_save_system_testrunsummariessurviverestoreandrestart",
       "_tgt": "verify_save_system_createharness",
@@ -64308,7 +64443,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L573",
+      "source_location": "L618",
       "weight": 1.0,
       "_src": "verify_save_system_testrestartpreservescareermetahistory",
       "_tgt": "verify_save_system_createharness",
@@ -64320,7 +64455,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L611",
+      "source_location": "L656",
       "weight": 1.0,
       "_src": "verify_save_system_testrestartmetasavekeepsachievementunlockstate",
       "_tgt": "verify_save_system_createharness",
@@ -64332,7 +64467,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L655",
+      "source_location": "L700",
       "weight": 1.0,
       "_src": "verify_save_system_testrunsummariespersistafterrestartbeforecareerselection",
       "_tgt": "verify_save_system_createharness",
@@ -64344,7 +64479,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L683",
+      "source_location": "L728",
       "weight": 1.0,
       "_src": "verify_save_system_testlegacysavewithoutrunsrestoreswithemptyruns",
       "_tgt": "verify_save_system_createharness",
@@ -64356,7 +64491,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L709",
+      "source_location": "L754",
       "weight": 1.0,
       "_src": "verify_save_system_testrunsummarieskeeplatestten",
       "_tgt": "verify_save_system_createharness",
@@ -64392,7 +64527,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L496",
+      "source_location": "L541",
       "weight": 1.0,
       "_src": "verify_save_system_testperfectendingdoesnotincrementdeaths",
       "_tgt": "verify_save_system_readsave",
@@ -64404,7 +64539,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L522",
+      "source_location": "L567",
       "weight": 1.0,
       "_src": "verify_save_system_testendingpersistscompactrunsummary",
       "_tgt": "verify_save_system_readsave",
@@ -64416,7 +64551,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L559",
+      "source_location": "L604",
       "weight": 1.0,
       "_src": "verify_save_system_testrunsummariessurviverestoreandrestart",
       "_tgt": "verify_save_system_readsave",
@@ -64428,7 +64563,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
-      "source_location": "L593",
+      "source_location": "L638",
       "weight": 1.0,
       "_src": "verify_save_system_testrestartpreservescareermetahistory",
       "_tgt": "verify_save_system_readsave",

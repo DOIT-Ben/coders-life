@@ -310,19 +310,59 @@ function testPreviousRunExperienceSeedsNewCareer() {
   assert(save.stats.skill > 80 || save.stats.mental > 75 || save.stats.money > 55, 'previous-run experience should grant a tiny early-run buff');
 }
 
+function testAgeAdvancesByOneYearAfter365Days() {
+  const context = createGameContext();
+
+  context.selectCareer('fullstack');
+  context.applySaveData({
+    schemaVersion: 2,
+    stats: { skill: 90, mental: 90, money: 150, ai: 90, day: 29, age: 30, career: 'fullstack', items: [] },
+    actionCounts: {},
+    weeklyActionCounts: {},
+    runState: { focus: 80, fatigue: 10, boundaryScore: 80 },
+    buildProjectState: { progress: 90, quality: 80, debt: 10, exposure: 40, stage: 'portfolio', shipped: true, lastFeedbackDay: 21 },
+    dailyGoalState: { day: 29, targetAction: 'learn-ai', completed: true, streak: 5, totalCompleted: 20 },
+    runGoalState: { id: 'balanced_builder', title: '全栈但不全栈崩溃', description: '同时守住精神、存款和长期 Build 进度', createdDay: 0 },
+    gameData: { achievements: [], deaths: 0, maxDay: 29, endings: [], runs: [] },
+    achievements: [],
+    shopItems: []
+  });
+  context.action('rest');
+  let save = parseSave(context);
+
+  assert.equal(save.stats.day, 30);
+  assert.equal(save.stats.age, 30, '30 in-game days should not age the player by a full year');
+  assert.equal(save.achievements.includes('old_dog'), false, 'one-year run should not unlock old_dog early through monthly aging');
+
+  context.applySaveData({
+    ...save,
+    stats: { ...save.stats, skill: 90, mental: 90, money: 150, ai: 90, day: 364, age: 30 },
+    buildProjectState: { ...save.buildProjectState, progress: 90, quality: 80, debt: 10, shipped: true },
+    isGameOver: false,
+    gameOverState: null
+  });
+  context.action('rest');
+  save = parseSave(context);
+
+  assert.equal(save.stats.day, 365);
+  assert.equal(save.stats.age, 31, '365 in-game days should advance age by exactly one year');
+  assert.equal(save.achievements.includes('old_dog'), false, 'surviving one year from 30 should not unlock age 40 achievement');
+  assert.equal(save.isGameOver, true, '365-day perfect ending should still trigger after age timing fix');
+}
+
 function testEndingSummaryShowsScoreTitleAndGoalResult() {
   const context = createGameContext();
 
   context.selectCareer('ai');
   context.applySaveData({
     schemaVersion: 2,
-    stats: { skill: 82, mental: 70, money: 130, ai: 85, day: 365, age: 42, career: 'ai', items: [] },
+    stats: { skill: 82, mental: 70, money: 130, ai: 85, day: 365, age: 31, career: 'ai', items: [] },
     actionCounts: { 'learn-ai': 20, overtime: 4, rest: 18, interview: 3, 'side-project': 12, networking: 8 },
     weeklyActionCounts: {},
     runState: { focus: 74, fatigue: 24, boundaryScore: 76, lastBoundaryFeedbackDay: 350, lastCareerStageFeedbackDay: 360 },
     buildProjectState: { progress: 100, quality: 78, debt: 22, exposure: 44, stage: 'portfolio', shipped: true, lastFeedbackDay: 350 },
     dailyGoalState: { day: 365, targetAction: 'learn-ai', completed: true, streak: 8, totalCompleted: 80 },
-    runGoalState: { id: 'ship_portfolio', title: '把长期 Build 做成作品', description: '发布一个能展示的长期项目', createdDay: 0 }
+    runGoalState: { id: 'ai_compound', title: '把 AI 练成复利', description: '把 AI 熟练度、技术和长期项目一起推上去', createdDay: 0 }
   });
 
   context.checkGameOver();
@@ -333,7 +373,8 @@ function testEndingSummaryShowsScoreTitleAndGoalResult() {
   assert.equal(saved.isGameOver, true, 'perfect ending fixture should end the run');
   assert.match(reason, /本局评分：\d+\/100/, 'ending reason should include a compact score');
   assert.match(reason, /本局称号：/, 'ending reason should include a run title');
-  assert.match(reason, /目标：把长期 Build 做成作品/, 'ending reason should include the run goal result');
+  assert.match(reason, /目标：把 AI 练成复利/, 'ending reason should include the run goal result');
+  assert.match(reason, /下一局 TODO：/, 'ending reason should include a next-run todo');
   assert.match(endingHtml, /完美结局/, 'ending panel should keep the existing ending type');
 }
 
@@ -343,13 +384,13 @@ function testEndingSummaryShowsPreviousRunRecap() {
   context.selectCareer('ai');
   context.applySaveData({
     schemaVersion: 2,
-    stats: { skill: 82, mental: 70, money: 130, ai: 85, day: 365, age: 42, career: 'ai', items: [] },
+    stats: { skill: 82, mental: 70, money: 130, ai: 85, day: 365, age: 31, career: 'ai', items: [] },
     actionCounts: { 'learn-ai': 20, overtime: 4, rest: 18, interview: 3, 'side-project': 12, networking: 8 },
     weeklyActionCounts: {},
     runState: { focus: 74, fatigue: 24, boundaryScore: 76, lastBoundaryFeedbackDay: 350, lastCareerStageFeedbackDay: 360 },
     buildProjectState: { progress: 100, quality: 78, debt: 22, exposure: 44, stage: 'portfolio', shipped: true, lastFeedbackDay: 350 },
     dailyGoalState: { day: 365, targetAction: 'learn-ai', completed: true, streak: 8, totalCompleted: 80 },
-    runGoalState: { id: 'ship_portfolio', title: '把长期 Build 做成作品', description: '发布一个能展示的长期项目', createdDay: 0 },
+    runGoalState: { id: 'ai_compound', title: '把 AI 练成复利', description: '把 AI 熟练度、技术和长期项目一起推上去', createdDay: 0 },
     gameData: {
       achievements: [],
       deaths: 1,
@@ -381,13 +422,13 @@ function testEndedRunIgnoresStateChangingEntrypoints() {
   context.selectCareer('ai');
   context.applySaveData({
     schemaVersion: 2,
-    stats: { skill: 82, mental: 70, money: 130, ai: 85, day: 365, age: 42, career: 'ai', items: [] },
+    stats: { skill: 82, mental: 70, money: 130, ai: 85, day: 365, age: 31, career: 'ai', items: [] },
     actionCounts: { 'learn-ai': 20, overtime: 4, rest: 18, interview: 3, 'side-project': 12, networking: 8 },
     weeklyActionCounts: {},
     runState: { focus: 74, fatigue: 24, boundaryScore: 76, lastBoundaryFeedbackDay: 350, lastCareerStageFeedbackDay: 360 },
     buildProjectState: { progress: 100, quality: 78, debt: 22, exposure: 44, stage: 'portfolio', shipped: true, lastFeedbackDay: 350 },
     dailyGoalState: { day: 365, targetAction: 'learn-ai', completed: true, streak: 8, totalCompleted: 80 },
-    runGoalState: { id: 'ship_portfolio', title: '把长期 Build 做成作品', description: '发布一个能展示的长期项目', createdDay: 0 },
+    runGoalState: { id: 'ai_compound', title: '把 AI 练成复利', description: '把 AI 熟练度、技术和长期项目一起推上去', createdDay: 0 },
     gameData: { achievements: [], deaths: 0, maxDay: 364, endings: [], runs: [] },
     shopItems: []
   });
@@ -422,6 +463,7 @@ const tests = [
   testRunGoalProgressFeedbackPersistsAcrossSaveRestore,
   testRunGoalActionChainPersistsAndDoesNotRepeatRewards,
   testPreviousRunExperienceSeedsNewCareer,
+  testAgeAdvancesByOneYearAfter365Days,
   testEndingSummaryShowsScoreTitleAndGoalResult,
   testEndingSummaryShowsPreviousRunRecap,
   testEndedRunIgnoresStateChangingEntrypoints,
