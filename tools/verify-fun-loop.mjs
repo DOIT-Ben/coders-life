@@ -323,13 +323,38 @@ function testShippedBuildNetworkingTurnsExposureIntoFeedbackWithoutReshipping() 
   assert.deepEqual(restored.buildSaveData().buildProjectState, saved.buildProjectState);
 }
 
+function testSmallPrLoopClosesOncePerWeekAndSurvivesRestore() {
+  const context = createGameContext();
+
+  context.selectCareer('fullstack');
+  context.action('side-project');
+  context.action('learn-ai');
+  const saved = parseSave(context);
+
+  assert.equal(saved.schemaVersion, 2, 'small PR loop should not bump save schema');
+  assert.ok(hasLog(saved, '小 PR 闭环'), 'following side project with a quality action should close a small PR loop');
+  assert.ok(saved.buildProjectState.quality >= 56, 'small PR loop should add a tiny quality reward');
+  assert.ok(saved.runGoalState.chain.rewardKeys.includes('pr-loop-week-1'), 'small PR loop reward key should persist in existing run goal chain');
+  assert.equal(Object.hasOwn(saved, 'prLoopState'), false, 'small PR loop should not introduce a new top-level save field');
+
+  const restored = createGameContext({ [SAVE_KEY]: JSON.stringify(saved) });
+  assert.equal(restored.loadGameFromStorage(), true);
+  restored.action('side-project');
+  restored.action('networking');
+  const afterRestore = parseSave(restored);
+
+  assert.equal(afterRestore.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('小 PR 闭环')).length, 1, 'claimed small PR loop should not repeat in the same week after restore');
+  assert.ok(afterRestore.runGoalState.chain.rewardKeys.includes('pr-loop-week-1'), 'restored run should keep the claimed PR loop reward key');
+}
+
 const tests = [
   testLearningRhythmAddsSmallFeedbackAndPersists,
   testRestAfterOverloadAddsRecoveryFeedbackWithoutNewSaveSchema,
   testToolHabitTurnsIntoShippingFeedbackAndPersists,
   testToolHabitOveruseCreatesBackfireFeedbackAndPersists,
   testLongBuildDebtCanBePaidDownOncePerDayAndPersists,
-  testShippedBuildNetworkingTurnsExposureIntoFeedbackWithoutReshipping
+  testShippedBuildNetworkingTurnsExposureIntoFeedbackWithoutReshipping,
+  testSmallPrLoopClosesOncePerWeekAndSurvivesRestore
 ];
 
 for (const test of tests) {

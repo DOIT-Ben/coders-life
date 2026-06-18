@@ -662,7 +662,7 @@
         }
 
         function getInitialRunGoalChain() {
-            return { lastActionType: '', count: 0, rewardKeys: [] };
+            return { lastActionType: '', previousActionType: '', count: 0, rewardKeys: [] };
         }
 
         function getInitialRunGoalState() {
@@ -713,6 +713,35 @@
                     career: typeof run.career === 'string' ? run.career : ''
                 }))
                 .slice(-10);
+        }
+
+        function getLastRunSummary(runs = gameData.runs) {
+            const normalizedRuns = normalizeRunSummaries(runs);
+            return normalizedRuns[normalizedRuns.length - 1] || null;
+        }
+
+        function getRunExperienceSeed(previousRun) {
+            if (!previousRun) return null;
+            if (previousRun.goalCompleted || previousRun.score >= 75) {
+                return { skill: 2, mental: 1, text: `经验继承：上局${getCareerName(previousRun.career)}把目标跑通了，这次少走一点弯路，技术 +2，精神 +1` };
+            }
+            if (previousRun.endingType.includes('精神')) {
+                return { mental: 3, text: `经验继承：上局第${previousRun.day}天精神崩溃，这次你先给边界留了缓存，精神 +3` };
+            }
+            if (previousRun.endingType.includes('破产')) {
+                return { money: 3, text: `经验继承：上局现金流炸过一次，这次你先留了应急预算，存款 +3` };
+            }
+            return { skill: 1, mental: 1, text: `经验继承：上局第${previousRun.day}天的坑被写进脑内 README，技术 +1，精神 +1` };
+        }
+
+        function applyPreviousRunExperience(previousRun) {
+            const seed = getRunExperienceSeed(previousRun);
+            if (!seed) return;
+            if (Number.isFinite(Number(seed.skill))) stats.skill = Math.min(100, stats.skill + seed.skill);
+            if (Number.isFinite(Number(seed.mental))) stats.mental = Math.min(100, stats.mental + seed.mental);
+            if (Number.isFinite(Number(seed.money))) stats.money = Math.min(200, stats.money + seed.money);
+            if (Number.isFinite(Number(seed.ai))) stats.ai = Math.min(100, stats.ai + seed.ai);
+            addEvent(seed.text, 'special');
         }
 
         function clamp(value, min, max) {
@@ -842,6 +871,9 @@
             const allowedActions = Object.keys(getInitialActionCounts());
             if (typeof data.lastActionType === 'string' && allowedActions.includes(data.lastActionType)) {
                 base.lastActionType = data.lastActionType;
+            }
+            if (typeof data.previousActionType === 'string' && allowedActions.includes(data.previousActionType)) {
+                base.previousActionType = data.previousActionType;
             }
             if (Number.isFinite(Number(data.count))) {
                 base.count = Math.max(0, Math.min(3, Math.floor(Number(data.count))));
@@ -1146,6 +1178,13 @@
             shopItems.forEach(item => item.owned = false);
         }
 
+        function syncAchievementUnlocksFromGameData() {
+            const unlockedIds = Array.isArray(gameData.achievements) ? gameData.achievements : [];
+            achievements.forEach(achievement => {
+                achievement.unlocked = unlockedIds.includes(achievement.id);
+            });
+        }
+
         function restoreMeta(meta = {}) {
             resetMetaState();
             gameData = clonePlain(meta.gameData, getInitialGameData()) || getInitialGameData();
@@ -1159,7 +1198,7 @@
             gameData.deaths = Number.isFinite(Number(gameData.deaths)) ? Math.max(0, Math.floor(Number(gameData.deaths))) : 0;
             gameData.maxDay = Number.isFinite(Number(gameData.maxDay)) ? Math.max(0, Math.floor(Number(gameData.maxDay))) : 0;
 
-            const unlockedIds = Array.isArray(meta.achievements) ? meta.achievements : gameData.achievements;
+            const unlockedIds = Array.isArray(meta.achievements) && meta.achievements.length > 0 ? meta.achievements : gameData.achievements;
             unlockedIds.forEach(id => {
                 const achievement = achievements.find(a => a.id === id);
                 if (achievement) achievement.unlocked = true;
@@ -1598,6 +1637,7 @@
                 'ai': { skill: 65, mental: 80, money: 60, ai: 50, name: 'AI工程师' }
             };
             const selected = careers[career];
+            const previousRun = getLastRunSummary();
             stats = getInitialStats();
             stats.career = career;
             stats.skill = selected.skill;
@@ -1631,6 +1671,7 @@
             document.getElementById('player-career').textContent = selected.name;
             
             addEvent('欢迎来到2026年，你是一名30岁的' + selected.name, 'neutral');
+            applyPreviousRunExperience(previousRun);
             updateStats();
             const saved = saveGame({ silent: true });
             if (!saved) {
@@ -1995,7 +2036,38 @@
                 stats.mental = Math.min(100, stats.mental + 6);
                 addEvent('🛟 恢复触发：你在过载后主动停手，精神 +6', 'special');
             }
+            applySmallPrLoopFeedback(actionType);
             applyToolHabitFeedback(actionType);
+        }
+
+        function applySmallPrLoopFeedback(actionType) {
+            runGoalState = normalizeRunGoalState(runGoalState, stats);
+            const chain = normalizeRunGoalChain(runGoalState.chain);
+            const previousActionType = chain.lastActionType || chain.previousActionType;
+            const week = Math.max(1, Math.ceil(stats.day / 7));
+            const rewardKey = `pr-loop-week-${week}`;
+            const closesPrLoop = previousActionType === 'side-project' && ['learn-ai', 'rest', 'networking'].includes(actionType);
+
+            chain.previousActionType = actionType;
+            if (!closesPrLoop || chain.rewardKeys.includes(rewardKey)) {
+                runGoalState.chain = chain;
+                return;
+            }
+
+            chain.rewardKeys = Array.from(new Set([...chain.rewardKeys, rewardKey])).slice(-8);
+            runGoalState.chain = chain;
+            if (actionType === 'networking') {
+                buildProjectState = normalizeBuildProjectState({ ...buildProjectState, exposure: buildProjectState.exposure + 2, quality: buildProjectState.quality + 1 });
+                addEvent('🔀 小 PR 闭环：你把副项目拿去收反馈，曝光 +2，质量 +1', 'special');
+                return;
+            }
+            if (actionType === 'rest') {
+                buildProjectState = normalizeBuildProjectState({ ...buildProjectState, debt: buildProjectState.debt - 3, quality: buildProjectState.quality + 1 });
+                addEvent('🔀 小 PR 闭环：你没有硬推新功能，先把 PR 里的债收掉，技术债 -3，质量 +1', 'special');
+                return;
+            }
+            buildProjectState = normalizeBuildProjectState({ ...buildProjectState, debt: buildProjectState.debt - 2, quality: buildProjectState.quality + 2 });
+            addEvent('🔀 小 PR 闭环：你把新学的工具补进副项目 review，质量 +2，技术债 -2', 'special');
         }
 
         function applyResumeFollowup(actionType) {
@@ -2187,6 +2259,7 @@
                 : 1;
             const nextChain = {
                 ...chain,
+                previousActionType: actionType,
                 lastActionType: actionType,
                 count: nextCount
             };
@@ -2941,6 +3014,7 @@
                 runs: normalizeRunSummaries(preservedGameData.runs)
             };
             resetMetaState();
+            syncAchievementUnlocksFromGameData();
             safeRemoveStorageKey(SAVE_KEY, '清理主存档失败');
             safeRemoveStorageKey(SAVE_BACKUP_KEY, '清理备份存档失败');
             safeRemoveStorageKey(LEGACY_SAVE_KEY, '清理旧存档失败');

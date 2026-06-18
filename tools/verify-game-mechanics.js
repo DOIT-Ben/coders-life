@@ -274,6 +274,42 @@ function testRunGoalActionChainPersistsAndDoesNotRepeatRewards() {
   assert.equal(countGoalEvents(resetSave, /链式小挑战/), 2, 'claimed chain rewards should not repeat after reset and restore');
 }
 
+function testPreviousRunExperienceSeedsNewCareer() {
+  const previousRuns = [{
+    endingType: '精神崩溃结局',
+    score: 31,
+    title: '还在 debug 人生的人',
+    goalCompleted: false,
+    day: 18,
+    career: 'frontend'
+  }];
+  const context = createGameContext();
+
+  context.applySaveData({
+    schemaVersion: 2,
+    stats: { skill: 0, mental: 0, money: 0, ai: 0, day: 0, age: 30, career: '', items: [] },
+    actionCounts: {},
+    weeklyActionCounts: {},
+    gameData: {
+      achievements: [],
+      deaths: 1,
+      maxDay: 18,
+      endings: ['精神崩溃结局'],
+      runs: previousRuns
+    },
+    achievements: [],
+    shopItems: []
+  });
+
+  context.selectCareer('backend');
+  const save = parseSave(context);
+
+  assert.equal(save.schemaVersion, 2, 'cross-run experience should not bump SAVE_SCHEMA_VERSION');
+  assert.deepEqual(save.gameData.runs, previousRuns, 'starting a new career should keep previous run summaries');
+  assert(save.eventLog.some(entry => /经验继承/.test(entry.text || '')), 'new career should mention previous-run experience in the event log');
+  assert(save.stats.skill > 80 || save.stats.mental > 75 || save.stats.money > 55, 'previous-run experience should grant a tiny early-run buff');
+}
+
 function testEndingSummaryShowsScoreTitleAndGoalResult() {
   const context = createGameContext();
 
@@ -385,6 +421,7 @@ const tests = [
   testCoreActionSaveAndRestoreFlow,
   testRunGoalProgressFeedbackPersistsAcrossSaveRestore,
   testRunGoalActionChainPersistsAndDoesNotRepeatRewards,
+  testPreviousRunExperienceSeedsNewCareer,
   testEndingSummaryShowsScoreTitleAndGoalResult,
   testEndingSummaryShowsPreviousRunRecap,
   testEndedRunIgnoresStateChangingEntrypoints,

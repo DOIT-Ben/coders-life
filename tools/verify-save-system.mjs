@@ -599,6 +599,50 @@ function testRestartPreservesCareerMetaHistory() {
   assert.deepEqual(saved.gameData.runs, existingRuns, '重开局不应丢失历史 run summaries');
 }
 
+function testRestartMetaSaveKeepsAchievementUnlockState() {
+  const existingRuns = [{
+    endingType: '精神崩溃结局',
+    score: 31,
+    title: '还在 debug 人生的人',
+    goalCompleted: false,
+    day: 18,
+    career: 'frontend'
+  }];
+  const h = createHarness();
+  h.localStorage.setItem('codersLifeSave.v2', JSON.stringify({
+    schemaVersion: 2,
+    savedAt: new Date().toISOString(),
+    stats: { career: 'backend', day: 4, skill: 70, mental: 72, money: 55, ai: 36, age: 30, items: [] },
+    actionCounts: {},
+    gameData: {
+      achievements: ['first_day', 'survivor'],
+      deaths: 1,
+      maxDay: 18,
+      endings: ['精神崩溃结局'],
+      runs: existingRuns
+    },
+    achievements: ['first_day', 'survivor'],
+    shopItems: []
+  }));
+
+  assert.equal(h.context.loadGameFromStorage(), true);
+  h.context.restart();
+  const restartedRaw = h.localStorage.getItem('codersLifeSave.v2');
+  assert.ok(restartedRaw, '重开未选职业时应保存跨局元数据');
+  const restartedSave = JSON.parse(restartedRaw);
+
+  assert.deepEqual(restartedSave.achievements.sort(), ['first_day', 'survivor'].sort(), 'meta 存档顶层 achievements 不应被 resetMetaState 清空');
+  assert.deepEqual(restartedSave.gameData.achievements.sort(), ['first_day', 'survivor'].sort(), 'meta 存档 gameData achievements 应保留历史成就');
+
+  const reloaded = createHarness();
+  reloaded.localStorage.setItem('codersLifeSave.v2', restartedRaw);
+  assert.equal(reloaded.context.loadGameFromStorage(), false, '仅元数据存档不应进入 active run');
+  const reloadedSave = reloaded.context.buildSaveData();
+
+  assert.deepEqual([...reloadedSave.achievements].sort(), ['first_day', 'survivor'].sort(), '刷新后 unlocked 成就状态应能从 meta 存档恢复');
+  assert.deepEqual([...reloadedSave.gameData.achievements].sort(), ['first_day', 'survivor'].sort(), '刷新后 gameData 成就历史应保留');
+}
+
 function testRunSummariesPersistAfterRestartBeforeCareerSelection() {
   const existingRuns = [{
     endingType: '精神崩溃结局',
@@ -704,6 +748,7 @@ const tests = [
   testEndingPersistsCompactRunSummary,
   testRunSummariesSurviveRestoreAndRestart,
   testRestartPreservesCareerMetaHistory,
+  testRestartMetaSaveKeepsAchievementUnlockState,
   testRunSummariesPersistAfterRestartBeforeCareerSelection,
   testLegacySaveWithoutRunsRestoresWithEmptyRuns,
   testRunSummariesKeepLatestTen
