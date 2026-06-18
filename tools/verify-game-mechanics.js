@@ -238,6 +238,42 @@ function testRunGoalProgressFeedbackPersistsAcrossSaveRestore() {
   assert.equal(countGoalEvents(repeatedSave, /目标完成/), 1, 'goal completion event should not repeat when game over is checked again');
 }
 
+function testRunGoalActionChainPersistsAndDoesNotRepeatRewards() {
+  const context = createGameContext();
+
+  context.selectCareer('ai');
+  const beforeStats = { ...context.buildSaveData().stats };
+
+  context.action('learn-ai');
+  let save = parseSave(context);
+  assert.equal(countGoalEvents(save, /链式小挑战/), 0, 'first goal-related action should arm the chain without rewarding');
+  assert(save.runGoalState.chain && typeof save.runGoalState.chain === 'object', 'run goal state should persist a small action chain state');
+  assert.equal(save.runGoalState.chain.count, 1, 'first goal-related action should start a saved chain');
+
+  context.action('side-project');
+  save = parseSave(context);
+  assert.equal(countGoalEvents(save, /链式小挑战/), 1, 'second consecutive goal-related action should reward once');
+  assert.equal(save.runGoalState.chain.count, 2, 'second goal-related action should persist chain count');
+  assert(save.runGoalState.chain.rewardKeys.includes('2'), 'second-step reward should be marked as claimed');
+  assert(save.stats.skill >= beforeStats.skill + 1 || save.stats.ai >= beforeStats.ai + 1, 'chain reward should grant a small mainline stat boost');
+
+  const restored = createGameContext({ [saveKey]: JSON.stringify(save) });
+  assert.equal(restored.loadGameFromStorage(), true);
+  restored.action('learn-ai');
+  const afterRestoreSave = parseSave(restored);
+
+  assert.equal(countGoalEvents(afterRestoreSave, /链式小挑战/), 2, 'third consecutive goal-related action should unlock the next chain reward only');
+  assert(afterRestoreSave.runGoalState.chain.rewardKeys.includes('2'), 'restored run should remember the second-step reward');
+  assert(afterRestoreSave.runGoalState.chain.rewardKeys.includes('3'), 'third-step reward should be marked as claimed');
+
+  restored.action('rest');
+  restored.action('learn-ai');
+  const resetSave = parseSave(restored);
+
+  assert.equal(resetSave.runGoalState.chain.count, 1, 'non-goal action should reset the chain before a new goal action starts it again');
+  assert.equal(countGoalEvents(resetSave, /链式小挑战/), 2, 'claimed chain rewards should not repeat after reset and restore');
+}
+
 function testEndingSummaryShowsScoreTitleAndGoalResult() {
   const context = createGameContext();
 
@@ -263,6 +299,44 @@ function testEndingSummaryShowsScoreTitleAndGoalResult() {
   assert.match(reason, /本局称号：/, 'ending reason should include a run title');
   assert.match(reason, /目标：把长期 Build 做成作品/, 'ending reason should include the run goal result');
   assert.match(endingHtml, /完美结局/, 'ending panel should keep the existing ending type');
+}
+
+function testEndingSummaryShowsPreviousRunRecap() {
+  const context = createGameContext();
+
+  context.selectCareer('ai');
+  context.applySaveData({
+    schemaVersion: 2,
+    stats: { skill: 82, mental: 70, money: 130, ai: 85, day: 365, age: 42, career: 'ai', items: [] },
+    actionCounts: { 'learn-ai': 20, overtime: 4, rest: 18, interview: 3, 'side-project': 12, networking: 8 },
+    weeklyActionCounts: {},
+    runState: { focus: 74, fatigue: 24, boundaryScore: 76, lastBoundaryFeedbackDay: 350, lastCareerStageFeedbackDay: 360 },
+    buildProjectState: { progress: 100, quality: 78, debt: 22, exposure: 44, stage: 'portfolio', shipped: true, lastFeedbackDay: 350 },
+    dailyGoalState: { day: 365, targetAction: 'learn-ai', completed: true, streak: 8, totalCompleted: 80 },
+    runGoalState: { id: 'ship_portfolio', title: '把长期 Build 做成作品', description: '发布一个能展示的长期项目', createdDay: 0 },
+    gameData: {
+      achievements: [],
+      deaths: 1,
+      maxDay: 18,
+      endings: ['精神崩溃结局'],
+      runs: [{
+        endingType: '精神崩溃结局',
+        score: 31,
+        title: '还在 debug 人生的人',
+        goalCompleted: false,
+        day: 18,
+        career: 'frontend'
+      }]
+    },
+    shopItems: []
+  });
+
+  context.checkGameOver();
+  const reason = context.document.getElementById('game-over-reason').textContent;
+  const saved = parseSave(context);
+
+  assert.match(reason, /上局复盘：第18天前端工程师，以精神崩溃结局结束，评分31\/100。/, 'ending reason should show one lightweight previous-run recap');
+  assert.equal(saved.schemaVersion, 2, 'showing previous-run recap should not bump SAVE_SCHEMA_VERSION');
 }
 
 function testEndedRunIgnoresStateChangingEntrypoints() {
@@ -310,7 +384,9 @@ function testCorruptMainSaveIsQuarantinedDuringNewRun() {
 const tests = [
   testCoreActionSaveAndRestoreFlow,
   testRunGoalProgressFeedbackPersistsAcrossSaveRestore,
+  testRunGoalActionChainPersistsAndDoesNotRepeatRewards,
   testEndingSummaryShowsScoreTitleAndGoalResult,
+  testEndingSummaryShowsPreviousRunRecap,
   testEndedRunIgnoresStateChangingEntrypoints,
   testCorruptMainSaveIsQuarantinedDuringNewRun
 ];

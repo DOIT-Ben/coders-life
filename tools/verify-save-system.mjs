@@ -561,6 +561,44 @@ function testRunSummariesSurviveRestoreAndRestart() {
   assert.deepEqual(saved.gameData.runs, existingRuns, '读档后重开局不应丢失历史 run summaries');
 }
 
+function testRestartPreservesCareerMetaHistory() {
+  const existingRuns = [{
+    endingType: '精神崩溃结局',
+    score: 31,
+    title: '还在 debug 人生的人',
+    goalCompleted: false,
+    day: 18,
+    career: 'frontend'
+  }];
+  const h = createHarness();
+  h.localStorage.setItem('codersLifeSave.v2', JSON.stringify({
+    schemaVersion: 2,
+    savedAt: new Date().toISOString(),
+    stats: { career: 'backend', day: 4, skill: 70, mental: 72, money: 55, ai: 36, age: 30, items: [] },
+    actionCounts: {},
+    gameData: {
+      achievements: ['first_day', 'survivor'],
+      deaths: 2,
+      maxDay: 123,
+      endings: ['精神崩溃结局', '破产结局'],
+      runs: existingRuns
+    },
+    achievements: ['first_day', 'survivor'],
+    shopItems: []
+  }));
+
+  assert.equal(h.context.loadGameFromStorage(), true);
+  h.context.restart();
+  h.context.selectCareer('ai');
+  const saved = readSave(h);
+
+  assert.deepEqual(saved.gameData.achievements.sort(), ['first_day', 'survivor'].sort(), '重开局不应清空跨局成就记录');
+  assert.deepEqual(saved.gameData.endings.sort(), ['精神崩溃结局', '破产结局'].sort(), '重开局不应清空已见结局记录');
+  assert.equal(saved.gameData.deaths, 2, '重开局不应清空历史死亡次数');
+  assert.equal(saved.gameData.maxDay, 123, '重开局不应清空历史最大天数');
+  assert.deepEqual(saved.gameData.runs, existingRuns, '重开局不应丢失历史 run summaries');
+}
+
 function testRunSummariesPersistAfterRestartBeforeCareerSelection() {
   const existingRuns = [{
     endingType: '精神崩溃结局',
@@ -665,6 +703,7 @@ const tests = [
   testPerfectEndingDoesNotIncrementDeaths,
   testEndingPersistsCompactRunSummary,
   testRunSummariesSurviveRestoreAndRestart,
+  testRestartPreservesCareerMetaHistory,
   testRunSummariesPersistAfterRestartBeforeCareerSelection,
   testLegacySaveWithoutRunsRestoresWithEmptyRuns,
   testRunSummariesKeepLatestTen

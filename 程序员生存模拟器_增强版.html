@@ -653,12 +653,16 @@
 
         function getRunGoalForCareer(career) {
             const goals = {
-                frontend: { id: 'ship_portfolio', title: '把作品做成作品集', description: '发布长期 Build，并让曝光和质量都站得住', createdDay: 0, halfwayFeedbackShown: false, completionFeedbackShown: false },
-                backend: { id: 'pay_down_debt', title: '别让技术债反向管理你', description: '把长期 Build 的技术债控制在可维护范围', createdDay: 0, halfwayFeedbackShown: false, completionFeedbackShown: false },
-                fullstack: { id: 'balanced_builder', title: '全栈但不全栈崩溃', description: '同时守住精神、存款和长期 Build 进度', createdDay: 0, halfwayFeedbackShown: false, completionFeedbackShown: false },
-                ai: { id: 'ai_compound', title: '把 AI 练成复利', description: '把 AI 熟练度、技术和长期项目一起推上去', createdDay: 0, halfwayFeedbackShown: false, completionFeedbackShown: false }
+                frontend: { id: 'ship_portfolio', title: '把作品做成作品集', description: '发布长期 Build，并让曝光和质量都站得住', createdDay: 0, halfwayFeedbackShown: false, completionFeedbackShown: false, chain: getInitialRunGoalChain() },
+                backend: { id: 'pay_down_debt', title: '别让技术债反向管理你', description: '把长期 Build 的技术债控制在可维护范围', createdDay: 0, halfwayFeedbackShown: false, completionFeedbackShown: false, chain: getInitialRunGoalChain() },
+                fullstack: { id: 'balanced_builder', title: '全栈但不全栈崩溃', description: '同时守住精神、存款和长期 Build 进度', createdDay: 0, halfwayFeedbackShown: false, completionFeedbackShown: false, chain: getInitialRunGoalChain() },
+                ai: { id: 'ai_compound', title: '把 AI 练成复利', description: '把 AI 熟练度、技术和长期项目一起推上去', createdDay: 0, halfwayFeedbackShown: false, completionFeedbackShown: false, chain: getInitialRunGoalChain() }
             };
             return { ...(goals[career] || goals.fullstack) };
+        }
+
+        function getInitialRunGoalChain() {
+            return { lastActionType: '', count: 0, rewardKeys: [] };
         }
 
         function getInitialRunGoalState() {
@@ -832,6 +836,22 @@
             return base;
         }
 
+        function normalizeRunGoalChain(value) {
+            const base = getInitialRunGoalChain();
+            const data = value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+            const allowedActions = Object.keys(getInitialActionCounts());
+            if (typeof data.lastActionType === 'string' && allowedActions.includes(data.lastActionType)) {
+                base.lastActionType = data.lastActionType;
+            }
+            if (Number.isFinite(Number(data.count))) {
+                base.count = Math.max(0, Math.min(3, Math.floor(Number(data.count))));
+            }
+            if (Array.isArray(data.rewardKeys)) {
+                base.rewardKeys = Array.from(new Set(data.rewardKeys.filter(key => typeof key === 'string'))).slice(-6);
+            }
+            return base;
+        }
+
         function normalizeRunGoalState(value, sourceStats = stats) {
             const fallback = getRunGoalForCareer(sourceStats?.career || stats?.career || 'fullstack');
             const data = value && typeof value === 'object' && !Array.isArray(value) ? value : {};
@@ -841,7 +861,8 @@
                 description: typeof data.description === 'string' && data.description ? data.description : fallback.description,
                 createdDay: Number.isFinite(Number(data.createdDay)) ? Math.max(0, Math.floor(Number(data.createdDay))) : 0,
                 halfwayFeedbackShown: data.halfwayFeedbackShown === true,
-                completionFeedbackShown: data.completionFeedbackShown === true
+                completionFeedbackShown: data.completionFeedbackShown === true,
+                chain: normalizeRunGoalChain(data.chain || fallback.chain)
             };
         }
 
@@ -1655,7 +1676,7 @@
             applyFunLoopFeedback(type);
             applyResumeFollowup(type);
             applyBuildProject(type);
-            applyRunGoalFeedback();
+            applyRunGoalFeedback(type);
             addCareerStageFeedback();
 
             if (stats.day % 7 === 0) {
@@ -2142,10 +2163,64 @@
             return clamp(checks[goal.id] || 0, 0, 100);
         }
 
-        function applyRunGoalFeedback() {
+        function getRunGoalChainActions(goalId) {
+            const actions = {
+                ship_portfolio: ['side-project', 'networking', 'learn-ai'],
+                pay_down_debt: ['learn-ai', 'rest', 'side-project'],
+                balanced_builder: ['side-project', 'rest', 'networking'],
+                ai_compound: ['learn-ai', 'side-project']
+            };
+            return actions[goalId] || ['side-project', 'learn-ai', 'rest'];
+        }
+
+        function applyRunGoalChainFeedback(actionType, goal) {
+            const allowedActions = getRunGoalChainActions(goal.id);
+            const chain = normalizeRunGoalChain(runGoalState.chain);
+
+            if (!allowedActions.includes(actionType)) {
+                runGoalState.chain = { ...chain, lastActionType: '', count: 0 };
+                return;
+            }
+
+            const nextCount = chain.lastActionType && allowedActions.includes(chain.lastActionType)
+                ? Math.min(3, chain.count + 1)
+                : 1;
+            const nextChain = {
+                ...chain,
+                lastActionType: actionType,
+                count: nextCount
+            };
+            runGoalState.chain = nextChain;
+
+            const rewardKey = String(nextCount);
+            if (![2, 3].includes(nextCount) || nextChain.rewardKeys.includes(rewardKey)) return;
+
+            nextChain.rewardKeys = Array.from(new Set([...nextChain.rewardKeys, rewardKey])).slice(-6);
+            if (nextCount === 2) {
+                stats.skill = Math.min(100, stats.skill + 1);
+                if (goal.id === 'ai_compound') stats.ai = Math.min(100, stats.ai + 1);
+                addEvent(`🔗 链式小挑战：你连续围绕“${goal.title}”行动了 2 次，技术 +1${goal.id === 'ai_compound' ? '，AI熟练度 +1' : ''}`, 'special');
+                return;
+            }
+
+            stats.mental = Math.min(100, stats.mental + 1);
+            if (goal.id === 'pay_down_debt') {
+                buildProjectState = normalizeBuildProjectState({ ...buildProjectState, debt: buildProjectState.debt - 3 });
+                addEvent(`🔗 链式小挑战：你把“${goal.title}”连成 3 步，精神 +1，技术债 -3`, 'special');
+                return;
+            }
+            buildProjectState = normalizeBuildProjectState({ ...buildProjectState, progress: buildProjectState.progress + 2 });
+            addEvent(`🔗 链式小挑战：你把“${goal.title}”连成 3 步，精神 +1，长期项目进度 +2`, 'special');
+        }
+
+        function applyRunGoalFeedback(actionType = '') {
             runGoalState = normalizeRunGoalState(runGoalState, stats);
             const goal = getRunGoalResult();
             const progress = getRunGoalProgressPercent(goal);
+
+            if (actionType) {
+                applyRunGoalChainFeedback(actionType, goal);
+            }
 
             if (!runGoalState.halfwayFeedbackShown && progress >= 50) {
                 runGoalState.halfwayFeedbackShown = true;
@@ -2176,11 +2251,19 @@
             return '被需求追着跑的脆皮工程师';
         }
 
+        function getPreviousRunRecapText() {
+            const previousRuns = normalizeRunSummaries(gameData.runs);
+            const previousRun = previousRuns[previousRuns.length - 1];
+            if (!previousRun) return '';
+            return `上局复盘：第${previousRun.day}天${getCareerName(previousRun.career)}，以${previousRun.endingType}结束，评分${previousRun.score}/100。`;
+        }
+
         function buildEndingSummary(reason) {
             const score = calculateRunScore();
             const goal = getRunGoalResult();
             const projectText = `长期 Build：进度${Math.round(buildProjectState.progress)}%，质量${Math.round(buildProjectState.quality)}，债务${Math.round(buildProjectState.debt)}`;
-            return `${reason} 本局评分：${score}/100。本局称号：${getRunTitle(score)}。${goal.text}。${projectText}。`;
+            const previousRunText = getPreviousRunRecapText();
+            return `${reason} 本局评分：${score}/100。本局称号：${getRunTitle(score)}。${goal.text}。${projectText}。${previousRunText}`;
         }
 
         function recordRunSummary(endingType) {
@@ -2844,7 +2927,19 @@
             resumeReminderText = '';
             isGameOver = false;
             gameOverState = null;
-            gameData = { ...getInitialGameData(), runs: normalizeRunSummaries(gameData.runs) };
+            const preservedGameData = clonePlain(gameData, getInitialGameData()) || getInitialGameData();
+            gameData = {
+                ...getInitialGameData(),
+                achievements: Array.isArray(preservedGameData.achievements)
+                    ? Array.from(new Set(preservedGameData.achievements.filter(id => typeof id === 'string')))
+                    : [],
+                deaths: Number.isFinite(Number(preservedGameData.deaths)) ? Math.max(0, Math.floor(Number(preservedGameData.deaths))) : 0,
+                maxDay: Number.isFinite(Number(preservedGameData.maxDay)) ? Math.max(0, Math.floor(Number(preservedGameData.maxDay))) : 0,
+                endings: Array.isArray(preservedGameData.endings)
+                    ? Array.from(new Set(preservedGameData.endings.filter(ending => typeof ending === 'string')))
+                    : [],
+                runs: normalizeRunSummaries(preservedGameData.runs)
+            };
             resetMetaState();
             safeRemoveStorageKey(SAVE_KEY, '清理主存档失败');
             safeRemoveStorageKey(SAVE_BACKUP_KEY, '清理备份存档失败');
