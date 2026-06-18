@@ -68,6 +68,7 @@ function createLocalStorage(seed = {}, options = {}) {
     },
     setItem(key, value) {
       if (options.throwOnSet?.has?.(key)) throw new Error(`setItem failed for ${key}`);
+      if (options.throwOnSetAfterFirst?.has?.(key) && store.has(key)) throw new Error(`setItem failed for ${key}`);
       store.set(key, String(value));
     },
     removeItem(key) {
@@ -690,6 +691,24 @@ function testStorageSetFailureMakesSaveFailWithoutCrashing() {
   );
 }
 
+function testAutoSaveFailureShowsVisibleNonPersistentWarning() {
+  const context = createGameContext({}, true, { storage: { throwOnSetAfterFirst: new Set([SAVE_KEY]) } });
+
+  context.selectCareer('backend');
+  const savedBeforeAction = JSON.parse(context.localStorage.getItem(SAVE_KEY));
+  context.action('rest');
+  const savedAfterAction = JSON.parse(context.localStorage.getItem(SAVE_KEY));
+  const visibleLogText = context.document.getElementById('event-log').children.map(child => child.textContent).join('\n');
+
+  assert.equal(savedAfterAction.stats.day, savedBeforeAction.stats.day, 'failed autosave should keep the last successful save payload unchanged');
+  assert.match(visibleLogText, /自动保存失败|保存失败/, 'failed autosave should show a visible warning');
+  assert.equal(
+    context.buildSaveData().eventLog.some(entry => /自动保存失败|保存失败/.test(entry.text)),
+    false,
+    'autosave warning should stay non-persistent to avoid polluting real history'
+  );
+}
+
 function testStorageRemoveFailureDoesNotCrashRestart() {
   const main = JSON.stringify({
     schemaVersion: 2,
@@ -753,6 +772,7 @@ const tests = [
   testRestartKeepsSaveSlotsWhenUserCancels,
   testStorageGetFailureDoesNotCrashResumeProbe,
   testStorageSetFailureMakesSaveFailWithoutCrashing,
+  testAutoSaveFailureShowsVisibleNonPersistentWarning,
   testStorageRemoveFailureDoesNotCrashRestart,
   testRestartContinuesClearingOtherSaveSlotsWhenOneRemoveFails
 ];

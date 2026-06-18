@@ -230,6 +230,34 @@ function testResumeReminderIncludesRunMemorySnapshot() {
   assert.ok(reminderText.includes('建议下一步：休息'), 'high fatigue should recommend recovery before more work');
 }
 
+function testResumeReminderIncludesRunGoalProgressForOldSaves() {
+  const save = JSON.stringify({
+    schemaVersion: 2,
+    savedAt: '2026-06-18T00:00:00.000Z',
+    stats: { career: 'ai', day: 36, skill: 70, mental: 66, money: 74, ai: 60, age: 30, items: [] },
+    actionCounts: { 'learn-ai': 6, overtime: 1, rest: 4, interview: 0, 'side-project': 6, networking: 1 },
+    weeklyActionCounts: { 'learn-ai': 2, overtime: 0, rest: 1, interview: 0, 'side-project': 2, networking: 0 },
+    runState: { focus: 70, fatigue: 34, boundaryScore: 68, lastBoundaryFeedbackDay: 28, lastCareerStageFeedbackDay: 20 },
+    buildProjectState: { progress: 28, quality: 64, debt: 22, exposure: 10, stage: 'usable', shipped: false, lastFeedbackDay: 28 },
+    runGoalState: { id: 'ai_compound', title: '把 AI 练成复利', description: '把 AI 熟练度、技术和长期项目一起推上去', createdDay: 0 },
+    eventLog: [
+      { day: 36, text: '你把 AI 工具接进了副项目的验收流程', type: 'special', createdAt: 1 }
+    ]
+  });
+  const context = createGameContext({ [SAVE_KEY]: save });
+
+  assert.equal(context.loadGameFromStorage(), true);
+  const restoredSave = context.buildSaveData();
+  const reminderText = context.document.getElementById('event-log').children[0].textContent;
+
+  assert.equal(restoredSave.schemaVersion, 2, 'run goal resume hints should not bump save schema');
+  assert.equal(Object.hasOwn(restoredSave, 'runGoalResumeState'), false, 'run goal resume hints should not add a new top-level save field');
+  assert.ok(reminderText.includes('目标：把 AI 练成复利'), 'resume reminder should mention the active run goal title');
+  assert.match(reminderText, /目标进度\d+%/, 'resume reminder should include a compact run goal progress percentage');
+  assert.ok(restoredSave.resumeContext.runGoalTitle.includes('把 AI 练成复利'), 'resume context should persist the goal title in existing resumeContext');
+  assert.equal(typeof restoredSave.resumeContext.runGoalProgress, 'number', 'resume context should persist the computed goal progress');
+}
+
 function testFullEventLogRestoreDoesNotDropRealHistory() {
   const eventLog = Array.from({ length: 80 }, (_, index) => ({
     day: 80 - index,
@@ -359,6 +387,7 @@ const tests = [
   testSaveCapturesResumeContextWithoutSchemaBump,
   testOldSaveGetsResumeReminderFromExistingState,
   testResumeReminderIncludesRunMemorySnapshot,
+  testResumeReminderIncludesRunGoalProgressForOldSaves,
   testFullEventLogRestoreDoesNotDropRealHistory,
   testFollowingResumeSuggestionCreatesOneShotFeedback,
   testConsumedResumeSuggestionDoesNotRepeatAfterReload,

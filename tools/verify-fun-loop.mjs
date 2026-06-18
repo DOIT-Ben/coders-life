@@ -347,6 +347,49 @@ function testSmallPrLoopClosesOncePerWeekAndSurvivesRestore() {
   assert.ok(afterRestore.runGoalState.chain.prLoopRewardKeys.includes('pr-loop-week-1'), 'restored run should keep the claimed PR loop reward key');
 }
 
+function testPreviousRunRecoveryRelayRewardsOnceAndPersists() {
+  const previousRuns = [{
+    endingType: '精神崩溃结局',
+    score: 31,
+    title: '还在 debug 人生的人',
+    goalCompleted: false,
+    day: 18,
+    career: 'frontend'
+  }];
+  const context = createGameContext();
+
+  context.applySaveData({
+    schemaVersion: 2,
+    stats: { skill: 0, mental: 0, money: 0, ai: 0, day: 0, age: 30, career: '', items: [] },
+    actionCounts: {},
+    weeklyActionCounts: {},
+    gameData: { achievements: [], deaths: 1, maxDay: 18, endings: ['精神崩溃结局'], runs: previousRuns },
+    achievements: [],
+    shopItems: []
+  });
+  context.selectCareer('backend');
+  context.action('rest');
+  let saved = parseSave(context);
+  assert.equal(saved.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('复盘接力')).length, 0, 'first recovery action should not complete the relay yet');
+
+  context.action('rest');
+  saved = parseSave(context);
+
+  assert.equal(saved.schemaVersion, 2, 'previous-run recovery relay should not bump save schema');
+  assert.equal(Object.hasOwn(saved, 'previousRunRecoveryState'), false, 'previous-run recovery relay should not add a top-level save field');
+  assert.equal(saved.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('复盘接力')).length, 1, 'second matching action should complete the relay once');
+  assert.ok(saved.runGoalState.chain.rewardKeys.includes('previous-run-recovery'), 'relay reward key should persist in existing run goal chain');
+  assert.ok(saved.stats.mental >= 82, 'mental-collapse recovery relay should grant a small mental reward');
+
+  const restored = createGameContext({ [SAVE_KEY]: JSON.stringify(saved) });
+  assert.equal(restored.loadGameFromStorage(), true);
+  restored.action('rest');
+  const afterRestore = parseSave(restored);
+
+  assert.equal(afterRestore.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('复盘接力')).length, 1, 'claimed relay reward should not repeat after restore');
+  assert.ok(afterRestore.runGoalState.chain.rewardKeys.includes('previous-run-recovery'), 'relay reward key should survive restore');
+}
+
 const tests = [
   testLearningRhythmAddsSmallFeedbackAndPersists,
   testRestAfterOverloadAddsRecoveryFeedbackWithoutNewSaveSchema,
@@ -354,7 +397,8 @@ const tests = [
   testToolHabitOveruseCreatesBackfireFeedbackAndPersists,
   testLongBuildDebtCanBePaidDownOncePerDayAndPersists,
   testShippedBuildNetworkingTurnsExposureIntoFeedbackWithoutReshipping,
-  testSmallPrLoopClosesOncePerWeekAndSurvivesRestore
+  testSmallPrLoopClosesOncePerWeekAndSurvivesRestore,
+  testPreviousRunRecoveryRelayRewardsOnceAndPersists
 ];
 
 for (const test of tests) {

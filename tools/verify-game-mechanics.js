@@ -600,6 +600,30 @@ function testEndedRunIgnoresStateChangingEntrypoints() {
   assert.deepEqual(afterEntrypoints.gameOverState, endedSave.gameOverState, 'ended run should keep original ending state');
 }
 
+function testEndedRunShowsDisabledShopButtons() {
+  const context = createGameContext();
+
+  context.selectCareer('ai');
+  context.applySaveData({
+    schemaVersion: 2,
+    stats: { skill: 82, mental: 70, money: 130, ai: 85, day: 365, age: 31, career: 'ai', items: [] },
+    actionCounts: { 'learn-ai': 20, overtime: 4, rest: 18, interview: 3, 'side-project': 12, networking: 8 },
+    weeklyActionCounts: {},
+    runState: { focus: 74, fatigue: 24, boundaryScore: 76, lastBoundaryFeedbackDay: 350, lastCareerStageFeedbackDay: 360 },
+    buildProjectState: { progress: 100, quality: 78, debt: 22, exposure: 44, stage: 'portfolio', shipped: true, lastFeedbackDay: 350 },
+    dailyGoalState: { day: 365, targetAction: 'learn-ai', completed: true, streak: 8, totalCompleted: 80 },
+    runGoalState: { id: 'ai_compound', title: '把 AI 练成复利', description: '把 AI 熟练度、技术和长期项目一起推上去', createdDay: 0 },
+    gameData: { achievements: [], deaths: 0, maxDay: 364, endings: [], runs: [] },
+    shopItems: []
+  });
+  context.checkGameOver();
+  context.showShop();
+
+  const shopHtml = context.document.getElementById('shop-grid').children.map(child => child.innerHTML).join('\n');
+  assert.match(shopHtml, /本局已结束/, 'ended run shop should explain that buying is unavailable');
+  assert.equal((shopHtml.match(/disabled/g) || []).length, 6, 'ended run shop should render every buy button disabled');
+}
+
 function testCorruptMainSaveIsQuarantinedDuringNewRun() {
   const context = createGameContext({ [saveKey]: '{bad-json' });
 
@@ -625,6 +649,7 @@ const tests = [
   testEndingSummaryShowsPreviousRunRecap,
   testEndingSummaryComparesHistoricalBestScore,
   testEndedRunIgnoresStateChangingEntrypoints,
+  testEndedRunShowsDisabledShopButtons,
   testCorruptMainSaveIsQuarantinedDuringNewRun
 ];
 

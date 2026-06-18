@@ -1108,6 +1108,8 @@
                 .filter(entry => !isResumeSystemEvent(entry.text));
             const sourceBuildProjectState = normalizeBuildProjectState(source.buildProjectState || buildProjectState);
             const sourceRunState = normalizeRunState(source.runState || runState);
+            const sourceRunGoalState = normalizeRunGoalState(source.runGoalState || runGoalState, sourceStats);
+            const runGoalProgress = getRunGoalProgressPercent(sourceRunGoalState);
             const weakest = getResumeStatMeta(sourceStats);
             const lastEventText = sourceEvents[0]?.text || '';
             const riskNotes = getResumeRiskNotes(sourceStats, sourceBuildProjectState);
@@ -1115,13 +1117,14 @@
             const projectNote = sourceBuildProjectState.progress > 0
                 ? `长期项目进度${Math.round(sourceBuildProjectState.progress)}%`
                 : '';
+            const goalNote = sourceRunGoalState.title ? `目标：${sourceRunGoalState.title}，目标进度${runGoalProgress}%` : '';
             const memoryNotes = getRunMemoryNotes({
                 actionCounts: source.actionCounts || actionCounts,
                 weeklyActionCounts: source.weeklyActionCounts || weeklyActionCounts,
                 runState: sourceRunState,
                 buildProjectState: sourceBuildProjectState
             });
-            const noteText = [projectNote, ...memoryNotes, ...riskNotes].filter(Boolean).join('，');
+            const noteText = [projectNote, goalNote, ...memoryNotes, ...riskNotes].filter(Boolean).join('，');
             const summary = `第${sourceStats.day}天 ${getCareerName(sourceStats.career)}，${weakest.label}${Math.round(weakest.value)}，上次停在“${lastEventText || '暂无事件'}”`;
 
             return {
@@ -1133,6 +1136,8 @@
                 lastEventText,
                 projectProgress: Math.round(sourceBuildProjectState.progress),
                 projectDebt: Math.round(sourceBuildProjectState.debt),
+                runGoalTitle: sourceRunGoalState.title || '',
+                runGoalProgress,
                 summary,
                 noteText,
                 nextSuggestion
@@ -1152,6 +1157,8 @@
                 lastEventText: typeof data.lastEventText === 'string' ? data.lastEventText : fallback.lastEventText,
                 projectProgress: Number.isFinite(Number(data.projectProgress)) ? Math.max(0, Math.min(100, Math.round(Number(data.projectProgress)))) : fallback.projectProgress,
                 projectDebt: Number.isFinite(Number(data.projectDebt)) ? Math.max(0, Math.min(100, Math.round(Number(data.projectDebt)))) : fallback.projectDebt,
+                runGoalTitle: typeof data.runGoalTitle === 'string' && data.runGoalTitle ? data.runGoalTitle : fallback.runGoalTitle,
+                runGoalProgress: Number.isFinite(Number(data.runGoalProgress)) ? Math.max(0, Math.min(100, Math.round(Number(data.runGoalProgress)))) : fallback.runGoalProgress,
                 summary: typeof data.summary === 'string' && data.summary ? data.summary : fallback.summary,
                 noteText: typeof data.noteText === 'string' ? data.noteText : fallback.noteText,
                 nextSuggestion: typeof data.nextSuggestion === 'string' && data.nextSuggestion ? data.nextSuggestion : fallback.nextSuggestion
@@ -2081,7 +2088,50 @@
                 addEvent('🛟 恢复触发：你在过载后主动停手，精神 +6', 'special');
             }
             applySmallPrLoopFeedback(actionType);
+            applyPreviousRunRecoveryRelay(actionType);
             applyToolHabitFeedback(actionType);
+        }
+
+        function applyPreviousRunRecoveryRelay(actionType) {
+            if (stats.day > 10) return;
+            const previousRun = getLastRunSummary();
+            if (!previousRun) return;
+            runGoalState = normalizeRunGoalState(runGoalState, stats);
+            const chain = normalizeRunGoalChain(runGoalState.chain);
+            const rewardKey = 'previous-run-recovery';
+            if (chain.rewardKeys.includes(rewardKey)) {
+                runGoalState.chain = chain;
+                return;
+            }
+
+            if (previousRun.endingType.includes('精神') && actionCounts.rest >= 2) {
+                stats.mental = Math.min(100, stats.mental + 4);
+                chain.rewardKeys = Array.from(new Set([...chain.rewardKeys, rewardKey])).slice(-6);
+                runGoalState.chain = chain;
+                addEvent('🧾 复盘接力：上局倒在精神透支，这局你先把人救回来，精神 +4', 'special');
+                return;
+            }
+            if (previousRun.endingType.includes('破产') && actionCounts.interview >= 2) {
+                stats.money = Math.min(200, stats.money + 4);
+                chain.rewardKeys = Array.from(new Set([...chain.rewardKeys, rewardKey])).slice(-6);
+                runGoalState.chain = chain;
+                addEvent('🧾 复盘接力：上局现金流断了，这局你先打开市场窗口，存款 +4', 'special');
+                return;
+            }
+            if (previousRun.endingType.includes('淘汰') && actionCounts['learn-ai'] >= 2) {
+                stats.ai = Math.min(100, stats.ai + 4);
+                chain.rewardKeys = Array.from(new Set([...chain.rewardKeys, rewardKey])).slice(-6);
+                runGoalState.chain = chain;
+                addEvent('🧾 复盘接力：上局被 AI 追上，这局你把工具练进日课，AI熟练度 +4', 'special');
+                return;
+            }
+            if ((previousRun.goalCompleted || previousRun.score >= 75) && stats.day <= 10 && buildProjectState.progress >= 20) {
+                stats.skill = Math.min(100, stats.skill + 1);
+                buildProjectState = normalizeBuildProjectState({ ...buildProjectState, progress: buildProjectState.progress + 2 });
+                chain.rewardKeys = Array.from(new Set([...chain.rewardKeys, rewardKey])).slice(-6);
+                runGoalState.chain = chain;
+                addEvent('🧾 复盘接力：你没有只复刻结局，而是更早把长期 Build 接上，技术 +1，长期项目进度 +2', 'special');
+            }
         }
 
         function applySmallPrLoopFeedback(actionType) {
@@ -2509,12 +2559,14 @@
             shopItems.forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'shop-item' + (item.owned ? ' owned' : '');
+                const buttonDisabled = item.owned || isGameOver;
+                const buttonText = item.owned ? '已购买' : (isGameOver ? '本局已结束' : '购买');
                 div.innerHTML = `
                     <div class="shop-item-name">${item.name}</div>
                     <div class="shop-item-desc">${item.desc}</div>
                     <div class="shop-item-price">💰 ${item.price}万</div>
-                    <button onclick="buyItem('${item.id}')" ${item.owned ? 'disabled' : ''}>
-                        ${item.owned ? '已购买' : '购买'}
+                    <button onclick="buyItem('${item.id}')" ${buttonDisabled ? 'disabled' : ''}>
+                        ${buttonText}
                     </button>
                 `;
                 grid.appendChild(div);
@@ -2671,7 +2723,9 @@
 
         function autoSaveGame() {
             if (!hasActiveRun()) return;
-            saveGame({ silent: true });
+            if (!saveGame({ silent: true })) {
+                addEvent('💾 自动保存失败：当前进度暂未写入，下次打开可能回到上一版', 'bad', { persist: false });
+            }
         }
 
         function loadGame() {
@@ -3023,6 +3077,7 @@
                     weeklyActionCounts,
                     runState,
                     buildProjectState,
+                    runGoalState,
                     resumeFollowupState
                 });
                 renderEventLog();
