@@ -128,7 +128,7 @@ function createStableMath() {
   return math;
 }
 
-function createGameContext(seedStorage = {}) {
+function createGameContext(seedStorage = {}, overrides = {}) {
   const html = fs.readFileSync(htmlPath, 'utf8');
   const popupJs = fs.readFileSync(popupPath, 'utf8');
   const context = {
@@ -141,7 +141,7 @@ function createGameContext(seedStorage = {}) {
     localStorage: createLocalStorage(seedStorage),
     console,
     Date,
-    Math: createStableMath(),
+    Math: overrides.Math || createStableMath(),
     JSON,
     setTimeout,
     clearTimeout
@@ -307,7 +307,121 @@ function testPreviousRunExperienceSeedsNewCareer() {
   assert.equal(save.schemaVersion, 2, 'cross-run experience should not bump SAVE_SCHEMA_VERSION');
   assert.deepEqual(save.gameData.runs, previousRuns, 'starting a new career should keep previous run summaries');
   assert(save.eventLog.some(entry => /经验继承/.test(entry.text || '')), 'new career should mention previous-run experience in the event log');
+  assert(save.eventLog.some(entry => /本局挑战/.test(entry.text || '') && /31/.test(entry.text || '') && /精神崩溃/.test(entry.text || '')), 'new career should turn previous run into a compact challenge prompt');
   assert(save.stats.skill > 80 || save.stats.mental > 75 || save.stats.money > 55, 'previous-run experience should grant a tiny early-run buff');
+}
+
+function testPreviousRunChallengeUsesReachableFullScoreText() {
+  const previousRuns = [{
+    endingType: '完美结局',
+    score: 100,
+    title: '满分交付者',
+    goalCompleted: true,
+    day: 365,
+    career: 'ai'
+  }];
+  const context = createGameContext();
+
+  context.applySaveData({
+    schemaVersion: 2,
+    stats: { skill: 0, mental: 0, money: 0, ai: 0, day: 0, age: 30, career: '', items: [] },
+    actionCounts: {},
+    weeklyActionCounts: {},
+    gameData: { achievements: [], deaths: 0, maxDay: 365, endings: ['完美结局'], runs: previousRuns },
+    achievements: [],
+    shopItems: []
+  });
+
+  context.selectCareer('backend');
+  const save = parseSave(context);
+  const challenge = save.eventLog.find(entry => /本局挑战/.test(entry.text || ''))?.text || '';
+
+  assert(challenge, 'new career should still get a challenge prompt after a 100-score run');
+  assert(!/超过 100 分/.test(challenge), 'full-score challenge should not ask the player to exceed the score cap');
+  assert(/追平满分|更早/.test(challenge), 'full-score challenge should switch to a reachable target');
+}
+
+function testRestartPreservesMetaOnlyAchievements() {
+  const context = createGameContext();
+
+  context.applySaveData({
+    schemaVersion: 2,
+    stats: { skill: 0, mental: 0, money: 0, ai: 0, day: 0, age: 30, career: '', items: [] },
+    actionCounts: {},
+    weeklyActionCounts: {},
+    gameData: { achievements: ['first_day', 'survivor'], deaths: 0, maxDay: 100, endings: [], runs: [] },
+    achievements: ['first_day', 'survivor'],
+    shopItems: []
+  });
+  context.restart();
+
+  const raw = context.localStorage.getItem(saveKey);
+  assert(raw, 'restart should keep a meta save when cross-run achievements exist without run summaries');
+  const saved = JSON.parse(raw);
+  assert.equal(saved.stats.career, '', 'meta save should not create an active run');
+  assert.deepEqual(saved.gameData.achievements, ['first_day', 'survivor']);
+
+  const restored = createGameContext({ [saveKey]: raw });
+  assert.equal(restored.loadGameFromStorage(), false, 'meta-only save should restore meta without resuming a run');
+  assert.deepEqual(restored.buildSaveData().gameData.achievements, ['first_day', 'survivor']);
+}
+
+function testPrLoopRewardsDoNotEvictRunGoalChainRewards() {
+  const context = createGameContext();
+
+  context.selectCareer('ai');
+  context.action('learn-ai');
+  context.action('side-project');
+  context.action('learn-ai');
+  let save = parseSave(context);
+  const afterChainSkill = save.stats.skill;
+  const afterChainAi = save.stats.ai;
+  assert(save.runGoalState.chain.rewardKeys.includes('2'), 'fixture should have claimed second-step chain reward');
+  assert(save.runGoalState.chain.rewardKeys.includes('3'), 'fixture should have claimed third-step chain reward');
+
+  for (let week = 1; week <= 7; week++) {
+    context.applySaveData({
+      ...save,
+      stats: { ...save.stats, day: (week - 1) * 7 + 1, skill: afterChainSkill, ai: afterChainAi, mental: 80, money: 80 },
+      isGameOver: false,
+      gameOverState: null
+    });
+    context.action('side-project');
+    context.action('rest');
+    save = parseSave(context);
+  }
+
+  assert(save.runGoalState.chain.rewardKeys.includes('2'), 'weekly PR loop rewards should not evict second-step chain reward');
+  assert(save.runGoalState.chain.rewardKeys.includes('3'), 'weekly PR loop rewards should not evict third-step chain reward');
+
+  const restored = createGameContext({ [saveKey]: JSON.stringify(save) });
+  assert.equal(restored.loadGameFromStorage(), true);
+  restored.action('learn-ai');
+  restored.action('side-project');
+  const afterRestoreSave = parseSave(restored);
+
+  assert.equal(countGoalEvents(afterRestoreSave, /连续围绕.*行动了 2 次/), 1, 'second-step chain reward should not be paid again after many PR loop rewards');
+  assert.equal(countGoalEvents(afterRestoreSave, /连成 3 步/), 1, 'third-step chain reward should not be paid again after many PR loop rewards');
+  assert(afterRestoreSave.runGoalState.chain.rewardKeys.includes('2'), 'second-step chain reward key should still be present after restore');
+  assert(afterRestoreSave.runGoalState.chain.rewardKeys.includes('3'), 'third-step chain reward key should still be present after restore');
+}
+
+function testRandomEventsFilterUntriggerableBuiltInEvents() {
+  const randomValues = [0.1, 0.99, 0.1, 0, 0.1, 0.99, 0.1];
+  const math = Object.create(Math);
+  math.random = () => randomValues.length ? randomValues.shift() : 0.1;
+  const context = createGameContext({}, { Math: math });
+
+  context.selectCareer('backend');
+  context.applySaveData({
+    ...context.buildSaveData(),
+    stats: { skill: 80, mental: 75, money: 55, ai: 20, day: 20, age: 30, career: 'backend', items: [] },
+    displayTextHistory: []
+  });
+  context.action('rest');
+  const save = parseSave(context);
+
+  assert(save.eventLog.some(entry => /同事全在用AI/.test(entry.text || '')), 'random built-in event should be selected from triggerable events');
 }
 
 function testAgeAdvancesByOneYearAfter365Days() {
@@ -416,6 +530,45 @@ function testEndingSummaryShowsPreviousRunRecap() {
   assert.equal(saved.schemaVersion, 2, 'showing previous-run recap should not bump SAVE_SCHEMA_VERSION');
 }
 
+function testEndingSummaryComparesHistoricalBestScore() {
+  const context = createGameContext();
+
+  context.selectCareer('ai');
+  context.applySaveData({
+    schemaVersion: 2,
+    stats: { skill: 82, mental: 70, money: 130, ai: 85, day: 365, age: 31, career: 'ai', items: [] },
+    actionCounts: { 'learn-ai': 20, overtime: 4, rest: 18, interview: 3, 'side-project': 12, networking: 8 },
+    weeklyActionCounts: {},
+    runState: { focus: 74, fatigue: 24, boundaryScore: 76, lastBoundaryFeedbackDay: 350, lastCareerStageFeedbackDay: 360 },
+    buildProjectState: { progress: 100, quality: 78, debt: 22, exposure: 44, stage: 'portfolio', shipped: true, lastFeedbackDay: 350 },
+    dailyGoalState: { day: 365, targetAction: 'learn-ai', completed: true, streak: 8, totalCompleted: 80 },
+    runGoalState: { id: 'ai_compound', title: '把 AI 练成复利', description: '把 AI 熟练度、技术和长期项目一起推上去', createdDay: 0 },
+    gameData: {
+      achievements: [],
+      deaths: 1,
+      maxDay: 200,
+      endings: ['精神崩溃结局'],
+      runs: [{
+        endingType: '精神崩溃结局',
+        score: 60,
+        title: '能交付也能自救的程序员',
+        goalCompleted: false,
+        day: 200,
+        career: 'backend'
+      }]
+    },
+    shopItems: []
+  });
+
+  context.checkGameOver();
+  const reason = context.document.getElementById('game-over-reason').textContent;
+  const saved = parseSave(context);
+
+  assert.match(reason, /近10局最佳：刷新纪录/, 'ending summary should compare this run with previous best score');
+  assert.equal(saved.gameData.runs.length, 2, 'current run should still be appended after summary comparison');
+  assert.equal(saved.schemaVersion, 2, 'historical best comparison should not bump SAVE_SCHEMA_VERSION');
+}
+
 function testEndedRunIgnoresStateChangingEntrypoints() {
   const context = createGameContext();
 
@@ -463,9 +616,14 @@ const tests = [
   testRunGoalProgressFeedbackPersistsAcrossSaveRestore,
   testRunGoalActionChainPersistsAndDoesNotRepeatRewards,
   testPreviousRunExperienceSeedsNewCareer,
+  testPreviousRunChallengeUsesReachableFullScoreText,
+  testRestartPreservesMetaOnlyAchievements,
+  testPrLoopRewardsDoNotEvictRunGoalChainRewards,
+  testRandomEventsFilterUntriggerableBuiltInEvents,
   testAgeAdvancesByOneYearAfter365Days,
   testEndingSummaryShowsScoreTitleAndGoalResult,
   testEndingSummaryShowsPreviousRunRecap,
+  testEndingSummaryComparesHistoricalBestScore,
   testEndedRunIgnoresStateChangingEntrypoints,
   testCorruptMainSaveIsQuarantinedDuringNewRun
 ];

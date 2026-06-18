@@ -662,7 +662,7 @@
         }
 
         function getInitialRunGoalChain() {
-            return { lastActionType: '', previousActionType: '', count: 0, rewardKeys: [] };
+            return { lastActionType: '', previousActionType: '', count: 0, rewardKeys: [], prLoopRewardKeys: [] };
         }
 
         function getInitialRunGoalState() {
@@ -747,6 +747,22 @@
             if (Number.isFinite(Number(seed.money))) stats.money = Math.min(200, stats.money + seed.money);
             if (Number.isFinite(Number(seed.ai))) stats.ai = Math.min(100, stats.ai + seed.ai);
             addEvent(seed.text, 'special');
+        }
+
+        function addPreviousRunChallenge(previousRun) {
+            if (!previousRun) return;
+            const previousScore = Number.isFinite(Number(previousRun.score)) ? Math.max(0, Math.min(100, Math.round(Number(previousRun.score)))) : 0;
+            const recoveryHint = previousRun.endingType.includes('精神')
+                ? '前 7 天先完成 2 次休息'
+                : previousRun.endingType.includes('破产')
+                    ? '先补一次现金流'
+                    : previousRun.goalCompleted
+                        ? '换一种职业节奏复刻目标'
+                        : '优先把本局目标推进到 50%';
+            const scoreChallenge = previousScore >= 100
+                ? '追平满分，并尝试更早达成'
+                : `尝试超过 ${Math.min(100, previousScore + 1)} 分`;
+            addEvent(`🎯 本局挑战：上局${previousRun.endingType}停在 ${previousScore}/100，这局${recoveryHint}，${scoreChallenge}`, 'special');
         }
 
         function clamp(value, min, max) {
@@ -887,7 +903,14 @@
                 base.count = Math.max(0, Math.min(3, Math.floor(Number(data.count))));
             }
             if (Array.isArray(data.rewardKeys)) {
-                base.rewardKeys = Array.from(new Set(data.rewardKeys.filter(key => typeof key === 'string'))).slice(-6);
+                base.rewardKeys = Array.from(new Set(data.rewardKeys.filter(key => typeof key === 'string' && !key.startsWith('pr-loop-week-')))).slice(-6);
+                base.prLoopRewardKeys = Array.from(new Set(data.rewardKeys.filter(key => typeof key === 'string' && key.startsWith('pr-loop-week-')))).slice(-8);
+            }
+            if (Array.isArray(data.prLoopRewardKeys)) {
+                base.prLoopRewardKeys = Array.from(new Set([
+                    ...base.prLoopRewardKeys,
+                    ...data.prLoopRewardKeys.filter(key => typeof key === 'string' && key.startsWith('pr-loop-week-'))
+                ])).slice(-8);
             }
             return base;
         }
@@ -951,6 +974,16 @@
             const available = pool.filter(event => !isDisplayedTextOnCooldown(event.text));
             const source = available.length ? available : pool;
             return source[Math.floor(Math.random() * source.length)];
+        }
+
+        function canTriggerEvent(event) {
+            if (!event) return false;
+            if (typeof event.trigger !== 'function') return true;
+            try {
+                return Boolean(event.trigger());
+            } catch (error) {
+                return false;
+            }
         }
 
         function pickFreshText(pool) {
@@ -1681,6 +1714,7 @@
             
             addEvent('欢迎来到2026年，你是一名30岁的' + selected.name, 'neutral');
             applyPreviousRunExperience(previousRun);
+            addPreviousRunChallenge(previousRun);
             updateStats();
             const saved = saveGame({ silent: true });
             if (!saved) {
@@ -1708,11 +1742,12 @@
             applyEvent(event);
 
             if (Math.random() > 0.6) {
-                const builtInEvent = pickFreshEvent(randomEvents);
+                const triggerableRandomEvents = randomEvents.filter(canTriggerEvent);
+                const builtInEvent = triggerableRandomEvents.length ? pickFreshEvent(triggerableRandomEvents) : null;
                 const dynamicEvent = getDynamicRandomEvent(type);
                 const dynamicRatio = actionDynamicRatios[type] || 0.7;
                 const pickedEvent = dynamicEvent && Math.random() < dynamicRatio ? dynamicEvent : builtInEvent;
-                if (!pickedEvent.trigger || pickedEvent.trigger()) {
+                if (canTriggerEvent(pickedEvent)) {
                     applyEvent(pickedEvent, true);
                 }
             }
@@ -2058,12 +2093,12 @@
             const closesPrLoop = previousActionType === 'side-project' && ['learn-ai', 'rest', 'networking'].includes(actionType);
 
             chain.previousActionType = actionType;
-            if (!closesPrLoop || chain.rewardKeys.includes(rewardKey)) {
+            if (!closesPrLoop || chain.prLoopRewardKeys.includes(rewardKey)) {
                 runGoalState.chain = chain;
                 return;
             }
 
-            chain.rewardKeys = Array.from(new Set([...chain.rewardKeys, rewardKey])).slice(-8);
+            chain.prLoopRewardKeys = Array.from(new Set([...chain.prLoopRewardKeys, rewardKey])).slice(-8);
             runGoalState.chain = chain;
             if (actionType === 'networking') {
                 buildProjectState = normalizeBuildProjectState({ ...buildProjectState, exposure: buildProjectState.exposure + 2, quality: buildProjectState.quality + 1 });
@@ -2340,6 +2375,19 @@
             return `上局复盘：第${previousRun.day}天${getCareerName(previousRun.career)}，以${previousRun.endingType}结束，评分${previousRun.score}/100。`;
         }
 
+        function getHistoricalBestComparisonText(score) {
+            const previousRuns = normalizeRunSummaries(gameData.runs);
+            if (previousRuns.length === 0) return '';
+            const bestScore = Math.max(...previousRuns.map(run => run.score));
+            if (score > bestScore) {
+                return `近10局最佳：刷新纪录，比之前高 ${score - bestScore} 分。`;
+            }
+            if (score === bestScore) {
+                return `近10局最佳：追平最高分 ${bestScore}/100。`;
+            }
+            return `近10局最佳：${bestScore}/100，距离最高还差 ${bestScore - score} 分。`;
+        }
+
         function getNextRunTodoText(reason, goal) {
             if (reason.includes('精神崩溃')) {
                 return '下一局 TODO：前 7 天先安排 2 次休息，再推进长期 Build。';
@@ -2364,8 +2412,9 @@
             const goal = getRunGoalResult();
             const projectText = `长期 Build：进度${Math.round(buildProjectState.progress)}%，质量${Math.round(buildProjectState.quality)}，债务${Math.round(buildProjectState.debt)}`;
             const previousRunText = getPreviousRunRecapText();
+            const historicalBestText = getHistoricalBestComparisonText(score);
             const nextRunTodoText = getNextRunTodoText(reason, goal);
-            return `${reason} 本局评分：${score}/100。本局称号：${getRunTitle(score)}。${goal.text}。${projectText}。${nextRunTodoText}${previousRunText}`;
+            return `${reason} 本局评分：${score}/100。本局称号：${getRunTitle(score)}。${goal.text}。${projectText}。${historicalBestText}${nextRunTodoText}${previousRunText}`;
         }
 
         function recordRunSummary(endingType) {
@@ -2560,7 +2609,16 @@
         }
 
         function saveMetaSnapshot() {
-            if (!Array.isArray(gameData.runs) || gameData.runs.length === 0) return false;
+            const metaData = clonePlain(gameData, getInitialGameData()) || getInitialGameData();
+            const hasCrossRunData =
+                (Array.isArray(metaData.runs) && metaData.runs.length > 0) ||
+                (Array.isArray(metaData.achievements) && metaData.achievements.length > 0) ||
+                (Array.isArray(metaData.endings) && metaData.endings.length > 0) ||
+                Number(metaData.deaths) > 0 ||
+                Number(metaData.maxDay) > 0 ||
+                achievements.some(achievement => achievement.unlocked) ||
+                shopItems.some(item => item.owned);
+            if (!hasCrossRunData) return false;
             try {
                 const serializedSave = JSON.stringify(buildMetaSaveData());
                 localStorage.setItem(SAVE_KEY, serializedSave);
