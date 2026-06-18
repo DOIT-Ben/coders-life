@@ -1,0 +1,2765 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>程序员生存模拟器 2026 - 增强版</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'SF Mono', 'Consolas', 'Monaco', monospace;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(30, 30, 50, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 40px;
+            font-size: 0.9rem;
+        }
+        .career-selection {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .career-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .career-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            border-color: #667eea;
+        }
+        .career-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .career-stats {
+            font-size: 0.85rem;
+            color: #aaa;
+            line-height: 1.6;
+        }
+        .game-area { display: none; }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        .player-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .quick-actions button {
+            background: rgba(102, 126, 234, 0.3);
+            border: 1px solid #667eea;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+        .quick-actions button:hover {
+            background: rgba(102, 126, 234, 0.5);
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        .stat-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        .stat-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.5s ease;
+        }
+        .event-log {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            max-height: 250px;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .event-log::-webkit-scrollbar {
+            width: 6px;
+        }
+        .event-log::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+        .event-log::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+        .event {
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .event.good {
+            background: rgba(46, 213, 115, 0.15);
+            border-left: 3px solid #2ed573;
+        }
+        .event.bad {
+            background: rgba(255, 71, 87, 0.15);
+            border-left: 3px solid #ff4757;
+        }
+        .event.neutral {
+            background: rgba(255, 159, 64, 0.15);
+            border-left: 3px solid #ffa502;
+        }
+        .event.special {
+            background: rgba(138, 43, 226, 0.15);
+            border-left: 3px solid #8a2be2;
+        }
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .action-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        .action-btn:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            background: rgba(30, 30, 50, 0.95);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+        .modal-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+        .modal-content h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #fff;
+        }
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .achievement-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .achievement-item.unlocked {
+            border-color: #2ed573;
+            background: rgba(46, 213, 115, 0.1);
+        }
+        .achievement-item.locked {
+            opacity: 0.5;
+        }
+        .achievement-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .achievement-name {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        .achievement-desc {
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .shop-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .shop-item-name {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        .shop-item-desc {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+        .shop-item-price {
+            color: #ffa502;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .shop-item button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .shop-item button:hover {
+            background: #764ba2;
+        }
+        .shop-item button:disabled {
+            background: #555;
+            cursor: not-allowed;
+        }
+        .shop-item.owned {
+            border-color: #2ed573;
+        }
+        .game-over {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 71, 87, 0.1);
+            border-radius: 15px;
+            border: 2px solid #ff4757;
+        }
+        .game-over h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ff4757;
+        }
+        .restart-btn {
+            background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .restart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 71, 87, 0.4);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>程序员生存模拟器 增强版</h1>
+        <div class="subtitle">2026 Edition - 选择你的职业道路</div>
+        <button class="restart-btn" id="resume-btn" onclick="resumeLastGame()" style="display: none; margin: 0 auto 20px;">继续上次生存</button>
+        
+        <div class="career-selection" id="career-selection">
+            <div class="career-card" onclick="selectCareer('frontend')">
+                <h3>🎨 前端工程师</h3>
+                <div class="career-stats">
+                    初始: 技术70 精神85 存款45 AI25<br>
+                    特点: 精神消耗慢，AI学习快<br>
+                    风险: 框架更新快，容易焦虑
+                </div>
+            </div>
+            <div class="career-card" onclick="selectCareer('backend')">
+                <h3>⚙️ 后端工程师</h3>
+                <div class="career-stats">
+                    初始: 技术80 精神75 存款55 AI20<br>
+                    特点: 收入稳定，技能贬值慢<br>
+                    风险: 35岁危机最严重
+                </div>
+            </div>
+            <div class="career-card" onclick="selectCareer('fullstack')">
+                <h3>🚀 全栈工程师</h3>
+                <div class="career-stats">
+                    初始: 技术75 精神70 存款50 AI35<br>
+                    特点: AI适应性强，综合能力高<br>
+                    风险: 什么都会但不精
+                </div>
+            </div>
+            <div class="career-card" onclick="selectCareer('ai')">
+                <h3>🤖 AI工程师</h3>
+                <div class="career-stats">
+                    初始: 技术65 精神80 存款60 AI50<br>
+                    特点: 起薪高，未来前景好<br>
+                    风险: 内卷严重，学习压力大
+                </div>
+            </div>
+        </div>
+
+        <div class="game-area" id="game-area">
+            <div class="top-bar">
+                <div class="player-info">
+                    <span id="player-career">职业</span>
+                    <span>|</span>
+                    <span>第 <span id="day-count">0</span> 天</span>
+                    <span>|</span>
+                    <span><span id="age-count">30</span> 岁</span>
+                </div>
+                <div class="quick-actions">
+                    <button onclick="showAchievements()">🏆 成就</button>
+                    <button onclick="showShop()">🛒 商店</button>
+                    <button onclick="saveGame()">💾 保存</button>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-label">技术能力</div>
+                    <div class="stat-value" id="skill">75</div>
+                    <div class="stat-bar">
+                        <div class="stat-bar-fill" id="skill-bar"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">精神状态</div>
+                    <div class="stat-value" id="mental">80</div>
+                    <div class="stat-bar">
+                        <div class="stat-bar-fill" id="mental-bar"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">存款 (万)</div>
+                    <div class="stat-value" id="money">50</div>
+                    <div class="stat-bar">
+                        <div class="stat-bar-fill" id="money-bar"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">AI熟练度</div>
+                    <div class="stat-value" id="ai">30</div>
+                    <div class="stat-bar">
+                        <div class="stat-bar-fill" id="ai-bar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-log" id="event-log"></div>
+
+            <div class="actions">
+                <button class="action-btn" onclick="action('learn-ai')">📚 学习AI工具</button>
+                <button class="action-btn" onclick="action('overtime')">💻 加班写代码</button>
+                <button class="action-btn" onclick="action('rest')">☕ 休息摸鱼</button>
+                <button class="action-btn" onclick="action('interview')">🎯 面试跳槽</button>
+                <button class="action-btn" onclick="action('side-project')">🔧 接私活</button>
+                <button class="action-btn" onclick="action('networking')">🤝 社交人脉</button>
+            </div>
+
+            <div class="game-over" id="game-over">
+                <h2>游戏结束</h2>
+                <p id="game-over-reason"></p>
+                <div id="ending-type"></div>
+                <button class="restart-btn" onclick="restart()">重新开始</button>
+            </div>
+        </div>
+
+        <div id="achievement-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('achievement-modal')">&times;</span>
+                <h2>🏆 成就系统</h2>
+                <div class="achievement-grid" id="achievement-grid"></div>
+            </div>
+        </div>
+
+        <div id="shop-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('shop-modal')">&times;</span>
+                <h2>🛒 商店</h2>
+                <div class="shop-grid" id="shop-grid"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            「不是程序员在消失，是不会用AI的程序员在消失」
+        </div>
+    </div>
+
+    <script src="程序员生存模拟器_弹窗库_2026-06-18.js"></script>
+    <script>
+        let stats = {
+            skill: 75,
+            mental: 80,
+            money: 50,
+            ai: 30,
+            day: 0,
+            age: 30,
+            career: '',
+            items: []
+        };
+
+        let gameData = {
+            achievements: [],
+            deaths: 0,
+            maxDay: 0,
+            endings: []
+        };
+
+        const popupPool = Array.isArray(window.PROGRAMMER_POPUP_POOL) ? window.PROGRAMMER_POPUP_POOL : [];
+        if (!popupPool.length) {
+            console.warn('弹窗库未加载，当前只会使用内置事件。请确认同目录存在 程序员生存模拟器_弹窗库_2026-06-18.js');
+        }
+        let popupHistory = [];
+        let popupCategoryHistory = [];
+
+        const actionPopupRules = {
+            'learn-ai': {
+                kinds: ['learning', 'event'],
+                categoryKeywords: ['AI', '学习', '成长', '文档', '面试']
+            },
+            'overtime': {
+                kinds: ['event', 'health'],
+                categoryKeywords: ['加班', '事故', '技术债', '重构', '冲突', '会议']
+            },
+            'rest': {
+                kinds: ['health', 'life', 'joke'],
+                categoryKeywords: ['生活', '恢复', '健康', '日常', '冷幽默']
+            },
+            'interview': {
+                kinds: ['learning', 'event'],
+                categoryKeywords: ['面试', '跳槽', '职业焦虑', '成长']
+            },
+            'side-project': {
+                kinds: ['learning', 'life', 'event'],
+                categoryKeywords: ['学习', '成长', '设备', '消费', '需求', '技术债']
+            },
+            'networking': {
+                kinds: ['life', 'joke', 'event'],
+                categoryKeywords: ['社交', '性格', '职业焦虑', '35+']
+            }
+        };
+
+        const careerPopupBias = {
+            'frontend': {
+                kinds: ['learning', 'life', 'joke', 'event'],
+                categoryKeywords: ['需求', '会议', '学习', '设备', '生活', 'AI']
+            },
+            'backend': {
+                kinds: ['event', 'health', 'learning'],
+                categoryKeywords: ['事故', '技术债', '文档', '权限', 'Git', '35+']
+            },
+            'fullstack': {
+                kinds: ['event', 'learning', 'life', 'joke'],
+                categoryKeywords: ['需求', '技术债', '学习', '生活', '设备', '会议']
+            },
+            'ai': {
+                kinds: ['learning', 'event', 'life'],
+                categoryKeywords: ['AI', '学习', '成长', '面试', '焦虑', '设备']
+            }
+        };
+
+        const actionDynamicRatios = {
+            'learn-ai': 0.85,
+            'overtime': 0.65,
+            'rest': 0.9,
+            'interview': 0.75,
+            'side-project': 0.8,
+            'networking': 0.85
+        };
+
+        const SAVE_KEY = 'codersLifeSave.v2';
+        const SAVE_BACKUP_KEY = 'codersLifeSave.v2.backup';
+        const LEGACY_SAVE_KEY = 'programmerSimulator';
+        const SAVE_SCHEMA_VERSION = 2;
+        const MAX_EVENT_LOG_SAVE = 80;
+        const RESUME_CONTEXT_EVENT_PREFIX = '📌 接着玩提示：';
+
+        let eventLogState = [];
+        let resumeReminderText = '';
+        let isRestoring = false;
+        let isGameOver = false;
+        let weeklyActionCounts = {};
+        let streakRewards = { good: 0, bad: 0 };
+        let gameOverState = null;
+        let runState = { focus: 60, fatigue: 20 };
+        let rarePopupCooldowns = {};
+        let displayTextHistory = [];
+        let dailyGoalState = { day: 0, targetAction: '', completed: false, streak: 0, totalCompleted: 0, missedDay: 0, missedTargetAction: '', recoveryKeys: [] };
+        let buildProjectState = { progress: 0, quality: 50, debt: 0, exposure: 0, stage: 'idea', shipped: false, lastFeedbackDay: 0 };
+        let toolHabitState = { week: 0, learnAiCount: 0, sideProjectCount: 0, overtimeCount: 0, shipped: false, backfired: false };
+        let resumeFollowupState = { targetAction: '', consumed: true };
+        let runGoalState = { id: 'steady_year', title: '稳稳活过一年', description: '在 365 天时保持精神、存款和 AI 熟练度都不掉队', createdDay: 0 };
+
+        function getInitialStats() {
+            return { skill: 75, mental: 80, money: 50, ai: 30, day: 0, age: 30, career: '', items: [] };
+        }
+
+        function getInitialActionCounts() {
+            return { 'learn-ai': 0, 'overtime': 0, 'rest': 0, 'interview': 0, 'side-project': 0, 'networking': 0 };
+        }
+
+        function getInitialConsecutiveEvents() {
+            return { good: 0, bad: 0 };
+        }
+
+        function getInitialWeeklyActionCounts() {
+            return getInitialActionCounts();
+        }
+
+        function getInitialStreakRewards() {
+            return { good: 0, bad: 0 };
+        }
+
+        function getInitialRunState() {
+            return { focus: 60, fatigue: 20, boundaryScore: 60, lastBoundaryFeedbackDay: 0, lastCareerStageFeedbackDay: 0 };
+        }
+
+        function getInitialRarePopupCooldowns() {
+            return {};
+        }
+
+        function getInitialDisplayTextHistory() {
+            return [];
+        }
+
+        function getInitialDailyGoalState() {
+            return { day: 0, targetAction: '', completed: false, streak: 0, totalCompleted: 0, missedDay: 0, missedTargetAction: '', recoveryKeys: [] };
+        }
+
+        function getInitialBuildProjectState() {
+            return { progress: 0, quality: 50, debt: 0, exposure: 0, stage: 'idea', shipped: false, lastFeedbackDay: 0 };
+        }
+
+        function getInitialToolHabitState() {
+            return { week: 0, learnAiCount: 0, sideProjectCount: 0, overtimeCount: 0, shipped: false, backfired: false };
+        }
+
+        function getInitialResumeFollowupState() {
+            return { targetAction: '', consumed: true, fingerprint: '', consumedFingerprints: [] };
+        }
+
+        function getRunGoalForCareer(career) {
+            const goals = {
+                frontend: { id: 'ship_portfolio', title: '把作品做成作品集', description: '发布长期 Build，并让曝光和质量都站得住', createdDay: 0 },
+                backend: { id: 'pay_down_debt', title: '别让技术债反向管理你', description: '把长期 Build 的技术债控制在可维护范围', createdDay: 0 },
+                fullstack: { id: 'balanced_builder', title: '全栈但不全栈崩溃', description: '同时守住精神、存款和长期 Build 进度', createdDay: 0 },
+                ai: { id: 'ai_compound', title: '把 AI 练成复利', description: '把 AI 熟练度、技术和长期项目一起推上去', createdDay: 0 }
+            };
+            return { ...(goals[career] || goals.fullstack) };
+        }
+
+        function getInitialRunGoalState() {
+            return getRunGoalForCareer(stats?.career || 'fullstack');
+        }
+
+        function getInitialGameData() {
+            return { achievements: [], deaths: 0, maxDay: 0, endings: [] };
+        }
+
+        function getCareerName(career) {
+            const names = {
+                frontend: '前端工程师',
+                backend: '后端工程师',
+                fullstack: '全栈工程师',
+                ai: 'AI工程师'
+            };
+            return names[career] || '程序员';
+        }
+
+        function isResumeContextEvent(text) {
+            return typeof text === 'string' && text.startsWith(RESUME_CONTEXT_EVENT_PREFIX);
+        }
+
+        function isResumeSystemEvent(text) {
+            return isResumeContextEvent(text) || (typeof text === 'string' && text.startsWith('🔁 接住读档建议'));
+        }
+
+        function clonePlain(value, fallback) {
+            if (value === undefined || value === null) return fallback;
+            try {
+                return JSON.parse(JSON.stringify(value));
+            } catch (error) {
+                return fallback;
+            }
+        }
+
+        function clamp(value, min, max) {
+            return Math.max(min, Math.min(max, value));
+        }
+
+        function normalizeStats(value) {
+            const base = getInitialStats();
+            const data = value && typeof value === 'object' ? value : {};
+            return {
+                skill: Number.isFinite(Number(data.skill)) ? Math.max(0, Math.min(100, Number(data.skill))) : base.skill,
+                mental: Number.isFinite(Number(data.mental)) ? Math.max(0, Math.min(100, Number(data.mental))) : base.mental,
+                money: Number.isFinite(Number(data.money)) ? Math.max(0, Math.min(200, Number(data.money))) : base.money,
+                ai: Number.isFinite(Number(data.ai)) ? Math.max(0, Math.min(100, Number(data.ai))) : base.ai,
+                day: Number.isFinite(Number(data.day)) ? Math.max(0, Math.floor(Number(data.day))) : base.day,
+                age: Number.isFinite(Number(data.age)) ? Math.max(18, Math.floor(Number(data.age))) : base.age,
+                career: typeof data.career === 'string' ? data.career : base.career,
+                items: Array.isArray(data.items) ? data.items.filter(id => typeof id === 'string') : []
+            };
+        }
+
+        function normalizeActionCounts(value) {
+            const base = getInitialActionCounts();
+            const data = value && typeof value === 'object' ? value : {};
+            Object.keys(base).forEach(key => {
+                if (Number.isFinite(Number(data[key]))) {
+                    base[key] = Math.max(0, Math.floor(Number(data[key])));
+                }
+            });
+            return base;
+        }
+
+        function normalizeConsecutiveEvents(value) {
+            const base = getInitialConsecutiveEvents();
+            const data = value && typeof value === 'object' ? value : {};
+            if (Number.isFinite(Number(data.good))) base.good = Math.max(0, Math.floor(Number(data.good)));
+            if (Number.isFinite(Number(data.bad))) base.bad = Math.max(0, Math.floor(Number(data.bad)));
+            return base;
+        }
+
+        function normalizeStreakRewards(value) {
+            const base = getInitialStreakRewards();
+            const data = value && typeof value === 'object' ? value : {};
+            if (Number.isFinite(Number(data.good))) base.good = Math.max(0, Math.floor(Number(data.good)));
+            if (Number.isFinite(Number(data.bad))) base.bad = Math.max(0, Math.floor(Number(data.bad)));
+            return base;
+        }
+
+        function normalizeRunState(value) {
+            const base = getInitialRunState();
+            const data = value && typeof value === 'object' ? value : {};
+            if (Number.isFinite(Number(data.focus))) base.focus = Math.max(0, Math.min(100, Number(data.focus)));
+            if (Number.isFinite(Number(data.fatigue))) base.fatigue = Math.max(0, Math.min(100, Number(data.fatigue)));
+            if (Number.isFinite(Number(data.boundaryScore))) base.boundaryScore = Math.max(0, Math.min(100, Number(data.boundaryScore)));
+            if (Number.isFinite(Number(data.lastBoundaryFeedbackDay))) base.lastBoundaryFeedbackDay = Math.max(0, Math.floor(Number(data.lastBoundaryFeedbackDay)));
+            if (Number.isFinite(Number(data.lastCareerStageFeedbackDay))) base.lastCareerStageFeedbackDay = Math.max(0, Math.floor(Number(data.lastCareerStageFeedbackDay)));
+            return base;
+        }
+
+        function normalizeDailyGoalState(value) {
+            const base = getInitialDailyGoalState();
+            const data = value && typeof value === 'object' ? value : {};
+            if (Number.isFinite(Number(data.day))) base.day = Math.max(0, Math.floor(Number(data.day)));
+            const allowedActions = Object.keys(getInitialActionCounts());
+            if (typeof data.targetAction === 'string' && allowedActions.includes(data.targetAction)) {
+                base.targetAction = data.targetAction;
+            }
+            base.completed = data.completed === true;
+            if (Number.isFinite(Number(data.streak))) base.streak = Math.max(0, Math.floor(Number(data.streak)));
+            if (Number.isFinite(Number(data.totalCompleted))) base.totalCompleted = Math.max(0, Math.floor(Number(data.totalCompleted)));
+            if (Number.isFinite(Number(data.missedDay))) base.missedDay = Math.max(0, Math.floor(Number(data.missedDay)));
+            if (typeof data.missedTargetAction === 'string' && allowedActions.includes(data.missedTargetAction)) {
+                base.missedTargetAction = data.missedTargetAction;
+            }
+            if (Array.isArray(data.recoveryKeys)) {
+                base.recoveryKeys = Array.from(new Set(data.recoveryKeys.filter(item => typeof item === 'string'))).slice(-20);
+            }
+            return base;
+        }
+
+        function getBuildProjectStage(progress) {
+            if (progress >= 70) return 'portfolio';
+            if (progress >= 30) return 'usable';
+            return 'idea';
+        }
+
+        function normalizeBuildProjectState(value) {
+            const base = getInitialBuildProjectState();
+            const data = value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+            if (Number.isFinite(Number(data.progress))) base.progress = clamp(Number(data.progress), 0, 100);
+            if (Number.isFinite(Number(data.quality))) base.quality = clamp(Number(data.quality), 0, 100);
+            if (Number.isFinite(Number(data.debt))) base.debt = clamp(Number(data.debt), 0, 100);
+            if (Number.isFinite(Number(data.exposure))) base.exposure = clamp(Number(data.exposure), 0, 100);
+            base.stage = getBuildProjectStage(base.progress);
+            base.shipped = data.shipped === true || base.progress >= 100;
+            if (Number.isFinite(Number(data.lastFeedbackDay))) base.lastFeedbackDay = Math.max(0, Math.floor(Number(data.lastFeedbackDay)));
+            return base;
+        }
+
+        function normalizeToolHabitState(value) {
+            const base = getInitialToolHabitState();
+            const data = value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+            if (Number.isFinite(Number(data.week))) base.week = Math.max(0, Math.floor(Number(data.week)));
+            if (Number.isFinite(Number(data.learnAiCount))) base.learnAiCount = Math.max(0, Math.floor(Number(data.learnAiCount)));
+            if (Number.isFinite(Number(data.sideProjectCount))) base.sideProjectCount = Math.max(0, Math.floor(Number(data.sideProjectCount)));
+            if (Number.isFinite(Number(data.overtimeCount))) base.overtimeCount = Math.max(0, Math.floor(Number(data.overtimeCount)));
+            base.shipped = data.shipped === true;
+            base.backfired = data.backfired === true;
+            return base;
+        }
+
+        function normalizeResumeFollowupState(value) {
+            const base = getInitialResumeFollowupState();
+            const data = value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+            if (typeof data.targetAction === 'string') base.targetAction = data.targetAction;
+            base.consumed = data.consumed !== false;
+            if (typeof data.fingerprint === 'string') base.fingerprint = data.fingerprint;
+            if (Array.isArray(data.consumedFingerprints)) {
+                base.consumedFingerprints = Array.from(new Set(data.consumedFingerprints.filter(item => typeof item === 'string'))).slice(-20);
+            }
+            return base;
+        }
+
+        function normalizeRunGoalState(value, sourceStats = stats) {
+            const fallback = getRunGoalForCareer(sourceStats?.career || stats?.career || 'fullstack');
+            const data = value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+            return {
+                id: typeof data.id === 'string' && data.id ? data.id : fallback.id,
+                title: typeof data.title === 'string' && data.title ? data.title : fallback.title,
+                description: typeof data.description === 'string' && data.description ? data.description : fallback.description,
+                createdDay: Number.isFinite(Number(data.createdDay)) ? Math.max(0, Math.floor(Number(data.createdDay))) : 0
+            };
+        }
+
+        function normalizeRarePopupCooldowns(value) {
+            const data = value && typeof value === 'object' ? value : {};
+            const normalized = {};
+            Object.keys(data).forEach(key => {
+                if (Number.isFinite(Number(data[key]))) {
+                    normalized[key] = Math.max(0, Math.floor(Number(data[key])));
+                }
+            });
+            return normalized;
+        }
+
+        function normalizeDisplayText(text) {
+            if (typeof text !== 'string') return '';
+            return text
+                .replace(/^【突发】/, '')
+                .replace(/^💭\s*/, '')
+                .replace(/[，。！？、：；“”"'\s]/g, '')
+                .toLowerCase();
+        }
+
+        function normalizeDisplayTextHistory(value) {
+            if (!Array.isArray(value)) return [];
+            const normalized = value
+                .map(text => normalizeDisplayText(text))
+                .filter(Boolean);
+            return Array.from(new Set(normalized)).slice(-20);
+        }
+
+        function isDisplayedTextOnCooldown(text) {
+            const normalized = normalizeDisplayText(text);
+            return Boolean(normalized && displayTextHistory.includes(normalized));
+        }
+
+        function rememberDisplayedText(text) {
+            const normalized = normalizeDisplayText(text);
+            if (!normalized) return;
+            displayTextHistory.push(normalized);
+            displayTextHistory = Array.from(new Set(displayTextHistory)).slice(-20);
+        }
+
+        function pickFreshEvent(pool) {
+            const available = pool.filter(event => !isDisplayedTextOnCooldown(event.text));
+            const source = available.length ? available : pool;
+            return source[Math.floor(Math.random() * source.length)];
+        }
+
+        function pickFreshText(pool) {
+            const available = pool.filter(text => !isDisplayedTextOnCooldown(text));
+            const source = available.length ? available : pool;
+            return source[Math.floor(Math.random() * source.length)];
+        }
+
+        function hasActiveRun() {
+            return Boolean(stats && typeof stats.career === 'string' && stats.career);
+        }
+
+        function normalizeEventLog(entries) {
+            if (!Array.isArray(entries)) return [];
+            return entries
+                .filter(entry => entry && typeof entry.text === 'string')
+                .filter(entry => !isResumeContextEvent(entry.text))
+                .slice(0, MAX_EVENT_LOG_SAVE)
+                .map(entry => ({
+                    day: Number.isFinite(Number(entry.day)) ? Math.max(0, Math.floor(Number(entry.day))) : 0,
+                    text: entry.text,
+                    type: ['good', 'bad', 'neutral', 'special'].includes(entry.type) ? entry.type : 'neutral',
+                    createdAt: Number.isFinite(Number(entry.createdAt)) ? Number(entry.createdAt) : Date.now()
+                }));
+        }
+
+        function getResumeStatMeta(sourceStats) {
+            const data = normalizeStats(sourceStats || {});
+            const candidates = [
+                { key: 'skill', label: '技术', value: data.skill, score: data.skill },
+                { key: 'mental', label: '精神值', value: data.mental, score: data.mental },
+                { key: 'money', label: '存款', value: data.money, score: data.money / 2 },
+                { key: 'ai', label: 'AI熟练度', value: data.ai, score: data.ai }
+            ];
+            return candidates.reduce((weakest, item) => item.score < weakest.score ? item : weakest, candidates[0]);
+        }
+
+        function getResumeRiskNotes(sourceStats, sourceBuildProjectState) {
+            const data = normalizeStats(sourceStats || {});
+            const buildState = normalizeBuildProjectState(sourceBuildProjectState || {});
+            const notes = [];
+            if (data.mental <= 35) notes.push('精神值偏低');
+            if (data.money <= 20) notes.push('现金流吃紧');
+            if (data.ai <= 25 && data.day >= 30) notes.push('AI熟练度落后');
+            if (buildState.debt >= 60) notes.push('技术债较高');
+            if (buildState.progress >= 30 && !buildState.shipped) notes.push('长期项目待收尾');
+            return notes;
+        }
+
+        function getActionLabel(actionType) {
+            const labels = {
+                'learn-ai': 'AI学习',
+                'overtime': '加班硬扛',
+                'rest': '休息恢复',
+                'interview': '面试求职',
+                'side-project': '副业/作品',
+                'networking': '社交连接'
+            };
+            return labels[actionType] || '节奏未明';
+        }
+
+        function getDominantActionLabel(counts) {
+            const normalized = normalizeActionCounts(counts || {});
+            const top = Object.entries(normalized).sort((left, right) => right[1] - left[1])[0];
+            if (!top || top[1] <= 0) return '';
+            return getActionLabel(top[0]);
+        }
+
+        function getResumeNextSuggestion(sourceStats, sourceBuildProjectState, sourceRunState = {}) {
+            const data = normalizeStats(sourceStats || {});
+            const buildState = normalizeBuildProjectState(sourceBuildProjectState || {});
+            const state = normalizeRunState(sourceRunState || {});
+            const weakest = getResumeStatMeta(data);
+
+            if (data.mental <= 35 || state.fatigue >= 70) return '休息恢复，先把精神值和疲劳拉回安全区';
+            if (data.money <= 20) return '面试求职，先给现金流留出安全垫';
+            if (data.ai <= 25 && data.day >= 30) return 'AI学习，补齐工具判断和验证能力';
+            if (buildState.debt >= 60) return '休息恢复，先还一点技术债再继续冲刺';
+            if (buildState.progress >= 70 && !buildState.shipped) return '副业/作品，把长期项目收成可展示成果';
+            if (buildState.progress >= 30 && !buildState.shipped) return '副业/作品，推进一个可验证的小版本';
+            if (state.boundaryScore <= 40) return '社交连接，把边界和支持系统重新接上';
+            if (weakest.key === 'skill') return 'AI学习，用一个小任务补技术短板';
+            if (weakest.key === 'money') return '面试求职，先观察市场和机会';
+            if (weakest.key === 'ai') return 'AI学习，练一次从生成到验收的闭环';
+            return '休息恢复，稳定节奏后再继续推进';
+        }
+
+        function getActionFromResumeSuggestion(text) {
+            if (typeof text !== 'string') return '';
+            if (text.includes('休息恢复')) return 'rest';
+            if (text.includes('面试求职')) return 'interview';
+            if (text.includes('AI学习')) return 'learn-ai';
+            if (text.includes('副业/作品')) return 'side-project';
+            if (text.includes('社交连接')) return 'networking';
+            return '';
+        }
+
+        function getProjectStageLabel(projectState) {
+            const state = normalizeBuildProjectState(projectState || {});
+            if (state.shipped) return '项目已发布';
+            const labels = { idea: '项目想法期', usable: '项目可用期', portfolio: '项目作品期' };
+            return labels[state.stage] || '';
+        }
+
+        function getRunMemoryNotes(source = {}) {
+            const notes = [];
+            const recentAction = getDominantActionLabel(source.weeklyActionCounts || source.actionCounts);
+            const projectStage = getProjectStageLabel(source.buildProjectState);
+            const state = normalizeRunState(source.runState || {});
+            if (recentAction) notes.push(`近期主线：${recentAction}`);
+            if (projectStage) notes.push(projectStage);
+            if (state.boundaryScore <= 40) notes.push('边界偏薄');
+            else if (state.boundaryScore >= 75) notes.push('边界稳定');
+            if (state.fatigue >= 70) notes.push('疲劳偏高');
+            else if (state.focus >= 75) notes.push('专注在线');
+            return notes;
+        }
+
+        function buildResumeContextSnapshot(source = {}) {
+            const sourceStats = normalizeStats(source.stats || stats);
+            const sourceEvents = normalizeEventLog(source.eventLog || eventLogState)
+                .filter(entry => !isResumeSystemEvent(entry.text));
+            const sourceBuildProjectState = normalizeBuildProjectState(source.buildProjectState || buildProjectState);
+            const sourceRunState = normalizeRunState(source.runState || runState);
+            const weakest = getResumeStatMeta(sourceStats);
+            const lastEventText = sourceEvents[0]?.text || '';
+            const riskNotes = getResumeRiskNotes(sourceStats, sourceBuildProjectState);
+            const nextSuggestion = getResumeNextSuggestion(sourceStats, sourceBuildProjectState, sourceRunState);
+            const projectNote = sourceBuildProjectState.progress > 0
+                ? `长期项目进度${Math.round(sourceBuildProjectState.progress)}%`
+                : '';
+            const memoryNotes = getRunMemoryNotes({
+                actionCounts: source.actionCounts || actionCounts,
+                weeklyActionCounts: source.weeklyActionCounts || weeklyActionCounts,
+                runState: sourceRunState,
+                buildProjectState: sourceBuildProjectState
+            });
+            const noteText = [projectNote, ...memoryNotes, ...riskNotes].filter(Boolean).join('，');
+            const summary = `第${sourceStats.day}天 ${getCareerName(sourceStats.career)}，${weakest.label}${Math.round(weakest.value)}，上次停在“${lastEventText || '暂无事件'}”`;
+
+            return {
+                day: sourceStats.day,
+                career: getCareerName(sourceStats.career),
+                weakestStat: weakest.key,
+                weakestStatLabel: weakest.label,
+                weakestStatValue: Math.round(weakest.value),
+                lastEventText,
+                projectProgress: Math.round(sourceBuildProjectState.progress),
+                projectDebt: Math.round(sourceBuildProjectState.debt),
+                summary,
+                noteText,
+                nextSuggestion
+            };
+        }
+
+        function normalizeResumeContext(value, source = {}) {
+            const fallback = buildResumeContextSnapshot(source);
+            const data = value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+            const allowedStats = ['skill', 'mental', 'money', 'ai'];
+            return {
+                day: Number.isFinite(Number(data.day)) ? Math.max(0, Math.floor(Number(data.day))) : fallback.day,
+                career: typeof data.career === 'string' && data.career ? data.career : fallback.career,
+                weakestStat: typeof data.weakestStat === 'string' && allowedStats.includes(data.weakestStat) ? data.weakestStat : fallback.weakestStat,
+                weakestStatLabel: typeof data.weakestStatLabel === 'string' && data.weakestStatLabel ? data.weakestStatLabel : fallback.weakestStatLabel,
+                weakestStatValue: Number.isFinite(Number(data.weakestStatValue)) ? Math.round(Number(data.weakestStatValue)) : fallback.weakestStatValue,
+                lastEventText: typeof data.lastEventText === 'string' ? data.lastEventText : fallback.lastEventText,
+                projectProgress: Number.isFinite(Number(data.projectProgress)) ? Math.max(0, Math.min(100, Math.round(Number(data.projectProgress)))) : fallback.projectProgress,
+                projectDebt: Number.isFinite(Number(data.projectDebt)) ? Math.max(0, Math.min(100, Math.round(Number(data.projectDebt)))) : fallback.projectDebt,
+                summary: typeof data.summary === 'string' && data.summary ? data.summary : fallback.summary,
+                noteText: typeof data.noteText === 'string' ? data.noteText : fallback.noteText,
+                nextSuggestion: typeof data.nextSuggestion === 'string' && data.nextSuggestion ? data.nextSuggestion : fallback.nextSuggestion
+            };
+        }
+
+        function buildResumeReminderText(data) {
+            const context = normalizeResumeContext(data?.resumeContext, data || {});
+            const noteText = context.noteText ? `，${context.noteText}` : '';
+            const suggestionText = context.nextSuggestion ? `，建议下一步：${context.nextSuggestion}` : '';
+            return `${RESUME_CONTEXT_EVENT_PREFIX}${context.summary}${noteText}${suggestionText}`;
+        }
+
+        function getResumeFollowupFingerprint(context) {
+            const normalized = normalizeResumeContext(context || {});
+            const actionType = getActionFromResumeSuggestion(normalized.nextSuggestion);
+            if (!actionType) return '';
+            return [actionType, normalized.nextSuggestion].join('|');
+        }
+
+        function addResumeContextReminder(data) {
+            const context = normalizeResumeContext(data?.resumeContext, data || {});
+            const previousFollowup = normalizeResumeFollowupState(data?.resumeFollowupState || resumeFollowupState);
+            const fingerprint = getResumeFollowupFingerprint(context);
+            const consumed = !fingerprint || previousFollowup.consumedFingerprints.includes(fingerprint);
+            resumeReminderText = buildResumeReminderText({ ...data, resumeContext: context });
+            resumeFollowupState = {
+                targetAction: getActionFromResumeSuggestion(context.nextSuggestion),
+                consumed,
+                fingerprint,
+                consumedFingerprints: previousFollowup.consumedFingerprints
+            };
+        }
+
+        function validateV2SaveShape(data) {
+            if (!data || typeof data !== 'object') return '存档不是对象';
+            if (data.schemaVersion !== SAVE_SCHEMA_VERSION) return null;
+            if (!data.stats || typeof data.stats !== 'object' || Array.isArray(data.stats)) return '缺少有效 stats';
+            if (typeof data.stats.career !== 'string') return '缺少有效职业';
+            if (data.actionCounts !== undefined && (!data.actionCounts || typeof data.actionCounts !== 'object' || Array.isArray(data.actionCounts))) return 'actionCounts 类型错误';
+            if (data.consecutiveEvents !== undefined && (!data.consecutiveEvents || typeof data.consecutiveEvents !== 'object' || Array.isArray(data.consecutiveEvents))) return 'consecutiveEvents 类型错误';
+            if (data.weeklyActionCounts !== undefined && (!data.weeklyActionCounts || typeof data.weeklyActionCounts !== 'object' || Array.isArray(data.weeklyActionCounts))) return 'weeklyActionCounts 类型错误';
+            if (data.streakRewards !== undefined && (!data.streakRewards || typeof data.streakRewards !== 'object' || Array.isArray(data.streakRewards))) return 'streakRewards 类型错误';
+            if (data.runState !== undefined && (!data.runState || typeof data.runState !== 'object' || Array.isArray(data.runState))) return 'runState 类型错误';
+            if (data.rarePopupCooldowns !== undefined && (!data.rarePopupCooldowns || typeof data.rarePopupCooldowns !== 'object' || Array.isArray(data.rarePopupCooldowns))) return 'rarePopupCooldowns 类型错误';
+            if (data.gameData !== undefined && (!data.gameData || typeof data.gameData !== 'object' || Array.isArray(data.gameData))) return 'gameData 类型错误';
+            if (data.gameOverState !== undefined && data.gameOverState !== null && (typeof data.gameOverState !== 'object' || Array.isArray(data.gameOverState))) return 'gameOverState 类型错误';
+            if (data.popupHistory !== undefined && !Array.isArray(data.popupHistory)) return 'popupHistory 类型错误';
+            if (data.popupCategoryHistory !== undefined && !Array.isArray(data.popupCategoryHistory)) return 'popupCategoryHistory 类型错误';
+            if (data.eventLog !== undefined && !Array.isArray(data.eventLog)) return 'eventLog 类型错误';
+            if (data.displayTextHistory !== undefined && !Array.isArray(data.displayTextHistory)) return 'displayTextHistory 类型错误';
+            if (data.dailyGoalState !== undefined && (!data.dailyGoalState || typeof data.dailyGoalState !== 'object' || Array.isArray(data.dailyGoalState))) return 'dailyGoalState 类型错误';
+            if (data.buildProjectState !== undefined && (!data.buildProjectState || typeof data.buildProjectState !== 'object' || Array.isArray(data.buildProjectState))) return 'buildProjectState 类型错误';
+            if (data.toolHabitState !== undefined && (!data.toolHabitState || typeof data.toolHabitState !== 'object' || Array.isArray(data.toolHabitState))) return 'toolHabitState 类型错误';
+            if (data.resumeFollowupState !== undefined && (!data.resumeFollowupState || typeof data.resumeFollowupState !== 'object' || Array.isArray(data.resumeFollowupState))) return 'resumeFollowupState 类型错误';
+            if (data.runGoalState !== undefined && (!data.runGoalState || typeof data.runGoalState !== 'object' || Array.isArray(data.runGoalState))) return 'runGoalState 类型错误';
+            if (data.isGameOver !== undefined && typeof data.isGameOver !== 'boolean') return 'isGameOver 类型错误';
+            if (data.achievements !== undefined && !Array.isArray(data.achievements)) return 'achievements 类型错误';
+            if (data.shopItems !== undefined && !Array.isArray(data.shopItems)) return 'shopItems 类型错误';
+            if (data.resumeContext !== undefined && (!data.resumeContext || typeof data.resumeContext !== 'object' || Array.isArray(data.resumeContext))) return 'resumeContext 类型错误';
+            return null;
+        }
+
+        function resetMetaState() {
+            achievements.forEach(achievement => achievement.unlocked = false);
+            shopItems.forEach(item => item.owned = false);
+        }
+
+        function restoreMeta(meta = {}) {
+            resetMetaState();
+            gameData = clonePlain(meta.gameData, getInitialGameData()) || getInitialGameData();
+            gameData.achievements = Array.isArray(gameData.achievements)
+                ? Array.from(new Set(gameData.achievements.filter(id => typeof id === 'string')))
+                : [];
+            gameData.endings = Array.isArray(gameData.endings)
+                ? Array.from(new Set(gameData.endings.filter(ending => typeof ending === 'string')))
+                : [];
+            gameData.deaths = Number.isFinite(Number(gameData.deaths)) ? Math.max(0, Math.floor(Number(gameData.deaths))) : 0;
+            gameData.maxDay = Number.isFinite(Number(gameData.maxDay)) ? Math.max(0, Math.floor(Number(gameData.maxDay))) : 0;
+
+            const unlockedIds = Array.isArray(meta.achievements) ? meta.achievements : gameData.achievements;
+            unlockedIds.forEach(id => {
+                const achievement = achievements.find(a => a.id === id);
+                if (achievement) achievement.unlocked = true;
+                if (achievement && !gameData.achievements.includes(id)) {
+                    gameData.achievements.push(id);
+                }
+            });
+
+            const ownedItemIds = Array.isArray(meta.shopItems) ? meta.shopItems : [];
+            ownedItemIds.forEach(id => {
+                const item = shopItems.find(i => i.id === id);
+                if (item) item.owned = true;
+            });
+        }
+
+        function matchesPopupTrigger(trigger = {}) {
+            if (trigger.minDay !== undefined && stats.day < trigger.minDay) return false;
+            if (trigger.maxMental !== undefined && stats.mental > trigger.maxMental) return false;
+            if (trigger.minAge !== undefined && stats.age < trigger.minAge) return false;
+            if (trigger.minAi !== undefined && stats.ai < trigger.minAi) return false;
+            if (trigger.minSkill !== undefined && stats.skill < trigger.minSkill) return false;
+            if (trigger.minMoney !== undefined && stats.money < trigger.minMoney) return false;
+            return true;
+        }
+
+        function getPopupWeight(item, actionType = '') {
+            let weight = 6;
+            if (item.rarity === 'rare') weight = 1;
+            else if (item.rarity === 'uncommon') weight = 3;
+
+            const actionRule = actionPopupRules[actionType];
+            if (actionRule && actionRule.kinds.includes(item.kind)) {
+                weight += 4;
+            }
+
+            const careerBias = careerPopupBias[stats.career];
+            if (careerBias && careerBias.kinds.includes(item.kind)) {
+                weight += 2;
+            }
+            if (careerBias && item.category && careerBias.categoryKeywords.some(keyword => item.category.includes(keyword))) {
+                weight += 2;
+            }
+
+            if (isCategoryOnCooldown(item)) {
+                weight = Math.max(1, weight - 3);
+            }
+
+            if (actionType === 'rest' && ['health', 'life', 'joke'].includes(item.kind)) {
+                weight += 4;
+            }
+            if (actionType === 'networking' && ['life', 'joke'].includes(item.kind)) {
+                weight += 4;
+            }
+            if (actionType === 'learn-ai' && ['learning'].includes(item.kind)) {
+                weight += 5;
+            }
+            if (actionType === 'side-project' && ['learning', 'life'].includes(item.kind)) {
+                weight += 3;
+            }
+
+            return weight;
+        }
+
+        function isPopupOnCooldown(item) {
+            if (!item || item.id === undefined) return false;
+            return popupHistory.includes(item.id);
+        }
+
+        function isPopupTextOnCooldown(item) {
+            return isDisplayedTextOnCooldown(item?.text || '');
+        }
+
+        function pruneRarePopupCooldowns() {
+            Object.keys(rarePopupCooldowns).forEach(key => {
+                if (rarePopupCooldowns[key] <= stats.day) {
+                    delete rarePopupCooldowns[key];
+                }
+            });
+        }
+
+        function isRarePopupOnCooldown(item) {
+            if (!item || item.rarity !== 'rare' || item.id === undefined) return false;
+            pruneRarePopupCooldowns();
+            return Number(rarePopupCooldowns[item.id] || 0) > stats.day;
+        }
+
+        function isCategoryOnCooldown(item) {
+            if (!item || typeof item.category !== 'string') return false;
+            return popupCategoryHistory.includes(item.category);
+        }
+
+        function rememberPopup(item) {
+            if (!item || item.id === undefined) return;
+            popupHistory.push(item.id);
+            if (popupHistory.length > 12) {
+                popupHistory = popupHistory.slice(-12);
+            }
+            if (item.category) {
+                popupCategoryHistory.push(item.category);
+                if (popupCategoryHistory.length > 6) {
+                    popupCategoryHistory = popupCategoryHistory.slice(-6);
+                }
+            }
+        }
+
+        function rememberRarePopupCooldown(item) {
+            if (!item || item.rarity !== 'rare' || item.id === undefined) return;
+            rarePopupCooldowns[item.id] = stats.day + 21;
+            pruneRarePopupCooldowns();
+        }
+
+        function pickWeightedItem(items, actionType = '') {
+            if (!items.length) return null;
+            const total = items.reduce((sum, item) => sum + getPopupWeight(item, actionType), 0);
+            let roll = Math.random() * total;
+            for (const item of items) {
+                roll -= getPopupWeight(item, actionType);
+                if (roll <= 0) return item;
+            }
+            return items[items.length - 1];
+        }
+
+        function toGameEvent(item) {
+            return {
+                text: item.text,
+                skill: item.effect?.skill || 0,
+                mental: item.effect?.mental || 0,
+                money: item.effect?.money || 0,
+                ai: item.effect?.ai || 0
+            };
+        }
+
+        function matchesActionRule(item, actionType, fallbackKinds) {
+            if (!item || typeof item.kind !== 'string') return false;
+            const rule = actionPopupRules[actionType];
+            if (!rule) {
+                return fallbackKinds.includes(item.kind);
+            }
+
+            const kindMatch = rule.kinds.includes(item.kind);
+            const category = typeof item.category === 'string' ? item.category : '';
+            const categoryMatch = rule.categoryKeywords.some(keyword => category.includes(keyword));
+            return kindMatch || categoryMatch;
+        }
+
+        function matchesCareerBias(item) {
+            if (!item || typeof item.kind !== 'string') return false;
+            const bias = careerPopupBias[stats.career];
+            if (!bias) return true;
+            const kindMatch = bias.kinds.includes(item.kind);
+            const category = typeof item.category === 'string' ? item.category : '';
+            const categoryMatch = bias.categoryKeywords.some(keyword => category.includes(keyword));
+            return kindMatch || categoryMatch;
+        }
+
+        function getDynamicRandomEvent(actionType) {
+            const fallbackKinds = ['event', 'learning', 'health', 'life'];
+            let pool = popupPool.filter(item =>
+                matchesPopupTrigger(item.trigger) &&
+                !isPopupOnCooldown(item) &&
+                !isPopupTextOnCooldown(item) &&
+                !isRarePopupOnCooldown(item) &&
+                matchesActionRule(item, actionType, fallbackKinds)
+            );
+
+            if (!pool.length) {
+                pool = popupPool.filter(item =>
+                    !isPopupOnCooldown(item) &&
+                    !isPopupTextOnCooldown(item) &&
+                    !isRarePopupOnCooldown(item) &&
+                    fallbackKinds.includes(item.kind) &&
+                    matchesPopupTrigger(item.trigger)
+                );
+            }
+
+            const picked = pickWeightedItem(pool, actionType);
+            if (picked) {
+                rememberPopup(picked);
+                rememberRarePopupCooldown(picked);
+            }
+            return picked ? toGameEvent(picked) : null;
+        }
+
+        function getDynamicThought(actionType) {
+            const fallbackKinds = ['joke', 'life', 'learning'];
+            let pool = popupPool.filter(item =>
+                matchesPopupTrigger(item.trigger) &&
+                !isPopupOnCooldown(item) &&
+                !isPopupTextOnCooldown(item) &&
+                !isRarePopupOnCooldown(item) &&
+                matchesActionRule(item, actionType, fallbackKinds)
+            );
+
+            if (!pool.length) {
+                pool = popupPool.filter(item =>
+                    !isPopupOnCooldown(item) &&
+                    !isPopupTextOnCooldown(item) &&
+                    !isRarePopupOnCooldown(item) &&
+                    fallbackKinds.includes(item.kind) &&
+                    matchesPopupTrigger(item.trigger)
+                );
+            }
+
+            const picked = pickWeightedItem(pool, actionType);
+            if (picked) {
+                rememberPopup(picked);
+                rememberRarePopupCooldown(picked);
+            }
+            return picked ? picked.text : null;
+        }
+
+        const events = {
+            'learn-ai': [
+                { text: '你学会了用Cursor写代码，效率提升了', skill: -5, ai: 15, mental: -3 },
+                { text: 'Claude Code帮你重构了整个项目', skill: -3, ai: 20, mental: 5 },
+                { text: '你发现AI写的代码有bug，调了一晚上', skill: 5, ai: 8, mental: -15 },
+                { text: '同事看到你用AI，开始焦虑了', ai: 10, mental: -5 },
+                { text: 'GitHub Copilot帮你写了一整天的单元测试', ai: 12, mental: 10, skill: -2 },
+                { text: '学会了Prompt工程，AI产出质量大增', ai: 18, mental: 5 },
+                { text: 'Prompt写得漂亮，结果还是错', ai: 6, mental: -10 },
+                { text: '上下文不给够，AI就开始瞎猜', ai: 8, mental: -8 },
+                { text: '复制得很快，理解得很慢', ai: 10, skill: -8 },
+                { text: '你不是coder，你成了reviewer', ai: 15, skill: -5, mental: -5 }
+            ],
+            'overtime': [
+                { text: '通宵修bug，精神崩溃边缘', skill: 8, mental: -20, money: 5 },
+                { text: '领导看到你加班，给了口头表扬', skill: 3, mental: -10 },
+                { text: '写出了一个漂亮的功能，很有成就感', skill: 10, mental: -5, money: 3 },
+                { text: '加班到凌晨，第二天全忘了写了啥', skill: 2, mental: -15 },
+                { text: '连续一周996，身体开始报警', skill: 5, mental: -25, money: 8 },
+                { text: '工位灯还亮着，需求也亮着', skill: 6, mental: -18, money: 4 },
+                { text: '站会结束，夜班开始', skill: 4, mental: -15 },
+                { text: '代码写完了，精神没了', skill: 8, mental: -20 },
+                { text: '你在救火，别人说你扛压强', skill: 5, mental: -22, money: 3 },
+                { text: '白天开会，晚上编码', skill: 5, mental: -18 }
+            ],
+            'rest': [
+                { text: '摸鱼一天，心情舒畅', mental: 20, skill: -5 },
+                { text: '被领导抓到摸鱼，扣了绩效', mental: -10, money: -10 },
+                { text: '刷知乎看到"程序员35岁危机"，更焦虑了', mental: -15 },
+                { text: '躺平一天，什么都不想', mental: 15, skill: -3 },
+                { text: '玩了一天游戏，精神恢复了', mental: 25, skill: -8 },
+                { text: '今天状态不错，适合回滚', mental: 10 },
+                { text: '我没摸鱼，我在等环境', mental: 12, skill: -2 },
+                { text: '工程师的浪漫，是周五别报警', mental: 18 }
+            ],
+            'interview': [
+                { text: '面试官问你会不会AI编程，你说不会，凉了', mental: -20 },
+                { text: '拿到了offer！涨薪30%', money: 30, mental: 20 },
+                { text: '面试被问倒了，怀疑自己技术不行', mental: -15, skill: 5 },
+                { text: '新公司要裁员，offer被撤回', mental: -25 },
+                { text: '面试官被你的AI项目惊艳到了', money: 25, mental: 15, ai: 5 },
+                { text: '一轮又一轮，像分布式失败重试', mental: -18, skill: 3 },
+                { text: '讲项目时最怕被追问细节', mental: -12, skill: 4 },
+                { text: '你回答得不错，只是不够便宜', mental: -15 },
+                { text: '面试官开始问你AI工作流了', mental: -8, ai: 5 },
+                { text: '这家公司看重稳定，你看重下班', mental: -5 }
+            ],
+            'side-project': [
+                { text: '接了个私活，赚了5万', money: 15, mental: -10, skill: 5 },
+                { text: '私活客户跑路了，白干一个月', mental: -30, skill: 3 },
+                { text: '用AI快速完成私活，客户很满意', money: 20, ai: 8, mental: 5 },
+                { text: '私活和正职撞车，两头挨骂', mental: -20, money: -5 },
+                { text: '开发的小工具被很多人用，有成就感', mental: 25, skill: 8 },
+                { text: '客户说"小改一下"，半天没了', mental: -15, money: 5 },
+                { text: '看起来很小，实际动全链路', mental: -12, skill: 6, money: 3 }
+            ],
+            'networking': [
+                { text: '参加技术大会，认识了几个大佬', skill: 10, mental: 5 },
+                { text: '社交恐惧症发作，一个人躲在角落', mental: -10 },
+                { text: '有猎头联系你，说有好机会', money: 10, mental: 10 },
+                { text: '在技术群里分享经验，获得认可', mental: 15, skill: 5 },
+                { text: '认识了一个内推机会', money: 8, mental: 12 },
+                { text: '在群里看到老同事被裁，心里咯噔', mental: -15 }
+            ]
+        };
+
+        const randomEvents = [
+            { text: 'AI导致公司裁员30%，你活了下来', mental: -10, ai: 5, trigger: () => stats.ai > 50 },
+            { text: '你被裁了，N+1补偿', mental: -50, money: 20, skill: -10, trigger: () => stats.ai < 30 && Math.random() > 0.7 },
+            { text: '同事全在用AI，你感到被孤立', mental: -15, trigger: () => stats.ai < 40 },
+            { text: 'ChatGPT又升级了，你的代码技能更不值钱了', skill: -5, mental: -10 },
+            { text: '你的GitHub项目被AI训练，没有署名', mental: -8 },
+            { text: '你用AI一天完成了过去一周的工作', mental: 15, ai: 10, money: 5, trigger: () => stats.ai > 60 },
+            { text: '35岁了，HR暗示你考虑转管理', mental: -20, trigger: () => stats.age >= 35 },
+            { text: '体检查出颈椎病，医生说要少加班', mental: -15, trigger: () => stats.day > 50 },
+            { text: '猝死新闻又上热搜，你开始焦虑', mental: -12, trigger: () => stats.mental < 40 },
+            { text: '看到同学都财务自由了，你还在打工', mental: -18, trigger: () => stats.age >= 33 },
+            { text: '新人问你：这个需求AI不能做吗？', mental: -15, ai: 5 },
+            { text: '拿到年终奖，但没有想象中多', money: 15, mental: -5 },
+            { text: '小改一下，半天没了', mental: -8 },
+            { text: '需求没变，只是理解变了', mental: -10 },
+            { text: '产品说逻辑很简单', mental: -12 },
+            { text: '看起来很小，实际动全链路', mental: -10, skill: 3 },
+            { text: '需求评审像许愿池', mental: -8 },
+            { text: '今晚又是自愿加班', mental: -12, skill: 3 },
+            { text: '电脑合上了，脑子没关机', mental: -15 },
+            { text: '大家都没走，你也不好意思走', mental: -10 },
+            { text: '今天的加班，是昨天的技术债', mental: -8, skill: 2 },
+            { text: '加班不是热爱，是缓冲区', mental: -10 },
+            { text: '项目冲刺期，生活回收站', mental: -18 },
+            { text: '【突发】线上一响，今晚别睡', mental: -25, skill: 5, trigger: () => stats.day > 20 },
+            { text: '【突发】监控红了，群也红了', mental: -20, skill: 3 },
+            { text: '【突发】回滚按钮就是最后的体面', mental: -10, skill: 4 },
+            { text: '【突发】凌晨两点的报警最真实', mental: -22, skill: 6 },
+            { text: '【突发】事故群里，没人发表情', mental: -18 },
+            { text: '【突发】P0不看场合', mental: -25, money: -5 },
+            { text: '屎山不会倒，只会扩建', mental: -10, skill: 3 },
+            { text: '别问谁写的，先问谁敢改', mental: -8, skill: 4 },
+            { text: '看懂这段代码，算工伤', mental: -12, skill: 6 },
+            { text: '祖传工具类又显灵了', mental: -10, skill: 2 },
+            { text: '本地能跑，线上会翻脸', mental: -15, skill: 4 },
+            { text: '两个人改一行，Git先崩', mental: -10, skill: 3 },
+            { text: '依赖刚升级，熟悉感没了', mental: -12, skill: 5 },
+            { text: '权限不足，不是你不够努力', mental: -8 },
+            { text: '会的人离职了，知识也离职了', mental: -15, skill: -3 },
+            { text: '新人第一天，先学会问谁', mental: 5, trigger: () => stats.age >= 32 },
+            { text: '接手老项目，先接受世界观', mental: -10, skill: 5 },
+            { text: '会议很多，产出很少', mental: -12 },
+            { text: '消息一响，专注下线', mental: -10 },
+            { text: '上下文切换一次，精神掉一截', mental: -15 },
+            { text: '今日最佳产出：终于静下来了十分钟', mental: -8, skill: 2 },
+            { text: 'AI又交了一份看似能跑的作业', mental: -10, ai: 5, skill: 3, trigger: () => stats.ai > 40 },
+            { text: 'AI生成十分钟，人工排错一整晚', mental: -15, ai: 5, skill: 5 },
+            { text: '现在值钱的不是手速，是判断', mental: 8, skill: 5, trigger: () => stats.skill > 70 },
+            { text: '你的工程意识，决定AI是助手还是灾难', mental: 5, ai: 3 },
+            { text: '绩效一到，背锅先到', mental: -20, money: -8 },
+            { text: '稳定运行三个月，不如炸一次显眼', mental: -15 },
+            { text: '真正难的是长期不出事', mental: 5, skill: 3 },
+            { text: '老程序员的优势，不在手快，在少踩坑', mental: 10, skill: 5, trigger: () => stats.age >= 35 },
+            { text: '过去拼手速，现在拼判断', mental: 5, trigger: () => stats.age >= 34 }
+        ];
+
+        const lightThoughts = [
+            '小改一下，半天没了',
+            '需求没变，只是理解变了',
+            '电脑合上了，脑子没关机',
+            '线上一响，今晚别睡',
+            '监控红了，群也红了',
+            '复盘开得很深，修复很浅',
+            '回滚按钮就是最后的体面',
+            '代码能跑，债没还',
+            '重构很贵，不重构更贵',
+            '别问谁写的，先问谁敢改',
+            '屎山不会倒，只会扩建',
+            'AI 写得快，返工更快',
+            '别让自己变成 AI 清洁工',
+            'AI 会写代码，不会替你负责',
+            '现在值钱的不是手速，是判断',
+            '面试八股，背完就忘',
+            '稳定性比简历更难背',
+            'Offer 快到了，HC 没了',
+            '面试不是考试，是信号博弈',
+            '绩效一到，背锅先到',
+            '绩效表里没有凌晨两点',
+            '稳定运行三个月，不如炸一次显眼',
+            '真正难的是长期不出事',
+            '会议很多，产出很少',
+            '你不是在开会，你是在被切碎',
+            '上下文切换一次，精神掉一截',
+            '真正贵的不是会议，是会后重启大脑',
+            '本地能跑，线上会翻脸',
+            '权限不足，不是你不够努力',
+            '线上和本地，像两种宇宙',
+            '文档缺席，靠猜交付',
+            '会的人离职了，知识也离职了',
+            'README 只负责把你骗进来',
+            '接手代码前，先深呼吸',
+            '35 岁不是终点，是提醒',
+            '过去拼手速，现在拼判断',
+            '裁员之后，留下来的人更沉默',
+            '工程师的浪漫，是周五别报警',
+            '今天的代码，很有明天的味道',
+            '我没摸鱼，我在等环境',
+            '不是我慢，是编译器想聊聊',
+            '这行注释比逻辑诚实',
+            '没人敢删的代码，通常都在运行',
+            '程序不报错的时候，我更害怕',
+            '这个功能终于稳定地不稳定了',
+            '改完这版，我就去睡。第六次了',
+            '今天状态不错，适合回滚',
+            '这段代码一看就很有历史',
+            '修好了问题，制造了传说'
+        ];
+
+        const ageRelatedThoughts = [
+            { text: '招聘里没写年龄，空气里写了', minAge: 33 },
+            { text: '不是你变差了，是赛道变快了', minAge: 33 },
+            { text: '裁员名单总像随机数', minAge: 32 },
+            { text: '年纪大了，报错看得更准了', minAge: 35 },
+            { text: '老程序员的优势，不在手快，在少踩坑', minAge: 35 },
+            { text: '你怕的不是年龄，是替代感', minAge: 33 },
+            { text: '岗位在缩，责任在涨', minAge: 34 },
+            { text: '越往后走，越值钱的是稳', minAge: 35 }
+        ];
+
+        const achievements = [
+            { id: 'first_day', name: '新手上路', desc: '度过第1天', icon: '🎯', unlocked: false },
+            { id: 'survivor', name: '生存专家', desc: '度过100天', icon: '🏆', unlocked: false },
+            { id: 'ai_master', name: 'AI大师', desc: 'AI熟练度达到80', icon: '🤖', unlocked: false },
+            { id: 'rich', name: '财务自由', desc: '存款达到100万', icon: '💰', unlocked: false },
+            { id: 'workaholic', name: '加班狂魔', desc: '累计加班50次', icon: '💻', unlocked: false },
+            { id: 'lazy', name: '摸鱼达人', desc: '累计摸鱼30次', icon: '☕', unlocked: false },
+            { id: 'social', name: '社交达人', desc: '参加社交活动20次', icon: '🤝', unlocked: false },
+            { id: 'old_dog', name: '老程序员', desc: '年龄达到40岁', icon: '👴', unlocked: false },
+            { id: 'balanced', name: '均衡发展', desc: '四项属性都超过70', icon: '⚖️', unlocked: false },
+            { id: 'deep_focus', name: '深度专注', desc: '隐藏专注状态达到90', icon: '🎯', unlocked: false },
+            { id: 'recovery_mindset', name: '恢复意识', desc: '隐藏疲劳状态降到10以下', icon: '🧘', unlocked: false },
+            { id: 'boundary_keeper', name: '边界守护者', desc: '加班50次前仍保持精神70以上', icon: '🛡️', unlocked: false },
+            { id: 'steady_pace', name: '稳定节奏', desc: '隐藏生活边界分达到80', icon: '🧭', unlocked: false },
+            { id: 'daily_anchor', name: '日课锚点', desc: '连续完成7个每日小目标', icon: '📌', unlocked: false },
+            { id: 'good_ending', name: '完美人生', desc: '达成好结局', icon: '🌈', unlocked: false }
+        ];
+
+        const shopItems = [
+            { id: 'keyboard', name: '机械键盘', desc: '提升编码手感', price: 20, effect: { skill: 5, mental: 3 }, owned: false },
+            { id: 'coffee', name: '精品咖啡机', desc: '保持清醒', price: 15, effect: { mental: 8 }, owned: false },
+            { id: 'course', name: 'AI课程', desc: '系统学习AI', price: 30, effect: { ai: 15, skill: -3 }, owned: false },
+            { id: 'chair', name: '人体工学椅', desc: '保护腰椎', price: 25, effect: { mental: 10 }, owned: false },
+            { id: 'monitor', name: '4K显示器', desc: '护眼提效', price: 35, effect: { skill: 8, mental: 5 }, owned: false },
+            { id: 'vacation', name: '年假旅游', desc: '彻底放松', price: 40, effect: { mental: 30, skill: -5 }, owned: false }
+        ];
+
+        let actionCounts = { 'learn-ai': 0, 'overtime': 0, 'rest': 0, 'interview': 0, 'side-project': 0, 'networking': 0 };
+        let consecutiveEvents = { good: 0, bad: 0 };
+
+        function selectCareer(career) {
+            if (!hasActiveRun() && hasSavedGame()) {
+                const confirmed = window.confirm('已有上次生存存档。确定要开始新游戏并覆盖它吗？');
+                if (!confirmed) return;
+            }
+            const careers = {
+                'frontend': { skill: 70, mental: 85, money: 45, ai: 25, name: '前端工程师' },
+                'backend': { skill: 80, mental: 75, money: 55, ai: 20, name: '后端工程师' },
+                'fullstack': { skill: 75, mental: 70, money: 50, ai: 35, name: '全栈工程师' },
+                'ai': { skill: 65, mental: 80, money: 60, ai: 50, name: 'AI工程师' }
+            };
+            const selected = careers[career];
+            stats = getInitialStats();
+            stats.career = career;
+            stats.skill = selected.skill;
+            stats.mental = selected.mental;
+            stats.money = selected.money;
+            stats.ai = selected.ai;
+            actionCounts = getInitialActionCounts();
+            consecutiveEvents = getInitialConsecutiveEvents();
+            weeklyActionCounts = getInitialWeeklyActionCounts();
+            streakRewards = getInitialStreakRewards();
+            runState = getInitialRunState();
+            rarePopupCooldowns = getInitialRarePopupCooldowns();
+            displayTextHistory = getInitialDisplayTextHistory();
+            dailyGoalState = getInitialDailyGoalState();
+            buildProjectState = getInitialBuildProjectState();
+            toolHabitState = getInitialToolHabitState();
+            runGoalState = getRunGoalForCareer(career);
+            popupHistory = [];
+            popupCategoryHistory = [];
+            eventLogState = [];
+            resumeReminderText = '';
+            resumeFollowupState = { targetAction: '', consumed: true };
+            isGameOver = false;
+            gameOverState = null;
+            document.getElementById('event-log').innerHTML = '';
+            document.getElementById('game-over').style.display = 'none';
+            document.querySelectorAll('.action-btn').forEach(btn => btn.disabled = false);
+            
+            document.getElementById('career-selection').style.display = 'none';
+            document.getElementById('game-area').style.display = 'block';
+            document.getElementById('player-career').textContent = selected.name;
+            
+            addEvent('欢迎来到2026年，你是一名30岁的' + selected.name, 'neutral');
+            updateStats();
+            const saved = saveGame({ silent: true });
+            if (!saved) {
+                stats = getInitialStats();
+                document.getElementById('career-selection').style.display = 'block';
+                document.getElementById('game-area').style.display = 'none';
+                updateResumeButton();
+                return;
+            }
+            updateResumeButton();
+        }
+
+        function action(type) {
+            stats.day++;
+            actionCounts[type]++;
+            weeklyActionCounts[type] = (weeklyActionCounts[type] || 0) + 1;
+            applyActionState(type);
+
+            if (stats.day % 30 === 0) {
+                stats.age++;
+            }
+
+            const event = pickFreshEvent(events[type]);
+            applyEvent(event);
+
+            if (Math.random() > 0.6) {
+                const builtInEvent = pickFreshEvent(randomEvents);
+                const dynamicEvent = getDynamicRandomEvent(type);
+                const dynamicRatio = actionDynamicRatios[type] || 0.7;
+                const pickedEvent = dynamicEvent && Math.random() < dynamicRatio ? dynamicEvent : builtInEvent;
+                if (!pickedEvent.trigger || pickedEvent.trigger()) {
+                    applyEvent(pickedEvent, true);
+                }
+            }
+
+            if (Math.random() > 0.35) {
+                addLightThought(type);
+            }
+
+            addStreakFeedback();
+            applyDailyGoal(type);
+            applyFunLoopFeedback(type);
+            applyResumeFollowup(type);
+            applyBuildProject(type);
+            addCareerStageFeedback();
+
+            if (stats.day % 7 === 0) {
+                addWeeklyRecap();
+            }
+
+            updateStats();
+            checkAchievements();
+            checkGameOver();
+            autoSaveGame();
+        }
+
+        function addLightThought(actionType) {
+            const ageThoughts = ageRelatedThoughts.filter(t => stats.age >= t.minAge);
+            const dynamicThought = getDynamicThought(actionType);
+            let thought = null;
+            const fallbackPool = ageThoughts.length > 0 && Math.random() > 0.5
+                ? ageThoughts.map(t => t.text)
+                : lightThoughts;
+
+            const dynamicRatio = actionDynamicRatios[actionType] || 0.7;
+            if (dynamicThought && Math.random() < dynamicRatio) {
+                thought = dynamicThought;
+            } else {
+                thought = pickFreshText(fallbackPool);
+            }
+
+            if (isDisplayedTextOnCooldown(thought)) {
+                const altThought = fallbackPool.find(text => !isDisplayedTextOnCooldown(text));
+                if (altThought) thought = altThought;
+            }
+            addEvent('💭 ' + thought, 'neutral');
+        }
+
+        function applyActionState(type) {
+            const changes = {
+                'learn-ai': { focus: -8, fatigue: 8 },
+                'overtime': { focus: -12, fatigue: 16 },
+                'rest': { focus: 10, fatigue: -18 },
+                'interview': { focus: -10, fatigue: 12 },
+                'side-project': { focus: -8, fatigue: 10 },
+                'networking': { focus: 4, fatigue: -4 }
+            };
+            const change = changes[type] || { focus: 0, fatigue: 0 };
+            runState.focus = Math.max(0, Math.min(100, runState.focus + change.focus));
+            runState.fatigue = Math.max(0, Math.min(100, runState.fatigue + change.fatigue));
+            runState.boundaryScore = Math.max(0, Math.min(100, runState.boundaryScore + (
+                type === 'rest' ? 2 :
+                type === 'overtime' ? -3 :
+                type === 'learn-ai' || type === 'side-project' ? 1 :
+                type === 'networking' ? 1 : 0
+            )));
+
+            if (runState.fatigue >= 85) {
+                stats.mental = Math.max(0, stats.mental - 4);
+                addEvent('🪫 疲劳过载：身体开始拖慢你的工程判断，精神 -4', 'bad');
+            } else if (runState.focus >= 85 && ['learn-ai', 'interview', 'side-project'].includes(type)) {
+                stats.skill = Math.min(100, stats.skill + 2);
+                addEvent('🎯 专注拉满：你抓住了一个关键细节，技术 +2', 'good');
+            }
+
+            if (stats.day >= 7 && stats.day % 7 === 0 && stats.day !== runState.lastBoundaryFeedbackDay) {
+                addBoundaryFeedback();
+                runState.lastBoundaryFeedbackDay = stats.day;
+            }
+        }
+
+        function addBoundaryFeedback() {
+            if (runState.boundaryScore >= 75 && stats.mental >= 60) {
+                stats.mental = Math.min(100, stats.mental + 2);
+                addEvent(`🧭 周界复盘：你守住了生活边界，状态更稳了（边界分 ${Math.round(runState.boundaryScore)}）`, 'special');
+            } else if (runState.boundaryScore <= 35) {
+                stats.mental = Math.max(0, stats.mental - 2);
+                addEvent(`⚠️ 周界复盘：加班把边界挤薄了，精神开始透支（边界分 ${Math.round(runState.boundaryScore)}）`, 'special');
+            } else {
+                addEvent(`📝 周界复盘：这周边界还在拉扯，继续调整节奏（边界分 ${Math.round(runState.boundaryScore)}）`, 'neutral');
+            }
+        }
+
+        function getCareerStageLabel(day) {
+            if (day >= 60) return '长期主义期';
+            if (day >= 30) return '稳定交付期';
+            if (day >= 10) return '上手校准期';
+            return '';
+        }
+
+        function addCareerStageFeedback() {
+            const stageLabel = getCareerStageLabel(stats.day);
+            if (!stageLabel) return;
+            if (runState.lastCareerStageFeedbackDay >= stats.day) return;
+            const shouldEmit = stats.day === 10 || stats.day === 30 || stats.day === 60 || (stats.day > 60 && stats.day % 30 === 0);
+            if (!shouldEmit) return;
+
+            runState.lastCareerStageFeedbackDay = stats.day;
+            const careerName = getCareerName(stats.career);
+            const balanceNote = runState.boundaryScore >= 70 ? '生活边界还算稳' :
+                runState.boundaryScore <= 35 ? '边界已经被加班啃薄' :
+                '边界还在拉扯';
+            const buildNote = buildProjectState.progress >= 70 ? '长期项目已经像作品' :
+                buildProjectState.progress >= 30 ? '长期项目开始能给人看' :
+                '长期项目还在打地基';
+            addEvent(`🧭 职业阶段：${careerName}进入${stageLabel}，${balanceNote}，${buildNote}`, 'special');
+        }
+
+        function applyBuildProject(type) {
+            const wasShipped = buildProjectState.shipped;
+            const canAddDailyBuildFeedback = buildProjectState.lastFeedbackDay !== stats.day;
+            const changes = {
+                'side-project': { progress: 12, quality: 1, debt: 5 },
+                'learn-ai': { progress: 3, quality: 5, debt: -2 },
+                'networking': { exposure: 8, quality: 1 },
+                'rest': { quality: 1, debt: -6 },
+                'interview': { exposure: 3, debt: 1 },
+                'overtime': { progress: 2, quality: -2, debt: 7 }
+            };
+            const change = changes[type] || {};
+            buildProjectState = normalizeBuildProjectState({
+                ...buildProjectState,
+                progress: buildProjectState.progress + (change.progress || 0),
+                quality: buildProjectState.quality + (change.quality || 0),
+                debt: buildProjectState.debt + (change.debt || 0),
+                exposure: buildProjectState.exposure + (change.exposure || 0)
+            });
+
+            if (canAddDailyBuildFeedback && buildProjectState.debt >= 60 && ['rest', 'learn-ai'].includes(type)) {
+                buildProjectState = normalizeBuildProjectState({
+                    ...buildProjectState,
+                    quality: buildProjectState.quality + 2,
+                    debt: buildProjectState.debt - 8
+                });
+                buildProjectState.lastFeedbackDay = stats.day;
+                addEvent(`🧯 重构回血：你没有继续堆功能，而是还掉一截技术债（债务 ${Math.round(buildProjectState.debt)}，质量 ${Math.round(buildProjectState.quality)}）`, 'special');
+            }
+
+            if (!wasShipped && buildProjectState.progress >= 100) {
+                buildProjectState.shipped = true;
+                stats.money = Math.min(200, stats.money + 12);
+                stats.mental = Math.min(100, stats.mental + 3);
+                addEvent('🚀 长期 Build 项目终于发布：不是宏大叙事，是一个能打开的作品，存款 +12，精神 +3', 'special');
+            }
+
+            if (canAddDailyBuildFeedback && wasShipped && type === 'networking') {
+                buildProjectState = normalizeBuildProjectState({
+                    ...buildProjectState,
+                    quality: buildProjectState.quality + 2,
+                    exposure: buildProjectState.exposure + 6
+                });
+                buildProjectState.lastFeedbackDay = stats.day;
+                addEvent(`📣 首批用户反馈：你把发布后的曝光聊成了反馈，曝光 ${Math.round(buildProjectState.exposure)}，质量 ${Math.round(buildProjectState.quality)}`, 'special');
+            }
+        }
+
+        function addBuildProjectWeeklyFeedback() {
+            if (stats.day < 7 || buildProjectState.lastFeedbackDay === stats.day) return;
+            buildProjectState.lastFeedbackDay = stats.day;
+            if (buildProjectState.progress <= 0 && buildProjectState.exposure <= 0) return;
+
+            const debtNote = buildProjectState.debt >= 60 ? '技术债已经开始反向管理你' :
+                buildProjectState.debt >= 30 ? '技术债还在可控范围里' :
+                '代码债暂时没有抢方向盘';
+            const stageLabels = { idea: '想法期', usable: '可用期', portfolio: '作品期' };
+            addEvent(`🧱 长期 Build 项目：${stageLabels[buildProjectState.stage]}，进度 ${Math.round(buildProjectState.progress)}%，质量 ${Math.round(buildProjectState.quality)}，曝光 ${Math.round(buildProjectState.exposure)}，${debtNote}`, 'special');
+        }
+
+        function addWeeklyRecap() {
+            const focus = Object.entries(weeklyActionCounts).sort((a, b) => b[1] - a[1])[0] || ['rest', 0];
+            const topAction = focus[0];
+            const topCount = focus[1];
+            const weekAge = stats.age;
+            const summaries = {
+                'learn-ai': [
+                    '这周你在追新工具，脑子很热。',
+                    '学习密度上来了，但别把收藏当掌握。',
+                    '你已经把 AI 从焦虑源变成工作流的一部分。'
+                ],
+                'overtime': [
+                    '这周加班味很重，身体在记账。',
+                    '你扛住了，但别把扛住当常态。',
+                    '这周你把边界又推远了一点。'
+                ],
+                'rest': [
+                    '这周你开始认真恢复了。',
+                    '休息次数增加，精神没那么硬耗了。',
+                    '你终于给自己留了回收时间。'
+                ],
+                'interview': [
+                    '这周在求职路上有点用力。',
+                    '面试压力不小，但你至少在推进。',
+                    '你开始拿面试当训练，而不是审判。'
+                ],
+                'side-project': [
+                    '这周副业有推进，但别把自己做空。',
+                    '你在做 ship 的判断，不只是做梦。',
+                    '副项目开始有一点现实感了。'
+                ],
+                'networking': [
+                    '这周你没有完全断开连接。',
+                    '弱连接开始重新回血。',
+                    '人际网络比你想的更慢热。'
+                ]
+            };
+            const pool = summaries[topAction] || summaries['rest'];
+            const recap = pool[Math.floor(Math.random() * pool.length)];
+            const bonus = topAction === 'rest' ? { mental: 3 } : topAction === 'learn-ai' ? { ai: 2 } : topAction === 'networking' ? { mental: 2 } : topAction === 'side-project' ? { money: 1 } : topAction === 'interview' ? { mental: 1 } : { skill: 1 };
+            Object.keys(bonus).forEach(key => {
+                stats[key] = Math.max(0, Math.min(key === 'money' ? 200 : 100, stats[key] + bonus[key]));
+            });
+            const stateNote = runState.fatigue >= 70 ? '疲劳偏高' : runState.focus >= 70 ? '专注在线' : '状态普通';
+            addEvent(`📅 周报：${recap}（本周 ${topAction} ×${topCount}，${weekAge} 岁，${stateNote}）`, 'special');
+            addBuildProjectWeeklyFeedback();
+            weeklyActionCounts = getInitialWeeklyActionCounts();
+        }
+
+        function addStreakFeedback() {
+            if (consecutiveEvents.good >= 2 && consecutiveEvents.good <= 4 && streakRewards.good < consecutiveEvents.good) {
+                const bonus = consecutiveEvents.good === 2 ? 2 : consecutiveEvents.good === 3 ? 4 : 5;
+                stats.mental = Math.min(100, stats.mental + bonus);
+                streakRewards.good = consecutiveEvents.good;
+                addEvent(`🔥 连续顺风 x${consecutiveEvents.good}：你开始找回掌控感，精神 +${bonus}`, 'good');
+            }
+            if (consecutiveEvents.bad >= 2 && consecutiveEvents.bad <= 4 && streakRewards.bad < consecutiveEvents.bad) {
+                const bonus = consecutiveEvents.bad === 2 ? 2 : consecutiveEvents.bad === 3 ? 3 : 4;
+                stats.mental = Math.min(100, stats.mental + bonus);
+                streakRewards.bad = consecutiveEvents.bad;
+                addEvent(`🧯 连续掉血 x${consecutiveEvents.bad}：你决定先止损，不再硬扛，精神 +${bonus}`, 'special');
+            }
+        }
+
+        function getDailyGoalTarget(day) {
+            const pattern = ['learn-ai', 'rest', 'overtime', 'networking', 'side-project', 'interview', 'learn-ai'];
+            return pattern[(day - 1) % pattern.length] || 'rest';
+        }
+
+        function getDailyGoalLabel(actionType) {
+            const labels = {
+                'learn-ai': '学习AI工具',
+                'overtime': '加班写代码',
+                'rest': '休息摸鱼',
+                'interview': '面试跳槽',
+                'side-project': '接私活',
+                'networking': '社交人脉'
+            };
+            return labels[actionType] || '今天的主行动';
+        }
+
+        function syncDailyGoal(day, actionType) {
+            const expectedTarget = getDailyGoalTarget(day);
+            if (dailyGoalState.day !== day) {
+                if (dailyGoalState.day > 0 && dailyGoalState.completed !== true) {
+                    dailyGoalState.missedDay = dailyGoalState.day;
+                    dailyGoalState.missedTargetAction = dailyGoalState.targetAction;
+                    dailyGoalState.streak = 0;
+                }
+                dailyGoalState.day = day;
+                dailyGoalState.targetAction = expectedTarget;
+                dailyGoalState.completed = false;
+            }
+            if (!dailyGoalState.targetAction || dailyGoalState.targetAction !== expectedTarget) {
+                dailyGoalState.targetAction = expectedTarget;
+                dailyGoalState.completed = false;
+            }
+            if (!dailyGoalState.completed && actionType === dailyGoalState.targetAction) {
+                dailyGoalState.completed = true;
+                dailyGoalState.streak += 1;
+                dailyGoalState.totalCompleted += 1;
+                stats.mental = Math.min(100, stats.mental + 2);
+                if (dailyGoalState.streak >= 3 && dailyGoalState.streak % 3 === 0) {
+                    stats.skill = Math.min(100, stats.skill + 1);
+                    addEvent(`📌 连续小目标 x${dailyGoalState.streak}：今天的节奏感更稳了，技术 +1`, 'special');
+                } else {
+                    addEvent(`📌 日课完成：${getDailyGoalLabel(actionType)}，精神 +2`, 'special');
+                }
+                if (dailyGoalState.streak >= 7) {
+                    unlockAchievement('daily_anchor');
+                }
+            }
+        }
+
+        function getDailyGoalRecoveryKey() {
+            if (!dailyGoalState.missedDay || dailyGoalState.day <= dailyGoalState.missedDay) return '';
+            return `${dailyGoalState.missedDay}->${dailyGoalState.day}`;
+        }
+
+        function applyDailyGoalRecovery(actionType) {
+            const recoveryKey = getDailyGoalRecoveryKey();
+            if (!recoveryKey || dailyGoalState.recoveryKeys.includes(recoveryKey)) return;
+            const isResumeSuggestedAction = !resumeFollowupState.consumed && resumeFollowupState.targetAction === actionType;
+            if (actionType !== 'rest' && !isResumeSuggestedAction) return;
+
+            dailyGoalState.recoveryKeys = Array.from(new Set([
+                ...(dailyGoalState.recoveryKeys || []),
+                recoveryKey
+            ])).slice(-20);
+            if (actionType === 'rest') {
+                stats.mental = Math.min(100, stats.mental + 3);
+                runState.focus = Math.min(100, runState.focus + 2);
+                addEvent('🧭 补救日课：你先停下来重新接住节奏，精神 +3，专注 +2', 'special');
+                return;
+            }
+            stats.skill = Math.min(100, stats.skill + 1);
+            stats.mental = Math.min(100, stats.mental + 2);
+            addEvent('🧭 补救日课：你顺着读档建议重新接住节奏，精神 +2，技术 +1', 'special');
+        }
+
+        function applyDailyGoal(actionType) {
+            syncDailyGoal(stats.day, actionType);
+            applyDailyGoalRecovery(actionType);
+        }
+
+        function applyFunLoopFeedback(actionType) {
+            if (actionType === 'learn-ai' && weeklyActionCounts['learn-ai'] === 3) {
+                stats.ai = Math.min(100, stats.ai + 2);
+                addEvent('🧠 学习节奏：连续把 AI 工具练进日常，AI熟练度 +2', 'special');
+            }
+            if (actionType === 'rest' && weeklyActionCounts['overtime'] >= 3 && runState.fatigue <= 55) {
+                stats.mental = Math.min(100, stats.mental + 6);
+                addEvent('🛟 恢复触发：你在过载后主动停手，精神 +6', 'special');
+            }
+            applyToolHabitFeedback(actionType);
+        }
+
+        function applyResumeFollowup(actionType) {
+            if (resumeFollowupState.consumed || resumeFollowupState.targetAction !== actionType) return;
+            resumeFollowupState.consumed = true;
+            if (resumeFollowupState.fingerprint) {
+                resumeFollowupState.consumedFingerprints = Array.from(new Set([
+                    ...(resumeFollowupState.consumedFingerprints || []),
+                    resumeFollowupState.fingerprint
+                ])).slice(-20);
+            }
+            const rewards = {
+                'rest': { mental: 4, fatigue: -8, text: '你没有无视上次的状态警报，先把人从过载里拉回来，精神 +4' },
+                'interview': { money: 2, text: '你顺着读档建议先看市场，现金流焦虑少了一点，存款 +2' },
+                'learn-ai': { ai: 3, skill: 1, text: '你把断点接回学习闭环，AI熟练度 +3，技术 +1' },
+                'side-project': { skill: 1, money: 1, text: '你接着推进长期项目，作品线没有断，技术 +1，存款 +1' },
+                'networking': { mental: 3, text: '你把边界和连接重新接上，精神 +3' }
+            };
+            const reward = rewards[actionType] || { mental: 2, text: '你接住了上次留下的线索，节奏更稳了，精神 +2' };
+            if (Number.isFinite(Number(reward.mental))) stats.mental = Math.min(100, Math.max(0, stats.mental + reward.mental));
+            if (Number.isFinite(Number(reward.money))) stats.money = Math.min(200, Math.max(0, stats.money + reward.money));
+            if (Number.isFinite(Number(reward.skill))) stats.skill = Math.min(100, Math.max(0, stats.skill + reward.skill));
+            if (Number.isFinite(Number(reward.ai))) stats.ai = Math.min(100, Math.max(0, stats.ai + reward.ai));
+            if (Number.isFinite(Number(reward.fatigue))) runState.fatigue = Math.min(100, Math.max(0, runState.fatigue + reward.fatigue));
+            addEvent(`🔁 接住读档建议：${reward.text}`, 'special');
+        }
+
+        function applyToolHabitFeedback(actionType) {
+            const currentWeek = Math.max(1, Math.ceil(stats.day / 7));
+            if (toolHabitState.week !== currentWeek) {
+                toolHabitState = getInitialToolHabitState();
+                toolHabitState.week = currentWeek;
+            }
+
+            if (actionType === 'learn-ai') {
+                toolHabitState.learnAiCount += 1;
+            } else if (actionType === 'side-project') {
+                toolHabitState.sideProjectCount += 1;
+            } else if (actionType === 'overtime') {
+                toolHabitState.overtimeCount += 1;
+            }
+
+            if (!toolHabitState.shipped && actionType === 'side-project' && toolHabitState.learnAiCount >= 3) {
+                toolHabitState.shipped = true;
+                stats.skill = Math.min(100, stats.skill + 2);
+                stats.money = Math.min(200, stats.money + 3);
+                addEvent('🧰 工具癖变现：你把最近练熟的 AI 工具直接带进副业，技术 +2，存款 +3', 'special');
+                return;
+            }
+
+            if (!toolHabitState.backfired && actionType === 'overtime' && toolHabitState.learnAiCount >= 4 && toolHabitState.overtimeCount >= 1) {
+                toolHabitState.backfired = true;
+                stats.mental = Math.max(0, stats.mental - 3);
+                addEvent('🧯 工具癖反噬：新工具越囤越多，真正开干时反而更疲惫，精神 -3', 'special');
+            }
+        }
+
+        function applyEvent(event, isRandom = false) {
+            stats.skill = Math.max(0, Math.min(100, stats.skill + (event.skill || 0)));
+            stats.mental = Math.max(0, Math.min(100, stats.mental + (event.mental || 0)));
+            stats.money = Math.max(0, Math.min(200, stats.money + (event.money || 0)));
+            stats.ai = Math.max(0, Math.min(100, stats.ai + (event.ai || 0)));
+
+            const eventType = (event.mental > 0 || event.money > 10 || event.ai > 15) ? 'good' : 
+                            (event.mental < -10 || event.money < -5) ? 'bad' : 'neutral';
+            
+            if (eventType === 'good') {
+                consecutiveEvents.good++;
+                consecutiveEvents.bad = 0;
+                streakRewards.bad = 0;
+            } else if (eventType === 'bad') {
+                consecutiveEvents.bad++;
+                consecutiveEvents.good = 0;
+                streakRewards.good = 0;
+            } else {
+                consecutiveEvents.good = 0;
+                consecutiveEvents.bad = 0;
+                streakRewards.good = 0;
+                streakRewards.bad = 0;
+            }
+
+            const text = isRandom && !event.text.startsWith('【突发】') ? '【突发】' + event.text : event.text;
+            addEvent(text, eventType);
+        }
+
+        function addEvent(text, type, options = {}) {
+            const log = document.getElementById('event-log');
+            const event = document.createElement('div');
+            event.className = 'event ' + type;
+            event.textContent = '第' + stats.day + '天：' + text;
+            log.insertBefore(event, log.firstChild);
+            if (options.persist === false || isRestoring) return;
+            rememberDisplayedText(text);
+            eventLogState.unshift({
+                day: stats.day,
+                text,
+                type,
+                createdAt: Date.now()
+            });
+            if (eventLogState.length > MAX_EVENT_LOG_SAVE) {
+                eventLogState = eventLogState.slice(0, MAX_EVENT_LOG_SAVE);
+            }
+        }
+
+        function updateStats() {
+            document.getElementById('day-count').textContent = stats.day;
+            document.getElementById('age-count').textContent = stats.age;
+            document.getElementById('skill').textContent = Math.round(stats.skill);
+            document.getElementById('mental').textContent = Math.round(stats.mental);
+            document.getElementById('money').textContent = Math.round(stats.money);
+            document.getElementById('ai').textContent = Math.round(stats.ai);
+
+            document.getElementById('skill-bar').style.width = stats.skill + '%';
+            document.getElementById('mental-bar').style.width = stats.mental + '%';
+            document.getElementById('money-bar').style.width = (stats.money / 2) + '%';
+            document.getElementById('ai-bar').style.width = stats.ai + '%';
+        }
+
+        function checkAchievements() {
+            if (stats.day === 1) unlockAchievement('first_day');
+            if (stats.day >= 100) unlockAchievement('survivor');
+            if (stats.ai >= 80) unlockAchievement('ai_master');
+            if (stats.money >= 100) unlockAchievement('rich');
+            if (actionCounts['overtime'] >= 50) unlockAchievement('workaholic');
+            if (actionCounts['rest'] >= 30) unlockAchievement('lazy');
+            if (actionCounts['networking'] >= 20) unlockAchievement('social');
+            if (stats.age >= 40) unlockAchievement('old_dog');
+            if (stats.skill >= 70 && stats.mental >= 70 && stats.money >= 70 && stats.ai >= 70) 
+                unlockAchievement('balanced');
+            if (runState.focus >= 90) unlockAchievement('deep_focus');
+            if (runState.fatigue <= 10 && stats.day >= 7) unlockAchievement('recovery_mindset');
+            if (actionCounts['overtime'] < 50 && stats.mental >= 70 && stats.day >= 30) unlockAchievement('boundary_keeper');
+            if (runState.boundaryScore >= 80 && stats.day >= 14) unlockAchievement('steady_pace');
+            if (dailyGoalState.streak >= 7) unlockAchievement('daily_anchor');
+        }
+
+        function getRunGoalResult() {
+            const goal = normalizeRunGoalState(runGoalState, stats);
+            const checks = {
+                ship_portfolio: buildProjectState.shipped && buildProjectState.quality >= 60,
+                pay_down_debt: buildProjectState.progress >= 30 && buildProjectState.debt <= 35,
+                balanced_builder: stats.mental >= 60 && stats.money >= 60 && buildProjectState.progress >= 60,
+                ai_compound: stats.ai >= 80 && stats.skill >= 65 && buildProjectState.progress >= 50,
+                steady_year: stats.day >= 365 && stats.mental >= 60 && stats.money >= 60 && stats.ai >= 60
+            };
+            const completed = checks[goal.id] === true;
+            return {
+                ...goal,
+                completed,
+                text: `目标：${goal.title}（${completed ? '已完成' : '未完成'}）`
+            };
+        }
+
+        function calculateRunScore() {
+            const survivalScore = Math.min(30, Math.floor(stats.day / 365 * 30));
+            const statScore = Math.round((stats.skill + stats.mental + Math.min(100, stats.money) + stats.ai) / 4 * 0.35);
+            const projectScore = Math.round((buildProjectState.progress * 0.15) + (buildProjectState.quality * 0.08) + (buildProjectState.exposure * 0.04) - (buildProjectState.debt * 0.06));
+            const goalScore = getRunGoalResult().completed ? 10 : 0;
+            return Math.max(0, Math.min(100, survivalScore + statScore + projectScore + goalScore));
+        }
+
+        function getRunTitle(score) {
+            if (score >= 85) return '年度架构幸存者';
+            if (score >= 70) return '节奏稳定的长期主义者';
+            if (score >= 55) return '能交付也能自救的程序员';
+            if (score >= 35) return '还在 debug 人生的人';
+            return '被需求追着跑的脆皮工程师';
+        }
+
+        function buildEndingSummary(reason) {
+            const score = calculateRunScore();
+            const goal = getRunGoalResult();
+            const projectText = `长期 Build：进度${Math.round(buildProjectState.progress)}%，质量${Math.round(buildProjectState.quality)}，债务${Math.round(buildProjectState.debt)}`;
+            return `${reason} 本局评分：${score}/100。本局称号：${getRunTitle(score)}。${goal.text}。${projectText}。`;
+        }
+
+        function unlockAchievement(id) {
+            const achievement = achievements.find(a => a.id === id);
+            if (achievement && !achievement.unlocked) {
+                achievement.unlocked = true;
+                if (!gameData.achievements.includes(id)) {
+                    gameData.achievements.push(id);
+                }
+                addEvent('🏆 成就解锁：' + achievement.name, 'special');
+            }
+        }
+
+        function checkGameOver() {
+            if (isGameOver) return;
+            let reason = '';
+            let endingType = '';
+
+            if (stats.mental <= 0) {
+                reason = `你在第${stats.day}天精神崩溃了。技术${Math.round(stats.skill)}/AI熟练度${Math.round(stats.ai)}，最终存款${Math.round(stats.money)}万。`;
+                endingType = '精神崩溃结局';
+            } else if (stats.money <= 0 && stats.skill < 30) {
+                reason = `你在第${stats.day}天失业且破产了。也许该学学AI工具？`;
+                endingType = '破产结局';
+            } else if (stats.ai < 20 && stats.day > 100) {
+                reason = `你在第${stats.day}天被AI淘汰了。AI熟练度太低，市场不再需要你这样的程序员。`;
+                endingType = '淘汰结局';
+            } else if (stats.day >= 365 && stats.money >= 100 && stats.mental >= 60 && stats.ai >= 60) {
+                reason = `恭喜！你成功度过了一年，存款${Math.round(stats.money)}万，AI熟练度${Math.round(stats.ai)}，保持了良好的精神状态。你是新时代的优秀程序员！`;
+                endingType = '✨ 完美结局';
+                unlockAchievement('good_ending');
+            }
+
+            if (reason) {
+                reason = buildEndingSummary(reason);
+                isGameOver = true;
+                gameOverState = { reason, endingType };
+                if (endingType !== '✨ 完美结局') {
+                    gameData.deaths++;
+                }
+                gameData.maxDay = Math.max(gameData.maxDay, stats.day);
+                if (!gameData.endings.includes(endingType)) {
+                    gameData.endings.push(endingType);
+                }
+                
+                document.getElementById('game-over-reason').textContent = reason;
+                document.getElementById('ending-type').innerHTML = '<h3 style="color: #667eea; margin-top: 15px;">' + endingType + '</h3>';
+                document.getElementById('game-over').style.display = 'block';
+                document.querySelectorAll('.action-btn').forEach(btn => btn.disabled = true);
+                autoSaveGame();
+            }
+        }
+
+        function showAchievements() {
+            const grid = document.getElementById('achievement-grid');
+            grid.innerHTML = '';
+            
+            achievements.forEach(ach => {
+                const item = document.createElement('div');
+                item.className = 'achievement-item ' + (ach.unlocked ? 'unlocked' : 'locked');
+                item.innerHTML = `
+                    <div class="achievement-icon">${ach.unlocked ? ach.icon : '🔒'}</div>
+                    <div class="achievement-name">${ach.name}</div>
+                    <div class="achievement-desc">${ach.desc}</div>
+                `;
+                grid.appendChild(item);
+            });
+            
+            document.getElementById('achievement-modal').style.display = 'block';
+        }
+
+        function showShop() {
+            const grid = document.getElementById('shop-grid');
+            grid.innerHTML = '';
+            
+            shopItems.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'shop-item' + (item.owned ? ' owned' : '');
+                div.innerHTML = `
+                    <div class="shop-item-name">${item.name}</div>
+                    <div class="shop-item-desc">${item.desc}</div>
+                    <div class="shop-item-price">💰 ${item.price}万</div>
+                    <button onclick="buyItem('${item.id}')" ${item.owned ? 'disabled' : ''}>
+                        ${item.owned ? '已购买' : '购买'}
+                    </button>
+                `;
+                grid.appendChild(div);
+            });
+            
+            document.getElementById('shop-modal').style.display = 'block';
+        }
+
+        function buyItem(id) {
+            const item = shopItems.find(i => i.id === id);
+            if (!item || item.owned) return;
+            
+            if (stats.money >= item.price) {
+                stats.money -= item.price;
+                item.owned = true;
+                stats.items.push(id);
+                
+                Object.keys(item.effect).forEach(key => {
+                    stats[key] = Math.max(0, Math.min(key === 'money' ? 200 : 100, stats[key] + item.effect[key]));
+                });
+                
+                addEvent('购买了' + item.name, 'good');
+                updateStats();
+                showShop();
+                autoSaveGame();
+            } else {
+                addEvent('存款不足，无法购买' + item.name, 'bad');
+                autoSaveGame();
+            }
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function buildSaveData() {
+            return {
+                schemaVersion: SAVE_SCHEMA_VERSION,
+                savedAt: new Date().toISOString(),
+                stats: clonePlain(stats, getInitialStats()),
+                actionCounts: clonePlain(actionCounts, getInitialActionCounts()),
+                consecutiveEvents: clonePlain(consecutiveEvents, getInitialConsecutiveEvents()),
+                weeklyActionCounts: clonePlain(weeklyActionCounts, getInitialWeeklyActionCounts()),
+                streakRewards: clonePlain(streakRewards, getInitialStreakRewards()),
+                runState: clonePlain(runState, getInitialRunState()),
+                rarePopupCooldowns: clonePlain(rarePopupCooldowns, getInitialRarePopupCooldowns()),
+                displayTextHistory: Array.isArray(displayTextHistory) ? displayTextHistory.slice(-20) : [],
+                dailyGoalState: clonePlain(dailyGoalState, getInitialDailyGoalState()),
+                buildProjectState: clonePlain(buildProjectState, getInitialBuildProjectState()),
+                toolHabitState: clonePlain(toolHabitState, getInitialToolHabitState()),
+                runGoalState: clonePlain(runGoalState, getInitialRunGoalState()),
+                resumeContext: buildResumeContextSnapshot(),
+                resumeFollowupState: clonePlain(resumeFollowupState, getInitialResumeFollowupState()),
+                popupHistory: Array.isArray(popupHistory) ? popupHistory.slice(-12) : [],
+                popupCategoryHistory: Array.isArray(popupCategoryHistory) ? popupCategoryHistory.slice(-6) : [],
+                eventLog: normalizeEventLog(eventLogState),
+                isGameOver: isGameOver,
+                gameOverState: clonePlain(gameOverState, null),
+                gameData: clonePlain(gameData, getInitialGameData()),
+                achievements: achievements.filter(a => a.unlocked).map(a => a.id),
+                shopItems: shopItems.filter(i => i.owned).map(i => i.id)
+            };
+        }
+
+        function saveGame(options = {}) {
+            const silent = options.silent === true;
+            if (!hasActiveRun()) {
+                updateResumeButton();
+                return false;
+            }
+            const saveData = buildSaveData();
+            try {
+                const serializedSave = JSON.stringify(saveData);
+                const currentSave = localStorage.getItem(SAVE_KEY);
+                if (areSavePayloadsEquivalent(currentSave, serializedSave)) {
+                    updateResumeButton();
+                    if (!silent) {
+                        addEvent('游戏已保存', 'neutral', { persist: false });
+                    }
+                    return true;
+                }
+                const backupResult = backupCurrentSave(serializedSave);
+                if (backupResult && backupResult.ok === false) {
+                    if (!silent) {
+                        addEvent(backupResult.reason || '当前存档保护失败，已停止覆盖', 'bad', { persist: false });
+                    }
+                    updateResumeButton();
+                    return false;
+                }
+                localStorage.setItem(SAVE_KEY, serializedSave);
+                updateResumeButton();
+                if (!silent) {
+                    addEvent('游戏已保存', 'neutral', { persist: false });
+                }
+                return true;
+            } catch (error) {
+                console.warn('保存失败', error);
+                if (!silent) {
+                    addEvent('保存失败，浏览器存储不可用', 'bad', { persist: false });
+                }
+                return false;
+            }
+        }
+
+        function autoSaveGame() {
+            if (!hasActiveRun()) return;
+            saveGame({ silent: true });
+        }
+
+        function loadGame() {
+            return loadGameFromStorage();
+        }
+
+        class UnsupportedFutureSaveError extends Error {
+            constructor(version) {
+                super(`存档版本 ${version} 高于当前支持版本 ${SAVE_SCHEMA_VERSION}`);
+                this.name = 'UnsupportedFutureSaveError';
+                this.version = version;
+            }
+        }
+
+        function parseStoredSave(raw) {
+            if (!raw) return null;
+            const parsed = JSON.parse(raw);
+            if (!parsed || typeof parsed !== 'object') {
+                throw new Error('不支持的 v2 存档版本');
+            }
+            const parsedVersion = Number(parsed.schemaVersion);
+            if (Number.isFinite(parsedVersion) && parsedVersion > SAVE_SCHEMA_VERSION) {
+                throw new UnsupportedFutureSaveError(parsedVersion);
+            }
+            if (parsed.schemaVersion !== SAVE_SCHEMA_VERSION) {
+                throw new Error('不支持的 v2 存档版本');
+            }
+            const invalidReason = validateV2SaveShape(parsed);
+            if (invalidReason) {
+                throw new Error(invalidReason);
+            }
+            return normalizeSaveData(parsed);
+        }
+
+        function getComparableSavePayload(raw) {
+            if (!raw) return null;
+            const parsed = typeof raw === 'string' ? JSON.parse(raw) : clonePlain(raw, null);
+            if (!parsed || typeof parsed !== 'object') return null;
+            delete parsed.savedAt;
+            return parsed;
+        }
+
+        function areSavePayloadsEquivalent(leftRaw, rightRaw) {
+            if (!leftRaw || !rightRaw) return false;
+            try {
+                return JSON.stringify(getComparableSavePayload(leftRaw)) === JSON.stringify(getComparableSavePayload(rightRaw));
+            } catch (error) {
+                return false;
+            }
+        }
+
+        function backupCurrentSave(nextSave) {
+            const current = localStorage.getItem(SAVE_KEY);
+            if (!current) return { ok: true };
+            if (areSavePayloadsEquivalent(current, nextSave)) return { ok: true };
+            try {
+                parseStoredSave(current);
+            } catch (error) {
+                if (error instanceof UnsupportedFutureSaveError) {
+                    try {
+                        localStorage.setItem(SAVE_KEY + '.future.' + Date.now(), current);
+                        console.warn('当前主存档来自未来版本，覆盖前已保存到 future 槽', error);
+                        return { ok: true };
+                    } catch (innerError) {
+                        console.warn('未来版本存档保护失败', innerError);
+                        return { ok: false, reason: '未来版本存档保护失败，已停止覆盖' };
+                    }
+                }
+                console.warn('当前主存档无效，已隔离后覆盖', error);
+                try {
+                    localStorage.setItem(SAVE_KEY + '.corrupt.' + Date.now(), current);
+                    return { ok: true };
+                } catch (innerError) {
+                    console.warn('坏主存档隔离失败', innerError);
+                    return { ok: true };
+                }
+            }
+            try {
+                localStorage.setItem(SAVE_BACKUP_KEY, current);
+                return { ok: true };
+            } catch (error) {
+                console.warn('当前主存档备份失败，已停止覆盖', error);
+                return { ok: false, reason: '当前存档备份失败，已停止覆盖' };
+            }
+        }
+
+        function readBackupSaveData() {
+            const backup = localStorage.getItem(SAVE_BACKUP_KEY);
+            if (!backup) return null;
+            let data = null;
+            try {
+                data = parseStoredSave(backup);
+            } catch (error) {
+                console.warn('备份存档损坏，已隔离', error);
+                let backedUp = false;
+                try {
+                    localStorage.setItem(SAVE_BACKUP_KEY + '.corrupt.' + Date.now(), backup);
+                    backedUp = true;
+                } catch (innerError) {
+                    console.warn('坏备份存档隔离失败', innerError);
+                }
+                if (backedUp) {
+                    safeRemoveStorageKey(SAVE_BACKUP_KEY, '坏备份存档清理失败');
+                }
+                return null;
+            }
+            try {
+                localStorage.setItem(SAVE_KEY, backup);
+            } catch (error) {
+                console.warn('备份存档有效，但提升为主存档失败；保留备份继续读档', error);
+            }
+            return data;
+        }
+
+        function safeRemoveStorageKey(key, message = '清理存档失败') {
+            try {
+                localStorage.removeItem(key);
+                return true;
+            } catch (error) {
+                console.warn(message, error);
+                return false;
+            }
+        }
+
+        function readSaveData() {
+            const saved = localStorage.getItem(SAVE_KEY);
+            if (saved) {
+                try {
+                    return parseStoredSave(saved);
+                } catch (error) {
+                    if (error instanceof UnsupportedFutureSaveError) {
+                        console.warn('存档版本高于当前版本，已保留主存档，请使用更新版本打开', error);
+                        return { unsupportedFutureSave: true, version: error.version };
+                    }
+                    console.warn('v2 存档损坏，尝试读取备份存档', error);
+                    let backedUp = false;
+                    try {
+                        localStorage.setItem(SAVE_KEY + '.corrupt.' + Date.now(), saved);
+                        backedUp = true;
+                    } catch (innerError) {
+                        console.warn('坏 v2 存档备份失败', innerError);
+                    }
+                    if (backedUp) {
+                        safeRemoveStorageKey(SAVE_KEY, '坏 v2 存档清理失败');
+                    }
+                    const backupData = readBackupSaveData();
+                    if (backupData) return backupData;
+                }
+            }
+            const legacy = localStorage.getItem(LEGACY_SAVE_KEY);
+            if (!legacy) return null;
+            try {
+                const legacyData = JSON.parse(legacy);
+                if (!legacyData || typeof legacyData !== 'object' || Array.isArray(legacyData)) {
+                    throw new Error('旧存档结构错误');
+                }
+                const normalized = normalizeSaveData(legacyData);
+                if (!normalized || !normalized.stats?.career) {
+                    throw new Error('旧存档缺少可迁移数据');
+                }
+                return normalized;
+            } catch (error) {
+                console.warn('旧存档损坏，已隔离', error);
+                let backedUp = false;
+                try {
+                    localStorage.setItem(LEGACY_SAVE_KEY + '.corrupt.' + Date.now(), legacy);
+                    backedUp = true;
+                } catch (innerError) {
+                    console.warn('坏旧存档备份失败', innerError);
+                }
+                if (backedUp) {
+                    safeRemoveStorageKey(LEGACY_SAVE_KEY, '坏旧存档清理失败');
+                }
+                return null;
+            }
+        }
+
+        function probeSaveData() {
+            const saved = localStorage.getItem(SAVE_KEY);
+            if (saved) {
+                try {
+                    const data = parseStoredSave(saved);
+                    if (data && data.stats && data.stats.career) return data;
+                } catch (error) {
+                    if (error instanceof UnsupportedFutureSaveError) {
+                        return { unsupportedFutureSave: true };
+                    }
+                    const backup = localStorage.getItem(SAVE_BACKUP_KEY);
+                    if (backup) {
+                        try {
+                            const backupData = parseStoredSave(backup);
+                            if (backupData && backupData.stats && backupData.stats.career) return backupData;
+                        } catch (innerError) {
+                            // probe path must not mutate storage
+                        }
+                    }
+                }
+            }
+            const legacy = localStorage.getItem(LEGACY_SAVE_KEY);
+            if (!legacy) return null;
+            try {
+                const data = normalizeSaveData(JSON.parse(legacy));
+                if (data && data.stats && data.stats.career) return data;
+            } catch (error) {
+                // probe path must not mutate storage
+            }
+            return null;
+        }
+
+        function hasSavedGame() {
+            try {
+                const data = probeSaveData();
+                return Boolean((data && data.stats && data.stats.career) || data?.unsupportedFutureSave);
+            } catch (error) {
+                return false;
+            }
+        }
+
+        function updateResumeButton() {
+            const button = document.getElementById('resume-btn');
+            if (!button) return;
+            button.style.display = hasSavedGame() ? 'block' : 'none';
+        }
+
+        function resumeLastGame() {
+            const loadResult = loadGameFromStorage();
+            if (loadResult && loadResult.unsupportedFutureSave) {
+                if (typeof window.alert === 'function') {
+                    window.alert(`存档版本 ${loadResult.version || ''} 高于当前支持版本 ${SAVE_SCHEMA_VERSION}，请使用更新版本打开。`);
+                }
+                updateResumeButton();
+                return;
+            }
+            if (!loadResult) {
+                updateResumeButton();
+                return;
+            }
+            document.getElementById('career-selection').style.display = 'none';
+            document.getElementById('game-area').style.display = 'block';
+            updateResumeButton();
+        }
+
+        function loadGameFromStorage() {
+            let data = null;
+            try {
+                resumeReminderText = '';
+                data = readSaveData();
+                if (data?.unsupportedFutureSave) return data;
+                if (!data) return false;
+                if (!data.stats || !data.stats.career) {
+                    restoreMeta({
+                        gameData: data.gameData,
+                        achievements: data.achievements,
+                        shopItems: data.shopItems
+                    });
+                    return false;
+                }
+            } catch (error) {
+                console.warn('读档失败，已忽略坏存档', error);
+                try {
+                    const badSave = localStorage.getItem(SAVE_KEY) || '';
+                    localStorage.setItem(SAVE_KEY + '.corrupt.' + Date.now(), badSave);
+                    safeRemoveStorageKey(SAVE_KEY, '坏存档清理失败');
+                } catch (innerError) {
+                    console.warn('坏存档隔离失败', innerError);
+                }
+                return false;
+            }
+            try {
+                applySaveData(data);
+                return true;
+            } catch (error) {
+                console.warn('存档有效，但恢复到界面失败；已保留主存档', error);
+                return false;
+            }
+        }
+
+        function normalizeSaveData(data) {
+            if (!data || typeof data !== 'object') return null;
+            const normalized = {
+                schemaVersion: SAVE_SCHEMA_VERSION,
+                savedAt: typeof data.savedAt === 'string' ? data.savedAt : new Date().toISOString(),
+                stats: normalizeStats(data.stats || {}),
+                actionCounts: normalizeActionCounts(data.actionCounts || {}),
+                consecutiveEvents: normalizeConsecutiveEvents(data.consecutiveEvents || {}),
+                popupHistory: Array.isArray(data.popupHistory) ? data.popupHistory : [],
+                popupCategoryHistory: Array.isArray(data.popupCategoryHistory) ? data.popupCategoryHistory : [],
+                eventLog: normalizeEventLog(data.eventLog || []),
+                isGameOver: Boolean(data.isGameOver),
+                gameOverState: data.gameOverState || null,
+                weeklyActionCounts: normalizeActionCounts(data.weeklyActionCounts || {}),
+                streakRewards: normalizeStreakRewards(data.streakRewards || {}),
+                runState: normalizeRunState(data.runState || {}),
+                rarePopupCooldowns: normalizeRarePopupCooldowns(data.rarePopupCooldowns || {}),
+                displayTextHistory: normalizeDisplayTextHistory(data.displayTextHistory || []),
+                dailyGoalState: normalizeDailyGoalState(data.dailyGoalState || {}),
+                buildProjectState: normalizeBuildProjectState(data.buildProjectState || {}),
+                toolHabitState: normalizeToolHabitState(data.toolHabitState || {}),
+                resumeFollowupState: normalizeResumeFollowupState(data.resumeFollowupState || {}),
+                runGoalState: normalizeRunGoalState(data.runGoalState || {}, data.stats || {}),
+                gameData: clonePlain(data.gameData, getInitialGameData()),
+                achievements: Array.isArray(data.achievements) ? data.achievements : [],
+                shopItems: Array.isArray(data.shopItems) ? data.shopItems : []
+            };
+            if (!Array.isArray(data.shopItems) && Array.isArray(normalized.stats.items)) {
+                const validShopIds = new Set(shopItems.map(item => item.id));
+                normalized.shopItems = normalized.stats.items.filter(id => validShopIds.has(id));
+            }
+            normalized.resumeContext = normalizeResumeContext(data.resumeContext, normalized);
+            if (normalized.gameOverState) {
+                normalized.isGameOver = true;
+            }
+            return normalized;
+        }
+
+        function applySaveData(data) {
+            if (!data) return false;
+            isRestoring = true;
+            try {
+                restoreMeta({
+                    gameData: data.gameData,
+                    achievements: data.achievements,
+                    shopItems: data.shopItems
+                });
+                stats = normalizeStats(data.stats);
+                actionCounts = normalizeActionCounts(data.actionCounts);
+                consecutiveEvents = normalizeConsecutiveEvents(data.consecutiveEvents);
+                weeklyActionCounts = normalizeActionCounts(data.weeklyActionCounts);
+                streakRewards = normalizeStreakRewards(data.streakRewards);
+                runState = normalizeRunState(data.runState);
+                rarePopupCooldowns = normalizeRarePopupCooldowns(data.rarePopupCooldowns);
+                pruneRarePopupCooldowns();
+                displayTextHistory = normalizeDisplayTextHistory(data.displayTextHistory);
+                dailyGoalState = normalizeDailyGoalState(data.dailyGoalState);
+                buildProjectState = normalizeBuildProjectState(data.buildProjectState);
+                toolHabitState = normalizeToolHabitState(data.toolHabitState);
+                resumeFollowupState = normalizeResumeFollowupState(data.resumeFollowupState);
+                runGoalState = normalizeRunGoalState(data.runGoalState, stats);
+                popupHistory = Array.isArray(data.popupHistory) ? data.popupHistory.slice(-12) : [];
+                popupCategoryHistory = Array.isArray(data.popupCategoryHistory) ? data.popupCategoryHistory.slice(-6) : [];
+                eventLogState = normalizeEventLog(data.eventLog);
+                isGameOver = Boolean(data.isGameOver);
+                gameOverState = data.gameOverState || null;
+                addResumeContextReminder({
+                    resumeContext: data.resumeContext,
+                    stats,
+                    eventLog: eventLogState,
+                    actionCounts,
+                    weeklyActionCounts,
+                    runState,
+                    buildProjectState,
+                    resumeFollowupState
+                });
+                renderEventLog();
+                document.getElementById('career-selection').style.display = 'none';
+                document.getElementById('game-area').style.display = 'block';
+                document.getElementById('player-career').textContent = getCareerName(stats.career);
+                updateStats();
+                if (isGameOver) {
+                    document.getElementById('game-over-reason').textContent = gameOverState?.reason || '这局已经结束。';
+                    document.getElementById('ending-type').innerHTML = gameOverState?.endingType ? '<h3 style="color: #667eea; margin-top: 15px;">' + gameOverState.endingType + '</h3>' : '';
+                    document.getElementById('game-over').style.display = 'block';
+                    document.querySelectorAll('.action-btn').forEach(btn => btn.disabled = true);
+                } else {
+                    document.getElementById('game-over').style.display = 'none';
+                    document.querySelectorAll('.action-btn').forEach(btn => btn.disabled = false);
+                }
+                return true;
+            } finally {
+                isRestoring = false;
+            }
+        }
+
+        function renderEventLog() {
+            const log = document.getElementById('event-log');
+            log.innerHTML = '';
+            if (resumeReminderText) {
+                const reminder = document.createElement('div');
+                reminder.className = 'event special resume-context';
+                reminder.textContent = '第' + stats.day + '天：' + resumeReminderText;
+                log.appendChild(reminder);
+            }
+            const items = eventLogState || [];
+            items.forEach(entry => {
+                const event = document.createElement('div');
+                event.className = 'event ' + entry.type;
+                event.textContent = '第' + entry.day + '天：' + entry.text;
+                log.appendChild(event);
+            });
+        }
+
+        function restart() {
+            if (hasActiveRun() || hasSavedGame()) {
+                const confirmed = window.confirm('确定要重新开始吗？当前生存进度和备份存档都会被清空。');
+                if (!confirmed) return;
+            }
+            stats = getInitialStats();
+            actionCounts = getInitialActionCounts();
+            consecutiveEvents = getInitialConsecutiveEvents();
+            weeklyActionCounts = getInitialWeeklyActionCounts();
+            streakRewards = getInitialStreakRewards();
+            runState = getInitialRunState();
+            rarePopupCooldowns = getInitialRarePopupCooldowns();
+            displayTextHistory = getInitialDisplayTextHistory();
+            dailyGoalState = getInitialDailyGoalState();
+            buildProjectState = getInitialBuildProjectState();
+            toolHabitState = getInitialToolHabitState();
+            resumeFollowupState = { targetAction: '', consumed: true };
+            runGoalState = getInitialRunGoalState();
+            popupHistory = [];
+            popupCategoryHistory = [];
+            eventLogState = [];
+            resumeReminderText = '';
+            isGameOver = false;
+            gameOverState = null;
+            gameData = getInitialGameData();
+            resetMetaState();
+            safeRemoveStorageKey(SAVE_KEY, '清理主存档失败');
+            safeRemoveStorageKey(SAVE_BACKUP_KEY, '清理备份存档失败');
+            safeRemoveStorageKey(LEGACY_SAVE_KEY, '清理旧存档失败');
+            
+            document.getElementById('event-log').innerHTML = '';
+            document.getElementById('game-over').style.display = 'none';
+            document.getElementById('career-selection').style.display = 'grid';
+            document.getElementById('game-area').style.display = 'none';
+            document.querySelectorAll('.action-btn').forEach(btn => btn.disabled = false);
+            updateResumeButton();
+        }
+
+        window.addEventListener('beforeunload', () => {
+            saveGame({ silent: true });
+        });
+
+        window.addEventListener('pagehide', () => {
+            saveGame({ silent: true });
+        });
+
+        (function initGameState() {
+            if (window.__codersLifeSkipInit === true) return;
+            updateResumeButton();
+        })();
+    </script>
+</body>
+</html>

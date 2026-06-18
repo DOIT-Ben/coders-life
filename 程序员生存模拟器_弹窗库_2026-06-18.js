@@ -1,0 +1,26074 @@
+﻿window.PROGRAMMER_POPUP_POOL = [
+    {
+        "id":  1,
+        "text":  "需求又改版了",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  2,
+        "text":  "这不是 bug，这是新需求",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  3,
+        "text":  "产品说只改一点点",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  4,
+        "text":  "小改一下，半天没了",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  5,
+        "text":  "原型图刚发，旧方案作废",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  6,
+        "text":  "这个按钮为什么不能再显眼一点",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  7,
+        "text":  "昨天确认的，今天推翻了",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  8,
+        "text":  "你以为在开发，其实在追需求",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  9,
+        "text":  "需求没变，只是理解变了",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  10,
+        "text":  "产品说逻辑很简单",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  11,
+        "text":  "一个弹窗，背后四张表",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  12,
+        "text":  "文案只改两个字，联调多两天",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  13,
+        "text":  "这个需求要兼容历史版本",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  14,
+        "text":  "老用户不能受影响，新逻辑必须上线",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  15,
+        "text":  "先做出来，我们再想清楚",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  16,
+        "text":  "需求写得像愿望清单",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  17,
+        "text":  "你做的是功能，不是终稿",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  18,
+        "text":  "看起来很小，实际动全链路",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  19,
+        "text":  "用户故事很短，工时很长",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  20,
+        "text":  "需求评审像许愿池",
+        "category":  "需求反复",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  21,
+        "text":  "工位灯还亮着，需求也亮着",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  22,
+        "text":  "今晚又是自愿加班",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  23,
+        "text":  "下班时间到了，活还没到头",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  24,
+        "text":  "大家都没走，你也不好意思走",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  25,
+        "text":  "键盘敲得响，心里发慌",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  26,
+        "text":  "这周第六次晚饭外卖",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  27,
+        "text":  "电脑合上了，脑子没关机",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  28,
+        "text":  "不是你效率低，是活真的多",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  29,
+        "text":  "站会结束，夜班开始",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  30,
+        "text":  "代码写完了，精神没了",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  31,
+        "text":  "今天的加班，是昨天的技术债",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  32,
+        "text":  "领导说辛苦了，排期没变",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  33,
+        "text":  "加班不是热爱，是缓冲区",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  34,
+        "text":  "你在救火，别人说你扛压强",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  35,
+        "text":  "睡前还在想那条报错",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  36,
+        "text":  "白天开会，晚上编码",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  37,
+        "text":  "你以为是奋斗，身体说不是",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  38,
+        "text":  "下班了，但脑内线程还在跑",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  39,
+        "text":  "项目冲刺期，生活回收站",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  40,
+        "text":  "加班记录会消失，疲惫不会",
+        "category":  "加班与工位文化",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  41,
+        "text":  "线上一响，今晚别睡",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  42,
+        "text":  "代码刚合，事故就来",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  43,
+        "text":  "用户先发现，日志后补齐",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  44,
+        "text":  "先别上线，先祈祷",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  45,
+        "text":  "监控红了，群也红了",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  46,
+        "text":  "报警声一响，心率先上来",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  47,
+        "text":  "事故不是出问题，是系统来收账",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  48,
+        "text":  "影响范围待确认",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  49,
+        "text":  "根因未明，群消息已满",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  50,
+        "text":  "临时修复上线，临时变永久",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  51,
+        "text":  "复盘开得很深，修复很浅",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  52,
+        "text":  "一次事故，三周阴影",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  53,
+        "text":  "回滚按钮就是最后的体面",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  54,
+        "text":  "热修刚发，新问题又来",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  55,
+        "text":  "线上问题总挑你吃饭时来",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  56,
+        "text":  "P0 不看场合",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  57,
+        "text":  "凌晨两点的报警最真实",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  58,
+        "text":  "没有监控的稳定，都是错觉",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  59,
+        "text":  "生产环境从不讲道理",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  60,
+        "text":  "事故群里，没人发表情",
+        "category":  "线上事故与复盘",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  61,
+        "text":  "代码能跑，债没还",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  62,
+        "text":  "技术债会自己长大",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  63,
+        "text":  "今天不重构，明天更难",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  64,
+        "text":  "老系统没死，只是一直在加班",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  65,
+        "text":  "每个快捷方案都有利息",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  66,
+        "text":  "这段逻辑，祖传下来的",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  67,
+        "text":  "你不是在开发，你在续命",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  68,
+        "text":  "重构很贵，不重构更贵",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  69,
+        "text":  "屎山不会倒，只会扩建",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  70,
+        "text":  "这不是架构，是考古现场",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  71,
+        "text":  "别问谁写的，先问谁敢改",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  72,
+        "text":  "新同事读完代码，沉默了",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  73,
+        "text":  "看懂这段代码，算工伤",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  74,
+        "text":  "不是不想拆，是一拆就炸",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  75,
+        "text":  "系统的速度，在给历史买单",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  76,
+        "text":  "债不写在需求里，利息写在排期里",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  77,
+        "text":  "你改一行，测试哭一片",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  78,
+        "text":  "祖传工具类又显灵了",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  79,
+        "text":  "先 patch，再许愿",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  80,
+        "text":  "技术债，不是明天的事，是今天的税",
+        "category":  "技术债与重构",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  81,
+        "text":  "AI 写得快，返工更快",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  2
+                   },
+        "trigger":  {
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  82,
+        "text":  "你在带 AI，还是被 AI 带",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  2
+                   },
+        "trigger":  {
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  83,
+        "text":  "AI 帮你起草，人类负责背锅",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  2
+                   },
+        "trigger":  {
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  84,
+        "text":  "会用 AI 的人，正在换赛道超车",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  2
+                   },
+        "trigger":  {
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  85,
+        "text":  "AI 不累，你会累",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  2
+                   },
+        "trigger":  {
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  86,
+        "text":  "Prompt 写得漂亮，结果还是错",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  87,
+        "text":  "AI 又交了一份看似能跑的作业",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  2
+                   },
+        "trigger":  {
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  88,
+        "text":  "今天的效率，明天的债务",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  89,
+        "text":  "AI 让你更快，也让坑更密",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  2
+                   },
+        "trigger":  {
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  90,
+        "text":  "复制得很快，理解得很慢",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  91,
+        "text":  "不会验证的人，会更快出错",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  92,
+        "text":  "AI 生成十分钟，人工排错一整晚",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  2
+                   },
+        "trigger":  {
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  93,
+        "text":  "你不是 coder，你成了 reviewer",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  94,
+        "text":  "别让自己变成 AI 清洁工",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  2
+                   },
+        "trigger":  {
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  95,
+        "text":  "AI 会写代码，不会替你负责",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  2
+                   },
+        "trigger":  {
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  96,
+        "text":  "现在值钱的不是手速，是判断",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  97,
+        "text":  "上下文不给够，AI 就开始瞎猜",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  2
+                   },
+        "trigger":  {
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  98,
+        "text":  "AI 不是同事，是放大器",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  2
+                   },
+        "trigger":  {
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  99,
+        "text":  "它放大你的能力，也放大你的混乱",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  100,
+        "text":  "你的工程意识，决定 AI 是助手还是灾难",
+        "category":  "AI 时代焦虑",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  2
+                   },
+        "trigger":  {
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  101,
+        "text":  "面试八股，背完就忘",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  102,
+        "text":  "你会写，还是会讲",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  103,
+        "text":  "线上最严重事故，讲得出来吗",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  104,
+        "text":  "稳定性比简历更难背",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  105,
+        "text":  "面试官开始问你 AI 工作流了",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  2
+                   },
+        "trigger":  {
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  106,
+        "text":  "这题做过，但当场想不起来",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  107,
+        "text":  "算法会了，系统设计又忘了",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  108,
+        "text":  "你投的是岗位，不是运气",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  109,
+        "text":  "HR 说薪资可谈，表情不太像",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  110,
+        "text":  "Offer 快到了，HC 没了",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  111,
+        "text":  "题刷了很多，心更虚了",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  112,
+        "text":  "面试像双向拷打",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  113,
+        "text":  "你以为在展示能力，对方在找风险",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  114,
+        "text":  "这家公司看重稳定，你看重下班",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  115,
+        "text":  "跳槽是换环境，不一定换命",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  116,
+        "text":  "你回答得不错，只是不够便宜",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  117,
+        "text":  "一轮又一轮，像分布式失败重试",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  118,
+        "text":  "讲项目时最怕被追问细节",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  119,
+        "text":  "自我介绍一结束，心率就上来了",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  120,
+        "text":  "面试不是考试，是信号博弈",
+        "category":  "面试与跳槽",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  121,
+        "text":  "绩效一到，背锅先到",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  122,
+        "text":  "差绩效总要有人扛",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  123,
+        "text":  "KPI 还没到，锅先来了",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  124,
+        "text":  "会写代码的人很多，会兜底的人很少",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  125,
+        "text":  "结果不好时，过程没人记得",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  126,
+        "text":  "出了问题，先找责任人",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  127,
+        "text":  "你修好了问题，也修不好印象",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  128,
+        "text":  "绩效表里没有凌晨两点",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  129,
+        "text":  "你的价值，常被写成可替代",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  130,
+        "text":  "做了很多，汇报不够像没做",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  131,
+        "text":  "不是所有辛苦都能被量化",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  132,
+        "text":  "你在交付价值，对方在看表格",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  133,
+        "text":  "业务赢了，工程组加班",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  134,
+        "text":  "事故之后，流程变长了",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  135,
+        "text":  "组织的惯性，比 bug 难修",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  136,
+        "text":  "功劳常被共享，责任常被定向",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  137,
+        "text":  "你在补洞，别人写周报",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  138,
+        "text":  "绩效从不是纯技术问题",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  139,
+        "text":  "稳定运行三个月，不如炸一次显眼",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  140,
+        "text":  "真正难的是长期不出事",
+        "category":  "绩效、背锅与组织现实",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  141,
+        "text":  "会议很多，产出很少",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  142,
+        "text":  "会议纪要比代码长",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  143,
+        "text":  "你不是在开会，你是在被切碎",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  144,
+        "text":  "开会一小时，进入状态两小时",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  145,
+        "text":  "消息一响，专注下线",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  146,
+        "text":  "白天同步，晚上补工",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  147,
+        "text":  "异步没做好，所有人都在线等",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  148,
+        "text":  "这不是沟通，是多人打断",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  149,
+        "text":  "今天写了很多字，没写几行代码",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  150,
+        "text":  "需求会开，结论没有",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  151,
+        "text":  "评审会开完，问题还在",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  152,
+        "text":  "讨论很热闹，owner 很模糊",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  153,
+        "text":  "上下文切换一次，精神掉一截",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  154,
+        "text":  "真正贵的不是会议，是会后重启大脑",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  155,
+        "text":  "频道很多，信息没有归宿",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  156,
+        "text":  "你回了十个消息，主线没动",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  157,
+        "text":  "协作不是同时在线，是目标对齐",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  158,
+        "text":  "工程师最怕的不是难，是被反复打断",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  159,
+        "text":  "今日最佳产出：终于静下来了十分钟",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  160,
+        "text":  "一天结束，待办比早上更多",
+        "category":  "会议、协作与上下文切换",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  161,
+        "text":  "本地能跑，线上会翻脸",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  162,
+        "text":  "又到了只在我机器上正常的时刻",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  163,
+        "text":  "不是 bug，先是版本在作妖",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  164,
+        "text":  "两个人改一行，Git 先崩",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  165,
+        "text":  "`\u003c\u003c\u003c\u003c\u003c\u003c` 不是代码，是协作分叉",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  166,
+        "text":  "你删我改，Git 只好拉警报",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  167,
+        "text":  "权限不足，不是你不够努力",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  168,
+        "text":  "管理员没来，窗口先别指望",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  169,
+        "text":  "跨域拦截：浏览器比你更谨慎",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  170,
+        "text":  "C 盘又红了，故事也红了",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  171,
+        "text":  "电脑很慢，先别骂 CPU",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  172,
+        "text":  "配置文件永远差最后一项",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  173,
+        "text":  "昨天能跑，今天环境变了",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  174,
+        "text":  "端口没冲突，你的命先冲突了",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  175,
+        "text":  "依赖刚升级，熟悉感没了",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  176,
+        "text":  "容器里正常，宿主机不认",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  177,
+        "text":  "不是没权限，是你不在白名单",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  178,
+        "text":  "线上和本地，像两种宇宙",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  179,
+        "text":  "merge 完了，冲突还在脑子里",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  180,
+        "text":  "真正的跨平台，是跨越你的耐心",
+        "category":  "环境、权限与 Git 冲突",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  181,
+        "text":  "文档缺席，靠猜交付",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  182,
+        "text":  "这套系统，全靠口口相传",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  183,
+        "text":  "没有文档的项目，离玄学不远了",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  184,
+        "text":  "交接文档还没写，人先走了",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  185,
+        "text":  "你在读代码，像在破译遗书",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  186,
+        "text":  "会的人离职了，知识也离职了",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  187,
+        "text":  "新人第一天，先学会问谁",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  188,
+        "text":  "文档不是负担，是回忆录",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  189,
+        "text":  "今天省下的文档，明天会变工单",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  190,
+        "text":  "代码注释太少，群消息太多",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  191,
+        "text":  "你以为自己记得，其实只是还没忘",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  192,
+        "text":  "接手老项目，先接受世界观",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  193,
+        "text":  "README 只负责把你骗进来",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  194,
+        "text":  "项目结构很清晰，前提是你写的",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  195,
+        "text":  "沉淀没做，重复劳动会做",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  196,
+        "text":  "每次排障，都是在补文档",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  197,
+        "text":  "真正的工程能力，包含让别人接得住",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  198,
+        "text":  "文档晚写一天，记忆少一半",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  199,
+        "text":  "项目不是没人维护，是没人敢认领",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  200,
+        "text":  "接手代码前，先深呼吸",
+        "category":  "文档、知识沉淀与新人接手",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  201,
+        "text":  "35 岁不是终点，是提醒",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  202,
+        "text":  "你不是不会，只是太累",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  203,
+        "text":  "招聘里没写年龄，空气里写了",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  204,
+        "text":  "不是你变差了，是赛道变快了",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  205,
+        "text":  "裁员名单总像随机数",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  206,
+        "text":  "你活下来了，工位没变轻松",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  207,
+        "text":  "年纪大了，报错看得更准了",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  208,
+        "text":  "经验值终于值钱了一点",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  209,
+        "text":  "会写代码的人多，会扛系统的人少",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  210,
+        "text":  "AI 来了，老兵也许反而更稳",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  2
+                   },
+        "trigger":  {
+                        "minAge":  33,
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  211,
+        "text":  "过去拼手速，现在拼判断",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  212,
+        "text":  "你怕的不是年龄，是替代感",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  213,
+        "text":  "简历没空窗，心态有裂缝",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  214,
+        "text":  "裁员之后，留下来的人更沉默",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  215,
+        "text":  "不是不想卷，是身体先拒绝了",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  216,
+        "text":  "老程序员的优势，不在手快，在少踩坑",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  217,
+        "text":  "市场不奖励苦劳，只奖励稀缺",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  218,
+        "text":  "岗位在缩，责任在涨",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  219,
+        "text":  "你以为自己老了，系统觉得你终于懂了",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  220,
+        "text":  "越往后走，越值钱的是稳",
+        "category":  "35+、裁员与职业焦虑",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "rare",
+        "effect":  {
+                       "skill":  4,
+                       "mental":  -14,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minAge":  33
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  221,
+        "text":  "今天的代码，很有明天的味道",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  222,
+        "text":  "我没摸鱼，我在等环境",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  223,
+        "text":  "不是我慢，是编译器想聊聊",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  224,
+        "text":  "这行注释比逻辑诚实",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  225,
+        "text":  "没人敢删的代码，通常都在运行",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  226,
+        "text":  "程序不报错的时候，我更害怕",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  227,
+        "text":  "这个功能终于稳定地不稳定了",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  228,
+        "text":  "你的需求很简单，我的表情不是",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  229,
+        "text":  "改完这版，我就去睡。第六次了",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  230,
+        "text":  "需求未死，只是换了个说法",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  231,
+        "text":  "看懂了，不代表敢动",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  232,
+        "text":  "写代码像搭桥，排障像补洞",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  233,
+        "text":  "我们不是没测试，我们在生产测",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  234,
+        "text":  "临时方案待了三年",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  235,
+        "text":  "今天状态不错，适合回滚",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  236,
+        "text":  "这段代码一看就很有历史",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  237,
+        "text":  "不是不优雅，是项目赶时间",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  238,
+        "text":  "交付了功能，失去了周末",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  239,
+        "text":  "修好了问题，制造了传说",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  240,
+        "text":  "工程师的浪漫，是周五别报警",
+        "category":  "冷幽默与工程师自嘲",
+        "kind":  "joke",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  1
+                    },
+        "source_version":  "2026-06-17",
+        "source_scope":  "work-core"
+    },
+    {
+        "id":  241,
+        "text":  "凌晨两点，还在和睡意拉扯。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  242,
+        "text":  "咖啡续命，明天再早睡。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  243,
+        "text":  "外卖到了，胃口没到。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  244,
+        "text":  "冰箱很空，IDE 很满。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  245,
+        "text":  "一个人做饭，洗碗才是主线。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  246,
+        "text":  "不是不会做饭，是懒得刷锅。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  247,
+        "text":  "下班回家，只想躺着回消息。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  248,
+        "text":  "周末不是自由，是补觉窗口。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  249,
+        "text":  "代码能跑了，家里还没收拾。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  250,
+        "text":  "租的房不大，装下了全部疲惫。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  251,
+        "text":  "离公司近一点，离生活远一点。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  252,
+        "text":  "房租省下来了，舒适度也省了。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  253,
+        "text":  "合租最怕的不是吵，是没边界。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  254,
+        "text":  "独居久了，门铃都会吓一跳。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  255,
+        "text":  "城市很大，能待着的角落很小。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  256,
+        "text":  "通勤一小时，情绪先下班了。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  257,
+        "text":  "地铁挤完，社交额度清零。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  258,
+        "text":  "回到家时，晚饭已经太晚。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  259,
+        "text":  "不想上班，也不想搬家。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  260,
+        "text":  "远程省了通勤，没省掉孤独。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  261,
+        "text":  "没人打扰，也没人说话。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  262,
+        "text":  "一天没开口，Slack 倒是很热闹。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  263,
+        "text":  "人在家里，脑子还在工位。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  264,
+        "text":  "WFH 久了，出门像开支线任务。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  265,
+        "text":  "有些人想进办公室，只是想见人。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  266,
+        "text":  "有些人想回家，只是想做自己。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  267,
+        "text":  "恋爱不是难，是没精力经营。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  268,
+        "text":  "不是不想结婚，是先想活明白。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  269,
+        "text":  "异地恋最难的不是远，是累。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  270,
+        "text":  "婚后聊天，常常像同步需求。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  271,
+        "text":  "有了孩子以后，时间变成稀缺资源。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  272,
+        "text":  "陪伴家人，也需要提前排期。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  273,
+        "text":  "周末想出去，身体说先躺会儿。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  274,
+        "text":  "假期第一天，只想把闹钟关掉。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  275,
+        "text":  "旅游像逃生舱，不像度假村。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  276,
+        "text":  "换个城市，也许先换种活法。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  277,
+        "text":  "不是喜欢省钱，是开始怕风险。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  278,
+        "text":  "消费降级后，快乐也得打折。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  279,
+        "text":  "存款在涨，欲望在降。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  280,
+        "text":  "买菜的时候，比写代码更清醒。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  281,
+        "text":  "以前想吃好的，现在想睡好的。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  282,
+        "text":  "养猫养狗，是给生活加个心跳声。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  283,
+        "text":  "宠物在等你，比消息更真诚。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  284,
+        "text":  "房间收拾干净了，人还是很乱。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  285,
+        "text":  "今天也想辞职，明天还要打卡。",
+        "category":  "生活与日常生存",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  286,
+        "text":  "收藏了，不等于学会了。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  287,
+        "text":  "这个教程先存着，改天一定看。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  288,
+        "text":  "收藏夹已经会了，我还没会。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  289,
+        "text":  "又开了一门课，上一门还停在 12%。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  290,
+        "text":  "看教程的时候像会了，自己写就不会了。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  291,
+        "text":  "一跟着敲就顺，一脱离视频就卡。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  292,
+        "text":  "学了三天新框架，第四天它又更新了。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  293,
+        "text":  "工具越关注越多，真正打开的只有那两个。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  294,
+        "text":  "今天学新工具，明天换新概念。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  295,
+        "text":  "还没开始做项目，先把资源囤满了。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  296,
+        "text":  "一边看路线图，一边怀疑人生。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  297,
+        "text":  "想系统学习，结果先系统焦虑了。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  298,
+        "text":  "教程看了不少，作品一个没有。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  299,
+        "text":  "看懂了原理，不代表写得出来。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  300,
+        "text":  "会搜答案，不代表会解问题。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  301,
+        "text":  "文档一打开就困，报错一出现就清醒。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  302,
+        "text":  "平时不想读文档，出 bug 了字字精读。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  303,
+        "text":  "英文文档没那么难，难的是第一次点开。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  304,
+        "text":  "中英对照看久了，才发现术语早就混熟了。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  305,
+        "text":  "以为缺的是课程，其实缺的是动手。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  306,
+        "text":  "以为缺的是时间，其实缺的是主线。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  307,
+        "text":  "学习计划排得很满，执行率低得很稳。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  308,
+        "text":  "学习焦虑的高峰，常常发生在收藏之后。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  309,
+        "text":  "感觉自己什么都在学，也什么都没沉淀。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  310,
+        "text":  "刷题像健身，不练会虚，猛练会废。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  311,
+        "text":  "LeetCode 做多了，工作还是不会自己完成。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  312,
+        "text":  "面试要我刷题，工作要我填坑。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  313,
+        "text":  "AI 会秒题，但面试还得我自己答。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  3
+                   },
+        "trigger":  {
+                        "minSkill":  20,
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  314,
+        "text":  "证书能证明学过，项目更能证明会做。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  315,
+        "text":  "简历写了很多技能，最熟的是“了解过”。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  316,
+        "text":  "想靠证书安心，最后还是得靠作品说话。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  317,
+        "text":  "开源不一定让我入门，但很能让我见世面。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  318,
+        "text":  "第一次提 PR，比第一次写项目还紧张。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  319,
+        "text":  "开源最先练到的，常常不是代码，是沟通。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  320,
+        "text":  "读别人代码的时候，才知道自己平时写得多随便。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  321,
+        "text":  "学新技术最快的时候，往往是项目快截止的时候。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  322,
+        "text":  "真正记住一个知识点，通常是在它坑过我以后。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  323,
+        "text":  "学过又忘，不一定是菜，可能只是没用上。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  324,
+        "text":  "二次学习最痛的，不是重学，是发现自己真忘了。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  325,
+        "text":  "复习不是倒退，是把“会过”变成“会用”。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  326,
+        "text":  "跟着 AI 写得飞快，review 的时候又慢回来了。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  3
+                   },
+        "trigger":  {
+                        "minSkill":  20,
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  327,
+        "text":  "AI 让我更快开始，也让我更需要判断。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  3
+                   },
+        "trigger":  {
+                        "minSkill":  20,
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  328,
+        "text":  "我不是不会用 AI，我是怕自己只会用 AI。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  3
+                   },
+        "trigger":  {
+                        "minSkill":  20,
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  329,
+        "text":  "AI 给答案很快，验证答案更花时间。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  3
+                   },
+        "trigger":  {
+                        "minSkill":  20,
+                        "minAi":  25
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  330,
+        "text":  "以前怕不会写，现在怕不会审。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  331,
+        "text":  "不是知识不够，是输入远大于输出。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  332,
+        "text":  "真正能留下来的，往往是那几个反复用过的点。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  333,
+        "text":  "学习最难的不是开始，是不再假装自己在学。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  334,
+        "text":  "先做一个小东西，比再找十篇教程有用。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  335,
+        "text":  "关掉视频，打开编辑器，焦虑才会慢慢退。",
+        "category":  "学习与成长焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minSkill":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  336,
+        "text":  "该抬头了，脖子不是支架。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  337,
+        "text":  "你在写代码，颈椎在挨打。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  338,
+        "text":  "坐太久了，起来走两步。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  339,
+        "text":  "别让腰替今天加班。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  340,
+        "text":  "状态很顺，也该站一下。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  341,
+        "text":  "灵感不断，肩膀快断了。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  342,
+        "text":  "休息不是掉线，是续航。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  343,
+        "text":  "写得再顺，也别锁死姿势。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  344,
+        "text":  "今天动过了吗。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  345,
+        "text":  "先活动，再高效。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  346,
+        "text":  "眼睛该看远一点了。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  347,
+        "text":  "盯屏太久，视线该出门了。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  348,
+        "text":  "20 秒远眺，给眼睛回口血。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  349,
+        "text":  "先眨眼，再 debug。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  350,
+        "text":  "代码没跑，眼泪先跑了。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  351,
+        "text":  "别把干眼当敬业。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  352,
+        "text":  "脑子卡了，先离开屏幕。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  353,
+        "text":  "你不是咖啡驱动的。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  354,
+        "text":  "咖啡能提神，不能还债。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  355,
+        "text":  "少一杯硬顶，多一晚好睡。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  356,
+        "text":  "别拿失眠换清醒。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  357,
+        "text":  "熬夜写的，不一定是高质量。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  358,
+        "text":  "今晚少熬一小时，明天少废半天。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  359,
+        "text":  "补觉能缓一阵，规律才是底盘。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  360,
+        "text":  "别把周末当睡眠补丁。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  361,
+        "text":  "困了不是菜，是该睡了。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  362,
+        "text":  "午休 15 分钟，也算回血。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  363,
+        "text":  "睡不着时，先别硬躺。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  364,
+        "text":  "脑内线程太多，先记下来。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  365,
+        "text":  "下午发木，出去晒会儿太阳。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  366,
+        "text":  "一次散步，比一小时硬撑值钱。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  367,
+        "text":  "走一走，代码味会淡一点。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  368,
+        "text":  "久坐不是专注，是定身术。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  369,
+        "text":  "换个姿势，不算分心。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  370,
+        "text":  "买椅子有用，动起来更有用。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  371,
+        "text":  "升降桌不是免死金牌。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  372,
+        "text":  "真恢复，不靠瘫着刷手机。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  373,
+        "text":  "今天练背了吗。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  374,
+        "text":  "核心不稳，腰先报警。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  375,
+        "text":  "运动不是副业，是主线装备。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  376,
+        "text":  "糖和咖啡一起冲，你的精力像过山车。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  377,
+        "text":  "少点甜，下午少点困。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  378,
+        "text":  "身体不是测试环境。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  379,
+        "text":  "疼了就查，别拖成线上事故。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  380,
+        "text":  "体检不是矫情，是排雷。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  381,
+        "text":  "冥想 5 分钟，脑子少炸一会。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  382,
+        "text":  "呼吸慢下来，CPU 先降温。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  383,
+        "text":  "你可以下线，项目不会跑掉。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  384,
+        "text":  "身体先别崩，再谈长期主义。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  385,
+        "text":  "别拿命换版本。",
+        "category":  "健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  20
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  386,
+        "text":  "你的标签页比待办还多。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  387,
+        "text":  "你不是缺屏幕，你是缺收敛。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  388,
+        "text":  "再买个支架，效率就来了。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  389,
+        "text":  "键盘不是外设，是人格。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  390,
+        "text":  "这把轴体，像你的脾气。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  391,
+        "text":  "你买的是椅子，不是腰突。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  392,
+        "text":  "显示器越多，心越安。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  393,
+        "text":  "代码没写完，桌搭先升级。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  394,
+        "text":  "咖啡续上，尊严也续上。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  395,
+        "text":  "耳机一戴，世界静音。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  396,
+        "text":  "你在写代码，也在搭神坛。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  397,
+        "text":  "线材理顺了，人生也顺点。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  398,
+        "text":  "NAS 里装的，全是舍不得删。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  399,
+        "text":  "备份不是习惯，是信仰。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  400,
+        "text":  "自托管的尽头是运维自己。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  401,
+        "text":  "会员越开越多，心越空。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  402,
+        "text":  "订阅关不掉，焦虑停不下。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  403,
+        "text":  "你不是极简，你是暂时没钱。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  404,
+        "text":  "数字极简三天，收藏一万篇。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  405,
+        "text":  "你的第二大脑住在浏览器里。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  406,
+        "text":  "开着的标签页，就是未完成的人生。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  407,
+        "text":  "先收藏，等于已经学会。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  408,
+        "text":  "这个工具你只差最后一次迁移。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  409,
+        "text":  "又换笔记软件了，是吧。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  410,
+        "text":  "你整理知识库的样子像在逃命。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  411,
+        "text":  "远程办公久了，连说话都要 async。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15,
+                        "minDay":  10
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  412,
+        "text":  "Standup 结束，一天的人话也结束了。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  413,
+        "text":  "你想要安静，也想被理解。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  414,
+        "text":  "社交电量见底，设备清单满格。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  415,
+        "text":  "你的爱好叫宅着升级装备。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  416,
+        "text":  "小配件不贵，组合起来肉疼。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  417,
+        "text":  "显示器臂买完，桌面突然会呼吸。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  418,
+        "text":  "竖屏不是信仰，只是分工。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  419,
+        "text":  "一个屏幕求生，三个屏幕求稳。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  420,
+        "text":  "你说是生产力，其实是玩具。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  421,
+        "text":  "真正贵的不是设备，是理由。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  422,
+        "text":  "键帽换了，人生没换。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  423,
+        "text":  "买前做功课，买后看评测。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  424,
+        "text":  "你在选耳机，也在选边界。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  425,
+        "text":  "降噪一开，情绪也降噪。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  426,
+        "text":  "咖啡机不是家电，是启动器。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  427,
+        "text":  "好椅子买来，是为了多坐几年。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  428,
+        "text":  "你不是囤数据，你是在囤安全感。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  429,
+        "text":  "云不一定可靠，自己折腾一定累。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  430,
+        "text":  "省下的订阅费，花在新显示器上了。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  431,
+        "text":  "说好断舍离，先留这个教程。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  432,
+        "text":  "默认值好用，才是真奢侈。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  433,
+        "text":  "你讨厌折腾，也离不开折腾。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  434,
+        "text":  "今天不升级设备，升级心情。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  435,
+        "text":  "最后的极简，是少买但买贵。",
+        "category":  "设备、消费、社交与性格",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  -2,
+                       "money":  -2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minMoney":  15
+                    },
+        "source_version":  "2026-06-18",
+        "source_scope":  "full-spectrum"
+    },
+    {
+        "id":  436,
+        "text":  "站起来走两分钟，腰椎比需求更紧急。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  437,
+        "text":  "今天别硬撑，睡眠不是可选依赖。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  438,
+        "text":  "眼睛离开屏幕，看看窗外的真实渲染。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  439,
+        "text":  "单程通勤一小时，记得把耳机电充满。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  440,
+        "text":  "下班路上别刷工单，给大脑留个缓冲区。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  441,
+        "text":  "周末留半天给家人，不要全给副业。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  442,
+        "text":  "颈椎发出警告：本次迭代需要休息。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  443,
+        "text":  "健身房没去没关系，先下楼走一圈。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  444,
+        "text":  "AI不是裁员通知，先把它变成工具箱。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  7
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  445,
+        "text":  "今天学一个提示词，比焦虑一小时划算。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  7
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  446,
+        "text":  "让AI写草稿，你负责判断和验收。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  7
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  447,
+        "text":  "读一页官方文档，胜过刷十条恐慌帖。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  7
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  448,
+        "text":  "你的价值不是敲字速度，是定义问题。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  7
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  449,
+        "text":  "今天主动约个老同事，机会常在弱连接里。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  450,
+        "text":  "一个人吃饭也行，但别长期断开连接。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  451,
+        "text":  "技术群少潜水一次，提个真问题。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  452,
+        "text":  "孤独不是bug，但长期无反馈要修复。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  453,
+        "text":  "副业先定月入500，别一开始追神话。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -5,
+                       "money":  5,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  454,
+        "text":  "做低频产品前，先问用户多久用一次。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -5,
+                       "money":  5,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  455,
+        "text":  "别被暴富案例牵着跑，先验证现金流。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -5,
+                       "money":  5,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  456,
+        "text":  "买课前先做一版demo，防止焦虑消费。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -5,
+                       "money":  5,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  457,
+        "text":  "加班前问清楚：是紧急，还是管理失控？",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  3,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  458,
+        "text":  "晚九点后少写核心逻辑，明天bug会认账。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  3,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  459,
+        "text":  "24小时待命不是敬业，是边界丢失。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  3,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  460,
+        "text":  "陪孩子的时间，别总输给临时会。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  3,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  461,
+        "text":  "面试问加班，顺便问补偿和真实下班点。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  462,
+        "text":  "Gap别硬编，讲复盘、学习和下一步。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  463,
+        "text":  "简历少堆名词，多写你解决了什么问题。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  464,
+        "text":  "今天只试一个 AI 工具，别开工具选秀。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  7
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  465,
+        "text":  "模型更新很快，你不用每次都追尾。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  -4,
+                       "money":  0,
+                       "ai":  7
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  466,
+        "text":  "Slack 的热闹不等于人际连接。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  467,
+        "text":  "孤独会复利，约人喝咖啡也会。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  468,
+        "text":  "今天发一条非工作消息，别只在 PR 里出现。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  469,
+        "text":  "副项目不是第二份全职工作。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -5,
+                       "money":  5,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  470,
+        "text":  "今天做 ship 或 abandon，不做无限规划。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -5,
+                       "money":  5,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  471,
+        "text":  "不要用换框架假装推进。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -5,
+                       "money":  5,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  472,
+        "text":  "“就回一条消息”是加班的种子。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  3,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  473,
+        "text":  "长期在线不是可靠，是慢性掉血。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  3,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  474,
+        "text":  "面试焦虑不是菜，是高压环境的副作用。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  475,
+        "text":  "幽灵职位会吃情绪，记录它，不要内化它。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-life-extension",
+        "source_scope":  "life-learning-extension"
+    },
+    {
+        "id":  476,
+        "text":  "手环震了三次，你终于从椅子上编译起来。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "自嘲",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  477,
+        "text":  "颈椎提示：该版本已连续运行 8 小时。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "黑色幽默",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  478,
+        "text":  "你站起来接水，顺便重启了下半身。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "轻松",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  479,
+        "text":  "腰椎没有报错，只是日志级别升到了 warning。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "自嘲",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  480,
+        "text":  "午休趴桌 20 分钟，脖子进入兼容模式。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "苦笑",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  481,
+        "text":  "今天没熬夜，但身体还在清算昨天的债。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "现实",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  482,
+        "text":  "体检报告出来了，比周报更需要复盘。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "黑色幽默",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  483,
+        "text":  "你做了三分钟拉伸，获得短暂人类形态。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "轻松",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  484,
+        "text":  "通勤一小时，灵魂延迟到岗。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "疲惫",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -11,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  485,
+        "text":  "房租便宜了，通勤把差价收回去了。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "吐槽",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -11,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  486,
+        "text":  "家人以为你在家就等于随时有空。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "现实",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  487,
+        "text":  "远程会议静音后，你听见生活在后台运行。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "温和",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  488,
+        "text":  "周末群消息响起，你的心率图出现尖峰。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "焦虑",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  489,
+        "text":  "你练习拒绝，打出来的第一句是“我看看”。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "自嘲",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  490,
+        "text":  "父母问你稳定吗，你看了看公司群沉默了。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "苦笑",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  491,
+        "text":  "今天没学习新框架，但学会了给父母回电话。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "温和",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  492,
+        "text":  "相亲对象问爱好，你差点回答“稳定复现”。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "自嘲",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  493,
+        "text":  "你不是不会聊天，只是太想一次提交通过。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "自嘲",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  494,
+        "text":  "失业第一周很自由，第二周开始计算燃烧率。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "现实",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  495,
+        "text":  "焦虑没有消失，只是被一次散步降噪。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "治愈",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  496,
+        "text":  "你今天没有变强，但没有继续透支。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "克制",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  497,
+        "text":  "简历已读不回，你学会把它当异步任务。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "自嘲",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  498,
+        "text":  "面试前心跳加速，手环误判你在运动。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "黑色幽默",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  499,
+        "text":  "一线城市机会多，生活成本也很会排队。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "现实",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -11,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  500,
+        "text":  "家里没有同事打扰，但有冰箱持续拉取请求。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "轻松",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  5
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  501,
+        "text":  "早餐被跳过，午饭开始追债。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "现实",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  502,
+        "text":  "高糖奶茶提供快乐，也提交了崩溃定时器。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "自嘲",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  503,
+        "text":  "智能手表记录睡眠，也记录你不听劝。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "吐槽",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  504,
+        "text":  "你买了降噪耳机，终于听见自己的累。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "温酸",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  505,
+        "text":  "今天没有崩溃，只是短暂失去响应。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "克制",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  506,
+        "text":  "生存提示：先保存身体，再保存项目。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "克制",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  507,
+        "text":  "教程看完了，项目还是空文件夹。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "自嘲",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  508,
+        "text":  "今天别再收藏路线图了，写 30 行自己的代码。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "推动",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  509,
+        "text":  "你缺的不是第 18 门课，是一次笨拙开工。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "温和提醒",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  510,
+        "text":  "先做一个会坏的版本，再学怎么修。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "实干",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  511,
+        "text":  "复制代码不是罪，复制完不理解才危险。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "警醒",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  512,
+        "text":  "别把“准备学习”误当成“正在学习”。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "清醒",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  513,
+        "text":  "被 AI 写得太快吓到时，去读一遍它生成的边界条件。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "冷静",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  514,
+        "text":  "AI 能补全代码，不能替你理解事故。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "警醒",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  515,
+        "text":  "能 review AI 代码的人，才是真的在用 AI。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "专业",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  516,
+        "text":  "别让 Copilot 变成你的记忆外包。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "警醒",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  517,
+        "text":  "简历别堆技术名词，讲清楚你解决过什么。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "实用",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  518,
+        "text":  "面试不是背答案，是证明你能把坑填上。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "清醒",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  519,
+        "text":  "项目经历最好能回答：谁用、为什么用、怎么变好。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "实用",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  520,
+        "text":  "GitHub 链接不是护身符，代码质量才是。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "冷静",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  521,
+        "text":  "绿格子很好看，但面试官会点进仓库。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "幽默",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  522,
+        "text":  "第一个 PR 可以很小，但要认真。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "温和",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  523,
+        "text":  "README 写清楚，比星星多更能救面试。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "实用",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  524,
+        "text":  "issue 里会沟通，也是一种工程能力。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "专业",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  525,
+        "text":  "独立开发最难的不是写完，是有人愿意用。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "现实",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  526,
+        "text":  "先找一个真实用户，再加一个酷功能。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "实用",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  527,
+        "text":  "MVP 的 M 是 minimum，不是 maximum。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "幽默",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  528,
+        "text":  "写代码前，先问这个痛点有没有人掏钱。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "商业",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  529,
+        "text":  "第一个付费用户，比第十个功能重要。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "推动",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  530,
+        "text":  "如果没人愿意试用，可能不是登录按钮颜色的问题。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "吐槽",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  531,
+        "text":  "刷题忘了很正常，复盘比数量更值钱。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "实用",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  532,
+        "text":  "八股不是信仰，是面试协议。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "自嘲",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  533,
+        "text":  "面试官想听的不是“我负责”，而是“我怎么负责”。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "实用",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  534,
+        "text":  "别只说性能优化，拿出指标前后对比。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "专业",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  535,
+        "text":  "你不需要追完所有热点，只要别停止校准方向。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "安抚",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  536,
+        "text":  "真正的 senior，不是写得快，是知道什么别写。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "专业",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  537,
+        "text":  "写博客不是表演，是给未来的自己留索引。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "温和",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  538,
+        "text":  "不要把“我不配”当成需求分析结论。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "安抚",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  539,
+        "text":  "工具越强，越要保留自己的验收标准。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "专业",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  540,
+        "text":  "简历上的每个技术词，都可能变成追问入口。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "警醒",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  541,
+        "text":  "独立开发别裸辞上头，先跑一轮付费验证。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "警醒",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  542,
+        "text":  "AI 时代先补底层思维，不急着背工具。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "清醒",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  543,
+        "text":  "算法不是刷题清单，是判断框架。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "理性",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  544,
+        "text":  "系统设计不是面试题，是做事方法。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "稳重",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  545,
+        "text":  "下班后学编程，先做能救火的小工具。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "务实",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  546,
+        "text":  "真正学得快的人，先拿一个痛点开练。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "实战",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  547,
+        "text":  "选技术别只看热度，先看能不能做成事。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "冷静",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  548,
+        "text":  "学习路径别贪全，先把一条线打穿。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "克制",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  549,
+        "text":  "代码能力不是背答案，是会拆问题。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "清醒",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  550,
+        "text":  "新手最值钱的不是项目多，是项目真能跑。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "务实",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  551,
+        "text":  "找到适合自己的入门岗位，比盲学更重要。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "谨慎",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  552,
+        "text":  "先做能解释清楚的项目，再谈宏大规划。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "稳健",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  553,
+        "text":  "转向前先确认，你愿不愿意长期补课。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "现实",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  10
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  554,
+        "text":  "会用 AI 不稀奇，会验证 AI 才稀缺。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "冷静",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  555,
+        "text":  "让 AI 先跑一遍，你负责找它漏掉的地方。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "专业",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  556,
+        "text":  "提示词不是玄学，是把需求说完整。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "务实",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  557,
+        "text":  "AI 适合提速，不适合替你理解问题。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "警惕",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  558,
+        "text":  "先让 AI 搭骨架，再自己补细节。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "实用",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  559,
+        "text":  "复杂项目里，AI 会放大你的判断力差异。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "冷静",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  560,
+        "text":  "用 AI 省时间，但别把脑子也外包了。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "直接",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  561,
+        "text":  "卡了半小时的 bug，先换工具链再认输。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "坚韧",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  562,
+        "text":  "AI 工具不是捷径，是新型熟练工训练场。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "务实",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  563,
+        "text":  "该手写的关键链路，还是得自己过一遍。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "谨慎",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  564,
+        "text":  "AI 时代，工程师更要会问对问题。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "清醒",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  565,
+        "text":  "别只学会调用模型，要学会定义边界。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "稳重",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  566,
+        "text":  "开源不是露脸，是顺手把坑补给后来人。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "克制",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  567,
+        "text":  "先修一个小 issue，比空谈参与更有效。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "务实",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  568,
+        "text":  "公开仓库不是简历装饰，是协作记录。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "诚恳",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  569,
+        "text":  "做开源最难的不是写代码，是守住节奏。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "现实",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  570,
+        "text":  "有用的小工具，比漂亮 demo 更像作品。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "务实",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  571,
+        "text":  "开源贡献的价值，先体现在能力变稳。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "平实",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  572,
+        "text":  "维护一个项目，比发十个草稿更能证明你。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "稳定",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  573,
+        "text":  "代码能被别人接住，才算真正完成。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "专业",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  574,
+        "text":  "想靠开源找工作，先把仓库做得可读可用。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "冷静",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  575,
+        "text":  "不必追大而全，做一个细分痛点的小项目就够。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "克制",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  7
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-research-extension",
+        "source_scope":  "research-extension"
+    },
+    {
+        "id":  576,
+        "text":  "你下班后没有打开 IDE，但脑内 PR 还在自测。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  577,
+        "text":  "你想早睡，却在床上把明天的 bug 定位了一半。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  578,
+        "text":  "晚饭后散步十分钟，竟然比刷十篇技术帖更像重启。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  579,
+        "text":  "你没有摆烂，只是在给大脑做冷启动。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  580,
+        "text":  "今天没有高光提交，但你准时吃饭，系统稳定性 +1。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  581,
+        "text":  "你发现真正难的不是写代码，是把电脑合上。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  582,
+        "text":  "你站起来倒水，手环以为你开始运动了。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  583,
+        "text":  "脖子发出声响，像老项目终于暴露技术债。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  584,
+        "text":  "你开始把睡眠当生产依赖，而不是可选插件。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  585,
+        "text":  "你设置了久坐提醒，然后第一次没有点“稍后”。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  586,
+        "text":  "肩颈酸痛时，需求优先级突然变得不那么神圣。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  587,
+        "text":  "你决定先洗澡再改 bug，结果思路自己浮出来了。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  588,
+        "text":  "今天的最佳实践：关灯、躺平、不要想缓存。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  589,
+        "text":  "你终于明白，恢复不是偷懒，是下一轮迭代的资源。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  590,
+        "text":  "你请了一天假，没有学习，没有补课，只是睡觉。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  591,
+        "text":  "技术更新很快，你先让呼吸恢复正常频率。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  592,
+        "text":  "你发现自己不是落后，只是缓存了太多恐惧。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  593,
+        "text":  "今天没有解决人生，但解决了一个让你睡不着的小问题。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  594,
+        "text":  "你停止和全网高手比较，生命值悄悄回了一点。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  595,
+        "text":  "今晚不做职业决定，只做恢复出厂设置前的备份。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  596,
+        "text":  "你收藏了第 47 门课，学习进度仍停在“环境配置”。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  597,
+        "text":  "今天只学会一个 SQL 窗口函数，但它真的能在项目里用。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  598,
+        "text":  "你把“跟完教程”改成“做出一个能跑的小东西”。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  599,
+        "text":  "学习路线太长，你先从能解决当前 bug 的那一节开始。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  600,
+        "text":  "你终于承认：没有输出的输入，像没落库的日志。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  601,
+        "text":  "新框架看起来很香，但你的业务还卡在 SQL 基础。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  602,
+        "text":  "你把“每天 3 小时学习”降级成“每天 25 分钟不断线”。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  603,
+        "text":  "今天没刷算法，但你把一个线上慢查询讲明白了。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  604,
+        "text":  "技术焦虑来袭，你用一个小 demo 反击。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  605,
+        "text":  "你发现学会提问，比又装一个脚手架更值钱。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  606,
+        "text":  "你给学习任务加了验收标准，焦虑立刻少了半屏。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  607,
+        "text":  "今天的成长不是“掌握全栈”，是终于读懂报错第一行。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  608,
+        "text":  "你把学习笔记写成给三个月后的自己看的文档。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  609,
+        "text":  "AI 会写首版，脏活还是你收。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  610,
+        "text":  "代码生成得飞快，理解却要加班。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  611,
+        "text":  "提示词写了半小时，结果还得手改。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  612,
+        "text":  "生成器很勤快，架构感一直缺席。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  613,
+        "text":  "AI 适合铺路，不适合替你背锅。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  614,
+        "text":  "省下的打字时间，变成了审查时间。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  615,
+        "text":  "最危险的不是不会写，是太会信。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  616,
+        "text":  "让 AI 补代码容易，让它补上下文难。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  617,
+        "text":  "AI 最擅长产出，最不擅长负责。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  618,
+        "text":  "你在群里打出“有空约饭”，比发版还紧张。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  619,
+        "text":  "同事问你周末干嘛，你差点回答“修复自己”。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  620,
+        "text":  "朋友说听不懂技术债，但听懂了你很累。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  621,
+        "text":  "你发现不是所有对话都需要给出解决方案。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  622,
+        "text":  "今天的社交成功：没有在聚会上讲完整个事故复盘。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  623,
+        "text":  "你在社区发了问题，收到的不是嘲笑，而是路线图。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  624,
+        "text":  "一个老同学的近况，让你重新校准了职业坐标。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  625,
+        "text":  "你把“我不懂”说出口，会议室反而安静下来帮你。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  626,
+        "text":  "你发现真正的人脉，是能提醒你休息的人。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  627,
+        "text":  "今天没有扩列，但你认真回复了一条朋友消息。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  628,
+        "text":  "你把社交从 KPI 改成低频健康检查。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  629,
+        "text":  "你在技术群潜水半年，终于贡献了一个踩坑结论。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  630,
+        "text":  "视频会议开完，问题还在，耳朵先累。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  631,
+        "text":  "远程协作最难的，不是距离，是时差。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  632,
+        "text":  "远程团队最常见的误会，是把静默当同意。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  633,
+        "text":  "没有办公室墙，边界就得自己画。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  634,
+        "text":  "你打开副业教程，第一课是“先算成本”。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  635,
+        "text":  "小程序还没上线，云服务账单已经学会增长。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  636,
+        "text":  "你发现副业最难的不是写代码，是找到愿意付费的人。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  637,
+        "text":  "下班后再开第二个项目，热情很快变成第二份工时。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  638,
+        "text":  "你把副业目标从“财富自由”改成“验证一个真实需求”。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  639,
+        "text":  "接私活前，你先问清楚验收标准和改需求次数。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  640,
+        "text":  "你没有裸辞，只是给未来多开了一条低速支线。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  641,
+        "text":  "副业收入到账 38 元，精神收益暂时无法提现。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  642,
+        "text":  "你做了工具，真正的难题变成获客和售后。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  643,
+        "text":  "朋友说“顺手做个系统”，你听见了范围蔓延的脚步。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  644,
+        "text":  "你决定副业不碰 24 小时响应，生命值明显回升。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  645,
+        "text":  "独立开发的第一课：没人催你，也没人替你买单。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  646,
+        "text":  "你把副业拆成每晚 30 分钟，进度慢但没烧毁。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  647,
+        "text":  "今天没有新用户，但你删掉了一个没人用的功能。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  648,
+        "text":  "渠道、信任和复购，比技术栈更像主线任务。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  649,
+        "text":  "副业不是逃生舱，维护不好也会漏氧。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  650,
+        "text":  "开源最难的不是写，而是一直接住。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  651,
+        "text":  "贡献者来来去去，维护者留下处理后遗症。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  652,
+        "text":  "热门项目的 issue，比需求池更吵。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  653,
+        "text":  "你以为在做志愿者，实际上在当客服。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  654,
+        "text":  "维护一个项目，像在给公共池子捞漂浮物。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  655,
+        "text":  "开源不是没人管，是人人都想插手。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  656,
+        "text":  "你决定今晚不加班，结果用通勤时间复盘了一路架构。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  657,
+        "text":  "房间安静得像生产环境，任何提示音都像报警。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  658,
+        "text":  "加班餐吃完，胃对你的排期提出强烈异议。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  659,
+        "text":  "你关掉工作群，心里还弹出幻觉红点。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  660,
+        "text":  "你承认自己累了，系统终于停止重试。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  661,
+        "text":  "你把不可控列表删掉，只保留今天能做的一件事。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  662,
+        "text":  "线上报警响起时，最先坏的是早餐。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  663,
+        "text":  "事故复盘写得越漂亮，值班越难忘。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  664,
+        "text":  "修 bug 的速度，永远追不上扩散速度。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  665,
+        "text":  "午夜修复成功，第二天还要解释。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  666,
+        "text":  "事故不是意外，是排队很久的债。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  667,
+        "text":  "回滚按钮按下去，心才敢慢半拍。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  668,
+        "text":  "on-call 的本质，是和未知轮班。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  669,
+        "text":  "事故结束后，邮件比告警更吵。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  670,
+        "text":  "真正的压力不是出错，是不知道哪错了。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  671,
+        "text":  "一次异常放大，半个团队开始失眠。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  672,
+        "text":  "复盘里写“可改进”，现场里叫“先活下来”。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  673,
+        "text":  "你以为在稳态在线，其实是在慢性透支注意力。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  674,
+        "text":  "技术债不响，但会在关键时刻连本带利。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  675,
+        "text":  "能跑不等于能扩，能扩不等于能改。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  676,
+        "text":  "你把“行业完了”翻译成“今天先改简历一页”。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  677,
+        "text":  "你把职业危机拆成预算、技能、关系三张表。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  678,
+        "text":  "恐慌的时候，最小行动比宏大规划更可靠。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  679,
+        "text":  "面试像考试，工作却像开卷填坑。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  680,
+        "text":  "你准备的是题库，对方问的是故事。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  681,
+        "text":  "最难的不是回答，是在压力下组织答案。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  682,
+        "text":  "你会写代码，不代表会讲自己的代码。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  683,
+        "text":  "面试卡住的，常是经历没讲成价值。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  684,
+        "text":  "聊得像合作，结果只是互相筛选。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  685,
+        "text":  "真正的考点常常不是题，是取舍。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  686,
+        "text":  "一次面试失利，能让人重算一遍职业路线。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  687,
+        "text":  "升职以后，写代码反而成了副业。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  688,
+        "text":  "职级不是头衔，是你要处理的模糊度。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  689,
+        "text":  "新级别带来的不是权力，是预期。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  690,
+        "text":  "Senior 不是更快，是更能兜底。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  691,
+        "text":  "级别越往上，越少人告诉你真话。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  692,
+        "text":  "评估你的人，往往没看见你真正救火的部分。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  693,
+        "text":  "晋升材料写满成果，日常还是救火和协调。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  694,
+        "text":  "资历够了，不代表影响力自动到账。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  695,
+        "text":  "走到管理岗前，先学会处理沉默。",
+        "category":  "面试、Gap与求职疲劳",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round7",
+        "source_scope":  "round7-community-extension"
+    },
+    {
+        "id":  696,
+        "text":  "你决定先睡一觉，明天再和人生架构图对线。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  697,
+        "text":  "你关掉 IDE 后，没有立刻打开另一个 IDE，恢复值小幅上涨。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  698,
+        "text":  "今天的最高优先级不是需求，是把作息从事故状态拉回来。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  699,
+        "text":  "你晒了十分钟太阳，感觉缓存里的阴影少了一点。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  700,
+        "text":  "你发现 burnout 不是缺教程，是缺连续几晚好觉。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  701,
+        "text":  "你把午饭吃完再看消息，线上世界并没有因此停机。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  702,
+        "text":  "周末没有补课，你只是把人从后台唤醒。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  703,
+        "text":  "你给自己放了半天假，内疚感像弹窗一样关不掉。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  704,
+        "text":  "你把手机放远，幻觉红点终于降低刷新率。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  705,
+        "text":  "你今晚没有制定宏大计划，只把枕头调到了正确高度。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  706,
+        "text":  "你承认自己不是电池，不能靠插上咖啡无限续航。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  707,
+        "text":  "你先洗澡再想问题，脑子突然开始自动格式化。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  708,
+        "text":  "你给“什么都不做”留了日程，恢复系统终于有了入口。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  709,
+        "text":  "你把周末从第二工作日改回周末，生命值回了一格。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  710,
+        "text":  "你没有逃避工作，只是在避免把自己部署坏。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  711,
+        "text":  "你今天只做了散步和早睡，但这两个任务都没有延期。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  712,
+        "text":  "你发现休息最难的部分，是不把它包装成学习。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  713,
+        "text":  "你把恢复当成长期维护，不再指望一次热修复。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  714,
+        "text":  "你把“继续坚持”改成“先别透支”，系统负载降了。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  715,
+        "text":  "你关掉工作群，先让心跳从压测曲线回到正常曲线。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  716,
+        "text":  "你把学习目标从“掌握 AI”缩小成“用 AI 改一个真实流程”。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  717,
+        "text":  "你没有追完整路线图，只把今天卡住的问题问清楚。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  718,
+        "text":  "新技术列表很长，你先挑一个能在本周落地的。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  719,
+        "text":  "你用 AI 生成代码后，终于补上了人工验收。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  720,
+        "text":  "你发现 AI 不是免学卡，而是把不会的地方照得更亮。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  721,
+        "text":  "你把收藏夹清空一半，只留下能动手的三篇。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  722,
+        "text":  "你今天没学新框架，但把一个旧概念讲给同事听懂了。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  723,
+        "text":  "你把“每天学三小时”改成“每天交付一个小证据”。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  724,
+        "text":  "AI 让入门更快，也让你更难假装已经理解。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  725,
+        "text":  "你用一个小脚本验证了教程，不再只相信截图。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  726,
+        "text":  "你把学习笔记写成故障排查手册，未来的你表示感谢。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  727,
+        "text":  "你发现真正的学习路线，是当前项目暴露出的短板。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  728,
+        "text":  "你停止比较全网进度，只比较昨天的自己有没有动手。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  729,
+        "text":  "你把 AI 回答当实习生建议，而不是线上变更单。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  730,
+        "text":  "你今天问了一个更具体的问题，答案终于不再像鸡汤。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  731,
+        "text":  "你把课程进度条暂停，先做一个丑但能跑的东西。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  732,
+        "text":  "你意识到“会用工具”和“能交付结果”之间还有一段路。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  733,
+        "text":  "你把焦虑翻译成技能清单，第一项只有二十分钟。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  734,
+        "text":  "你没有追热点，只补了一个会立刻省时间的基础。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  735,
+        "text":  "你让 AI 帮你复盘错误，而不是替你宣布胜利。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  736,
+        "text":  "你给老同学发了消息，发现大家都在不同版本里掉帧。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  737,
+        "text":  "你约了咖啡，不聊内推，只聊最近怎么活。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  738,
+        "text":  "你在社区认真回了一条经验，比潜水焦虑更有用。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  739,
+        "text":  "你发现人脉不是联系人数量，是关键时刻有人说实话。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  740,
+        "text":  "你把求助写得具体，陌生人也更愿意接力。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  741,
+        "text":  "你没有强行扩圈，只恢复了两个老朋友的连接。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  742,
+        "text":  "技术群里没人万能，但有人刚好踩过同一个坑。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  743,
+        "text":  "你把“我很焦虑”说出口，群里突然安静地认真起来。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  744,
+        "text":  "你参加线下活动，最大的收获是发现别人也会迷路。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  745,
+        "text":  "你学会不把每次聊天都变成职业规划会。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  746,
+        "text":  "你给前同事发了近况，没有附简历，关系反而自然。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  747,
+        "text":  "你在饭局上忍住没讲微服务，社交稳定性提升。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  748,
+        "text":  "你把社区发言从炫技改成复盘，回复质量明显变高。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  749,
+        "text":  "你发现最有用的建议，常常来自同段位的幸存者。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  750,
+        "text":  "你没有认识大佬，但认识了一个愿意互相督促的人。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  751,
+        "text":  "你把人际关系当低频维护，不等报错才登录。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  752,
+        "text":  "副业计划第一页，你先写了“不牺牲睡眠”。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  753,
+        "text":  "你把副业拆成 15 分钟任务，终于不再只在周末幻想。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  754,
+        "text":  "你没有裸辞，只给未来开了一个低速实验分支。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  755,
+        "text":  "副业最先上线的功能，是算清楚每月成本。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  756,
+        "text":  "AI 写得越快，你越要慢点看。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  757,
+        "text":  "省下的键盘声，补在 review 里。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  758,
+        "text":  "你能用 AI，是因为你还懂系统。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  759,
+        "text":  "KPI 开始统计 AI 行数，质量开始假装路过。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  760,
+        "text":  "不懂代码时，AI 的自信最像陷阱。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  761,
+        "text":  "机器人负责产量，人类负责尴尬。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  762,
+        "text":  "今天不是写代码，是给模型补上下文。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  763,
+        "text":  "只看生成结果，手感会悄悄生锈。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  764,
+        "text":  "管理层看见加速，你看见返工。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  765,
+        "text":  "让 AI 干杂活，别让它替你判断。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  766,
+        "text":  "代码像是对的，风险像是新的。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  767,
+        "text":  "提示词写顺了，锅也接顺了。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  768,
+        "text":  "AI PR 不披露，维护者先过敏。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  769,
+        "text":  "以前怕不会写，现在怕太会生成。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  770,
+        "text":  "护栏不是减速带，是保命绳。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  771,
+        "text":  "公司买了工具，你买了更多怀疑。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  772,
+        "text":  "AI 加速了提交，也加速了你的眼干。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  773,
+        "text":  "agent 能改文件，不能替你拥有后果。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  774,
+        "text":  "你不是不用 AI，你是在给 AI 做监护人。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  775,
+        "text":  "真正的提效，是少造未来的坑。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  776,
+        "text":  "review 的瓶颈，从来不在滚轮速度。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  777,
+        "text":  "PR 越长，大家越擅长已读不回。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  778,
+        "text":  "自动 review 可以提醒，不能宣判安全。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  779,
+        "text":  "评审像沟通课，代码只是教材。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  780,
+        "text":  "看完三百行 diff，我先 review 一下人生。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  781,
+        "text":  "机器挑小错，人类背大锅。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  782,
+        "text":  "说清为什么，比说不行更难。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  783,
+        "text":  "低上下文贡献，会把好心变成噪音。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  784,
+        "text":  "LGTM 有时不是同意，是没力气了。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  785,
+        "text":  "好 review 先保护关系，再保护代码。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  786,
+        "text":  "核心项目里，信任比补丁更稀缺。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  787,
+        "text":  "“小改动”三个字，常常最不可信。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  788,
+        "text":  "你改的是变量名，他听见的是人格审判。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  789,
+        "text":  "AI 帮你开 PR，也帮别人制造排队。",
+        "category":  "AI学习与工具焦虑",
+        "kind":  "learning",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  790,
+        "text":  "今天的 review 目标：别把脾气提交上去。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  791,
+        "text":  "告警一响，晚饭自动进入回滚状态。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  792,
+        "text":  "on-call 不是轮班，是睡眠抽奖。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  793,
+        "text":  "没有 runbook 的夜晚，谁都像新人。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  794,
+        "text":  "误报多了，真故障也开始讲狼来了。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  795,
+        "text":  "事故结束了，身体还在值班。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  796,
+        "text":  "同一个告警反复响，是系统在写辞职信。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  797,
+        "text":  "复盘写得很冷静，凌晨一点并不是。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  798,
+        "text":  "值完班的人，第二天不该假装满血。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  799,
+        "text":  "好的排班，先承认人要睡觉。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  800,
+        "text":  "最怕不是红灯，是没人知道该看哪盏。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  801,
+        "text":  "指标很稳定，直到用户替你报警。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  802,
+        "text":  "burnout 不是突然来的，是一页页告警攒的。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  803,
+        "text":  "事故流程不清，群聊就会变成控制台。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  804,
+        "text":  "回滚按钮像电梯关门键，按了才安心。",
+        "category":  "加班、通勤与生活边界",
+        "kind":  "event",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -10,
+                       "money":  2,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "overtime",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  805,
+        "text":  "先恢复服务，再恢复心跳。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  806,
+        "text":  "开源不是免费客服，更不是 AI 垃圾桶。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  807,
+        "text":  "贡献前先披露来源，别把风险塞给维护者。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  808,
+        "text":  "维护者缺的不是 issue，是安静。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  809,
+        "text":  "低质量 PR 越礼貌，越难直接关门。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  810,
+        "text":  "尊重项目边界，也是贡献的一部分。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  811,
+        "text":  "业余维护项目，专业消耗情绪。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  812,
+        "text":  "没跑测试的热情，最后会变成别人的劳动。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  813,
+        "text":  "社区要留下人，先别把人当队列处理器。",
+        "category":  "社交、家庭与边界",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  814,
+        "text":  "AI 生成的善意，也可能像敲门推销。",
+        "category":  "副业、独立开发与现金流",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  815,
+        "text":  "人力债不还，项目也会欠到停摆。",
+        "category":  "生活、健康与恢复",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round8",
+        "source_scope":  "round8-community-extension"
+    },
+    {
+        "id":  816,
+        "text":  "系统提示：你已经下班，但脑内工单还在排队。",
+        "category":  "下班后",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  817,
+        "text":  "今晚的下班，只是把办公软件切到静音。",
+        "category":  "下班后",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  818,
+        "text":  "你按了离开，后台却还在回放同事的最后一句。",
+        "category":  "下班后",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  819,
+        "text":  "收工成功，精神却还在等下一个群消息。",
+        "category":  "下班后",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  820,
+        "text":  "休息区已开放，工作线程仍在偷偷占位。",
+        "category":  "下班后",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  821,
+        "text":  "这不是加班，是下班后继续处理遗留情绪。",
+        "category":  "下班后",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  822,
+        "text":  "你人到家了，需求还在客厅里开会。",
+        "category":  "下班后",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  823,
+        "text":  "本日任务结束，注意力却没完成签退。",
+        "category":  "下班后",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  824,
+        "text":  "夜色已经刷新，你的脑子还在追着需求跑。",
+        "category":  "下班后",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  825,
+        "text":  "下班键按下了，后台日志却还亮着。",
+        "category":  "下班后",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  826,
+        "text":  "睡眠条已见底，系统却还在弹出未读提醒。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  827,
+        "text":  "你不是失眠，是大脑在夜里重放白天的编译错误。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  828,
+        "text":  "今晚的觉，像一个迟迟不肯提交的分支。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  829,
+        "text":  "你躺下了，身体想关机，脑子想续跑。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  830,
+        "text":  "休眠模式启动失败，原因是明天的压力先上线了。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  831,
+        "text":  "补觉不是奖励，是这个角色的基础维护。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  832,
+        "text":  "熬夜之后，第二天的你像没加载完的资源包。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  833,
+        "text":  "你的梦还没开始，闹钟先来抢跑。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  834,
+        "text":  "关灯之后，思绪仍在继续滚动。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  835,
+        "text":  "睡眠不足不是状态，它是连续掉帧。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  836,
+        "text":  "地铁把你送到公司，也顺手吞掉了半条命。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  837,
+        "text":  "通勤路上最稳定的，就是每天都在扣血。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  838,
+        "text":  "你在车厢里站稳了，今天的精力却没站稳。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  839,
+        "text":  "路程不长，但足够把早晨打成碎片。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  840,
+        "text":  "上班前的移动，像给白天先交一笔过路费。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  841,
+        "text":  "通勤结束时，人到了，续航也差不多见底了。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  842,
+        "text":  "这段路的意义，就是把你的清醒值按分钟兑换掉。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  843,
+        "text":  "不是你走得慢，是城市在用通勤吃掉你的余量。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  844,
+        "text":  "你每天都出发得很早，抵达得很疲惫。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  845,
+        "text":  "这条路线的隐藏费用，叫精神折损。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  846,
+        "text":  "伴侣想聊天时，你却还在给消息排优先级。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  847,
+        "text":  "你以为在处理需求，家人只看见你一直不在场。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  848,
+        "text":  "约会安排和排期表打架，输的一般是感情。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  849,
+        "text":  "回家之后，最难修复的不是代码，是气氛。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  850,
+        "text":  "你把耐心分给了线上会议，留给家人的只剩残响。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  851,
+        "text":  "亲密关系不是阻塞队列，但你老把它排到最后。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  852,
+        "text":  "该回消息的时候，你在回工单。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  853,
+        "text":  "你不是冷淡，是常把情绪留到周末再处理。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  854,
+        "text":  "家里也需要版本更新，只是没人给它发公告。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  855,
+        "text":  "爱情和加班一起争资源，系统一般不会帮你平衡。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  856,
+        "text":  "你的颈椎已经多次提醒，只是你一直点了稍后。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  857,
+        "text":  "久坐把你磨成了静态素材，身体却想重新渲染。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  858,
+        "text":  "体检报告一出来，像是给你的角色发了异常通告。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  859,
+        "text":  "你不是不想运动，是每天剩下的电量只够回家。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  860,
+        "text":  "这具身体跑的不是长线，是被迫透支的短冲刺。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  861,
+        "text":  "熬夜、外卖、久坐，正在把你的血条慢慢磨薄。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  862,
+        "text":  "身体的告警灯已经亮了，只是你习惯性忽略。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  863,
+        "text":  "别把疲惫当常态，它不是系统默认设置。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  864,
+        "text":  "你现在最缺的，不是鸡汤，是一次真正离屏。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  865,
+        "text":  "健康不是加分项，它是这场模拟的存档条件。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  866,
+        "text":  "工资到账的第一秒，房租和外卖就开始分流。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  867,
+        "text":  "你以为自己在消费，实际上是在给生活交维护费。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  868,
+        "text":  "每月支出里最顽固的，不是买东西，是图省事。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  869,
+        "text":  "省钱失败不一定是乱花，可能只是城市太会收费。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  870,
+        "text":  "账单一拉开，才知道真正吃钱的是碎片日常。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  871,
+        "text":  "你不是突然穷了，是隐形项目一直在扣款。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  872,
+        "text":  "点一次外卖，像给时间和钱包同时刷卡。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  873,
+        "text":  "真正的消费冲动，常常伪装成“今天太累了”。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  874,
+        "text":  "工资刚落袋，就被房租、通勤和情绪税切走。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  875,
+        "text":  "你花出去的不是钱，是给自己争取一点省事。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  876,
+        "text":  "搬家不是换个房间，是把整个生活栈重新部署。",
+        "category":  "搬家",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  877,
+        "text":  "你搬的不是箱子，是所有没整理完的日常。",
+        "category":  "搬家",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  878,
+        "text":  "每次换住处，都像给人生做一次冷迁移。",
+        "category":  "搬家",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  879,
+        "text":  "新地址到手，熟悉感还要慢慢同步。",
+        "category":  "搬家",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  880,
+        "text":  "搬家最累的部分，不是体力，是重新适应一切。",
+        "category":  "搬家",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  881,
+        "text":  "你终于找到更近的房子，却发现心还落在旧楼里。",
+        "category":  "搬家",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  882,
+        "text":  "收纳箱打开之前，谁都不知道生活有多分散。",
+        "category":  "搬家",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  883,
+        "text":  "搬走的那天，连疲惫都得打包。",
+        "category":  "搬家",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  884,
+        "text":  "新家还没成型，旧习惯已经先住进来了。",
+        "category":  "搬家",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  885,
+        "text":  "房子换了，通勤和情绪还是要重新配平。",
+        "category":  "搬家",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  886,
+        "text":  "远程办公开启后，你的卧室成了临时总部。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  887,
+        "text":  "会议能开，边界却开始自动融化。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  888,
+        "text":  "你省下了通勤，却把工作请进了客厅。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  889,
+        "text":  "在家上班的难点，不是连不上网，是下不了线。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  890,
+        "text":  "工位没有了，桌子却长出了新的职责。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  891,
+        "text":  "远程协作很自由，前提是你能管住自己。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  892,
+        "text":  "家里的每个角落，都有可能突然变成会议室。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  893,
+        "text":  "你以为在家更轻松，其实只是换了种方式保持在线。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  894,
+        "text":  "远程办公最真实的副作用，是生活失去隔板。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  895,
+        "text":  "你离公司很远了，但和任务的距离并没有变大。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  896,
+        "text":  "宠物盯着你敲键盘的样子，像在审核你的产出。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  897,
+        "text":  "它一跳上桌，你的专注度就被强制重置。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  898,
+        "text":  "猫狗陪伴很治愈，前提是它们别踩到你的快捷键。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  899,
+        "text":  "你在写代码，它在判断你什么时候该起身。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  900,
+        "text":  "宠物是最懂你作息的干扰源，也是最硬的陪跑员。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  901,
+        "text":  "它看起来在陪你，其实一直在占用你的注意力。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  902,
+        "text":  "给宠物喂食像在给自己的夜班排一个小插曲。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  903,
+        "text":  "你以为在照顾它，实际上是它在督促你离屏。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  904,
+        "text":  "宠物的存在感很高，高到能打断一次完整的思路链。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  905,
+        "text":  "它不懂需求文档，但很懂你什么时候该休息。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  906,
+        "text":  "你说只打一局，结果天亮前又多开了三关。",
+        "category":  "游戏",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  907,
+        "text":  "游戏是解压工具，也是最会偷走睡眠的怪物。",
+        "category":  "游戏",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  908,
+        "text":  "今天的奖励机制很简单：过关，或者继续上头。",
+        "category":  "游戏",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  909,
+        "text":  "本来想用游戏放空，最后却把疲惫加倍保存。",
+        "category":  "游戏",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  910,
+        "text":  "屏幕里的升级很快，现实里的电量却掉得更快。",
+        "category":  "游戏",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  911,
+        "text":  "你在副本里找回手感，却把明天的精神提前花掉了。",
+        "category":  "游戏",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  912,
+        "text":  "游戏时间一延长，第二天的注意力就开始欠账。",
+        "category":  "游戏",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  913,
+        "text":  "关掉客户端之前，你总觉得还能再赢一把。",
+        "category":  "游戏",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  914,
+        "text":  "不是你贪玩，是现实的回报机制太低。",
+        "category":  "游戏",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  915,
+        "text":  "解压完成后，往往只剩更晚的睡觉时间。",
+        "category":  "游戏",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  916,
+        "text":  "周末恢复模式已开启，但体力条只够做一件事。",
+        "category":  "周末恢复",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  917,
+        "text":  "你把周末当回血包，结果它先被待办占满。",
+        "category":  "周末恢复",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  918,
+        "text":  "真正的休息不是躺平，是把耗损先停下来。",
+        "category":  "周末恢复",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  919,
+        "text":  "周六早上醒来，身体想补救，精神想逃避。",
+        "category":  "周末恢复",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  920,
+        "text":  "这个周末原本用于恢复，后来被家务和补觉分流。",
+        "category":  "周末恢复",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  921,
+        "text":  "你需要的不是更满的日程，而是更少的消耗。",
+        "category":  "周末恢复",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  922,
+        "text":  "周末的价值，不在于产出，而在于把自己修回来。",
+        "category":  "周末恢复",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  923,
+        "text":  "一到休息日，所有被压住的疲惫开始集体冒头。",
+        "category":  "周末恢复",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  924,
+        "text":  "你以为能在两天内恢复满格，其实只是把欠账延后。",
+        "category":  "周末恢复",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  925,
+        "text":  "周末不是额外战斗力，它是返航窗口。",
+        "category":  "周末恢复",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  926,
+        "text":  "晚饭不是需求插队，但它总被你拖到最后处理。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  927,
+        "text":  "外卖袋堆起来的时候，生活质量也在悄悄降级。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  928,
+        "text":  "你不是不会做饭，只是每天都把厨房排到下个版本。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  929,
+        "text":  "午餐省下的十分钟，晚上用胃部异常提醒补回来了。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  930,
+        "text":  "连续凑合三餐后，系统开始降低你的基础恢复率。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  931,
+        "text":  "冰箱空得像新建仓库，除了灯什么都没部署。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  932,
+        "text":  "你的饮食结构正在被会议、通勤和懒得动共同重构。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  933,
+        "text":  "点外卖的熟练度上升了，做饭技能树却还没解锁。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  934,
+        "text":  "这顿饭吃得很快，代价是下午整个人加载缓慢。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  935,
+        "text":  "当晚饭只剩“随便”，生活模拟器会自动扣一点稳定值。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  8,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-life",
+        "source_scope":  "round9-life-extension"
+    },
+    {
+        "id":  936,
+        "text":  "你不是在追工具列表，是在学怎么把 AI 变成一次可复核的试跑。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  937,
+        "text":  "你把提示词写短了，需求反而更清楚了。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  938,
+        "text":  "AI 先帮你铺路，最后拍板的还是你。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  939,
+        "text":  "你会用 AI 不是因为快，而是因为少绕一圈。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  940,
+        "text":  "你把“问 AI”从逃避改成校验，脑内噪音下降。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  941,
+        "text":  "今天最值钱的不是会点按钮，是能判断答案哪里不对。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  942,
+        "text":  "你终于承认，工具会更新，理解力不会自动升级。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  943,
+        "text":  "你让 AI 先写草稿，自己负责把漏洞挑出来。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  944,
+        "text":  "你和 AI 配合得越久，越知道不能把它当真相来源。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  945,
+        "text":  "你学的不是新模型，是新的分工。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  946,
+        "text":  "你刷题不是为了证明聪明，是为了让大脑重新熟悉路径。",
+        "category":  "刷题",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  947,
+        "text":  "今天这道题最有价值的部分，不是答案，是你卡住的位置。",
+        "category":  "刷题",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  948,
+        "text":  "你把模板背下来后，真正要练的是不慌。",
+        "category":  "刷题",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  949,
+        "text":  "你的题海策略终于从“多刷”改成“刷完会讲”。",
+        "category":  "刷题",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  950,
+        "text":  "你开始记录错因，刷题才从体力活变成训练。",
+        "category":  "刷题",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  951,
+        "text":  "你现在做题，像给面试焦虑先做压力测试。",
+        "category":  "刷题",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  952,
+        "text":  "你不是不会，是没把思路说清楚。",
+        "category":  "刷题",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  953,
+        "text":  "你把每道错题当一次小型事故复盘。",
+        "category":  "刷题",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  954,
+        "text":  "你发现刷题最难的地方，经常不是算法，是耐心。",
+        "category":  "刷题",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  955,
+        "text":  "你今天少刷一套，却把一套题讲顺了。",
+        "category":  "刷题",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  956,
+        "text":  "你给开源项目提 PR 前，先把自己从“提需求的人”切回“帮忙的人”。",
+        "category":  "open_source",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  957,
+        "text":  "维护者回你慢，不代表项目没把你算进去。",
+        "category":  "open_source",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  958,
+        "text":  "你第一次处理 issue，学到的不只是代码，还有边界。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  959,
+        "text":  "你开始看懂开源，不靠热情，靠耐心。",
+        "category":  "open_source",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  960,
+        "text":  "你把 bug 报告写清楚，已经替维护者省了一半命。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  961,
+        "text":  "你终于理解，开源不是免费外包，是公共协作。",
+        "category":  "open_source",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  962,
+        "text":  "你给项目补文档时，顺手也补了自己的信用。",
+        "category":  "open_source",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  963,
+        "text":  "你不必每次都写大功能，修一个小洞也算参与。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  964,
+        "text":  "你开始维护后才知道，热心比 star 更难保鲜。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  965,
+        "text":  "你在 issue 里学会了，不把维护者当客服。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  966,
+        "text":  "你读英文文档时，卡住的常常不是单词，是上下文。",
+        "category":  "english_docs",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  967,
+        "text":  "你不是英语差，你是以前太少拿英文当工具。",
+        "category":  "english_docs",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  968,
+        "text":  "你把 README 读完，才发现很多问题早就写在第一段。",
+        "category":  "english_docs",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  969,
+        "text":  "写英文时慢一点，反而更接近真正可交接的表达。",
+        "category":  "english_docs",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  970,
+        "text":  "你开始用英文做笔记后，模糊概念少了很多。",
+        "category":  "english_docs",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  971,
+        "text":  "文档不是背景板，它就是最便宜的老师。",
+        "category":  "english_docs",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  972,
+        "text":  "你学会先看文档再问人，合作成本直接降档。",
+        "category":  "english_docs",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  973,
+        "text":  "你把英文当工作接口，脑子里少了一个翻译层。",
+        "category":  "english_docs",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  974,
+        "text":  "你今天多读了三页文档，明天少开了一个会。",
+        "category":  "english_docs",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  975,
+        "text":  "你写注释时多想一层，后面调试就少掉一层血。",
+        "category":  "english_docs",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  976,
+        "text":  "你不是面试失败，你只是把薄弱点提前暴露出来。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  977,
+        "text":  "这次复盘最值钱的不是分数，是你知道该补什么。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  978,
+        "text":  "你把每次面试当回放，不再把结果当判决。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  979,
+        "text":  "你终于接受，讲得顺不等于真的懂。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  980,
+        "text":  "面试问题没答好，不代表职业线就断了。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  981,
+        "text":  "你开始整理自己的失误，回答就不再靠运气。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  982,
+        "text":  "你把“不会”说出来，反而比硬撑更像专业人士。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  983,
+        "text":  "你复盘到最后，发现缺的不是答案，是结构。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  984,
+        "text":  "你把 HR 的沉默看成噪音，把题目的空白看成地图。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  985,
+        "text":  "你不是被筛掉，只是提示你该补课了。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  986,
+        "text":  "你的副业没死，只是还停在低速巡航。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  987,
+        "text":  "副业最怕的不是忙，是每次都想顺手做大。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  988,
+        "text":  "你把项目拆小后，才终于有了下班后的推进感。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  989,
+        "text":  "你不是缺灵感，是缺连续十天不跳票。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  990,
+        "text":  "副业要活下来，先别追风口，先守住节奏。",
+        "category":  "side_project",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  991,
+        "text":  "你给副业留的不是雄心，是晚饭后的一小时。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  992,
+        "text":  "你把它当实验，压力就没那么像债务。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  993,
+        "text":  "你还没赚到钱，但已经学会不拿主业透支副业。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  994,
+        "text":  "你的侧项目还在发芽，只是现在长得很慢。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  995,
+        "text":  "你今天只推进一点点，但至少不是空转。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  996,
+        "text":  "你今天偷的懒，明天会变成系统的利息。",
+        "category":  "tech_debt",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  997,
+        "text":  "技术债不是抽象名词，是以后要花时间还的真账。",
+        "category":  "tech_debt",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  998,
+        "text":  "你不清债，需求会带着更多补丁继续长胖。",
+        "category":  "tech_debt",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  999,
+        "text":  "你开始记债务清单后，重构就不再像祈祷。",
+        "category":  "tech_debt",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1000,
+        "text":  "你不是在追求完美，是在避免未来更贵的修补。",
+        "category":  "tech_debt",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1001,
+        "text":  "你把短期快，换成了长期慢，账单自然会来。",
+        "category":  "tech_debt",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1002,
+        "text":  "你终于明白，拖着不改的代码也在改你。",
+        "category":  "tech_debt",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1003,
+        "text":  "你今天重构的那一小段，可能比多写两页功能更值钱。",
+        "category":  "tech_debt",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1004,
+        "text":  "你愿意承认技术债，就已经比逃避它前进了一步。",
+        "category":  "tech_debt",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1005,
+        "text":  "你不是怕重构，你是怕它揭开旧日程里塞过的洞。",
+        "category":  "tech_debt",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1006,
+        "text":  "你不是转岗失败，只是从旧规则切到了新地图。",
+        "category":  "career_switch",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1007,
+        "text":  "换方向最难的，不是从零开始，而是放下旧成绩。",
+        "category":  "career_switch",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1008,
+        "text":  "你在新岗位上不熟练，很正常，熟练本来就要时间。",
+        "category":  "career_switch",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1009,
+        "text":  "转岗后先别急着证明自己，先把语境接上。",
+        "category":  "career_switch",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1010,
+        "text":  "你要学的不是新头衔，是新问题怎么被定义。",
+        "category":  "career_switch",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1011,
+        "text":  "你把旧技能搬过去，发现能用的比想象里多。",
+        "category":  "career_switch",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1012,
+        "text":  "转向不是掉队，是换一种更适合现在的跑法。",
+        "category":  "career_switch",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1013,
+        "text":  "你今天的生疏，只是新赛道的磨合期。",
+        "category":  "career_switch",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1014,
+        "text":  "你不是被迫重来，你是在重新选战场。",
+        "category":  "career_switch",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1015,
+        "text":  "你换了位置，价值也会跟着换算法。",
+        "category":  "career_switch",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1016,
+        "text":  "35 以后学新东西，不一定更慢，但会先问值不值。",
+        "category":  "35plus",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1017,
+        "text":  "你不再靠熬夜换成长，节奏反而更稳。",
+        "category":  "35plus",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1018,
+        "text":  "年龄带来的不是迟钝，是更挑食的学习。",
+        "category":  "35plus",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1019,
+        "text":  "你现在的优势，不在手速，在判断。",
+        "category":  "35plus",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1020,
+        "text":  "35+ 的焦虑常常不是不会，而是怕来不及。",
+        "category":  "35plus",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1021,
+        "text":  "你不必和新人比刷新率，你可以比完成度。",
+        "category":  "35plus",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1022,
+        "text":  "你终于知道，经验不是包袱，前提是别拿它装旧办法。",
+        "category":  "35plus",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1023,
+        "text":  "你开始减少噪音后，成长反而更像积累。",
+        "category":  "35plus",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1024,
+        "text":  "你不是老了，是开始认真计算代价。",
+        "category":  "35plus",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1025,
+        "text":  "你今天少卷一点，可能是为了明天还能继续卷。",
+        "category":  "35plus",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1026,
+        "text":  "远程协作不是少说话，是把话说成能接力的文本。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1027,
+        "text":  "你写清楚状态，别人就少猜你在忙什么。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1028,
+        "text":  "异步不是冷淡，是给彼此留处理时间。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1029,
+        "text":  "你把上下文写进文档，会议就没那么像补锅。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1030,
+        "text":  "远程最值钱的不是在线时长，是可追踪性。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1031,
+        "text":  "你开始把结论写下来，误会就少了一半。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1032,
+        "text":  "你不是不合群，你是在用更慢但更稳的方式协作。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1033,
+        "text":  "一段好交接，能省掉很多语音来回。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1034,
+        "text":  "远程团队里，清楚比热闹更重要。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1035,
+        "text":  "你终于接受，沉默不是默认理解，记录才是。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1036,
+        "text":  "你记笔记不是为了收藏，是为了让未来的自己少重跑。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1037,
+        "text":  "知识库最怕的不是空，是填了却找不到。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1038,
+        "text":  "你开始按主题整理后，脑子终于不用记所有路径。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1039,
+        "text":  "好笔记不是写得漂亮，是下次真能翻出来。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1040,
+        "text":  "你把零散经验收成索引，学习才有了回收率。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1041,
+        "text":  "你不是在囤知识，是在给判断力做缓存。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1042,
+        "text":  "你把命令、链接、坑点一起记下，复现成本明显下降。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1043,
+        "text":  "真正有用的笔记，往往是给明天的自己留的路标。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1044,
+        "text":  "你开始做知识管理后，才发现很多问题以前早解决过。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1045,
+        "text":  "你记得越清楚，临场越不容易空白。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1046,
+        "text":  "你今天没冲刺，但把电量保住了。",
+        "category":  "growth_rhythm",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1047,
+        "text":  "成长不是每天爆表，更多时候是稳住不掉线。",
+        "category":  "growth_rhythm",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1048,
+        "text":  "你把节奏放慢后，反而看清了该学什么。",
+        "category":  "growth_rhythm",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1049,
+        "text":  "休息不是停止升级，是避免系统过热。",
+        "category":  "growth_rhythm",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1050,
+        "text":  "你少做一点无效忙碌，成长曲线反而更顺。",
+        "category":  "growth_rhythm",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1051,
+        "text":  "你终于把“忙”跟“前进”分开了。",
+        "category":  "growth_rhythm",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1052,
+        "text":  "你今天做的最对的一件事，可能是没硬撑。",
+        "category":  "growth_rhythm",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1053,
+        "text":  "你把恢复当任务，长期表现才更稳定。",
+        "category":  "growth_rhythm",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1054,
+        "text":  "不是每个空档都要塞知识，有些空档是为了继续跑。",
+        "category":  "growth_rhythm",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1055,
+        "text":  "你不是卡住了，你是在重新对齐节奏。",
+        "category":  "growth_rhythm",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round9-learning",
+        "source_scope":  "round9-learning-extension"
+    },
+    {
+        "id":  1056,
+        "text":  "你不是在追新模型，是在把 AI 接进自己的判断链。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1057,
+        "text":  "AI 省掉的不是脑力，是你重复解释上下文的时间。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1058,
+        "text":  "先让 AI 出草稿，再由你负责把方向掰正。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1059,
+        "text":  "会用 AI 不是会点按钮，是知道什么时候该停手。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1060,
+        "text":  "你把 AI 当校验器，脑子里的噪音就会少很多。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1061,
+        "text":  "你学的不是新插件，是一套更短的工作闭环。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1062,
+        "text":  "你让 AI 跑得快一点，自己就少在细节里打转。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1063,
+        "text":  "真正值钱的不是生成速度，是你能不能看出哪里写偏了。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1064,
+        "text":  "你不是缺提示词模板，是缺稳定的判断标准。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1065,
+        "text":  "AI 先帮你铺路，你再决定这条路要不要走。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1066,
+        "text":  "你把 AI 当陪练，输出才越来越像自己的。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1067,
+        "text":  "你今天少问一句“怎么做”，多问一句“哪里错了”。",
+        "category":  "ai_tool",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1068,
+        "text":  "你不是学得慢，是把时间切得太碎，脑子没进入状态。",
+        "category":  "study_rhythm",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1069,
+        "text":  "你刷的不只是题，是把思路练到能复述。",
+        "category":  "study_rhythm",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1070,
+        "text":  "你每次停顿都记录下来，刷题才开始变成训练。",
+        "category":  "study_rhythm",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1071,
+        "text":  "你不是要刷更多，而是刷完还能讲清楚。",
+        "category":  "study_rhythm",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1072,
+        "text":  "刷题最怕的不是难，是今天做完明天全忘。",
+        "category":  "study_rhythm",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1073,
+        "text":  "你把错因写下来，比多做三题更能涨能力。",
+        "category":  "study_rhythm",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1074,
+        "text":  "你做题时稳住节奏，脑子就不会总在救火。",
+        "category":  "study_rhythm",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1075,
+        "text":  "题做对不稀奇，稀奇的是你能解释为什么对。",
+        "category":  "study_rhythm",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1076,
+        "text":  "你开始压缩思考路径，练的是反应，不是背诵。",
+        "category":  "study_rhythm",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1077,
+        "text":  "你今天没多刷题，只把一道题的讲法理顺了。",
+        "category":  "study_rhythm",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1078,
+        "text":  "你把错题当记录，不当羞耻，进步就会快一点。",
+        "category":  "study_rhythm",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1079,
+        "text":  "你不是在和题目较劲，是在和自己的拖延较劲。",
+        "category":  "study_rhythm",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1080,
+        "text":  "你给项目提 PR 前，先把自己从“提需求的人”切回“帮忙的人”。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1081,
+        "text":  "你补一段文档，也是在替自己的信用存款。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1082,
+        "text":  "你第一次处理 issue，学到的不是 Git，是边界感。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1083,
+        "text":  "你开始维护后才知道，热心不是无限续杯。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1084,
+        "text":  "你把 bug 说清楚，已经替维护者省了一半力气。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1085,
+        "text":  "你愿意从小修开始，说明你已经进入协作模式了。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1086,
+        "text":  "开源不是免费外包，是公开协作。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1087,
+        "text":  "你不是每次都要写大功能，修一个小洞也算参与。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1088,
+        "text":  "你提交的不是代码片段，是你对问题的理解。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1089,
+        "text":  "你开始看懂项目节奏后，才知道沉默有时也是回复。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1090,
+        "text":  "你把 issue 写成可行动的描述，别人就更容易接住。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1091,
+        "text":  "你帮别人的项目补了一刀，也顺手练了自己的刀法。",
+        "category":  "open_source",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1092,
+        "text":  "你笔记不是为了收藏，是为了让未来的自己少问一遍。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1093,
+        "text":  "你把上下文写下来，脑子才不用一直开着。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1094,
+        "text":  "知识管理做得好，很多重复劳动会自动消失。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1095,
+        "text":  "你不是记得少，是没把检索路径设计好。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1096,
+        "text":  "文档写清楚，团队就少靠猜。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1097,
+        "text":  "你把知识拆成小块，回头找的时候才不会翻车。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1098,
+        "text":  "你今天记下来的关键词，可能就是明天的救命绳。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1099,
+        "text":  "你写笔记时多补一句“为什么”，比只记“是什么”更值钱。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1100,
+        "text":  "笔记不是仓库，是未来决策的脚手架。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1101,
+        "text":  "你把经验沉淀成条目，问题就不再每次从零开始。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1102,
+        "text":  "让别人能复用的内容，才是真的知识。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1103,
+        "text":  "你不是记不住，是之前没给记忆一个好入口。",
+        "category":  "knowledge_mgmt",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1104,
+        "text":  "这次没过，不是终局，只是把薄弱点提前曝光了。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1105,
+        "text":  "这次没过不是终局，只是把补课清单摊开了。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1106,
+        "text":  "你把每次面试当回放，就不再把结果当判决。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1107,
+        "text":  "讲得顺不等于真的懂，复盘就是把这一点拆开看。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1108,
+        "text":  "你答得不漂亮，不代表你的职业线就断了。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1109,
+        "text":  "你整理失误的方式，决定了下次回答的上限。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1110,
+        "text":  "你承认不会以后，讨论反而更像专业协作。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1111,
+        "text":  "你现在补的不是面试模板，是表达结构。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1112,
+        "text":  "你知道哪里卡住，就已经比只抱怨题目强。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1113,
+        "text":  "题目空白的地方，往往正是你最该复习的地图。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1114,
+        "text":  "你把面试当一次反馈回收，而不是一次生死判决。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1115,
+        "text":  "复盘到最后，真正缺的通常不是答案，是组织方式。",
+        "category":  "interview_review",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1116,
+        "text":  "35+ 之后成长不一定更慢，但会先问值不值。",
+        "category":  "35plus",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1117,
+        "text":  "你不用和新人比刷新率，可以比稳定交付。",
+        "category":  "35plus",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1118,
+        "text":  "你现在更值钱的地方，不是手速，是取舍。",
+        "category":  "35plus",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1119,
+        "text":  "经验不是包袱，前提是别拿旧办法硬打新局。",
+        "category":  "35plus",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1120,
+        "text":  "你不再用熬夜换进度，学习曲线反而少了抖动。",
+        "category":  "35plus",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1121,
+        "text":  "35+ 不是下坡提示，更像一次路线重算。",
+        "category":  "35plus",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1122,
+        "text":  "你今天少透支一点，是为了明天还能继续上线。",
+        "category":  "35plus",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1123,
+        "text":  "你开始挑选学习内容，说明你不再靠数量安慰自己。",
+        "category":  "35plus",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1124,
+        "text":  "你不是老了，是开始认真计算代价了。",
+        "category":  "35plus",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1125,
+        "text":  "你减少噪音后，成长会更像积累。",
+        "category":  "35plus",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1126,
+        "text":  "你终于知道，经验要和新问题配套才有价值。",
+        "category":  "35plus",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1127,
+        "text":  "你现在追的不是“快”，而是“每一步都算数”。",
+        "category":  "35plus",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  6,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1128,
+        "text":  "远程协作不是少说话，是把话写成别人能接着做的文本。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1129,
+        "text":  "你把状态写清楚，别人就少猜你卡在哪。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1130,
+        "text":  "异步不是不理人，是给双方留出处理缓冲。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1131,
+        "text":  "你把上下文放进文档，会议就少一点补锅味。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1132,
+        "text":  "远程协作最值钱的不是在线时长，是可追踪性。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1133,
+        "text":  "你把结论落到文字里，协作误差立刻少一截。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1134,
+        "text":  "你不是不合群，你是在用更稳的方式配合别人。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1135,
+        "text":  "远程团队靠的不是喊得响，是交接得顺。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1136,
+        "text":  "你留给同事的不是一句“我知道”，而是一段能复用的背景。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1137,
+        "text":  "你把问题写完整，协作成本就会明显下降。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1138,
+        "text":  "让别人一眼接住你的意图，比临时解释更省力。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1139,
+        "text":  "你今天多写两行说明，明天就少开一轮对齐。",
+        "category":  "remote_collab",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1140,
+        "text":  "你读英文时卡住的常常不是单词，是上下文。",
+        "category":  "writing_english",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1141,
+        "text":  "你开始把英文当工具用，而不是当考试题。",
+        "category":  "writing_english",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1142,
+        "text":  "你开始用英文做记录后，模糊概念会少很多。",
+        "category":  "writing_english",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1143,
+        "text":  "写英文慢一点，反而更接近真正可交接的表达。",
+        "category":  "writing_english",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1144,
+        "text":  "你认真读完 README，发现答案早躲在开头几行。",
+        "category":  "writing_english",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1145,
+        "text":  "英语不是考试科目，是你读资料和写结论的工作接口。",
+        "category":  "writing_english",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1146,
+        "text":  "你学会先看文档再问人，合作成本就会降下来。",
+        "category":  "writing_english",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1147,
+        "text":  "你写注释多交代一层，未来排查少掉一格血。",
+        "category":  "writing_english",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1148,
+        "text":  "你今天多读三页文档，明天少开一个会。",
+        "category":  "writing_english",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1149,
+        "text":  "你把英文文档当接口读，脑子少绕一层。",
+        "category":  "writing_english",
+        "kind":  "learning",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1150,
+        "text":  "文档不是装饰，它经常是最低成本的老师。",
+        "category":  "writing_english",
+        "kind":  "learning",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -3,
+                       "money":  0,
+                       "ai":  6
+                   },
+        "trigger":  {
+                        "minDay":  3
+                    },
+        "source_action":  "learn-ai",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1151,
+        "text":  "你用英文写清楚，别人就更容易在正确位置接手。",
+        "category":  "writing_english",
+        "kind":  "learning",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  1,
+                       "mental":  4,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1152,
+        "text":  "你的副业还没消失，只是在低速档慢慢跑。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1153,
+        "text":  "副业最容易失控的瞬间，是你又想顺手扩范围。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1154,
+        "text":  "你把项目切小以后，下班后终于能推得动一点。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1155,
+        "text":  "你缺的不是灵感，是连续几天都不鸽的节奏。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1156,
+        "text":  "副业想活下来，先别追热点，先保住更新频率。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1157,
+        "text":  "你给副业预留的不是豪言，是晚饭后那段小窗口。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1158,
+        "text":  "你把侧项目当实验，压力就不再像欠账。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1159,
+        "text":  "它还没赚钱，但你学会了别用主业血条去喂它。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1160,
+        "text":  "侧项目仍在发芽，只是生长速度没有短视频那么快。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1161,
+        "text":  "今天只前进了一小格，但它不再只是脑内项目。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1162,
+        "text":  "让项目先跑起来，比给它想一个宏大定位更重要。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1163,
+        "text":  "你把目标缩小到今天能做完的事，副业才不容易死在开头。",
+        "category":  "side_project",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  2,
+                       "mental":  -4,
+                       "money":  4,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  6
+                    },
+        "source_action":  "side-project",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1164,
+        "text":  "转向不等于失败，只是你开始读一张新地图。",
+        "category":  "career_switch",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1165,
+        "text":  "换方向最难的不是新内容，是别老拿旧成绩证明自己。",
+        "category":  "career_switch",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1166,
+        "text":  "你真正要补的不是新 title，而是新问题的定义方式。",
+        "category":  "career_switch",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1167,
+        "text":  "转向不是推倒重来，是把旧经验拆开重新装配。",
+        "category":  "career_switch",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1168,
+        "text":  "你在新位置上不熟练，很正常，熟练本来就要时间。",
+        "category":  "career_switch",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1169,
+        "text":  "你现在的生疏，只是新赛道的磨合期。",
+        "category":  "career_switch",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1170,
+        "text":  "你把旧经验迁过去，发现不少模块还能复用。",
+        "category":  "career_switch",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1171,
+        "text":  "你不是清零重开，只是在把战场重新选一遍。",
+        "category":  "career_switch",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1172,
+        "text":  "方向变了，价值也会跟着换算法。",
+        "category":  "career_switch",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1173,
+        "text":  "你今天慢一点，不代表你没有在往前。",
+        "category":  "career_switch",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1174,
+        "text":  "你补的不是身份焦虑，是适配新环境的能力。",
+        "category":  "career_switch",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1175,
+        "text":  "先把方向对齐，再谈速度，损耗会少很多。",
+        "category":  "career_switch",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  3,
+                       "mental":  -5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  8
+                    },
+        "source_action":  "interview",
+        "source_version":  "2026-06-18-round10-learning",
+        "source_scope":  "round10-learning-extension"
+    },
+    {
+        "id":  1176,
+        "text":  "你说只再看一眼，结果天亮先替你签退。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1177,
+        "text":  "大脑还在回放白天的报错，身体已经催你关机。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1178,
+        "text":  "闹钟还没响，昨晚的疲惫先上线了。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1179,
+        "text":  "你不是睡不着，是所有未完成的事都在床边排队。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1180,
+        "text":  "关灯之后，焦虑比你更早进入夜班。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1181,
+        "text":  "计划早睡的人很多，真正躺平的只有枕头。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1182,
+        "text":  "今晚的困意很正常，只是被你反复刷新掉了。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1183,
+        "text":  "你以为在放松，身体其实在后台抢救续航。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1184,
+        "text":  "入睡进度卡住时，连翻身都像在调试。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1185,
+        "text":  "这次失眠不是例外，它已经成了默认行为。",
+        "category":  "睡眠",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1186,
+        "text":  "早高峰不是拥堵，是把清醒值先收走。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1187,
+        "text":  "你到公司时人到了，体力只送到半路。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1188,
+        "text":  "地铁再稳，也稳不住你今天的情绪。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1189,
+        "text":  "通勤像每天的预热关卡，难度固定，奖励没有。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1190,
+        "text":  "这段路最擅长做的事，就是提前消耗你。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1191,
+        "text":  "今天比昨天早出门十分钟，结果还是晚了一点。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1192,
+        "text":  "站在车厢里，你只是看起来很完整。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1193,
+        "text":  "城市把你从家门口一路压缩到工位。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1194,
+        "text":  "每天花在路上的不是时间，是备用精神。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1195,
+        "text":  "回程最累的不是距离，是还得把自己重新拼起来。",
+        "category":  "通勤",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1196,
+        "text":  "你的晚饭总在最晚的那一刻才被想起。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1197,
+        "text":  "外卖很方便，方便到把做饭技能彻底搁置。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1198,
+        "text":  "冰箱不是空，是你一直没给它部署内容。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1199,
+        "text":  "这顿饭看起来随便，身体其实已经记账。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1200,
+        "text":  "先凑合三餐，再谈状态回升，顺序通常错了。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1201,
+        "text":  "你不是不想吃好点，只是每晚都被时间催单。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1202,
+        "text":  "一次外卖没什么，连续靠它续命就开始掉线。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1203,
+        "text":  "吃饭这件事被你压缩得像一段短请求。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1204,
+        "text":  "口味变重以后，连胃都在要求版本回退。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1205,
+        "text":  "你以为自己在省事，身体只感到在被敷衍。",
+        "category":  "饮食/外卖",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1206,
+        "text":  "颈椎已经提醒过很多次，只是你一直假装没听见。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1207,
+        "text":  "久坐一天后，站起来都像在重新加载。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1208,
+        "text":  "体检单一出来，才发现身体也会写日志。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1209,
+        "text":  "你总说还能扛，身体却在慢慢给你降权限。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1210,
+        "text":  "疲劳不是状态美化，它是实打实的损耗。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1211,
+        "text":  "每次说下周运动，身体都知道那多半是空头承诺。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1212,
+        "text":  "眼睛酸、肩膀硬、胃不稳，像三个不同模块同时报错。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1213,
+        "text":  "你省下的不是休息时间，是以后更大的维护成本。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1214,
+        "text":  "健康没掉到红线前，最容易被误判成没事。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1215,
+        "text":  "真正麻烦的从来不是今天这点累，是累被你积成了常态。",
+        "category":  "健康",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1216,
+        "text":  "运动计划写得很满，执行时总被沙发拦截。",
+        "category":  "运动/健身",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1217,
+        "text":  "你不是没动力，是下班后剩余电量只够走到门口。",
+        "category":  "运动/健身",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1218,
+        "text":  "跑步前的犹豫，通常比跑步本身更长。",
+        "category":  "运动/健身",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1219,
+        "text":  "进入健身房那一刻，你才想起自己其实很久没活动了。",
+        "category":  "运动/健身",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1220,
+        "text":  "运动能回血，但前提是你得先舍得离开椅子。",
+        "category":  "运动/健身",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1221,
+        "text":  "想恢复状态的人很多，真正流汗的人很少。",
+        "category":  "运动/健身",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1222,
+        "text":  "身体需要的是规律，不是偶尔一次很猛的补救。",
+        "category":  "运动/健身",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1223,
+        "text":  "每次运动结束后，你都比开始时更像自己。",
+        "category":  "运动/健身",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1224,
+        "text":  "今天少动的那一小时，明天会用僵硬来提醒你。",
+        "category":  "运动/健身",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1225,
+        "text":  "你不是讨厌锻炼，你只是一直把它排在最后。",
+        "category":  "运动/健身",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1226,
+        "text":  "伴侣说话时，你的注意力还停在工单里。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1227,
+        "text":  "家里不是没有事，是你总把它排到最末尾。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1228,
+        "text":  "回家后的第一句如果还是工作，气氛就先降温了。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1229,
+        "text":  "你以为自己在扛责任，别人感受到的却是缺席。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1230,
+        "text":  "亲密关系最怕的不是争吵，是长期得不到回应。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1231,
+        "text":  "你很努力在解决外面的事，却常把里面的人晾着。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1232,
+        "text":  "该陪伴的时候不在场，错过的往往不是一顿饭。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1233,
+        "text":  "家庭需要的不是解释，是你真正停下来。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1234,
+        "text":  "爱情和工作同时争资源时，感情通常最先饿着。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1235,
+        "text":  "不是没时间相处，是你总把余量留给别的地方。",
+        "category":  "家庭/恋爱",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1236,
+        "text":  "消息一直想回，最后却回成了最近有点忙。",
+        "category":  "社交/朋友",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1237,
+        "text":  "朋友约你，不是每次都能约到下一次。",
+        "category":  "社交/朋友",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1238,
+        "text":  "你不是不合群，只是社交窗口被太多事挤没了。",
+        "category":  "社交/朋友",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1239,
+        "text":  "聊天还没热起来，你的精力先断流了。",
+        "category":  "社交/朋友",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1240,
+        "text":  "很多关系不是淡掉的，是被你拖慢的。",
+        "category":  "社交/朋友",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1241,
+        "text":  "见面这件事越往后放，越容易变成口头承诺。",
+        "category":  "社交/朋友",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1242,
+        "text":  "你会聊天，但很难稳定地把自己交出去。",
+        "category":  "社交/朋友",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1243,
+        "text":  "熟人越来越多，真正能见面的却越来越少。",
+        "category":  "社交/朋友",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1244,
+        "text":  "社交一旦被压缩成消息框，温度就会掉。",
+        "category":  "社交/朋友",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1245,
+        "text":  "你缺的不是联系人，是愿意腾出来的时间。",
+        "category":  "社交/朋友",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1246,
+        "text":  "房子换了，生活却还在慢慢找电源位置。",
+        "category":  "居住/租房",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1247,
+        "text":  "租房最累的不是看房，是反复适应新环境。",
+        "category":  "居住/租房",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1248,
+        "text":  "每次搬家都像把一整套习惯重新打包。",
+        "category":  "居住/租房",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1249,
+        "text":  "你终于离公司近了，却离舒适感远了。",
+        "category":  "居住/租房",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1250,
+        "text":  "住处不稳，连情绪都很难真正落地。",
+        "category":  "居住/租房",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1251,
+        "text":  "新房间再整齐，也要过几天才像自己的。",
+        "category":  "居住/租房",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1252,
+        "text":  "搬走的箱子里，装的还有你没来得及安顿的心情。",
+        "category":  "居住/租房",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1253,
+        "text":  "房租一涨，生活就自动多了一层压力。",
+        "category":  "居住/租房",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1254,
+        "text":  "你不是爱折腾，只是居住条件一直在逼你迁移。",
+        "category":  "居住/租房",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1255,
+        "text":  "真正麻烦的不是搬家那天，而是之后每一天的重新适应。",
+        "category":  "居住/租房",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1256,
+        "text":  "工资刚到账，房租和日常支出就先分走一半。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1257,
+        "text":  "你以为自己没乱花，实际上是在给生活买方便。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1258,
+        "text":  "真正吞钱的往往不是大件，是一笔笔没感觉的小开销。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1259,
+        "text":  "今天省下的那点，明天又被外卖、网购和交通吃掉。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1260,
+        "text":  "预算看起来没问题，月底总还是会失血。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1261,
+        "text":  "你买的不只是东西，还有少麻烦一点的错觉。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1262,
+        "text":  "花钱这件事最会伪装成改善生活。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1263,
+        "text":  "一旦开始算账，很多轻松都显得很贵。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1264,
+        "text":  "省钱失败不一定是冲动，可能只是日子本来就重。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1265,
+        "text":  "账单总是诚实的，人的记忆通常不是。",
+        "category":  "消费",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1266,
+        "text":  "你看起来很稳，其实只是习惯了不说。",
+        "category":  "情绪/压力",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1267,
+        "text":  "情绪一直压着不处理，最后会自己涨出来。",
+        "category":  "情绪/压力",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1268,
+        "text":  "每天都在解决别人的问题，轮到自己就卡住。",
+        "category":  "情绪/压力",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1269,
+        "text":  "你不是脆弱，是长期紧绷没有出口。",
+        "category":  "情绪/压力",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1270,
+        "text":  "习惯了忍耐的人，最容易把疲惫误认成正常。",
+        "category":  "情绪/压力",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1271,
+        "text":  "有些压力不吵不闹，但会慢慢把人磨薄。",
+        "category":  "情绪/压力",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1272,
+        "text":  "你还在运行，只是心里已经很久没做过完整休整。",
+        "category":  "情绪/压力",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1273,
+        "text":  "真正难的不是忙，是一直没有缓冲区。",
+        "category":  "情绪/压力",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1274,
+        "text":  "把难受拖到明天，通常只会把明天也拖累。",
+        "category":  "情绪/压力",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1275,
+        "text":  "当情绪开始钝化，说明你已经撑了太久。",
+        "category":  "情绪/压力",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1276,
+        "text":  "它一跳上桌，你的专注就被强制暂停。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1277,
+        "text":  "你以为是在陪它，其实也是它在陪你离屏。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1278,
+        "text":  "猫狗不会看工期，但很懂你该停一下了。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1279,
+        "text":  "宠物最厉害的地方，是能在你最忙时要求关注。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1280,
+        "text":  "它对你的键盘没兴趣，只对你的注意力有兴趣。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1281,
+        "text":  "喂食、铲屎、遛弯，把你从屏幕前拉回现实。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1282,
+        "text":  "宠物很治愈，前提是它别踩到你的文件和线。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1283,
+        "text":  "它不懂你的压力，但总能打断你继续硬扛。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1284,
+        "text":  "一人一宠的生活里，安静经常是被它打断的。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1285,
+        "text":  "你以为自己在照顾它，实际上它一直在调整你的节奏。",
+        "category":  "宠物",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1286,
+        "text":  "周末刚开始，你的待办就先排满了。",
+        "category":  "周末恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1287,
+        "text":  "你想休息，但身体只会把欠账一并翻出来。",
+        "category":  "周末恢复",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1288,
+        "text":  "两天看起来很长，实际只够补一小段电。",
+        "category":  "周末恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1289,
+        "text":  "周末最大的敌人不是工作，是没完没了的补救项。",
+        "category":  "周末恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1290,
+        "text":  "计划恢复，结果先恢复成了继续疲惫。",
+        "category":  "周末恢复",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1291,
+        "text":  "你把周末当回血包，它却经常先被家务占满。",
+        "category":  "周末恢复",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1292,
+        "text":  "真正的休息不是躺着，而是停止被消耗。",
+        "category":  "周末恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1293,
+        "text":  "周六醒来那一刻，最先出现的通常不是轻松。",
+        "category":  "周末恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1294,
+        "text":  "一旦周末也被塞满，生活就只剩切换场景。",
+        "category":  "周末恢复",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1295,
+        "text":  "你不是没休息，是休息一直不够完整。",
+        "category":  "周末恢复",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1296,
+        "text":  "远程办公最难的不是开会，是关掉工作。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1297,
+        "text":  "卧室一旦变工位，边界就开始自动融化。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1298,
+        "text":  "你省了通勤，却把上下班的界线也省没了。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1299,
+        "text":  "家里很安静，安静到工作更容易黏住你。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1300,
+        "text":  "每个房间都像随时能变成会议室。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1301,
+        "text":  "远程协作看起来自由，实际更考验自控。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1302,
+        "text":  "你人在家里，心却一直挂在线上。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1303,
+        "text":  "没有路上的缓冲，任务切换就变得更刺耳。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1304,
+        "text":  "下班的仪式感一丢，生活和工作就开始混用同一张桌子。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1305,
+        "text":  "远程办公带来的最大变化，是你更难真的离开工作。",
+        "category":  "远程办公",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  4
+                    },
+        "source_action":  "networking",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1306,
+        "text":  "家务看着小，攒起来就像一堆后台任务。",
+        "category":  "数码/家务",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1307,
+        "text":  "你以为周末会收拾，结果收拾本身成了计划外大项。",
+        "category":  "数码/家务",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1308,
+        "text":  "水电网、快递、收纳、洗衣，每个都在争一点注意力。",
+        "category":  "数码/家务",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1309,
+        "text":  "桌面乱了不只影响效率，也会拖低心情。",
+        "category":  "数码/家务",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1310,
+        "text":  "设备买得越来越多，真正要整理的却一直没空。",
+        "category":  "数码/家务",
+        "kind":  "life",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1311,
+        "text":  "家里的每个角落都像一个没结算的小问题。",
+        "category":  "数码/家务",
+        "kind":  "life",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1312,
+        "text":  "一旦开始收拾，才知道自己到底堆了多少未处理事项。",
+        "category":  "数码/家务",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1313,
+        "text":  "杂物不是突然多的，是你一直没机会清。",
+        "category":  "数码/家务",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1314,
+        "text":  "生活要顺一点，往往得先把那些小堵点一个个理开。",
+        "category":  "数码/家务",
+        "kind":  "life",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1315,
+        "text":  "你不是懒，只是后台杂务一直没停。",
+        "category":  "数码/家务",
+        "kind":  "life",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  5,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1316,
+        "text":  "你需要的不是继续输入信息，而是换一种活法。",
+        "category":  "兴趣/娱乐",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1317,
+        "text":  "兴趣一旦被工作挤没，人就只剩消耗模式。",
+        "category":  "兴趣/娱乐",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1318,
+        "text":  "看剧、打球、做菜、拍照，都是把自己从代码里捞出来。",
+        "category":  "兴趣/娱乐",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1319,
+        "text":  "娱乐不是浪费，是给大脑换挡。",
+        "category":  "兴趣/娱乐",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1320,
+        "text":  "你以为没时间玩，其实是没给自己留空间。",
+        "category":  "兴趣/娱乐",
+        "kind":  "health",
+        "tone":  "sharp",
+        "rarity":  "uncommon",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1321,
+        "text":  "真正能恢复的人，往往都有一个不讲效率的爱好。",
+        "category":  "兴趣/娱乐",
+        "kind":  "health",
+        "tone":  "gentle",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1322,
+        "text":  "生活里如果只剩工作，快乐会变得很窄。",
+        "category":  "兴趣/娱乐",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1323,
+        "text":  "当你重新沉进兴趣里，整个人会轻一点。",
+        "category":  "兴趣/娱乐",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1324,
+        "text":  "兴趣不会解决现实，但能把你从现实里暂时救出来。",
+        "category":  "兴趣/娱乐",
+        "kind":  "health",
+        "tone":  "wry",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    },
+    {
+        "id":  1325,
+        "text":  "留一点不被评价的时间，人会更像人。",
+        "category":  "兴趣/娱乐",
+        "kind":  "health",
+        "tone":  "resonant",
+        "rarity":  "common",
+        "effect":  {
+                       "skill":  0,
+                       "mental":  7,
+                       "money":  0,
+                       "ai":  0
+                   },
+        "trigger":  {
+                        "minDay":  2
+                    },
+        "source_action":  "rest",
+        "source_version":  "2026-06-18-round11-life",
+        "source_scope":  "round11-life-extension"
+    }
+];

@@ -1,0 +1,172 @@
+# 程序员生活类共鸣弹窗候选（Round 11）
+
+- 覆盖入口：V2EX、Hacker News、Reddit、DEV Community、Medium、知乎、掘金、SegmentFault、博客园、CSDN、豆瓣、36Kr，共 12 个。
+- 说明：以下候选全部为原创提炼，不复用原帖原文；素材来源优先公开社区讨论、问答、博客与长文，主题集中在睡眠、通勤、饮食、健康、运动、家庭、社交、居住、消费、情绪、宠物、周末恢复、远程办公、家务和兴趣恢复。
+- 不确定性：部分帖文时效性强，标题、可见性和讨论氛围会变化；中文社区与英文社区语境不同，只提炼生活经验和情绪结构，不把单帖当统计结论。
+
+## 来源摘要
+
+- V2EX：通勤、租房、外卖、家庭时间、久坐。
+- Hacker News：睡眠、边界感、周末恢复、远程办公。
+- Reddit：运动、宠物、社交、家庭、睡眠。
+- DEV Community：爱好、恢复、远程协作。
+- Medium：倦怠、作息、消费和生活整理。
+- 知乎：睡眠、健康、通勤、家庭、租房。
+- 掘金：身体管理、家庭并发、消费、远程办公。
+- SegmentFault：亚健康、职业阶段、情绪压力。
+- 博客园：学习焦虑之外的生活恢复。
+- CSDN：加班后健康、饮食、久坐。
+- 豆瓣：租房、关系、周末、生活感受。
+- 36Kr：生活成本、通勤、消费、居住压力。
+
+## JSONL
+{"category":"睡眠","kind":"提醒","tone":"冷幽默","source_hint":"Hacker News / Reddit / 知乎 / 掘金 / Medium","source_action":"把睡前刷屏改成真正休眠","text":"你说只再看一眼，结果天亮先替你签退。"}
+{"category":"睡眠","kind":"告警","tone":"压迫感","source_hint":"Hacker News / Reddit / 知乎 / 掘金 / Medium","source_action":"把睡前刷屏改成真正休眠","text":"大脑还在回放白天的报错，身体已经催你关机。"}
+{"category":"睡眠","kind":"观察","tone":"轻自嘲","source_hint":"Hacker News / Reddit / 知乎 / 掘金 / Medium","source_action":"把睡前刷屏改成真正休眠","text":"闹钟还没响，昨晚的疲惫先上线了。"}
+{"category":"睡眠","kind":"结算","tone":"反差","source_hint":"Hacker News / Reddit / 知乎 / 掘金 / Medium","source_action":"把睡前刷屏改成真正休眠","text":"你不是睡不着，是所有未完成的事都在床边排队。"}
+{"category":"睡眠","kind":"惩罚","tone":"克制","source_hint":"Hacker News / Reddit / 知乎 / 掘金 / Medium","source_action":"把睡前刷屏改成真正休眠","text":"关灯之后，焦虑比你更早进入夜班。"}
+{"category":"睡眠","kind":"提醒","tone":"平静","source_hint":"Hacker News / Reddit / 知乎 / 掘金 / Medium","source_action":"把睡前刷屏改成真正休眠","text":"计划早睡的人很多，真正躺平的只有枕头。"}
+{"category":"睡眠","kind":"告警","tone":"无奈","source_hint":"Hacker News / Reddit / 知乎 / 掘金 / Medium","source_action":"把睡前刷屏改成真正休眠","text":"今晚的困意很正常，只是被你反复刷新掉了。"}
+{"category":"睡眠","kind":"观察","tone":"迟钝","source_hint":"Hacker News / Reddit / 知乎 / 掘金 / Medium","source_action":"把睡前刷屏改成真正休眠","text":"你以为在放松，身体其实在后台抢救续航。"}
+{"category":"睡眠","kind":"结算","tone":"冷幽默","source_hint":"Hacker News / Reddit / 知乎 / 掘金 / Medium","source_action":"把睡前刷屏改成真正休眠","text":"入睡进度卡住时，连翻身都像在调试。"}
+{"category":"睡眠","kind":"惩罚","tone":"反差","source_hint":"Hacker News / Reddit / 知乎 / 掘金 / Medium","source_action":"把睡前刷屏改成真正休眠","text":"这次失眠不是例外，它已经成了默认行为。"}
+{"category":"通勤","kind":"提醒","tone":"冷幽默","source_hint":"V2EX / 知乎 / 36Kr / 豆瓣","source_action":"把路上的时间从隐形损耗里单独记账","text":"早高峰不是拥堵，是把清醒值先收走。"}
+{"category":"通勤","kind":"告警","tone":"压迫感","source_hint":"V2EX / 知乎 / 36Kr / 豆瓣","source_action":"把路上的时间从隐形损耗里单独记账","text":"你到公司时人到了，体力只送到半路。"}
+{"category":"通勤","kind":"观察","tone":"轻自嘲","source_hint":"V2EX / 知乎 / 36Kr / 豆瓣","source_action":"把路上的时间从隐形损耗里单独记账","text":"地铁再稳，也稳不住你今天的情绪。"}
+{"category":"通勤","kind":"结算","tone":"反差","source_hint":"V2EX / 知乎 / 36Kr / 豆瓣","source_action":"把路上的时间从隐形损耗里单独记账","text":"通勤像每天的预热关卡，难度固定，奖励没有。"}
+{"category":"通勤","kind":"惩罚","tone":"克制","source_hint":"V2EX / 知乎 / 36Kr / 豆瓣","source_action":"把路上的时间从隐形损耗里单独记账","text":"这段路最擅长做的事，就是提前消耗你。"}
+{"category":"通勤","kind":"提醒","tone":"平静","source_hint":"V2EX / 知乎 / 36Kr / 豆瓣","source_action":"把路上的时间从隐形损耗里单独记账","text":"今天比昨天早出门十分钟，结果还是晚了一点。"}
+{"category":"通勤","kind":"告警","tone":"无奈","source_hint":"V2EX / 知乎 / 36Kr / 豆瓣","source_action":"把路上的时间从隐形损耗里单独记账","text":"站在车厢里，你只是看起来很完整。"}
+{"category":"通勤","kind":"观察","tone":"迟钝","source_hint":"V2EX / 知乎 / 36Kr / 豆瓣","source_action":"把路上的时间从隐形损耗里单独记账","text":"城市把你从家门口一路压缩到工位。"}
+{"category":"通勤","kind":"结算","tone":"冷幽默","source_hint":"V2EX / 知乎 / 36Kr / 豆瓣","source_action":"把路上的时间从隐形损耗里单独记账","text":"每天花在路上的不是时间，是备用精神。"}
+{"category":"通勤","kind":"惩罚","tone":"反差","source_hint":"V2EX / 知乎 / 36Kr / 豆瓣","source_action":"把路上的时间从隐形损耗里单独记账","text":"回程最累的不是距离，是还得把自己重新拼起来。"}
+{"category":"饮食/外卖","kind":"提醒","tone":"冷幽默","source_hint":"V2EX / 掘金 / CSDN / 36Kr / 豆瓣","source_action":"把吃饭从临时补丁改成稳定补给","text":"你的晚饭总在最晚的那一刻才被想起。"}
+{"category":"饮食/外卖","kind":"告警","tone":"压迫感","source_hint":"V2EX / 掘金 / CSDN / 36Kr / 豆瓣","source_action":"把吃饭从临时补丁改成稳定补给","text":"外卖很方便，方便到把做饭技能彻底搁置。"}
+{"category":"饮食/外卖","kind":"观察","tone":"轻自嘲","source_hint":"V2EX / 掘金 / CSDN / 36Kr / 豆瓣","source_action":"把吃饭从临时补丁改成稳定补给","text":"冰箱不是空，是你一直没给它部署内容。"}
+{"category":"饮食/外卖","kind":"结算","tone":"反差","source_hint":"V2EX / 掘金 / CSDN / 36Kr / 豆瓣","source_action":"把吃饭从临时补丁改成稳定补给","text":"这顿饭看起来随便，身体其实已经记账。"}
+{"category":"饮食/外卖","kind":"惩罚","tone":"克制","source_hint":"V2EX / 掘金 / CSDN / 36Kr / 豆瓣","source_action":"把吃饭从临时补丁改成稳定补给","text":"先凑合三餐，再谈状态回升，顺序通常错了。"}
+{"category":"饮食/外卖","kind":"提醒","tone":"平静","source_hint":"V2EX / 掘金 / CSDN / 36Kr / 豆瓣","source_action":"把吃饭从临时补丁改成稳定补给","text":"你不是不想吃好点，只是每晚都被时间催单。"}
+{"category":"饮食/外卖","kind":"告警","tone":"无奈","source_hint":"V2EX / 掘金 / CSDN / 36Kr / 豆瓣","source_action":"把吃饭从临时补丁改成稳定补给","text":"一次外卖没什么，连续靠它续命就开始掉线。"}
+{"category":"饮食/外卖","kind":"观察","tone":"迟钝","source_hint":"V2EX / 掘金 / CSDN / 36Kr / 豆瓣","source_action":"把吃饭从临时补丁改成稳定补给","text":"吃饭这件事被你压缩得像一段短请求。"}
+{"category":"饮食/外卖","kind":"结算","tone":"冷幽默","source_hint":"V2EX / 掘金 / CSDN / 36Kr / 豆瓣","source_action":"把吃饭从临时补丁改成稳定补给","text":"口味变重以后，连胃都在要求版本回退。"}
+{"category":"饮食/外卖","kind":"惩罚","tone":"反差","source_hint":"V2EX / 掘金 / CSDN / 36Kr / 豆瓣","source_action":"把吃饭从临时补丁改成稳定补给","text":"你以为自己在省事，身体只感到在被敷衍。"}
+{"category":"健康","kind":"提醒","tone":"冷幽默","source_hint":"SegmentFault / CSDN / 知乎 / 博客园 / Reddit","source_action":"把身体告警从背景噪音里拉出来","text":"颈椎已经提醒过很多次，只是你一直假装没听见。"}
+{"category":"健康","kind":"告警","tone":"压迫感","source_hint":"SegmentFault / CSDN / 知乎 / 博客园 / Reddit","source_action":"把身体告警从背景噪音里拉出来","text":"久坐一天后，站起来都像在重新加载。"}
+{"category":"健康","kind":"观察","tone":"轻自嘲","source_hint":"SegmentFault / CSDN / 知乎 / 博客园 / Reddit","source_action":"把身体告警从背景噪音里拉出来","text":"体检单一出来，才发现身体也会写日志。"}
+{"category":"健康","kind":"结算","tone":"反差","source_hint":"SegmentFault / CSDN / 知乎 / 博客园 / Reddit","source_action":"把身体告警从背景噪音里拉出来","text":"你总说还能扛，身体却在慢慢给你降权限。"}
+{"category":"健康","kind":"惩罚","tone":"克制","source_hint":"SegmentFault / CSDN / 知乎 / 博客园 / Reddit","source_action":"把身体告警从背景噪音里拉出来","text":"疲劳不是状态美化，它是实打实的损耗。"}
+{"category":"健康","kind":"提醒","tone":"平静","source_hint":"SegmentFault / CSDN / 知乎 / 博客园 / Reddit","source_action":"把身体告警从背景噪音里拉出来","text":"每次说下周运动，身体都知道那多半是空头承诺。"}
+{"category":"健康","kind":"告警","tone":"无奈","source_hint":"SegmentFault / CSDN / 知乎 / 博客园 / Reddit","source_action":"把身体告警从背景噪音里拉出来","text":"眼睛酸、肩膀硬、胃不稳，像三个不同模块同时报错。"}
+{"category":"健康","kind":"观察","tone":"迟钝","source_hint":"SegmentFault / CSDN / 知乎 / 博客园 / Reddit","source_action":"把身体告警从背景噪音里拉出来","text":"你省下的不是休息时间，是以后更大的维护成本。"}
+{"category":"健康","kind":"结算","tone":"冷幽默","source_hint":"SegmentFault / CSDN / 知乎 / 博客园 / Reddit","source_action":"把身体告警从背景噪音里拉出来","text":"健康没掉到红线前，最容易被误判成没事。"}
+{"category":"健康","kind":"惩罚","tone":"反差","source_hint":"SegmentFault / CSDN / 知乎 / 博客园 / Reddit","source_action":"把身体告警从背景噪音里拉出来","text":"真正麻烦的从来不是今天这点累，是累被你积成了常态。"}
+{"category":"运动/健身","kind":"提醒","tone":"冷幽默","source_hint":"Reddit / DEV Community / 掘金 / 豆瓣 / V2EX","source_action":"把运动从待办拖到实际执行","text":"运动计划写得很满，执行时总被沙发拦截。"}
+{"category":"运动/健身","kind":"告警","tone":"压迫感","source_hint":"Reddit / DEV Community / 掘金 / 豆瓣 / V2EX","source_action":"把运动从待办拖到实际执行","text":"你不是没动力，是下班后剩余电量只够走到门口。"}
+{"category":"运动/健身","kind":"观察","tone":"轻自嘲","source_hint":"Reddit / DEV Community / 掘金 / 豆瓣 / V2EX","source_action":"把运动从待办拖到实际执行","text":"跑步前的犹豫，通常比跑步本身更长。"}
+{"category":"运动/健身","kind":"结算","tone":"反差","source_hint":"Reddit / DEV Community / 掘金 / 豆瓣 / V2EX","source_action":"把运动从待办拖到实际执行","text":"进入健身房那一刻，你才想起自己其实很久没活动了。"}
+{"category":"运动/健身","kind":"惩罚","tone":"克制","source_hint":"Reddit / DEV Community / 掘金 / 豆瓣 / V2EX","source_action":"把运动从待办拖到实际执行","text":"运动能回血，但前提是你得先舍得离开椅子。"}
+{"category":"运动/健身","kind":"提醒","tone":"平静","source_hint":"Reddit / DEV Community / 掘金 / 豆瓣 / V2EX","source_action":"把运动从待办拖到实际执行","text":"想恢复状态的人很多，真正流汗的人很少。"}
+{"category":"运动/健身","kind":"告警","tone":"无奈","source_hint":"Reddit / DEV Community / 掘金 / 豆瓣 / V2EX","source_action":"把运动从待办拖到实际执行","text":"身体需要的是规律，不是偶尔一次很猛的补救。"}
+{"category":"运动/健身","kind":"观察","tone":"迟钝","source_hint":"Reddit / DEV Community / 掘金 / 豆瓣 / V2EX","source_action":"把运动从待办拖到实际执行","text":"每次运动结束后，你都比开始时更像自己。"}
+{"category":"运动/健身","kind":"结算","tone":"冷幽默","source_hint":"Reddit / DEV Community / 掘金 / 豆瓣 / V2EX","source_action":"把运动从待办拖到实际执行","text":"今天少动的那一小时，明天会用僵硬来提醒你。"}
+{"category":"运动/健身","kind":"惩罚","tone":"反差","source_hint":"Reddit / DEV Community / 掘金 / 豆瓣 / V2EX","source_action":"把运动从待办拖到实际执行","text":"你不是讨厌锻炼，你只是一直把它排在最后。"}
+{"category":"家庭/恋爱","kind":"提醒","tone":"冷幽默","source_hint":"豆瓣 / 知乎 / V2EX / Reddit","source_action":"给亲密关系留出稳定在线时间","text":"伴侣说话时，你的注意力还停在工单里。"}
+{"category":"家庭/恋爱","kind":"告警","tone":"压迫感","source_hint":"豆瓣 / 知乎 / V2EX / Reddit","source_action":"给亲密关系留出稳定在线时间","text":"家里不是没有事，是你总把它排到最末尾。"}
+{"category":"家庭/恋爱","kind":"观察","tone":"轻自嘲","source_hint":"豆瓣 / 知乎 / V2EX / Reddit","source_action":"给亲密关系留出稳定在线时间","text":"回家后的第一句如果还是工作，气氛就先降温了。"}
+{"category":"家庭/恋爱","kind":"结算","tone":"反差","source_hint":"豆瓣 / 知乎 / V2EX / Reddit","source_action":"给亲密关系留出稳定在线时间","text":"你以为自己在扛责任，别人感受到的却是缺席。"}
+{"category":"家庭/恋爱","kind":"惩罚","tone":"克制","source_hint":"豆瓣 / 知乎 / V2EX / Reddit","source_action":"给亲密关系留出稳定在线时间","text":"亲密关系最怕的不是争吵，是长期得不到回应。"}
+{"category":"家庭/恋爱","kind":"提醒","tone":"平静","source_hint":"豆瓣 / 知乎 / V2EX / Reddit","source_action":"给亲密关系留出稳定在线时间","text":"你很努力在解决外面的事，却常把里面的人晾着。"}
+{"category":"家庭/恋爱","kind":"告警","tone":"无奈","source_hint":"豆瓣 / 知乎 / V2EX / Reddit","source_action":"给亲密关系留出稳定在线时间","text":"该陪伴的时候不在场，错过的往往不是一顿饭。"}
+{"category":"家庭/恋爱","kind":"观察","tone":"迟钝","source_hint":"豆瓣 / 知乎 / V2EX / Reddit","source_action":"给亲密关系留出稳定在线时间","text":"家庭需要的不是解释，是你真正停下来。"}
+{"category":"家庭/恋爱","kind":"结算","tone":"冷幽默","source_hint":"豆瓣 / 知乎 / V2EX / Reddit","source_action":"给亲密关系留出稳定在线时间","text":"爱情和工作同时争资源时，感情通常最先饿着。"}
+{"category":"家庭/恋爱","kind":"惩罚","tone":"反差","source_hint":"豆瓣 / 知乎 / V2EX / Reddit","source_action":"给亲密关系留出稳定在线时间","text":"不是没时间相处，是你总把余量留给别的地方。"}
+{"category":"社交/朋友","kind":"提醒","tone":"冷幽默","source_hint":"豆瓣 / Reddit / Hacker News / V2EX / 知乎","source_action":"给朋友和同好留出不会被打断的空档","text":"消息一直想回，最后却回成了最近有点忙。"}
+{"category":"社交/朋友","kind":"告警","tone":"压迫感","source_hint":"豆瓣 / Reddit / Hacker News / V2EX / 知乎","source_action":"给朋友和同好留出不会被打断的空档","text":"朋友约你，不是每次都能约到下一次。"}
+{"category":"社交/朋友","kind":"观察","tone":"轻自嘲","source_hint":"豆瓣 / Reddit / Hacker News / V2EX / 知乎","source_action":"给朋友和同好留出不会被打断的空档","text":"你不是不合群，只是社交窗口被太多事挤没了。"}
+{"category":"社交/朋友","kind":"结算","tone":"反差","source_hint":"豆瓣 / Reddit / Hacker News / V2EX / 知乎","source_action":"给朋友和同好留出不会被打断的空档","text":"聊天还没热起来，你的精力先断流了。"}
+{"category":"社交/朋友","kind":"惩罚","tone":"克制","source_hint":"豆瓣 / Reddit / Hacker News / V2EX / 知乎","source_action":"给朋友和同好留出不会被打断的空档","text":"很多关系不是淡掉的，是被你拖慢的。"}
+{"category":"社交/朋友","kind":"提醒","tone":"平静","source_hint":"豆瓣 / Reddit / Hacker News / V2EX / 知乎","source_action":"给朋友和同好留出不会被打断的空档","text":"见面这件事越往后放，越容易变成口头承诺。"}
+{"category":"社交/朋友","kind":"告警","tone":"无奈","source_hint":"豆瓣 / Reddit / Hacker News / V2EX / 知乎","source_action":"给朋友和同好留出不会被打断的空档","text":"你会聊天，但很难稳定地把自己交出去。"}
+{"category":"社交/朋友","kind":"观察","tone":"迟钝","source_hint":"豆瓣 / Reddit / Hacker News / V2EX / 知乎","source_action":"给朋友和同好留出不会被打断的空档","text":"熟人越来越多，真正能见面的却越来越少。"}
+{"category":"社交/朋友","kind":"结算","tone":"冷幽默","source_hint":"豆瓣 / Reddit / Hacker News / V2EX / 知乎","source_action":"给朋友和同好留出不会被打断的空档","text":"社交一旦被压缩成消息框，温度就会掉。"}
+{"category":"社交/朋友","kind":"惩罚","tone":"反差","source_hint":"豆瓣 / Reddit / Hacker News / V2EX / 知乎","source_action":"给朋友和同好留出不会被打断的空档","text":"你缺的不是联系人，是愿意腾出来的时间。"}
+{"category":"居住/租房","kind":"提醒","tone":"冷幽默","source_hint":"V2EX / 豆瓣 / 知乎 / Reddit / 36Kr","source_action":"把住处从临时安置变成稳定基地","text":"房子换了，生活却还在慢慢找电源位置。"}
+{"category":"居住/租房","kind":"告警","tone":"压迫感","source_hint":"V2EX / 豆瓣 / 知乎 / Reddit / 36Kr","source_action":"把住处从临时安置变成稳定基地","text":"租房最累的不是看房，是反复适应新环境。"}
+{"category":"居住/租房","kind":"观察","tone":"轻自嘲","source_hint":"V2EX / 豆瓣 / 知乎 / Reddit / 36Kr","source_action":"把住处从临时安置变成稳定基地","text":"每次搬家都像把一整套习惯重新打包。"}
+{"category":"居住/租房","kind":"结算","tone":"反差","source_hint":"V2EX / 豆瓣 / 知乎 / Reddit / 36Kr","source_action":"把住处从临时安置变成稳定基地","text":"你终于离公司近了，却离舒适感远了。"}
+{"category":"居住/租房","kind":"惩罚","tone":"克制","source_hint":"V2EX / 豆瓣 / 知乎 / Reddit / 36Kr","source_action":"把住处从临时安置变成稳定基地","text":"住处不稳，连情绪都很难真正落地。"}
+{"category":"居住/租房","kind":"提醒","tone":"平静","source_hint":"V2EX / 豆瓣 / 知乎 / Reddit / 36Kr","source_action":"把住处从临时安置变成稳定基地","text":"新房间再整齐，也要过几天才像自己的。"}
+{"category":"居住/租房","kind":"告警","tone":"无奈","source_hint":"V2EX / 豆瓣 / 知乎 / Reddit / 36Kr","source_action":"把住处从临时安置变成稳定基地","text":"搬走的箱子里，装的还有你没来得及安顿的心情。"}
+{"category":"居住/租房","kind":"观察","tone":"迟钝","source_hint":"V2EX / 豆瓣 / 知乎 / Reddit / 36Kr","source_action":"把住处从临时安置变成稳定基地","text":"房租一涨，生活就自动多了一层压力。"}
+{"category":"居住/租房","kind":"结算","tone":"冷幽默","source_hint":"V2EX / 豆瓣 / 知乎 / Reddit / 36Kr","source_action":"把住处从临时安置变成稳定基地","text":"你不是爱折腾，只是居住条件一直在逼你迁移。"}
+{"category":"居住/租房","kind":"惩罚","tone":"反差","source_hint":"V2EX / 豆瓣 / 知乎 / Reddit / 36Kr","source_action":"把住处从临时安置变成稳定基地","text":"真正麻烦的不是搬家那天，而是之后每一天的重新适应。"}
+{"category":"消费","kind":"提醒","tone":"冷幽默","source_hint":"36Kr / V2EX / 知乎 / 掘金","source_action":"把隐形支出从工资里拆账","text":"工资刚到账，房租和日常支出就先分走一半。"}
+{"category":"消费","kind":"告警","tone":"压迫感","source_hint":"36Kr / V2EX / 知乎 / 掘金","source_action":"把隐形支出从工资里拆账","text":"你以为自己没乱花，实际上是在给生活买方便。"}
+{"category":"消费","kind":"观察","tone":"轻自嘲","source_hint":"36Kr / V2EX / 知乎 / 掘金","source_action":"把隐形支出从工资里拆账","text":"真正吞钱的往往不是大件，是一笔笔没感觉的小开销。"}
+{"category":"消费","kind":"结算","tone":"反差","source_hint":"36Kr / V2EX / 知乎 / 掘金","source_action":"把隐形支出从工资里拆账","text":"今天省下的那点，明天又被外卖、网购和交通吃掉。"}
+{"category":"消费","kind":"惩罚","tone":"克制","source_hint":"36Kr / V2EX / 知乎 / 掘金","source_action":"把隐形支出从工资里拆账","text":"预算看起来没问题，月底总还是会失血。"}
+{"category":"消费","kind":"提醒","tone":"平静","source_hint":"36Kr / V2EX / 知乎 / 掘金","source_action":"把隐形支出从工资里拆账","text":"你买的不只是东西，还有少麻烦一点的错觉。"}
+{"category":"消费","kind":"告警","tone":"无奈","source_hint":"36Kr / V2EX / 知乎 / 掘金","source_action":"把隐形支出从工资里拆账","text":"花钱这件事最会伪装成改善生活。"}
+{"category":"消费","kind":"观察","tone":"迟钝","source_hint":"36Kr / V2EX / 知乎 / 掘金","source_action":"把隐形支出从工资里拆账","text":"一旦开始算账，很多轻松都显得很贵。"}
+{"category":"消费","kind":"结算","tone":"冷幽默","source_hint":"36Kr / V2EX / 知乎 / 掘金","source_action":"把隐形支出从工资里拆账","text":"省钱失败不一定是冲动，可能只是日子本来就重。"}
+{"category":"消费","kind":"惩罚","tone":"反差","source_hint":"36Kr / V2EX / 知乎 / 掘金","source_action":"把隐形支出从工资里拆账","text":"账单总是诚实的，人的记忆通常不是。"}
+{"category":"情绪/压力","kind":"提醒","tone":"冷幽默","source_hint":"Hacker News / Reddit / 掘金 / 博客园 / SegmentFault","source_action":"把情绪从后台常驻里清出去","text":"你看起来很稳，其实只是习惯了不说。"}
+{"category":"情绪/压力","kind":"告警","tone":"压迫感","source_hint":"Hacker News / Reddit / 掘金 / 博客园 / SegmentFault","source_action":"把情绪从后台常驻里清出去","text":"情绪一直压着不处理，最后会自己涨出来。"}
+{"category":"情绪/压力","kind":"观察","tone":"轻自嘲","source_hint":"Hacker News / Reddit / 掘金 / 博客园 / SegmentFault","source_action":"把情绪从后台常驻里清出去","text":"每天都在解决别人的问题，轮到自己就卡住。"}
+{"category":"情绪/压力","kind":"结算","tone":"反差","source_hint":"Hacker News / Reddit / 掘金 / 博客园 / SegmentFault","source_action":"把情绪从后台常驻里清出去","text":"你不是脆弱，是长期紧绷没有出口。"}
+{"category":"情绪/压力","kind":"惩罚","tone":"克制","source_hint":"Hacker News / Reddit / 掘金 / 博客园 / SegmentFault","source_action":"把情绪从后台常驻里清出去","text":"习惯了忍耐的人，最容易把疲惫误认成正常。"}
+{"category":"情绪/压力","kind":"提醒","tone":"平静","source_hint":"Hacker News / Reddit / 掘金 / 博客园 / SegmentFault","source_action":"把情绪从后台常驻里清出去","text":"有些压力不吵不闹，但会慢慢把人磨薄。"}
+{"category":"情绪/压力","kind":"告警","tone":"无奈","source_hint":"Hacker News / Reddit / 掘金 / 博客园 / SegmentFault","source_action":"把情绪从后台常驻里清出去","text":"你还在运行，只是心里已经很久没做过完整休整。"}
+{"category":"情绪/压力","kind":"观察","tone":"迟钝","source_hint":"Hacker News / Reddit / 掘金 / 博客园 / SegmentFault","source_action":"把情绪从后台常驻里清出去","text":"真正难的不是忙，是一直没有缓冲区。"}
+{"category":"情绪/压力","kind":"结算","tone":"冷幽默","source_hint":"Hacker News / Reddit / 掘金 / 博客园 / SegmentFault","source_action":"把情绪从后台常驻里清出去","text":"把难受拖到明天，通常只会把明天也拖累。"}
+{"category":"情绪/压力","kind":"惩罚","tone":"反差","source_hint":"Hacker News / Reddit / 掘金 / 博客园 / SegmentFault","source_action":"把情绪从后台常驻里清出去","text":"当情绪开始钝化，说明你已经撑了太久。"}
+{"category":"宠物","kind":"提醒","tone":"冷幽默","source_hint":"Reddit / 豆瓣 / V2EX / 掘金","source_action":"让宠物成为提醒你离屏的生活事件","text":"它一跳上桌，你的专注就被强制暂停。"}
+{"category":"宠物","kind":"告警","tone":"压迫感","source_hint":"Reddit / 豆瓣 / V2EX / 掘金","source_action":"让宠物成为提醒你离屏的生活事件","text":"你以为是在陪它，其实也是它在陪你离屏。"}
+{"category":"宠物","kind":"观察","tone":"轻自嘲","source_hint":"Reddit / 豆瓣 / V2EX / 掘金","source_action":"让宠物成为提醒你离屏的生活事件","text":"猫狗不会看工期，但很懂你该停一下了。"}
+{"category":"宠物","kind":"结算","tone":"反差","source_hint":"Reddit / 豆瓣 / V2EX / 掘金","source_action":"让宠物成为提醒你离屏的生活事件","text":"宠物最厉害的地方，是能在你最忙时要求关注。"}
+{"category":"宠物","kind":"惩罚","tone":"克制","source_hint":"Reddit / 豆瓣 / V2EX / 掘金","source_action":"让宠物成为提醒你离屏的生活事件","text":"它对你的键盘没兴趣，只对你的注意力有兴趣。"}
+{"category":"宠物","kind":"提醒","tone":"平静","source_hint":"Reddit / 豆瓣 / V2EX / 掘金","source_action":"让宠物成为提醒你离屏的生活事件","text":"喂食、铲屎、遛弯，把你从屏幕前拉回现实。"}
+{"category":"宠物","kind":"告警","tone":"无奈","source_hint":"Reddit / 豆瓣 / V2EX / 掘金","source_action":"让宠物成为提醒你离屏的生活事件","text":"宠物很治愈，前提是它别踩到你的文件和线。"}
+{"category":"宠物","kind":"观察","tone":"迟钝","source_hint":"Reddit / 豆瓣 / V2EX / 掘金","source_action":"让宠物成为提醒你离屏的生活事件","text":"它不懂你的压力，但总能打断你继续硬扛。"}
+{"category":"宠物","kind":"结算","tone":"冷幽默","source_hint":"Reddit / 豆瓣 / V2EX / 掘金","source_action":"让宠物成为提醒你离屏的生活事件","text":"一人一宠的生活里，安静经常是被它打断的。"}
+{"category":"宠物","kind":"惩罚","tone":"反差","source_hint":"Reddit / 豆瓣 / V2EX / 掘金","source_action":"让宠物成为提醒你离屏的生活事件","text":"你以为自己在照顾它，实际上它一直在调整你的节奏。"}
+{"category":"周末恢复","kind":"提醒","tone":"冷幽默","source_hint":"Hacker News / Reddit / V2EX / 掘金 / DEV Community","source_action":"把周末从补偿日变成真正恢复日","text":"周末刚开始，你的待办就先排满了。"}
+{"category":"周末恢复","kind":"告警","tone":"压迫感","source_hint":"Hacker News / Reddit / V2EX / 掘金 / DEV Community","source_action":"把周末从补偿日变成真正恢复日","text":"你想休息，但身体只会把欠账一并翻出来。"}
+{"category":"周末恢复","kind":"观察","tone":"轻自嘲","source_hint":"Hacker News / Reddit / V2EX / 掘金 / DEV Community","source_action":"把周末从补偿日变成真正恢复日","text":"两天看起来很长，实际只够补一小段电。"}
+{"category":"周末恢复","kind":"结算","tone":"反差","source_hint":"Hacker News / Reddit / V2EX / 掘金 / DEV Community","source_action":"把周末从补偿日变成真正恢复日","text":"周末最大的敌人不是工作，是没完没了的补救项。"}
+{"category":"周末恢复","kind":"惩罚","tone":"克制","source_hint":"Hacker News / Reddit / V2EX / 掘金 / DEV Community","source_action":"把周末从补偿日变成真正恢复日","text":"计划恢复，结果先恢复成了继续疲惫。"}
+{"category":"周末恢复","kind":"提醒","tone":"平静","source_hint":"Hacker News / Reddit / V2EX / 掘金 / DEV Community","source_action":"把周末从补偿日变成真正恢复日","text":"你把周末当回血包，它却经常先被家务占满。"}
+{"category":"周末恢复","kind":"告警","tone":"无奈","source_hint":"Hacker News / Reddit / V2EX / 掘金 / DEV Community","source_action":"把周末从补偿日变成真正恢复日","text":"真正的休息不是躺着，而是停止被消耗。"}
+{"category":"周末恢复","kind":"观察","tone":"迟钝","source_hint":"Hacker News / Reddit / V2EX / 掘金 / DEV Community","source_action":"把周末从补偿日变成真正恢复日","text":"周六醒来那一刻，最先出现的通常不是轻松。"}
+{"category":"周末恢复","kind":"结算","tone":"冷幽默","source_hint":"Hacker News / Reddit / V2EX / 掘金 / DEV Community","source_action":"把周末从补偿日变成真正恢复日","text":"一旦周末也被塞满，生活就只剩切换场景。"}
+{"category":"周末恢复","kind":"惩罚","tone":"反差","source_hint":"Hacker News / Reddit / V2EX / 掘金 / DEV Community","source_action":"把周末从补偿日变成真正恢复日","text":"你不是没休息，是休息一直不够完整。"}
+{"category":"远程办公","kind":"提醒","tone":"冷幽默","source_hint":"Hacker News / Reddit / Stack Overflow Blog / Medium / 掘金","source_action":"给工作和生活重新画隔离线","text":"远程办公最难的不是开会，是关掉工作。"}
+{"category":"远程办公","kind":"告警","tone":"压迫感","source_hint":"Hacker News / Reddit / Stack Overflow Blog / Medium / 掘金","source_action":"给工作和生活重新画隔离线","text":"卧室一旦变工位，边界就开始自动融化。"}
+{"category":"远程办公","kind":"观察","tone":"轻自嘲","source_hint":"Hacker News / Reddit / Stack Overflow Blog / Medium / 掘金","source_action":"给工作和生活重新画隔离线","text":"你省了通勤，却把上下班的界线也省没了。"}
+{"category":"远程办公","kind":"结算","tone":"反差","source_hint":"Hacker News / Reddit / Stack Overflow Blog / Medium / 掘金","source_action":"给工作和生活重新画隔离线","text":"家里很安静，安静到工作更容易黏住你。"}
+{"category":"远程办公","kind":"惩罚","tone":"克制","source_hint":"Hacker News / Reddit / Stack Overflow Blog / Medium / 掘金","source_action":"给工作和生活重新画隔离线","text":"每个房间都像随时能变成会议室。"}
+{"category":"远程办公","kind":"提醒","tone":"平静","source_hint":"Hacker News / Reddit / Stack Overflow Blog / Medium / 掘金","source_action":"给工作和生活重新画隔离线","text":"远程协作看起来自由，实际更考验自控。"}
+{"category":"远程办公","kind":"告警","tone":"无奈","source_hint":"Hacker News / Reddit / Stack Overflow Blog / Medium / 掘金","source_action":"给工作和生活重新画隔离线","text":"你人在家里，心却一直挂在线上。"}
+{"category":"远程办公","kind":"观察","tone":"迟钝","source_hint":"Hacker News / Reddit / Stack Overflow Blog / Medium / 掘金","source_action":"给工作和生活重新画隔离线","text":"没有路上的缓冲，任务切换就变得更刺耳。"}
+{"category":"远程办公","kind":"结算","tone":"冷幽默","source_hint":"Hacker News / Reddit / Stack Overflow Blog / Medium / 掘金","source_action":"给工作和生活重新画隔离线","text":"下班的仪式感一丢，生活和工作就开始混用同一张桌子。"}
+{"category":"远程办公","kind":"惩罚","tone":"反差","source_hint":"Hacker News / Reddit / Stack Overflow Blog / Medium / 掘金","source_action":"给工作和生活重新画隔离线","text":"远程办公带来的最大变化，是你更难真的离开工作。"}
+{"category":"数码/家务","kind":"提醒","tone":"冷幽默","source_hint":"V2EX / CSDN / 博客园 / DEV Community / 掘金","source_action":"把杂事从脑内缓存里清掉","text":"家务看着小，攒起来就像一堆后台任务。"}
+{"category":"数码/家务","kind":"告警","tone":"压迫感","source_hint":"V2EX / CSDN / 博客园 / DEV Community / 掘金","source_action":"把杂事从脑内缓存里清掉","text":"你以为周末会收拾，结果收拾本身成了计划外大项。"}
+{"category":"数码/家务","kind":"观察","tone":"轻自嘲","source_hint":"V2EX / CSDN / 博客园 / DEV Community / 掘金","source_action":"把杂事从脑内缓存里清掉","text":"水电网、快递、收纳、洗衣，每个都在争一点注意力。"}
+{"category":"数码/家务","kind":"结算","tone":"反差","source_hint":"V2EX / CSDN / 博客园 / DEV Community / 掘金","source_action":"把杂事从脑内缓存里清掉","text":"桌面乱了不只影响效率，也会拖低心情。"}
+{"category":"数码/家务","kind":"惩罚","tone":"克制","source_hint":"V2EX / CSDN / 博客园 / DEV Community / 掘金","source_action":"把杂事从脑内缓存里清掉","text":"设备买得越来越多，真正要整理的却一直没空。"}
+{"category":"数码/家务","kind":"提醒","tone":"平静","source_hint":"V2EX / CSDN / 博客园 / DEV Community / 掘金","source_action":"把杂事从脑内缓存里清掉","text":"家里的每个角落都像一个没结算的小问题。"}
+{"category":"数码/家务","kind":"告警","tone":"无奈","source_hint":"V2EX / CSDN / 博客园 / DEV Community / 掘金","source_action":"把杂事从脑内缓存里清掉","text":"一旦开始收拾，才知道自己到底堆了多少未处理事项。"}
+{"category":"数码/家务","kind":"观察","tone":"迟钝","source_hint":"V2EX / CSDN / 博客园 / DEV Community / 掘金","source_action":"把杂事从脑内缓存里清掉","text":"杂物不是突然多的，是你一直没机会清。"}
+{"category":"数码/家务","kind":"结算","tone":"冷幽默","source_hint":"V2EX / CSDN / 博客园 / DEV Community / 掘金","source_action":"把杂事从脑内缓存里清掉","text":"生活要顺一点，往往得先把那些小堵点一个个理开。"}
+{"category":"数码/家务","kind":"惩罚","tone":"反差","source_hint":"V2EX / CSDN / 博客园 / DEV Community / 掘金","source_action":"把杂事从脑内缓存里清掉","text":"你不是懒，只是后台杂务一直没停。"}
+{"category":"兴趣/娱乐","kind":"提醒","tone":"冷幽默","source_hint":"DEV Community / Reddit / Hacker News / 豆瓣 / Medium","source_action":"给非工作兴趣留出稳定时间","text":"你需要的不是继续输入信息，而是换一种活法。"}
+{"category":"兴趣/娱乐","kind":"告警","tone":"压迫感","source_hint":"DEV Community / Reddit / Hacker News / 豆瓣 / Medium","source_action":"给非工作兴趣留出稳定时间","text":"兴趣一旦被工作挤没，人就只剩消耗模式。"}
+{"category":"兴趣/娱乐","kind":"观察","tone":"轻自嘲","source_hint":"DEV Community / Reddit / Hacker News / 豆瓣 / Medium","source_action":"给非工作兴趣留出稳定时间","text":"看剧、打球、做菜、拍照，都是把自己从代码里捞出来。"}
+{"category":"兴趣/娱乐","kind":"结算","tone":"反差","source_hint":"DEV Community / Reddit / Hacker News / 豆瓣 / Medium","source_action":"给非工作兴趣留出稳定时间","text":"娱乐不是浪费，是给大脑换挡。"}
+{"category":"兴趣/娱乐","kind":"惩罚","tone":"克制","source_hint":"DEV Community / Reddit / Hacker News / 豆瓣 / Medium","source_action":"给非工作兴趣留出稳定时间","text":"你以为没时间玩，其实是没给自己留空间。"}
+{"category":"兴趣/娱乐","kind":"提醒","tone":"平静","source_hint":"DEV Community / Reddit / Hacker News / 豆瓣 / Medium","source_action":"给非工作兴趣留出稳定时间","text":"真正能恢复的人，往往都有一个不讲效率的爱好。"}
+{"category":"兴趣/娱乐","kind":"告警","tone":"无奈","source_hint":"DEV Community / Reddit / Hacker News / 豆瓣 / Medium","source_action":"给非工作兴趣留出稳定时间","text":"生活里如果只剩工作，快乐会变得很窄。"}
+{"category":"兴趣/娱乐","kind":"观察","tone":"迟钝","source_hint":"DEV Community / Reddit / Hacker News / 豆瓣 / Medium","source_action":"给非工作兴趣留出稳定时间","text":"当你重新沉进兴趣里，整个人会轻一点。"}
+{"category":"兴趣/娱乐","kind":"结算","tone":"冷幽默","source_hint":"DEV Community / Reddit / Hacker News / 豆瓣 / Medium","source_action":"给非工作兴趣留出稳定时间","text":"兴趣不会解决现实，但能把你从现实里暂时救出来。"}
+{"category":"兴趣/娱乐","kind":"惩罚","tone":"反差","source_hint":"DEV Community / Reddit / Hacker News / 豆瓣 / Medium","source_action":"给非工作兴趣留出稳定时间","text":"留一点不被评价的时间，人会更像人。"}
