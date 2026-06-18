@@ -9,7 +9,7 @@
       "source_file": "E:\\desktop\\coders-life\\\u7a0b\u5e8f\u5458\u751f\u5b58\u6a21\u62df\u5668_\u5f39\u7a97\u5e93_2026-06-18.js",
       "source_location": "L1",
       "id": "e_desktop_coders_life_2026_06_18_js",
-      "community": 15,
+      "community": 14,
       "norm_label": "\u7a0b\u5e8f\u5458\u751f\u5b58\u6a21\u62df\u5668_\u5f39\u7a97\u5e93_2026-06-18.js"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_x",
-      "community": 2,
+      "community": 1,
       "norm_label": "x()"
     },
     {
@@ -504,7 +504,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_ct",
-      "community": 14,
+      "community": 13,
       "norm_label": "ct()"
     },
     {
@@ -603,7 +603,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_tc",
-      "community": 1,
+      "community": 12,
       "norm_label": "tc()"
     },
     {
@@ -612,7 +612,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_cc",
-      "community": 1,
+      "community": 12,
       "norm_label": "cc()"
     },
     {
@@ -621,7 +621,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_ec",
-      "community": 1,
+      "community": 12,
       "norm_label": "ec()"
     },
     {
@@ -630,7 +630,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_ic",
-      "community": 1,
+      "community": 2,
       "norm_label": "ic()"
     },
     {
@@ -639,7 +639,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_oc",
-      "community": 1,
+      "community": 12,
       "norm_label": "oc()"
     },
     {
@@ -648,7 +648,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_nc",
-      "community": 1,
+      "community": 12,
       "norm_label": "nc()"
     },
     {
@@ -909,7 +909,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_he",
-      "community": 7,
+      "community": 1,
       "norm_label": "he()"
     },
     {
@@ -1026,7 +1026,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_so",
-      "community": 12,
+      "community": 3,
       "norm_label": "so()"
     },
     {
@@ -1053,7 +1053,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_mo",
-      "community": 10,
+      "community": 5,
       "norm_label": "mo()"
     },
     {
@@ -1062,7 +1062,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_yo",
-      "community": 10,
+      "community": 5,
       "norm_label": "yo()"
     },
     {
@@ -1080,7 +1080,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L26",
       "id": "vis_network_min_bo",
-      "community": 1,
+      "community": 2,
       "norm_label": "bo()"
     },
     {
@@ -1575,7 +1575,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ch",
-      "community": 13,
+      "community": 11,
       "norm_label": "ch()"
     },
     {
@@ -1611,7 +1611,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_oh",
-      "community": 13,
+      "community": 11,
       "norm_label": "oh()"
     },
     {
@@ -1620,7 +1620,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_nh",
-      "community": 13,
+      "community": 11,
       "norm_label": "nh()"
     },
     {
@@ -1629,7 +1629,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_sh",
-      "community": 13,
+      "community": 11,
       "norm_label": "sh()"
     },
     {
@@ -1638,7 +1638,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_rh",
-      "community": 13,
+      "community": 11,
       "norm_label": "rh()"
     },
     {
@@ -1647,7 +1647,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ah",
-      "community": 13,
+      "community": 11,
       "norm_label": "ah()"
     },
     {
@@ -1656,7 +1656,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_dh",
-      "community": 13,
+      "community": 11,
       "norm_label": "dh()"
     },
     {
@@ -1665,7 +1665,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_hh",
-      "community": 13,
+      "community": 11,
       "norm_label": "hh()"
     },
     {
@@ -1674,7 +1674,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lh",
-      "community": 13,
+      "community": 11,
       "norm_label": "lh()"
     },
     {
@@ -1683,7 +1683,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_uh",
-      "community": 13,
+      "community": 11,
       "norm_label": "uh()"
     },
     {
@@ -1692,7 +1692,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ph",
-      "community": 13,
+      "community": 11,
       "norm_label": "ph()"
     },
     {
@@ -1701,7 +1701,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_fh",
-      "community": 13,
+      "community": 11,
       "norm_label": "fh()"
     },
     {
@@ -1719,7 +1719,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_mh",
-      "community": 13,
+      "community": 11,
       "norm_label": "mh()"
     },
     {
@@ -1728,7 +1728,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_th",
-      "community": 13,
+      "community": 11,
       "norm_label": "th()"
     },
     {
@@ -1737,7 +1737,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_kh",
-      "community": 13,
+      "community": 11,
       "norm_label": "kh()"
     },
     {
@@ -1782,7 +1782,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_il",
-      "community": 13,
+      "community": 11,
       "norm_label": "il()"
     },
     {
@@ -1809,7 +1809,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_sl",
-      "community": 3,
+      "community": 8,
       "norm_label": "sl()"
     },
     {
@@ -1818,7 +1818,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_dl",
-      "community": 10,
+      "community": 5,
       "norm_label": "dl()"
     },
     {
@@ -1827,7 +1827,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_hl",
-      "community": 3,
+      "community": 8,
       "norm_label": "hl()"
     },
     {
@@ -1836,7 +1836,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ll",
-      "community": 3,
+      "community": 8,
       "norm_label": "ll()"
     },
     {
@@ -1845,7 +1845,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_cl",
-      "community": 10,
+      "community": 5,
       "norm_label": "cl()"
     },
     {
@@ -1863,7 +1863,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_fl",
-      "community": 3,
+      "community": 8,
       "norm_label": "fl()"
     },
     {
@@ -1872,7 +1872,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wl",
-      "community": 1,
+      "community": 2,
       "norm_label": "wl()"
     },
     {
@@ -1881,7 +1881,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xl",
-      "community": 3,
+      "community": 8,
       "norm_label": "xl()"
     },
     {
@@ -1908,7 +1908,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_rl",
-      "community": 1,
+      "community": 6,
       "norm_label": "rl()"
     },
     {
@@ -1917,7 +1917,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_kl",
-      "community": 8,
+      "community": 6,
       "norm_label": "kl()"
     },
     {
@@ -1926,7 +1926,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_pl",
-      "community": 3,
+      "community": 8,
       "norm_label": "pl()"
     },
     {
@@ -1944,7 +1944,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_zl",
-      "community": 3,
+      "community": 6,
       "norm_label": "zl()"
     },
     {
@@ -1953,7 +1953,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_bl",
-      "community": 3,
+      "community": 8,
       "norm_label": "bl()"
     },
     {
@@ -1962,7 +1962,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_jl",
-      "community": 3,
+      "community": 8,
       "norm_label": "jl()"
     },
     {
@@ -1971,7 +1971,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vl",
-      "community": 3,
+      "community": 8,
       "norm_label": "vl()"
     },
     {
@@ -1980,7 +1980,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yl",
-      "community": 3,
+      "community": 8,
       "norm_label": "yl()"
     },
     {
@@ -1998,7 +1998,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_l",
-      "community": 3,
+      "community": 8,
       "norm_label": "_l()"
     },
     {
@@ -2007,7 +2007,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_pc",
-      "community": 1,
+      "community": 12,
       "norm_label": "pc()"
     },
     {
@@ -2016,7 +2016,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_bc",
-      "community": 1,
+      "community": 12,
       "norm_label": "bc()"
     },
     {
@@ -2025,7 +2025,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_mc",
-      "community": 1,
+      "community": 12,
       "norm_label": "mc()"
     },
     {
@@ -2034,7 +2034,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xc",
-      "community": 1,
+      "community": 12,
       "norm_label": "xc()"
     },
     {
@@ -2043,7 +2043,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_dc",
-      "community": 1,
+      "community": 12,
       "norm_label": "dc()"
     },
     {
@@ -2052,7 +2052,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_rc",
-      "community": 1,
+      "community": 12,
       "norm_label": "rc()"
     },
     {
@@ -2079,7 +2079,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_gc_init",
-      "community": 10,
+      "community": 1,
       "norm_label": ".init()"
     },
     {
@@ -2088,7 +2088,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_gc_initialized",
-      "community": 10,
+      "community": 1,
       "norm_label": ".initialized()"
     },
     {
@@ -2097,7 +2097,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_gc_fillmipmap",
-      "community": 10,
+      "community": 1,
       "norm_label": "._fillmipmap()"
     },
     {
@@ -2106,7 +2106,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_gc_drawimageatposition",
-      "community": 10,
+      "community": 1,
       "norm_label": ".drawimageatposition()"
     },
     {
@@ -2349,7 +2349,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tp",
-      "community": 5,
+      "community": 7,
       "norm_label": "tp"
     },
     {
@@ -2358,7 +2358,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tp_constructor",
-      "community": 5,
+      "community": 7,
       "norm_label": ".constructor()"
     },
     {
@@ -2367,7 +2367,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tp_setoptions",
-      "community": 5,
+      "community": 7,
       "norm_label": ".setoptions()"
     },
     {
@@ -2376,7 +2376,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tp_clear",
-      "community": 5,
+      "community": 7,
       "norm_label": ".clear()"
     },
     {
@@ -2385,7 +2385,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tp_get",
-      "community": 5,
+      "community": 7,
       "norm_label": ".get()"
     },
     {
@@ -2394,7 +2394,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tp_add",
-      "community": 5,
+      "community": 7,
       "norm_label": ".add()"
     },
     {
@@ -2511,7 +2511,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_uf",
-      "community": 2,
+      "community": 1,
       "norm_label": "uf()"
     },
     {
@@ -2565,7 +2565,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wf",
-      "community": 2,
+      "community": 1,
       "norm_label": "wf()"
     },
     {
@@ -2574,7 +2574,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qf",
-      "community": 2,
+      "community": 1,
       "norm_label": "qf()"
     },
     {
@@ -2583,7 +2583,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_kf",
-      "community": 2,
+      "community": 1,
       "norm_label": "kf()"
     },
     {
@@ -2682,7 +2682,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qv",
-      "community": 7,
+      "community": 6,
       "norm_label": "qv()"
     },
     {
@@ -2736,7 +2736,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eb",
-      "community": 7,
+      "community": 6,
       "norm_label": "eb()"
     },
     {
@@ -2745,7 +2745,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ib",
-      "community": 7,
+      "community": 6,
       "norm_label": "ib()"
     },
     {
@@ -3150,7 +3150,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_w_constructor",
-      "community": 7,
+      "community": 6,
       "norm_label": ".constructor()"
     },
     {
@@ -3168,7 +3168,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_w_start",
-      "community": 1,
+      "community": 2,
       "norm_label": ".start()"
     },
     {
@@ -3177,7 +3177,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_w_stop",
-      "community": 1,
+      "community": 2,
       "norm_label": ".stop()"
     },
     {
@@ -3222,7 +3222,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_gx",
-      "community": 2,
+      "community": 1,
       "norm_label": "gx"
     },
     {
@@ -3231,7 +3231,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_gx_constructor",
-      "community": 2,
+      "community": 1,
       "norm_label": ".constructor()"
     },
     {
@@ -3240,7 +3240,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_gx_filter",
-      "community": 2,
+      "community": 1,
       "norm_label": ".filter()"
     },
     {
@@ -3249,7 +3249,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_gx_map",
-      "community": 2,
+      "community": 1,
       "norm_label": ".map()"
     },
     {
@@ -3258,7 +3258,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_gx_flatmap",
-      "community": 2,
+      "community": 1,
       "norm_label": ".flatmap()"
     },
     {
@@ -3267,7 +3267,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_gx_to",
-      "community": 2,
+      "community": 1,
       "norm_label": ".to()"
     },
     {
@@ -3285,7 +3285,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tx",
-      "community": 7,
+      "community": 6,
       "norm_label": "tx"
     },
     {
@@ -3294,7 +3294,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tx_constructor",
-      "community": 7,
+      "community": 6,
       "norm_label": ".constructor()"
     },
     {
@@ -3303,7 +3303,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tx_setoptions",
-      "community": 7,
+      "community": 6,
       "norm_label": ".setoptions()"
     },
     {
@@ -3312,7 +3312,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tx_extend",
-      "community": 7,
+      "community": 6,
       "norm_label": ".extend()"
     },
     {
@@ -3321,7 +3321,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tx_destroy",
-      "community": 7,
+      "community": 6,
       "norm_label": ".destroy()"
     },
     {
@@ -3330,7 +3330,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tx_replace",
-      "community": 7,
+      "community": 6,
       "norm_label": ".replace()"
     },
     {
@@ -3339,7 +3339,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tx_queue",
-      "community": 7,
+      "community": 6,
       "norm_label": ".queue()"
     },
     {
@@ -3348,7 +3348,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tx_flushifneeded",
-      "community": 7,
+      "community": 6,
       "norm_label": "._flushifneeded()"
     },
     {
@@ -3357,7 +3357,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tx_flush",
-      "community": 7,
+      "community": 6,
       "norm_label": ".flush()"
     },
     {
@@ -3366,7 +3366,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_cx",
-      "community": 1,
+      "community": 2,
       "norm_label": "cx"
     },
     {
@@ -3375,7 +3375,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_cx_constructor",
-      "community": 1,
+      "community": 2,
       "norm_label": ".constructor()"
     },
     {
@@ -3393,7 +3393,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_cx_on",
-      "community": 1,
+      "community": 2,
       "norm_label": ".on()"
     },
     {
@@ -3402,7 +3402,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_cx_off",
-      "community": 1,
+      "community": 2,
       "norm_label": ".off()"
     },
     {
@@ -3411,7 +3411,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix",
-      "community": 1,
+      "community": 2,
       "norm_label": "ix"
     },
     {
@@ -3420,7 +3420,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_constructor",
-      "community": 1,
+      "community": 2,
       "norm_label": ".constructor()"
     },
     {
@@ -3429,7 +3429,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_xb",
-      "community": 1,
+      "community": 2,
       "norm_label": ".[xb]()"
     },
     {
@@ -3456,7 +3456,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_values",
-      "community": 1,
+      "community": 2,
       "norm_label": ".values()"
     },
     {
@@ -3465,7 +3465,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_toidarray",
-      "community": 1,
+      "community": 2,
       "norm_label": ".toidarray()"
     },
     {
@@ -3474,7 +3474,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_toitemarray",
-      "community": 1,
+      "community": 2,
       "norm_label": ".toitemarray()"
     },
     {
@@ -3483,7 +3483,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_toentryarray",
-      "community": 1,
+      "community": 2,
       "norm_label": ".toentryarray()"
     },
     {
@@ -3492,7 +3492,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_toobjectmap",
-      "community": 1,
+      "community": 2,
       "norm_label": ".toobjectmap()"
     },
     {
@@ -3501,7 +3501,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_tomap",
-      "community": 1,
+      "community": 2,
       "norm_label": ".tomap()"
     },
     {
@@ -3510,7 +3510,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_toidset",
-      "community": 1,
+      "community": 2,
       "norm_label": ".toidset()"
     },
     {
@@ -3519,7 +3519,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_toitemset",
-      "community": 1,
+      "community": 2,
       "norm_label": ".toitemset()"
     },
     {
@@ -3528,7 +3528,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_cache",
-      "community": 1,
+      "community": 2,
       "norm_label": ".cache()"
     },
     {
@@ -3537,7 +3537,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_distinct",
-      "community": 1,
+      "community": 2,
       "norm_label": ".distinct()"
     },
     {
@@ -3555,7 +3555,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_foreach",
-      "community": 1,
+      "community": 2,
       "norm_label": ".foreach()"
     },
     {
@@ -3564,7 +3564,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_map",
-      "community": 1,
+      "community": 2,
       "norm_label": ".map()"
     },
     {
@@ -3573,7 +3573,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_max",
-      "community": 1,
+      "community": 2,
       "norm_label": ".max()"
     },
     {
@@ -3582,7 +3582,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_min",
-      "community": 1,
+      "community": 2,
       "norm_label": ".min()"
     },
     {
@@ -3591,7 +3591,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_reduce",
-      "community": 1,
+      "community": 4,
       "norm_label": ".reduce()"
     },
     {
@@ -3600,7 +3600,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_sort",
-      "community": 1,
+      "community": 2,
       "norm_label": ".sort()"
     },
     {
@@ -3627,7 +3627,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ex_constructor",
-      "community": 7,
+      "community": 6,
       "norm_label": ".constructor()"
     },
     {
@@ -3636,7 +3636,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ex_setoptions",
-      "community": 7,
+      "community": 6,
       "norm_label": ".setoptions()"
     },
     {
@@ -3744,7 +3744,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ex_clear",
-      "community": 5,
+      "community": 9,
       "norm_label": ".clear()"
     },
     {
@@ -3807,7 +3807,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_idprop",
-      "community": 1,
+      "community": 2,
       "norm_label": ".idprop()"
     },
     {
@@ -3816,7 +3816,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_setdata",
-      "community": 1,
+      "community": 2,
       "norm_label": ".setdata()"
     },
     {
@@ -3825,7 +3825,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_refresh",
-      "community": 1,
+      "community": 2,
       "norm_label": ".refresh()"
     },
     {
@@ -3843,7 +3843,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_getids",
-      "community": 1,
+      "community": 2,
       "norm_label": ".getids()"
     },
     {
@@ -3852,7 +3852,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_getdataset",
-      "community": 1,
+      "community": 2,
       "norm_label": ".getdataset()"
     },
     {
@@ -3861,7 +3861,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_stream",
-      "community": 1,
+      "community": 2,
       "norm_label": ".stream()"
     },
     {
@@ -3870,7 +3870,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ix_dispose",
-      "community": 1,
+      "community": 2,
       "norm_label": ".dispose()"
     },
     {
@@ -3888,7 +3888,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ox",
-      "community": 1,
+      "community": 2,
       "norm_label": "ox()"
     },
     {
@@ -3897,7 +3897,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_nx",
-      "community": 1,
+      "community": 2,
       "norm_label": "nx()"
     },
     {
@@ -3924,7 +3924,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx",
-      "community": 6,
+      "community": 7,
       "norm_label": "yx()"
     },
     {
@@ -3942,7 +3942,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_zx",
-      "community": 8,
+      "community": 6,
       "norm_label": "zx()"
     },
     {
@@ -3951,7 +3951,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_sx",
-      "community": 5,
+      "community": 6,
       "norm_label": "sx()"
     },
     {
@@ -3960,7 +3960,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_fx",
-      "community": 6,
+      "community": 8,
       "norm_label": "fx()"
     },
     {
@@ -3969,7 +3969,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx",
-      "community": 6,
+      "community": 7,
       "norm_label": "lx"
     },
     {
@@ -3978,7 +3978,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_constructor",
-      "community": 6,
+      "community": 7,
       "norm_label": ".constructor()"
     },
     {
@@ -3987,7 +3987,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_add",
-      "community": 6,
+      "community": 7,
       "norm_label": "._add()"
     },
     {
@@ -3996,7 +3996,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_curwidth",
-      "community": 6,
+      "community": 7,
       "norm_label": ".curwidth()"
     },
     {
@@ -4005,7 +4005,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_append",
-      "community": 6,
+      "community": 7,
       "norm_label": ".append()"
     },
     {
@@ -4014,7 +4014,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_newline",
-      "community": 6,
+      "community": 7,
       "norm_label": ".newline()"
     },
     {
@@ -4023,7 +4023,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_determinelineheights",
-      "community": 6,
+      "community": 7,
       "norm_label": ".determinelineheights()"
     },
     {
@@ -4032,7 +4032,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_determinelabelsize",
-      "community": 6,
+      "community": 7,
       "norm_label": ".determinelabelsize()"
     },
     {
@@ -4041,7 +4041,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_removeemptyblocks",
-      "community": 6,
+      "community": 7,
       "norm_label": ".removeemptyblocks()"
     },
     {
@@ -4050,7 +4050,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_lx_finalize",
-      "community": 6,
+      "community": 7,
       "norm_label": ".finalize()"
     },
     {
@@ -4059,7 +4059,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx",
-      "community": 6,
+      "community": 7,
       "norm_label": "vx"
     },
     {
@@ -4068,7 +4068,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_constructor",
-      "community": 6,
+      "community": 7,
       "norm_label": ".constructor()"
     },
     {
@@ -4077,7 +4077,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_mod",
-      "community": 6,
+      "community": 7,
       "norm_label": ".mod()"
     },
     {
@@ -4086,7 +4086,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_modname",
-      "community": 6,
+      "community": 7,
       "norm_label": ".modname()"
     },
     {
@@ -4095,7 +4095,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_emitblock",
-      "community": 6,
+      "community": 7,
       "norm_label": ".emitblock()"
     },
     {
@@ -4104,7 +4104,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_add",
-      "community": 6,
+      "community": 7,
       "norm_label": ".add()"
     },
     {
@@ -4113,7 +4113,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_parsews",
-      "community": 6,
+      "community": 7,
       "norm_label": ".parsews()"
     },
     {
@@ -4122,7 +4122,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_settag",
-      "community": 6,
+      "community": 7,
       "norm_label": ".settag()"
     },
     {
@@ -4131,7 +4131,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_unsettag",
-      "community": 6,
+      "community": 7,
       "norm_label": ".unsettag()"
     },
     {
@@ -4140,7 +4140,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_parsestarttag",
-      "community": 6,
+      "community": 7,
       "norm_label": ".parsestarttag()"
     },
     {
@@ -4149,7 +4149,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_match",
-      "community": 6,
+      "community": 7,
       "norm_label": ".match()"
     },
     {
@@ -4158,7 +4158,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_parseendtag",
-      "community": 6,
+      "community": 7,
       "norm_label": ".parseendtag()"
     },
     {
@@ -4167,7 +4167,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_replace",
-      "community": 6,
+      "community": 7,
       "norm_label": ".replace()"
     },
     {
@@ -4176,7 +4176,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vx_prepareregexp",
-      "community": 6,
+      "community": 7,
       "norm_label": ".prepareregexp()"
     },
     {
@@ -4185,7 +4185,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_constructor",
-      "community": 6,
+      "community": 7,
       "norm_label": ".constructor()"
     },
     {
@@ -4194,7 +4194,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_process",
-      "community": 6,
+      "community": 7,
       "norm_label": ".process()"
     },
     {
@@ -4203,7 +4203,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_decodemarkupsystem",
-      "community": 6,
+      "community": 7,
       "norm_label": ".decodemarkupsystem()"
     },
     {
@@ -4212,7 +4212,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_splithtmlblocks",
-      "community": 6,
+      "community": 7,
       "norm_label": ".splithtmlblocks()"
     },
     {
@@ -4221,7 +4221,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_splitmarkdownblocks",
-      "community": 6,
+      "community": 7,
       "norm_label": ".splitmarkdownblocks()"
     },
     {
@@ -4230,7 +4230,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_splitblocks",
-      "community": 6,
+      "community": 7,
       "norm_label": ".splitblocks()"
     },
     {
@@ -4239,7 +4239,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_overmaxwidth",
-      "community": 6,
+      "community": 7,
       "norm_label": ".overmaxwidth()"
     },
     {
@@ -4248,7 +4248,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_getlongestfit",
-      "community": 6,
+      "community": 7,
       "norm_label": ".getlongestfit()"
     },
     {
@@ -4257,7 +4257,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_getlongestfitword",
-      "community": 6,
+      "community": 7,
       "norm_label": ".getlongestfitword()"
     },
     {
@@ -4266,7 +4266,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yx_splitstringintolines",
-      "community": 6,
+      "community": 7,
       "norm_label": ".splitstringintolines()"
     },
     {
@@ -4275,7 +4275,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx",
-      "community": 8,
+      "community": 6,
       "norm_label": "qx"
     },
     {
@@ -4284,7 +4284,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_constructor",
-      "community": 7,
+      "community": 6,
       "norm_label": ".constructor()"
     },
     {
@@ -4293,7 +4293,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_setoptions",
-      "community": 8,
+      "community": 6,
       "norm_label": ".setoptions()"
     },
     {
@@ -4302,7 +4302,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_initfontoptions",
-      "community": 8,
+      "community": 6,
       "norm_label": ".initfontoptions()"
     },
     {
@@ -4311,7 +4311,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_parsefontstring",
-      "community": 8,
+      "community": 6,
       "norm_label": ".parsefontstring()"
     },
     {
@@ -4320,7 +4320,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_constrain",
-      "community": 8,
+      "community": 6,
       "norm_label": ".constrain()"
     },
     {
@@ -4329,7 +4329,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_update",
-      "community": 8,
+      "community": 6,
       "norm_label": ".update()"
     },
     {
@@ -4338,7 +4338,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_adjustsizes",
-      "community": 2,
+      "community": 1,
       "norm_label": ".adjustsizes()"
     },
     {
@@ -4347,7 +4347,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_addfontoptionstopile",
-      "community": 8,
+      "community": 6,
       "norm_label": ".addfontoptionstopile()"
     },
     {
@@ -4356,7 +4356,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_addfonttopile",
-      "community": 8,
+      "community": 6,
       "norm_label": ".addfonttopile()"
     },
     {
@@ -4365,7 +4365,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_getbasicoptions",
-      "community": 8,
+      "community": 6,
       "norm_label": ".getbasicoptions()"
     },
     {
@@ -4374,7 +4374,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_getfontoption",
-      "community": 8,
+      "community": 6,
       "norm_label": ".getfontoption()"
     },
     {
@@ -4383,7 +4383,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_getfontoptions",
-      "community": 8,
+      "community": 6,
       "norm_label": ".getfontoptions()"
     },
     {
@@ -4392,7 +4392,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_propagatefonts",
-      "community": 8,
+      "community": 6,
       "norm_label": ".propagatefonts()"
     },
     {
@@ -4401,7 +4401,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_draw",
-      "community": 8,
+      "community": 6,
       "norm_label": ".draw()"
     },
     {
@@ -4410,7 +4410,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_drawbackground",
-      "community": 8,
+      "community": 6,
       "norm_label": "._drawbackground()"
     },
     {
@@ -4419,7 +4419,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_drawtext",
-      "community": 8,
+      "community": 6,
       "norm_label": "._drawtext()"
     },
     {
@@ -4428,7 +4428,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_setalignment",
-      "community": 8,
+      "community": 6,
       "norm_label": "._setalignment()"
     },
     {
@@ -4437,7 +4437,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_getcolor",
-      "community": 3,
+      "community": 6,
       "norm_label": "._getcolor()"
     },
     {
@@ -4455,7 +4455,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_getsize",
-      "community": 5,
+      "community": 6,
       "norm_label": ".getsize()"
     },
     {
@@ -4464,7 +4464,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_calculatelabelsize",
-      "community": 8,
+      "community": 6,
       "norm_label": ".calculatelabelsize()"
     },
     {
@@ -4473,7 +4473,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_getformattingvalues",
-      "community": 8,
+      "community": 6,
       "norm_label": ".getformattingvalues()"
     },
     {
@@ -4482,7 +4482,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_differentstate",
-      "community": 8,
+      "community": 6,
       "norm_label": ".differentstate()"
     },
     {
@@ -4491,7 +4491,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_processlabeltext",
-      "community": 8,
+      "community": 6,
       "norm_label": "._processlabeltext()"
     },
     {
@@ -4500,7 +4500,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_processlabel",
-      "community": 8,
+      "community": 6,
       "norm_label": "._processlabel()"
     },
     {
@@ -4509,7 +4509,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qx_visible",
-      "community": 5,
+      "community": 6,
       "norm_label": ".visible()"
     },
     {
@@ -4518,7 +4518,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux",
-      "community": 2,
+      "community": 1,
       "norm_label": "ux"
     },
     {
@@ -4527,7 +4527,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux_constructor",
-      "community": 2,
+      "community": 1,
       "norm_label": ".constructor()"
     },
     {
@@ -4536,7 +4536,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux_setoptions",
-      "community": 2,
+      "community": 1,
       "norm_label": ".setoptions()"
     },
     {
@@ -4545,7 +4545,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux_setmargins",
-      "community": 2,
+      "community": 1,
       "norm_label": "._setmargins()"
     },
     {
@@ -4554,7 +4554,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux_distancetoborder",
-      "community": 2,
+      "community": 1,
       "norm_label": "._distancetoborder()"
     },
     {
@@ -4563,7 +4563,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux_enableshadow",
-      "community": 2,
+      "community": 1,
       "norm_label": ".enableshadow()"
     },
     {
@@ -4572,7 +4572,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux_disableshadow",
-      "community": 2,
+      "community": 1,
       "norm_label": ".disableshadow()"
     },
     {
@@ -4581,7 +4581,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux_enableborderdashes",
-      "community": 2,
+      "community": 1,
       "norm_label": ".enableborderdashes()"
     },
     {
@@ -4590,7 +4590,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux_disableborderdashes",
-      "community": 2,
+      "community": 1,
       "norm_label": ".disableborderdashes()"
     },
     {
@@ -4599,7 +4599,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux_needsrefresh",
-      "community": 8,
+      "community": 6,
       "norm_label": ".needsrefresh()"
     },
     {
@@ -4608,7 +4608,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux_initcontextfordraw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".initcontextfordraw()"
     },
     {
@@ -4617,7 +4617,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux_performstroke",
-      "community": 2,
+      "community": 1,
       "norm_label": ".performstroke()"
     },
     {
@@ -4626,7 +4626,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux_performfill",
-      "community": 2,
+      "community": 1,
       "norm_label": ".performfill()"
     },
     {
@@ -4635,7 +4635,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux_addboundingboxmargin",
-      "community": 2,
+      "community": 1,
       "norm_label": "._addboundingboxmargin()"
     },
     {
@@ -4644,7 +4644,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ux_updateboundingbox",
-      "community": 2,
+      "community": 1,
       "norm_label": "._updateboundingbox()"
     },
     {
@@ -4662,7 +4662,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_hx",
-      "community": 2,
+      "community": 1,
       "norm_label": "hx"
     },
     {
@@ -4671,7 +4671,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_hx_constructor",
-      "community": 2,
+      "community": 1,
       "norm_label": ".constructor()"
     },
     {
@@ -4680,7 +4680,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_hx_setoptions",
-      "community": 2,
+      "community": 1,
       "norm_label": ".setoptions()"
     },
     {
@@ -4689,7 +4689,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_hx_setimages",
-      "community": 2,
+      "community": 1,
       "norm_label": ".setimages()"
     },
     {
@@ -4698,7 +4698,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_hx_switchimages",
-      "community": 2,
+      "community": 1,
       "norm_label": ".switchimages()"
     },
     {
@@ -4707,7 +4707,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_hx_getimagepadding",
-      "community": 2,
+      "community": 1,
       "norm_label": "._getimagepadding()"
     },
     {
@@ -4716,7 +4716,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_hx_resizeimage",
-      "community": 2,
+      "community": 1,
       "norm_label": "._resizeimage()"
     },
     {
@@ -4725,7 +4725,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_hx_drawrawcircle",
-      "community": 2,
+      "community": 1,
       "norm_label": "._drawrawcircle()"
     },
     {
@@ -4734,7 +4734,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_hx_drawimageatposition",
-      "community": 2,
+      "community": 1,
       "norm_label": "._drawimageatposition()"
     },
     {
@@ -4743,7 +4743,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_hx_drawimagelabel",
-      "community": 2,
+      "community": 1,
       "norm_label": "._drawimagelabel()"
     },
     {
@@ -4752,7 +4752,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_x_constructor",
-      "community": 2,
+      "community": 1,
       "norm_label": ".constructor()"
     },
     {
@@ -4761,7 +4761,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_x_resize",
-      "community": 2,
+      "community": 8,
       "norm_label": ".resize()"
     },
     {
@@ -4770,7 +4770,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_x_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -4779,7 +4779,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_x_updateboundingbox",
-      "community": 3,
+      "community": 1,
       "norm_label": ".updateboundingbox()"
     },
     {
@@ -4788,7 +4788,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_x_distancetoborder",
-      "community": 2,
+      "community": 1,
       "norm_label": ".distancetoborder()"
     },
     {
@@ -4815,7 +4815,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_jx_drawshape",
-      "community": 2,
+      "community": 1,
       "norm_label": "._drawshape()"
     },
     {
@@ -4824,7 +4824,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_jx_updateboundingbox",
-      "community": 3,
+      "community": 8,
       "norm_label": ".updateboundingbox()"
     },
     {
@@ -4842,7 +4842,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ge_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -4851,7 +4851,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ge_distancetoborder",
-      "community": 2,
+      "community": 1,
       "norm_label": ".distancetoborder()"
     },
     {
@@ -4860,7 +4860,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ae",
-      "community": 2,
+      "community": 1,
       "norm_label": "ae"
     },
     {
@@ -4869,7 +4869,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ae_constructor",
-      "community": 2,
+      "community": 1,
       "norm_label": ".constructor()"
     },
     {
@@ -4887,7 +4887,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ae_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -4896,7 +4896,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ae_distancetoborder",
-      "community": 2,
+      "community": 1,
       "norm_label": ".distancetoborder()"
     },
     {
@@ -4914,7 +4914,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -4923,7 +4923,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_distancetoborder",
-      "community": 2,
+      "community": 1,
       "norm_label": ".distancetoborder()"
     },
     {
@@ -4941,7 +4941,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ie_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -4950,7 +4950,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ie_distancetoborder",
-      "community": 2,
+      "community": 1,
       "norm_label": ".distancetoborder()"
     },
     {
@@ -4959,7 +4959,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ee_constructor",
-      "community": 2,
+      "community": 1,
       "norm_label": ".constructor()"
     },
     {
@@ -4977,7 +4977,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ee_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -4995,7 +4995,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ee_icon",
-      "community": 2,
+      "community": 1,
       "norm_label": "._icon()"
     },
     {
@@ -5004,7 +5004,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ee_distancetoborder",
-      "community": 2,
+      "community": 1,
       "norm_label": ".distancetoborder()"
     },
     {
@@ -5013,7 +5013,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_oe",
-      "community": 2,
+      "community": 1,
       "norm_label": "oe"
     },
     {
@@ -5022,7 +5022,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_oe_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -5031,7 +5031,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_oe_distancetoborder",
-      "community": 2,
+      "community": 1,
       "norm_label": ".distancetoborder()"
     },
     {
@@ -5040,7 +5040,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ne",
-      "community": 2,
+      "community": 1,
       "norm_label": "ne"
     },
     {
@@ -5049,7 +5049,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ne_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -5058,7 +5058,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ne_distancetoborder",
-      "community": 2,
+      "community": 1,
       "norm_label": ".distancetoborder()"
     },
     {
@@ -5067,7 +5067,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_se",
-      "community": 2,
+      "community": 1,
       "norm_label": "se"
     },
     {
@@ -5076,7 +5076,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_se_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -5085,7 +5085,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_se_distancetoborder",
-      "community": 2,
+      "community": 1,
       "norm_label": ".distancetoborder()"
     },
     {
@@ -5094,7 +5094,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_re_constructor",
-      "community": 2,
+      "community": 1,
       "norm_label": ".constructor()"
     },
     {
@@ -5112,7 +5112,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_re_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -5121,7 +5121,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_re_distancetoborder",
-      "community": 2,
+      "community": 1,
       "norm_label": ".distancetoborder()"
     },
     {
@@ -5130,7 +5130,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_de",
-      "community": 2,
+      "community": 1,
       "norm_label": "de"
     },
     {
@@ -5139,7 +5139,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_de_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -5148,7 +5148,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_de_distancetoborder",
-      "community": 2,
+      "community": 1,
       "norm_label": ".distancetoborder()"
     },
     {
@@ -5157,7 +5157,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_le",
-      "community": 2,
+      "community": 8,
       "norm_label": "le()"
     },
     {
@@ -5166,7 +5166,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_constructor",
-      "community": 8,
+      "community": 2,
       "norm_label": ".constructor()"
     },
     {
@@ -5175,7 +5175,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_attachedge",
-      "community": 7,
+      "community": 8,
       "norm_label": ".attachedge()"
     },
     {
@@ -5184,7 +5184,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_detachedge",
-      "community": 7,
+      "community": 8,
       "norm_label": ".detachedge()"
     },
     {
@@ -5247,7 +5247,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_getformattingvalues",
-      "community": 3,
+      "community": 6,
       "norm_label": ".getformattingvalues()"
     },
     {
@@ -5256,7 +5256,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_updatelabelmodule",
-      "community": 2,
+      "community": 8,
       "norm_label": ".updatelabelmodule()"
     },
     {
@@ -5337,7 +5337,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_getlabelsize",
-      "community": 5,
+      "community": 8,
       "norm_label": ".getlabelsize()"
     },
     {
@@ -5355,7 +5355,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_updateboundingbox",
-      "community": 2,
+      "community": 1,
       "norm_label": ".updateboundingbox()"
     },
     {
@@ -5364,7 +5364,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_resize",
-      "community": 2,
+      "community": 1,
       "norm_label": ".resize()"
     },
     {
@@ -5373,7 +5373,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ce_getitemsonpoint",
-      "community": 5,
+      "community": 6,
       "norm_label": ".getitemsonpoint()"
     },
     {
@@ -5409,7 +5409,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue",
-      "community": 1,
+      "community": 2,
       "norm_label": "ue"
     },
     {
@@ -5418,7 +5418,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_constructor",
-      "community": 1,
+      "community": 2,
       "norm_label": ".constructor()"
     },
     {
@@ -5427,7 +5427,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_bindeventlisteners",
-      "community": 1,
+      "community": 2,
       "norm_label": ".bindeventlisteners()"
     },
     {
@@ -5445,7 +5445,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_setdata",
-      "community": 1,
+      "community": 2,
       "norm_label": ".setdata()"
     },
     {
@@ -5463,7 +5463,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_update",
-      "community": 1,
+      "community": 2,
       "norm_label": ".update()"
     },
     {
@@ -5472,7 +5472,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_remove",
-      "community": 1,
+      "community": 2,
       "norm_label": ".remove()"
     },
     {
@@ -5481,7 +5481,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_create",
-      "community": 1,
+      "community": 2,
       "norm_label": ".create()"
     },
     {
@@ -5490,7 +5490,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_refresh",
-      "community": 1,
+      "community": 6,
       "norm_label": ".refresh()"
     },
     {
@@ -5499,7 +5499,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_getpositions",
-      "community": 1,
+      "community": 2,
       "norm_label": ".getpositions()"
     },
     {
@@ -5508,7 +5508,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_getposition",
-      "community": 1,
+      "community": 2,
       "norm_label": ".getposition()"
     },
     {
@@ -5517,7 +5517,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_storepositions",
-      "community": 1,
+      "community": 2,
       "norm_label": ".storepositions()"
     },
     {
@@ -5526,7 +5526,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_getboundingbox",
-      "community": 1,
+      "community": 2,
       "norm_label": ".getboundingbox()"
     },
     {
@@ -5535,7 +5535,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_getconnectednodes",
-      "community": 1,
+      "community": 2,
       "norm_label": ".getconnectednodes()"
     },
     {
@@ -5544,7 +5544,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_getconnectededges",
-      "community": 1,
+      "community": 2,
       "norm_label": ".getconnectededges()"
     },
     {
@@ -5553,7 +5553,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ue_movenode",
-      "community": 1,
+      "community": 2,
       "norm_label": ".movenode()"
     },
     {
@@ -5562,7 +5562,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_de_transform",
-      "community": 2,
+      "community": 1,
       "norm_label": ".transform()"
     },
     {
@@ -5571,7 +5571,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_de_drawpath",
-      "community": 2,
+      "community": 1,
       "norm_label": ".drawpath()"
     },
     {
@@ -5580,7 +5580,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ke_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -5589,7 +5589,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_pe_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -5598,7 +5598,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_me",
-      "community": 2,
+      "community": 1,
       "norm_label": "me"
     },
     {
@@ -5607,7 +5607,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_me_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -5616,7 +5616,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ze",
-      "community": 2,
+      "community": 1,
       "norm_label": "ze"
     },
     {
@@ -5625,7 +5625,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ze_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -5634,7 +5634,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_be",
-      "community": 2,
+      "community": 1,
       "norm_label": "be"
     },
     {
@@ -5643,7 +5643,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_be_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -5652,7 +5652,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_fe",
-      "community": 2,
+      "community": 1,
       "norm_label": "fe"
     },
     {
@@ -5661,7 +5661,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_fe_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -5670,7 +5670,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_le_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -5679,7 +5679,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_je",
-      "community": 2,
+      "community": 1,
       "norm_label": "je"
     },
     {
@@ -5688,7 +5688,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_je_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -5706,7 +5706,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we",
-      "community": 2,
+      "community": 1,
       "norm_label": "we"
     },
     {
@@ -5715,7 +5715,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_constructor",
-      "community": 7,
+      "community": 6,
       "norm_label": ".constructor()"
     },
     {
@@ -5724,7 +5724,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_connect",
-      "community": 2,
+      "community": 1,
       "norm_label": ".connect()"
     },
     {
@@ -5733,7 +5733,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_cleanup",
-      "community": 2,
+      "community": 1,
       "norm_label": ".cleanup()"
     },
     {
@@ -5742,7 +5742,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_setoptions",
-      "community": 2,
+      "community": 1,
       "norm_label": ".setoptions()"
     },
     {
@@ -5751,7 +5751,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_drawline",
-      "community": 2,
+      "community": 1,
       "norm_label": ".drawline()"
     },
     {
@@ -5760,7 +5760,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_drawdashedline",
-      "community": 2,
+      "community": 1,
       "norm_label": "._drawdashedline()"
     },
     {
@@ -5769,7 +5769,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_findborderposition",
-      "community": 2,
+      "community": 1,
       "norm_label": ".findborderposition()"
     },
     {
@@ -5778,7 +5778,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_findborderpositions",
-      "community": 2,
+      "community": 1,
       "norm_label": ".findborderpositions()"
     },
     {
@@ -5787,7 +5787,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_getcircledata",
-      "community": 2,
+      "community": 1,
       "norm_label": "._getcircledata()"
     },
     {
@@ -5796,7 +5796,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_pointoncircle",
-      "community": 2,
+      "community": 1,
       "norm_label": "._pointoncircle()"
     },
     {
@@ -5805,7 +5805,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_findborderpositioncircle",
-      "community": 2,
+      "community": 1,
       "norm_label": "._findborderpositioncircle()"
     },
     {
@@ -5823,7 +5823,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_getcolor",
-      "community": 2,
+      "community": 1,
       "norm_label": ".getcolor()"
     },
     {
@@ -5832,7 +5832,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_circle",
-      "community": 2,
+      "community": 1,
       "norm_label": "._circle()"
     },
     {
@@ -5841,7 +5841,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_getdistancetoedge",
-      "community": 5,
+      "community": 1,
       "norm_label": ".getdistancetoedge()"
     },
     {
@@ -5850,7 +5850,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_getdistancetoline",
-      "community": 2,
+      "community": 1,
       "norm_label": "._getdistancetoline()"
     },
     {
@@ -5859,7 +5859,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_getarrowdata",
-      "community": 2,
+      "community": 1,
       "norm_label": ".getarrowdata()"
     },
     {
@@ -5868,7 +5868,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_drawarrowhead",
-      "community": 2,
+      "community": 1,
       "norm_label": ".drawarrowhead()"
     },
     {
@@ -5877,7 +5877,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_enableshadow",
-      "community": 2,
+      "community": 1,
       "norm_label": ".enableshadow()"
     },
     {
@@ -5886,7 +5886,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_disableshadow",
-      "community": 2,
+      "community": 1,
       "norm_label": ".disableshadow()"
     },
     {
@@ -5895,7 +5895,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_drawbackground",
-      "community": 2,
+      "community": 1,
       "norm_label": ".drawbackground()"
     },
     {
@@ -5904,7 +5904,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_we_setstrokedashed",
-      "community": 2,
+      "community": 1,
       "norm_label": ".setstrokedashed()"
     },
     {
@@ -5913,7 +5913,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qe",
-      "community": 2,
+      "community": 1,
       "norm_label": "qe()"
     },
     {
@@ -5922,7 +5922,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ke_findborderpositionbezier",
-      "community": 2,
+      "community": 1,
       "norm_label": "._findborderpositionbezier()"
     },
     {
@@ -5931,7 +5931,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ke_getdistancetobezieredge",
-      "community": 2,
+      "community": 1,
       "norm_label": "._getdistancetobezieredge()"
     },
     {
@@ -5940,7 +5940,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ke_beziercurve",
-      "community": 2,
+      "community": 1,
       "norm_label": "._beziercurve()"
     },
     {
@@ -5949,7 +5949,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ke_getvianode",
-      "community": 2,
+      "community": 1,
       "norm_label": ".getvianode()"
     },
     {
@@ -5958,7 +5958,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_he_constructor",
-      "community": 7,
+      "community": 1,
       "norm_label": ".constructor()"
     },
     {
@@ -5967,7 +5967,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_he_setoptions",
-      "community": 7,
+      "community": 1,
       "norm_label": ".setoptions()"
     },
     {
@@ -5976,7 +5976,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_he_connect",
-      "community": 7,
+      "community": 1,
       "norm_label": ".connect()"
     },
     {
@@ -5985,7 +5985,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_he_cleanup",
-      "community": 1,
+      "community": 2,
       "norm_label": ".cleanup()"
     },
     {
@@ -5994,7 +5994,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_he_setupsupportnode",
-      "community": 7,
+      "community": 1,
       "norm_label": ".setupsupportnode()"
     },
     {
@@ -6003,7 +6003,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_he_positionbeziernode",
-      "community": 7,
+      "community": 1,
       "norm_label": ".positionbeziernode()"
     },
     {
@@ -6012,7 +6012,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_he_line",
-      "community": 2,
+      "community": 1,
       "norm_label": "._line()"
     },
     {
@@ -6021,7 +6021,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_he_getviacoordinates",
-      "community": 7,
+      "community": 1,
       "norm_label": "._getviacoordinates()"
     },
     {
@@ -6030,7 +6030,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_he_getvianode",
-      "community": 7,
+      "community": 1,
       "norm_label": ".getvianode()"
     },
     {
@@ -6039,7 +6039,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_he_getpoint",
-      "community": 7,
+      "community": 1,
       "norm_label": ".getpoint()"
     },
     {
@@ -6048,7 +6048,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_he_findborderposition",
-      "community": 2,
+      "community": 1,
       "norm_label": "._findborderposition()"
     },
     {
@@ -6057,7 +6057,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_he_getdistancetoedge",
-      "community": 2,
+      "community": 1,
       "norm_label": "._getdistancetoedge()"
     },
     {
@@ -6066,7 +6066,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xe",
-      "community": 2,
+      "community": 1,
       "norm_label": "xe"
     },
     {
@@ -6075,7 +6075,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xe_line",
-      "community": 2,
+      "community": 1,
       "norm_label": "._line()"
     },
     {
@@ -6084,7 +6084,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xe_getvianode",
-      "community": 2,
+      "community": 1,
       "norm_label": ".getvianode()"
     },
     {
@@ -6093,7 +6093,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xe_getviacoordinates",
-      "community": 2,
+      "community": 1,
       "norm_label": "._getviacoordinates()"
     },
     {
@@ -6102,7 +6102,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xe_findborderposition",
-      "community": 2,
+      "community": 1,
       "norm_label": "._findborderposition()"
     },
     {
@@ -6111,7 +6111,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xe_getdistancetoedge",
-      "community": 2,
+      "community": 1,
       "norm_label": "._getdistancetoedge()"
     },
     {
@@ -6120,7 +6120,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xe_getpoint",
-      "community": 2,
+      "community": 1,
       "norm_label": ".getpoint()"
     },
     {
@@ -6129,7 +6129,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_getdistancetobezieredge2",
-      "community": 2,
+      "community": 1,
       "norm_label": "._getdistancetobezieredge2()"
     },
     {
@@ -6138,7 +6138,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_je_line",
-      "community": 2,
+      "community": 1,
       "norm_label": "._line()"
     },
     {
@@ -6147,7 +6147,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_je_getviacoordinates",
-      "community": 2,
+      "community": 1,
       "norm_label": "._getviacoordinates()"
     },
     {
@@ -6156,7 +6156,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_je_getvianode",
-      "community": 2,
+      "community": 1,
       "norm_label": ".getvianode()"
     },
     {
@@ -6165,7 +6165,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_je_findborderposition",
-      "community": 2,
+      "community": 1,
       "norm_label": "._findborderposition()"
     },
     {
@@ -6174,7 +6174,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_je_getdistancetoedge",
-      "community": 2,
+      "community": 1,
       "norm_label": "._getdistancetoedge()"
     },
     {
@@ -6183,7 +6183,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_je_getpoint",
-      "community": 2,
+      "community": 1,
       "norm_label": ".getpoint()"
     },
     {
@@ -6192,7 +6192,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qe_line",
-      "community": 2,
+      "community": 1,
       "norm_label": "._line()"
     },
     {
@@ -6201,7 +6201,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qe_getvianode",
-      "community": 2,
+      "community": 1,
       "norm_label": ".getvianode()"
     },
     {
@@ -6210,7 +6210,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qe_getpoint",
-      "community": 2,
+      "community": 1,
       "norm_label": ".getpoint()"
     },
     {
@@ -6219,7 +6219,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qe_findborderposition",
-      "community": 2,
+      "community": 1,
       "norm_label": "._findborderposition()"
     },
     {
@@ -6228,7 +6228,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_qe_getdistancetoedge",
-      "community": 2,
+      "community": 1,
       "norm_label": "._getdistancetoedge()"
     },
     {
@@ -6237,7 +6237,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_constructor",
-      "community": 7,
+      "community": 2,
       "norm_label": ".constructor()"
     },
     {
@@ -6255,7 +6255,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_parseoptions",
-      "community": 3,
+      "community": 8,
       "norm_label": ".parseoptions()"
     },
     {
@@ -6264,7 +6264,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_getformattingvalues",
-      "community": 2,
+      "community": 1,
       "norm_label": ".getformattingvalues()"
     },
     {
@@ -6291,7 +6291,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_connect",
-      "community": 7,
+      "community": 8,
       "norm_label": ".connect()"
     },
     {
@@ -6300,7 +6300,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_disconnect",
-      "community": 7,
+      "community": 8,
       "norm_label": ".disconnect()"
     },
     {
@@ -6354,7 +6354,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_draw",
-      "community": 2,
+      "community": 1,
       "norm_label": ".draw()"
     },
     {
@@ -6363,7 +6363,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_drawarrows",
-      "community": 2,
+      "community": 1,
       "norm_label": ".drawarrows()"
     },
     {
@@ -6372,7 +6372,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_drawlabel",
-      "community": 2,
+      "community": 1,
       "norm_label": ".drawlabel()"
     },
     {
@@ -6381,7 +6381,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_getitemsonpoint",
-      "community": 5,
+      "community": 6,
       "norm_label": ".getitemsonpoint()"
     },
     {
@@ -6399,7 +6399,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_getrotation",
-      "community": 2,
+      "community": 1,
       "norm_label": "._getrotation()"
     },
     {
@@ -6408,7 +6408,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_e_pointoncircle",
-      "community": 2,
+      "community": 1,
       "norm_label": "._pointoncircle()"
     },
     {
@@ -6471,7 +6471,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_go_constructor",
-      "community": 1,
+      "community": 3,
       "norm_label": ".constructor()"
     },
     {
@@ -6480,7 +6480,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_go_bindeventlisteners",
-      "community": 1,
+      "community": 6,
       "norm_label": ".bindeventlisteners()"
     },
     {
@@ -6498,7 +6498,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_go_setdata",
-      "community": 1,
+      "community": 2,
       "norm_label": ".setdata()"
     },
     {
@@ -6507,7 +6507,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_go_add",
-      "community": 7,
+      "community": 8,
       "norm_label": ".add()"
     },
     {
@@ -6525,7 +6525,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_go_remove",
-      "community": 3,
+      "community": 6,
       "norm_label": ".remove()"
     },
     {
@@ -6534,7 +6534,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_go_refresh",
-      "community": 3,
+      "community": 6,
       "norm_label": ".refresh()"
     },
     {
@@ -6552,7 +6552,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_go_reconnectedges",
-      "community": 7,
+      "community": 8,
       "norm_label": ".reconnectedges()"
     },
     {
@@ -6570,7 +6570,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_go_updatestate",
-      "community": 3,
+      "community": 6,
       "norm_label": "._updatestate()"
     },
     {
@@ -6579,7 +6579,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_go_removeinvalidedges",
-      "community": 3,
+      "community": 6,
       "norm_label": "._removeinvalidedges()"
     },
     {
@@ -6588,7 +6588,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_go_addmissingedges",
-      "community": 3,
+      "community": 6,
       "norm_label": "._addmissingedges()"
     },
     {
@@ -6705,7 +6705,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ao_debug",
-      "community": 3,
+      "community": 2,
       "norm_label": "._debug()"
     },
     {
@@ -6714,7 +6714,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ao_drawbranch",
-      "community": 3,
+      "community": 2,
       "norm_label": "._drawbranch()"
     },
     {
@@ -6723,7 +6723,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_to",
-      "community": 7,
+      "community": 6,
       "norm_label": "to"
     },
     {
@@ -6732,7 +6732,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_to_constructor",
-      "community": 7,
+      "community": 6,
       "norm_label": ".constructor()"
     },
     {
@@ -6741,7 +6741,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_to_setoptions",
-      "community": 7,
+      "community": 6,
       "norm_label": ".setoptions()"
     },
     {
@@ -6750,7 +6750,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_to_solve",
-      "community": 7,
+      "community": 6,
       "norm_label": ".solve()"
     },
     {
@@ -6759,7 +6759,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_co",
-      "community": 7,
+      "community": 3,
       "norm_label": "co"
     },
     {
@@ -6768,7 +6768,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_co_constructor",
-      "community": 7,
+      "community": 3,
       "norm_label": ".constructor()"
     },
     {
@@ -6786,7 +6786,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_co_solve",
-      "community": 7,
+      "community": 3,
       "norm_label": ".solve()"
     },
     {
@@ -6840,7 +6840,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo",
-      "community": 1,
+      "community": 2,
       "norm_label": "eo"
     },
     {
@@ -6849,7 +6849,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_constructor",
-      "community": 1,
+      "community": 2,
       "norm_label": ".constructor()"
     },
     {
@@ -6858,7 +6858,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_setoptions",
-      "community": 1,
+      "community": 2,
       "norm_label": ".setoptions()"
     },
     {
@@ -6867,7 +6867,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_solve",
-      "community": 3,
+      "community": 2,
       "norm_label": ".solve()"
     },
     {
@@ -6903,7 +6903,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_oo_calculateforces",
-      "community": 5,
+      "community": 3,
       "norm_label": "._calculateforces()"
     },
     {
@@ -6912,7 +6912,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_no",
-      "community": 3,
+      "community": 8,
       "norm_label": "no"
     },
     {
@@ -6939,7 +6939,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_bindeventlisteners",
-      "community": 1,
+      "community": 2,
       "norm_label": ".bindeventlisteners()"
     },
     {
@@ -6948,7 +6948,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_setoptions",
-      "community": 12,
+      "community": 3,
       "norm_label": ".setoptions()"
     },
     {
@@ -6957,7 +6957,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_init",
-      "community": 12,
+      "community": 3,
       "norm_label": ".init()"
     },
     {
@@ -6966,7 +6966,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_initphysics",
-      "community": 12,
+      "community": 3,
       "norm_label": ".initphysics()"
     },
     {
@@ -6975,7 +6975,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_startsimulation",
-      "community": 12,
+      "community": 3,
       "norm_label": ".startsimulation()"
     },
     {
@@ -6984,7 +6984,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_stopsimulation",
-      "community": 12,
+      "community": 3,
       "norm_label": ".stopsimulation()"
     },
     {
@@ -6993,7 +6993,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_simulationstep",
-      "community": 12,
+      "community": 3,
       "norm_label": ".simulationstep()"
     },
     {
@@ -7002,7 +7002,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_emitstabilized",
-      "community": 12,
+      "community": 3,
       "norm_label": "._emitstabilized()"
     },
     {
@@ -7011,7 +7011,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_physicsstep",
-      "community": 12,
+      "community": 3,
       "norm_label": ".physicsstep()"
     },
     {
@@ -7020,7 +7020,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_adjusttimestep",
-      "community": 12,
+      "community": 3,
       "norm_label": ".adjusttimestep()"
     },
     {
@@ -7029,7 +7029,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_physicstick",
-      "community": 12,
+      "community": 3,
       "norm_label": ".physicstick()"
     },
     {
@@ -7038,7 +7038,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_updatephysicsdata",
-      "community": 12,
+      "community": 3,
       "norm_label": ".updatephysicsdata()"
     },
     {
@@ -7047,7 +7047,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_revert",
-      "community": 12,
+      "community": 3,
       "norm_label": ".revert()"
     },
     {
@@ -7056,7 +7056,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_evaluatestepquality",
-      "community": 12,
+      "community": 3,
       "norm_label": "._evaluatestepquality()"
     },
     {
@@ -7065,7 +7065,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_movenodes",
-      "community": 12,
+      "community": 3,
       "norm_label": ".movenodes()"
     },
     {
@@ -7074,7 +7074,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_calculatecomponentvelocity",
-      "community": 12,
+      "community": 3,
       "norm_label": ".calculatecomponentvelocity()"
     },
     {
@@ -7083,7 +7083,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_performstep",
-      "community": 12,
+      "community": 3,
       "norm_label": "._performstep()"
     },
     {
@@ -7092,7 +7092,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_freezenodes",
-      "community": 12,
+      "community": 3,
       "norm_label": "._freezenodes()"
     },
     {
@@ -7101,7 +7101,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_restorefrozennodes",
-      "community": 12,
+      "community": 3,
       "norm_label": "._restorefrozennodes()"
     },
     {
@@ -7110,7 +7110,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_stabilize",
-      "community": 12,
+      "community": 3,
       "norm_label": ".stabilize()"
     },
     {
@@ -7119,7 +7119,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_startstabilizing",
-      "community": 12,
+      "community": 3,
       "norm_label": "._startstabilizing()"
     },
     {
@@ -7128,7 +7128,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_stabilizationbatch",
-      "community": 12,
+      "community": 3,
       "norm_label": "._stabilizationbatch()"
     },
     {
@@ -7137,7 +7137,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_finalizestabilization",
-      "community": 12,
+      "community": 3,
       "norm_label": "._finalizestabilization()"
     },
     {
@@ -7146,7 +7146,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_so_drawforces",
-      "community": 3,
+      "community": 8,
       "norm_label": "._drawforces()"
     },
     {
@@ -7182,7 +7182,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ro_cloneoptions",
-      "community": 7,
+      "community": 6,
       "norm_label": ".cloneoptions()"
     },
     {
@@ -7191,7 +7191,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ao_openchildcluster",
-      "community": 7,
+      "community": 6,
       "norm_label": "._openchildcluster()"
     },
     {
@@ -7200,7 +7200,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do",
-      "community": 7,
+      "community": 6,
       "norm_label": "do"
     },
     {
@@ -7209,7 +7209,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_constructor",
-      "community": 7,
+      "community": 2,
       "norm_label": ".constructor()"
     },
     {
@@ -7218,7 +7218,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_clusterbyhubsize",
-      "community": 7,
+      "community": 6,
       "norm_label": ".clusterbyhubsize()"
     },
     {
@@ -7227,7 +7227,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_cluster",
-      "community": 7,
+      "community": 6,
       "norm_label": ".cluster()"
     },
     {
@@ -7236,7 +7236,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_clusterbyedgecount",
-      "community": 7,
+      "community": 6,
       "norm_label": ".clusterbyedgecount()"
     },
     {
@@ -7245,7 +7245,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_clusteroutliers",
-      "community": 7,
+      "community": 6,
       "norm_label": ".clusteroutliers()"
     },
     {
@@ -7254,7 +7254,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_clusterbridges",
-      "community": 7,
+      "community": 6,
       "norm_label": ".clusterbridges()"
     },
     {
@@ -7263,7 +7263,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_clusterbyconnection",
-      "community": 7,
+      "community": 6,
       "norm_label": ".clusterbyconnection()"
     },
     {
@@ -7272,7 +7272,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_createclusteredges",
-      "community": 7,
+      "community": 6,
       "norm_label": "._createclusteredges()"
     },
     {
@@ -7281,7 +7281,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_checkoptions",
-      "community": 7,
+      "community": 6,
       "norm_label": "._checkoptions()"
     },
     {
@@ -7290,7 +7290,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_backupedgeoptions",
-      "community": 7,
+      "community": 6,
       "norm_label": "._backupedgeoptions()"
     },
     {
@@ -7299,7 +7299,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_restoreedge",
-      "community": 7,
+      "community": 6,
       "norm_label": "._restoreedge()"
     },
     {
@@ -7308,7 +7308,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_iscluster",
-      "community": 7,
+      "community": 6,
       "norm_label": ".iscluster()"
     },
     {
@@ -7317,7 +7317,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_getclusterposition",
-      "community": 7,
+      "community": 6,
       "norm_label": "._getclusterposition()"
     },
     {
@@ -7326,7 +7326,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_opencluster",
-      "community": 7,
+      "community": 6,
       "norm_label": ".opencluster()"
     },
     {
@@ -7335,7 +7335,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_getnodesincluster",
-      "community": 7,
+      "community": 6,
       "norm_label": ".getnodesincluster()"
     },
     {
@@ -7344,7 +7344,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_findnode",
-      "community": 7,
+      "community": 6,
       "norm_label": ".findnode()"
     },
     {
@@ -7353,7 +7353,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_updateclusterednode",
-      "community": 7,
+      "community": 6,
       "norm_label": ".updateclusterednode()"
     },
     {
@@ -7362,7 +7362,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_updateedge",
-      "community": 7,
+      "community": 6,
       "norm_label": ".updateedge()"
     },
     {
@@ -7371,7 +7371,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_getclusterededges",
-      "community": 7,
+      "community": 6,
       "norm_label": ".getclusterededges()"
     },
     {
@@ -7380,7 +7380,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_getbaseedge",
-      "community": 7,
+      "community": 6,
       "norm_label": ".getbaseedge()"
     },
     {
@@ -7389,7 +7389,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_getbaseedges",
-      "community": 7,
+      "community": 6,
       "norm_label": ".getbaseedges()"
     },
     {
@@ -7398,7 +7398,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_getconnectedid",
-      "community": 7,
+      "community": 6,
       "norm_label": "._getconnectedid()"
     },
     {
@@ -7407,7 +7407,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_gethubsize",
-      "community": 7,
+      "community": 6,
       "norm_label": "._gethubsize()"
     },
     {
@@ -7416,7 +7416,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_createclusterededge",
-      "community": 7,
+      "community": 6,
       "norm_label": "._createclusterededge()"
     },
     {
@@ -7425,7 +7425,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_clusteredges",
-      "community": 7,
+      "community": 6,
       "norm_label": "._clusteredges()"
     },
     {
@@ -7434,7 +7434,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_getclusternodefornode",
-      "community": 7,
+      "community": 6,
       "norm_label": "._getclusternodefornode()"
     },
     {
@@ -7443,7 +7443,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_filter",
-      "community": 3,
+      "community": 6,
       "norm_label": "._filter()"
     },
     {
@@ -7452,7 +7452,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_updatestate",
-      "community": 7,
+      "community": 6,
       "norm_label": "._updatestate()"
     },
     {
@@ -7461,7 +7461,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_isclusterednode",
-      "community": 7,
+      "community": 6,
       "norm_label": "._isclusterednode()"
     },
     {
@@ -7470,7 +7470,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_do_isclusterededge",
-      "community": 7,
+      "community": 6,
       "norm_label": "._isclusterededge()"
     },
     {
@@ -7479,7 +7479,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho",
-      "community": 10,
+      "community": 5,
       "norm_label": "ho"
     },
     {
@@ -7497,7 +7497,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_bindeventlisteners",
-      "community": 10,
+      "community": 5,
       "norm_label": ".bindeventlisteners()"
     },
     {
@@ -7506,7 +7506,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_setoptions",
-      "community": 10,
+      "community": 5,
       "norm_label": ".setoptions()"
     },
     {
@@ -7515,7 +7515,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_startrendering",
-      "community": 10,
+      "community": 5,
       "norm_label": "._startrendering()"
     },
     {
@@ -7524,7 +7524,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_renderstep",
-      "community": 10,
+      "community": 5,
       "norm_label": "._renderstep()"
     },
     {
@@ -7533,7 +7533,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_redraw",
-      "community": 10,
+      "community": 5,
       "norm_label": ".redraw()"
     },
     {
@@ -7542,7 +7542,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_requestredraw",
-      "community": 10,
+      "community": 5,
       "norm_label": "._requestredraw()"
     },
     {
@@ -7551,7 +7551,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_resizenodes",
-      "community": 10,
+      "community": 5,
       "norm_label": "._resizenodes()"
     },
     {
@@ -7560,7 +7560,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_drawnodes",
-      "community": 10,
+      "community": 5,
       "norm_label": "._drawnodes()"
     },
     {
@@ -7569,7 +7569,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_drawedges",
-      "community": 10,
+      "community": 5,
       "norm_label": "._drawedges()"
     },
     {
@@ -7578,7 +7578,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_drawarrows",
-      "community": 10,
+      "community": 5,
       "norm_label": "._drawarrows()"
     },
     {
@@ -7587,7 +7587,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ho_drawselectionbox",
-      "community": 10,
+      "community": 5,
       "norm_label": "._drawselectionbox()"
     },
     {
@@ -7614,7 +7614,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_bindeventlisteners",
-      "community": 1,
+      "community": 2,
       "norm_label": ".bindeventlisteners()"
     },
     {
@@ -7623,7 +7623,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_setoptions",
-      "community": 10,
+      "community": 5,
       "norm_label": ".setoptions()"
     },
     {
@@ -7632,7 +7632,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_cleanup",
-      "community": 10,
+      "community": 5,
       "norm_label": "._cleanup()"
     },
     {
@@ -7641,7 +7641,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_onresize",
-      "community": 10,
+      "community": 5,
       "norm_label": "._onresize()"
     },
     {
@@ -7650,7 +7650,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_getcamerastate",
-      "community": 10,
+      "community": 5,
       "norm_label": "._getcamerastate()"
     },
     {
@@ -7659,7 +7659,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_setcamerastate",
-      "community": 10,
+      "community": 5,
       "norm_label": "._setcamerastate()"
     },
     {
@@ -7668,7 +7668,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_preparevalue",
-      "community": 10,
+      "community": 5,
       "norm_label": "._preparevalue()"
     },
     {
@@ -7677,7 +7677,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_create",
-      "community": 10,
+      "community": 5,
       "norm_label": "._create()"
     },
     {
@@ -7686,7 +7686,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_bindhammer",
-      "community": 10,
+      "community": 5,
       "norm_label": "._bindhammer()"
     },
     {
@@ -7695,7 +7695,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_setsize",
-      "community": 10,
+      "community": 5,
       "norm_label": ".setsize()"
     },
     {
@@ -7704,7 +7704,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_getcontext",
-      "community": 10,
+      "community": 5,
       "norm_label": ".getcontext()"
     },
     {
@@ -7713,7 +7713,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_determinepixelratio",
-      "community": 10,
+      "community": 5,
       "norm_label": "._determinepixelratio()"
     },
     {
@@ -7722,7 +7722,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_setpixelratio",
-      "community": 10,
+      "community": 5,
       "norm_label": "._setpixelratio()"
     },
     {
@@ -7731,7 +7731,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_settransform",
-      "community": 10,
+      "community": 5,
       "norm_label": ".settransform()"
     },
     {
@@ -7749,7 +7749,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_xconvertcanvastodom",
-      "community": 10,
+      "community": 5,
       "norm_label": "._xconvertcanvastodom()"
     },
     {
@@ -7767,7 +7767,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_yconvertcanvastodom",
-      "community": 10,
+      "community": 5,
       "norm_label": "._yconvertcanvastodom()"
     },
     {
@@ -7776,7 +7776,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_yo_canvastodom",
-      "community": 10,
+      "community": 5,
       "norm_label": ".canvastodom()"
     },
     {
@@ -7794,7 +7794,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo",
-      "community": 1,
+      "community": 2,
       "norm_label": "wo"
     },
     {
@@ -7803,7 +7803,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_constructor",
-      "community": 1,
+      "community": 2,
       "norm_label": ".constructor()"
     },
     {
@@ -7812,7 +7812,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_setoptions",
-      "community": 1,
+      "community": 2,
       "norm_label": ".setoptions()"
     },
     {
@@ -7830,7 +7830,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_focus",
-      "community": 1,
+      "community": 2,
       "norm_label": ".focus()"
     },
     {
@@ -7839,7 +7839,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_moveto",
-      "community": 1,
+      "community": 2,
       "norm_label": ".moveto()"
     },
     {
@@ -7848,7 +7848,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_animateview",
-      "community": 1,
+      "community": 2,
       "norm_label": ".animateview()"
     },
     {
@@ -7857,7 +7857,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_lockedredraw",
-      "community": 1,
+      "community": 2,
       "norm_label": "._lockedredraw()"
     },
     {
@@ -7866,7 +7866,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_releasenode",
-      "community": 1,
+      "community": 2,
       "norm_label": ".releasenode()"
     },
     {
@@ -7875,7 +7875,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_transitionredraw",
-      "community": 1,
+      "community": 2,
       "norm_label": "._transitionredraw()"
     },
     {
@@ -7884,7 +7884,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_getscale",
-      "community": 1,
+      "community": 2,
       "norm_label": ".getscale()"
     },
     {
@@ -7893,7 +7893,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wo_getviewposition",
-      "community": 1,
+      "community": 2,
       "norm_label": ".getviewposition()"
     },
     {
@@ -7902,7 +7902,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xo",
-      "community": 1,
+      "community": 2,
       "norm_label": "xo()"
     },
     {
@@ -7911,7 +7911,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_create",
-      "community": 1,
+      "community": 2,
       "norm_label": ".create()"
     },
     {
@@ -7920,7 +7920,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_cleannavigation",
-      "community": 1,
+      "community": 2,
       "norm_label": ".cleannavigation()"
     },
     {
@@ -7929,7 +7929,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_loadnavigationelements",
-      "community": 1,
+      "community": 2,
       "norm_label": ".loadnavigationelements()"
     },
     {
@@ -7938,7 +7938,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_bindtoredraw",
-      "community": 1,
+      "community": 2,
       "norm_label": ".bindtoredraw()"
     },
     {
@@ -7947,7 +7947,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_unbindfromredraw",
-      "community": 1,
+      "community": 2,
       "norm_label": ".unbindfromredraw()"
     },
     {
@@ -7956,7 +7956,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_fit",
-      "community": 1,
+      "community": 2,
       "norm_label": "._fit()"
     },
     {
@@ -7965,7 +7965,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_stopmovement",
-      "community": 1,
+      "community": 2,
       "norm_label": "._stopmovement()"
     },
     {
@@ -7974,7 +7974,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_moveup",
-      "community": 1,
+      "community": 2,
       "norm_label": "._moveup()"
     },
     {
@@ -7983,7 +7983,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_movedown",
-      "community": 1,
+      "community": 2,
       "norm_label": "._movedown()"
     },
     {
@@ -7992,7 +7992,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_moveleft",
-      "community": 1,
+      "community": 2,
       "norm_label": "._moveleft()"
     },
     {
@@ -8001,7 +8001,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_moveright",
-      "community": 1,
+      "community": 2,
       "norm_label": "._moveright()"
     },
     {
@@ -8010,7 +8010,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_zoomin",
-      "community": 1,
+      "community": 2,
       "norm_label": "._zoomin()"
     },
     {
@@ -8019,7 +8019,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_zoomout",
-      "community": 1,
+      "community": 2,
       "norm_label": "._zoomout()"
     },
     {
@@ -8028,7 +8028,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_eo_configurekeyboardbindings",
-      "community": 1,
+      "community": 2,
       "norm_label": ".configurekeyboardbindings()"
     },
     {
@@ -8037,7 +8037,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_oo_bindeventlisteners",
-      "community": 1,
+      "community": 2,
       "norm_label": ".bindeventlisteners()"
     },
     {
@@ -8235,7 +8235,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_vo",
-      "community": 10,
+      "community": 5,
       "norm_label": "vo()"
     },
     {
@@ -8253,7 +8253,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_jo_constructor",
-      "community": 5,
+      "community": 2,
       "norm_label": ".constructor()"
     },
     {
@@ -8271,7 +8271,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_jo_add",
-      "community": 6,
+      "community": 7,
       "norm_label": ".add()"
     },
     {
@@ -8433,7 +8433,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tt_constructor",
-      "community": 1,
+      "community": 2,
       "norm_label": ".constructor()"
     },
     {
@@ -8442,7 +8442,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tt_setoptions",
-      "community": 10,
+      "community": 5,
       "norm_label": ".setoptions()"
     },
     {
@@ -8577,7 +8577,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tt_unselectall",
-      "community": 1,
+      "community": 5,
       "norm_label": ".unselectall()"
     },
     {
@@ -8694,7 +8694,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_tt_getselectededgeids",
-      "community": 5,
+      "community": 2,
       "norm_label": ".getselectededgeids()"
     },
     {
@@ -8748,7 +8748,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_abstract",
-      "community": 14,
+      "community": 13,
       "norm_label": ".abstract()"
     },
     {
@@ -8757,7 +8757,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_fake_use",
-      "community": 14,
+      "community": 13,
       "norm_label": ".fake_use()"
     },
     {
@@ -8766,7 +8766,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_curvetype",
-      "community": 14,
+      "community": 13,
       "norm_label": ".curvetype()"
     },
     {
@@ -8775,7 +8775,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_getposition",
-      "community": 14,
+      "community": 13,
       "norm_label": ".getposition()"
     },
     {
@@ -8784,7 +8784,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_setposition",
-      "community": 14,
+      "community": 13,
       "norm_label": ".setposition()"
     },
     {
@@ -8793,7 +8793,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_gettreesize",
-      "community": 14,
+      "community": 13,
       "norm_label": ".gettreesize()"
     },
     {
@@ -8802,7 +8802,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_sort",
-      "community": 14,
+      "community": 13,
       "norm_label": ".sort()"
     },
     {
@@ -8811,7 +8811,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_fix",
-      "community": 14,
+      "community": 13,
       "norm_label": ".fix()"
     },
     {
@@ -8820,7 +8820,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_ct_shift",
-      "community": 14,
+      "community": 13,
       "norm_label": ".shift()"
     },
     {
@@ -8964,7 +8964,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_et_shift",
-      "community": 1,
+      "community": 12,
       "norm_label": ".shift()"
     },
     {
@@ -9180,7 +9180,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wt_layoutnetwork",
-      "community": 7,
+      "community": 6,
       "norm_label": ".layoutnetwork()"
     },
     {
@@ -9198,7 +9198,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wt_declusterall",
-      "community": 7,
+      "community": 6,
       "norm_label": "._declusterall()"
     },
     {
@@ -9297,7 +9297,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_wt_getactiveedges",
-      "community": 3,
+      "community": 6,
       "norm_label": "._getactiveedges()"
     },
     {
@@ -9396,7 +9396,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt",
-      "community": 1,
+      "community": 2,
       "norm_label": "xt"
     },
     {
@@ -9405,7 +9405,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_constructor",
-      "community": 1,
+      "community": 2,
       "norm_label": ".constructor()"
     },
     {
@@ -9414,7 +9414,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_restore",
-      "community": 1,
+      "community": 2,
       "norm_label": "._restore()"
     },
     {
@@ -9423,7 +9423,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_setoptions",
-      "community": 1,
+      "community": 2,
       "norm_label": ".setoptions()"
     },
     {
@@ -9432,7 +9432,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_toggleeditmode",
-      "community": 1,
+      "community": 2,
       "norm_label": ".toggleeditmode()"
     },
     {
@@ -9441,7 +9441,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_enableeditmode",
-      "community": 1,
+      "community": 2,
       "norm_label": ".enableeditmode()"
     },
     {
@@ -9450,7 +9450,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_disableeditmode",
-      "community": 1,
+      "community": 2,
       "norm_label": ".disableeditmode()"
     },
     {
@@ -9459,7 +9459,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_showmanipulatortoolbar",
-      "community": 1,
+      "community": 2,
       "norm_label": ".showmanipulatortoolbar()"
     },
     {
@@ -9468,7 +9468,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_addnodemode",
-      "community": 1,
+      "community": 2,
       "norm_label": ".addnodemode()"
     },
     {
@@ -9477,7 +9477,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_editnode",
-      "community": 1,
+      "community": 2,
       "norm_label": ".editnode()"
     },
     {
@@ -9486,7 +9486,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_addedgemode",
-      "community": 1,
+      "community": 2,
       "norm_label": ".addedgemode()"
     },
     {
@@ -9495,7 +9495,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_editedgemode",
-      "community": 1,
+      "community": 2,
       "norm_label": ".editedgemode()"
     },
     {
@@ -9504,7 +9504,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_deleteselected",
-      "community": 1,
+      "community": 2,
       "norm_label": ".deleteselected()"
     },
     {
@@ -9513,7 +9513,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_setup",
-      "community": 1,
+      "community": 2,
       "norm_label": "._setup()"
     },
     {
@@ -9522,7 +9522,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_createwrappers",
-      "community": 1,
+      "community": 2,
       "norm_label": "._createwrappers()"
     },
     {
@@ -9531,7 +9531,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_getnewtargetnode",
-      "community": 1,
+      "community": 2,
       "norm_label": "._getnewtargetnode()"
     },
     {
@@ -9540,7 +9540,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_createeditbutton",
-      "community": 1,
+      "community": 2,
       "norm_label": "._createeditbutton()"
     },
     {
@@ -9549,7 +9549,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_clean",
-      "community": 1,
+      "community": 2,
       "norm_label": "._clean()"
     },
     {
@@ -9558,7 +9558,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_cleanupdomeventlisteners",
-      "community": 1,
+      "community": 2,
       "norm_label": "._cleanupdomeventlisteners()"
     },
     {
@@ -9567,7 +9567,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_removemanipulationdom",
-      "community": 1,
+      "community": 2,
       "norm_label": "._removemanipulationdom()"
     },
     {
@@ -9576,7 +9576,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_createseperator",
-      "community": 1,
+      "community": 2,
       "norm_label": "._createseperator()"
     },
     {
@@ -9585,7 +9585,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_createaddnodebutton",
-      "community": 1,
+      "community": 2,
       "norm_label": "._createaddnodebutton()"
     },
     {
@@ -9594,7 +9594,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_createaddedgebutton",
-      "community": 1,
+      "community": 2,
       "norm_label": "._createaddedgebutton()"
     },
     {
@@ -9603,7 +9603,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_createeditnodebutton",
-      "community": 1,
+      "community": 2,
       "norm_label": "._createeditnodebutton()"
     },
     {
@@ -9612,7 +9612,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_createeditedgebutton",
-      "community": 1,
+      "community": 2,
       "norm_label": "._createeditedgebutton()"
     },
     {
@@ -9621,7 +9621,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_createdeletebutton",
-      "community": 1,
+      "community": 2,
       "norm_label": "._createdeletebutton()"
     },
     {
@@ -9630,7 +9630,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_createbackbutton",
-      "community": 1,
+      "community": 2,
       "norm_label": "._createbackbutton()"
     },
     {
@@ -9639,7 +9639,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_createbutton",
-      "community": 1,
+      "community": 2,
       "norm_label": "._createbutton()"
     },
     {
@@ -9648,7 +9648,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_createdescription",
-      "community": 1,
+      "community": 2,
       "norm_label": "._createdescription()"
     },
     {
@@ -9657,7 +9657,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_temporarybindevent",
-      "community": 1,
+      "community": 2,
       "norm_label": "._temporarybindevent()"
     },
     {
@@ -9666,7 +9666,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_temporarybindui",
-      "community": 1,
+      "community": 2,
       "norm_label": "._temporarybindui()"
     },
     {
@@ -9675,7 +9675,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_unbindtemporaryuis",
-      "community": 1,
+      "community": 2,
       "norm_label": "._unbindtemporaryuis()"
     },
     {
@@ -9684,7 +9684,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_unbindtemporaryevents",
-      "community": 1,
+      "community": 2,
       "norm_label": "._unbindtemporaryevents()"
     },
     {
@@ -9693,7 +9693,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_bindelementevents",
-      "community": 1,
+      "community": 2,
       "norm_label": "._bindelementevents()"
     },
     {
@@ -9702,7 +9702,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_cleanuptemporarynodesandedges",
-      "community": 1,
+      "community": 2,
       "norm_label": "._cleanuptemporarynodesandedges()"
     },
     {
@@ -9711,7 +9711,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_controlnodetouch",
-      "community": 1,
+      "community": 5,
       "norm_label": "._controlnodetouch()"
     },
     {
@@ -9738,7 +9738,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_controlnodedragend",
-      "community": 1,
+      "community": 5,
       "norm_label": "._controlnodedragend()"
     },
     {
@@ -9747,7 +9747,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_handleconnect",
-      "community": 1,
+      "community": 2,
       "norm_label": "._handleconnect()"
     },
     {
@@ -9765,7 +9765,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_finishconnect",
-      "community": 1,
+      "community": 2,
       "norm_label": "._finishconnect()"
     },
     {
@@ -9783,7 +9783,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_performaddnode",
-      "community": 1,
+      "community": 2,
       "norm_label": "._performaddnode()"
     },
     {
@@ -9792,7 +9792,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_performaddedge",
-      "community": 1,
+      "community": 2,
       "norm_label": "._performaddedge()"
     },
     {
@@ -9801,7 +9801,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_xt_performeditedge",
-      "community": 1,
+      "community": 2,
       "norm_label": "._performeditedge()"
     },
     {
@@ -9828,7 +9828,7 @@
       "source_file": "E:\\desktop\\coders-life\\graphify-out\\vendor\\vis-network.min.js",
       "source_location": "L33",
       "id": "vis_network_min_st_setoptions",
-      "community": 7,
+      "community": 6,
       "norm_label": ".setoptions()"
     },
     {
@@ -9909,7 +9909,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L1",
       "id": "e_desktop_coders_life_tools_build_popup_datasets_ps1",
-      "community": 11,
+      "community": 10,
       "norm_label": "build-popup-datasets.ps1"
     },
     {
@@ -9918,7 +9918,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L22",
       "id": "build_popup_datasets_decode_sourcename",
-      "community": 11,
+      "community": 10,
       "norm_label": "decode-sourcename()"
     },
     {
@@ -9927,7 +9927,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L27",
       "id": "build_popup_datasets_resolve_sourcedoc",
-      "community": 11,
+      "community": 10,
       "norm_label": "resolve-sourcedoc()"
     },
     {
@@ -9936,7 +9936,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L37",
       "id": "build_popup_datasets_new_tempoutputpath",
-      "community": 11,
+      "community": 10,
       "norm_label": "new-tempoutputpath()"
     },
     {
@@ -9945,7 +9945,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L46",
       "id": "build_popup_datasets_commit_atomicfile",
-      "community": 11,
+      "community": 10,
       "norm_label": "commit-atomicfile()"
     },
     {
@@ -9954,7 +9954,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L74",
       "id": "build_popup_datasets_write_atomictextfile",
-      "community": 11,
+      "community": 10,
       "norm_label": "write-atomictextfile()"
     },
     {
@@ -9963,7 +9963,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L96",
       "id": "build_popup_datasets_write_atomiccsvfile",
-      "community": 11,
+      "community": 10,
       "norm_label": "write-atomiccsvfile()"
     },
     {
@@ -9972,7 +9972,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L118",
       "id": "build_popup_datasets_assert_jsonarrayfilecount",
-      "community": 11,
+      "community": 10,
       "norm_label": "assert-jsonarrayfilecount()"
     },
     {
@@ -9981,7 +9981,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L130",
       "id": "build_popup_datasets_assert_runtimefilecount",
-      "community": 11,
+      "community": 10,
       "norm_label": "assert-runtimefilecount()"
     },
     {
@@ -9990,7 +9990,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L176",
       "id": "build_popup_datasets_get_structureditems",
-      "community": 11,
+      "community": 10,
       "norm_label": "get-structureditems()"
     },
     {
@@ -9999,7 +9999,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L228",
       "id": "build_popup_datasets_get_kind",
-      "community": 11,
+      "community": 10,
       "norm_label": "get-kind()"
     },
     {
@@ -10008,7 +10008,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L254",
       "id": "build_popup_datasets_get_tone",
-      "community": 11,
+      "community": 10,
       "norm_label": "get-tone()"
     },
     {
@@ -10017,7 +10017,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L271",
       "id": "build_popup_datasets_get_rarity",
-      "community": 11,
+      "community": 10,
       "norm_label": "get-rarity()"
     },
     {
@@ -10026,7 +10026,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L279",
       "id": "build_popup_datasets_get_baseeffects",
-      "community": 11,
+      "community": 10,
       "norm_label": "get-baseeffects()"
     },
     {
@@ -10035,7 +10035,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L331",
       "id": "build_popup_datasets_get_trigger",
-      "community": 11,
+      "community": 10,
       "norm_label": "get-trigger()"
     },
     {
@@ -10044,7 +10044,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L368",
       "id": "build_popup_datasets_decode_utf8base64",
-      "community": 11,
+      "community": 10,
       "norm_label": "decode-utf8base64()"
     },
     {
@@ -10053,7 +10053,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L373",
       "id": "build_popup_datasets_try_parsejsonline",
-      "community": 11,
+      "community": 10,
       "norm_label": "try-parsejsonline()"
     },
     {
@@ -10062,7 +10062,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L389",
       "id": "build_popup_datasets_get_lifeextensionitems",
-      "community": 11,
+      "community": 10,
       "norm_label": "get-lifeextensionitems()"
     },
     {
@@ -10071,7 +10071,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L486",
       "id": "build_popup_datasets_get_researchextensionitems",
-      "community": 11,
+      "community": 10,
       "norm_label": "get-researchextensionitems()"
     },
     {
@@ -10080,7 +10080,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L578",
       "id": "build_popup_datasets_get_round7communityitems",
-      "community": 11,
+      "community": 10,
       "norm_label": "get-round7communityitems()"
     },
     {
@@ -10089,7 +10089,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L666",
       "id": "build_popup_datasets_get_round8communityitems",
-      "community": 11,
+      "community": 10,
       "norm_label": "get-round8communityitems()"
     },
     {
@@ -10098,7 +10098,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L754",
       "id": "build_popup_datasets_get_round9lifeitems",
-      "community": 11,
+      "community": 10,
       "norm_label": "get-round9lifeitems()"
     },
     {
@@ -10107,7 +10107,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L829",
       "id": "build_popup_datasets_get_round9learningitems",
-      "community": 11,
+      "community": 10,
       "norm_label": "get-round9learningitems()"
     },
     {
@@ -10116,7 +10116,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L913",
       "id": "build_popup_datasets_get_round10learningitems",
-      "community": 11,
+      "community": 10,
       "norm_label": "get-round10learningitems()"
     },
     {
@@ -10125,7 +10125,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\build-popup-datasets.ps1",
       "source_location": "L997",
       "id": "build_popup_datasets_get_round11lifeitems",
-      "community": 11,
+      "community": 10,
       "norm_label": "get-round11lifeitems()"
     },
     {
@@ -10224,7 +10224,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\parse-popup-pool.ps1",
       "source_location": "L1",
       "id": "e_desktop_coders_life_tools_parse_popup_pool_ps1",
-      "community": 16,
+      "community": 15,
       "norm_label": "parse-popup-pool.ps1"
     },
     {
@@ -10233,7 +10233,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L1",
       "id": "e_desktop_coders_life_tools_verify_build_script_mjs",
-      "community": 6,
+      "community": 7,
       "norm_label": "verify-build-script.mjs"
     },
     {
@@ -10242,7 +10242,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L25",
       "id": "verify_build_script_copyrecursive",
-      "community": 6,
+      "community": 7,
       "norm_label": "copyrecursive()"
     },
     {
@@ -10251,7 +10251,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L37",
       "id": "verify_build_script_makeworkspace",
-      "community": 6,
+      "community": 7,
       "norm_label": "makeworkspace()"
     },
     {
@@ -10260,7 +10260,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L45",
       "id": "verify_build_script_runbuild",
-      "community": 6,
+      "community": 7,
       "norm_label": "runbuild()"
     },
     {
@@ -10278,7 +10278,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L97",
       "id": "verify_build_script_assertbuildsucceeded",
-      "community": 6,
+      "community": 7,
       "norm_label": "assertbuildsucceeded()"
     },
     {
@@ -10287,7 +10287,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L106",
       "id": "verify_build_script_assertbuildfailedwith",
-      "community": 6,
+      "community": 7,
       "norm_label": "assertbuildfailedwith()"
     },
     {
@@ -10296,7 +10296,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L112",
       "id": "verify_build_script_injectintofirstjsonline",
-      "community": 2,
+      "community": 7,
       "norm_label": "injectintofirstjsonline()"
     },
     {
@@ -10305,7 +10305,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L122",
       "id": "verify_build_script_appendjsonline",
-      "community": 6,
+      "community": 7,
       "norm_label": "appendjsonline()"
     },
     {
@@ -10314,7 +10314,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L127",
       "id": "verify_build_script_appendlifejsonline",
-      "community": 6,
+      "community": 7,
       "norm_label": "appendlifejsonline()"
     },
     {
@@ -10323,7 +10323,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L132",
       "id": "verify_build_script_appendround8jsonline",
-      "community": 6,
+      "community": 7,
       "norm_label": "appendround8jsonline()"
     },
     {
@@ -10332,7 +10332,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L137",
       "id": "verify_build_script_duplicatefirstround8jsonline",
-      "community": 6,
+      "community": 7,
       "norm_label": "duplicatefirstround8jsonline()"
     },
     {
@@ -10341,7 +10341,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L146",
       "id": "verify_build_script_appendround9lifejsonline",
-      "community": 6,
+      "community": 7,
       "norm_label": "appendround9lifejsonline()"
     },
     {
@@ -10350,7 +10350,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L151",
       "id": "verify_build_script_duplicatefirstround9lifejsonline",
-      "community": 6,
+      "community": 7,
       "norm_label": "duplicatefirstround9lifejsonline()"
     },
     {
@@ -10359,7 +10359,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L160",
       "id": "verify_build_script_appendround9learningjsonline",
-      "community": 6,
+      "community": 7,
       "norm_label": "appendround9learningjsonline()"
     },
     {
@@ -10368,7 +10368,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L165",
       "id": "verify_build_script_duplicatefirstround9learningjsonline",
-      "community": 6,
+      "community": 7,
       "norm_label": "duplicatefirstround9learningjsonline()"
     },
     {
@@ -10377,7 +10377,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L174",
       "id": "verify_build_script_appendround10learningjsonline",
-      "community": 6,
+      "community": 7,
       "norm_label": "appendround10learningjsonline()"
     },
     {
@@ -10386,7 +10386,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L179",
       "id": "verify_build_script_duplicatefirstround10learningjsonline",
-      "community": 6,
+      "community": 7,
       "norm_label": "duplicatefirstround10learningjsonline()"
     },
     {
@@ -10395,7 +10395,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L188",
       "id": "verify_build_script_appendround11lifejsonline",
-      "community": 6,
+      "community": 7,
       "norm_label": "appendround11lifejsonline()"
     },
     {
@@ -10404,7 +10404,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-build-script.mjs",
       "source_location": "L193",
       "id": "verify_build_script_duplicatefirstround11lifejsonline",
-      "community": 6,
+      "community": 7,
       "norm_label": "duplicatefirstround11lifejsonline()"
     },
     {
@@ -10413,7 +10413,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-candidate-manifest.mjs",
       "source_location": "L1",
       "id": "e_desktop_coders_life_tools_verify_candidate_manifest_mjs",
-      "community": 6,
+      "community": 7,
       "norm_label": "verify-candidate-manifest.mjs"
     },
     {
@@ -10422,7 +10422,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-candidate-manifest.mjs",
       "source_location": "L10",
       "id": "verify_candidate_manifest_readjson",
-      "community": 6,
+      "community": 7,
       "norm_label": "readjson()"
     },
     {
@@ -10431,7 +10431,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-candidate-manifest.mjs",
       "source_location": "L14",
       "id": "verify_candidate_manifest_countjsonlcandidates",
-      "community": 6,
+      "community": 7,
       "norm_label": "countjsonlcandidates()"
     },
     {
@@ -10813,12 +10813,21 @@
       "norm_label": "testpreviousrunrecoveryrelayrewardsonceandpersists()"
     },
     {
+      "label": "testWeeklyReviewStickerAddsFlavorOnceAndPersists()",
+      "file_type": "code",
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-fun-loop.mjs",
+      "source_location": "L393",
+      "id": "verify_fun_loop_testweeklyreviewstickeraddsflavoronceandpersists",
+      "community": 4,
+      "norm_label": "testweeklyreviewstickeraddsflavoronceandpersists()"
+    },
+    {
       "label": "verify-game-mechanics.js",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L1",
       "id": "e_desktop_coders_life_tools_verify_game_mechanics_js",
-      "community": 6,
+      "community": 7,
       "norm_label": "verify-game-mechanics.js"
     },
     {
@@ -10827,7 +10836,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L11",
       "id": "verify_game_mechanics_fakeelement",
-      "community": 6,
+      "community": 7,
       "norm_label": "fakeelement"
     },
     {
@@ -10836,7 +10845,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L12",
       "id": "verify_game_mechanics_fakeelement_constructor",
-      "community": 6,
+      "community": 7,
       "norm_label": ".constructor()"
     },
     {
@@ -10845,7 +10854,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L22",
       "id": "verify_game_mechanics_fakeelement_textcontent",
-      "community": 6,
+      "community": 7,
       "norm_label": ".textcontent()"
     },
     {
@@ -10854,7 +10863,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L30",
       "id": "verify_game_mechanics_fakeelement_innerhtml",
-      "community": 6,
+      "community": 7,
       "norm_label": ".innerhtml()"
     },
     {
@@ -10863,7 +10872,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L39",
       "id": "verify_game_mechanics_fakeelement_firstchild",
-      "community": 6,
+      "community": 7,
       "norm_label": ".firstchild()"
     },
     {
@@ -10872,7 +10881,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L43",
       "id": "verify_game_mechanics_fakeelement_appendchild",
-      "community": 6,
+      "community": 7,
       "norm_label": ".appendchild()"
     },
     {
@@ -10881,7 +10890,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L48",
       "id": "verify_game_mechanics_fakeelement_insertbefore",
-      "community": 6,
+      "community": 7,
       "norm_label": ".insertbefore()"
     },
     {
@@ -10890,7 +10899,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L60",
       "id": "verify_game_mechanics_createlocalstorage",
-      "community": 6,
+      "community": 7,
       "norm_label": "createlocalstorage()"
     },
     {
@@ -10899,7 +10908,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L78",
       "id": "verify_game_mechanics_createdocument",
-      "community": 6,
+      "community": 7,
       "norm_label": "createdocument()"
     },
     {
@@ -10908,7 +10917,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L119",
       "id": "verify_game_mechanics_extractinlinescript",
-      "community": 6,
+      "community": 7,
       "norm_label": "extractinlinescript()"
     },
     {
@@ -10917,7 +10926,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L125",
       "id": "verify_game_mechanics_createstablemath",
-      "community": 6,
+      "community": 7,
       "norm_label": "createstablemath()"
     },
     {
@@ -10926,7 +10935,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L131",
       "id": "verify_game_mechanics_creategamecontext",
-      "community": 6,
+      "community": 7,
       "norm_label": "creategamecontext()"
     },
     {
@@ -10935,7 +10944,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L156",
       "id": "verify_game_mechanics_parsesave",
-      "community": 6,
+      "community": 7,
       "norm_label": "parsesave()"
     },
     {
@@ -10944,7 +10953,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L162",
       "id": "verify_game_mechanics_countgoalevents",
-      "community": 6,
+      "community": 7,
       "norm_label": "countgoalevents()"
     },
     {
@@ -10953,7 +10962,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L166",
       "id": "verify_game_mechanics_testcoreactionsaveandrestoreflow",
-      "community": 6,
+      "community": 7,
       "norm_label": "testcoreactionsaveandrestoreflow()"
     },
     {
@@ -10962,7 +10971,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L193",
       "id": "verify_game_mechanics_testrungoalprogressfeedbackpersistsacrosssaverestore",
-      "community": 6,
+      "community": 7,
       "norm_label": "testrungoalprogressfeedbackpersistsacrosssaverestore()"
     },
     {
@@ -10971,7 +10980,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L241",
       "id": "verify_game_mechanics_testrungoalactionchainpersistsanddoesnotrepeatrewards",
-      "community": 6,
+      "community": 7,
       "norm_label": "testrungoalactionchainpersistsanddoesnotrepeatrewards()"
     },
     {
@@ -10980,7 +10989,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L277",
       "id": "verify_game_mechanics_testpreviousrunexperienceseedsnewcareer",
-      "community": 6,
+      "community": 7,
       "norm_label": "testpreviousrunexperienceseedsnewcareer()"
     },
     {
@@ -10989,7 +10998,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L314",
       "id": "verify_game_mechanics_testpreviousrunchallengeusesreachablefullscoretext",
-      "community": 6,
+      "community": 7,
       "norm_label": "testpreviousrunchallengeusesreachablefullscoretext()"
     },
     {
@@ -10998,7 +11007,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L344",
       "id": "verify_game_mechanics_testrestartpreservesmetaonlyachievements",
-      "community": 6,
+      "community": 7,
       "norm_label": "testrestartpreservesmetaonlyachievements()"
     },
     {
@@ -11007,7 +11016,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L369",
       "id": "verify_game_mechanics_testprlooprewardsdonotevictrungoalchainrewards",
-      "community": 6,
+      "community": 7,
       "norm_label": "testprlooprewardsdonotevictrungoalchainrewards()"
     },
     {
@@ -11016,7 +11025,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L409",
       "id": "verify_game_mechanics_testrandomeventsfilteruntriggerablebuiltinevents",
-      "community": 6,
+      "community": 7,
       "norm_label": "testrandomeventsfilteruntriggerablebuiltinevents()"
     },
     {
@@ -11025,7 +11034,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L427",
       "id": "verify_game_mechanics_testageadvancesbyoneyearafter365days",
-      "community": 6,
+      "community": 7,
       "norm_label": "testageadvancesbyoneyearafter365days()"
     },
     {
@@ -11034,7 +11043,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L467",
       "id": "verify_game_mechanics_testendingsummaryshowsscoretitleandgoalresult",
-      "community": 6,
+      "community": 7,
       "norm_label": "testendingsummaryshowsscoretitleandgoalresult()"
     },
     {
@@ -11043,7 +11052,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L495",
       "id": "verify_game_mechanics_testendingsummaryshowspreviousrunrecap",
-      "community": 6,
+      "community": 7,
       "norm_label": "testendingsummaryshowspreviousrunrecap()"
     },
     {
@@ -11052,7 +11061,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L533",
       "id": "verify_game_mechanics_testendingsummarycompareshistoricalbestscore",
-      "community": 6,
+      "community": 7,
       "norm_label": "testendingsummarycompareshistoricalbestscore()"
     },
     {
@@ -11061,7 +11070,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L572",
       "id": "verify_game_mechanics_testendedrunignoresstatechangingentrypoints",
-      "community": 6,
+      "community": 7,
       "norm_label": "testendedrunignoresstatechangingentrypoints()"
     },
     {
@@ -11070,7 +11079,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L603",
       "id": "verify_game_mechanics_testendedrunshowsdisabledshopbuttons",
-      "community": 6,
+      "community": 7,
       "norm_label": "testendedrunshowsdisabledshopbuttons()"
     },
     {
@@ -11079,7 +11088,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-game-mechanics.js",
       "source_location": "L627",
       "id": "verify_game_mechanics_testcorruptmainsaveisquarantinedduringnewrun",
-      "community": 6,
+      "community": 7,
       "norm_label": "testcorruptmainsaveisquarantinedduringnewrun()"
     },
     {
@@ -11088,7 +11097,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-popup-pool.mjs",
       "source_location": "L1",
       "id": "e_desktop_coders_life_tools_verify_popup_pool_mjs",
-      "community": 6,
+      "community": 4,
       "norm_label": "verify-popup-pool.mjs"
     },
     {
@@ -11097,7 +11106,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-popup-pool.mjs",
       "source_location": "L28",
       "id": "verify_popup_pool_readjson",
-      "community": 6,
+      "community": 4,
       "norm_label": "readjson()"
     },
     {
@@ -11106,7 +11115,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-popup-pool.mjs",
       "source_location": "L32",
       "id": "verify_popup_pool_loadruntimepool",
-      "community": 6,
+      "community": 4,
       "norm_label": "loadruntimepool()"
     },
     {
@@ -11115,7 +11124,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-popup-pool.mjs",
       "source_location": "L40",
       "id": "verify_popup_pool_findduplicates",
-      "community": 6,
+      "community": 4,
       "norm_label": "findduplicates()"
     },
     {
@@ -11124,7 +11133,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-popup-pool.mjs",
       "source_location": "L50",
       "id": "verify_popup_pool_normalizetext",
-      "community": 6,
+      "community": 4,
       "norm_label": "normalizetext()"
     },
     {
@@ -11142,7 +11151,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-popup-pool.mjs",
       "source_location": "L69",
       "id": "verify_popup_pool_formatduplicategroups",
-      "community": 6,
+      "community": 4,
       "norm_label": "formatduplicategroups()"
     },
     {
@@ -11151,7 +11160,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-popup-pool.mjs",
       "source_location": "L78",
       "id": "verify_popup_pool_countby",
-      "community": 1,
+      "community": 4,
       "norm_label": "countby()"
     },
     {
@@ -11790,7 +11799,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-save-system.mjs",
       "source_location": "L59",
       "id": "verify_save_system_elementstub_appendchild",
-      "community": 1,
+      "community": 2,
       "norm_label": ".appendchild()"
     },
     {
@@ -42486,8 +42495,8 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-candidate-manifest.mjs",
       "source_location": "L15",
       "weight": 1.0,
-      "_src": "verify_candidate_manifest_countjsonlcandidates",
-      "_tgt": "vis_network_min_ix_filter",
+      "_src": "vis_network_min_ix_filter",
+      "_tgt": "verify_candidate_manifest_countjsonlcandidates",
       "source": "vis_network_min_ix_filter",
       "target": "verify_candidate_manifest_countjsonlcandidates"
     },
@@ -42550,6 +42559,18 @@
       "_tgt": "verify_fun_loop_testpreviousrunrecoveryrelayrewardsonceandpersists",
       "source": "vis_network_min_ix_filter",
       "target": "verify_fun_loop_testpreviousrunrecoveryrelayrewardsonceandpersists"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-fun-loop.mjs",
+      "source_location": "L407",
+      "weight": 1.0,
+      "_src": "verify_fun_loop_testweeklyreviewstickeraddsflavoronceandpersists",
+      "_tgt": "vis_network_min_ix_filter",
+      "source": "vis_network_min_ix_filter",
+      "target": "verify_fun_loop_testweeklyreviewstickeraddsflavoronceandpersists"
     },
     {
       "relation": "calls",
@@ -45570,8 +45591,8 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-candidate-manifest.mjs",
       "source_location": "L11",
       "weight": 1.0,
-      "_src": "verify_candidate_manifest_readjson",
-      "_tgt": "vis_network_min_vx_replace",
+      "_src": "vis_network_min_vx_replace",
+      "_tgt": "verify_candidate_manifest_readjson",
       "source": "vis_network_min_vx_replace",
       "target": "verify_candidate_manifest_readjson"
     },
@@ -61596,6 +61617,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-fun-loop.mjs",
+      "source_location": "L393",
+      "weight": 1.0,
+      "_src": "e_desktop_coders_life_tools_verify_fun_loop_mjs",
+      "_tgt": "verify_fun_loop_testweeklyreviewstickeraddsflavoronceandpersists",
+      "source": "e_desktop_coders_life_tools_verify_fun_loop_mjs",
+      "target": "verify_fun_loop_testweeklyreviewstickeraddsflavoronceandpersists",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-fun-loop.mjs",
@@ -61815,6 +61848,18 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-fun-loop.mjs",
+      "source_location": "L394",
+      "weight": 1.0,
+      "_src": "verify_fun_loop_testweeklyreviewstickeraddsflavoronceandpersists",
+      "_tgt": "verify_fun_loop_creategamecontext",
+      "source": "verify_fun_loop_creategamecontext",
+      "target": "verify_fun_loop_testweeklyreviewstickeraddsflavoronceandpersists",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-fun-loop.mjs",
       "source_location": "L171",
       "weight": 1.0,
       "_src": "verify_fun_loop_testlearningrhythmaddssmallfeedbackandpersists",
@@ -61905,6 +61950,18 @@
       "_tgt": "verify_fun_loop_parsesave",
       "source": "verify_fun_loop_parsesave",
       "target": "verify_fun_loop_testpreviousrunrecoveryrelayrewardsonceandpersists",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-fun-loop.mjs",
+      "source_location": "L403",
+      "weight": 1.0,
+      "_src": "verify_fun_loop_testweeklyreviewstickeraddsflavoronceandpersists",
+      "_tgt": "verify_fun_loop_parsesave",
+      "source": "verify_fun_loop_parsesave",
+      "target": "verify_fun_loop_testweeklyreviewstickeraddsflavoronceandpersists",
       "confidence_score": 1.0
     },
     {

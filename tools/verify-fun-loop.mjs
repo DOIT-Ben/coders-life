@@ -390,6 +390,41 @@ function testPreviousRunRecoveryRelayRewardsOnceAndPersists() {
   assert.ok(afterRestore.runGoalState.chain.rewardKeys.includes('previous-run-recovery'), 'relay reward key should survive restore');
 }
 
+function testWeeklyReviewStickerAddsFlavorOnceAndPersists() {
+  const context = createGameContext();
+
+  context.selectCareer('backend');
+  for (let index = 0; index < 4; index++) {
+    context.action('overtime');
+  }
+  for (let index = 0; index < 3; index++) {
+    context.action('rest');
+  }
+  const saved = parseSave(context);
+
+  assert.equal(saved.schemaVersion, 2, 'weekly review sticker should not bump save schema');
+  assert.equal(Object.hasOwn(saved, 'weeklyReviewStickerState'), false, 'weekly review sticker should not add a top-level save field');
+  assert.equal(saved.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('本周标签')).length, 1, 'week 1 should create exactly one weekly review sticker');
+  assert.ok(saved.eventLog.some(entry => entry.text.includes('本周标签：边界防火墙正在冒烟')), 'overtime-heavy week should get a resonant boundary sticker');
+  assert.ok(saved.runGoalState.chain.rewardKeys.includes('weekly-sticker-1'), 'weekly sticker claimed key should persist in existing run goal chain');
+
+  const restored = createGameContext({ [SAVE_KEY]: JSON.stringify(saved) });
+  assert.equal(restored.loadGameFromStorage(), true);
+  const afterRestore = restored.buildSaveData();
+
+  assert.equal(afterRestore.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('本周标签')).length, 1, 'weekly review sticker should not repeat after restore');
+  assert.ok(afterRestore.runGoalState.chain.rewardKeys.includes('weekly-sticker-1'), 'weekly sticker claimed key should survive restore');
+
+  for (let index = 0; index < 7; index++) {
+    restored.action('learn-ai');
+  }
+  const secondWeek = parseSave(restored);
+
+  assert.equal(secondWeek.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('本周标签')).length, 2, 'week 2 should create a second weekly review sticker');
+  assert.ok(secondWeek.eventLog.some(entry => entry.text.includes('本周标签：收藏夹架构师')), 'learning-heavy week should get a tool-learning sticker');
+  assert.ok(secondWeek.runGoalState.chain.rewardKeys.includes('weekly-sticker-2'), 'week 2 sticker key should persist in existing run goal chain');
+}
+
 const tests = [
   testLearningRhythmAddsSmallFeedbackAndPersists,
   testRestAfterOverloadAddsRecoveryFeedbackWithoutNewSaveSchema,
@@ -398,7 +433,8 @@ const tests = [
   testLongBuildDebtCanBePaidDownOncePerDayAndPersists,
   testShippedBuildNetworkingTurnsExposureIntoFeedbackWithoutReshipping,
   testSmallPrLoopClosesOncePerWeekAndSurvivesRestore,
-  testPreviousRunRecoveryRelayRewardsOnceAndPersists
+  testPreviousRunRecoveryRelayRewardsOnceAndPersists,
+  testWeeklyReviewStickerAddsFlavorOnceAndPersists
 ];
 
 for (const test of tests) {

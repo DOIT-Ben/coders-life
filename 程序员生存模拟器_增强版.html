@@ -1939,6 +1939,27 @@
             addEvent(`🧱 长期 Build 项目：${stageLabels[buildProjectState.stage]}，进度 ${Math.round(buildProjectState.progress)}%，质量 ${Math.round(buildProjectState.quality)}，曝光 ${Math.round(buildProjectState.exposure)}，${debtNote}`, 'special');
         }
 
+        function getWeeklyReviewSticker(topAction, topCount) {
+            if (topAction === 'overtime' && (topCount >= 4 || runState.fatigue >= 70)) return '边界防火墙正在冒烟';
+            if (topAction === 'learn-ai' && topCount >= 3) return '收藏夹架构师';
+            if (topAction === 'side-project' && topCount >= 3) return buildProjectState.shipped ? '终于 ship 了一点东西' : '半成品驯兽师';
+            if (topAction === 'rest') return dailyGoalState.streak >= 3 ? '恢复系统上线' : '暂停键修复中';
+            if (topAction === 'interview') return stats.money <= 25 ? '现金流警报处理员' : '简历回归测试员';
+            if (topAction === 'networking') return runState.boundaryScore <= 40 ? '边界补丁提交中' : '弱连接复健师';
+            return runState.focus >= 70 ? '专注缓存命中' : '状态普通但还在跑';
+        }
+
+        function addWeeklyReviewSticker(topAction, topCount) {
+            const week = Math.max(1, Math.ceil(stats.day / 7));
+            const rewardKey = `weekly-sticker-${week}`;
+            if (runGoalState.chain.rewardKeys.includes(rewardKey)) return;
+            runGoalState.chain.rewardKeys = Array.from(new Set([
+                ...(runGoalState.chain.rewardKeys || []),
+                rewardKey
+            ])).slice(-6);
+            addEvent(`🏷️ 本周标签：${getWeeklyReviewSticker(topAction, topCount)}（${getActionLabel(topAction)} ×${topCount}）`, 'special');
+        }
+
         function addWeeklyRecap() {
             const focus = Object.entries(weeklyActionCounts).sort((a, b) => b[1] - a[1])[0] || ['rest', 0];
             const topAction = focus[0];
@@ -1984,6 +2005,7 @@
             });
             const stateNote = runState.fatigue >= 70 ? '疲劳偏高' : runState.focus >= 70 ? '专注在线' : '状态普通';
             addEvent(`📅 周报：${recap}（本周 ${topAction} ×${topCount}，${weekAge} 岁，${stateNote}）`, 'special');
+            addWeeklyReviewSticker(topAction, topCount);
             addBuildProjectWeeklyFeedback();
             weeklyActionCounts = getInitialWeeklyActionCounts();
         }
