@@ -1,12 +1,12 @@
-# Graph Report - E:\desktop\coders-life  (2026-06-18)
+# Graph Report - E:\desktop\coders-life  (2026-06-19)
 
 ## Corpus Check
-- 14 files · ~120,737 words
+- 14 files · ~121,231 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1347 nodes · 4439 edges · 16 communities detected
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 119 edges (avg confidence: 0.8)
+- 1350 nodes · 4451 edges · 18 communities detected
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 122 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -26,6 +26,8 @@
 - [[_COMMUNITY_Community 13|Community 13]]
 - [[_COMMUNITY_Community 14|Community 14]]
 - [[_COMMUNITY_Community 15|Community 15]]
+- [[_COMMUNITY_Community 16|Community 16]]
+- [[_COMMUNITY_Community 17|Community 17]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `g()` - 163 edges
@@ -40,98 +42,106 @@
 10. `iC()` - 41 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `it()` --calls--> `A()`  [EXTRACTED]
-  E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js → E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js  _Bridges community 0 → community 9_
 - `ct()` --calls--> `A()`  [EXTRACTED]
-  E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js → E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js  _Bridges community 0 → community 12_
+  E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js → E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js  _Bridges community 0 → community 15_
+- `so()` --calls--> `A()`  [EXTRACTED]
+  E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js → E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js  _Bridges community 0 → community 14_
 - `Uo()` --calls--> `A()`  [EXTRACTED]
-  E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js → E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js  _Bridges community 0 → community 5_
+  E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js → E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js  _Bridges community 0 → community 10_
 - `A()` --calls--> `x()`  [EXTRACTED]
-  E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js → E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js  _Bridges community 0 → community 1_
-- `zl()` --calls--> `A()`  [EXTRACTED]
   E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js → E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js  _Bridges community 0 → community 2_
+- `zl()` --calls--> `A()`  [EXTRACTED]
+  E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js → E:\desktop\coders-life\graphify-out\vendor\vis-network.min.js  _Bridges community 0 → community 1_
 
 ## Communities
 
 ### Community 0 - "Community 0"
 Cohesion: 0.04
-Nodes (262): A(), Ab(), AC(), ap(), Ar(), As(), Aw(), B() (+254 more)
+Nodes (255): A(), Ab(), AC(), ap(), Ar(), As(), Aw(), B() (+247 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.02
-Nodes (28): AE, BE, CC(), Dc(), dE, eC(), FE, gx (+20 more)
+Nodes (32): Bl(), CE, dO, eb(), el(), fl(), Fx(), he() (+24 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.03
-Nodes (17): CE, dO, el(), Fx(), gO, Jx, kl(), LC() (+9 more)
+Nodes (17): AE, BE, dE, FE, gx, Hx, jE, ME (+9 more)
 
 ### Community 3 - "Community 3"
 Cohesion: 0.03
-Nodes (93): normalizeText(), parseCandidateLines(), readRows(), writeCandidateFile(), countJsonlCandidates(), readJson(), assertDailyGoalState(), assertUnlocked() (+85 more)
+Nodes (89): normalizeText(), parseCandidateLines(), readRows(), writeCandidateFile(), assertDailyGoalState(), assertUnlocked(), createDocument(), createGameContext() (+81 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.03
-Nodes (14): Cx, eb(), eO, ib(), iC(), Ix, nx(), ox() (+6 more)
+Nodes (19): ao(), CO, et(), Fd(), gl(), hl(), IO, jl() (+11 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.04
-Nodes (15): at(), cl(), dl(), hO, jO(), Ko(), Ml(), mo() (+7 more)
+Cohesion: 0.06
+Nodes (6): Bo(), iC(), Ml(), oO, tT, xT
 
 ### Community 6 - "Community 6"
-Cohesion: 0.03
-Nodes (18): ao(), Bl(), CO, Fd(), fl(), gl(), IO, jl() (+10 more)
+Cohesion: 0.06
+Nodes (33): countJsonlCandidates(), readJson(), countGoalEvents(), createDocument(), createGameContext(), createLocalStorage(), createStableMath(), extractInlineScript() (+25 more)
 
 ### Community 7 - "Community 7"
-Cohesion: 0.04
-Nodes (39): assertBuildFailedWith(), assertBuildScriptUsesAtomicWrites(), assertBuildSucceeded(), copyRecursive(), injectIntoFirstJsonLine(), makeWorkspace(), countGoalEvents(), createDocument() (+31 more)
+Cohesion: 0.06
+Nodes (39): createHarness(), createStorage(), ElementStub, extractInlineScript(), readSave(), testCorruptLegacySaveIsBackedUp(), testCorruptV2SaveIsBackedUp(), testEndingPersistsCompactRunSummary() (+31 more)
 
 ### Community 8 - "Community 8"
-Cohesion: 0.06
-Nodes (38): createHarness(), createStorage(), ElementStub, extractInlineScript(), readSave(), testCorruptLegacySaveIsBackedUp(), testCorruptV2SaveIsBackedUp(), testEndingPersistsCompactRunSummary() (+30 more)
+Cohesion: 0.05
+Nodes (17): countBy(), bc(), CC(), Cx, Dc(), eC(), Ix, mc() (+9 more)
 
 ### Community 9 - "Community 9"
-Cohesion: 0.12
-Nodes (2): it(), so()
+Cohesion: 0.09
+Nodes (6): cl(), dl(), hO, mo(), VO(), yo()
 
 ### Community 10 - "Community 10"
+Cohesion: 0.09
+Nodes (7): at(), jO(), Ko(), QO(), rt(), tp, Uo()
+
+### Community 11 - "Community 11"
+Cohesion: 0.06
+Nodes (22): assertBuildFailedWith(), assertBuildScriptUsesAtomicWrites(), assertBuildSucceeded(), copyRecursive(), injectIntoFirstJsonLine(), makeWorkspace(), ah(), Ch() (+14 more)
+
+### Community 12 - "Community 12"
+Cohesion: 0.1
+Nodes (3): eO, tx, xO()
+
+### Community 13 - "Community 13"
 Cohesion: 0.13
 Nodes (14): Commit-AtomicFile(), Decode-Utf8Base64(), Get-LifeExtensionItems(), Get-ResearchExtensionItems(), Get-Round10LearningItems(), Get-Round11LifeItems(), Get-Round7CommunityItems(), Get-Round8CommunityItems() (+6 more)
 
-### Community 11 - "Community 11"
-Cohesion: 0.16
-Nodes (16): ah(), Ch(), dh(), fh(), hh(), Il(), kh(), lh() (+8 more)
+### Community 14 - "Community 14"
+Cohesion: 0.2
+Nodes (1): so()
 
-### Community 12 - "Community 12"
+### Community 15 - "Community 15"
 Cohesion: 0.49
 Nodes (1): ct()
 
-### Community 13 - "Community 13"
-Cohesion: 0.39
-Nodes (1): tx
-
-### Community 14 - "Community 14"
+### Community 16 - "Community 16"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 15 - "Community 15"
+### Community 17 - "Community 17"
 Cohesion: 1.0
 Nodes (0): 
 
 ## Knowledge Gaps
-- **Thin community `Community 14`** (1 nodes): `程序员生存模拟器_弹窗库_2026-06-18.js`
+- **Thin community `Community 16`** (1 nodes): `程序员生存模拟器_弹窗库_2026-06-18.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 15`** (1 nodes): `parse-popup-pool.ps1`
+- **Thin community `Community 17`** (1 nodes): `parse-popup-pool.ps1`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Ix` connect `Community 4` to `Community 0`, `Community 8`, `Community 3`?**
-  _High betweenness centrality (0.063) - this node is a cross-community bridge._
-- **Why does `g()` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 9`, `Community 11`, `Community 12`?**
-  _High betweenness centrality (0.058) - this node is a cross-community bridge._
-- **Why does `tT` connect `Community 5` to `Community 0`, `Community 2`, `Community 4`?**
-  _High betweenness centrality (0.054) - this node is a cross-community bridge._
+- **Why does `g()` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 8`, `Community 10`, `Community 11`, `Community 14`, `Community 15`?**
+  _High betweenness centrality (0.073) - this node is a cross-community bridge._
+- **Why does `Ix` connect `Community 8` to `Community 0`, `Community 3`, `Community 5`, `Community 7`?**
+  _High betweenness centrality (0.062) - this node is a cross-community bridge._
+- **Why does `so()` connect `Community 14` to `Community 0`, `Community 8`, `Community 4`, `Community 1`?**
+  _High betweenness centrality (0.053) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `A()` (e.g. with `.insertBefore()` and `.appendChild()`) actually correct?**
   _`A()` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **Should `Community 0` be split into smaller, more focused modules?**

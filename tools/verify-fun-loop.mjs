@@ -428,6 +428,81 @@ function testAiBuildReviewLoopRewardsOnceAndPersists() {
   assert.ok(afterRestore.runGoalState.chain.metaRewardKeys.includes('ai-review-week-1'), 'review reward key should survive restore');
 }
 
+function testRiskBufferRestRewardsOnceAndPersists() {
+  const context = createGameContext();
+
+  context.selectCareer('backend');
+  context.applySaveData({
+    schemaVersion: 2,
+    stats: { day: 2, skill: 60, mental: 58, money: 55, ai: 30, career: 'backend', items: [] },
+    runState: { focus: 45, fatigue: 75, boundaryScore: 45 },
+    actionCounts: { 'learn-ai': 0, overtime: 0, rest: 0, interview: 0, 'side-project': 0, networking: 0 },
+    weeklyActionCounts: { 'learn-ai': 0, overtime: 0, rest: 0, interview: 0, 'side-project': 0, networking: 0 },
+    gameData: { achievements: [], deaths: 0, maxDay: 2, endings: [], runs: [] },
+    achievements: [],
+    shopItems: []
+  });
+  context.action('rest');
+  const saved = parseSave(context);
+
+  assert.equal(saved.schemaVersion, 2, 'risk buffer should not bump save schema');
+  assert.equal(Object.hasOwn(saved, 'riskBufferState'), false, 'risk buffer should not add a top-level save field');
+  assert.equal(saved.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('风险缓冲')).length, 1, 'resting while still overloaded should create one risk buffer event');
+  assert.ok(saved.stats.mental >= 61, 'risk buffer should grant a small mental reward');
+  assert.ok(saved.runState.fatigue <= 51, 'risk buffer should reduce fatigue beyond the base rest action');
+  assert.ok(saved.runGoalState.chain.metaRewardKeys.includes('risk-buffer-week-1'), 'risk buffer reward key should persist in existing run goal chain metadata');
+
+  const restored = createGameContext({ [SAVE_KEY]: JSON.stringify(saved) });
+  assert.equal(restored.loadGameFromStorage(), true);
+  restored.action('rest');
+  const afterRestore = parseSave(restored);
+
+  assert.equal(afterRestore.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('风险缓冲')).length, 1, 'claimed risk buffer should not repeat in the same week after restore');
+  assert.ok(afterRestore.runGoalState.chain.metaRewardKeys.includes('risk-buffer-week-1'), 'risk buffer reward key should survive restore');
+}
+
+function testRiskBufferTriggersAtMinimumFatigueThreshold() {
+  const context = createGameContext();
+
+  context.selectCareer('backend');
+  context.applySaveData({
+    schemaVersion: 2,
+    stats: { day: 2, skill: 60, mental: 58, money: 55, ai: 30, career: 'backend', items: [] },
+    runState: { focus: 45, fatigue: 65, boundaryScore: 45 },
+    actionCounts: { 'learn-ai': 0, overtime: 0, rest: 0, interview: 0, 'side-project': 0, networking: 0 },
+    weeklyActionCounts: { 'learn-ai': 0, overtime: 0, rest: 0, interview: 0, 'side-project': 0, networking: 0 },
+    gameData: { achievements: [], deaths: 0, maxDay: 2, endings: [], runs: [] },
+    achievements: [],
+    shopItems: []
+  });
+  context.action('rest');
+  const saved = parseSave(context);
+
+  assert.equal(saved.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('风险缓冲')).length, 1, 'pre-rest fatigue 65 should be enough to trigger risk buffer');
+  assert.ok(saved.runGoalState.chain.metaRewardKeys.includes('risk-buffer-week-1'), 'threshold-triggered risk buffer should persist its weekly key');
+}
+
+function testRiskBufferUsesPreRestMentalThreshold() {
+  const context = createGameContext();
+
+  context.selectCareer('backend');
+  context.applySaveData({
+    schemaVersion: 2,
+    stats: { day: 2, skill: 60, mental: 45, money: 55, ai: 30, career: 'backend', items: [] },
+    runState: { focus: 45, fatigue: 20, boundaryScore: 45 },
+    actionCounts: { 'learn-ai': 0, overtime: 0, rest: 0, interview: 0, 'side-project': 0, networking: 0 },
+    weeklyActionCounts: { 'learn-ai': 0, overtime: 0, rest: 0, interview: 0, 'side-project': 0, networking: 0 },
+    gameData: { achievements: [], deaths: 0, maxDay: 2, endings: [], runs: [] },
+    achievements: [],
+    shopItems: []
+  });
+  context.action('rest');
+  const saved = parseSave(context);
+
+  assert.equal(saved.eventLog.filter(entry => entry.type === 'special' && entry.text.includes('风险缓冲')).length, 1, 'pre-rest mental 45 should trigger risk buffer even when the rest event recovers mental first');
+  assert.ok(saved.runGoalState.chain.metaRewardKeys.includes('risk-buffer-week-1'), 'mental-threshold risk buffer should persist its weekly key');
+}
+
 function testPreviousRunRecoveryRelayRewardsOnceAndPersists() {
   const previousRuns = [{
     endingType: '精神崩溃结局',
@@ -517,6 +592,9 @@ const tests = [
   testInterviewDebriefTurnsIntoWeakConnectionOncePerWeek,
   testWeakConnectionTurnsIntoBetaFeedbackOncePerWeek,
   testAiBuildReviewLoopRewardsOnceAndPersists,
+  testRiskBufferRestRewardsOnceAndPersists,
+  testRiskBufferTriggersAtMinimumFatigueThreshold,
+  testRiskBufferUsesPreRestMentalThreshold,
   testPreviousRunRecoveryRelayRewardsOnceAndPersists,
   testWeeklyReviewStickerAddsFlavorOnceAndPersists
 ];

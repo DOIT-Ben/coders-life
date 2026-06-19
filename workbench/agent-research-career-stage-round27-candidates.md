@@ -2,19 +2,17 @@
 
 ## 调研来源清单与覆盖主题
 
-- Reddit r/ExperiencedDevs: AI 编码工具评估、职业阶段错位、代码 review 摩擦、技术债、资深工程师职责边界。
-- Reddit r/webdev: 自由职业 scope creep、客户沟通、维护费、AI 辅助后遗症、技术债管理。
-- Reddit r/opensource: 维护者倦怠、AI 生成 PR/issue、低质量贡献、社区反馈与信任。
-- Reddit r/indiehackers / r/buildinpublic: 独立开发、公开构建、弱连接反馈、目标用户与同行围观的错位。
-- Hacker News Ask HN / Show HN: 自由职业合同与维护、用户沟通和开发时间分配、Side project 范围控制、独立产品反馈。
-- DEV Community: AI-native intent debt、AI 时代技术债、独立开发如何选择技术债、开源维护者角色差异。
-- GitHub Blog / GitHub Community 相关讨论: 维护者月、AI 时代围绕代码的人类工作变得更隐形、PR 控制与维护者负担。
-- CNCF Blog: 生成式 AI 时代开源维护，强调任何 PR 都需要人类验证、责任和上下文理解。
-- The New Stack / InfoQ / Ars Technica / The Register / ITPro: AI 生成代码、开源维护者负担、review 瓶颈、AI slop 安全报告等行业观察。
-- 研究论文线索: open-source technical debt、self-admitted technical debt、vibe coding 对维护者 review overhead 的影响。
+- Reddit r/ExperiencedDevs: PR review 噩梦、blocking/non-blocking 评论、资深工程师平台期与 Senior-to-Staff 迷茫。来源：https://www.reddit.com/r/ExperiencedDevs/comments/1nhjip1 ，https://www.reddit.com/r/ExperiencedDevs/comments/n0wde7 ，https://www.reddit.com/r/ExperiencedDevs/comments/1rb0djh/lost_in_the_sauce_senior_to_staff_engineer/
+- Reddit r/ExperiencedDevs: PR 反馈被忽略、review bottleneck、资深开发代码质量分歧。来源：https://www.reddit.com/r/ExperiencedDevs/comments/wa3irb ，https://www.reddit.com/r/ExperiencedDevs/comments/1kwjjk2 ，https://www.reddit.com/r/ExperiencedDevs/comments/1jk88dl
+- Hacker News / Ask HN: 软件顾问维护、客户 bug 与 unpaid work、solo consultant 获客。来源：https://news.ycombinator.com/item?id=10213353 ，https://news.ycombinator.com/item?id=7831306 ，https://ask.rivestack.io/story/ask-hn-how-did-you-land-your-first-projects-as-a-solo-engineerconsultant-47822940
+- Indie Hackers: scope creep 与 change order、模糊 brief 如何制造无限新增需求。来源：https://www.indiehackers.com/post/how-do-you-handle-scope-creep-with-clients-eeda9ad8f8
+- CNCF Blog: 生成式 AI 时代开源维护，强调 AI 生成 PR 仍需人类验证、维护者承压。来源：https://www.cncf.io/blog/2026/03/10/sustaining-open-source-in-the-age-of-generative-ai/ ，https://www.cncf.io/blog/2026/04/29/the-state-of-ai-in-cncf-projects-a-first-look-at-the-data/ ，https://www.cncf.io/blog/2026/05/14/when-ai-agents-become-contributors-how-kubestellar-reached-81-pr-acceptance/
+- DEV Community / LeadDev / InfoQ: AI 生成代码、技术债、verification debt、架构漂移与维护成本。来源：https://dev.to/ed_dfreitas/how-ai-generated-code-is-messing-with-your-technical-debt-437g ，https://leaddev.com/software-quality/how-ai-generated-code-accelerates-technical-debt ，https://www.infoq.com/news/2025/11/ai-code-technical-debt/
+- ITPro / PC Gamer / Tom's Hardware: AI 生成代码审查成本、AI slop 对开源维护者的压力、Linux/Godot 社区对责任归属的讨论。来源：https://www.itpro.com/software/development/software-developers-not-checking-ai-generated-code-verification-debt ，https://www.pcgamer.com/software/platforms/open-source-game-engine-godot-is-drowning-in-ai-slop-code-contributions-i-dont-know-how-long-we-can-keep-it-up/ ，https://www.tomshardware.com/software/linux/linux-lays-down-the-law-on-ai-generated-code-yes-to-copilot-no-to-ai-slop-and-humans-take-the-fall-for-mistakes-after-months-of-fierce-debate-torvalds-and-maintainers-come-to-an-agreement
+- 学术线索: AI 生成代码技术债、vibe coding review overhead、self-admitted technical debt、review comment usefulness。来源：https://arxiv.org/abs/2603.28592 ，https://arxiv.org/abs/2602.23905 ，https://arxiv.org/abs/2601.07786 ，https://arxiv.org/abs/1807.04485
+- Reddit/HN/Indie Hackers 弱连接与独立开发线索：build in public、陌生人反馈、solo business、side project scope。部分来源来自搜索结果与公开讨论聚合，证据等级在单条候选中已降级为 medium。
 
 覆盖主题：职业阶段焦虑、从 junior 到 senior 的能力断层、staff/lead 的隐形工作、技术债利息、代码 review 的沟通成本、AI 辅助开发的理解债、开源维护者疲劳、独立开发孤独感、自由职业边界、弱连接反馈的价值与噪音。
-
 ## JSONL 候选
 
 {"text":"新手最怕写不出来，老手更怕写出来以后没人知道为什么。","action":"记录这次实现背后的取舍，而不是只提交能跑的代码。","tags":["career-stage","technical-debt","documentation"],"source_hint":"Reddit ExperiencedDevs + DEV intent debt 讨论归纳","evidence_level":"high"}

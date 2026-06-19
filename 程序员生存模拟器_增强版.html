@@ -903,7 +903,8 @@
                 key.startsWith('weekly-sticker-') ||
                 key.startsWith('interview-networking-week-') ||
                 key.startsWith('networking-beta-week-') ||
-                key.startsWith('ai-review-week-')
+                key.startsWith('ai-review-week-') ||
+                key.startsWith('risk-buffer-week-')
             );
             if (typeof data.lastActionType === 'string' && allowedActions.includes(data.lastActionType)) {
                 base.lastActionType = data.lastActionType;
@@ -1762,6 +1763,10 @@
 
         function action(type) {
             if (isGameOver) return;
+            const beforeActionState = {
+                mental: stats.mental,
+                fatigue: runState.fatigue
+            };
             stats.day++;
             actionCounts[type]++;
             weeklyActionCounts[type] = (weeklyActionCounts[type] || 0) + 1;
@@ -1791,7 +1796,7 @@
 
             addStreakFeedback();
             applyDailyGoal(type);
-            applyFunLoopFeedback(type);
+            applyFunLoopFeedback(type, beforeActionState);
             applyResumeFollowup(type);
             applyBuildProject(type);
             applyRunGoalFeedback(type);
@@ -2132,7 +2137,7 @@
             applyDailyGoalRecovery(actionType);
         }
 
-        function applyFunLoopFeedback(actionType) {
+        function applyFunLoopFeedback(actionType, beforeActionState = {}) {
             if (actionType === 'learn-ai' && weeklyActionCounts['learn-ai'] === 3) {
                 stats.ai = Math.min(100, stats.ai + 2);
                 addEvent('🧠 学习节奏：连续把 AI 工具练进日常，AI熟练度 +2', 'special');
@@ -2141,6 +2146,7 @@
                 stats.mental = Math.min(100, stats.mental + 6);
                 addEvent('🛟 恢复触发：你在过载后主动停手，精神 +6', 'special');
             }
+            applyRiskBufferFeedback(actionType, beforeActionState);
             applyInterviewDebriefFeedback(actionType);
             applyWeakConnectionBetaFeedback(actionType);
             applyAiBuildReviewFeedback(actionType);
@@ -2214,6 +2220,25 @@
             chain.metaRewardKeys = Array.from(new Set([...chain.metaRewardKeys, rewardKey])).slice(-30);
             runGoalState.chain = chain;
             addEvent('🧪 Review 闭环：你没有只堆功能，而是把 AI 产物过了一遍 review，质量 +2，技术债 -3', 'special');
+        }
+
+        function applyRiskBufferFeedback(actionType, beforeActionState = {}) {
+            if (actionType !== 'rest') return;
+            runGoalState = normalizeRunGoalState(runGoalState, stats);
+            const chain = normalizeRunGoalChain(runGoalState.chain);
+            const week = Math.max(1, Math.ceil(stats.day / 7));
+            const rewardKey = `risk-buffer-week-${week}`;
+            const startedAtRisk = beforeActionState.fatigue >= 65 || beforeActionState.mental <= 45;
+            if (!startedAtRisk || chain.metaRewardKeys.includes(rewardKey)) {
+                runGoalState.chain = chain;
+                return;
+            }
+
+            stats.mental = Math.min(100, stats.mental + 3);
+            runState.fatigue = Math.max(0, runState.fatigue - 6);
+            chain.metaRewardKeys = Array.from(new Set([...chain.metaRewardKeys, rewardKey])).slice(-30);
+            runGoalState.chain = chain;
+            addEvent('🧯 风险缓冲：你没有等到崩溃才停手，疲劳 -6，精神 +3', 'special');
         }
 
         function applyPreviousRunRecoveryRelay(actionType) {
