@@ -78,6 +78,7 @@ function createLocalStorage(seed = {}) {
 function createDocument() {
   const ids = [
     'resume-btn',
+    'game-subtitle',
     'career-selection',
     'game-area',
     'player-career',
@@ -364,6 +365,29 @@ function testRestartPreservesMetaOnlyAchievements() {
   const restored = createGameContext({ [saveKey]: raw });
   assert.equal(restored.loadGameFromStorage(), false, 'meta-only save should restore meta without resuming a run');
   assert.deepEqual(restored.buildSaveData().gameData.achievements, ['first_day', 'survivor']);
+}
+
+function testReturnToCareerSelectionKeepsCurrentSave() {
+  const confirmMessages = [];
+  const context = createGameContext();
+  context.window.confirm = message => {
+    confirmMessages.push(message);
+    return true;
+  };
+
+  context.selectCareer('backend');
+  context.action('rest');
+  const activeSave = context.localStorage.getItem(saveKey);
+  assert(activeSave, 'fixture should create a current save before returning to career selection');
+
+  context.returnToCareerSelection();
+
+  assert.equal(context.document.getElementById('career-selection').style.display, 'grid', 'returning should show the career cards');
+  assert.equal(context.document.getElementById('game-area').style.display, 'none', 'returning should hide the active game area');
+  assert.equal(context.document.getElementById('game-subtitle').textContent, '2026 Edition - 选择你的职业道路', 'returning should restore the home subtitle');
+  assert.equal(context.localStorage.getItem(saveKey), activeSave, 'returning to career selection should not delete or overwrite the current save');
+  assert.equal(context.document.getElementById('resume-btn').style.display, 'block', 'saved run should remain resumable after returning');
+  assert(confirmMessages.some(message => /不会删除当前存档/.test(message)), 'active run return should explain that the save is preserved');
 }
 
 function testPrLoopRewardsDoNotEvictRunGoalChainRewards() {
@@ -688,6 +712,7 @@ const tests = [
   testPreviousRunExperienceSeedsNewCareer,
   testPreviousRunChallengeUsesReachableFullScoreText,
   testRestartPreservesMetaOnlyAchievements,
+  testReturnToCareerSelectionKeepsCurrentSave,
   testPrLoopRewardsDoNotEvictRunGoalChainRewards,
   testRandomEventsFilterUntriggerableBuiltInEvents,
   testAgeAdvancesByOneYearAfter365Days,

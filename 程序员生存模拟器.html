@@ -566,6 +566,7 @@
                     <button onclick="showAchievements()">成就</button>
                     <button onclick="showShop()">商店</button>
                     <button onclick="saveGame()">保存</button>
+                    <button onclick="returnToCareerSelection()">换角色</button>
                 </div>
             </div>
 
@@ -3273,6 +3274,17 @@
             document.getElementById('career-selection').style.display = 'none';
             document.getElementById('game-area').style.display = 'block';
             setGameSubtitle(PLAY_SUBTITLE);
+            updateResumeButton();
+        }
+
+        function returnToCareerSelection() {
+            if (hasActiveRun()) {
+                const confirmed = window.confirm('回到职业选择不会删除当前存档。选择新职业时会再次确认覆盖，确定返回吗？');
+                if (!confirmed) return;
+            }
+            document.getElementById('career-selection').style.display = 'grid';
+            document.getElementById('game-area').style.display = 'none';
+            setGameSubtitle(HOME_SUBTITLE);
             updateResumeButton();
         }
 
