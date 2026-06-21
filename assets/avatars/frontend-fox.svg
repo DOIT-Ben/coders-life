@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">前端工程师狐狸头像</title>
+  <desc id="desc">一只披着 CSS 斗篷、拿调色板的卡通狐狸程序员。</desc>
+  <rect width="240" height="240" rx="36" fill="#ffe9a8"/>
+  <path d="M29 196c28-20 48-22 76-8 31 15 68 11 105-19v34c-31 22-73 29-110 11-28-14-48-10-71 7z" fill="#f45b3f"/>
+  <circle cx="120" cy="116" r="67" fill="#f79445" stroke="#231f20" stroke-width="7"/>
+  <path d="M63 72 43 28l47 25zM177 72l20-44-47 25z" fill="#f79445" stroke="#231f20" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M74 82 61 53l31 18zM166 82l13-29-31 18z" fill="#ffd3bd"/>
+  <path d="M76 124c14 39 73 39 88 0-13 10-75 10-88 0z" fill="#fff5dc" stroke="#231f20" stroke-width="6"/>
+  <circle cx="96" cy="107" r="8" fill="#231f20"/>
+  <circle cx="144" cy="107" r="8" fill="#231f20"/>
+  <path d="M113 125h14l-7 9z" fill="#231f20"/>
+  <path d="M84 151c19 12 52 12 72 0" fill="none" stroke="#231f20" stroke-width="6" stroke-linecap="round"/>
+  <path d="M49 170c22-12 55-16 78-9l-11 44c-29-8-57-2-76 13z" fill="#22b8a7" stroke="#231f20" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M66 182h46M61 198h40" stroke="#fff5dc" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="183" cy="166" r="22" fill="#fff5dc" stroke="#231f20" stroke-width="6"/>
+  <circle cx="174" cy="160" r="5" fill="#f45b3f"/>
+  <circle cx="189" cy="159" r="5" fill="#22b8a7"/>
+  <circle cx="184" cy="174" r="5" fill="#f4c542"/>
+  <path d="M50 34h33l-8 15H58z" fill="#fff5dc" stroke="#231f20" stroke-width="5" stroke-linejoin="round"/>
+</svg>

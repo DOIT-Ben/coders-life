@@ -5,63 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>程序员生存模拟器 2026 - 增强版</title>
     <style>
+        :root {
+            --paper: #fff4cf;
+            --paper-deep: #ffd98a;
+            --card: #fffaf0;
+            --ink: #241f1c;
+            --muted: #6d5d4d;
+            --tomato: #f45b3f;
+            --mustard: #f4c542;
+            --mint: #22b8a7;
+            --sky: #7fd8ff;
+            --shadow: rgba(36, 31, 28, 0.22);
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'SF Mono', 'Consolas', 'Monaco', monospace;
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-            color: #e0e0e0;
+            font-family: 'Trebuchet MS', 'Comic Sans MS', 'Microsoft YaHei', sans-serif;
+            background:
+                radial-gradient(circle at 18% 16%, rgba(244, 197, 66, 0.42) 0 13%, transparent 14%),
+                radial-gradient(circle at 84% 12%, rgba(34, 184, 167, 0.32) 0 11%, transparent 12%),
+                linear-gradient(135deg, #fff7dc 0%, #ffd98a 48%, #ffb06b 100%);
+            color: var(--ink);
             min-height: 100vh;
             padding: 20px;
+            background-attachment: fixed;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1080px;
             margin: 0 auto;
-            background: rgba(30, 30, 50, 0.9);
-            border-radius: 20px;
+            background: var(--card);
+            border: 5px solid var(--ink);
+            border-radius: 28px;
             padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 14px 14px 0 var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .container::before {
+            content: "BUGS WELCOME";
+            position: absolute;
+            top: 18px;
+            right: -45px;
+            transform: rotate(12deg);
+            background: var(--tomato);
+            color: #fffaf0;
+            border: 4px solid var(--ink);
+            border-radius: 999px;
+            padding: 8px 48px;
+            font-size: 0.8rem;
+            font-weight: 900;
+            letter-spacing: 1px;
         }
         h1 {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: clamp(2.1rem, 5vw, 4.2rem);
             margin-bottom: 10px;
-            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--ink);
+            text-shadow: 4px 4px 0 var(--mustard), 7px 7px 0 rgba(244, 91, 63, 0.25);
+            letter-spacing: -2px;
         }
         .subtitle {
             text-align: center;
-            color: #888;
+            color: var(--muted);
             margin-bottom: 40px;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            font-weight: 800;
         }
         .career-selection {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 24px;
             margin-bottom: 30px;
         }
         .career-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            border-radius: 15px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: #fffdf6;
+            padding: 20px;
+            border-radius: 24px;
+            border: 4px solid var(--ink);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+            box-shadow: 8px 8px 0 var(--shadow);
+            position: relative;
+            min-height: 220px;
         }
         .career-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-            border-color: #667eea;
+            background: #fff1b8;
+            transform: translate(-4px, -6px) rotate(-1deg);
+            box-shadow: 13px 14px 0 var(--shadow);
+        }
+        .career-portrait {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+        .career-avatar {
+            width: 94px;
+            height: 94px;
+            flex: 0 0 94px;
+            border: 4px solid var(--ink);
+            border-radius: 22px;
+            background: var(--paper);
+            box-shadow: 5px 5px 0 var(--shadow);
         }
         .career-card h3 {
-            color: #667eea;
-            margin-bottom: 10px;
+            color: var(--ink);
+            margin-bottom: 8px;
+            font-size: 1.35rem;
+            line-height: 1.1;
+        }
+        .career-tag {
+            display: inline-block;
+            background: var(--mint);
+            border: 3px solid var(--ink);
+            border-radius: 999px;
+            padding: 4px 10px;
+            font-size: 0.78rem;
+            font-weight: 900;
         }
         .career-stats {
-            font-size: 0.85rem;
-            color: #aaa;
+            font-size: 0.92rem;
+            color: var(--muted);
             line-height: 1.6;
+            font-weight: 700;
         }
         .game-area { display: none; }
         .top-bar {
@@ -69,27 +134,34 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
+            padding: 16px;
+            background: #fff1b8;
+            border: 4px solid var(--ink);
+            border-radius: 20px;
+            box-shadow: 6px 6px 0 var(--shadow);
         }
         .player-info {
             display: flex;
             gap: 20px;
             align-items: center;
+            flex-wrap: wrap;
+            font-weight: 900;
         }
         .quick-actions button {
-            background: rgba(102, 126, 234, 0.3);
-            border: 1px solid #667eea;
-            color: #fff;
+            background: var(--mustard);
+            border: 3px solid var(--ink);
+            color: var(--ink);
             padding: 8px 15px;
-            border-radius: 8px;
+            border-radius: 999px;
             cursor: pointer;
             font-size: 0.85rem;
             margin-left: 10px;
+            font-weight: 900;
+            box-shadow: 3px 3px 0 var(--shadow);
         }
         .quick-actions button:hover {
-            background: rgba(102, 126, 234, 0.5);
+            transform: translate(-2px, -2px);
+            background: var(--sky);
         }
         .stats {
             display: grid;
@@ -98,72 +170,89 @@
             margin-bottom: 30px;
         }
         .stat-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: #fffdf6;
             padding: 20px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            border-radius: 22px;
+            border: 4px solid var(--ink);
+            transition: transform 0.18s ease;
+            box-shadow: 6px 6px 0 var(--shadow);
         }
         .stat-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-2px);
+            transform: rotate(-1deg);
         }
         .stat-label {
             font-size: 0.85rem;
-            color: #999;
+            color: var(--muted);
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 900;
         }
         .stat-value {
             font-size: 1.8rem;
             font-weight: bold;
-            color: #fff;
+            color: var(--ink);
         }
         .stat-bar {
             width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
+            height: 14px;
+            background: #f1dfbd;
+            border: 3px solid var(--ink);
+            border-radius: 999px;
             margin-top: 10px;
             overflow: hidden;
         }
         .stat-bar-fill {
             height: 100%;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background: repeating-linear-gradient(45deg, var(--mint) 0 10px, var(--sky) 10px 20px);
             transition: width 0.5s ease;
         }
         .event-log {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
+            background: #fffaf0;
+            border-radius: 22px;
             padding: 20px;
             margin-bottom: 30px;
             max-height: 250px;
             overflow-y: auto;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 4px solid var(--ink);
+            box-shadow: inset 0 0 0 5px #f8e8c0, 6px 6px 0 var(--shadow);
         }
         .event-log::-webkit-scrollbar {
             width: 6px;
         }
         .event-log::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
+            background: #f8e8c0;
             border-radius: 3px;
         }
         .event-log::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.2);
+            background: var(--tomato);
             border-radius: 3px;
         }
         .event {
             padding: 10px;
             margin-bottom: 8px;
-            border-radius: 8px;
+            border-radius: 14px;
             font-size: 0.9rem;
+            border: 3px solid var(--ink);
             animation: slideIn 0.3s ease;
+            color: var(--ink);
+            font-weight: 700;
+        }
+        .event::before {
+            display: inline-block;
+            margin-right: 8px;
+            padding: 2px 8px;
+            border: 2px solid var(--ink);
+            border-radius: 999px;
+            background: #fffdf6;
+            font-size: 0.72rem;
+            font-weight: 900;
+            vertical-align: 1px;
         }
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateX(-20px);
+                transform: translateX(-20px) rotate(-1deg);
             }
             to {
                 opacity: 1;
@@ -171,20 +260,28 @@
             }
         }
         .event.good {
-            background: rgba(46, 213, 115, 0.15);
-            border-left: 3px solid #2ed573;
+            background: #dff4c7;
+        }
+        .event.good::before {
+            content: "顺风";
         }
         .event.bad {
-            background: rgba(255, 71, 87, 0.15);
-            border-left: 3px solid #ff4757;
+            background: #ffd9c8;
+        }
+        .event.bad::before {
+            content: "翻车";
         }
         .event.neutral {
-            background: rgba(255, 159, 64, 0.15);
-            border-left: 3px solid #ffa502;
+            background: #fff1b8;
+        }
+        .event.neutral::before {
+            content: "日常";
         }
         .event.special {
-            background: rgba(138, 43, 226, 0.15);
-            border-left: 3px solid #8a2be2;
+            background: #c9f3ff;
+        }
+        .event.special::before {
+            content: "彩蛋";
         }
         .actions {
             display: grid;
@@ -193,22 +290,25 @@
             margin-bottom: 20px;
         }
         .action-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
+            background: var(--tomato);
+            color: #fffaf0;
+            border: 4px solid var(--ink);
             padding: 15px 20px;
-            border-radius: 12px;
+            border-radius: 18px;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 900;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+            box-shadow: 6px 6px 0 var(--shadow);
         }
         .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            transform: translate(-3px, -4px) rotate(1deg);
+            background: var(--mint);
+            color: var(--ink);
+            box-shadow: 10px 10px 0 var(--shadow);
         }
         .action-btn:disabled {
-            background: rgba(255, 255, 255, 0.1);
+            background: #c8b99f;
             cursor: not-allowed;
             opacity: 0.5;
         }
@@ -220,42 +320,43 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(36, 31, 28, 0.58);
         }
         .modal-content {
-            background: rgba(30, 30, 50, 0.95);
+            background: var(--card);
             margin: 5% auto;
             padding: 30px;
-            border-radius: 20px;
+            border-radius: 24px;
             max-width: 700px;
             max-height: 80vh;
             overflow-y: auto;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 5px solid var(--ink);
+            box-shadow: 14px 14px 0 var(--shadow);
         }
         .modal-content::-webkit-scrollbar {
             width: 6px;
         }
         .modal-content::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
+            background: #f8e8c0;
             border-radius: 3px;
         }
         .modal-content::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.2);
+            background: var(--tomato);
             border-radius: 3px;
         }
         .modal-content h2 {
-            color: #667eea;
+            color: var(--ink);
             margin-bottom: 20px;
         }
         .close {
-            color: #aaa;
+            color: var(--ink);
             float: right;
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
         }
         .close:hover {
-            color: #fff;
+            color: var(--tomato);
         }
         .achievement-grid {
             display: grid;
@@ -263,14 +364,13 @@
             gap: 15px;
         }
         .achievement-item {
-            background: rgba(255, 255, 255, 0.05);
+            background: #fffdf6;
             padding: 15px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            border: 3px solid var(--ink);
         }
         .achievement-item.unlocked {
-            border-color: #2ed573;
-            background: rgba(46, 213, 115, 0.1);
+            background: #dff4c7;
         }
         .achievement-item.locked {
             opacity: 0.5;
@@ -281,12 +381,12 @@
         }
         .achievement-name {
             font-weight: bold;
-            color: #667eea;
+            color: var(--ink);
             margin-bottom: 5px;
         }
         .achievement-desc {
             font-size: 0.85rem;
-            color: #aaa;
+            color: var(--muted);
         }
         .shop-grid {
             display: grid;
@@ -294,78 +394,97 @@
             gap: 15px;
         }
         .shop-item {
-            background: rgba(255, 255, 255, 0.05);
+            background: #fffdf6;
             padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            border: 3px solid var(--ink);
         }
         .shop-item-name {
             font-weight: bold;
-            color: #667eea;
+            color: var(--ink);
             margin-bottom: 5px;
         }
         .shop-item-desc {
             font-size: 0.85rem;
-            color: #aaa;
+            color: var(--muted);
             margin-bottom: 10px;
         }
         .shop-item-price {
-            color: #ffa502;
+            color: var(--tomato);
             font-weight: bold;
             margin-bottom: 10px;
         }
         .shop-item button {
-            background: #667eea;
-            color: white;
-            border: none;
+            background: var(--mustard);
+            color: var(--ink);
+            border: 3px solid var(--ink);
             padding: 8px 15px;
-            border-radius: 8px;
+            border-radius: 999px;
             cursor: pointer;
             width: 100%;
+            font-weight: 900;
         }
         .shop-item button:hover {
-            background: #764ba2;
+            background: var(--mint);
         }
         .shop-item button:disabled {
-            background: #555;
+            background: #c8b99f;
             cursor: not-allowed;
         }
         .shop-item.owned {
-            border-color: #2ed573;
+            background: #dff4c7;
         }
         .game-over {
             display: none;
             text-align: center;
             padding: 40px;
-            background: rgba(255, 71, 87, 0.1);
-            border-radius: 15px;
-            border: 2px solid #ff4757;
+            background: #ffd9c8;
+            border-radius: 24px;
+            border: 5px solid var(--ink);
+            box-shadow: 8px 8px 0 var(--shadow);
         }
         .game-over h2 {
             font-size: 2rem;
             margin-bottom: 20px;
-            color: #ff4757;
+            color: var(--tomato);
         }
         .restart-btn {
-            background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%);
-            color: white;
-            border: none;
+            background: var(--tomato);
+            color: #fffaf0;
+            border: 4px solid var(--ink);
             padding: 15px 40px;
-            border-radius: 12px;
+            border-radius: 999px;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 900;
             cursor: pointer;
             margin-top: 20px;
+            box-shadow: 6px 6px 0 var(--shadow);
         }
         .restart-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 71, 87, 0.4);
+            transform: translate(-3px, -4px);
+            box-shadow: 10px 10px 0 var(--shadow);
         }
         .footer {
             text-align: center;
             margin-top: 30px;
-            color: #666;
+            color: var(--muted);
             font-size: 0.85rem;
+            font-weight: 800;
+        }
+        @media (max-width: 760px) {
+            body { padding: 10px; }
+            .container { padding: 24px; border-width: 4px; }
+            .career-selection, .stats, .actions, .achievement-grid, .shop-grid {
+                grid-template-columns: 1fr;
+            }
+            .top-bar {
+                align-items: flex-start;
+                gap: 12px;
+                flex-direction: column;
+            }
+            .quick-actions button {
+                margin: 0 8px 8px 0;
+            }
         }
     </style>
 </head>
@@ -377,7 +496,13 @@
         
         <div class="career-selection" id="career-selection">
             <div class="career-card" onclick="selectCareer('frontend')">
-                <h3>🎨 前端工程师</h3>
+                <div class="career-portrait">
+                    <img class="career-avatar" src="assets/avatars/frontend-fox.svg" alt="前端工程师狐狸头像">
+                    <div>
+                        <h3>前端工程师</h3>
+                        <span class="career-tag">CSS 披风侠</span>
+                    </div>
+                </div>
                 <div class="career-stats">
                     初始: 技术70 精神85 存款45 AI25<br>
                     特点: 精神消耗慢，AI学习快<br>
@@ -385,7 +510,13 @@
                 </div>
             </div>
             <div class="career-card" onclick="selectCareer('backend')">
-                <h3>⚙️ 后端工程师</h3>
+                <div class="career-portrait">
+                    <img class="career-avatar" src="assets/avatars/backend-capybara.svg" alt="后端工程师水豚头像">
+                    <div>
+                        <h3>后端工程师</h3>
+                        <span class="career-tag">咖啡机房长</span>
+                    </div>
+                </div>
                 <div class="career-stats">
                     初始: 技术80 精神75 存款55 AI20<br>
                     特点: 收入稳定，技能贬值慢<br>
@@ -393,7 +524,13 @@
                 </div>
             </div>
             <div class="career-card" onclick="selectCareer('fullstack')">
-                <h3>🚀 全栈工程师</h3>
+                <div class="career-portrait">
+                    <img class="career-avatar" src="assets/avatars/fullstack-octopus.svg" alt="全栈工程师章鱼头像">
+                    <div>
+                        <h3>全栈工程师</h3>
+                        <span class="career-tag">八手救火员</span>
+                    </div>
+                </div>
                 <div class="career-stats">
                     初始: 技术75 精神70 存款50 AI35<br>
                     特点: AI适应性强，综合能力高<br>
@@ -401,7 +538,13 @@
                 </div>
             </div>
             <div class="career-card" onclick="selectCareer('ai')">
-                <h3>🤖 AI工程师</h3>
+                <div class="career-portrait">
+                    <img class="career-avatar" src="assets/avatars/ai-duck.svg" alt="AI 工程师鸭子头像">
+                    <div>
+                        <h3>AI工程师</h3>
+                        <span class="career-tag">幻觉捕鸭队</span>
+                    </div>
+                </div>
                 <div class="career-stats">
                     初始: 技术65 精神80 存款60 AI50<br>
                     特点: 起薪高，未来前景好<br>
@@ -420,9 +563,9 @@
                     <span><span id="age-count">30</span> 岁</span>
                 </div>
                 <div class="quick-actions">
-                    <button onclick="showAchievements()">🏆 成就</button>
-                    <button onclick="showShop()">🛒 商店</button>
-                    <button onclick="saveGame()">💾 保存</button>
+                    <button onclick="showAchievements()">成就</button>
+                    <button onclick="showShop()">商店</button>
+                    <button onclick="saveGame()">保存</button>
                 </div>
             </div>
 
@@ -460,12 +603,12 @@
             <div class="event-log" id="event-log"></div>
 
             <div class="actions">
-                <button class="action-btn" onclick="action('learn-ai')">📚 学习AI工具</button>
-                <button class="action-btn" onclick="action('overtime')">💻 加班写代码</button>
-                <button class="action-btn" onclick="action('rest')">☕ 休息摸鱼</button>
-                <button class="action-btn" onclick="action('interview')">🎯 面试跳槽</button>
-                <button class="action-btn" onclick="action('side-project')">🔧 接私活</button>
-                <button class="action-btn" onclick="action('networking')">🤝 社交人脉</button>
+                <button class="action-btn" onclick="action('learn-ai')">学习AI工具</button>
+                <button class="action-btn" onclick="action('overtime')">加班写代码</button>
+                <button class="action-btn" onclick="action('rest')">休息摸鱼</button>
+                <button class="action-btn" onclick="action('interview')">面试跳槽</button>
+                <button class="action-btn" onclick="action('side-project')">接私活</button>
+                <button class="action-btn" onclick="action('networking')">社交人脉</button>
             </div>
 
             <div class="game-over" id="game-over">
@@ -479,7 +622,7 @@
         <div id="achievement-modal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal('achievement-modal')">&times;</span>
-                <h2>🏆 成就系统</h2>
+                <h2>成就系统</h2>
                 <div class="achievement-grid" id="achievement-grid"></div>
             </div>
         </div>
@@ -487,7 +630,7 @@
         <div id="shop-modal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal('shop-modal')">&times;</span>
-                <h2>🛒 商店</h2>
+                <h2>商店</h2>
                 <div class="shop-grid" id="shop-grid"></div>
             </div>
         </div>
@@ -2396,11 +2539,15 @@
             addEvent(text, eventType);
         }
 
+        function formatEventTextForDisplay(text) {
+            return String(text || '').replace(/^[\p{Extended_Pictographic}\p{Emoji_Presentation}\uFE0F\u200D\s]+/u, '').trimStart();
+        }
+
         function addEvent(text, type, options = {}) {
             const log = document.getElementById('event-log');
             const event = document.createElement('div');
             event.className = 'event ' + type;
-            event.textContent = '第' + stats.day + '天：' + text;
+            event.textContent = '第' + stats.day + '天：' + formatEventTextForDisplay(text);
             log.insertBefore(event, log.firstChild);
             if (options.persist === false || isRestoring) return;
             rememberDisplayedText(text);
@@ -2676,7 +2823,7 @@
                 recordRunSummary(endingType);
                 
                 document.getElementById('game-over-reason').textContent = reason;
-                document.getElementById('ending-type').innerHTML = '<h3 style="color: #667eea; margin-top: 15px;">' + endingType + '</h3>';
+                document.getElementById('ending-type').innerHTML = '<h3 style="color: var(--tomato); margin-top: 15px;">' + endingType + '</h3>';
                 document.getElementById('game-over').style.display = 'block';
                 document.querySelectorAll('.action-btn').forEach(btn => btn.disabled = true);
                 autoSaveGame();
@@ -3236,7 +3383,7 @@
                 updateStats();
                 if (isGameOver) {
                     document.getElementById('game-over-reason').textContent = gameOverState?.reason || '这局已经结束。';
-                    document.getElementById('ending-type').innerHTML = gameOverState?.endingType ? '<h3 style="color: #667eea; margin-top: 15px;">' + gameOverState.endingType + '</h3>' : '';
+                    document.getElementById('ending-type').innerHTML = gameOverState?.endingType ? '<h3 style="color: var(--tomato); margin-top: 15px;">' + gameOverState.endingType + '</h3>' : '';
                     document.getElementById('game-over').style.display = 'block';
                     document.querySelectorAll('.action-btn').forEach(btn => btn.disabled = true);
                 } else {
@@ -3255,14 +3402,14 @@
             if (resumeReminderText) {
                 const reminder = document.createElement('div');
                 reminder.className = 'event special resume-context';
-                reminder.textContent = '第' + stats.day + '天：' + resumeReminderText;
+                reminder.textContent = '第' + stats.day + '天：' + formatEventTextForDisplay(resumeReminderText);
                 log.appendChild(reminder);
             }
             const items = eventLogState || [];
             items.forEach(entry => {
                 const event = document.createElement('div');
                 event.className = 'event ' + entry.type;
-                event.textContent = '第' + entry.day + '天：' + entry.text;
+                event.textContent = '第' + entry.day + '天：' + formatEventTextForDisplay(entry.text);
                 log.appendChild(event);
             });
         }

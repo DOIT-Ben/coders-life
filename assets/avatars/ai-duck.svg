@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">AI 工程师鸭子头像</title>
+  <desc id="desc">一只戴安全帽的机器人鸭工程师，旁边跟着幻觉小虫。</desc>
+  <rect width="240" height="240" rx="36" fill="#c9f3ff"/>
+  <path d="M64 95c0-36 28-61 62-61s62 25 62 61v45c0 37-29 62-62 62S64 177 64 140z" fill="#fff5dc" stroke="#231f20" stroke-width="7"/>
+  <path d="M80 77c5-30 28-48 46-48s41 18 46 48z" fill="#f4c542" stroke="#231f20" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M126 31v45M96 50c18-8 42-8 60 0" stroke="#231f20" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="102" cy="104" r="10" fill="#7fd8ff" stroke="#231f20" stroke-width="5"/>
+  <circle cx="150" cy="104" r="10" fill="#7fd8ff" stroke="#231f20" stroke-width="5"/>
+  <path d="M114 124h44l-23 18z" fill="#f79445" stroke="#231f20" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M93 153c21 14 51 14 69 0" fill="none" stroke="#231f20" stroke-width="6" stroke-linecap="round"/>
+  <rect x="86" y="174" width="80" height="26" rx="9" fill="#22b8a7" stroke="#231f20" stroke-width="6"/>
+  <circle cx="105" cy="187" r="5" fill="#fff5dc"/>
+  <circle cx="126" cy="187" r="5" fill="#fff5dc"/>
+  <circle cx="147" cy="187" r="5" fill="#fff5dc"/>
+  <path d="M55 125c-18-5-30 4-32 18-2 18 18 28 34 16" fill="#fff5dc" stroke="#231f20" stroke-width="6" stroke-linecap="round"/>
+  <path d="M188 127c20-2 30 10 26 25-5 18-27 22-39 8" fill="#fff5dc" stroke="#231f20" stroke-width="6" stroke-linecap="round"/>
+  <g transform="translate(177 50)">
+    <ellipse cx="22" cy="24" rx="17" ry="13" fill="#f45b3f" stroke="#231f20" stroke-width="5"/>
+    <circle cx="15" cy="21" r="3" fill="#231f20"/>
+    <circle cx="29" cy="21" r="3" fill="#231f20"/>
+    <path d="M14 34c5 5 12 5 17 0M6 12 0 6M38 12l6-6M7 39l-7 6M37 39l7 6" stroke="#231f20" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

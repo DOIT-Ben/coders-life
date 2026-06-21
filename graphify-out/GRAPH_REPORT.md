@@ -1,11 +1,11 @@
-# Graph Report - E:\desktop\coders-life  (2026-06-19)
+# Graph Report - E:\desktop\coders-life  (2026-06-21)
 
 ## Corpus Check
-- 14 files · ~121,231 words
+- 15 files · ~134,699 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1350 nodes · 4451 edges · 18 communities detected
+- 1351 nodes · 4451 edges · 19 communities detected
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 122 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
@@ -28,6 +28,7 @@
 - [[_COMMUNITY_Community 15|Community 15]]
 - [[_COMMUNITY_Community 16|Community 16]]
 - [[_COMMUNITY_Community 17|Community 17]]
+- [[_COMMUNITY_Community 18|Community 18]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `g()` - 163 edges
@@ -121,27 +122,33 @@ Nodes (1): ct()
 
 ### Community 16 - "Community 16"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (0):
 
 ### Community 17 - "Community 17"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (0):
+
+### Community 18 - "Community 18"
+Cohesion: 1.0
+Nodes (0):
 
 ## Knowledge Gaps
 - **Thin community `Community 16`** (1 nodes): `程序员生存模拟器_弹窗库_2026-06-18.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 17`** (1 nodes): `parse-popup-pool.ps1`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 18`** (1 nodes): `verify-visual-refresh.mjs`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `g()` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 8`, `Community 10`, `Community 11`, `Community 14`, `Community 15`?**
-  _High betweenness centrality (0.073) - this node is a cross-community bridge._
 - **Why does `Ix` connect `Community 8` to `Community 0`, `Community 3`, `Community 5`, `Community 7`?**
-  _High betweenness centrality (0.062) - this node is a cross-community bridge._
-- **Why does `so()` connect `Community 14` to `Community 0`, `Community 8`, `Community 4`, `Community 1`?**
-  _High betweenness centrality (0.053) - this node is a cross-community bridge._
+  _High betweenness centrality (0.061) - this node is a cross-community bridge._
+- **Why does `g()` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 8`, `Community 10`, `Community 11`, `Community 14`, `Community 15`?**
+  _High betweenness centrality (0.059) - this node is a cross-community bridge._
+- **Why does `E()` connect `Community 0` to `Community 1`, `Community 2`, `Community 4`, `Community 5`, `Community 7`, `Community 10`, `Community 14`?**
+  _High betweenness centrality (0.052) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `A()` (e.g. with `.insertBefore()` and `.appendChild()`) actually correct?**
   _`A()` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **Should `Community 0` be split into smaller, more focused modules?**
