@@ -4,7 +4,7 @@ import vm from 'node:vm';
 import assert from 'node:assert/strict';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
-const HTML_PATH = path.join(ROOT, '程序员生存模拟器_增强版.html');
+const HTML_PATH = path.join(ROOT, '程序员生存模拟器.html');
 const POPUP_JS_PATH = path.join(ROOT, '程序员生存模拟器_弹窗库_2026-06-18.js');
 const SAVE_KEY = 'codersLifeSave.v2';
 

@@ -39,7 +39,7 @@
 
 ## 推荐接入方式
 
-当前正式入口是 `E:\desktop\coders-life\程序员生存模拟器_增强版.html`。运行时已经通过同目录的 `程序员生存模拟器_弹窗库_2026-06-18.js` 注入 `window.PROGRAMMER_POPUP_POOL`。
+当前正式入口是 `E:\desktop\coders-life\程序员生存模拟器.html`。运行时已经通过同目录的 `程序员生存模拟器_弹窗库_2026-06-18.js` 注入 `window.PROGRAMMER_POPUP_POOL`。
 
 维护数据时推荐流程：
 

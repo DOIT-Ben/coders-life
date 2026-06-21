@@ -10606,6 +10606,15 @@
       "norm_label": "testmisseddailygoalrecoveryrestisoneshotafterreload()"
     },
     {
+      "label": "verify-entrypoint-and-subtitle.mjs",
+      "file_type": "code",
+      "source_file": "E:\\desktop\\coders-life\\tools\\verify-entrypoint-and-subtitle.mjs",
+      "source_location": "L1",
+      "id": "e_desktop_coders_life_tools_verify_entrypoint_and_subtitle_mjs",
+      "community": 18,
+      "norm_label": "verify-entrypoint-and-subtitle.mjs"
+    },
+    {
       "label": "verify-fun-loop.mjs",
       "file_type": "code",
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-fun-loop.mjs",
@@ -12159,7 +12168,7 @@
       "source_file": "E:\\desktop\\coders-life\\tools\\verify-visual-refresh.mjs",
       "source_location": "L1",
       "id": "e_desktop_coders_life_tools_verify_visual_refresh_mjs",
-      "community": 18,
+      "community": 19,
       "norm_label": "verify-visual-refresh.mjs"
     }
   ],

@@ -491,7 +491,7 @@
 <body>
     <div class="container">
         <h1>程序员生存模拟器</h1>
-        <div class="subtitle">在这个AI时代，看看你能活多久</div>
+        <div class="subtitle" id="game-subtitle">2026 Edition - 选择你的职业道路</div>
         <button class="restart-btn" id="resume-btn" onclick="resumeLastGame()" style="display: none; margin: 0 auto 20px;">继续上次生存</button>
         
         <div class="career-selection" id="career-selection">
@@ -642,6 +642,14 @@
 
     <script src="程序员生存模拟器_弹窗库_2026-06-18.js"></script>
     <script>
+        const HOME_SUBTITLE = '2026 Edition - 选择你的职业道路';
+        const PLAY_SUBTITLE = '在这个AI时代，看看你能活多久';
+
+        function setGameSubtitle(text) {
+            const subtitle = document.getElementById('game-subtitle');
+            if (subtitle) subtitle.textContent = text;
+        }
+
         let stats = {
             skill: 75,
             mental: 80,
@@ -1888,6 +1896,7 @@
             document.getElementById('career-selection').style.display = 'none';
             document.getElementById('game-area').style.display = 'block';
             document.getElementById('player-career').textContent = selected.name;
+            setGameSubtitle(PLAY_SUBTITLE);
             
             addEvent('欢迎来到2026年，你是一名30岁的' + selected.name, 'neutral');
             applyPreviousRunExperience(previousRun);
@@ -1898,6 +1907,7 @@
                 stats = getInitialStats();
                 document.getElementById('career-selection').style.display = 'block';
                 document.getElementById('game-area').style.display = 'none';
+                setGameSubtitle(HOME_SUBTITLE);
                 updateResumeButton();
                 return;
             }
@@ -3256,11 +3266,13 @@
                 return;
             }
             if (!loadResult) {
+                setGameSubtitle(HOME_SUBTITLE);
                 updateResumeButton();
                 return;
             }
             document.getElementById('career-selection').style.display = 'none';
             document.getElementById('game-area').style.display = 'block';
+            setGameSubtitle(PLAY_SUBTITLE);
             updateResumeButton();
         }
 
@@ -3380,6 +3392,7 @@
                 document.getElementById('career-selection').style.display = 'none';
                 document.getElementById('game-area').style.display = 'block';
                 document.getElementById('player-career').textContent = getCareerName(stats.career);
+                setGameSubtitle(PLAY_SUBTITLE);
                 updateStats();
                 if (isGameOver) {
                     document.getElementById('game-over-reason').textContent = gameOverState?.reason || '这局已经结束。';
@@ -3462,6 +3475,7 @@
             document.getElementById('game-over').style.display = 'none';
             document.getElementById('career-selection').style.display = 'grid';
             document.getElementById('game-area').style.display = 'none';
+            setGameSubtitle(HOME_SUBTITLE);
             document.querySelectorAll('.action-btn').forEach(btn => btn.disabled = false);
             updateResumeButton();
         }
@@ -3476,6 +3490,7 @@
 
         (function initGameState() {
             if (window.__codersLifeSkipInit === true) return;
+            setGameSubtitle(HOME_SUBTITLE);
             updateResumeButton();
         })();
     </script>

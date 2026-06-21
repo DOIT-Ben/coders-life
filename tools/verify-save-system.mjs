@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
-const htmlPath = path.join(rootDir, '程序员生存模拟器_增强版.html');
+const htmlPath = path.join(rootDir, '程序员生存模拟器.html');
 
 function extractInlineScript(html) {
   const marker = '<script src="程序员生存模拟器_弹窗库_2026-06-18.js"></script>';

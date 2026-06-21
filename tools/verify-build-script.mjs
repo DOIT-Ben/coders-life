@@ -9,7 +9,7 @@ const EXPECTED_COUNT = 1325;
 const SOURCE_NAMES = [
   'AGENTS.md',
   'README.md',
-  '程序员生存模拟器_增强版.html',
+  '程序员生存模拟器.html',
   '程序员生存模拟器_弹窗库_2026-06-18.js',
   'tools',
   'docs'

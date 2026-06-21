@@ -4,7 +4,7 @@ const vm = require('vm');
 const assert = require('assert');
 
 const root = path.resolve(__dirname, '..');
-const htmlPath = path.join(root, '程序员生存模拟器_增强版.html');
+const htmlPath = path.join(root, '程序员生存模拟器.html');
 const popupPath = path.join(root, '程序员生存模拟器_弹窗库_2026-06-18.js');
 const saveKey = 'codersLifeSave.v2';
 

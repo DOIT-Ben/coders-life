@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-const HTML_PATH = path.join(ROOT, '程序员生存模拟器_增强版.html');
+const HTML_PATH = path.join(ROOT, '程序员生存模拟器.html');
 const html = fs.readFileSync(HTML_PATH, 'utf8');
 
 const requiredAvatars = [
