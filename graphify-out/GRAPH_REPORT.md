@@ -1,7 +1,7 @@
-# Graph Report - E:\desktop\coders-life  (2026-06-21)
+# Graph Report - E:\desktop\coders-life  (2026-06-22)
 
 ## Corpus Check
-- 16 files · ~147,379 words
+- 16 files · ~147,380 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -118,19 +118,19 @@ Nodes (1): ct()
 
 ### Community 15 - "Community 15"
 Cohesion: 1.0
-Nodes (0):
+Nodes (0): 
 
 ### Community 16 - "Community 16"
 Cohesion: 1.0
-Nodes (0):
+Nodes (0): 
 
 ### Community 17 - "Community 17"
 Cohesion: 1.0
-Nodes (0):
+Nodes (0): 
 
 ### Community 18 - "Community 18"
 Cohesion: 1.0
-Nodes (0):
+Nodes (0): 
 
 ## Knowledge Gaps
 - **Thin community `Community 15`** (1 nodes): `程序员生存模拟器_弹窗库_2026-06-18.js`
@@ -145,12 +145,12 @@ Nodes (0):
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `g()` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 13`, `Community 14`?**
-  _High betweenness centrality (0.068) - this node is a cross-community bridge._
 - **Why does `Ix` connect `Community 4` to `Community 0`, `Community 5`, `Community 6`?**
-  _High betweenness centrality (0.056) - this node is a cross-community bridge._
+  _High betweenness centrality (0.061) - this node is a cross-community bridge._
+- **Why does `g()` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 13`, `Community 14`?**
+  _High betweenness centrality (0.055) - this node is a cross-community bridge._
 - **Why does `E()` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 7`?**
-  _High betweenness centrality (0.044) - this node is a cross-community bridge._
+  _High betweenness centrality (0.054) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `A()` (e.g. with `.insertBefore()` and `.appendChild()`) actually correct?**
   _`A()` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **Should `Community 0` be split into smaller, more focused modules?**

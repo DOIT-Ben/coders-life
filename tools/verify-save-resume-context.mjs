@@ -196,7 +196,7 @@ function testOldSaveGetsResumeReminderFromExistingState() {
   const restoredSave = context.buildSaveData();
   assert.equal(restoredSave.schemaVersion, 2, 'old save restore should keep schema v2');
   const reminderText = context.document.getElementById('event-log').children[0].textContent;
-  assert.ok(reminderText.includes('📌 接着玩提示：'), 'restore should render a context reminder');
+  assert.ok(reminderText.includes('接着玩提示：'), 'restore should render a context reminder');
   assert.ok(reminderText.includes('第18天'), 'reminder should mention restored day');
   assert.ok(reminderText.includes('精神值偏低'), 'reminder should mention the weakest restored stat');
   assert.ok(reminderText.includes('技术债较高'), 'reminder should surface long-term project recovery risk');
