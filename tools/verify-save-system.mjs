@@ -139,31 +139,34 @@ function readSave(harness) {
   return JSON.parse(raw);
 }
 
-function testNewCareerDoesNotOverwriteWhenUserCancels() {
+function testNewCareerDirectlyStartsAndBacksUpExistingSave() {
   const h = createHarness();
   h.context.selectCareer('frontend');
   const before = h.localStorage.getItem('codersLifeSave.v2');
   h.context.restart();
   h.localStorage.setItem('codersLifeSave.v2', before);
-  h.context.window.confirm = () => false;
   h.context.selectCareer('backend');
-  assert.equal(h.localStorage.getItem('codersLifeSave.v2'), before, '取消新开局时不应覆盖已有存档');
+
+  const after = JSON.parse(h.localStorage.getItem('codersLifeSave.v2'));
+  assert.equal(after.stats.career, 'backend', '选择新职业应直接开始新局');
+  assert.equal(h.localStorage.getItem('codersLifeSave.v2.backup'), before, '覆盖当前局前应保留备份');
 }
 
-function testFutureSchemaRequiresConfirmationBeforeNewCareer() {
+function testFutureSchemaIsPreservedBeforeDirectNewCareer() {
   const h = createHarness();
   const futureSave = JSON.stringify({
     schemaVersion: 999,
     stats: { career: 'backend', day: 99 }
   });
   h.localStorage.setItem('codersLifeSave.v2', futureSave);
-  h.context.window.confirm = () => false;
 
   h.context.selectCareer('frontend');
 
-  assert.equal(h.localStorage.getItem('codersLifeSave.v2'), futureSave, '取消新开局时不应覆盖未来版本存档');
+  assert.notEqual(h.localStorage.getItem('codersLifeSave.v2'), futureSave, '新开局应直接写入当前版本存档');
+  const futureKey = h.localStorage.keys().find(key => key.startsWith('codersLifeSave.v2.future.'));
+  assert.ok(futureKey, '覆盖未来版本前应保存到 future 专用槽');
+  assert.equal(h.localStorage.getItem(futureKey), futureSave);
   assert.equal(h.localStorage.keys().some(key => key.startsWith('codersLifeSave.v2.corrupt.')), false, '未来版本存档不应被当坏档隔离');
-  assert.equal(h.context.hasSavedGame(), true, '未来版本存档应被视为受保护存档');
 }
 
 function testFutureSchemaIsPreservedInFutureSlotBeforeOverwrite() {
@@ -203,7 +206,7 @@ function testFutureSchemaIsNotOverwrittenWhenFutureBackupFails() {
   h.context.selectCareer('frontend');
 
   assert.equal(h.localStorage.getItem('codersLifeSave.v2'), futureSave, '未来版本备份失败时不得覆盖主存档');
-  assert.equal(h.elements.get('career-selection').style.display, 'block', '未来版本备份失败时应退回职业选择');
+  assert.equal(h.elements.get('career-selection').style.display, 'grid', '未来版本备份失败时应退回职业选择');
   assert.equal(h.elements.get('game-area').style.display, 'none', '未来版本备份失败时不应进入无法保存的新局');
 }
 
@@ -770,8 +773,8 @@ function testRunSummariesKeepLatestTen() {
 }
 
 const tests = [
-  testNewCareerDoesNotOverwriteWhenUserCancels,
-  testFutureSchemaRequiresConfirmationBeforeNewCareer,
+  testNewCareerDirectlyStartsAndBacksUpExistingSave,
+  testFutureSchemaIsPreservedBeforeDirectNewCareer,
   testFutureSchemaIsPreservedInFutureSlotBeforeOverwrite,
   testFutureSchemaIsNotOverwrittenWhenFutureBackupFails,
   testValidSaveCanRestore,

@@ -46,6 +46,15 @@
 
 直接双击 `程序员生存模拟器.html` 即可运行。HTML 与弹窗库 JS 保持同目录，外部数据在 `data/` 中。
 
+## 部署
+
+- 生产发布目录只需要：
+  - `程序员生存模拟器.html`
+  - 头像已内联到 HTML，当前线上不需要额外静态资源
+- 发布脚本：`deploy/publish-static-site.sh`
+- `nginx` 配置模板：`deploy/nginx-coderslife.conf`
+- 默认发布到：`/var/www/coderslife/current`
+
 ## 验证
 
 ```powershell

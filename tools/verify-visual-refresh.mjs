@@ -23,8 +23,11 @@ for (const avatar of requiredAvatars) {
   assert.doesNotMatch(svg, /<image\b/i, `${avatar} should be native vector art, not an embedded raster`);
 }
 
-for (const avatar of requiredAvatars) {
-  assert.ok(html.includes(`src="${avatar}"`), `${avatar} should be referenced by the career cards`);
+const inlineAvatarMatches = html.match(/<svg class="career-avatar"[\s\S]*?<\/svg>/g) || [];
+assert.equal(inlineAvatarMatches.length, requiredAvatars.length, 'career cards should render one inline SVG avatar per career');
+for (const avatarMarkup of inlineAvatarMatches) {
+  assert.match(avatarMarkup, /role="img"/, 'inline career avatar should expose image semantics');
+  assert.match(avatarMarkup, /aria-label="/, 'inline career avatar should have an accessible label');
 }
 
 const forbiddenDarkAiTokens = [

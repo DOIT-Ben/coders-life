@@ -368,12 +368,7 @@ function testRestartPreservesMetaOnlyAchievements() {
 }
 
 function testReturnToCareerSelectionKeepsCurrentSave() {
-  const confirmMessages = [];
   const context = createGameContext();
-  context.window.confirm = message => {
-    confirmMessages.push(message);
-    return true;
-  };
 
   context.selectCareer('backend');
   context.action('rest');
@@ -387,7 +382,6 @@ function testReturnToCareerSelectionKeepsCurrentSave() {
   assert.equal(context.document.getElementById('game-subtitle').textContent, '2026 Edition - 选择你的职业道路', 'returning should restore the home subtitle');
   assert.equal(context.localStorage.getItem(saveKey), activeSave, 'returning to career selection should not delete or overwrite the current save');
   assert.equal(context.document.getElementById('resume-btn').style.display, 'block', 'saved run should remain resumable after returning');
-  assert(confirmMessages.some(message => /不会删除当前存档/.test(message)), 'active run return should explain that the save is preserved');
 }
 
 function testPrLoopRewardsDoNotEvictRunGoalChainRewards() {

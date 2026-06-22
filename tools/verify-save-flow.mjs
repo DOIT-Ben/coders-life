@@ -209,7 +209,7 @@ function testIdleDoesNotOverwriteExistingSave() {
   assert.equal(context.localStorage.getItem(SAVE_KEY), existing);
 }
 
-function testNewCareerNeedsConfirmationWhenSaveExists() {
+function testNewCareerStartsDirectlyWhenSaveExists() {
   const existing = JSON.stringify({
     schemaVersion: 2,
     stats: { career: 'backend', day: 12, skill: 80, mental: 70, money: 55, ai: 20, age: 30, items: [] }
@@ -218,8 +218,11 @@ function testNewCareerNeedsConfirmationWhenSaveExists() {
 
   context.selectCareer('frontend');
 
-  assert.equal(context.localStorage.getItem(SAVE_KEY), existing);
-  assert.equal(context.document.getElementById('event-log').children.length, 0);
+  const saved = JSON.parse(context.localStorage.getItem(SAVE_KEY));
+  assert.equal(saved.stats.career, 'frontend');
+  assert.equal(saved.stats.day, 0);
+  assert.equal(context.localStorage.getItem(SAVE_BACKUP_KEY), existing);
+  assert.ok(context.document.getElementById('event-log').children.length >= 1);
 }
 
 function testSaveIncludesRuntimeStateAndCanRestore() {
@@ -648,7 +651,7 @@ function testRestartClearsAllSaveSlotsIncludingBackup() {
   assert.equal(context.document.getElementById('event-log').children.length, 0);
 }
 
-function testRestartKeepsSaveSlotsWhenUserCancels() {
+function testRestartDirectlyClearsRunSaveSlots() {
   const main = JSON.stringify({
     schemaVersion: 2,
     stats: { career: 'ai', day: 6, skill: 82, mental: 74, money: 62, ai: 80, age: 30, items: [] }
@@ -661,14 +664,15 @@ function testRestartKeepsSaveSlotsWhenUserCancels() {
     stats: { career: 'frontend', day: 3, skill: 58, mental: 80, money: 48, ai: 20, age: 30, items: [] }
   });
   const context = createGameContext({ [SAVE_KEY]: main, [SAVE_BACKUP_KEY]: backup, [LEGACY_SAVE_KEY]: legacy });
-  context.window.confirm = () => false;
 
   context.loadGameFromStorage();
   context.restart();
 
-  assert.equal(context.localStorage.getItem(SAVE_KEY), main);
-  assert.equal(context.localStorage.getItem(SAVE_BACKUP_KEY), backup);
-  assert.equal(context.localStorage.getItem(LEGACY_SAVE_KEY), legacy);
+  assert.equal(context.localStorage.getItem(SAVE_KEY), null);
+  assert.equal(context.localStorage.getItem(SAVE_BACKUP_KEY), null);
+  assert.equal(context.localStorage.getItem(LEGACY_SAVE_KEY), null);
+  assert.equal(context.document.getElementById('career-selection').style.display, 'grid');
+  assert.equal(context.document.getElementById('game-area').style.display, 'none');
 }
 
 function testStorageGetFailureDoesNotCrashResumeProbe() {
@@ -749,7 +753,7 @@ function testRestartContinuesClearingOtherSaveSlotsWhenOneRemoveFails() {
 
 const tests = [
   testIdleDoesNotOverwriteExistingSave,
-  testNewCareerNeedsConfirmationWhenSaveExists,
+  testNewCareerStartsDirectlyWhenSaveExists,
   testSaveIncludesRuntimeStateAndCanRestore,
   testDailyGoalStreakUnlocksAndRestores,
   testDailyGoalStreakResetsAfterMissedTarget,
@@ -769,7 +773,7 @@ const tests = [
   testResumeButtonProbeDoesNotMutateCorruptMainSaveWithValidBackup,
   testResumeButtonProbeDoesNotMutateCorruptLegacySave,
   testRestartClearsAllSaveSlotsIncludingBackup,
-  testRestartKeepsSaveSlotsWhenUserCancels,
+  testRestartDirectlyClearsRunSaveSlots,
   testStorageGetFailureDoesNotCrashResumeProbe,
   testStorageSetFailureMakesSaveFailWithoutCrashing,
   testAutoSaveFailureShowsVisibleNonPersistentWarning,
