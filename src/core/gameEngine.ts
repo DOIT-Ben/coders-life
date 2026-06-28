@@ -3,7 +3,7 @@ import { AGE, GAME_VERSION } from '../config/balance';
 import { ACTIONS, getAction } from '../config/actions';
 import { getPhase, getAge, applyDelta } from './formulas';
 import { settleMonth } from './monthlyLoop';
-import { createActionHistoryEntry, resolveActionEffect } from '../systems/actionRuleSystem';
+import { applyRealworldActionEffect, createActionHistoryEntry, resolveActionEffect } from '../systems/actionRuleSystem';
 import {
   DEFAULT_CAREER_PROFILE,
   DEFAULT_FINANCE_STATE,
@@ -101,6 +101,7 @@ export function applyAction(state: GameState, actionId: string): GameState {
   if (action.require && !action.require(state)) return state;
   const resolved = resolveActionEffect(state, action);
   let next = applyDelta(state, resolved.effect);
+  next = applyRealworldActionEffect(next, action);
   next.actionHistory = [
     ...state.actionHistory.filter(item => state.month - item.month < 6),
     createActionHistoryEntry(state, action)

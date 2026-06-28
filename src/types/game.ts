@@ -213,6 +213,15 @@ export interface EffectDelta {
   setFlag?: Record<string, boolean | number | string>;
 }
 
+export interface RealworldEffectDelta {
+  finance?: Partial<FinanceState>;
+  healthProfile?: Partial<HealthProfile>;
+  careerProfile?: Partial<CareerProfile>;
+  socialProfile?: Partial<SocialProfile>;
+  laborMarket?: Partial<LaborMarketState>;
+  lifePressure?: Partial<LifePressureState>;
+}
+
 export interface ActionConfig {
   id: ID;
   name: string;
@@ -229,6 +238,7 @@ export interface ActionConfig {
   description: string;
   visibleEffect: EffectDelta;
   hiddenEffect?: EffectDelta;
+  realworldEffect?: RealworldEffectDelta;
   cooldownMonths?: number;
   require?: (state: GameState) => boolean;
   disabledReason?: (state: GameState) => string | undefined;

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { createInitialState } from '../core/gameEngine';
+import { applyAction, createInitialState } from '../core/gameEngine';
 import { settleMonth } from '../core/monthlyLoop';
 import { applyDelta } from '../core/formulas';
 
@@ -198,5 +198,45 @@ describe('real-world monthly causal pipeline', () => {
     expect(Number.isFinite(state.finance.cashflowStress)).toBe(true);
     expect(Number.isFinite(state.healthProfile.healthDebt)).toBe(true);
     expect(Number.isFinite(state.careerProfile.layoffRisk)).toBe(true);
+  });
+});
+
+describe('real-world action consequences', () => {
+  it('applies immediate career profile gains from learning actions', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+
+    const next = applyAction(state, 'system_learning');
+
+    expect(next.careerProfile.employability).toBeGreaterThan(state.careerProfile.employability);
+    expect(next.careerProfile.careerCapital).toBeGreaterThan(state.careerProfile.careerCapital);
+    expect(next.healthProfile.sleepDebt).toBeGreaterThanOrEqual(state.healthProfile.sleepDebt);
+  });
+
+  it('applies latent recovery effects from sleep repair', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.healthProfile.sleepDebt = 60;
+    state.healthProfile.healthDebt = 48;
+    state.healthProfile.chronicStress = 52;
+
+    const next = applyAction(state, 'sleep_repair');
+
+    expect(next.healthProfile.sleepDebt).toBeLessThan(state.healthProfile.sleepDebt);
+    expect(next.healthProfile.healthDebt).toBeLessThan(state.healthProfile.healthDebt);
+    expect(next.healthProfile.recoveryQuality).toBeGreaterThan(state.healthProfile.recoveryQuality);
+  });
+
+  it('applies opportunity costs and market risk from side income actions', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.stats.techXp = 300;
+    state.career.employmentStatus = 'employed';
+    state.careerProfile.deliveryReliability = 62;
+    state.careerProfile.layoffRisk = 18;
+
+    const next = applyAction(state, 'freelance');
+
+    expect(next.finance.monthlyIncome).toBeGreaterThanOrEqual(state.finance.monthlyIncome);
+    expect(next.careerProfile.deliveryReliability).toBeLessThan(state.careerProfile.deliveryReliability);
+    expect(next.careerProfile.layoffRisk).toBeGreaterThan(state.careerProfile.layoffRisk);
+    expect(next.socialProfile.relationshipDebt).toBeGreaterThanOrEqual(state.socialProfile.relationshipDebt);
   });
 });

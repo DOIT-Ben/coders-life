@@ -1,5 +1,5 @@
 import actionRows from '../data/realworld/realworld_actions.json';
-import type { ActionConfig, ActionPrimaryCategory, ActionStressLevel, ActionSubcategory, EffectDelta } from '../types/game';
+import type { ActionConfig, ActionPrimaryCategory, ActionStressLevel, ActionSubcategory, EffectDelta, RealworldEffectDelta } from '../types/game';
 import { numberFrom, tagsFrom } from './realworldParser';
 
 interface RealworldActionRow {
@@ -70,6 +70,26 @@ function iconFor(row: RealworldActionRow): string {
   return '🌱';
 }
 
+function realworldEffectFor(row: RealworldActionRow): RealworldEffectDelta {
+  const stress = numberFrom(row.stress_level);
+  if (row.subcategory === 'nutrition') {
+    return { healthProfile: { nutritionQuality: 3, healthDebt: -2, recoveryQuality: 1 } };
+  }
+  if (row.subcategory === 'addiction_recovery') {
+    return { healthProfile: { chronicStress: -3, recoveryQuality: 2 }, lifePressure: { timeScarcity: -2 } };
+  }
+  if (row.primary_category === 'growth') {
+    return { careerProfile: { employability: 1.2, aiLeverage: row.subcategory === 'ai_tools' ? 2 : 0.2, careerCapital: 1 } };
+  }
+  if (row.primary_category === 'income') {
+    return { finance: { monthlyIncome: Math.max(0, Math.round(numberFrom(row.cash) * 10000)) }, careerProfile: { deliveryReliability: -stress, layoffRisk: stress } };
+  }
+  if (row.primary_category === 'relationship_safety') {
+    return { socialProfile: { safetyNet: 2, relationshipDebt: -2 } };
+  }
+  return {};
+}
+
 function mapRow(row: Record<string, string>): ActionConfig {
   const typed = row as unknown as RealworldActionRow;
   const cooldown = numberFrom(typed.cooldown_months);
@@ -88,6 +108,7 @@ function mapRow(row: Record<string, string>): ActionConfig {
     durationMonths: Math.max(1, Math.round(numberFrom(typed.duration_months, 1))),
     description: typed.real_world_logic || `${typed.benefit_label}；风险：${typed.risk_label}`,
     visibleEffect: effectFrom(typed),
+    realworldEffect: realworldEffectFor(typed),
     cooldownMonths: cooldown > 0 ? cooldown : undefined
   };
 }

@@ -1,4 +1,5 @@
-import type { ActionConfig, ActionHistoryEntry, EffectDelta, GameState } from '../types/game';
+import type { ActionConfig, ActionHistoryEntry, EffectDelta, GameState, RealworldEffectDelta } from '../types/game';
+import { clamp } from '../core/formulas';
 
 const XP_KEYS = ['techXp', 'aiXp', 'reputationXp', 'portfolio'] as const;
 const RECOVERY_SUBCATEGORIES = new Set(['digital_entertainment', 'media_reading', 'body_repair', 'mind_repair', 'life_ritual', 'outdoor_nature']);
@@ -124,6 +125,33 @@ export function resolveActionEffect(state: GameState, action: ActionConfig): { e
   };
 }
 
+export function applyRealworldActionEffect(state: GameState, action: ActionConfig): GameState {
+  const next = structuredClone(state);
+  const inferred = inferRealworldEffect(action);
+  const effect = mergeRealworldEffect(inferred, action.realworldEffect ?? {});
+
+  if (effect.finance) {
+    next.finance = mergeNested(next.finance, effect.finance);
+  }
+  if (effect.healthProfile) {
+    next.healthProfile = mergeNested(next.healthProfile, effect.healthProfile);
+  }
+  if (effect.careerProfile) {
+    next.careerProfile = mergeNested(next.careerProfile, effect.careerProfile);
+  }
+  if (effect.socialProfile) {
+    next.socialProfile = mergeNested(next.socialProfile, effect.socialProfile);
+  }
+  if (effect.laborMarket) {
+    next.laborMarket = mergeNested(next.laborMarket, effect.laborMarket);
+  }
+  if (effect.lifePressure) {
+    next.lifePressure = mergeNested(next.lifePressure, effect.lifePressure);
+  }
+
+  return next;
+}
+
 function aiAndEconomyScale(state: GameState, action: ActionConfig): number {
   let scale = 1;
   if ((action.primaryCategory === 'growth' || action.primaryCategory === 'career') && state.world.aiReplacement > state.stats.aiXp / 6) {
@@ -172,5 +200,86 @@ function applyRecoveryReality(effect: EffectDelta, action: ActionConfig, repeats
   if (action.subcategory === 'life_ritual') {
     next = addNumeric(next, 'health', 1);
   }
+  return next;
+}
+
+function inferRealworldEffect(action: ActionConfig): RealworldEffectDelta {
+  const pressure = action.stressLevel;
+  const base: RealworldEffectDelta = {};
+
+  if (action.primaryCategory === 'growth') {
+    base.careerProfile = {
+      employability: action.subcategory === 'ai_tools' ? 1.2 : 1.8,
+      aiLeverage: action.subcategory === 'ai_tools' ? 2.4 : 0.3,
+      careerCapital: action.subcategory === 'visibility' ? 2.2 : 1.2
+    };
+    base.healthProfile = { sleepDebt: pressure * 0.6, chronicStress: pressure * 0.4 };
+  }
+
+  if (action.primaryCategory === 'career') {
+    base.careerProfile = {
+      deliveryReliability: action.subcategory === 'job_change' ? -1.4 : 1.3,
+      promotionReadiness: action.subcategory === 'deep_work' ? 2 : 1,
+      layoffRisk: action.subcategory === 'job_change' ? 2 : -0.6
+    };
+    base.healthProfile = { sleepDebt: pressure * 1.2, chronicStress: pressure * 1.4 };
+    base.lifePressure = { timeScarcity: pressure * 1.2 };
+  }
+
+  if (action.primaryCategory === 'income') {
+    base.finance = { monthlyIncome: Math.max(0, action.visibleEffect.cash ?? 0) };
+    base.careerProfile = { deliveryReliability: -pressure * 1.5, layoffRisk: pressure * 1.8 };
+    base.healthProfile = { sleepDebt: pressure * 1.6, chronicStress: pressure * 1.8 };
+    base.socialProfile = { relationshipDebt: pressure * 1.2 };
+    base.lifePressure = { timeScarcity: pressure * 1.6 };
+  }
+
+  if (action.primaryCategory === 'relationship_safety') {
+    base.socialProfile = {
+      familySupport: action.subcategory === 'family' ? 3 : 0,
+      friendSupport: action.subcategory === 'friendship' ? 3 : 0,
+      networkStrength: action.subcategory === 'network' ? 3 : 0,
+      relationshipDebt: -3,
+      safetyNet: 2
+    };
+  }
+
+  if (action.primaryCategory === 'recovery') {
+    if (action.subcategory === 'nutrition' || action.id === 'cook_meal_prep') {
+      base.healthProfile = { nutritionQuality: 4, healthDebt: -2 };
+    } else if (action.id === 'sleep_repair') {
+      base.healthProfile = { sleepDebt: -18, chronicStress: -7, recoveryQuality: 8, healthDebt: -7 };
+      base.lifePressure = { timeScarcity: -3 };
+    } else if (action.subcategory === 'body_repair') {
+      base.healthProfile = { exerciseHabit: 2, recoveryQuality: 3, healthDebt: -3, chronicStress: -2 };
+    } else if (action.subcategory === 'mind_repair') {
+      base.healthProfile = { recoveryQuality: 4, chronicStress: -5, healthDebt: -2 };
+    } else if (DIGITAL_SUBCATEGORIES.has(action.subcategory)) {
+      base.healthProfile = { recoveryQuality: 1, sleepDebt: 1 };
+      base.lifePressure = { timeScarcity: 1 };
+    }
+  }
+
+  return base;
+}
+
+function mergeRealworldEffect(base: RealworldEffectDelta, extra: RealworldEffectDelta): RealworldEffectDelta {
+  return {
+    finance: { ...(base.finance ?? {}), ...(extra.finance ?? {}) },
+    healthProfile: { ...(base.healthProfile ?? {}), ...(extra.healthProfile ?? {}) },
+    careerProfile: { ...(base.careerProfile ?? {}), ...(extra.careerProfile ?? {}) },
+    socialProfile: { ...(base.socialProfile ?? {}), ...(extra.socialProfile ?? {}) },
+    laborMarket: { ...(base.laborMarket ?? {}), ...(extra.laborMarket ?? {}) },
+    lifePressure: { ...(base.lifePressure ?? {}), ...(extra.lifePressure ?? {}) }
+  };
+}
+
+function mergeNested<T extends Record<string, number>>(current: T, delta: Partial<T>): T {
+  const next = { ...current };
+  Object.entries(delta).forEach(([key, value]) => {
+    if (typeof value === 'number') {
+      next[key as keyof T] = clamp(((next[key as keyof T] as number) ?? 0) + value, 0, 100) as T[keyof T];
+    }
+  });
   return next;
 }
