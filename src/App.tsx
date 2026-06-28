@@ -70,64 +70,65 @@ const actionCategories: Array<{
     label: string;
     icon: string;
     summary: ReactNode;
+    immediateText: string;
   }>;
 }> = [
   {
     id: 'learn',
     label: '学习成长',
     items: [
-      { id: 'ai_training', icon: '📡', label: '学习AI工具', summary: <><span className="cp">AI+18</span><br /><span className="cp">技术+4</span><br /><span className="cn">精神-4</span></> },
-      { id: 'system_learning', icon: '📘', label: '系统学习', summary: <><span className="cp">技术+18</span><br /><span className="cp">专注+6</span><br /><span className="cn">成本-0.2万</span></> },
-      { id: 'project_practice', icon: '🧪', label: '项目实战', summary: <><span className="cp">作品+1</span><br /><span className="cp">技术+12</span><br /><span className="cn">成本-0.3万</span></> },
-      { id: 'writing_share', icon: '✍️', label: '技术写作', summary: <><span className="cp">声望+12</span><br /><span className="cp">技术+4</span><br /><span className="cn">精神-5</span></> }
+      { id: 'ai_training', icon: '📡', label: '学习AI工具', immediateText: 'AI +18 / 技术 +4 / 精神 -4', summary: <><span className="cp">AI+18</span><br /><span className="cp">技术+4</span><br /><span className="cn">精神-4</span></> },
+      { id: 'system_learning', icon: '📘', label: '系统学习', immediateText: '技术 +18 / 专注 +6 / 成本 -0.2万', summary: <><span className="cp">技术+18</span><br /><span className="cp">专注+6</span><br /><span className="cn">成本-0.2万</span></> },
+      { id: 'project_practice', icon: '🧪', label: '项目实战', immediateText: '作品 +1 / 技术 +12 / 成本 -0.3万', summary: <><span className="cp">作品+1</span><br /><span className="cp">技术+12</span><br /><span className="cn">成本-0.3万</span></> },
+      { id: 'writing_share', icon: '✍️', label: '技术写作', immediateText: '声望 +12 / 技术 +4 / 精神 -5', summary: <><span className="cp">声望+12</span><br /><span className="cp">技术+4</span><br /><span className="cn">精神-5</span></> }
     ]
   },
   {
     id: 'workMoney',
     label: '工作赚钱',
     items: [
-      { id: 'regular_work', icon: '💼', label: '认真上班', summary: <><span className="cp">绩效+4</span><br /><span className="cp">技术+6</span><br /><span className="cn">精神-5</span></> },
-      { id: 'overtime_sprint', icon: '💻', label: '加班写代码', summary: <><span className="cp">奖金+0.35万</span><br /><span className="cp">技术+10</span><br /><span className="cn">精神-14</span></> },
-      { id: 'freelance', icon: '💰', label: '接私活', summary: <><span className="cp">现金+1.2万</span><br /><span className="cn">精神-12</span><br /><span className="cn">健康-4</span></> },
-      { id: 'content_product', icon: '🎬', label: '自媒体/课程', summary: <><span className="cp">声望+18</span><br /><span className="cp">被动收入</span><br /><span className="cn">精神-10</span></> }
+      { id: 'regular_work', icon: '💼', label: '认真上班', immediateText: '绩效 +4 / 技术 +6 / 精神 -5', summary: <><span className="cp">绩效+4</span><br /><span className="cp">技术+6</span><br /><span className="cn">精神-5</span></> },
+      { id: 'overtime_sprint', icon: '💻', label: '加班写代码', immediateText: '奖金 +0.35万 / 技术 +10 / 精神 -14', summary: <><span className="cp">奖金+0.35万</span><br /><span className="cp">技术+10</span><br /><span className="cn">精神-14</span></> },
+      { id: 'freelance', icon: '💰', label: '接私活', immediateText: '现金 +1.2万 / 精神 -12 / 健康 -4', summary: <><span className="cp">现金+1.2万</span><br /><span className="cn">精神-12</span><br /><span className="cn">健康-4</span></> },
+      { id: 'content_product', icon: '🎬', label: '自媒体/课程', immediateText: '声望 +18 / 被动收入 / 精神 -10', summary: <><span className="cp">声望+18</span><br /><span className="cp">被动收入</span><br /><span className="cn">精神-10</span></> }
     ]
   },
   {
     id: 'careerChance',
     label: '职业机会',
     items: [
-      { id: 'job_hunt', icon: '📨', label: '求职投递', summary: <><span className="cp">机会+1</span><br /><span className="cn">精神-6</span><br /><span className="cn">需作品</span></> },
-      { id: 'jump_job', icon: '🎯', label: '面试跳槽', summary: <><span className="cp">机会跃迁</span><br /><span className="cn">消耗2个月</span><br /><span className="cn">有冷却</span></> },
-      { id: 'open_source', icon: '🌐', label: '开源贡献', summary: <><span className="cp">声望+10</span><br /><span className="cp">技术+8</span><br /><span className="cn">精神-6</span></> }
+      { id: 'job_hunt', icon: '📨', label: '求职投递', immediateText: '机会 +1 / 精神 -6 / 需要作品', summary: <><span className="cp">机会+1</span><br /><span className="cn">精神-6</span><br /><span className="cn">需作品</span></> },
+      { id: 'jump_job', icon: '🎯', label: '面试跳槽', immediateText: '机会跃迁 / 消耗 2 个月 / 有冷却', summary: <><span className="cp">机会跃迁</span><br /><span className="cn">消耗2个月</span><br /><span className="cn">有冷却</span></> },
+      { id: 'open_source', icon: '🌐', label: '开源贡献', immediateText: '声望 +10 / 技术 +8 / 精神 -6', summary: <><span className="cp">声望+10</span><br /><span className="cp">技术+8</span><br /><span className="cn">精神-6</span></> }
     ]
   },
   {
     id: 'entertainment',
     label: '娱乐恢复',
     items: [
-      { id: 'rest', icon: '🛋️', label: '摸鱼休息', summary: <><span className="cp">精神+10</span><br /><span className="cp">健康+4</span><br /><span className="cn">技术-2</span></> },
-      { id: 'gaming_break', icon: '🎮', label: '打游戏', summary: <><span className="cp">精神+12</span><br /><span className="cp">疲劳-5</span><br /><span className="cn">专注-6</span></> },
-      { id: 'foot_soak', icon: '♨️', label: '泡脚', summary: <><span className="cp">精神+6</span><br /><span className="cp">健康+3</span><br /><span className="cn">成本-120</span></> },
-      { id: 'massage', icon: '💆', label: '按摩', summary: <><span className="cp">健康+5</span><br /><span className="cp">疲劳-10</span><br /><span className="cn">成本-600</span></> },
-      { id: 'binge_watch', icon: '📺', label: '刷剧放空', summary: <><span className="cp">精神+8</span><br /><span className="cp">疲劳-4</span><br /><span className="cn">专注-3</span></> },
-      { id: 'sleep_repair', icon: '🌙', label: '睡眠修复', summary: <><span className="cp">精神+14</span><br /><span className="cp">健康+6</span><br /><span className="cn">技术-1</span></> }
+      { id: 'rest', icon: '🛋️', label: '摸鱼休息', immediateText: '精神 +10 / 健康 +4 / 技术 -2', summary: <><span className="cp">精神+10</span><br /><span className="cp">健康+4</span><br /><span className="cn">技术-2</span></> },
+      { id: 'gaming_break', icon: '🎮', label: '打游戏', immediateText: '精神 +12 / 疲劳 -5 / 专注 -6', summary: <><span className="cp">精神+12</span><br /><span className="cp">疲劳-5</span><br /><span className="cn">专注-6</span></> },
+      { id: 'foot_soak', icon: '♨️', label: '泡脚', immediateText: '精神 +6 / 健康 +3 / 成本 -120', summary: <><span className="cp">精神+6</span><br /><span className="cp">健康+3</span><br /><span className="cn">成本-120</span></> },
+      { id: 'massage', icon: '💆', label: '按摩', immediateText: '健康 +5 / 疲劳 -10 / 成本 -600', summary: <><span className="cp">健康+5</span><br /><span className="cp">疲劳-10</span><br /><span className="cn">成本-600</span></> },
+      { id: 'binge_watch', icon: '📺', label: '刷剧放空', immediateText: '精神 +8 / 疲劳 -4 / 专注 -3', summary: <><span className="cp">精神+8</span><br /><span className="cp">疲劳-4</span><br /><span className="cn">专注-3</span></> },
+      { id: 'sleep_repair', icon: '🌙', label: '睡眠修复', immediateText: '精神 +14 / 健康 +6 / 技术 -1', summary: <><span className="cp">精神+14</span><br /><span className="cp">健康+6</span><br /><span className="cn">技术-1</span></> }
     ]
   },
   {
     id: 'healthMind',
     label: '健康心理',
     items: [
-      { id: 'exercise', icon: '🏃', label: '健身训练', summary: <><span className="cp">健康+8</span><br /><span className="cp">精神+3</span><br /><span className="cn">成本-0.15万</span></> },
-      { id: 'therapy', icon: '🧘', label: '心理咨询', summary: <><span className="cp">精神+18</span><br /><span className="cp">燃尽-12</span><br /><span className="cn">成本-0.24万</span></> },
-      { id: 'sleep_repair', icon: '🌙', label: '睡眠修复', summary: <><span className="cp">精神+14</span><br /><span className="cp">疲劳-12</span><br /><span className="cn">无产出</span></> }
+      { id: 'exercise', icon: '🏃', label: '健身训练', immediateText: '健康 +8 / 精神 +3 / 成本 -0.15万', summary: <><span className="cp">健康+8</span><br /><span className="cp">精神+3</span><br /><span className="cn">成本-0.15万</span></> },
+      { id: 'therapy', icon: '🧘', label: '心理咨询', immediateText: '精神 +18 / 燃尽 -12 / 成本 -0.24万', summary: <><span className="cp">精神+18</span><br /><span className="cp">燃尽-12</span><br /><span className="cn">成本-0.24万</span></> },
+      { id: 'sleep_repair', icon: '🌙', label: '睡眠修复', immediateText: '精神 +14 / 疲劳 -12 / 无产出', summary: <><span className="cp">精神+14</span><br /><span className="cp">疲劳-12</span><br /><span className="cn">无产出</span></> }
     ]
   },
   {
     id: 'relationship',
     label: '社交关系',
     items: [
-      { id: 'networking', icon: '🤝', label: '社交人脉', summary: <><span className="cp">声望+5</span><br /><span className="cp">关系+6</span><br /><span className="cn">成本-0.1万</span></> },
-      { id: 'writing_share', icon: '✍️', label: '行业交流', summary: <><span className="cp">声望+12</span><br /><span className="cp">身份+2</span><br /><span className="cn">精神-5</span></> }
+      { id: 'networking', icon: '🤝', label: '社交人脉', immediateText: '声望 +5 / 关系 +6 / 成本 -0.1万', summary: <><span className="cp">声望+5</span><br /><span className="cp">关系+6</span><br /><span className="cn">成本-0.1万</span></> },
+      { id: 'writing_share', icon: '✍️', label: '行业交流', immediateText: '声望 +12 / 身份 +2 / 精神 -5', summary: <><span className="cp">声望+12</span><br /><span className="cp">身份+2</span><br /><span className="cn">精神-5</span></> }
     ]
   }
 ];
@@ -381,7 +382,7 @@ function GameScreen({
                   </div>
                   {action ? (
                     <div className="action-effects">
-                      <div className="effect-row immediate"><span className="effect-label">即时</span><span className="effect-copy">{slot.summary}</span></div>
+                      <div className="effect-row immediate"><span className="effect-label">即时</span><span className="effect-copy">{slot.immediateText}</span></div>
                       <div className="effect-row debt"><span className="effect-label">隐债</span><span className="effect-copy">{action.riskLabel}</span></div>
                       <div className="effect-row opportunity"><span className="effect-label">机会</span><span className="effect-copy">{action.benefitLabel}</span></div>
                     </div>

@@ -75,4 +75,12 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.action-effects');
     expect(appCss).toContain('grid-template-columns: 1fr;');
   });
+
+  it('does not collapse multiline action effects into embedded text', () => {
+    expect(appSource).toContain('immediateText');
+    expect(appSource).not.toContain('<span className="effect-copy">{slot.summary}</span>');
+    expect(appCss).not.toContain('.effect-copy br { display: none; }');
+    expect(appCss).toContain('white-space: normal');
+    expect(appCss).toContain('overflow-wrap: anywhere');
+  });
 });
