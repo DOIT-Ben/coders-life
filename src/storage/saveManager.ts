@@ -1,12 +1,14 @@
 import type { GameState } from '../types/game';
 import {
   DEFAULT_CAREER_PROFILE,
+  DEFAULT_CRISIS_STATE,
   DEFAULT_FINANCE_STATE,
   DEFAULT_HEALTH_PROFILE,
   DEFAULT_HOUSEHOLD_STATE,
   DEFAULT_LABOR_MARKET,
   DEFAULT_LIFE_PRESSURE,
   DEFAULT_MONTHLY_PLAN,
+  DEFAULT_PLAYER_VALUES,
   DEFAULT_SOCIAL_PROFILE,
   createDefaultProjectPortfolio,
   createDefaultCareerProfile
@@ -55,6 +57,13 @@ function withDefaults(state: GameState): GameState {
     household: { ...DEFAULT_HOUSEHOLD_STATE, ...(state.household ?? {}) },
     laborMarket: { ...DEFAULT_LABOR_MARKET, ...(state.laborMarket ?? {}) },
     lifePressure: { ...DEFAULT_LIFE_PRESSURE, ...(state.lifePressure ?? {}) },
+    values: { ...DEFAULT_PLAYER_VALUES, ...(state.values ?? {}) },
+    crisis: {
+      burnout: { ...DEFAULT_CRISIS_STATE.burnout, ...(state.crisis?.burnout ?? {}) },
+      mentalHealth: { ...DEFAULT_CRISIS_STATE.mentalHealth, ...(state.crisis?.mentalHealth ?? {}) },
+      severeIllness: { ...DEFAULT_CRISIS_STATE.severeIllness, ...(state.crisis?.severeIllness ?? {}) },
+      majorUnemployment: { ...DEFAULT_CRISIS_STATE.majorUnemployment, ...(state.crisis?.majorUnemployment ?? {}) }
+    },
     monthlyPlan: { ...DEFAULT_MONTHLY_PLAN, ...(state.monthlyPlan ?? {}) },
     projects: { ...createDefaultProjectPortfolio(), ...(state.projects ?? {}) },
     cooldowns: state.cooldowns ?? {},

@@ -152,4 +152,13 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.ach-progress');
     expect(appCss).toContain('.ach-progress-bar');
   });
+
+  it('uses respectful crisis age and AI copy in the visible shell', () => {
+    ['职业转型窗口', 'AI协作能力', '恢复窗口'].forEach(label => {
+      expect(appSource).toContain(label);
+    });
+    ['35岁危机最严重', '不会用AI的程序员在消失', '崩溃'].forEach(label => {
+      expect(appSource).not.toContain(label);
+    });
+  });
 });

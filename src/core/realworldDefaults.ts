@@ -7,6 +7,8 @@ import type {
   LaborMarketState,
   LifePressureState,
   MonthlyPlan,
+  CrisisState,
+  PlayerValueProfile,
   ProjectPortfolioState,
   ProjectState,
   SocialProfile
@@ -90,6 +92,24 @@ export const DEFAULT_LIFE_PRESSURE: LifePressureState = {
   commutePressure: 30,
   comparisonPressure: 36,
   timeScarcity: 24
+};
+
+export const DEFAULT_PLAYER_VALUES: PlayerValueProfile = {
+  wealth: 0.55,
+  craft: 0.7,
+  stability: 0.65,
+  freedom: 0.55,
+  relationships: 0.6,
+  health: 0.65,
+  impact: 0.45,
+  exploration: 0.45
+};
+
+export const DEFAULT_CRISIS_STATE: CrisisState = {
+  burnout: { active: false, recoveryProgress: 0 },
+  mentalHealth: { active: false, recoveryProgress: 0 },
+  severeIllness: { active: false, recoveryProgress: 0 },
+  majorUnemployment: { active: false, recoveryProgress: 0 }
 };
 
 export const DEFAULT_MONTHLY_PLAN: MonthlyPlan = {

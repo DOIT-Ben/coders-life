@@ -49,7 +49,7 @@ const v1CareerCopy: Record<CareerTrack, {
     tag: '咖啡机房长',
     accent: '#4ade80',
     stats: { tech: 80, mental: 75, cash: 16, ai: 20 },
-    traits: ['收入稳定，技能贬值慢', '35岁危机最严重']
+    traits: ['收入稳定，技能贬值慢', '职业转型窗口更早出现']
   },
   fullstack: {
     role: 'FULLSTACK · 全栈',
@@ -57,7 +57,7 @@ const v1CareerCopy: Record<CareerTrack, {
     tag: '八手救火员',
     accent: '#fb923c',
     stats: { tech: 75, mental: 70, cash: 14, ai: 35 },
-    traits: ['AI适应性强，综合能力高', '什么都会但不精']
+    traits: ['AI协作能力强，综合能力高', '什么都会但不精']
   },
   ai_product: {
     role: 'AI_ENG · AI工程',
@@ -203,7 +203,7 @@ function TitleCard({ hasSave, inGame, onContinue }: { hasSave: boolean; inGame: 
     <div className={inGame ? 'title-card in-game' : 'title-card'}>
       <div className="bugs-tag">BUGS WELCOME</div>
       <h1 className="t-main">程序员生存模拟器</h1>
-      <p className="t-sub">在这个AI时代，看看你能活多久</p>
+      <p className="t-sub">在 AI 协作时代，选择你的节奏和边界</p>
       {!inGame && <div className="t-notice">可继续上次生存，也可直接选择职业开始新局</div>}
       {!inGame && hasSave && <><br /><button className="btn-continue" onClick={onContinue}>继续上次生存</button></>}
     </div>
@@ -262,7 +262,7 @@ function CareerScreen({
         </select>
       </label>
       <button className="btn-start" onClick={startGame}>&gt; 开始生存 _</button>
-      <div className="quote">「不是程序员在消失，是不会用AI的程序员在消失」</div>
+      <div className="quote">「AI 改写的是任务结构，长期价值来自判断、责任和领域理解」</div>
     </div>
   );
 }
@@ -352,11 +352,11 @@ function GameScreen({
         <StatCard label="技术能力" value={visible.tech} color="var(--teal)" />
         <StatCard label="精神状态" value={visible.mental} color={visible.mental < 25 ? 'var(--red)' : visible.mental < 50 ? 'var(--amber)' : 'var(--sky)'} />
         <StatCard label="存款 (万)" value={Number(cashWan.toFixed(1))} max={100} color="var(--amber)" sub={cashWan >= 100 ? '已达 100万应急垫' : `目标：100万应急垫`} />
-        <StatCard label="AI熟练度" value={visible.ai} color="var(--mint)" />
+        <StatCard label="AI协作能力" value={visible.ai} color="var(--mint)" />
       </div>
       <PressureSummary state={state} lastPressure={lastPressure} deltas={pressureDelta} />
 
-      <div className={visible.mental < 25 ? 'crisis show' : 'crisis'}>⚠ 精神状态危急！继续下去你可能会崩溃...</div>
+      <div className={visible.mental < 25 ? 'crisis show' : 'crisis'}>⚠ 精神状态危急，正在进入恢复窗口...</div>
       {state.gameOver && <div className="crisis show">人生结局：{state.logs[state.logs.length - 1]?.title}。{endingText}</div>}
 
       <div className="game-layout">
@@ -365,7 +365,7 @@ function GameScreen({
             <div className="time-head"><span>生存时间轴</span><span>第 {day} 天 · {state.age}岁</span></div>
             <div className="time-track"><div className="time-fill" style={{ width: `${progress}%` }} /></div>
             <div className="time-miles">
-              <div className="mile danger" style={{ left: `${13 / 23 * 100}%` }}><div className="mile-dot" />35岁</div>
+              <div className="mile danger" style={{ left: `${13 / 23 * 100}%` }}><div className="mile-dot" />职业转型窗口</div>
               <div className="mile" style={{ left: `${18 / 23 * 100}%` }}><div className="mile-dot" />40岁</div>
               <div className="mile" style={{ left: '100%' }}><div className="mile-dot" />45岁</div>
             </div>
@@ -454,7 +454,7 @@ function GameScreen({
           </div>
         </div>
       </div>
-      <div className="quote">「不是程序员在消失，是不会用AI的程序员在消失」</div>
+      <div className="quote">「AI 改写的是任务结构，长期价值来自判断、责任和领域理解」</div>
     </div>
   );
 }
@@ -674,7 +674,7 @@ function EndingDialog({ state, close, restart }: { state: GameState; close: () =
         <div className="modal-title">{log?.title ?? '游戏结束'}</div>
         <div className="go-stats">
           <div className="go-stat"><div className="go-sv">{state.month}月</div><div className="go-sl">生存时长</div></div>
-          <div className="go-stat"><div className="go-sv">{visible.ai}</div><div className="go-sl">AI熟练度</div></div>
+          <div className="go-stat"><div className="go-sv">{visible.ai}</div><div className="go-sl">AI协作能力</div></div>
           <div className="go-stat"><div className="go-sv">{Math.round(state.stats.cash / 10000)}万</div><div className="go-sl">最终存款</div></div>
           <div className="go-stat"><div className="go-sv">{state.unlockedAchievements.length}</div><div className="go-sl">成就解锁</div></div>
         </div>

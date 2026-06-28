@@ -58,6 +58,8 @@ describe('state-driven real-world events and endings', () => {
     state.healthProfile.healthDebt = 94;
     state.healthProfile.chronicStress = 92;
     state.finance.cashflowStress = 84;
+    state.crisis.severeIllness.active = true;
+    state.crisis.severeIllness.startedMonth = state.month - 7;
 
     const next = checkEnding(state);
 
@@ -146,5 +148,55 @@ describe('state-driven real-world events and endings', () => {
     expect(deriveEmployability(state).value).toBeGreaterThan(50);
     expect(deriveCareerStability(state).value).toBeGreaterThan(40);
     expect(deriveLifeSatisfaction(state).explanation).toContain('价值');
+  });
+
+  it('routes burnout and mental health collapse into recovery crisis before hard failure', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.stats.burnout = 100;
+    state.stats.mental = 8;
+    state.stats.health = 54;
+
+    const next = checkEnding(state);
+
+    expect(next.gameOver).toBe(false);
+    expect(next.crisis.burnout.active).toBe(true);
+    expect(next.crisis.mentalHealth.active).toBe(true);
+    expect(next.logs[next.logs.length - 1]?.title).toContain('恢复');
+  });
+
+  it('only ends burnout or health crisis after an unrecovered hard fail state', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.stats.burnout = 100;
+    state.stats.mental = 0;
+    state.stats.health = 0;
+    state.crisis.burnout.active = true;
+    state.crisis.burnout.startedMonth = state.month - 7;
+    state.crisis.severeIllness.active = true;
+    state.crisis.severeIllness.startedMonth = state.month - 7;
+
+    const next = checkEnding(state);
+
+    expect(next.gameOver).toBe(true);
+    expect(next.endingId).toMatch(/burnout|health/);
+  });
+
+  it('adds value fit to mature endings instead of only money title tech and ai', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.age = 45;
+    state.stats.cash = 500000;
+    state.stats.mental = 82;
+    state.stats.health = 78;
+    state.stats.relation = 76;
+    state.stats.identity = 82;
+    state.stats.techXp = 320;
+    state.stats.aiXp = 220;
+    state.values.health = 0.9;
+    state.values.relationships = 0.8;
+    state.values.craft = 0.7;
+
+    const next = checkEnding(state);
+
+    expect(next.gameOver).toBe(true);
+    expect(next.logs[next.logs.length - 1]?.text).toContain('价值匹配');
   });
 });

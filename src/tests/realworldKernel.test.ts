@@ -109,6 +109,8 @@ describe('real-world simulation kernel state model', () => {
     delete state.socialProfile;
     delete state.laborMarket;
     delete state.lifePressure;
+    delete state.values;
+    delete state.crisis;
     store.set('programmer_survival_v6_save', JSON.stringify(state));
 
     const { loadGame } = await import('../storage/saveManager');
@@ -128,6 +130,8 @@ describe('real-world simulation kernel state model', () => {
     expect(loaded?.socialProfile.safetyNet).toBeGreaterThan(0);
     expect(loaded?.laborMarket.demandIndex).toBeGreaterThan(0);
     expect(loaded?.lifePressure.agePressure).toBeGreaterThanOrEqual(0);
+    expect(loaded?.values.health).toBeGreaterThan(0);
+    expect(loaded?.crisis.burnout.active).toBe(false);
 
     vi.unstubAllGlobals();
   });
@@ -366,6 +370,8 @@ describe('real-world action consequences', () => {
     state.career.pendingApplications = 0;
     state.careerProfile.monthsUnemployed = 14;
     state.stats.cash = 20000;
+    state.crisis.majorUnemployment.active = true;
+    state.crisis.majorUnemployment.startedMonth = state.month - 7;
 
     const next = checkEnding(state);
 

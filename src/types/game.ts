@@ -157,6 +157,30 @@ export interface HouseholdState {
   hasParents: boolean;
 }
 
+export interface PlayerValueProfile {
+  wealth: number;
+  craft: number;
+  stability: number;
+  freedom: number;
+  relationships: number;
+  health: number;
+  impact: number;
+  exploration: number;
+}
+
+export interface CrisisChapter {
+  active: boolean;
+  startedMonth?: number;
+  recoveryProgress: number;
+}
+
+export interface CrisisState {
+  burnout: CrisisChapter;
+  mentalHealth: CrisisChapter;
+  severeIllness: CrisisChapter;
+  majorUnemployment: CrisisChapter;
+}
+
 export interface GameLog {
   id: string;
   month: number;
@@ -302,6 +326,8 @@ export interface GameState {
   household: HouseholdState;
   laborMarket: LaborMarketState;
   lifePressure: LifePressureState;
+  values: PlayerValueProfile;
+  crisis: CrisisState;
   flags: Record<string, boolean | number | string>;
   cooldowns: Record<string, number>;
   inventory: Record<string, number>;
@@ -460,6 +486,6 @@ export interface EndingConfig {
   title: string;
   category: 'fail' | 'normal' | 'tech' | 'capital' | 'balance' | 'hidden';
   condition: (state: GameState) => boolean;
-  text: string;
+  text: string | ((state: GameState) => string);
   evidence?: EvidenceMetadata;
 }

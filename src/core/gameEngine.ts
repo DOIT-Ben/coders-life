@@ -10,12 +10,14 @@ import { buildMonthlyPlan, isPlanOverBudget } from '../systems/monthlyPlanSystem
 import { advanceProjectProgress, resolveProjectActionEffect } from '../systems/projectSystem';
 import {
   DEFAULT_CAREER_PROFILE,
+  DEFAULT_CRISIS_STATE,
   DEFAULT_FINANCE_STATE,
   DEFAULT_HEALTH_PROFILE,
   DEFAULT_HOUSEHOLD_STATE,
   DEFAULT_LABOR_MARKET,
   DEFAULT_LIFE_PRESSURE,
   DEFAULT_MONTHLY_PLAN,
+  DEFAULT_PLAYER_VALUES,
   DEFAULT_SOCIAL_PROFILE,
   createDefaultProjectPortfolio,
   createDefaultCareerProfile
@@ -87,6 +89,8 @@ export function createInitialState(track: CareerTrack = 'frontend', cityTier: Ci
     household: { ...DEFAULT_HOUSEHOLD_STATE },
     laborMarket: { ...DEFAULT_LABOR_MARKET },
     lifePressure: { ...DEFAULT_LIFE_PRESSURE },
+    values: { ...DEFAULT_PLAYER_VALUES },
+    crisis: structuredClone(DEFAULT_CRISIS_STATE),
     flags: {},
     cooldowns: {},
     inventory: {},

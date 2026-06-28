@@ -15,7 +15,12 @@ interface FailEndingRow {
 }
 
 function conditionFor(id: string): EndingConfig['condition'] {
-  if (id === 'burnout_collapse') return state => state.stats.burnout >= 85 && state.stats.health <= 25 && state.stats.mental <= 20;
+  if (id === 'burnout_collapse') return state =>
+    state.stats.burnout >= 85 &&
+    state.stats.health <= 25 &&
+    state.stats.mental <= 20 &&
+    state.crisis.burnout.active &&
+    state.month - (state.crisis.burnout.startedMonth ?? state.month) >= 6;
   if (id === 'cash_flow_bankrupt') return state => state.stats.cash <= 0;
   if (id === 'skill_obsolete') return state => state.age >= 38 && state.stats.techXp <= 80 && state.stats.aiXp <= 30;
   if (id === 'relationship_bankrupt') return state => state.age >= 35 && state.stats.relation <= 10;
@@ -25,10 +30,15 @@ function conditionFor(id: string): EndingConfig['condition'] {
       state.career.employmentStatus === 'jobless' &&
       state.careerProfile.monthsUnemployed >= 12 &&
       state.career.totalApplications >= 30 &&
-      state.stats.cash <= 100000;
+      state.stats.cash <= 100000 &&
+      state.crisis.majorUnemployment.active &&
+      state.month - (state.crisis.majorUnemployment.startedMonth ?? state.month) >= 6;
   }
-  if (id === 'health_shutdown') return state => state.stats.health <= 15;
-  if (id === 'ai_left_behind') return state => state.age >= 40 && state.world.aiReplacement >= 65 && state.stats.aiXp <= 25;
+  if (id === 'health_shutdown') return state =>
+    state.stats.health <= 0 &&
+    state.crisis.severeIllness.active &&
+    state.month - (state.crisis.severeIllness.startedMonth ?? state.month) >= 6;
+  if (id === 'ai_left_behind') return state => state.age >= 40 && state.world.toolAdoption >= 65 && state.careerProfile.aiLeverage <= 25 && state.careerProfile.employability <= 25;
   if (id === 'debt_trap') return state => state.stats.cash <= -100000;
   return state => state.gameOver && false;
 }
@@ -51,10 +61,10 @@ export const REALWORLD_FAIL_ENDINGS: EndingConfig[] = (failEndingRows as Record<
 const STATE_DRIVEN_FAIL_ENDING_DEFINITIONS = [
   {
     id: 'realworld_health_debt_collapse',
-    title: '长期健康债崩盘',
+    title: '长期健康债未恢复',
     category: 'fail',
-    condition: state => state.healthProfile.healthDebt >= 90 && state.healthProfile.chronicStress >= 85 && state.age >= 35,
-    text: '你没有被某一次加班打垮，而是被多年累积的睡眠债、压力债和恢复不足拖垮。真实世界里，身体会把每个月的账一次性结清。'
+    condition: state => state.healthProfile.healthDebt >= 90 && state.healthProfile.chronicStress >= 85 && state.age >= 35 && state.crisis.severeIllness.active && state.month - (state.crisis.severeIllness.startedMonth ?? state.month) >= 6,
+    text: '多年累积的睡眠债、压力债和恢复不足变成了硬约束。真实世界里，健康风险需要制度、医疗和生活节奏共同处理。'
   },
   {
     id: 'realworld_cashflow_trap',
@@ -65,10 +75,10 @@ const STATE_DRIVEN_FAIL_ENDING_DEFINITIONS = [
   },
   {
     id: 'realworld_ai_obsolete',
-    title: 'AI 时代技能失速',
+    title: 'AI 协作转型失速',
     category: 'fail',
-    condition: state => state.age >= 38 && state.world.aiReplacement >= 75 && state.careerProfile.aiLeverage <= 15 && state.careerProfile.employability <= 25,
-    text: '你并非不会写代码，而是没有把自己的能力迁移到新的生产方式里。'
+    condition: state => state.age >= 38 && state.world.toolAdoption >= 75 && state.careerProfile.aiLeverage <= 15 && state.careerProfile.employability <= 25,
+    text: '你并非不会写代码，而是组织的生产方式变化太快，能力迁移、领域判断和责任边界没有及时接上。'
   }
 ] satisfies EndingConfig[];
 
