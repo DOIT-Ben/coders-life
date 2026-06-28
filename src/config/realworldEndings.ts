@@ -1,5 +1,6 @@
 import failEndingRows from '../data/realworld/realworld_fail_endings.json';
 import type { EndingConfig } from '../types/game';
+import { withEndingEvidence } from './evidence';
 
 interface FailEndingRow {
   ending_id: string;
@@ -34,16 +35,20 @@ function conditionFor(id: string): EndingConfig['condition'] {
 
 export const REALWORLD_FAIL_ENDINGS: EndingConfig[] = (failEndingRows as Record<string, string>[]).map(row => {
   const typed = row as unknown as FailEndingRow;
-  return {
+  return withEndingEvidence({
     id: typed.ending_id,
     title: typed.title,
     category: typed.category,
     condition: conditionFor(typed.ending_id),
     text: `${typed.ending_text} ${typed.value_message}`
-  };
+  }, {
+    sourceLevel: 'case_study',
+    confidence: 'medium',
+    source: typed.real_world_reference
+  });
 });
 
-export const STATE_DRIVEN_FAIL_ENDINGS: EndingConfig[] = [
+const STATE_DRIVEN_FAIL_ENDING_DEFINITIONS = [
   {
     id: 'realworld_health_debt_collapse',
     title: '长期健康债崩盘',
@@ -65,6 +70,8 @@ export const STATE_DRIVEN_FAIL_ENDINGS: EndingConfig[] = [
     condition: state => state.age >= 38 && state.world.aiReplacement >= 75 && state.careerProfile.aiLeverage <= 15 && state.careerProfile.employability <= 25,
     text: '你并非不会写代码，而是没有把自己的能力迁移到新的生产方式里。'
   }
-];
+] satisfies EndingConfig[];
+
+export const STATE_DRIVEN_FAIL_ENDINGS: EndingConfig[] = STATE_DRIVEN_FAIL_ENDING_DEFINITIONS.map(ending => withEndingEvidence(ending));
 
 export const REALWORLD_FAIL_ENDING_COUNT = REALWORLD_FAIL_ENDINGS.length;

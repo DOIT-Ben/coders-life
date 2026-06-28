@@ -19,7 +19,7 @@ export function triggerMonthlyEvent(state: GameState, options?: { forceChoice?: 
   if (choiceEvent && rng() < 0.38) return createPendingEventChoice(state, choiceEvent);
 
   const candidates = getMonthlyEventCandidates(state);
-  const event = weightedPick<EventConfig>(candidates, e => typeof e.weight === 'function' ? e.weight(state) : e.weight, rng);
+  const event = weightedPick<EventConfig>(candidates, e => eventIntensity(state, e), rng);
   if (!event) return state;
   const effect = typeof event.effect === 'function' ? event.effect(state) : event.effect;
   const text = typeof event.text === 'function' ? event.text(state) : event.text;
@@ -28,6 +28,7 @@ export function triggerMonthlyEvent(state: GameState, options?: { forceChoice?: 
     next.seenEvents = [...new Set([...next.seenEvents, event.id])];
   }
   if (event.chain) next.eventMemory[event.chain] = (next.eventMemory[event.chain] ?? 0) + 1;
+  if (event.cooldownKey) next.eventMemory[event.cooldownKey] = state.month;
   next = addLog(next, { type: 'event', title: event.title, text });
   return next;
 }
@@ -125,9 +126,30 @@ function clampNumberField(target: object, key: string) {
 }
 
 export function getMonthlyEventCandidates(state: GameState): EventConfig[] {
-  return EVENTS.filter(event => {
+  const candidates: EventConfig[] = [];
+  const activeTags = new Set<string>();
+  const orderedEvents = [...EVENTS].sort((a, b) => eventIntensity(state, b) - eventIntensity(state, a));
+  orderedEvents.forEach(event => {
     if (event.once && state.seenEvents.includes(event.id)) return false;
     if (event.rarity === 'rare' && state.seenEvents.includes(event.id)) return false;
-    return event.condition ? event.condition(state) : true;
+    if (event.condition && !event.condition(state)) return false;
+    if ((event.exposure?.(state) ?? 1) <= 0) return false;
+    const cooldownKey = event.cooldownKey ?? event.chain ?? event.id;
+    const lastSeenMonth = state.eventMemory[cooldownKey];
+    if (typeof lastSeenMonth === 'number' && state.month - lastSeenMonth < (event.cooldownMonths ?? 0)) return false;
+    const tags = event.mutuallyExclusiveTags ?? [];
+    if (tags.some(tag => activeTags.has(tag))) return false;
+    tags.forEach(tag => activeTags.add(tag));
+    candidates.push(event);
+    return true;
   });
+  return candidates;
+}
+
+export function eventIntensity(state: GameState, event: EventConfig): number {
+  const exposure = event.exposure?.(state) ?? 1;
+  const base = event.baseRate ?? (typeof event.weight === 'number' ? event.weight : event.weight(state));
+  const cycleMultiplier = state.world.economyCycle === 'crisis' ? 1.3 : state.world.economyCycle === 'recession' ? 1.15 : state.world.economyCycle === 'boom' ? 0.9 : 1;
+  const historyPenalty = state.seenEvents.includes(event.id) ? 0.45 : 1;
+  return Math.max(0, base * exposure * cycleMultiplier * historyPenalty);
 }

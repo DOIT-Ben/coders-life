@@ -1,6 +1,7 @@
 import type { EndingConfig } from '../types/game';
 import { getVisibleStats } from '../core/formulas';
 import { REALWORLD_FAIL_ENDINGS, STATE_DRIVEN_FAIL_ENDINGS } from './realworldEndings';
+import { withEndingEvidence } from './evidence';
 
 export const CORE_ENDINGS: EndingConfig[] = [
   { id: 'bankrupt', title: '提前出局：现金流断裂', category: 'fail', condition: s => s.stats.cash <= 0, text: '存款归零后，选择自由也随之归零。你没有输给技术，而是输给了没有缓冲。' },
@@ -12,4 +13,4 @@ export const CORE_ENDINGS: EndingConfig[] = [
   { id: 'find_self', title: '隐藏结局：找回自己', category: 'hidden', condition: s => s.age >= 45 && s.stats.mental >= 60 && s.stats.health >= 60 && getVisibleStats(s).identity >= 70, text: '你没有把人生玩成一场单维竞速。你学会了选择，也保住了自己。' }
 ];
 
-export const ENDINGS: EndingConfig[] = [...STATE_DRIVEN_FAIL_ENDINGS, ...REALWORLD_FAIL_ENDINGS, ...CORE_ENDINGS];
+export const ENDINGS: EndingConfig[] = [...STATE_DRIVEN_FAIL_ENDINGS, ...REALWORLD_FAIL_ENDINGS, ...CORE_ENDINGS].map(ending => withEndingEvidence(ending));

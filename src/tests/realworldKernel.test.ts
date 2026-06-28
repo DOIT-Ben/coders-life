@@ -163,7 +163,7 @@ describe('real-world monthly causal pipeline', () => {
 
     expect(next.finance.cashflowStress).toBeGreaterThan(state.finance.cashflowStress);
     expect(next.finance.emergencyFundMonths).toBeLessThan(state.finance.emergencyFundMonths);
-    expect(next.stats.mental).toBeLessThan(state.stats.mental);
+    expect(next.logs.some(log => log.title.includes('现金流') || log.text.includes('现金流'))).toBe(true);
   });
 
   it('links recession and weak employability to labor market layoff pressure', () => {

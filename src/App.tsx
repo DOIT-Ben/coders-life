@@ -11,6 +11,7 @@ import { getActionInsights, getBodySignal } from './systems/actionInsightSystem'
 import { applyEventChoice } from './systems/eventSystem';
 import { calculateMonthlyPlanBudget } from './systems/monthlyPlanSystem';
 import { buyShopItem } from './systems/shopSystem';
+import { deriveCareerStability, deriveEmployability, deriveHealthDebt, deriveLifeSatisfaction } from './systems/derivedStateSystem';
 import './styles/app.css';
 
 type AchievementProgress = {
@@ -477,12 +478,16 @@ function pressureTone(value: number) {
 function PressureSummary({ state, lastPressure, deltas }: { state: GameState; lastPressure: PressureSnapshot; deltas?: PressureSnapshot }) {
   const runway = Number(state.finance.emergencyFundMonths.toFixed(1));
   const pressure = createPressureSnapshot(state);
+  const healthDebt = deriveHealthDebt(state);
+  const employability = deriveEmployability(state);
+  const careerStability = deriveCareerStability(state);
+  const lifeSatisfaction = deriveLifeSatisfaction(state);
   const pressureItems = [
     { key: 'cashflow' as const, icon: '¥', label: '现金流压力', value: pressure.cashflow, sub: `应急垫 ${runway}月`, tone: pressureTone(pressure.cashflow) },
-    { key: 'healthDebt' as const, icon: '+', label: '健康债', value: pressure.healthDebt, sub: `恢复质量 ${Math.round(state.healthProfile.recoveryQuality)}`, tone: pressureTone(pressure.healthDebt) },
-    { key: 'layoffRisk' as const, icon: '!', label: '职业风险', value: pressure.layoffRisk, sub: `可雇佣 ${Math.round(state.careerProfile.employability)}`, tone: pressureTone(pressure.layoffRisk) },
+    { key: 'healthDebt' as const, icon: '+', label: '健康债', value: Math.round(healthDebt.value), sub: healthDebt.explanation, tone: pressureTone(healthDebt.value) },
+    { key: 'layoffRisk' as const, icon: '!', label: '职业稳定', value: Math.round(100 - careerStability.value), sub: `可雇佣 ${Math.round(employability.value)}`, tone: pressureTone(100 - careerStability.value) },
     { key: 'relationshipDebt' as const, icon: '#', label: '关系债', value: pressure.relationshipDebt, sub: `关系债 ${pressure.relationshipDebt}`, tone: pressureTone(pressure.relationshipDebt) },
-    { key: 'marketPressure' as const, icon: '~', label: '市场压力', value: pressure.marketPressure, sub: `岗位 ${Math.round(state.laborMarket.jobOpenings)}`, tone: pressureTone(pressure.marketPressure) }
+    { key: 'marketPressure' as const, icon: '~', label: '生活满意', value: Math.round(100 - lifeSatisfaction.value), sub: `价值匹配 ${Math.round(lifeSatisfaction.value)} · ${lifeSatisfaction.explanation}`, tone: pressureTone(100 - lifeSatisfaction.value) }
   ];
 
   return (

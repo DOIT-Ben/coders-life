@@ -272,6 +272,12 @@ export interface EventChoiceConfig {
   memoryKey: string;
 }
 
+export interface EvidenceMetadata {
+  sourceLevel: 'empirical' | 'industry_report' | 'case_study' | 'synthetic';
+  confidence: 'low' | 'medium' | 'high';
+  source?: string;
+}
+
 export interface PendingEventChoice {
   id: ID;
   title: string;
@@ -378,6 +384,7 @@ export interface ActionConfig {
   hiddenEffect?: EffectDelta;
   realworldEffect?: RealworldEffectDelta;
   requirements?: ActionRequirements;
+  evidence?: EvidenceMetadata;
   cooldownMonths?: number;
   require?: (state: GameState) => boolean;
   disabledReason?: (state: GameState) => string | undefined;
@@ -393,10 +400,16 @@ export interface EventConfig {
   rarity?: PopupRarity;
   kind?: PopupKind;
   weight: number | ((state: GameState) => number);
+  baseRate?: number;
+  exposure?: (state: GameState) => number;
+  cooldownKey?: string;
+  cooldownMonths?: number;
+  mutuallyExclusiveTags?: string[];
   condition?: (state: GameState) => boolean;
   effect: EffectDelta | ((state: GameState) => EffectDelta);
   text: string | ((state: GameState) => string);
   once?: boolean;
+  evidence?: EvidenceMetadata;
 }
 
 export interface PopupPoolItem {
@@ -429,6 +442,7 @@ export interface ShopItemConfig {
   monthlyCost?: number;
   effect: EffectDelta;
   require?: (state: GameState) => boolean;
+  evidence?: EvidenceMetadata;
 }
 
 export interface AchievementConfig {
@@ -438,6 +452,7 @@ export interface AchievementConfig {
   description: string;
   condition: (state: GameState) => boolean;
   reward?: EffectDelta;
+  evidence?: EvidenceMetadata;
 }
 
 export interface EndingConfig {
@@ -446,4 +461,5 @@ export interface EndingConfig {
   category: 'fail' | 'normal' | 'tech' | 'capital' | 'balance' | 'hidden';
   condition: (state: GameState) => boolean;
   text: string;
+  evidence?: EvidenceMetadata;
 }

@@ -42,10 +42,10 @@ describe('v1 frontend contract', () => {
   });
 
   it('shows a compact real-world pressure summary without implementation jargon', () => {
-    ['现实压力', '现金流压力', '健康债', '职业风险', '关系债', '市场压力'].forEach(label => {
+    ['现实压力', '现金流压力', '健康债', '职业稳定', '关系债', '生活满意'].forEach(label => {
       expect(appSource).toContain(label);
     });
-    ['应急垫', '恢复质量', '可雇佣', '关系债'].forEach(label => {
+    ['应急垫', '价值匹配', '可雇佣', '关系债'].forEach(label => {
       expect(appSource).toContain(label);
     });
     expect(appSource).toContain('PressureSummary');

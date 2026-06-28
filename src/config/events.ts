@@ -4,6 +4,7 @@ import { ECONOMY_CONFIG } from './balance';
 import { POPUP_EVENTS } from './popupEvents';
 import { REALWORLD_EVENTS } from './realworldEvents';
 import { STATE_DRIVEN_EVENTS } from './stateDrivenEvents';
+import { withEventEvidence } from './evidence';
 
 export const CORE_EVENTS: EventConfig[] = [
   {
@@ -41,12 +42,14 @@ export const CORE_EVENTS: EventConfig[] = [
   },
   {
     id: 'minor_illness', title: '小病一场', type: 'daily', weight: s => s.stats.health < 45 ? 8 : 2,
+    category: 'health',
     effect: { health: -8, cash: -1500, mental: -3 },
     text: '身体用一次小病提醒你：健康不是背景设定。'
   },
   {
     id: 'layoff_wave', title: '裁员风波', type: 'major', weight: s => ECONOMY_CONFIG[s.world.economyCycle].layoffRisk * 60,
-    condition: s => s.career.employmentStatus === 'employed' && s.world.economyCycle !== 'boom',
+    category: 'career',
+    condition: s => s.career.employmentStatus === 'employed' && s.world.economyCycle !== 'boom' && (s.laborMarket.layoffPressure >= 35 || s.careerProfile.layoffRisk >= 35),
     effect: s => getVisibleStats(s).tech + getVisibleStats(s).ai < 70 ? { setEmploymentStatus: 'jobless', setCompanyType: 'none', mental: -18, reputationXp: -4 } : { mental: -8, reputationXp: 2 },
     text: s => getVisibleStats(s).tech + getVisibleStats(s).ai < 70 ? '行业收缩，你所在的岗位被优化。现金储备突然变得很重要。' : '裁员风波掠过团队，你靠能力和声望暂时稳住了位置。'
   },
@@ -58,9 +61,11 @@ export const CORE_EVENTS: EventConfig[] = [
   },
   {
     id: 'family_medical', title: '家庭医疗支出', type: 'major', weight: s => s.age > 32 ? 3 : 0.5,
+    category: 'family',
+    condition: s => s.household.hasParents || s.household.hasPartner || s.household.children > 0,
     effect: s => ({ cash: s.inventory.medical_insurance ? -8000 : -30000, relation: 4, mental: -10 }),
     text: '家庭责任不是坏事，但它会把“风险管理”从概念变成账单。'
   }
 ];
 
-export const EVENTS: EventConfig[] = [...CORE_EVENTS, ...STATE_DRIVEN_EVENTS, ...POPUP_EVENTS, ...REALWORLD_EVENTS];
+export const EVENTS: EventConfig[] = [...CORE_EVENTS, ...STATE_DRIVEN_EVENTS, ...POPUP_EVENTS, ...REALWORLD_EVENTS].map(event => withEventEvidence(event));

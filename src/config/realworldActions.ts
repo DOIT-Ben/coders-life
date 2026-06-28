@@ -1,6 +1,7 @@
 import actionRows from '../data/realworld/realworld_actions.json';
 import type { ActionConfig, ActionPrimaryCategory, ActionRequirements, ActionStressLevel, ActionSubcategory, EffectDelta, GameState, RealworldEffectDelta } from '../types/game';
 import { getVisibleStats } from '../core/formulas';
+import { withActionEvidence } from './evidence';
 import { numberFrom, tagsFrom } from './realworldParser';
 
 interface RealworldActionRow {
@@ -154,7 +155,11 @@ function mapRow(row: Record<string, string>): ActionConfig {
   };
 }
 
-export const REALWORLD_ACTIONS: ActionConfig[] = (actionRows as Record<string, string>[]).map(mapRow);
+export const REALWORLD_ACTIONS: ActionConfig[] = (actionRows as Record<string, string>[]).map(row => withActionEvidence(mapRow(row), {
+  sourceLevel: 'industry_report',
+  confidence: (row.confidence === 'high' || row.confidence === 'medium' || row.confidence === 'low') ? row.confidence : 'medium',
+  source: row.source_name
+}));
 export const REALWORLD_ACTION_COUNT = REALWORLD_ACTIONS.length;
 export const UNPARSED_REALWORLD_ACTION_REQUIREMENTS = Array.from(new Set(
   (actionRows as Record<string, string>[])

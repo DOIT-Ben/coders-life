@@ -1,5 +1,6 @@
 import type { ActionConfig, ActionPrimaryCategory, ActionStressLevel, ActionSubcategory, EffectDelta, GameState } from '../types/game';
 import { getVisibleStats } from '../core/formulas';
+import { withActionEvidence } from './evidence';
 import { REALWORLD_ACTIONS } from './realworldActions';
 
 type ActionGroup = ActionConfig['group'];
@@ -321,7 +322,7 @@ export const CORE_ACTIONS: ActionConfig[] = [
 ];
 
 export const ACTIONS: ActionConfig[] = [
-  ...CORE_ACTIONS,
+  ...CORE_ACTIONS.map(action => withActionEvidence(action)),
   ...REALWORLD_ACTIONS.filter(realworldAction => !CORE_ACTIONS.some(coreAction => coreAction.id === realworldAction.id))
 ];
 

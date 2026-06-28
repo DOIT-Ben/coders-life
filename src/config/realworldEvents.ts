@@ -1,5 +1,6 @@
 import eventRows from '../data/realworld/realworld_events.json';
 import type { EffectDelta, EventConfig, PopupRarity } from '../types/game';
+import { withEventEvidence } from './evidence';
 
 interface RealworldEventRow {
   id: string;
@@ -50,7 +51,7 @@ function conditionFor(trigger: string): EventConfig['condition'] {
   return undefined;
 }
 
-export const REALWORLD_EVENTS: EventConfig[] = (eventRows as RealworldEventRow[]).map(row => ({
+export const REALWORLD_EVENTS: EventConfig[] = (eventRows as RealworldEventRow[]).map(row => withEventEvidence({
   id: `realworld_${row.id}`,
   title: row.title,
   type: row.rarity === 'rare' ? 'major' : row.category === 'work' ? 'triggered' : 'random',
@@ -62,6 +63,10 @@ export const REALWORLD_EVENTS: EventConfig[] = (eventRows as RealworldEventRow[]
   effect: mapEffect(row.effect),
   text: row.text,
   once: row.rarity === 'rare'
+}, {
+  sourceLevel: 'industry_report',
+  confidence: row.confidence === 'high' || row.confidence === 'medium' || row.confidence === 'low' ? row.confidence : 'medium',
+  source: row.source_name
 }));
 
 export const REALWORLD_EVENT_COUNT = REALWORLD_EVENTS.length;
