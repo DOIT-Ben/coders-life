@@ -42,8 +42,19 @@ describe('v1 frontend contract', () => {
     ['现实压力', '现金流', '健康债', '职业风险', '关系支撑', '市场压力'].forEach(label => {
       expect(appSource).toContain(label);
     });
+    ['应急垫', '恢复质量', '可雇佣', '关系债'].forEach(label => {
+      expect(appSource).toContain(label);
+    });
     expect(appSource).toContain('PressureSummary');
     expect(appSource).not.toContain('realworld kernel');
     expect(appSource).not.toContain('V2底层');
+  });
+
+  it('shows action tradeoffs inline using benefit and risk labels', () => {
+    expect(appSource).toContain('action-tradeoff');
+    expect(appSource).toContain('收益：');
+    expect(appSource).toContain('代价：');
+    expect(appSource).toContain('benefitLabel');
+    expect(appSource).toContain('riskLabel');
   });
 });

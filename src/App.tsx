@@ -357,6 +357,12 @@ function GameScreen({
                     <span>{action?.description ?? '当前条件不足，暂时不能执行。'}</span>
                     {action?.reason ? <span className="cn">{action.reason}</span> : null}
                   </div>
+                  {action ? (
+                    <div className="action-tradeoff">
+                      <span>收益：{action.benefitLabel}</span>
+                      <span>代价：{action.riskLabel}</span>
+                    </div>
+                  ) : null}
                 </button>
                 );
               })}
@@ -371,12 +377,13 @@ function GameScreen({
 
 function PressureSummary({ state }: { state: GameState }) {
   const support = Math.round(state.socialProfile.safetyNet);
+  const runway = Number(state.finance.emergencyFundMonths.toFixed(1));
   const pressureItems = [
-    { label: '现金流', value: Math.round(state.finance.cashflowStress), tone: state.finance.cashflowStress >= 70 ? 'bad' : state.finance.cashflowStress >= 40 ? 'warn' : 'good' },
-    { label: '健康债', value: Math.round(state.healthProfile.healthDebt), tone: state.healthProfile.healthDebt >= 70 ? 'bad' : state.healthProfile.healthDebt >= 40 ? 'warn' : 'good' },
-    { label: '职业风险', value: Math.round(state.careerProfile.layoffRisk), tone: state.careerProfile.layoffRisk >= 70 ? 'bad' : state.careerProfile.layoffRisk >= 40 ? 'warn' : 'good' },
-    { label: '关系支撑', value: support, tone: support <= 25 ? 'bad' : support <= 45 ? 'warn' : 'good' },
-    { label: '市场压力', value: Math.round(state.laborMarket.layoffPressure), tone: state.laborMarket.layoffPressure >= 70 ? 'bad' : state.laborMarket.layoffPressure >= 40 ? 'warn' : 'good' }
+    { label: '现金流', value: Math.round(state.finance.cashflowStress), sub: `应急垫 ${runway}月`, tone: state.finance.cashflowStress >= 70 ? 'bad' : state.finance.cashflowStress >= 40 ? 'warn' : 'good' },
+    { label: '健康债', value: Math.round(state.healthProfile.healthDebt), sub: `恢复质量 ${Math.round(state.healthProfile.recoveryQuality)}`, tone: state.healthProfile.healthDebt >= 70 ? 'bad' : state.healthProfile.healthDebt >= 40 ? 'warn' : 'good' },
+    { label: '职业风险', value: Math.round(state.careerProfile.layoffRisk), sub: `可雇佣 ${Math.round(state.careerProfile.employability)}`, tone: state.careerProfile.layoffRisk >= 70 ? 'bad' : state.careerProfile.layoffRisk >= 40 ? 'warn' : 'good' },
+    { label: '关系支撑', value: support, sub: `关系债 ${Math.round(state.socialProfile.relationshipDebt)}`, tone: support <= 25 ? 'bad' : support <= 45 ? 'warn' : 'good' },
+    { label: '市场压力', value: Math.round(state.laborMarket.layoffPressure), sub: `岗位 ${Math.round(state.laborMarket.jobOpenings)}`, tone: state.laborMarket.layoffPressure >= 70 ? 'bad' : state.laborMarket.layoffPressure >= 40 ? 'warn' : 'good' }
   ];
 
   return (
@@ -385,7 +392,10 @@ function PressureSummary({ state }: { state: GameState }) {
       <div className="pressure-grid">
         {pressureItems.map(item => (
           <div className={`pressure-item ${item.tone}`} key={item.label}>
-            <span className="pressure-label">{item.label}</span>
+            <span className="pressure-copy">
+              <span className="pressure-label">{item.label}</span>
+              <span className="pressure-sub">{item.sub}</span>
+            </span>
             <span className="pressure-value">{item.value}</span>
           </div>
         ))}
