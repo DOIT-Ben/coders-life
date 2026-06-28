@@ -83,4 +83,14 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('white-space: normal');
     expect(appCss).toContain('overflow-wrap: anywhere');
   });
+
+  it('uses four fixed action slots per category with scroll for overflow', () => {
+    expect(appSource).toContain('ACTION_VISIBLE_SLOTS');
+    expect(appSource).toContain('actionSlots');
+    expect(appSource).toContain('action-empty-slot');
+    expect(appCss).toContain('--action-slot-height');
+    expect(appCss).toContain('height: calc(var(--action-slot-height) * 4 + var(--action-slot-gap) * 3);');
+    expect(appCss).toContain('overflow-y: auto');
+    expect(appCss).toContain('.action-empty-slot');
+  });
 });

@@ -538,12 +538,16 @@ body {
   box-shadow: 0 2px 8px rgba(92,107,192,.18);
 }
 .action-list {
+  --action-slot-height: 162px;
+  --action-slot-gap: 9px;
   padding: 8px 8px 14px;
   display: flex; flex-direction: column;
-  gap: 9px;
+  gap: var(--action-slot-gap);
+  height: calc(var(--action-slot-height) * 4 + var(--action-slot-gap) * 3);
   min-height: 0;
-  flex: 1;
+  flex: 0 0 auto;
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 .v1-action-grid {
   display: grid;
@@ -557,6 +561,7 @@ body {
 .action-btn {
   position: relative;
   width: 100%;
+  height: var(--action-slot-height);
   min-height: 0;
   background: #F2EEE6;
   border: 1.5px solid var(--border);
@@ -573,6 +578,15 @@ body {
   padding: 11px 12px 12px;
   overflow: hidden;
   min-width: 0;
+}
+.action-empty-slot {
+  width: 100%;
+  height: var(--action-slot-height);
+  flex: 0 0 auto;
+  border: 1.5px dashed rgba(190,176,150,.5);
+  border-radius: 8px;
+  background: rgba(242,238,230,.42);
+  pointer-events: none;
 }
 .action-btn:hover {
   background: var(--primary-soft);
@@ -777,7 +791,7 @@ body {
   .pressure-card { grid-template-columns: 1fr; gap: 7px; }
   .pressure-grid { grid-template-columns: 1fr; }
   .left-col, .right-col { height: auto; min-height: 0; }
-  .action-list { display: grid; grid-template-columns: 1fr; gap: 7px; }
+  .action-list { display: grid; grid-template-columns: 1fr; gap: var(--action-slot-gap); }
   .v1-action-grid { grid-template-rows: none; }
   .categorized-action-list { display: grid; grid-template-columns: 1fr; }
   .action-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }

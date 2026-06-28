@@ -61,6 +61,7 @@ const v1CareerCopy: Record<CareerTrack, {
 };
 
 type ActionCategoryId = 'learn' | 'workMoney' | 'careerChance' | 'entertainment' | 'healthMind' | 'relationship';
+const ACTION_VISIBLE_SLOTS = 4;
 
 const actionCategories: Array<{
   id: ActionCategoryId;
@@ -278,6 +279,13 @@ function GameScreen({
   const actions = getAvailableActions(state);
   const actionById = new Map(actions.map(action => [action.id, action]));
   const currentCategory = actionCategories.find(category => category.id === selectedActionCategory) ?? actionCategories[0];
+  const actionSlots = [
+    ...currentCategory.items,
+    ...Array.from({ length: Math.max(0, ACTION_VISIBLE_SLOTS - currentCategory.items.length) }, (_, index) => ({
+      id: `empty-${selectedActionCategory}-${index}`,
+      empty: true as const
+    }))
+  ];
   const cashWan = state.stats.cash / 10000;
   const totalMonths = 23 * 12;
   const progress = Math.min(100, state.month / totalMonths * 100);
@@ -367,7 +375,10 @@ function GameScreen({
               ))}
             </div>
             <div className="action-list categorized-action-list">
-              {currentCategory.items.map(slot => {
+              {actionSlots.map(slot => {
+                if ('empty' in slot) {
+                  return <div className="action-empty-slot" aria-hidden="true" key={slot.id} />;
+                }
                 const action = actionById.get(slot.id);
                 const disabled = !action?.available || state.gameOver;
                 return (
