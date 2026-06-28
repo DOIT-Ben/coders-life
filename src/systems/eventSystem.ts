@@ -8,11 +8,7 @@ export function triggerMonthlyEvent(state: GameState): GameState {
   const rng = monthRng(state.seed, state.month, 'event');
   const baseChance = state.stats.burnout > 65 ? 0.44 : 0.30;
   if (rng() > baseChance) return state;
-  const candidates = EVENTS.filter(event => {
-    if (event.once && state.seenEvents.includes(event.id)) return false;
-    if (event.rarity === 'rare' && state.seenEvents.includes(event.id)) return false;
-    return event.condition ? event.condition(state) : true;
-  });
+  const candidates = getMonthlyEventCandidates(state);
   const event = weightedPick<EventConfig>(candidates, e => typeof e.weight === 'function' ? e.weight(state) : e.weight, rng);
   if (!event) return state;
   const effect = typeof event.effect === 'function' ? event.effect(state) : event.effect;
@@ -24,4 +20,12 @@ export function triggerMonthlyEvent(state: GameState): GameState {
   if (event.chain) next.eventMemory[event.chain] = (next.eventMemory[event.chain] ?? 0) + 1;
   next = addLog(next, { type: 'event', title: event.title, text });
   return next;
+}
+
+export function getMonthlyEventCandidates(state: GameState): EventConfig[] {
+  return EVENTS.filter(event => {
+    if (event.once && state.seenEvents.includes(event.id)) return false;
+    if (event.rarity === 'rare' && state.seenEvents.includes(event.id)) return false;
+    return event.condition ? event.condition(state) : true;
+  });
 }

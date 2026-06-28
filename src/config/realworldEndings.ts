@@ -37,4 +37,28 @@ export const REALWORLD_FAIL_ENDINGS: EndingConfig[] = (failEndingRows as Record<
   };
 });
 
+export const STATE_DRIVEN_FAIL_ENDINGS: EndingConfig[] = [
+  {
+    id: 'realworld_health_debt_collapse',
+    title: '长期健康债崩盘',
+    category: 'fail',
+    condition: state => state.healthProfile.healthDebt >= 90 && state.healthProfile.chronicStress >= 85 && state.age >= 35,
+    text: '你没有被某一次加班打垮，而是被多年累积的睡眠债、压力债和恢复不足拖垮。真实世界里，身体会把每个月的账一次性结清。'
+  },
+  {
+    id: 'realworld_cashflow_trap',
+    title: '现金流陷阱',
+    category: 'fail',
+    condition: state => state.finance.cashflowStress >= 92 && state.finance.emergencyFundMonths < 0.5 && state.stats.cash <= 10000,
+    text: '收入、固定支出和应急垫同时失衡，选择空间被账单压缩到几乎没有。'
+  },
+  {
+    id: 'realworld_ai_obsolete',
+    title: 'AI 时代技能失速',
+    category: 'fail',
+    condition: state => state.age >= 38 && state.world.aiReplacement >= 75 && state.careerProfile.aiLeverage <= 15 && state.careerProfile.employability <= 25,
+    text: '你并非不会写代码，而是没有把自己的能力迁移到新的生产方式里。'
+  }
+];
+
 export const REALWORLD_FAIL_ENDING_COUNT = REALWORLD_FAIL_ENDINGS.length;

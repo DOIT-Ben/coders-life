@@ -3,6 +3,7 @@ import { getVisibleStats } from '../core/formulas';
 import { ECONOMY_CONFIG } from './balance';
 import { POPUP_EVENTS } from './popupEvents';
 import { REALWORLD_EVENTS } from './realworldEvents';
+import { STATE_DRIVEN_EVENTS } from './stateDrivenEvents';
 
 export const CORE_EVENTS: EventConfig[] = [
   {
@@ -62,4 +63,4 @@ export const CORE_EVENTS: EventConfig[] = [
   }
 ];
 
-export const EVENTS: EventConfig[] = [...CORE_EVENTS, ...POPUP_EVENTS, ...REALWORLD_EVENTS];
+export const EVENTS: EventConfig[] = [...CORE_EVENTS, ...STATE_DRIVEN_EVENTS, ...POPUP_EVENTS, ...REALWORLD_EVENTS];
