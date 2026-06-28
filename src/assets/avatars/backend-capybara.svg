@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">后端工程师水豚头像</title>
+  <desc id="desc">一只坐在冒烟服务器前、抱着咖啡杯的卡通水豚工程师。</desc>
+  <rect width="240" height="240" rx="36" fill="#dff4c7"/>
+  <rect x="31" y="45" width="54" height="140" rx="12" fill="#6f7f8c" stroke="#231f20" stroke-width="7"/>
+  <rect x="155" y="45" width="54" height="140" rx="12" fill="#6f7f8c" stroke="#231f20" stroke-width="7"/>
+  <path d="M48 70h20M48 96h20M48 122h20M172 70h20M172 96h20M172 122h20" stroke="#fff5dc" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="72" cy="158" r="6" fill="#f45b3f"/>
+  <circle cx="168" cy="158" r="6" fill="#22b8a7"/>
+  <path d="M70 37c-10-15 16-15 6-30M174 38c-9-14 15-16 7-30" fill="none" stroke="#231f20" stroke-width="6" stroke-linecap="round"/>
+  <ellipse cx="120" cy="129" rx="61" ry="55" fill="#b8794a" stroke="#231f20" stroke-width="7"/>
+  <ellipse cx="120" cy="122" rx="47" ry="39" fill="#c98c5c"/>
+  <circle cx="93" cy="117" r="7" fill="#231f20"/>
+  <circle cx="147" cy="117" r="7" fill="#231f20"/>
+  <path d="M112 133h16" stroke="#231f20" stroke-width="6" stroke-linecap="round"/>
+  <path d="M80 85c8-20 25-30 40-30s32 10 40 30" fill="#b8794a" stroke="#231f20" stroke-width="7" stroke-linecap="round"/>
+  <rect x="88" y="156" width="64" height="39" rx="12" fill="#fff5dc" stroke="#231f20" stroke-width="7"/>
+  <path d="M152 167h16c11 0 11 18 0 18h-16" fill="none" stroke="#231f20" stroke-width="7"/>
+  <path d="M101 168h37" stroke="#f45b3f" stroke-width="6" stroke-linecap="round"/>
+  <path d="M51 198c44 19 94 20 139 0" fill="none" stroke="#231f20" stroke-width="7" stroke-linecap="round"/>
+</svg>
