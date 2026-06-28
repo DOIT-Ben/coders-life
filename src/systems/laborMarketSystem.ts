@@ -7,10 +7,15 @@ export function settleLaborMarket(state: GameState): GameState {
   const skillGap = Math.max(0, state.world.aiReplacement - state.careerProfile.aiLeverage);
   const weakEmployability = Math.max(0, 50 - state.careerProfile.employability) * 0.35;
   const demand = state.world.marketHeat - economyPressure * 0.5 - skillGap * 0.12;
+  const ageFriction = clamp(Math.max(0, state.age - 30) * 2.2 + Math.max(0, 55 - state.careerProfile.skillFreshness) * 0.15 - state.careerProfile.careerCapital * 0.08, 0, 100);
+  const jobOpenings = clamp(demand - ageFriction * 0.18, 0, 100);
 
   next.laborMarket = {
+    jobOpenings,
     demandIndex: clamp(demand, 0, 100),
     aiDisruption: clamp(state.world.aiReplacement, 0, 100),
+    salaryPressure: clamp(50 - economyPressure * 0.7 + state.careerProfile.employability * 0.18 - ageFriction * 0.12, 0, 100),
+    ageFriction,
     hiringStrictness: clamp(42 + economyPressure + skillGap * 0.18, 0, 100),
     layoffPressure: clamp(state.laborMarket.layoffPressure * 0.55 + economyPressure + weakEmployability + skillGap * 0.16, 0, 100),
     freelanceDemand: clamp(state.world.marketHeat - economyPressure * 0.25 + state.careerProfile.careerCapital * 0.12, 0, 100)

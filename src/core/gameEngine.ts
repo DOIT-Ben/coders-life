@@ -10,7 +10,8 @@ import {
   DEFAULT_HEALTH_PROFILE,
   DEFAULT_LABOR_MARKET,
   DEFAULT_LIFE_PRESSURE,
-  DEFAULT_SOCIAL_PROFILE
+  DEFAULT_SOCIAL_PROFILE,
+  createDefaultCareerProfile
 } from './realworldDefaults';
 
 export function createInitialState(track: CareerTrack = 'frontend', cityTier: CityTier = 'tier2', seed = Date.now() % 1000000): GameState {
@@ -47,7 +48,7 @@ export function createInitialState(track: CareerTrack = 'frontend', cityTier: Ci
     },
     finance: { ...DEFAULT_FINANCE_STATE },
     healthProfile: { ...DEFAULT_HEALTH_PROFILE },
-    careerProfile: { ...DEFAULT_CAREER_PROFILE },
+    careerProfile: { ...createDefaultCareerProfile(track) },
     socialProfile: { ...DEFAULT_SOCIAL_PROFILE },
     laborMarket: { ...DEFAULT_LABOR_MARKET },
     lifePressure: { ...DEFAULT_LIFE_PRESSURE },

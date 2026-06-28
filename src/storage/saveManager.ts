@@ -5,7 +5,8 @@ import {
   DEFAULT_HEALTH_PROFILE,
   DEFAULT_LABOR_MARKET,
   DEFAULT_LIFE_PRESSURE,
-  DEFAULT_SOCIAL_PROFILE
+  DEFAULT_SOCIAL_PROFILE,
+  createDefaultCareerProfile
 } from '../core/realworldDefaults';
 
 const SAVE_KEY = 'programmer_survival_v6_save';
@@ -25,7 +26,7 @@ function withDefaults(state: GameState): GameState {
     flags: state.flags ?? {},
     finance: { ...DEFAULT_FINANCE_STATE, ...(state.finance ?? {}) },
     healthProfile: { ...DEFAULT_HEALTH_PROFILE, ...(state.healthProfile ?? {}) },
-    careerProfile: { ...DEFAULT_CAREER_PROFILE, ...(state.careerProfile ?? {}) },
+    careerProfile: { ...createDefaultCareerProfile(state.career?.track ?? 'frontend'), ...DEFAULT_CAREER_PROFILE, ...(state.careerProfile ?? {}) },
     socialProfile: { ...DEFAULT_SOCIAL_PROFILE, ...(state.socialProfile ?? {}) },
     laborMarket: { ...DEFAULT_LABOR_MARKET, ...(state.laborMarket ?? {}) },
     lifePressure: { ...DEFAULT_LIFE_PRESSURE, ...(state.lifePressure ?? {}) },

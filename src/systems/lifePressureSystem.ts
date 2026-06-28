@@ -7,6 +7,10 @@ export function settleLifeStagePressure(state: GameState): GameState {
   const housingBase = state.career.cityTier === 'tier1' ? 54 : state.career.cityTier === 'tier2' ? 38 : 24;
   const familyResponsibility = clamp(state.lifePressure.familyResponsibility + (state.age >= 30 ? 0.35 : 0.08), 0, 100);
   const housingPressure = clamp(housingBase + Math.max(0, 3 - state.finance.emergencyFundMonths) * 4, 0, 100);
+  const parentCarePressure = clamp(state.lifePressure.parentCarePressure + (state.age >= 35 ? 0.18 : state.age >= 30 ? 0.06 : 0.01), 0, 100);
+  const childCarePressure = clamp(state.lifePressure.childCarePressure + (familyResponsibility > 45 && state.age >= 30 ? 0.12 : 0), 0, 100);
+  const commutePressure = clamp(state.lifePressure.commutePressure + (state.career.cityTier === 'tier1' ? 0.08 : -0.03), 0, 100);
+  const stagePressure = clamp((agePressureTarget + familyResponsibility + housingPressure + parentCarePressure + childCarePressure + commutePressure) / 6, 0, 100);
   const supportBuffer = (state.socialProfile.familySupport + state.socialProfile.friendSupport + state.socialProfile.safetyNet) / 9;
   const cashBuffer = Math.min(18, state.finance.emergencyFundMonths * 1.5);
   const comparisonTarget = clamp(25 + Math.max(0, state.age - 28) * 1.2 + state.finance.cashflowStress * 0.35 - cashBuffer - supportBuffer * 0.5, 0, 100);
@@ -19,9 +23,13 @@ export function settleLifeStagePressure(state: GameState): GameState {
   const timeScarcity = clamp(state.lifePressure.timeScarcity * 0.82 + scarcityTarget * 0.18, 0, 100);
 
   next.lifePressure = {
+    stagePressure,
     agePressure: Math.max(state.lifePressure.agePressure, agePressureTarget),
     familyResponsibility,
     housingPressure,
+    parentCarePressure,
+    childCarePressure,
+    commutePressure,
     comparisonPressure,
     timeScarcity
   };

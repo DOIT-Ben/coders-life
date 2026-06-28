@@ -17,7 +17,10 @@ export function settleFixedFinance(state: GameState): GameState {
   next.finance = {
     ...next.finance,
     monthlyIncome,
+    monthlySalary: salary,
     monthlyFixedCost: fixedCost,
+    monthlyRent: Math.max(state.finance.monthlyRent, Math.round(fixedCost * 0.38)),
+    monthlyDebtPayment: Math.round(state.finance.debt * 0.012),
     emergencyFundMonths,
     cashflowStress
   };

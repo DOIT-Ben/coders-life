@@ -24,10 +24,16 @@ export function settleCareerOpportunities(state: GameState): GameState {
     const capitalDelta = (visible.tech + visible.ai + visible.reputation) / 260;
     const aiLeverageTarget = visible.ai;
     next = structuredClone(next);
+    next.careerProfile.roleKey = next.career.track;
+    next.careerProfile.companyArchetype = next.career.companyType;
+    next.careerProfile.performance = perf;
     next.careerProfile.deliveryReliability = Math.max(0, Math.min(100, next.careerProfile.deliveryReliability + reliabilityDelta));
     next.careerProfile.promotionReadiness = Math.max(0, Math.min(100, next.careerProfile.promotionReadiness + perf * 0.025 - next.laborMarket.hiringStrictness * 0.005));
     next.careerProfile.careerCapital = Math.max(0, Math.min(100, next.careerProfile.careerCapital + capitalDelta));
     next.careerProfile.aiLeverage = Math.max(0, Math.min(100, next.careerProfile.aiLeverage * 0.94 + aiLeverageTarget * 0.06));
+    next.careerProfile.skillFreshness = Math.max(0, Math.min(100, next.careerProfile.skillFreshness * 0.985 + visible.tech * 0.01 + visible.ai * 0.008));
+    next.careerProfile.monthsUnemployed = 0;
+    next.careerProfile.interviewMomentum = Math.max(0, next.careerProfile.interviewMomentum - 1);
     next.careerProfile.employability = Math.max(0, Math.min(100, next.careerProfile.employability + capitalDelta * 0.9 + next.careerProfile.aiLeverage * 0.025 - next.laborMarket.hiringStrictness * 0.006));
     if (next.career.promotionScore >= 45 && perf >= 60 && next.career.jobLevel < 4) {
       next = applyDelta(next, { setJobLevel: next.career.jobLevel + 1, promotionScore: -45, reputationXp: 10, mental: 4 });
@@ -35,6 +41,12 @@ export function settleCareerOpportunities(state: GameState): GameState {
     }
   } else {
     next = structuredClone(next);
+    next.careerProfile.roleKey = next.career.track;
+    next.careerProfile.companyArchetype = next.career.companyType;
+    next.careerProfile.performance = Math.max(0, next.careerProfile.performance - 1);
+    next.careerProfile.monthsUnemployed += 1;
+    next.careerProfile.interviewMomentum = Math.max(0, Math.min(100, next.careerProfile.interviewMomentum + next.career.offerAttempts * 2 - next.laborMarket.hiringStrictness * 0.02));
+    next.careerProfile.skillFreshness = Math.max(0, next.careerProfile.skillFreshness - 0.4);
     next.careerProfile.employability = Math.max(0, Math.min(100, next.careerProfile.employability - next.laborMarket.hiringStrictness * 0.015 + visible.tech * 0.01 + visible.ai * 0.01));
   }
   return next;

@@ -11,7 +11,10 @@ describe('real-world simulation kernel state model', () => {
 
     expect(state.finance).toMatchObject({
       monthlyIncome: expect.any(Number),
+      monthlySalary: expect.any(Number),
       monthlyFixedCost: expect.any(Number),
+      monthlyRent: expect.any(Number),
+      monthlyDebtPayment: expect.any(Number),
       emergencyFundMonths: expect.any(Number),
       debt: 0,
       cashflowStress: expect.any(Number)
@@ -21,9 +24,11 @@ describe('real-world simulation kernel state model', () => {
 
     expect(state.healthProfile).toMatchObject({
       sleepDebt: expect.any(Number),
+      sedentaryLoad: expect.any(Number),
       nutritionQuality: expect.any(Number),
       exerciseHabit: expect.any(Number),
       chronicStress: expect.any(Number),
+      chronicRisk: expect.any(Number),
       recoveryQuality: expect.any(Number),
       healthDebt: expect.any(Number)
     });
@@ -31,9 +36,15 @@ describe('real-world simulation kernel state model', () => {
 
     expect(state.careerProfile).toMatchObject({
       employability: expect.any(Number),
+      roleKey: 'frontend',
+      companyArchetype: expect.any(String),
+      performance: expect.any(Number),
       aiLeverage: expect.any(Number),
       deliveryReliability: expect.any(Number),
       promotionReadiness: expect.any(Number),
+      skillFreshness: expect.any(Number),
+      monthsUnemployed: expect.any(Number),
+      interviewMomentum: expect.any(Number),
       layoffRisk: expect.any(Number),
       careerCapital: expect.any(Number)
     });
@@ -41,24 +52,33 @@ describe('real-world simulation kernel state model', () => {
 
     expect(state.socialProfile).toMatchObject({
       familySupport: expect.any(Number),
+      partnerSupport: expect.any(Number),
       friendSupport: expect.any(Number),
       networkStrength: expect.any(Number),
+      loneliness: expect.any(Number),
       relationshipDebt: expect.any(Number),
       safetyNet: expect.any(Number)
     });
 
     expect(state.laborMarket).toMatchObject({
+      jobOpenings: expect.any(Number),
       demandIndex: expect.any(Number),
       aiDisruption: expect.any(Number),
+      salaryPressure: expect.any(Number),
+      ageFriction: expect.any(Number),
       hiringStrictness: expect.any(Number),
       layoffPressure: expect.any(Number),
       freelanceDemand: expect.any(Number)
     });
 
     expect(state.lifePressure).toMatchObject({
+      stagePressure: expect.any(Number),
       agePressure: expect.any(Number),
       familyResponsibility: expect.any(Number),
       housingPressure: expect.any(Number),
+      parentCarePressure: expect.any(Number),
+      childCarePressure: expect.any(Number),
+      commutePressure: expect.any(Number),
       comparisonPressure: expect.any(Number),
       timeScarcity: expect.any(Number)
     });
@@ -86,6 +106,14 @@ describe('real-world simulation kernel state model', () => {
     const loaded = loadGame();
 
     expect(loaded?.finance.emergencyFundMonths).toBeGreaterThan(0);
+    expect(loaded?.finance.monthlySalary).toBeGreaterThanOrEqual(0);
+    expect(loaded?.healthProfile.sedentaryLoad).toBeGreaterThanOrEqual(0);
+    expect(loaded?.healthProfile.chronicRisk).toBeGreaterThanOrEqual(0);
+    expect(loaded?.careerProfile.skillFreshness).toBeGreaterThan(0);
+    expect(loaded?.careerProfile.monthsUnemployed).toBeGreaterThanOrEqual(0);
+    expect(loaded?.socialProfile.partnerSupport).toBeGreaterThanOrEqual(0);
+    expect(loaded?.laborMarket.ageFriction).toBeGreaterThanOrEqual(0);
+    expect(loaded?.lifePressure.stagePressure).toBeGreaterThanOrEqual(0);
     expect(loaded?.healthProfile.recoveryQuality).toBeGreaterThan(40);
     expect(loaded?.careerProfile.employability).toBeGreaterThan(20);
     expect(loaded?.socialProfile.safetyNet).toBeGreaterThan(0);

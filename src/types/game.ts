@@ -74,7 +74,10 @@ export interface CareerState {
 
 export interface FinanceState {
   monthlyIncome: number;
+  monthlySalary: number;
   monthlyFixedCost: number;
+  monthlyRent: number;
+  monthlyDebtPayment: number;
   emergencyFundMonths: number;
   debt: number;
   cashflowStress: number;
@@ -82,42 +85,59 @@ export interface FinanceState {
 
 export interface HealthProfile {
   sleepDebt: number;
+  sedentaryLoad: number;
   nutritionQuality: number;
   exerciseHabit: number;
   chronicStress: number;
+  chronicRisk: number;
   recoveryQuality: number;
   healthDebt: number;
 }
 
 export interface CareerProfile {
+  roleKey: CareerTrack;
+  companyArchetype: string;
+  performance: number;
   employability: number;
   aiLeverage: number;
   deliveryReliability: number;
   promotionReadiness: number;
+  skillFreshness: number;
+  monthsUnemployed: number;
+  interviewMomentum: number;
   layoffRisk: number;
   careerCapital: number;
 }
 
 export interface SocialProfile {
   familySupport: number;
+  partnerSupport: number;
   friendSupport: number;
   networkStrength: number;
+  loneliness: number;
   relationshipDebt: number;
   safetyNet: number;
 }
 
 export interface LaborMarketState {
+  jobOpenings: number;
   demandIndex: number;
   aiDisruption: number;
+  salaryPressure: number;
+  ageFriction: number;
   hiringStrictness: number;
   layoffPressure: number;
   freelanceDemand: number;
 }
 
 export interface LifePressureState {
+  stagePressure: number;
   agePressure: number;
   familyResponsibility: number;
   housingPressure: number;
+  parentCarePressure: number;
+  childCarePressure: number;
+  commutePressure: number;
   comparisonPressure: number;
   timeScarcity: number;
 }
