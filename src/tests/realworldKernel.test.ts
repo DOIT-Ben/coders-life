@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { applyAction, createInitialState } from '../core/gameEngine';
 import { settleMonth } from '../core/monthlyLoop';
 import { applyDelta } from '../core/formulas';
+import { resolvePendingEventChoiceForSimulation } from '../systems/autoChoiceSystem';
 
 const seed = 24680;
 
@@ -219,6 +220,7 @@ describe('real-world monthly causal pipeline', () => {
     state.healthProfile.exerciseHabit = 62;
 
     for (let i = 0; i < 276 && !state.gameOver; i += 1) {
+      state = resolvePendingEventChoiceForSimulation(state);
       state = settleMonth(applyDelta(state, { techXp: 3, aiXp: 2, reputationXp: 1, mental: 1, health: 1 }));
     }
 

@@ -1,9 +1,11 @@
-import type { CareerTrack, CityTier, GameLog, GameState, LogType } from '../types/game';
+import type { CareerTrack, CityTier, GameState } from '../types/game';
 import { AGE, GAME_VERSION } from '../config/balance';
 import { ACTIONS, getAction } from '../config/actions';
 import { getPhase, getAge, applyDelta } from './formulas';
 import { settleMonth } from './monthlyLoop';
+import { addLog } from './logs';
 import { applyRealworldActionEffect, createActionHistoryEntry, resolveActionEffect } from '../systems/actionRuleSystem';
+import { addDecisionLog, addTutorialLogs } from '../systems/decisionLogSystem';
 import {
   DEFAULT_CAREER_PROFILE,
   DEFAULT_FINANCE_STATE,
@@ -60,6 +62,8 @@ export function createInitialState(track: CareerTrack = 'frontend', cityTier: Ci
     eventMemory: {},
     pendingEffects: [],
     actionHistory: [],
+    decisionLog: [],
+    turningPoints: [],
     hidden: {
       focus: 48,
       fatigue: 18,
@@ -72,20 +76,6 @@ export function createInitialState(track: CareerTrack = 'frontend', cityTier: Ci
     gameOver: false
   };
   return addLog(initial, { type: 'info', title: '人生开始', text: '22岁，10万元，技术0，AI0。时代不会等你，但你可以选择怎么开始。' });
-}
-
-export function addLog(state: GameState, input: { type: LogType; title: string; text: string }): GameState {
-  const next = structuredClone(state);
-  const log: GameLog = {
-    id: `${next.month}-${next.logs.length}-${Math.random().toString(36).slice(2, 8)}`,
-    month: next.month,
-    age: next.age,
-    type: input.type,
-    title: input.title,
-    text: input.text
-  };
-  next.logs = [...next.logs, log].slice(-120);
-  return next;
 }
 
 export function getAvailableActions(state: GameState) {
@@ -103,12 +93,14 @@ export function applyAction(state: GameState, actionId: string): GameState {
   const resolved = resolveActionEffect(state, action);
   let next = applyDelta(state, resolved.effect);
   next = applyRealworldActionEffect(next, action);
+  next = addDecisionLog(next, action, resolved.effect);
   next.actionHistory = [
     ...state.actionHistory.filter(item => state.month - item.month < 6),
     createActionHistoryEntry(state, action)
   ].slice(-24);
   if (action.cooldownMonths) next.cooldowns[action.id] = action.cooldownMonths;
   next = addLog(next, { type: 'info', title: action.name, text: resolved.logText });
+  next = addTutorialLogs(next, action);
   for (let i = 0; i < action.durationMonths; i++) {
     next = settleMonth(next);
     if (next.gameOver) break;

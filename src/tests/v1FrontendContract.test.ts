@@ -93,4 +93,18 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('overflow-y: auto');
     expect(appCss).toContain('.action-empty-slot');
   });
+
+  it('surfaces first-stage functional guidance without breaking v1 shell', () => {
+    ['action-badges', 'action-badge', 'body-signal', 'decision-log-mini', '关键转折点', 'EventChoiceDialog'].forEach(token => {
+      expect(appSource).toContain(token);
+    });
+    expect(appSource).toContain('getActionInsights');
+    expect(appSource).toContain('getBodySignal');
+    expect(appSource).toContain('applyEventChoice');
+    expect(appSource).toContain('event-choice-option');
+    expect(appCss).toContain('.action-badge');
+    expect(appCss).toContain('.body-signal');
+    expect(appCss).toContain('.decision-log-mini');
+    expect(appCss).toContain('.event-choice-option');
+  });
 });

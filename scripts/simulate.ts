@@ -1,5 +1,6 @@
 import { createInitialState, applyAction, getAvailableActions } from '../src/core/gameEngine';
 import type { GameState } from '../src/types/game';
+import { resolvePendingEventChoiceForSimulation } from '../src/systems/autoChoiceSystem';
 
 function chooseAction(state: GameState): string {
   const available = getAvailableActions(state).filter(a => a.available);
@@ -16,6 +17,7 @@ function chooseAction(state: GameState): string {
 
 let state = createInitialState('frontend', 'tier2', 20260622);
 while (!state.gameOver && state.month < 280) {
+  state = resolvePendingEventChoiceForSimulation(state);
   state = applyAction(state, chooseAction(state));
 }
 

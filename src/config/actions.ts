@@ -74,7 +74,7 @@ export const CORE_ACTIONS: ActionConfig[] = [
     require: s => s.career.employmentStatus === 'employed'
   }),
   action({
-    id: 'overtime_sprint', name: '加班冲刺', icon: '🔥', group: 'work',
+    id: 'overtime_sprint', name: '加班写代码', icon: '🔥', group: 'work',
     primaryCategory: 'career', subcategory: 'deep_work', tags: ['overtime', 'deadline', 'bonus'],
     stressLevel: 3, repeatKey: 'high_pressure_sprint', benefitLabel: '短期换钱和绩效', riskLabel: '快速推高燃尽和边界损耗',
     description: '短期收益强，但会迅速堆燃尽负荷。',

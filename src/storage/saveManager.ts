@@ -37,6 +37,9 @@ function withDefaults(state: GameState): GameState {
     eventMemory: state.eventMemory ?? {},
     pendingEffects: state.pendingEffects ?? [],
     actionHistory: state.actionHistory ?? [],
+    decisionLog: state.decisionLog ?? [],
+    turningPoints: state.turningPoints ?? [],
+    pendingEventChoice: state.pendingEventChoice,
     logs: state.logs ?? []
   };
 }

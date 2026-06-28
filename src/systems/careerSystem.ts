@@ -1,6 +1,6 @@
 import type { GameState } from '../types/game';
 import { applyDelta, getMonthlyPerformance, getVisibleStats } from '../core/formulas';
-import { addLog } from '../core/gameEngine';
+import { addLog } from '../core/logs';
 import { monthRng } from '../core/rng';
 
 export function settleCareerOpportunities(state: GameState): GameState {

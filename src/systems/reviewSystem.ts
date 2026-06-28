@@ -1,5 +1,5 @@
 import type { GameState, LifePhaseId } from '../types/game';
-import { addLog } from '../core/gameEngine';
+import { addLog } from '../core/logs';
 import { applyDelta, getVisibleStats } from '../core/formulas';
 
 const phaseLabel: Record<LifePhaseId, string> = {

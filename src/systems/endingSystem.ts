@@ -1,6 +1,6 @@
 import type { GameState } from '../types/game';
 import { ENDINGS } from '../config/endings';
-import { addLog } from '../core/gameEngine';
+import { addLog } from '../core/logs';
 
 export function checkEnding(state: GameState): GameState {
   if (state.gameOver) return state;

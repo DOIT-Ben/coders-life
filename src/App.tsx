@@ -7,7 +7,9 @@ import { CAREERS, getCareer } from './config/careers';
 import { ACHIEVEMENTS } from './config/achievements';
 import { SHOP_ITEMS } from './config/shop';
 import { applyDelta } from './core/formulas';
-import { addLog } from './core/gameEngine';
+import { addLog } from './core/logs';
+import { getActionInsights, getBodySignal } from './systems/actionInsightSystem';
+import { applyEventChoice } from './systems/eventSystem';
 import './styles/app.css';
 
 type PressureSnapshot = {
@@ -184,6 +186,7 @@ export default function App() {
       {state && modal === 'ach' && <AchievementDialog state={state} close={() => setModal(undefined)} />}
       {state && modal === 'shop' && <ShopDialog state={state} setState={setState} close={() => setModal(undefined)} />}
       {state && modal === 'ending' && <EndingDialog state={state} close={() => setModal(undefined)} restart={resetGame} />}
+      {state?.pendingEventChoice && <EventChoiceDialog state={state} setState={setState} />}
     </div>
   );
 }
@@ -292,6 +295,8 @@ function GameScreen({
   const career = v1CareerCopy[state.career.track] ?? { name: getCareer(state.career.track).name };
   const endingText = state.endingId ? state.logs[state.logs.length - 1]?.text : undefined;
   const day = state.month * 30;
+  const bodySignal = getBodySignal(state);
+  const recentDecisionLog = [...state.decisionLog].slice(-3).reverse();
 
   useEffect(() => {
     const nextPressure = createPressureSnapshot(state);
@@ -381,12 +386,20 @@ function GameScreen({
                 }
                 const action = actionById.get(slot.id);
                 const disabled = !action?.available || state.gameOver;
+                const insight = action ? getActionInsights(state, action) : undefined;
                 return (
                 <button className="action-btn" key={slot.id} disabled={disabled} onClick={() => action && setState(applyAction(state, action.id))}>
                   <div className="action-main">
                     <span className="a-name">{slot.icon} {slot.label}</span>
                     <span className="a-cost">{slot.summary}</span>
                   </div>
+                  {insight && insight.badges.length > 0 ? (
+                    <div className="action-badges" aria-label="行动风险提示">
+                      {insight.badges.slice(0, 3).map(badge => (
+                        <span className={`action-badge ${badge.tone}`} key={`${slot.id}-${badge.label}`}>{badge.label}</span>
+                      ))}
+                    </div>
+                  ) : null}
                   <div className="action-detail">
                     <span>{action?.description ?? '当前条件不足，暂时不能执行。'}</span>
                     {action?.reason ? <span className="cn">{action.reason}</span> : null}
@@ -402,6 +415,27 @@ function GameScreen({
                 );
               })}
             </div>
+            {bodySignal ? (
+              <div className="body-signal">
+                <div>
+                  <span className="signal-title">{bodySignal.title}</span>
+                  <span className="signal-text">{bodySignal.text}</span>
+                </div>
+                <span className="signal-score">{Math.round(bodySignal.severity)}</span>
+              </div>
+            ) : null}
+            {recentDecisionLog.length > 0 ? (
+              <div className="decision-log-mini">
+                <div className="mini-log-title">决策日志</div>
+                {recentDecisionLog.map(entry => (
+                  <div className="mini-log-row" key={entry.id}>
+                    <span>D·{entry.month * 30}</span>
+                    <span>{entry.actionName}</span>
+                    <span>{[...entry.gains, ...entry.costs].slice(0, 2).join(' / ')}</span>
+                  </div>
+                ))}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
@@ -531,9 +565,32 @@ function ShopDialog({ state, setState, close }: { state: GameState; setState: (s
   );
 }
 
+function EventChoiceDialog({ state, setState }: { state: GameState; setState: (state: GameState) => void }) {
+  const event = state.pendingEventChoice;
+  if (!event) return null;
+
+  return (
+    <div className="modal-overlay open">
+      <div className="modal event-choice-modal">
+        <div className="modal-title">{event.title}</div>
+        <div className="modal-body">{event.text}</div>
+        <div className="event-choice-list">
+          {event.choices.map(choice => (
+            <button className="event-choice-option" key={choice.id} onClick={() => setState(applyEventChoice(state, choice.id))}>
+              <span className="event-choice-label">{choice.label}</span>
+              <span className="event-choice-text">{choice.text}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function EndingDialog({ state, close, restart }: { state: GameState; close: () => void; restart: () => void }) {
   const visible = getVisibleStats(state);
   const log = state.logs[state.logs.length - 1];
+  const turningPoints = [...state.turningPoints].slice(-3).reverse();
   return (
     <div className="modal-overlay open">
       <div className="modal">
@@ -545,6 +602,16 @@ function EndingDialog({ state, close, restart }: { state: GameState; close: () =
           <div className="go-stat"><div className="go-sv">{state.unlockedAchievements.length}</div><div className="go-sl">成就解锁</div></div>
         </div>
         <div className="modal-body">{log?.text}</div>
+        <div className="turning-point-box">
+          <div className="turning-point-title">关键转折点</div>
+          {turningPoints.length > 0 ? turningPoints.map(point => (
+            <div className="turning-point-row" key={point.id}>
+              <span>{point.label}</span>
+              <span>{point.value}</span>
+              <span>{point.text}</span>
+            </div>
+          )) : <div className="turning-point-empty">没有明显崩盘节点，更多是长期选择累积的结果。</div>}
+        </div>
         <div className="modal-actions"><button className="btn-mp" onClick={restart}>重新开始</button><button className="btn-ms" onClick={close}>查看结果</button></div>
       </div>
     </div>

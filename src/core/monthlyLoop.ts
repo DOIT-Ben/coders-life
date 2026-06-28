@@ -13,8 +13,11 @@ import { settleFixedFinance } from '../systems/financeSystem';
 import { settleHealthDebt } from '../systems/healthDebtSystem';
 import { settleRelationshipDebt } from '../systems/relationshipSystem';
 import { settleLifeStagePressure } from '../systems/lifePressureSystem';
+import { recordTurningPoints } from '../systems/decisionLogSystem';
 
 export function settleMonth(state: GameState): GameState {
+  if (state.pendingEventChoice) return state;
+  const before = state;
   let next = advanceMonthCounter(state);
   next = advanceWorld(next);
   next = settleLaborMarket(next);
@@ -28,6 +31,7 @@ export function settleMonth(state: GameState): GameState {
   next = triggerMonthlyEvent(next);
   next = settleLifeStagePressure(next);
   next = addPeriodicReviews(next);
+  next = recordTurningPoints(before, next);
   next = checkAchievements(next);
   next = checkEnding(next);
   return next;

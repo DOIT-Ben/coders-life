@@ -1,7 +1,7 @@
 import type { GameState } from '../types/game';
 import { ACHIEVEMENTS } from '../config/achievements';
 import { applyDelta } from '../core/formulas';
-import { addLog } from '../core/gameEngine';
+import { addLog } from '../core/logs';
 
 export function checkAchievements(state: GameState): GameState {
   let next = state;

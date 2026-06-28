@@ -1,7 +1,7 @@
 import type { GameState } from '../types/game';
 import { SHOP_ITEMS } from '../config/shop';
 import { applyDelta } from '../core/formulas';
-import { addLog } from '../core/gameEngine';
+import { addLog } from '../core/logs';
 
 export function ShopModal({ state, setState }: { state: GameState; setState: (s: GameState) => void }) {
   function buy(id: string) {

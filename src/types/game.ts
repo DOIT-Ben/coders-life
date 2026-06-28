@@ -177,6 +177,66 @@ export interface ActionHistoryEntry {
   month: number;
 }
 
+export interface RiskBadge {
+  label: string;
+  tone: 'info' | 'warn' | 'bad';
+}
+
+export interface BodySignal {
+  title: string;
+  text: string;
+  dimension: 'sleepDebt' | 'sedentaryLoad' | 'chronicStress' | 'healthDebt' | 'fatigue';
+  severity: number;
+  suggestedActionIds: ID[];
+}
+
+export interface ActionInsight {
+  actionId: ID;
+  badges: RiskBadge[];
+  riskWarnings: string[];
+  consecutiveCount: number;
+  diminishingReturn: boolean;
+  bodySignal?: BodySignal;
+}
+
+export interface DecisionLogEntry {
+  id: ID;
+  month: number;
+  age: number;
+  actionId: ID;
+  actionName: string;
+  gains: string[];
+  costs: string[];
+  warnings: string[];
+}
+
+export interface TurningPoint {
+  id: ID;
+  month: number;
+  age: number;
+  dimension: 'healthDebt' | 'cashflowStress' | 'layoffRisk' | 'relationshipDebt';
+  label: string;
+  value: number;
+  text: string;
+}
+
+export interface EventChoiceConfig {
+  id: ID;
+  label: string;
+  text: string;
+  effect: EffectDelta;
+  realworldEffect?: RealworldEffectDelta;
+  memoryKey: string;
+}
+
+export interface PendingEventChoice {
+  id: ID;
+  title: string;
+  text: string;
+  chain?: string;
+  choices: EventChoiceConfig[];
+}
+
 export interface GameState {
   version: string;
   seed: number;
@@ -200,6 +260,9 @@ export interface GameState {
   eventMemory: Record<string, number>;
   pendingEffects: PendingEffect[];
   actionHistory: ActionHistoryEntry[];
+  decisionLog: DecisionLogEntry[];
+  turningPoints: TurningPoint[];
+  pendingEventChoice?: PendingEventChoice;
   hidden: HiddenState;
   logs: GameLog[];
   gameOver: boolean;
