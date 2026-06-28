@@ -254,6 +254,57 @@ body {
 }
 .sc-sub { font-size: 9px; color: var(--text3); margin-top: 5px; font-family: monospace; }
 
+.pressure-card {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  margin: -2px 0 10px;
+  padding: 9px 12px;
+}
+.pressure-title {
+  color: var(--text2);
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.pressure-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+.pressure-item {
+  background: #F2EEE6;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  min-width: 0;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+.pressure-label {
+  color: var(--text2);
+  font-size: 11px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pressure-value {
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 800;
+}
+.pressure-item.good .pressure-value { color: var(--accent); }
+.pressure-item.warn .pressure-value { color: var(--warn); }
+.pressure-item.bad .pressure-value { color: var(--danger); }
+
 /* Float numbers */
 .float-num {
   position: absolute; right: 0; top: 0;
@@ -593,6 +644,8 @@ body {
   .ghdr-right { grid-template-columns: repeat(4, 1fr); }
   .stats-row { gap: 8px; }
   .stat-card { padding: 10px; }
+  .pressure-card { grid-template-columns: 1fr; gap: 7px; }
+  .pressure-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .left-col, .right-col { height: auto; min-height: 0; }
   .action-list { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
   .v1-action-grid { grid-template-rows: none; }

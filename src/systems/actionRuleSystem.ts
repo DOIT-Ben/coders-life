@@ -274,9 +274,9 @@ function mergeRealworldEffect(base: RealworldEffectDelta, extra: RealworldEffect
   };
 }
 
-function mergeNested<T extends Record<string, number>>(current: T, delta: Partial<T>): T {
+function mergeNested<T extends object>(current: T, delta: Partial<T>): T {
   const next = { ...current };
-  Object.entries(delta).forEach(([key, value]) => {
+  Object.entries(delta as Record<string, unknown>).forEach(([key, value]) => {
     if (typeof value === 'number') {
       next[key as keyof T] = clamp(((next[key as keyof T] as number) ?? 0) + value, 0, 100) as T[keyof T];
     }

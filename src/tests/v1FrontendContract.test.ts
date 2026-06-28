@@ -37,4 +37,13 @@ describe('v1 frontend contract', () => {
     expect(appSource).toContain('action-detail');
     expect(appSource).not.toContain('className="a-tip"');
   });
+
+  it('shows a compact real-world pressure summary without implementation jargon', () => {
+    ['现实压力', '现金流', '健康债', '职业风险', '关系支撑', '市场压力'].forEach(label => {
+      expect(appSource).toContain(label);
+    });
+    expect(appSource).toContain('PressureSummary');
+    expect(appSource).not.toContain('realworld kernel');
+    expect(appSource).not.toContain('V2底层');
+  });
 });

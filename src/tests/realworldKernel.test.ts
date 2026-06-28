@@ -73,7 +73,7 @@ describe('real-world simulation kernel state model', () => {
       removeItem: (key: string) => store.delete(key)
     });
 
-    const state = createInitialState('frontend', 'tier2', seed) as Record<string, unknown>;
+    const state = createInitialState('frontend', 'tier2', seed) as unknown as Record<string, unknown>;
     delete state.finance;
     delete state.healthProfile;
     delete state.careerProfile;

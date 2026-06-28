@@ -310,6 +310,7 @@ function GameScreen({
         <StatCard label="存款 (万)" value={Number(cashWan.toFixed(1))} max={100} color="var(--amber)" sub={cashWan >= 100 ? '已达 100万应急垫' : `目标：100万应急垫`} />
         <StatCard label="AI熟练度" value={visible.ai} color="var(--mint)" />
       </div>
+      <PressureSummary state={state} />
 
       <div className={visible.mental < 25 ? 'crisis show' : 'crisis'}>⚠ 精神状态危急！继续下去你可能会崩溃...</div>
       {state.gameOver && <div className="crisis show">人生结局：{state.logs[state.logs.length - 1]?.title}。{endingText}</div>}
@@ -364,6 +365,31 @@ function GameScreen({
         </div>
       </div>
       <div className="quote">「不是程序员在消失，是不会用AI的程序员在消失」</div>
+    </div>
+  );
+}
+
+function PressureSummary({ state }: { state: GameState }) {
+  const support = Math.round(state.socialProfile.safetyNet);
+  const pressureItems = [
+    { label: '现金流', value: Math.round(state.finance.cashflowStress), tone: state.finance.cashflowStress >= 70 ? 'bad' : state.finance.cashflowStress >= 40 ? 'warn' : 'good' },
+    { label: '健康债', value: Math.round(state.healthProfile.healthDebt), tone: state.healthProfile.healthDebt >= 70 ? 'bad' : state.healthProfile.healthDebt >= 40 ? 'warn' : 'good' },
+    { label: '职业风险', value: Math.round(state.careerProfile.layoffRisk), tone: state.careerProfile.layoffRisk >= 70 ? 'bad' : state.careerProfile.layoffRisk >= 40 ? 'warn' : 'good' },
+    { label: '关系支撑', value: support, tone: support <= 25 ? 'bad' : support <= 45 ? 'warn' : 'good' },
+    { label: '市场压力', value: Math.round(state.laborMarket.layoffPressure), tone: state.laborMarket.layoffPressure >= 70 ? 'bad' : state.laborMarket.layoffPressure >= 40 ? 'warn' : 'good' }
+  ];
+
+  return (
+    <div className="pressure-card">
+      <div className="pressure-title">现实压力</div>
+      <div className="pressure-grid">
+        {pressureItems.map(item => (
+          <div className={`pressure-item ${item.tone}`} key={item.label}>
+            <span className="pressure-label">{item.label}</span>
+            <span className="pressure-value">{item.value}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
