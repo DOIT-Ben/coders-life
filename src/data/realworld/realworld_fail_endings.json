@@ -1,0 +1,112 @@
+[
+  {
+    "ending_id": "burnout_collapse",
+    "title": "燃尽崩溃",
+    "category": "fail",
+    "success_level": "tragic",
+    "required_conditions": "burnout>=85;health<=25;mental<=20",
+    "avoid_conditions": "burnout<60;health>=40",
+    "ending_text": "你在 35 岁那年进了医院。医生说是心律不齐加上轻度抑郁，建议你至少休三个月。你看着医院天花板，第一次意识到过去五年你没有认真休息过一天。",
+    "value_message": "燃尽不是勋章，是你用身体提前支付了你本不该支付的账单。",
+    "real_world_reference": "36 氪、知乎多起 30+ 程序员猝死/ICU 报道；IT 行业平均过劳比例 60%+"
+  },
+  {
+    "ending_id": "cash_flow_bankrupt",
+    "title": "现金流断裂",
+    "category": "fail",
+    "success_level": "tragic",
+    "required_conditions": "cash<=0;debt>=300000;months_unemployed>=6",
+    "avoid_conditions": "cash>=50000",
+    "ending_text": "你被裁之后靠积蓄撑了六个月，看着账户余额从六位数变成三位数。房贷、车贷、孩子的学费，三条线同时收紧，你第一次认真考虑卖掉车。",
+    "value_message": "现金流断裂不是不会赚钱，是赚的钱都变成了无法变现的负债。",
+    "real_world_reference": "脉脉 2024 互联网寒冬报告：被裁程序员平均求职周期 4.2 个月，30% 超 6 个月"
+  },
+  {
+    "ending_id": "skill_obsolete",
+    "title": "技能过时",
+    "category": "fail",
+    "success_level": "tragic",
+    "required_conditions": "tech_xp<=30;ai_xp<=15;years_in_role>=8",
+    "avoid_conditions": "tech_xp>=60",
+    "ending_text": "你发现 JD 上全是 React + TypeScript + AI 工具链，而你最后一次写新代码是 jQuery。面试官看你一眼简历，礼貌地说'您的经验非常资深'，但 offer 不会再来了。",
+    "value_message": "十年经验不等于十年能力。技术债不只是项目里的，也长在你身上。",
+    "real_world_reference": "Stack Overflow 2024 调查：过去 5 年用过 AI 工具的开发者 76%，未用过仅 24%"
+  },
+  {
+    "ending_id": "relationship_bankrupt",
+    "title": "关系破裂",
+    "category": "fail",
+    "success_level": "tragic",
+    "required_conditions": "relation<=10;partner_status='divorced';family_visits_per_year<=2",
+    "avoid_conditions": "relation>=40",
+    "ending_text": "你离婚那年，孩子 5 岁。你妈在电话里哭，你什么也没说。办完手续那天你在车里坐了三小时，发现你已经想不起来上一次陪家人吃晚饭是什么时候。",
+    "value_message": "事业失败可以重来，错过孩子的成长不能。",
+    "real_world_reference": "脉脉 2024 婚恋报告：互联网从业者离婚率 21%，高于全国平均；35+ 程序员离婚率最高"
+  },
+  {
+    "ending_id": "startup_failure",
+    "title": "创业失败",
+    "category": "fail",
+    "success_level": "tragic",
+    "required_conditions": "venture_status='closed';cash_lost>=500000;months_in_venture>=12",
+    "avoid_conditions": "venture_status='surviving'",
+    "ending_text": "你的创业公司在第 14 个月烧完了最后一轮融资。回大厂时你发现，那些没离职的同龄人已经 P8，而你简历上的空窗期需要解释一遍又一遍。",
+    "value_message": "创业失败不是你的失败，是市场和时机的失败。但社会记住的只有前者。",
+    "real_world_reference": "IT 桔子 2024：中国互联网创业公司 5 年存活率 < 3%，前员工再就业薪资平均降 15%"
+  },
+  {
+    "ending_id": "long_term_unemployed",
+    "title": "长期失业",
+    "category": "fail",
+    "success_level": "tragic",
+    "required_conditions": "months_unemployed>=12;interview_attempts>=30;cash<=100000",
+    "avoid_conditions": "months_unemployed<3",
+    "ending_text": "你 38 岁，投了 30 多个岗位，回复从'不合适'变成沉默。你开始怀疑不是市场的问题，是自己的问题。那段时间你最怕的不是没钱，是家里电话响起时你妈问'找到工作了吗'。",
+    "value_message": "长期失业最大的伤害不是经济，是自我认同的崩塌。",
+    "real_world_reference": "Boss 直聘 2024 Q3：35+ 程序员简历回复率 < 5%，平均求职周期 7 个月"
+  },
+  {
+    "ending_id": "health_shutdown",
+    "title": "健康停摆",
+    "category": "fail",
+    "success_level": "tragic",
+    "required_conditions": "health<=15;chronic_disease_count>=2;medical_cost_year>=50000",
+    "avoid_conditions": "health>=50",
+    "ending_text": "你在医院走廊里等体检报告，回想上一次认真休息是什么时候。医生说了一句'还年轻，慢慢调'，但你知道这种'慢慢调'是另一种长期徒刑。",
+    "value_message": "身体不会在最后一刻才报警，但大多数人选择忽视直到那一天。",
+    "real_world_reference": "中国睡眠研究会 2024：48.5% 成人存在睡眠障碍；极光大数据：63.3% 程序员亚健康"
+  },
+  {
+    "ending_id": "stuck_indie",
+    "title": "独立开发者困境",
+    "category": "fail",
+    "success_level": "mixed",
+    "required_conditions": "freelance_months>=24;monthly_income<=5000;burnout>=70",
+    "avoid_conditions": "monthly_income>=20000",
+    "ending_text": "你做了两年独立开发者，产品上线 5 个，收入最高的一个月 4000。你重新打开招聘网站，发现三年空窗期的简历几乎没人看。但你也回不去打卡上班了。",
+    "value_message": "自由不是问题，没钱也没方向的自由才是问题。",
+    "real_world_reference": "IndieHackers 2024：年收入 < $10k 的独立开发者占 65%；回到职场平均降薪 30%"
+  },
+  {
+    "ending_id": "depression_chronic",
+    "title": "慢性抑郁",
+    "category": "fail",
+    "success_level": "tragic",
+    "required_conditions": "mental<=15;antidepressant_use>=6months;therapy_sessions>=0",
+    "avoid_conditions": "mental>=40",
+    "ending_text": "你按时吃药，定期复查，但那种'什么都不想做'的感觉像一层永远擦不掉的雾。你知道这叫什么名字，但知道名字不解决问题。",
+    "value_message": "抑郁不是'心情不好'，是一种需要长期管理的慢性病。求助不是软弱，是治疗的一部分。",
+    "real_world_reference": "WHO 2024：全球抑郁患者 3.8 亿；中国心理学会蓝皮书：IT 行业抑郁检出率 23%"
+  },
+  {
+    "ending_id": "lost_purpose",
+    "title": "失去意义感",
+    "category": "fail",
+    "success_level": "mixed",
+    "required_conditions": "identity<=10;values_clarity<=2;years_in_field>=10",
+    "avoid_conditions": "identity>=40",
+    "ending_text": "你年薪百万，存款七位数，但每天醒来不知道为什么要去上班。你试过冥想、跑步、跳槽、做副业，都没有用。问题不是工作，是十年了你从没想过除了工作还能追求什么。",
+    "value_message": "意义感不是找到的，是慢慢长出来的。前者是答案，后者是过程。",
+    "real_world_reference": "Harvard 75 年追踪研究：关系质量而非收入，是人生满意度的最强预测因子"
+  }
+]

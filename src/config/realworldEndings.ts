@@ -1,6 +1,5 @@
-import failEndingsCsv from '../data/realworld/fail_endings.csv?raw';
+import failEndingRows from '../data/realworld/realworld_fail_endings.json';
 import type { EndingConfig } from '../types/game';
-import { parseCsv } from './realworldParser';
 
 interface FailEndingRow {
   ending_id: string;
@@ -27,7 +26,7 @@ function conditionFor(id: string): EndingConfig['condition'] {
   return state => state.gameOver && false;
 }
 
-export const REALWORLD_FAIL_ENDINGS: EndingConfig[] = parseCsv(failEndingsCsv).map(row => {
+export const REALWORLD_FAIL_ENDINGS: EndingConfig[] = (failEndingRows as Record<string, string>[]).map(row => {
   const typed = row as unknown as FailEndingRow;
   return {
     id: typed.ending_id,

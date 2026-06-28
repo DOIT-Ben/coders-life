@@ -1,6 +1,5 @@
-import eventsJsonl from '../data/realworld/05_events.jsonl?raw';
+import eventRows from '../data/realworld/realworld_events.json';
 import type { EffectDelta, EventConfig, PopupRarity } from '../types/game';
-import { parseJsonl } from './realworldParser';
 
 interface RealworldEventRow {
   id: string;
@@ -51,7 +50,7 @@ function conditionFor(trigger: string): EventConfig['condition'] {
   return undefined;
 }
 
-export const REALWORLD_EVENTS: EventConfig[] = parseJsonl<RealworldEventRow>(eventsJsonl).map(row => ({
+export const REALWORLD_EVENTS: EventConfig[] = (eventRows as RealworldEventRow[]).map(row => ({
   id: `realworld_${row.id}`,
   title: row.title,
   type: row.rarity === 'rare' ? 'major' : row.category === 'work' ? 'triggered' : 'random',

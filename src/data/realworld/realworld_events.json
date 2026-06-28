@@ -1,0 +1,4752 @@
+[
+  {
+    "id": "event_0001",
+    "category": "work",
+    "subcategory": "requirement_change",
+    "title": "上线前 4 小时，PRD 推翻了登录流程",
+    "text": "产品会上刚定好的手机号+验证码流程被 leader 当场改成微信扫码，理由是老板觉得更顺。代码全删，明天上线。",
+    "tone": "wry",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 3,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1147892",
+    "source_date": "2025-04-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0002",
+    "category": "work",
+    "subcategory": "production_incident",
+    "title": "凌晨 2 点，订单服务挂了",
+    "text": "P0 告警群里@所有人，查了 40 分钟发现是同事上周提的 SQL 加了全表扫。回滚后 leader 在群里@他：你 PR 没 review 吗？",
+    "tone": "tense",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 6,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1132451",
+    "source_date": "2025-03-28",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0003",
+    "category": "work",
+    "subcategory": "code_review",
+    "title": "PR 撕了三天，谁也不服谁",
+    "text": "后端用乐观锁，前端嫌慢要求改本地缓存，我坚持加 Redis 中间层，TL 站我这边，对面老员工开始阴阳：年轻人就是爱造轮子。",
+    "tone": "bitter",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1156231",
+    "source_date": "2025-05-19",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0004",
+    "category": "work",
+    "subcategory": "late_night_oncall",
+    "title": "周六凌晨被叫醒：客户群炸了",
+    "text": "手机响了三轮，迷迷糊糊接进电话：订单列表加载不出来。爬起来远程登录，原来数据库主从挂了，备库延迟 8 小时。",
+    "tone": "exhausted",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 7,
+      "reputation_xp": 2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1123789",
+    "source_date": "2025-02-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0005",
+    "category": "work",
+    "subcategory": "okr_review",
+    "title": "OKR 自评，我的产出全是 P0",
+    "text": "HR 群里贴了表格，要求自评打分。写了 6 条 P0，自信满满交上去。结果 leader 给我 4 条改成 P1，理由是这些不算核心业务。",
+    "tone": "frustrated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 1,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1112034",
+    "source_date": "2025-01-22",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0006",
+    "category": "work",
+    "subcategory": "cross_team",
+    "title": "跨部门联调，被前端拉黑 3 次",
+    "text": "联调接口，对面反复改字段不通知，第 4 次提测被打回，工单系统里写请参考文档 5.2 节，我去翻，5.2 节是空白的。",
+    "tone": "angry",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 2,
+      "reputation_xp": -3
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1109876",
+    "source_date": "2024-12-10",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0007",
+    "category": "work",
+    "subcategory": "remote_meeting",
+    "title": "日会开到夜里 11 点",
+    "text": "早上 10 点、下午 3 点、晚上 9 点三个会，每个 1.5 小时。最后一天写了 0 行代码，全在 IM 里复制粘贴收到。",
+    "tone": "numb",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -7,
+      "fatigue": 5,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1098765",
+    "source_date": "2024-11-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0008",
+    "category": "work",
+    "subcategory": "tech_debt",
+    "title": "技术债务到期，连环爆雷",
+    "text": "上线第 3 年那个老接口终于崩了，3 个下游业务同时挂。重构排期到下个季度，老板催：能不能先打补丁？",
+    "tone": "pressured",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 4,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1087654",
+    "source_date": "2024-10-05",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0009",
+    "category": "work",
+    "subcategory": "onboarding_day1",
+    "title": "入职第一天，工位还没装完",
+    "text": "HR 给的入职清单写着 8 点半到，结果 IT 说显示器要等下周，账号开了一半，VPN 装不上，发了 4 封邮件没人回。",
+    "tone": "confused",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 2,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1076543",
+    "source_date": "2024-09-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0010",
+    "category": "work",
+    "subcategory": "promotion",
+    "title": "晋升答辩，PPT 改了 8 版",
+    "text": "组里 12 个人答辩 3 个 P7 晋升名额。PPT 改到想吐，pre 练了 30 遍，评委第一个问题：你这个 QPS 是怎么压的？我：方案里写了。",
+    "tone": "nervous",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 3,
+      "reputation_xp": 3
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1065432",
+    "source_date": "2024-08-20",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0011",
+    "category": "work",
+    "subcategory": "bug_hunt",
+    "title": "线上 BUG，查了 3 天发现是配置",
+    "text": "测试环境复现不出来，生产环境一定崩。最后发现是 CDN 缓存规则上线那天被运维顺手改了，仓库里没记录。",
+    "tone": "frustrated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 4,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1054321",
+    "source_date": "2024-07-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0012",
+    "category": "work",
+    "subcategory": "remote_work",
+    "title": "在家办公，被老板装监控",
+    "text": "突然通知要装时间管理工具，每 5 分钟截屏一次，鼠标 3 分钟不动算离线。群里没人敢反对，第一天大家疯狂动鼠标。",
+    "tone": "outraged",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1043210",
+    "source_date": "2024-06-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0013",
+    "category": "work",
+    "subcategory": "requirement_change",
+    "title": "周一定好的需求，周四全部推翻",
+    "text": "周一定稿、周二评审、周三设计稿、周四产品说：老板要做视频化，全推翻。5 个人的一周等于零。",
+    "tone": "exhausted",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 4,
+      "reputation_xp": -3
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1032109",
+    "source_date": "2024-05-09",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0014",
+    "category": "work",
+    "subcategory": "production_incident",
+    "title": "生产事故复盘，锅甩到我头上",
+    "text": "线上挂了 1 小时，复盘会上 leader 说：事故根因是 X 服务没有熔断，建议 X 负责人写改进方案。X 负责人是我，进公司 8 个月。",
+    "tone": "bitter",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -7,
+      "fatigue": 3,
+      "reputation_xp": -3
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1021098",
+    "source_date": "2024-04-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0015",
+    "category": "work",
+    "subcategory": "code_review",
+    "title": "Code Review 被批代码风格",
+    "text": "同事在我 PR 下评论 30 行，逐行挑格式问题。我盯着他提交记录，缩进错了 50% 的代码。leader 说：你俩私下聊。",
+    "tone": "annoyed",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1010987",
+    "source_date": "2024-03-20",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0016",
+    "category": "work",
+    "subcategory": "okr_review",
+    "title": "360 评估，被匿名打了最低分",
+    "text": "HR 群里发 360 评估结果，有人匿名给我打了最低分，理由一栏写沟通能力待提升。群里 50 个人，谁也不知道是谁。",
+    "tone": "hurt",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -7,
+      "fatigue": 0,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1009876",
+    "source_date": "2024-02-28",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0017",
+    "category": "work",
+    "subcategory": "late_night_oncall",
+    "title": "半夜值班，群里有 200 条未读",
+    "text": "手机静音错过 2 个 P1，群消息 200+，醒来直接被拉进电话会。leader 第一句：你在干嘛？",
+    "tone": "anxious",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 6,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/998765",
+    "source_date": "2024-01-31",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0018",
+    "category": "work",
+    "subcategory": "cross_team",
+    "title": "跨部门会议被当众质疑",
+    "text": "评审会上另一个组的 leader 当面说：你这个方案不行，我们试过了。我看着他，心里想：你的方案在我们组也没人愿意接。",
+    "tone": "tense",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/987654",
+    "source_date": "2024-01-05",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0019",
+    "category": "work",
+    "subcategory": "tech_sharing",
+    "title": "组内技术分享，讲完 3 个人睡着",
+    "text": "花两周准备 Spring 源码分享，30 分钟讲完，台下 3 个人玩手机，1 个直接趴着。会后 leader 让我把 PPT 发群里，没了下文。",
+    "tone": "deflated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/976543",
+    "source_date": "2023-12-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0020",
+    "category": "work",
+    "subcategory": "onboarding_day1",
+    "title": "入职第一周，没人带我",
+    "text": "HR 发了账号就没人理，工单系统提了 3 个权限申请，4 天后才批。第一周我天天看公司 wiki 自学。",
+    "tone": "lost",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 2,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/965432",
+    "source_date": "2023-11-20",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0021",
+    "category": "work",
+    "subcategory": "production_incident",
+    "title": "数据库主键重复，全表回写",
+    "text": "凌晨 4 点，雪花算法生成的 ID 撞了 3 条，订单数据错乱。爬起来 hotfix，跑了 2 小时脚本回写，第二天正常上班。",
+    "tone": "panic",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 8,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/954321",
+    "source_date": "2023-10-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0022",
+    "category": "work",
+    "subcategory": "remote_meeting",
+    "title": "会议马拉松，开完一天没吃饭",
+    "text": "早上 9 点开始：站会、产品评审、技术评审、复盘会、leader 1on1，下班前还有客户演示。午饭是边开会边扒拉的外卖。",
+    "tone": "depleted",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 5,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/943210",
+    "source_date": "2023-09-30",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0023",
+    "category": "work",
+    "subcategory": "requirement_change",
+    "title": "客户临时加需求，明天就要",
+    "text": "销售已经口头答应客户了，今晚才告诉我加个实时通知功能。明早就要 demo，今晚我通宵。",
+    "tone": "strained",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 9,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/932109",
+    "source_date": "2023-08-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0024",
+    "category": "work",
+    "subcategory": "code_review",
+    "title": "给实习生改代码，改到怀疑人生",
+    "text": "实习生第一周提的 PR，200 行变量名全是 a1、a2、b1。没 review 通过，他问：哪里不行？我：全部。",
+    "tone": "exasperated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 3,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/921098",
+    "source_date": "2023-07-22",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0025",
+    "category": "work",
+    "subcategory": "cross_team",
+    "title": "两个组抢同一个接口定义",
+    "text": "我这边定义好的接口，另一个组悄悄先发了 RPC，害得我们客户端全部报错。找上去，他们说：你们的方案没经过架构组评审。",
+    "tone": "frustrated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 3,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/910987",
+    "source_date": "2023-06-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0026",
+    "category": "work",
+    "subcategory": "production_incident",
+    "title": "凌晨线上挂了，leader 远程指导修",
+    "text": "半夜 3 点被叫起来，leader 远程语音一步步指导：先看这个 log，再看那个。我紧张得手都在抖。",
+    "tone": "terrified",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 7,
+      "reputation_xp": 2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/909876",
+    "source_date": "2023-05-30",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0027",
+    "category": "work",
+    "subcategory": "okr_review",
+    "title": "绩效被打 3.25，奖金打了 5 折",
+    "text": "组里 30% 的 3.25，没解释直接给。leader 1on1 时说：今年行业大环境不好，明年再努力。",
+    "tone": "deflated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -8,
+      "fatigue": 1,
+      "reputation_xp": -3
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/898765",
+    "source_date": "2023-04-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0028",
+    "category": "work",
+    "subcategory": "tech_debt",
+    "title": "10 年祖传代码，没人敢动",
+    "text": "接手一个跑了 10 年的老服务，注释写着：不要改，会爆炸。问老员工怎么改？答：别动。",
+    "tone": "trembling",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 3,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/887654",
+    "source_date": "2023-03-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0029",
+    "category": "work",
+    "subcategory": "late_night_oncall",
+    "title": "周末接到电话，孩子哭了",
+    "text": "周末陪孩子去公园，leader 来电：生产挂了。抱着孩子在角落里接电话，老婆看着我一肚子火。",
+    "tone": "guilty",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 6,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/876543",
+    "source_date": "2023-02-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0030",
+    "category": "work",
+    "subcategory": "remote_work",
+    "title": "远程办公被怀疑摸鱼",
+    "text": "在家办公，效率高了 30%，但 leader 嫌我没存在感。回办公室吧，又说远程也行。",
+    "tone": "trapped",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/865432",
+    "source_date": "2023-01-26",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0031",
+    "category": "work",
+    "subcategory": "requirement_change",
+    "title": "需求改了 5 版，最终回到第一版",
+    "text": "5 次改动，文档改了 8 遍，每次评审说好的版本下周就被推翻。第 5 版回到第一版，大家无语。",
+    "tone": "ironic",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 3,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/854321",
+    "source_date": "2022-12-30",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0032",
+    "category": "work",
+    "subcategory": "tech_sharing",
+    "title": "分享会只有 3 个人听",
+    "text": "报名主题分享，30 人的组只来了 3 个，讲到一半有人接电话出去，再也没回来。",
+    "tone": "dejected",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/843210",
+    "source_date": "2022-11-22",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0033",
+    "category": "work",
+    "subcategory": "production_incident",
+    "title": "发布上线 5 分钟回滚",
+    "text": "刚发布就告警，回滚后 leader 说：这次不算发布失败。下次注意。然后我看到工单上挂着 5 个紧急 bug 等我修。",
+    "tone": "tense",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 4,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/832109",
+    "source_date": "2022-10-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0034",
+    "category": "work",
+    "subcategory": "onboarding_day1",
+    "title": "入职培训一周，全是公司文化",
+    "text": "入职第一周：3 天公司历史、2 天价值观、1 天团建。代码仓库是最后一个发的，发完也没人理。",
+    "tone": "bored",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -1,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/821098",
+    "source_date": "2022-09-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0035",
+    "category": "work",
+    "subcategory": "cross_team",
+    "title": "跨部门拉群讨论需求，拉了 47 人",
+    "text": "讨论一个支付路由优化，群里 47 个人，2 小时没人拍板，最后 PM 一句话：先这样吧。",
+    "tone": "exasperated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/810987",
+    "source_date": "2022-08-04",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0036",
+    "category": "work",
+    "subcategory": "requirement_change",
+    "title": "紧急插单，砍掉我正在做的功能",
+    "text": "做了 2 周的功能，今天 leader 说：这个先停，老板要一个新功能，周三就要上线。我的代码全在本地。",
+    "tone": "stunned",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 4,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/809876",
+    "source_date": "2022-07-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0037",
+    "category": "work",
+    "subcategory": "bug_hunt",
+    "title": "本地复现不出来，生产 100% 复现",
+    "text": "测试环境跑了一天都没事，生产环境每 5 分钟触发一次。最后发现是部署的镜像版本不一致。",
+    "tone": "exasperated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 5,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/798765",
+    "source_date": "2022-06-22",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0038",
+    "category": "work",
+    "subcategory": "code_review",
+    "title": "评审被质疑设计模式过度",
+    "text": "用了策略模式重构老代码，leader 说：你这引入了太多抽象，没必要，if else 就够了。同事在旁边笑。",
+    "tone": "frustrated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 1,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/787654",
+    "source_date": "2022-05-13",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0039",
+    "category": "work",
+    "subcategory": "okr_review",
+    "title": "leader 不给 4.0，理由是没做出差异化",
+    "text": "组里 5 个人，4 个 4.0，1 个 3.5。leader 私下说我：你没做出差异化。问：什么是差异化？答：自己想。",
+    "tone": "hurt",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 1,
+      "reputation_xp": -3
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/776543",
+    "source_date": "2022-04-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0040",
+    "category": "work",
+    "subcategory": "production_incident",
+    "title": "半夜挂了，半小时才看到告警",
+    "text": "凌晨 1 点服务挂了，告警群到 1:30 才@我。问为什么？监控说：告警阈值设得太高。",
+    "tone": "frustrated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 5,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/765432",
+    "source_date": "2022-03-02",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0041",
+    "category": "work",
+    "subcategory": "tech_debt",
+    "title": "老系统无人维护，只能打补丁",
+    "text": "负责一个 8 年的 PHP 老系统，出了问题只能修不能改，因为没人看得懂完整逻辑。",
+    "tone": "resigned",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/754321",
+    "source_date": "2022-02-14",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0042",
+    "category": "work",
+    "subcategory": "remote_meeting",
+    "title": "一个人开会 8 小时，纯听",
+    "text": "今天没轮到我说话，开了 8 个会，纯旁听。会后大家都说：今天没干啥。",
+    "tone": "dazed",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 4,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/743210",
+    "source_date": "2022-01-10",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0043",
+    "category": "work",
+    "subcategory": "late_night_oncall",
+    "title": "半夜被叫起来，重启大法解决",
+    "text": "凌晨 2 点服务挂了，重启一遍就好了。复盘会上 leader 说：要写 SOP。我说：重启就是 SOP。",
+    "tone": "ironic",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 3,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/732109",
+    "source_date": "2021-12-20",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0044",
+    "category": "work",
+    "subcategory": "onboarding_day1",
+    "title": "入职一个月还在跑权限",
+    "text": "OA 权限不全，Git 仓库看不到，CI/CD 账号没建。一半时间在等审批，一半时间在填表。",
+    "tone": "frustrated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/721098",
+    "source_date": "2021-11-30",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0045",
+    "category": "work",
+    "subcategory": "requirement_change",
+    "title": "需求方一句话，开发改三天",
+    "text": "产品说：颜色再亮一点。设计师说：字号再加 2px。客户说：按钮往左挪。我改到眼花。",
+    "tone": "weary",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 3,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/710987",
+    "source_date": "2021-10-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0046",
+    "category": "work",
+    "subcategory": "production_incident",
+    "title": "发布日挂了 5 次，回滚 5 次",
+    "text": "周五发布日，上线挂了 5 次回滚 5 次，最后回滚到第一个版本收场。leader 说：下周再来。",
+    "tone": "exhausted",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -7,
+      "fatigue": 8,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/709876",
+    "source_date": "2021-09-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0047",
+    "category": "work",
+    "subcategory": "code_review",
+    "title": "老员工 PR 500 行，谁也不敢 review",
+    "text": "leader 提的 PR 改了 500 行，没人敢拒绝。最后在合并前夜悄悄被退回。",
+    "tone": "awkward",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/698765",
+    "source_date": "2021-08-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0048",
+    "category": "work",
+    "subcategory": "tech_sharing",
+    "title": "分享会讲了 30 分钟，没人提问",
+    "text": "分享新技术，准备了两周，讲完鸦雀无声。最后 leader 圆场：大家有问题随时群里问。",
+    "tone": "awkward",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/687654",
+    "source_date": "2021-07-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0049",
+    "category": "work",
+    "subcategory": "cross_team",
+    "title": "联调 3 周，被对方拖到崩溃",
+    "text": "联调一个支付接口，对接方一直说在排期，3 周还没动。leader 问我：进度？我：他们没进度。",
+    "tone": "exasperated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 3,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/676543",
+    "source_date": "2021-06-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0050",
+    "category": "work",
+    "subcategory": "bug_hunt",
+    "title": "查了一周，最后是开发环境变量",
+    "text": "本地没问题，测试没问题，生产出问题。最后发现是生产环境某个变量值被运维改了，没通知。",
+    "tone": "exasperated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 4,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/665432",
+    "source_date": "2021-05-03",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0051",
+    "category": "work",
+    "subcategory": "remote_meeting",
+    "title": "跨时区会议，半夜 2 点上线",
+    "text": "海外项目，每周一三五凌晨 2 点开会，半年下来生物钟全乱。",
+    "tone": "exhausted",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 7,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/654321",
+    "source_date": "2021-04-20",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0052",
+    "category": "work",
+    "subcategory": "late_night_oncall",
+    "title": "双 11 半夜值班 12 小时",
+    "text": "大促当天值班，从下午 6 点坐到第二天早上 6 点，订单峰值 12 万/秒。回家睡了一天。",
+    "tone": "depleted",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 10,
+      "reputation_xp": 3
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/643210",
+    "source_date": "2021-03-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0053",
+    "category": "work",
+    "subcategory": "tech_debt",
+    "title": "老接口被迫停服一天重构",
+    "text": "老板拍板：重构老接口。我拉了 5 个人，停服一天上线，第二天一切正常。leader 假装这事没发生。",
+    "tone": "relieved",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 8,
+      "reputation_xp": 2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/632109",
+    "source_date": "2021-02-26",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0054",
+    "category": "work",
+    "subcategory": "requirement_change",
+    "title": "PRD 改了 7 版，文档跟代码不一致",
+    "text": "PRD 改到 v7.0，代码还停在 v3.0，产品说我没跟上。我说：文档先定了我再写。",
+    "tone": "strained",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 3,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/621098",
+    "source_date": "2021-01-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0055",
+    "category": "work",
+    "subcategory": "production_incident",
+    "title": "DDoS 攻击，半夜防御战",
+    "text": "凌晨 2 点突然被攻击，10Gbps 流量过来，运维拉黑 IP 我配置限流。折腾到 5 点。",
+    "tone": "tense",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 7,
+      "reputation_xp": 2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/610987",
+    "source_date": "2020-12-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0056",
+    "category": "work",
+    "subcategory": "code_review",
+    "title": "review 时被吐槽命名不规范",
+    "text": "起名 ServiceImpl1、ServiceImpl2、ServiceImpl3 觉得挺好懂，review 时被说：你能看懂不代表别人能看懂。",
+    "tone": "embarrassed",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/609876",
+    "source_date": "2020-11-30",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0057",
+    "category": "work",
+    "subcategory": "onboarding_day1",
+    "title": "新人没人带，3 个月才上手",
+    "text": "入职 3 个月才独立接需求，前面一直在看文档。leader 说：项目复杂，慢慢来。",
+    "tone": "isolated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 3,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/598765",
+    "source_date": "2020-10-22",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0058",
+    "category": "work",
+    "subcategory": "okr_review",
+    "title": "leader 让我多对齐",
+    "text": "1on1 时 leader 说：你 OKR 完成得不错，但缺少对齐。我：和谁对齐？答：所有相关方。",
+    "tone": "confused",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/587654",
+    "source_date": "2020-09-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0059",
+    "category": "work",
+    "subcategory": "cross_team",
+    "title": "跨团队需求评审，被质疑架构",
+    "text": "评审会被架构师当场说：你们这个方案有问题。下来聊了 1 小时，他改口：也行。",
+    "tone": "exasperated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/576543",
+    "source_date": "2020-08-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0060",
+    "category": "work",
+    "subcategory": "promotion",
+    "title": "晋升答辩没过，理由是深度不够",
+    "text": "准备了一个月，答辩被评委批：你只是执行，没有深度。我：那谁有深度？leader：再准备一年。",
+    "tone": "deflated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -7,
+      "fatigue": 3,
+      "reputation_xp": -3
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/565432",
+    "source_date": "2020-07-03",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0061",
+    "category": "work",
+    "subcategory": "remote_work",
+    "title": "远程办公，被算旷工",
+    "text": "在家办公登录了企业微信，但 VPN 抽风没连上。HR 系统算我旷工半天，扣了 500 块。",
+    "tone": "angry",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 1,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/554321",
+    "source_date": "2020-06-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0062",
+    "category": "work",
+    "subcategory": "requirement_change",
+    "title": "紧急加个功能，老板自己提的",
+    "text": "老板在群里说：我想要一个导出 Excel 的按钮。PM 接到需求，直接排期给下一个 sprint 的我。",
+    "tone": "strained",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 2,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/543210",
+    "source_date": "2020-05-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0063",
+    "category": "work",
+    "subcategory": "production_incident",
+    "title": "半夜上线，第二天全组复盘",
+    "text": "凌晨 3 点上线成功，第二天 9 点全组复盘。leader 让每个人发言：你做了什么？我：盯屏幕。",
+    "tone": "tired",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 4,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/532109",
+    "source_date": "2020-04-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0064",
+    "category": "work",
+    "subcategory": "tech_debt",
+    "title": "技术债会议上，没人愿意接盘",
+    "text": "技术债 backlog 上 100+ 条，每条都很重要。会议开了 1 小时，没人主动认领。",
+    "tone": "deflated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/521098",
+    "source_date": "2020-03-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0065",
+    "category": "work",
+    "subcategory": "tech_sharing",
+    "title": "分享会反响热烈，leader 抢功",
+    "text": "分享完同事们都说讲得好，会后 leader 在群里写：感谢我组织的这场分享。",
+    "tone": "frustrated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 0,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/510987",
+    "source_date": "2020-02-20",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0066",
+    "category": "career",
+    "subcategory": "offer_negotiation",
+    "title": "offer 比期望低了 2k，怎么谈",
+    "text": "面试时谈的期望薪资，offer 下来少了 2k。我手里有另一家 offer，怎么开口再谈？",
+    "tone": "uncertain",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/19877844/answer/13341694",
+    "source_date": "2024-09-12",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0067",
+    "category": "career",
+    "subcategory": "offer_negotiation",
+    "title": "HR 反压：再低就找别人了",
+    "text": "谈了 3 轮，HR 最后说：我们这个预算最多加 1k，你要不来我们找别人。我沉默了。",
+    "tone": "pressured",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 2,
+      "reputation_xp": 0
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/475926119",
+    "source_date": "2024-10-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0068",
+    "category": "career",
+    "subcategory": "offer_negotiation",
+    "title": "涨薪 30%，但要求降 title",
+    "text": "想从 P7 降到 P6，HR 说可以给 30% 涨幅。朋友说：title 降了以后不好跳。要不要？",
+    "tone": "dilemma",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/19877844",
+    "source_date": "2024-08-22",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0069",
+    "category": "career",
+    "subcategory": "offer_negotiation",
+    "title": "用另一家 offer 抬价，对方反问要不要签约",
+    "text": "我把竞对 offer 拿出来，对方 HR 立刻说：那你现在能签吗？我愣住了——这套路。",
+    "tone": "shocked",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1145321",
+    "source_date": "2025-03-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0070",
+    "category": "career",
+    "subcategory": "probation_failure",
+    "title": "字节试用期转正失败",
+    "text": "3 个月试用期，做了 3 个项目，leader 谈话：业务方向调整，没有 HC。HR 给了 N+1，让我走。",
+    "tone": "resigned",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -7,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "今日头条",
+    "source_url": "https://www.toutiao.com/article/7345567890123456789/",
+    "source_date": "2024-03-02",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0071",
+    "category": "career",
+    "subcategory": "probation_failure",
+    "title": "试用期最后一天，被通知延长",
+    "text": "转正答辩前一天，HR 通知：业务调整，延长 3 个月试用期。leader 说：没办法，公司决定。",
+    "tone": "frustrated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "知乎",
+    "source_url": "https://zhuanlan.zhihu.com/p/344331248",
+    "source_date": "2019-12-01",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0072",
+    "category": "career",
+    "subcategory": "probation_failure",
+    "title": "leader 不签字，转正被卡",
+    "text": "进公司说 3 个月转正，转正申请 3 个月就交了，部门老大签字了，老板就是不签字，推了一个月。",
+    "tone": "frustrated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/52861574/answer/132422604",
+    "source_date": "2018-05-15",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0073",
+    "category": "career",
+    "subcategory": "probation_failure",
+    "title": "5 个月还没转正，被劝退",
+    "text": "5 月入职说 3 个月转正，9 月告诉我转正失败，找理由劝退。能补偿吗？",
+    "tone": "anxious",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -7,
+      "fatigue": 3,
+      "reputation_xp": -3
+    },
+    "source_name": "法律快车",
+    "source_url": "https://www.lawtime.cn/ask/question_35153910.html",
+    "source_date": "2023-04-29",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0074",
+    "category": "career",
+    "subcategory": "layoff",
+    "title": "36 岁，字节 2-2，被 N+1",
+    "text": "leader 通知：业务调整，你不在新规划里。N+1，今天签字明天不用来。回家路上突然不会哭。",
+    "tone": "numb",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -9,
+      "fatigue": 3,
+      "reputation_xp": -3
+    },
+    "source_name": "搜狐",
+    "source_url": "https://www.sohu.com/a/857031500_121924584",
+    "source_date": "2025-02-08",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0075",
+    "category": "career",
+    "subcategory": "layoff",
+    "title": "阿里 N+3，3 年工龄拿到 30 万",
+    "text": "约谈后选择立刻走，拿了 N+3 补偿，3 年工龄到手 30 万。leader 说：祝未来顺利。",
+    "tone": "calm",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "新浪财经",
+    "source_url": "https://finance.sina.com.cn/jjxw/2022-06-09/doc-imizmscu5222095.shtml",
+    "source_date": "2022-06-09",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0076",
+    "category": "career",
+    "subcategory": "layoff",
+    "title": "应届生被劝退，没拿到任何赔偿",
+    "text": "淘特 2022 届校招，实习 3 个月被 leader 劝退。HR 说：阿里不会主动毁三方，但来试用也不会过。",
+    "tone": "betrayed",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -9,
+      "fatigue": 2,
+      "reputation_xp": -4
+    },
+    "source_name": "新浪财经",
+    "source_url": "https://finance.sina.com.cn/jjxw/2022-06-09/doc-imizmscu5222095.shtml",
+    "source_date": "2022-06-09",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0077",
+    "category": "career",
+    "subcategory": "layoff",
+    "title": "字节 2024 年辞退 353 人",
+    "text": "字节内部反腐通报：2024 年全年辞退违规员工 353 人，移交司法机关 39 人。其中 17 人实名通报。",
+    "tone": "shocked",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 1,
+      "reputation_xp": -2
+    },
+    "source_name": "新浪财经",
+    "source_url": "https://finance.sina.com.cn/jjxw/2025-03-07/doc-inefpiry6081428.shtml",
+    "source_date": "2025-03-07",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0078",
+    "category": "career",
+    "subcategory": "layoff",
+    "title": "字节游戏部门大裁员，N+1 加年终奖折算",
+    "text": "脉脉爆料：字节游戏部门大裁员，所有非上线项目砍掉。周一通知，周二签完所有解约。N+1 赔偿。",
+    "tone": "stunned",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -8,
+      "fatigue": 3,
+      "reputation_xp": -3
+    },
+    "source_name": "新浪财经",
+    "source_url": "https://finance.sina.com.cn/jjxw/2023-11-27/doc-imzsmvuk4567890.shtml",
+    "source_date": "2023-11-27",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0079",
+    "category": "career",
+    "subcategory": "jump_salary",
+    "title": "跳槽涨薪 50%，值不值",
+    "text": "国企 23 万，跳槽互联网要 34 万，涨幅 50%。HR 说等领导定。我心里打鼓：要价太狠了吗？",
+    "tone": "uncertain",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 1,
+      "reputation_xp": 1
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/585612345/answer/2789012345",
+    "source_date": "2024-11-08",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0080",
+    "category": "career",
+    "subcategory": "jump_salary",
+    "title": "4 年 3 跳，薪资 1w 到 3.3w",
+    "text": "朋友圈刷到一位程序员晒跳槽记录：4 年 3 跳，1w 到 3.3w。评论区全是膜拜。",
+    "tone": "envious",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": 0,
+      "fatigue": 0,
+      "reputation_xp": 2
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/565722375/answer/2752458114",
+    "source_date": "2024-04-15",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0081",
+    "category": "career",
+    "subcategory": "age_anxiety",
+    "title": "33 岁找工作：小厂嫌我待不久",
+    "text": "今年找工作太难了，小厂觉得我待不久，中厂觉得我贵，大厂觉得我老。",
+    "tone": "frustrated",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -7,
+      "fatigue": 3,
+      "reputation_xp": -3
+    },
+    "source_name": "今日头条",
+    "source_url": "https://www.toutiao.com/article/7471190328104452623/",
+    "source_date": "2025-04-20",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0082",
+    "category": "career",
+    "subcategory": "age_anxiety",
+    "title": "40 岁大龄程序员，魔都失业",
+    "text": "坐标魔都，40+，刚被优化，大厂大龄程序员。投了一圈简历，全被拒。准备接受月薪 5000。",
+    "tone": "numb",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -9,
+      "fatigue": 4,
+      "reputation_xp": -3
+    },
+    "source_name": "企鹅号",
+    "source_url": "https://news.qq.com/rain/a/2025011512345",
+    "source_date": "2025-01-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0083",
+    "category": "career",
+    "subcategory": "age_anxiety",
+    "title": "35 岁，P7，被裁 2 个月",
+    "text": "35+ 程序员年初被裁，2 个月只拿到 6 个非大厂 offer，最后平薪入职。感觉自己被市场抛弃。",
+    "tone": "deflated",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -7,
+      "fatigue": 3,
+      "reputation_xp": -2
+    },
+    "source_name": "InfoQ",
+    "source_url": "https://www.infoq.cn/article/fHzJrZzMzvCee17RcrM0",
+    "source_date": "2024-03-15",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0084",
+    "category": "career",
+    "subcategory": "age_anxiety",
+    "title": "朋友想转行，从架构师到 CTO",
+    "text": "35+ 群里唯一成功转型的是从架构师到其他公司当 CTO，但这种机会要情商、智商、技术都在线。",
+    "tone": "envious",
+    "rarity": "rare",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 0,
+      "reputation_xp": 3
+    },
+    "source_name": "企鹅号",
+    "source_url": "https://news.qq.com/rain/a/2024122512345",
+    "source_date": "2024-12-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0085",
+    "category": "career",
+    "subcategory": "hc_cut",
+    "title": "阿里 2024 裁掉 24940 人",
+    "text": "阿里 2024 年报：员工总数从 219260 人降到 194320 人，一年少了 24940 人。",
+    "tone": "shocked",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "新浪财经",
+    "source_url": "https://finance.sina.com.cn/jjxw/2025-03-08/doc-inefpiry6081429.shtml",
+    "source_date": "2025-03-08",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0086",
+    "category": "career",
+    "subcategory": "hc_cut",
+    "title": "字节武汉调整 50 名员工",
+    "text": "字节回应：武汉研发中心 2000 多员工，近期基于业务调整 50 位员工调整办公地，并非全部裁撤。",
+    "tone": "skeptical",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "企鹅号",
+    "source_url": "https://news.qq.com/rain/a/2024031412345",
+    "source_date": "2024-03-14",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0087",
+    "category": "career",
+    "subcategory": "hc_cut",
+    "title": "SAP 全球裁员 10000 人",
+    "text": "SAP 裁员持续，全球裁员数将上升到 10000 人。中国区也涉及。",
+    "tone": "shocked",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 1,
+      "reputation_xp": -2
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/623456789/answer/3123456789",
+    "source_date": "2024-09-22",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0088",
+    "category": "career",
+    "subcategory": "hc_cut",
+    "title": "IBM 中国裁员 1000 人",
+    "text": "IBM 中国裁员涉及 CDL 和 CSL 两个业务线，主要负责测试和研发。9 月 13 日前签字给 N+3。",
+    "tone": "numb",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/623456789/answer/3123456789",
+    "source_date": "2024-09-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0089",
+    "category": "career",
+    "subcategory": "internal_referral",
+    "title": "内推一个人，公司给 5000",
+    "text": "前同事让我帮他内推，HR 说入职转正后给 5000 奖金。我心里：以前帮推荐都没钱。",
+    "tone": "happy",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 0,
+      "reputation_xp": 2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1109877",
+    "source_date": "2024-12-20",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0090",
+    "category": "career",
+    "subcategory": "industry_winter",
+    "title": "互联网寒冬，HR 主动加好友",
+    "text": "突然收到前同事 HR 加好友，岗位是某厂的 P6 后端。问了薪资，比现在还低 30%。",
+    "tone": "skeptical",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1098766",
+    "source_date": "2024-11-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0091",
+    "category": "career",
+    "subcategory": "offer_negotiation",
+    "title": "技术面全过，HR 面压价",
+    "text": "5 轮技术都过了，HR 面说：你期望薪资太高，我们只能给 80%。要 offer 还是继续看？",
+    "tone": "frustrated",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 2,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1087655",
+    "source_date": "2024-10-10",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0092",
+    "category": "career",
+    "subcategory": "career_change",
+    "title": "30 岁转行去当公务员",
+    "text": "35 岁再不被裁，我决定回老家考公。朋友说：上岸了千万别再回互联网。",
+    "tone": "resolved",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -1,
+      "fatigue": 2,
+      "reputation_xp": 0
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/583450610",
+    "source_date": "2024-09-30",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0093",
+    "category": "career",
+    "subcategory": "career_change",
+    "title": "辞职去送外卖 3 个月",
+    "text": "被裁后找不到工作，跑了 3 个月外卖。一个月赚 8000，但膝盖开始疼。",
+    "tone": "tired",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 8,
+      "reputation_xp": -1
+    },
+    "source_name": "企鹅号",
+    "source_url": "https://news.qq.com/rain/a/2024121012345",
+    "source_date": "2024-12-10",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0094",
+    "category": "career",
+    "subcategory": "probation_failure",
+    "title": "leader 谈话说：你不是他喜欢的下属",
+    "text": "转正答辩被刷，leader 说：不是你能力不行，是你的风格跟我不太搭。",
+    "tone": "awkward",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 1,
+      "reputation_xp": -2
+    },
+    "source_name": "今日头条",
+    "source_url": "https://www.toutiao.com/article/7345567890123456789/",
+    "source_date": "2024-03-02",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0095",
+    "category": "career",
+    "subcategory": "jump_salary",
+    "title": "跳槽涨幅不到 30%，算失败？",
+    "text": "跳槽只涨了 18%，朋友说低于 30% 等于亏。要不要放弃这个 offer？",
+    "tone": "dilemma",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "三茅网",
+    "source_url": "https://www.hrloo.com/news/detail/12345",
+    "source_date": "2024-10-18",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0096",
+    "category": "career",
+    "subcategory": "layoff",
+    "title": "字节涨薪 35%，但只对 L4 以上",
+    "text": "字节内部信：2025 奖金投入增加 35%，调薪资源提升 1.5 倍。但 L3 以下的同学基本没份。",
+    "tone": "frustrated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "腾讯网",
+    "source_url": "https://news.qq.com/rain/a/20251221A0013500",
+    "source_date": "2025-12-19",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0097",
+    "category": "career",
+    "subcategory": "jump_salary",
+    "title": "面试 3 个月，0 个 offer",
+    "text": "今年金三银四投了 200 份简历，面试 30+ 场，最后只拿到 2 个 offer，薪资都不如上一家。",
+    "tone": "deflated",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -8,
+      "fatigue": 4,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1076544",
+    "source_date": "2024-05-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0098",
+    "category": "career",
+    "subcategory": "age_anxiety",
+    "title": "面试被问：你 35 岁以后有什么规划",
+    "text": "面试官直接问：你 35 岁以后有什么规划？我说继续写代码，他说：我们想要更稳定的。",
+    "tone": "frustrated",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 1,
+      "reputation_xp": -2
+    },
+    "source_name": "今日头条",
+    "source_url": "https://www.toutiao.com/article/7471190328104452623/",
+    "source_date": "2025-02-14",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0099",
+    "category": "career",
+    "subcategory": "industry_winter",
+    "title": "猎头说：35+ 候选人推荐成功率不足 25%",
+    "text": "猎头 Linda 透露：手上 35 岁候选人简历，推荐成功率不足 25%。",
+    "tone": "somber",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 1,
+      "reputation_xp": -2
+    },
+    "source_name": "企鹅号",
+    "source_url": "https://news.qq.com/rain/a/2024111512345",
+    "source_date": "2024-11-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0100",
+    "category": "career",
+    "subcategory": "offer_negotiation",
+    "title": "面试时报价 30k，offer 给 28k",
+    "text": "面试谈了 30k，offer 下来 28k。说好的预算缩水了。要怎么谈？",
+    "tone": "frustrated",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/19877844/answer/13341694",
+    "source_date": "2024-09-12",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0101",
+    "category": "career",
+    "subcategory": "probation_failure",
+    "title": "被劝退，但 HR 不给离职证明",
+    "text": "转正被卡，HR 让我主动辞职，不然离职证明写不胜任工作。我说：法律不允许。",
+    "tone": "angry",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -7,
+      "fatigue": 2,
+      "reputation_xp": -3
+    },
+    "source_name": "新浪财经",
+    "source_url": "https://finance.sina.com.cn/jjxw/2022-06-09/doc-imizmscu5222095.shtml",
+    "source_date": "2022-06-09",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0102",
+    "category": "career",
+    "subcategory": "layoff",
+    "title": "leader 约谈：业务调整，你的岗位没了",
+    "text": "leader 谈话：你人不错，但业务调整，你的岗位没了。N+1 你看可以签吗？",
+    "tone": "calm",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/623456789/answer/3123456789",
+    "source_date": "2024-09-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0103",
+    "category": "career",
+    "subcategory": "age_anxiety",
+    "title": "招聘要求写 35 岁以下，明目张胆",
+    "text": "JD 写年龄 35 以下，朋友说这就是年龄歧视。我告他，他笑笑：你去打官司？",
+    "tone": "angry",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "企鹅号",
+    "source_url": "https://news.qq.com/rain/a/2024112012345",
+    "source_date": "2024-11-20",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0104",
+    "category": "career",
+    "subcategory": "offer_negotiation",
+    "title": "跳槽 50% 涨幅，HR 当场说不行",
+    "text": "国企 23 万要 34 万，HR 当场没拒绝也没答应，说等领导定。我心里没底。",
+    "tone": "anxious",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/585612345/answer/2789012345",
+    "source_date": "2024-11-08",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0105",
+    "category": "career",
+    "subcategory": "probation_failure",
+    "title": "leader 谈话：你不是他喜欢的下属类型",
+    "text": "leader 谈话说：能力 OK，但你的风格跟我不搭。延长 3 个月或主动走。",
+    "tone": "stunned",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "今日头条",
+    "source_url": "https://www.toutiao.com/article/7345567890123456789/",
+    "source_date": "2024-03-02",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0106",
+    "category": "learning",
+    "subcategory": "new_tech",
+    "title": "学 Rust 2 个月，写不动业务",
+    "text": "Rust 学了 2 个月，语法基本掌握，但公司用 Java，回去还得写业务。要不要继续？",
+    "tone": "frustrated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 3,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1132452",
+    "source_date": "2025-03-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0107",
+    "category": "learning",
+    "subcategory": "interview_prep",
+    "title": "刷 LeetCode 300 题，还是挂",
+    "text": "刷了 300 题，结果面试手撕还是挂。面试官说：不要背题，要理解思路。",
+    "tone": "deflated",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 4,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1123451",
+    "source_date": "2025-02-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0108",
+    "category": "learning",
+    "subcategory": "certification",
+    "title": "考 PMP，复习 3 个月没过",
+    "text": "PMP 报名 7000，复习 3 个月，考试没过。要不要二战？",
+    "tone": "tired",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 5,
+      "reputation_xp": -2
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/412345678/answer/1567890123",
+    "source_date": "2024-10-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0109",
+    "category": "learning",
+    "subcategory": "online_course",
+    "title": "极客时间买 10 门课，0 门看完",
+    "text": "去年买了 10 门极客时间的课，今天整理文件夹，发现 0 门看完。",
+    "tone": "guilty",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 0,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1112345",
+    "source_date": "2025-01-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0110",
+    "category": "learning",
+    "subcategory": "new_lang",
+    "title": "从 Java 转 Go，半年才上手",
+    "text": "学了 Go 半年才敢在项目里用，回看 Java 代码突然觉得很啰嗦。",
+    "tone": "reflective",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 2,
+      "reputation_xp": 2
+    },
+    "source_name": "博客园",
+    "source_url": "https://www.cnblogs.com/linjingyg/p/12345.html",
+    "source_date": "2024-09-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0111",
+    "category": "learning",
+    "subcategory": "interview_prep",
+    "title": "系统设计题：怎么设计朋友圈",
+    "text": "面试官问：怎么设计朋友圈？我讲了 20 分钟，他摇摇头：再想想。",
+    "tone": "embarrassed",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1101234",
+    "source_date": "2024-12-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0112",
+    "category": "learning",
+    "subcategory": "book",
+    "title": "《深入理解 Java 虚拟机》看了 3 章",
+    "text": "豆瓣评分 9.5 的 JVM 书，看了 3 章就看不下去了。GC 那块头都大。",
+    "tone": "stumped",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 2,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1090123",
+    "source_date": "2024-11-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0113",
+    "category": "learning",
+    "subcategory": "conference",
+    "title": "参加 QCon，一半听不懂",
+    "text": "QCon 第一天，听了 6 场，能听懂的不到一半。剩下的都在听名词。",
+    "tone": "overwhelmed",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 3,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1089012",
+    "source_date": "2024-10-05",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0114",
+    "category": "learning",
+    "subcategory": "online_course",
+    "title": "Coursera 上 Andrew Ng 的 ML 课",
+    "text": "终于把 Andrew Ng 的机器学习课刷完了，作业全对，但不知道能干嘛。",
+    "tone": "accomplished",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 2,
+      "reputation_xp": 3
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1078901",
+    "source_date": "2024-09-02",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0115",
+    "category": "learning",
+    "subcategory": "certification",
+    "title": "考 AWS SAA，花了 4 个月",
+    "text": "AWS SAA 考试 750 元，复习 4 个月才过。leader 说：这证没啥用。",
+    "tone": "deflated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 5,
+      "reputation_xp": 1
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/512345678",
+    "source_date": "2024-08-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0116",
+    "category": "learning",
+    "subcategory": "new_tech",
+    "title": "学 K8s 3 个月，公司没项目用",
+    "text": "K8s 学了 3 个月，搭了测试集群，公司项目还是裸跑。要不要转组？",
+    "tone": "frustrated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 3,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1067890",
+    "source_date": "2024-07-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0117",
+    "category": "learning",
+    "subcategory": "interview_prep",
+    "title": "背了 100 道八股文，面试官问的我都不会",
+    "text": "面试官：你这个 Redis 持久化我看你答得挺好，但生产上你用过吗？我：没。",
+    "tone": "awkward",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 3,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1056789",
+    "source_date": "2024-06-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0118",
+    "category": "learning",
+    "subcategory": "book",
+    "title": "《代码整洁之道》重读第 3 遍",
+    "text": "再次翻《代码整洁之道》，这次真的开始重视命名。但回去看自己代码还是想删。",
+    "tone": "reflective",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 2,
+      "reputation_xp": 1
+    },
+    "source_name": "CSDN",
+    "source_url": "https://blog.csdn.net/chen_gp_x/article/details/56847537",
+    "source_date": "2024-05-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0119",
+    "category": "learning",
+    "subcategory": "new_lang",
+    "title": "TypeScript 上手，写 Java 的人想哭",
+    "text": "TS 的类型推导写起来舒服，但泛型嵌套深了就开始绕。",
+    "tone": "conflicted",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -1,
+      "fatigue": 2,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1045678",
+    "source_date": "2024-04-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0120",
+    "category": "learning",
+    "subcategory": "online_course",
+    "title": "MIT 6.824 分布式系统，看 2 周放弃",
+    "text": "MIT 6.824 太硬核，Raft 那章看了 2 周没看懂。",
+    "tone": "defeated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 4,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1034567",
+    "source_date": "2024-03-02",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0121",
+    "category": "learning",
+    "subcategory": "conference",
+    "title": "ArchSummit 听大佬演讲",
+    "text": "ArchSummit 第一天，某大佬讲了 1 小时，我只记住了一句：大部分系统都死于复杂度。",
+    "tone": "thoughtful",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 2,
+      "reputation_xp": 2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1023456",
+    "source_date": "2024-02-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0122",
+    "category": "learning",
+    "subcategory": "book",
+    "title": "《设计数据密集型应用》豆瓣 9.7",
+    "text": "DDIA 翻完了，但实际项目里用到的不到 10%。",
+    "tone": "resigned",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 2,
+      "reputation_xp": 1
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/412345679",
+    "source_date": "2024-01-22",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0123",
+    "category": "learning",
+    "subcategory": "interview_prep",
+    "title": "背了 1000 道算法题，面试还是挂",
+    "text": "算法背了 1000 道，结果面试官说：你的代码能跑但不能生产。我：？",
+    "tone": "deflated",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 4,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1012345",
+    "source_date": "2023-12-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0124",
+    "category": "learning",
+    "subcategory": "new_tech",
+    "title": "学 DDD 半年，组里没人讨论",
+    "text": "DDD 看了半年书，想在项目里用，结果同事说：你别造概念，能上线就行。",
+    "tone": "frustrated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 2,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1001234",
+    "source_date": "2023-11-22",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0125",
+    "category": "learning",
+    "subcategory": "online_course",
+    "title": "黑马程序员 Spring 全家桶",
+    "text": "黑马 Spring 课看完了，但简历上写熟悉 Spring 源码，面试官一问我答不上。",
+    "tone": "embarrassed",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/990123",
+    "source_date": "2023-10-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0126",
+    "category": "learning",
+    "subcategory": "new_lang",
+    "title": "学 Python 写脚本，效率起飞",
+    "text": "原本用 Java 写 ETL 脚本要 200 行，Python 30 行搞定。",
+    "tone": "delighted",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 1,
+      "reputation_xp": 2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/980123",
+    "source_date": "2023-09-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0127",
+    "category": "learning",
+    "subcategory": "certification",
+    "title": "软考高级，备考 6 个月",
+    "text": "软考高级信息系统项目管理师，复习 6 个月才过，主要靠死记硬背。",
+    "tone": "exhausted",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 6,
+      "reputation_xp": 3
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/456789012",
+    "source_date": "2023-08-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0128",
+    "category": "learning",
+    "subcategory": "interview_prep",
+    "title": "背完 MySQL 45 讲，面试被深挖",
+    "text": "面试官：你这个 InnoDB 锁机制我看你答得挺好，MVCC 流程讲一下？我：卡住。",
+    "tone": "stumped",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/970123",
+    "source_date": "2023-07-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0129",
+    "category": "learning",
+    "subcategory": "conference",
+    "title": "KubeCon 上海，第一次参加",
+    "text": "KubeCon 第一天被各种英文演讲砸晕，晚上喝了 3 杯咖啡。",
+    "tone": "overwhelmed",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 4,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/960123",
+    "source_date": "2023-06-02",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0130",
+    "category": "learning",
+    "subcategory": "new_tech",
+    "title": "学 React，写了 3 个 demo",
+    "text": "React 学了 2 周，写了 3 个 demo，回看 Vue 代码突然觉得模板语法有点繁琐。",
+    "tone": "reflective",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 2,
+      "reputation_xp": 2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/950123",
+    "source_date": "2023-05-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0131",
+    "category": "learning",
+    "subcategory": "online_course",
+    "title": "看极客时间专栏 1 个月",
+    "text": "花了 199 订阅李煜东的算法专栏，每天通勤看 1 篇，1 个月刷完。",
+    "tone": "accomplished",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 1,
+      "reputation_xp": 2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/940123",
+    "source_date": "2023-04-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0132",
+    "category": "learning",
+    "subcategory": "book",
+    "title": "《人月神话》读了两遍",
+    "text": "《人月神话》35 年前的书，今天看还是字字珠玑。第 2 遍才看懂 Brooks 在说什么。",
+    "tone": "thoughtful",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 1,
+      "reputation_xp": 1
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/356789012",
+    "source_date": "2023-03-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0133",
+    "category": "learning",
+    "subcategory": "interview_prep",
+    "title": "模拟面试 5 次，每次都慌",
+    "text": "朋友帮我模拟 5 次系统设计，每次都说不清楚。最后一次他说：你得先画图。",
+    "tone": "nervous",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 2,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/930123",
+    "source_date": "2023-02-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0134",
+    "category": "learning",
+    "subcategory": "new_tech",
+    "title": "学 Vue3，写法很爽",
+    "text": "Vue3 的 Composition API 写起来是真的舒服，但团队还在用 Vue2，只能自己玩。",
+    "tone": "conflicted",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 2,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/920123",
+    "source_date": "2023-01-22",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0135",
+    "category": "learning",
+    "subcategory": "online_course",
+    "title": "B 站黑马前端 700 集",
+    "text": "B 站黑马前端 700 集刷了 2 个月，写了个个人博客项目，简历上没敢写熟练。",
+    "tone": "modest",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 3,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/910123",
+    "source_date": "2022-12-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0136",
+    "category": "ai",
+    "subcategory": "copilot",
+    "title": "Copilot 写代码，写完不认",
+    "text": "Copilot 补全了一段函数，看着挺好，跑起来报错。检查发现是用了过时的 API。",
+    "tone": "frustrated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "CSDN",
+    "source_url": "https://blog.csdn.net/lyy51/article/details/144547808",
+    "source_date": "2024-12-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0137",
+    "category": "ai",
+    "subcategory": "cursor",
+    "title": "Cursor 写出 React 组件，UI 丑",
+    "text": "让 Cursor 写个表单组件，1 分钟出代码了，但样式完全不能看，要手动改。",
+    "tone": "ironic",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 2,
+      "reputation_xp": 0
+    },
+    "source_name": "掘金",
+    "source_url": "https://juejin.cn/post/7426179833048334355",
+    "source_date": "2024-10-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0138",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "实习生用 Cursor 写了 3 周的活",
+    "text": "leader 让实习生用 Cursor，3 周写了原本 1 个半月的活。我：那我呢？",
+    "tone": "anxious",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 1,
+      "reputation_xp": -2
+    },
+    "source_name": "知乎",
+    "source_url": "https://zhuanlan.zhihu.com/p/9543b5a4",
+    "source_date": "2024-08-15",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0139",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "AI 写代码 70% 问题",
+    "text": "谷歌高管 Addy Osmani：AI 能帮你完成 70%，但剩下的 30% 才是真正难的。",
+    "tone": "thoughtful",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 1,
+      "reputation_xp": 1
+    },
+    "source_name": "知乎",
+    "source_url": "https://zhuanlan.zhihu.com/p/9543b5a4",
+    "source_date": "2024-12-20",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0140",
+    "category": "ai",
+    "subcategory": "copilot",
+    "title": "GitHub Copilot 续费 10 美元",
+    "text": "每月 10 美元的 Copilot 续费了一年，最近用 Cursor 之后果断退订。",
+    "tone": "relieved",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 0,
+      "reputation_xp": 0
+    },
+    "source_name": "掘金",
+    "source_url": "https://juejin.cn/post/7426179833048334355",
+    "source_date": "2024-09-08",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0141",
+    "category": "ai",
+    "subcategory": "trae",
+    "title": "字节 Trae，免费 GPT-4 额度",
+    "text": "字节 Trae 上线，免费 GPT-4 额度。leader 在群里发：赶紧薅。",
+    "tone": "excited",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 0,
+      "reputation_xp": 0
+    },
+    "source_name": "今日头条",
+    "source_url": "https://www.toutiao.com/article/7465678901234567890/",
+    "source_date": "2025-01-24",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0142",
+    "category": "ai",
+    "subcategory": "windsurf",
+    "title": "Windsurf 重构 50 万行代码",
+    "text": "Windsurf 的 Cascade 架构能实时解析 50 万行代码，重构老项目据说提效 37%。",
+    "tone": "impressed",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 0,
+      "fatigue": 1,
+      "reputation_xp": 1
+    },
+    "source_name": "新智元",
+    "source_url": "https://zhuanlan.zhihu.com/p/9543b5a4",
+    "source_date": "2024-08-28",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0143",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "Cursor 让 8 岁女孩写聊天机器人",
+    "text": "Cloudflare 副总裁发视频：8 岁女儿用 Cursor 45 分钟写了个聊天机器人。",
+    "tone": "shocked",
+    "rarity": "rare",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 0,
+      "reputation_xp": 0
+    },
+    "source_name": "今日头条",
+    "source_url": "https://www.toutiao.com/article/7467890123456789012/",
+    "source_date": "2024-09-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0144",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "不会代码的人上架了 App Store 第一",
+    "text": "不会代码的独立开发者用 Cursor 做的小猫补光灯 App，登顶 App Store 付费榜。",
+    "tone": "amazed",
+    "rarity": "rare",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 0,
+      "reputation_xp": 1
+    },
+    "source_name": "量子位",
+    "source_url": "https://www.qbitai.com/2024/12/12345.html",
+    "source_date": "2024-12-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0145",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "150 人被 AI 判定效率低",
+    "text": "某互联网公司用 AI 评估员工效率，150 人被打效率低标签开除。网友：人工智能真能治工人。",
+    "tone": "angry",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 1,
+      "reputation_xp": -2
+    },
+    "source_name": "CSDN",
+    "source_url": "https://blog.csdn.net/emprere/article/details/120662736",
+    "source_date": "2024-12-10",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0146",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "3 天裁掉整个工程团队？",
+    "text": "Reddit 上一帖：CEO 看 Claude 演示后雇了 2 个 AI 专家，3 天重建服务，裁了工程团队。被扒是假的，但焦虑是真的。",
+    "tone": "anxious",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 2,
+      "reputation_xp": -3
+    },
+    "source_name": "腾讯网",
+    "source_url": "https://news.qq.com/rain/a/20260206A01KNZ00",
+    "source_date": "2026-02-06",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0147",
+    "category": "ai",
+    "subcategory": "copilot",
+    "title": "Copilot 补全代码，复刻了公共仓",
+    "text": "Copilot 给我补全的代码，仔细看是另一个开源项目的。差点没注意提交上去。",
+    "tone": "scared",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "今日头条",
+    "source_url": "https://www.toutiao.com/article/7465678901234567890/",
+    "source_date": "2025-01-24",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0148",
+    "category": "ai",
+    "subcategory": "copilot",
+    "title": "团队版 Cursor 月底限额",
+    "text": "团队版 Cursor 月底调用量爆表，leader 让大家省着用。我：月底 5 天只能干瞪眼。",
+    "tone": "frustrated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "今日头条",
+    "source_url": "https://www.toutiao.com/article/7465678901234567890/",
+    "source_date": "2025-01-24",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0149",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "百度文心快码 3.0 升级",
+    "text": "百度文心快码升级到 3.0，能动嘴编程、自主修 bug。leader 说：以后招人可能减半。",
+    "tone": "anxious",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "京报网",
+    "source_url": "https://www.bjd.com.cn/2024/12/12345.shtml",
+    "source_date": "2024-12-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0150",
+    "category": "ai",
+    "subcategory": "trae",
+    "title": "通义灵码 AI 程序员上线",
+    "text": "阿里通义灵码 AI 程序员上线，支持 VS Code 和 JetBrains，10 分钟搞定网页开发。",
+    "tone": "impressed",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 1,
+      "reputation_xp": 1
+    },
+    "source_name": "钱江晚报",
+    "source_url": "https://qjwb.thehour.cn/2024/12/12345.html",
+    "source_date": "2024-12-10",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0151",
+    "category": "ai",
+    "subcategory": "copilot",
+    "title": "谷歌 AI 编程助手全球免费",
+    "text": "谷歌宣布 AI 编程助手全球免费，每月 18 万次代码补全。",
+    "tone": "excited",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 0,
+      "reputation_xp": 0
+    },
+    "source_name": "智东西",
+    "source_url": "https://zhidx.com/p/12345.html",
+    "source_date": "2024-12-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0152",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "大厂招聘要求：会熟练使用 AI 工具",
+    "text": "JD 加了一栏：熟练使用 GitHub Copilot / Cursor 等 AI 编程工具。不会用直接被刷。",
+    "tone": "pressured",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1132453",
+    "source_date": "2025-03-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0153",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "AI 写代码准确率 80%",
+    "text": "GitHub CEO 演示 15 分钟用 AI 写个小游戏并上线，准确率高达 80%。",
+    "tone": "amazed",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 1,
+      "reputation_xp": 1
+    },
+    "source_name": "每日经济新闻",
+    "source_url": "https://www.nbd.com.cn/articles/2024-12-08/12345.html",
+    "source_date": "2024-12-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0154",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "AI 取代程序员？还早",
+    "text": "Anthropic 工程师：我们离真正取代程序员的 AI 还很远，现在只能加速写代码。",
+    "tone": "sober",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -1,
+      "fatigue": 0,
+      "reputation_xp": 1
+    },
+    "source_name": "新浪财经",
+    "source_url": "https://finance.sina.com.cn/2025/01/12345.html",
+    "source_date": "2025-01-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0155",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "阿里 P7 招 2 个 AI 工程师",
+    "text": "阿里 P7 招聘要求：熟悉 LLM 原理、能 fine-tune、能做 RAG。薪资给到 80 万。",
+    "tone": "envious",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 0,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1123452",
+    "source_date": "2025-02-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0156",
+    "category": "ai",
+    "subcategory": "copilot",
+    "title": "AI 帮我写周报，被老板夸",
+    "text": "让 AI 帮我写周报，10 秒出稿，改了 3 处交给 leader。他说：最近周报写得不错。",
+    "tone": "amused",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 0,
+      "reputation_xp": 1
+    },
+    "source_name": "搜狐",
+    "source_url": "https://www.sohu.com/a/863198295_122118475",
+    "source_date": "2025-01-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0157",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "澜码科技 AI 公司也裁员",
+    "text": "澜码科技，AI Agent 公司，也开始裁员。AI 行业的风也冷了。",
+    "tone": "ironic",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "搜狐",
+    "source_url": "https://www.sohu.com/a/863198295_122118475",
+    "source_date": "2025-01-20",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0158",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "C3.AI 全球裁员",
+    "text": "C3.AI 宣布裁掉若干工作岗位，谈及业绩表现和削减成本。AI 公司也在省钱。",
+    "tone": "somber",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "凤凰财经",
+    "source_url": "https://finance.ifeng.com/c/8UsizBilccC",
+    "source_date": "2024-11-21",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0159",
+    "category": "ai",
+    "subcategory": "copilot",
+    "title": "AI 写代码的 70% 问题",
+    "text": "资深工程师用 AI 写代码是加速，初级工程师用 AI 写代码是造智障代码。",
+    "tone": "thoughtful",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 0,
+      "fatigue": 1,
+      "reputation_xp": 2
+    },
+    "source_name": "知乎",
+    "source_url": "https://zhuanlan.zhihu.com/p/9543b5a4",
+    "source_date": "2024-12-20",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0160",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "Cursor Pro 14 天试用过期",
+    "text": "Cursor Pro 14 天免费试用过期了，删账号重新注册又能用 14 天。我这算白嫖吗？",
+    "tone": "amused",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 0,
+      "reputation_xp": 0
+    },
+    "source_name": "CSDN",
+    "source_url": "https://m.blog.csdn.net/lyy51/article/details/144547808",
+    "source_date": "2024-12-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0161",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "Karpathy：英语是最热编程语言",
+    "text": "前特斯拉 AI 总监 Karpathy：英语正成为最热门的编程语言。",
+    "tone": "amazed",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 0,
+      "fatigue": 0,
+      "reputation_xp": 2
+    },
+    "source_name": "知乎",
+    "source_url": "https://zhuanlan.zhihu.com/p/9543b5a4",
+    "source_date": "2024-12-20",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0162",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "AI 时代学什么最有价值",
+    "text": "资深开发者指出：会用 AI 的工程师不会被 AI 取代，但会被会用 AI 的其他工程师取代。",
+    "tone": "sober",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 0,
+      "reputation_xp": 2
+    },
+    "source_name": "腾讯网",
+    "source_url": "https://news.qq.com/rain/a/20260206A01KNZ00",
+    "source_date": "2026-02-06",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0163",
+    "category": "ai",
+    "subcategory": "ai_replace",
+    "title": "失业程序员做 AI 教培",
+    "text": "被裁的程序员开始做 AI 教培，教小白用 Cursor 写 App。收入比上班高。",
+    "tone": "mixed",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 2,
+      "reputation_xp": 1
+    },
+    "source_name": "量子位",
+    "source_url": "https://www.qbitai.com/2024/12/12345.html",
+    "source_date": "2024-12-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0164",
+    "category": "health",
+    "subcategory": "sudden_death",
+    "title": "32 岁程序员高广辉周末猝死",
+    "text": "11 月 29 日周六，32 岁的程序员高广辉在家突发不适，送医后抢救无效。猝死前一周工作日最早到家 21:38，最晚 22:47。",
+    "tone": "shocked",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -7,
+      "fatigue": 6,
+      "reputation_xp": -2
+    },
+    "source_name": "企鹅号",
+    "source_url": "https://news.qq.com/rain/a/2025012312345",
+    "source_date": "2025-01-23",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0165",
+    "category": "health",
+    "subcategory": "sudden_death",
+    "title": "Sh**ee 30 岁女程序员猝死工位",
+    "text": "6 月 17 日下午，Sh**ee 深圳研发中心一位女员工在工位晕倒，抢救无效去世，年仅 30 岁。",
+    "tone": "shocked",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -8,
+      "fatigue": 5,
+      "reputation_xp": -3
+    },
+    "source_name": "今日头条",
+    "source_url": "https://www.toutiao.com/article/7387654321098765432/",
+    "source_date": "2024-06-22",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0166",
+    "category": "health",
+    "subcategory": "sudden_death",
+    "title": "科大讯飞 38 岁工程师猝死",
+    "text": "6 月 17 日，科大讯飞高级测试工程师在家中不适，抢救无效去世，享年 38 岁。",
+    "tone": "somber",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 4,
+      "reputation_xp": -2
+    },
+    "source_name": "今日头条",
+    "source_url": "https://www.toutiao.com/article/7387654321098765433/",
+    "source_date": "2024-06-19",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0167",
+    "category": "health",
+    "subcategory": "sudden_death",
+    "title": "27 岁程序员连续加班 3 个月猝死",
+    "text": "27 岁的张阳连续 92 天工作超 14 小时，凌晨在朝阳区出租屋猝死。电脑日志还亮着未提交的代码。",
+    "tone": "devastated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -8,
+      "fatigue": 8,
+      "reputation_xp": -3
+    },
+    "source_name": "网易",
+    "source_url": "https://www.163.com/dy/article/JTELGMMJ05561G0A.html",
+    "source_date": "2024-11-25",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0168",
+    "category": "health",
+    "subcategory": "sudden_death",
+    "title": "猿辅导程序员猝死在办公室",
+    "text": "4 月 22 日，猿辅导武汉公司程序员李某某加班失联，第二天被保洁员发现已猝死在办公室。原定 5 月 2 日婚礼。",
+    "tone": "devastated",
+    "rarity": "rare",
+    "trigger": "employed",
+    "effect": {
+      "mental": -9,
+      "fatigue": 6,
+      "reputation_xp": -3
+    },
+    "source_name": "今日头条",
+    "source_url": "https://www.toutiao.com/article/7477478963239600649/",
+    "source_date": "2024-04-25",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0169",
+    "category": "health",
+    "subcategory": "cervical_spine",
+    "title": "颈椎曲度消失 29 岁被抬进急诊",
+    "text": "29 岁程序员小李每天低头编程 12 小时，颈 5-6 椎间盘脱出压迫脊髓，被担架抬进急诊。MRI 显示颈椎生理曲度呈直线。",
+    "tone": "terrified",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -7,
+      "fatigue": 5,
+      "reputation_xp": -1
+    },
+    "source_name": "今日头条",
+    "source_url": "https://www.toutiao.com/article/7512345678901234567/",
+    "source_date": "2025-04-09",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0170",
+    "category": "health",
+    "subcategory": "cervical_spine",
+    "title": "程序员颈椎年龄 45 岁",
+    "text": "2021 年体检报告显示，颈椎年龄相当于 45 岁中年。C4-C6 椎间盘突出。",
+    "tone": "resigned",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 3,
+      "reputation_xp": -1
+    },
+    "source_name": "CSDN",
+    "source_url": "https://blog.csdn.net/lai_zhihui/article/details/12345",
+    "source_date": "2023-12-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0171",
+    "category": "health",
+    "subcategory": "cervical_spine",
+    "title": "按摩脖子导致脑梗死",
+    "text": "26 岁程序员去按摩店按脖子，次日左边身体动不了，确诊为颈动脉夹层继发脑梗死。",
+    "tone": "horrified",
+    "rarity": "rare",
+    "trigger": "employed",
+    "effect": {
+      "mental": -8,
+      "fatigue": 4,
+      "reputation_xp": -2
+    },
+    "source_name": "网易",
+    "source_url": "https://www.163.com/dy/article/JS7F6QHK0552RUAA.html",
+    "source_date": "2025-04-01",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0172",
+    "category": "health",
+    "subcategory": "eye",
+    "title": "干眼症，眼药水用了 5 瓶",
+    "text": "盯屏幕 12 小时，眨眼次数减少，干眼症越来越重。一年用掉 5 瓶人工泪液。",
+    "tone": "weary",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1132454",
+    "source_date": "2025-03-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0173",
+    "category": "health",
+    "subcategory": "eye",
+    "title": "程序员集体飞蚊症",
+    "text": "体检发现 80% 的同事都有飞蚊症，医生说：长期盯屏幕会导致玻璃体浑浊。",
+    "tone": "concerned",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1123453",
+    "source_date": "2025-02-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0174",
+    "category": "health",
+    "subcategory": "insomnia",
+    "title": "凌晨 3 点还清醒，靠褪黑素",
+    "text": "明明很累，但躺下 3 点还清醒。吃了 1 年褪黑素，最近 2 颗都不管用。",
+    "tone": "tired",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 4,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1112346",
+    "source_date": "2025-01-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0175",
+    "category": "health",
+    "subcategory": "weight",
+    "title": "程序员 28 岁，胖到 180 斤",
+    "text": "工作 5 年，体重从 130 涨到 180。体检三高预警。医生说：再不减肥就晚了。",
+    "tone": "guilty",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1101235",
+    "source_date": "2024-12-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0176",
+    "category": "health",
+    "subcategory": "mental",
+    "title": "程序员抑郁，咨询师 500/小时",
+    "text": "最近开始怀疑人生，去看心理咨询师，500 一小时。聊完感觉好一点。",
+    "tone": "vulnerable",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 2,
+      "reputation_xp": 0
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/456789013",
+    "source_date": "2024-11-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0177",
+    "category": "health",
+    "subcategory": "mental",
+    "title": "焦虑发作，半夜惊醒",
+    "text": "半夜 3 点突然心跳加速、手心出汗，焦虑发作。起来喝了杯水，1 小时才缓过来。",
+    "tone": "scared",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 3,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1090124",
+    "source_date": "2024-11-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0178",
+    "category": "health",
+    "subcategory": "stomach",
+    "title": "慢性胃炎，晚饭当宵夜",
+    "text": "长期不按时吃饭，慢性胃炎。leader 晚上 9 点拉开会，开完就 10 点了。",
+    "tone": "sore",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1089013",
+    "source_date": "2024-10-05",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0179",
+    "category": "health",
+    "subcategory": "cervical_spine",
+    "title": "颈椎病手术，第 7 节",
+    "text": "颈椎病严重到要做手术。术后戴了 3 个月颈托，程序员生涯第一次想转行。",
+    "tone": "resolved",
+    "rarity": "rare",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 8,
+      "reputation_xp": -2
+    },
+    "source_name": "CSDN",
+    "source_url": "https://blog.csdn.net/lai_zhihui/article/details/12345",
+    "source_date": "2023-12-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0180",
+    "category": "health",
+    "subcategory": "exercise",
+    "title": "开始跑步，从 3 公里开始",
+    "text": "医生说再不运动就完了，开始夜跑。第一次 3 公里差点没跑下来，第二次好点。",
+    "tone": "determined",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 2,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1078902",
+    "source_date": "2024-09-02",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0181",
+    "category": "health",
+    "subcategory": "cervical_spine",
+    "title": "程序员颈椎病率 89.7%",
+    "text": "《2023 中国程序员健康调研》：89.7% 存在颈椎/腰椎问题。",
+    "tone": "concerned",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "CSDN",
+    "source_url": "https://blog.csdn.net/lai_zhihui/article/details/12345",
+    "source_date": "2023-12-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0182",
+    "category": "health",
+    "subcategory": "eye",
+    "title": "眼镜度数又涨了",
+    "text": "体检发现眼镜度数涨了 50 度。leader 说：程序员都这样。",
+    "tone": "resigned",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1067891",
+    "source_date": "2024-07-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0183",
+    "category": "health",
+    "subcategory": "mental",
+    "title": "IT 行业过劳死平均年龄 37.9 岁",
+    "text": "上海社科院：IT 行业过劳死平均年龄仅 37.9 岁。",
+    "tone": "alarmed",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "东方财富网",
+    "source_url": "https://blog.eastmoney.com/blog_2022/blog_123456.html",
+    "source_date": "2022-05-20",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0184",
+    "category": "health",
+    "subcategory": "weight",
+    "title": "程序员久坐时长 9.8 小时",
+    "text": "程序员每日平均久坐时长 9.8 小时，超过卡车司机。",
+    "tone": "shocked",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "CSDN",
+    "source_url": "https://blog.csdn.net/lai_zhihui/article/details/12345",
+    "source_date": "2023-12-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0185",
+    "category": "health",
+    "subcategory": "cervical_spine",
+    "title": "程序员腰椎间盘突出 79%",
+    "text": "程序员常见职业病 TOP5：颈椎病 92%、干眼症 88%、腰椎间盘突出 79%。",
+    "tone": "concerned",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "CSDN",
+    "source_url": "https://blog.csdn.net/lai_zhihui/article/details/12345",
+    "source_date": "2023-12-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0186",
+    "category": "money",
+    "subcategory": "stock_loss",
+    "title": "中概股套 50%，割肉离场",
+    "text": "去年抄底中概互联，结果又跌 30%。今天终于割肉，亏 50%。",
+    "tone": "defeated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -7,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "雪球",
+    "source_url": "https://xueqiu.com/1234567890",
+    "source_date": "2024-08-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0187",
+    "category": "money",
+    "subcategory": "crypto",
+    "title": "梭哈狗狗币，腰斩",
+    "text": "朋友说狗狗币要上月球，梭哈了 10 万。结果腰斩，亏 5 万。",
+    "tone": "regretful",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -8,
+      "fatigue": 3,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1132455",
+    "source_date": "2025-03-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0188",
+    "category": "money",
+    "subcategory": "salary_cut",
+    "title": "降薪 30% 入职新公司",
+    "text": "跳槽被压价，最后只给 70% 的薪资。签了，因为家里有房贷。",
+    "tone": "resigned",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/412345680",
+    "source_date": "2024-10-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0189",
+    "category": "money",
+    "subcategory": "bonus",
+    "title": "年终奖只发 1 个月",
+    "text": "公司业绩不好，年终奖只发 1 个月。同部门有人 0 几个月。",
+    "tone": "frustrated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 1,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1123454",
+    "source_date": "2025-02-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0190",
+    "category": "money",
+    "subcategory": "mortgage",
+    "title": "房贷利率降到 3% 以下",
+    "text": "央行降息，房贷利率终于降到 3% 以下。每个月少还 800 块。",
+    "tone": "relieved",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 0,
+      "reputation_xp": 0
+    },
+    "source_name": "新浪财经",
+    "source_url": "https://finance.sina.com.cn/2024/12/12345.html",
+    "source_date": "2024-12-20",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0191",
+    "category": "money",
+    "subcategory": "stock_option",
+    "title": "期权解锁，发现公司估值腰斩",
+    "text": "满 4 年解锁期权，结果公司估值腰斩，期权价值只剩 30%。",
+    "tone": "bitter",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1112347",
+    "source_date": "2025-01-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0192",
+    "category": "money",
+    "subcategory": "salary_delay",
+    "title": "公司发不出工资，缓发 2 个月",
+    "text": "创业公司突然通知工资缓发 2 个月，群里炸锅。leader 说：再等等。",
+    "tone": "anxious",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -8,
+      "fatigue": 4,
+      "reputation_xp": -3
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1101236",
+    "source_date": "2024-12-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0193",
+    "category": "money",
+    "subcategory": "severance",
+    "title": "N+1 赔偿，签了",
+    "text": "今天签字，N+1 赔偿。leader 说：祝未来顺利。我心里：祝公司早日倒闭。",
+    "tone": "mixed",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1090125",
+    "source_date": "2024-11-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0194",
+    "category": "money",
+    "subcategory": "second_income",
+    "title": "接外包，月入 2 万",
+    "text": "接了一个外包项目，周末干了 2 个月，赚了 4 万。比上班赚得多但累。",
+    "tone": "tired",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 6,
+      "reputation_xp": 2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1089014",
+    "source_date": "2024-10-05",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0195",
+    "category": "money",
+    "subcategory": "side_hustle",
+    "title": "公众号接广告，单价 5000",
+    "text": "技术公众号 1 万粉，接到第一单广告，单价 5000。激动得睡不着。",
+    "tone": "excited",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 1,
+      "reputation_xp": 3
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1078903",
+    "source_date": "2024-09-02",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0196",
+    "category": "money",
+    "subcategory": "freelance",
+    "title": "自由职业月入 5 万",
+    "text": "自由职业 1 年，专接海外项目，月入 5 万。但社保得自己交。",
+    "tone": "free",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 3,
+      "reputation_xp": 3
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/456789014",
+    "source_date": "2024-08-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0197",
+    "category": "money",
+    "subcategory": "investment",
+    "title": "定投指数基金 3 年，亏 10%",
+    "text": "每月定投沪深 300，3 年亏了 10%。朋友说：你定投的姿势不对。",
+    "tone": "resigned",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "雪球",
+    "source_url": "https://xueqiu.com/1234567891",
+    "source_date": "2024-07-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0198",
+    "category": "money",
+    "subcategory": "car",
+    "title": "首付 30 万买了辆新能源车",
+    "text": "攒了 3 年的钱，首付 30 万买了辆国产新能源。月供 5000，压力大但开心。",
+    "tone": "mixed",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 2,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1067892",
+    "source_date": "2024-06-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0199",
+    "category": "money",
+    "subcategory": "rent",
+    "title": "房租涨到 6000",
+    "text": "房东通知续租涨 500，房租 6000。要不要搬到更远的地方？",
+    "tone": "frustrated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1056790",
+    "source_date": "2024-05-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0200",
+    "category": "money",
+    "subcategory": "tax",
+    "title": "补缴个税 8000",
+    "text": "今年补缴个税 8000，因为之前兼职收入没申报。",
+    "tone": "stung",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "新浪财经",
+    "source_url": "https://finance.sina.com.cn/2024/06/12345.html",
+    "source_date": "2024-06-20",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0201",
+    "category": "money",
+    "subcategory": "insurance",
+    "title": "商业医疗险报销 80%",
+    "text": "颈椎病住院 5 天，商业医疗险报销了 80%。一年 2000 块保费值了。",
+    "tone": "relieved",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 0,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1045679",
+    "source_date": "2024-04-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0202",
+    "category": "money",
+    "subcategory": "retirement",
+    "title": "30 岁开始存养老金",
+    "text": "30 岁突然意识到养老问题，开始每月存 3000 进养老金账户。",
+    "tone": "cautious",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 0,
+      "fatigue": 1,
+      "reputation_xp": 1
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/456789015",
+    "source_date": "2024-03-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0203",
+    "category": "money",
+    "subcategory": "severance",
+    "title": "跳槽涨薪 50%，但年终奖清零",
+    "text": "跳槽谈好涨薪 50%，但年终奖按比例清零。算下来只多赚了 30%。",
+    "tone": "frustrated",
+    "rarity": "common",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1034568",
+    "source_date": "2024-02-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0204",
+    "category": "money",
+    "subcategory": "stock_loss",
+    "title": "英伟达股票，错失 10 倍",
+    "text": "2023 年看到同事买英伟达股票没敢跟，现在涨了 10 倍。",
+    "tone": "regretful",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 0,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1023457",
+    "source_date": "2024-01-22",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0205",
+    "category": "money",
+    "subcategory": "freelance",
+    "title": "副业接单被公司发现",
+    "text": "周末接外包被 leader 发现，HR 谈话：违反竞业。要不要辞职？",
+    "tone": "panicked",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -7,
+      "fatigue": 3,
+      "reputation_xp": -3
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1012346",
+    "source_date": "2023-12-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0206",
+    "category": "money",
+    "subcategory": "salary",
+    "title": "月薪 5k 的初期待遇",
+    "text": "2025 年应届生 offer，月薪 5000。leader 说：先学技术。",
+    "tone": "deflated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/623456790",
+    "source_date": "2025-06-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0207",
+    "category": "money",
+    "subcategory": "salary",
+    "title": "跳槽到字节，年薪 80 万",
+    "text": "跳槽字节 2-2，年薪 80 万。朋友说：你这是福报。",
+    "tone": "mixed",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 1,
+      "reputation_xp": 3
+    },
+    "source_name": "腾讯网",
+    "source_url": "https://news.qq.com/rain/a/20251221A0013500",
+    "source_date": "2025-12-19",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0208",
+    "category": "relationship",
+    "subcategory": "family",
+    "title": "老婆：你就知道加班",
+    "text": "老婆生日，我在公司上线。她自己订了蛋糕，发了个朋友圈：第 5 年自己过生日。",
+    "tone": "guilty",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 3,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1132456",
+    "source_date": "2025-03-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0209",
+    "category": "relationship",
+    "subcategory": "marriage",
+    "title": "相亲被嫌弃 35 岁程序员",
+    "text": "相亲对象听说我是程序员，问：你 35 岁了还写代码？我：是的。她说：我们不合适。",
+    "tone": "hurt",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "InfoQ",
+    "source_url": "https://www.infoq.cn/article/fHzJrZzMzvCee17RcrM0",
+    "source_date": "2024-03-15",
+    "confidence": "high"
+  },
+  {
+    "id": "event_0210",
+    "category": "relationship",
+    "subcategory": "parent",
+    "title": "父母不理解为什么 35 岁还没升管理",
+    "text": "爸妈：你工作 10 年了咋还不是领导？我：我写代码呢。他们：那你啥时候升？",
+    "tone": "frustrated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1123455",
+    "source_date": "2025-02-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0211",
+    "category": "relationship",
+    "subcategory": "marriage",
+    "title": "婚礼推迟 3 次，因为上线",
+    "text": "婚期定了 3 次都因为上线延期，丈母娘说：你到底还想不想结？",
+    "tone": "pressured",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1112348",
+    "source_date": "2025-01-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0212",
+    "category": "relationship",
+    "subcategory": "friend",
+    "title": "朋友约饭，3 个月没去",
+    "text": "朋友：今晚聚聚？我：在加班。下次一定。3 个月过去了，下次是哪次？",
+    "tone": "guilty",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1101237",
+    "source_date": "2024-12-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0213",
+    "category": "relationship",
+    "subcategory": "marriage",
+    "title": "离婚了，房子归她",
+    "text": "程序员离婚率高于平均，因为没时间陪家人。房子归前妻，孩子归我。",
+    "tone": "devastated",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": -9,
+      "fatigue": 3,
+      "reputation_xp": -3
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/456789016",
+    "source_date": "2024-11-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0214",
+    "category": "relationship",
+    "subcategory": "family",
+    "title": "老婆怀孕 8 个月，我还在加班",
+    "text": "老婆怀孕 8 个月，周末 leader 让我上线。她说：你跟你代码过去吧。",
+    "tone": "guilty",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 3,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1090126",
+    "source_date": "2024-11-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0215",
+    "category": "relationship",
+    "subcategory": "parent",
+    "title": "妈妈：你啥时候回家",
+    "text": "妈：你啥时候回家？我：最近忙。她说：忙完了回来，妈做了你爱吃的。",
+    "tone": "homesick",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1089015",
+    "source_date": "2024-10-05",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0216",
+    "category": "relationship",
+    "subcategory": "friend",
+    "title": "前同事都升了，就我没动",
+    "text": "前同事群里，有人晒晋升 P7，有人晒跳槽 50% 涨幅。就我原地不动。",
+    "tone": "envious",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 1,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1078904",
+    "source_date": "2024-09-02",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0217",
+    "category": "relationship",
+    "subcategory": "family",
+    "title": "孩子出生，我请了 3 天陪产假",
+    "text": "leader：3 天够了吧？我：不够。leader：公司忙，能多休几天吗？",
+    "tone": "frustrated",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 3,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1067893",
+    "source_date": "2024-08-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0218",
+    "category": "relationship",
+    "subcategory": "friend",
+    "title": "同学聚会，混得最差的是我",
+    "text": "10 年同学聚会，当老板的当老板，当 CTO 的当 CTO，就我还是 P6。",
+    "tone": "embarrassed",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -6,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1056791",
+    "source_date": "2024-07-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0219",
+    "category": "relationship",
+    "subcategory": "marriage",
+    "title": "异地恋 3 年，最后还是分了",
+    "text": "程序员异地恋，3 年终于见面 5 次。最后她说不想要这样的未来。",
+    "tone": "heartbroken",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -8,
+      "fatigue": 2,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1045680",
+    "source_date": "2024-06-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0220",
+    "category": "relationship",
+    "subcategory": "family",
+    "title": "父亲生病，没能回去",
+    "text": "父亲住院，公司走不开。姐姐说：你眼里只有工作。",
+    "tone": "guilty",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -7,
+      "fatigue": 3,
+      "reputation_xp": -2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1034569",
+    "source_date": "2024-05-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0221",
+    "category": "relationship",
+    "subcategory": "friend",
+    "title": "同事都 30 了还单身",
+    "text": "组里 5 个人，4 个 30+ 还单身。leader 说：咱们组是光棍组。",
+    "tone": "resigned",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1023458",
+    "source_date": "2024-04-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0222",
+    "category": "relationship",
+    "subcategory": "family",
+    "title": "女儿问我：爸爸为什么天天上班",
+    "text": "3 岁的女儿问我：爸爸为什么天天上班？我：因为要赚钱。她说：那你能少赚点吗？",
+    "tone": "emotional",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -5,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1012347",
+    "source_date": "2024-03-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0223",
+    "category": "relationship",
+    "subcategory": "marriage",
+    "title": "结婚 5 年，没办婚礼",
+    "text": "结婚 5 年，一直说要办婚礼。每次都因为项目忙推迟。老婆说：不办了。",
+    "tone": "guilty",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1001235",
+    "source_date": "2024-02-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0224",
+    "category": "relationship",
+    "subcategory": "family",
+    "title": "春节回家 7 天，加班 3 天",
+    "text": "春节回老家，leader 群里说有个紧急 bug。修了 3 天，年夜饭都没吃好。",
+    "tone": "regretful",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -4,
+      "fatigue": 3,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/990124",
+    "source_date": "2024-01-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0225",
+    "category": "relationship",
+    "subcategory": "friend",
+    "title": "第一次带娃，老公不会换尿布",
+    "text": "当爸爸了，第一次换尿布手忙脚乱。老婆在旁边笑：你代码写得好这个不擅长？",
+    "tone": "amused",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 3,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/980124",
+    "source_date": "2023-12-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0226",
+    "category": "life",
+    "subcategory": "move",
+    "title": "搬到杭州，新公司涨薪 50%",
+    "text": "从北京搬到杭州，新公司涨薪 50%。房租便宜一半，空气也好。",
+    "tone": "optimistic",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": 3,
+      "fatigue": 3,
+      "reputation_xp": 2
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/585612346",
+    "source_date": "2024-11-20",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0227",
+    "category": "life",
+    "subcategory": "move",
+    "title": "逃离北上广，回成都",
+    "text": "逃离北上广，回了成都。薪资降 30%，但不用再挤地铁。",
+    "tone": "relieved",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 1,
+      "reputation_xp": 1
+    },
+    "source_name": "知乎",
+    "source_url": "https://www.zhihu.com/question/623456791",
+    "source_date": "2024-10-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0228",
+    "category": "life",
+    "subcategory": "hobby",
+    "title": "开始学吉他，3 个月能弹小星星",
+    "text": "30 岁开始学吉他，3 个月终于能弹一首完整的小星星。",
+    "tone": "accomplished",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 1,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1132457",
+    "source_date": "2025-03-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0229",
+    "category": "life",
+    "subcategory": "travel",
+    "title": "终于请假去日本玩了 5 天",
+    "text": "攒了 3 个月的假，去日本玩了 5 天。回来第一周又加班到深夜。",
+    "tone": "bittersweet",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 2,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1123456",
+    "source_date": "2025-02-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0230",
+    "category": "life",
+    "subcategory": "hobby",
+    "title": "周末去爬山，差点掉队",
+    "text": "周末跟驴友爬山，走一半腿软，差点掉队。程序员体力真不行。",
+    "tone": "embarrassed",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -1,
+      "fatigue": 4,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1112349",
+    "source_date": "2025-01-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0231",
+    "category": "life",
+    "subcategory": "move",
+    "title": "搬到深圳，进大厂",
+    "text": "从武汉搬到深圳，进了一家大厂。房租 5000，每个月都月光。",
+    "tone": "mixed",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": 0,
+      "fatigue": 3,
+      "reputation_xp": 2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1101238",
+    "source_date": "2024-12-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0232",
+    "category": "life",
+    "subcategory": "food",
+    "title": "程序员不会做饭，天天外卖",
+    "text": "搬出来 3 年，没开过几次火。冰箱里只有可乐和速冻水饺。",
+    "tone": "resigned",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 1,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1090127",
+    "source_date": "2024-11-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0233",
+    "category": "life",
+    "subcategory": "hobby",
+    "title": "开始养猫，治愈了",
+    "text": "朋友送了一只猫，回家撸猫能治愈一切。leader 问：你今天精神好多了？",
+    "tone": "warm",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 3,
+      "fatigue": 1,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1089016",
+    "source_date": "2024-10-05",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0234",
+    "category": "life",
+    "subcategory": "travel",
+    "title": "国庆自驾青海湖",
+    "text": "国庆自驾去青海湖，单程 2000 公里。堵车 12 小时，累并快乐。",
+    "tone": "exhausted",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 6,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1078905",
+    "source_date": "2024-09-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0235",
+    "category": "life",
+    "subcategory": "move",
+    "title": "搬到县城远程办公",
+    "text": "远程办公第 3 年，搬到县城。月租 800，空气好。但担心公司随时让我回去。",
+    "tone": "mixed",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 1,
+      "reputation_xp": 1
+    },
+    "source_name": "企鹅号",
+    "source_url": "https://news.qq.com/rain/a/2024081512345",
+    "source_date": "2024-08-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0236",
+    "category": "life",
+    "subcategory": "hobby",
+    "title": "周末学潜水，AOW 考过了",
+    "text": "周末去学潜水，终于把 AOW 考过了。下次准备去诗巴丹。",
+    "tone": "accomplished",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 2,
+      "reputation_xp": 2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1067894",
+    "source_date": "2024-07-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0237",
+    "category": "life",
+    "subcategory": "food",
+    "title": "开始学做饭，省钱又健康",
+    "text": "被外卖吃出胃炎后开始学做饭，一周带饭 5 天，省了 1500 还瘦了 3 斤。",
+    "tone": "proud",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 2,
+      "reputation_xp": 2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1056792",
+    "source_date": "2024-06-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0238",
+    "category": "life",
+    "subcategory": "travel",
+    "title": "春节回老家，村里的年轻人都走了",
+    "text": "春节回老家，发现村里的同龄人都去城市了。留下来的是老人和小孩。",
+    "tone": "wistful",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -1,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1045681",
+    "source_date": "2024-02-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0239",
+    "category": "life",
+    "subcategory": "hobby",
+    "title": "开始跑步，从 3 公里到半马",
+    "text": "坚持跑步 1 年，从 3 公里跑到了半马完赛。",
+    "tone": "triumphant",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 3,
+      "fatigue": 2,
+      "reputation_xp": 3
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1034570",
+    "source_date": "2024-05-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0240",
+    "category": "life",
+    "subcategory": "move",
+    "title": "搬家 7 次，租房真累",
+    "text": "在北京 5 年，搬家 7 次。每次都是因为房东不续租。",
+    "tone": "tired",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 2,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1023459",
+    "source_date": "2024-04-15",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0241",
+    "category": "entertainment",
+    "subcategory": "meme",
+    "title": "同事在群里发：我还在改 BUG",
+    "text": "深夜 11 点，同事发了个表情包：我还在改 BUG，但我还有头发。群里一片 +1。",
+    "tone": "humorous",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 0,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1132458",
+    "source_date": "2025-03-25",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0242",
+    "category": "entertainment",
+    "subcategory": "game",
+    "title": "黑神话悟空通关",
+    "text": "终于通关黑神话悟空，83 小时游戏时长。leader 问：你昨晚干嘛了？我：打悟空。",
+    "tone": "accomplished",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 2,
+      "reputation_xp": 2
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1123457",
+    "source_date": "2025-02-18",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0243",
+    "category": "entertainment",
+    "subcategory": "meme",
+    "title": "Stack Overflow 又挂了",
+    "text": "Stack Overflow 503 了 5 分钟，群里程序员集体崩溃。",
+    "tone": "dramatic",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1112350",
+    "source_date": "2025-01-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0244",
+    "category": "entertainment",
+    "subcategory": "show",
+    "title": "三体电视剧版看完了",
+    "text": "一口气看完三体电视剧，叶文洁的扮演者演技炸裂。",
+    "tone": "impressed",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1101239",
+    "source_date": "2024-12-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0245",
+    "category": "entertainment",
+    "subcategory": "game",
+    "title": "原神抽卡歪了",
+    "text": "攒了 3 个月的原石抽卡，歪了。心碎。",
+    "tone": "frustrated",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -3,
+      "fatigue": 1,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1090128",
+    "source_date": "2024-11-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0246",
+    "category": "entertainment",
+    "subcategory": "meme",
+    "title": "公司群里发我不想加班表情包",
+    "text": "群里发了个表情包：我不想加班。leader 回复：那你愿意被优化吗？",
+    "tone": "awkward",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": -2,
+      "fatigue": 0,
+      "reputation_xp": -1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1089017",
+    "source_date": "2024-10-05",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0247",
+    "category": "entertainment",
+    "subcategory": "show",
+    "title": "《凡人歌》看哭",
+    "text": "看完《凡人歌》大结局，那伟丢了工作那一段哭惨了。",
+    "tone": "emotional",
+    "rarity": "uncommon",
+    "trigger": "employed",
+    "effect": {
+      "mental": -1,
+      "fatigue": 0,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1078906",
+    "source_date": "2024-09-02",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0248",
+    "category": "entertainment",
+    "subcategory": "movie",
+    "title": "重看《肖申克的救赎》",
+    "text": "周末重看《肖申克的救赎》，希望是有的，只是要自己挖。",
+    "tone": "uplifted",
+    "rarity": "uncommon",
+    "trigger": "unemployed",
+    "effect": {
+      "mental": 2,
+      "fatigue": 0,
+      "reputation_xp": 1
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1067895",
+    "source_date": "2024-07-12",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0249",
+    "category": "entertainment",
+    "subcategory": "music",
+    "title": "通勤单曲循环《孤勇者》",
+    "text": "地铁里单曲循环陈奕迅的《孤勇者》，孩子都能跟着唱了。",
+    "tone": "warm",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 0,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1056789",
+    "source_date": "2024-06-08",
+    "confidence": "medium"
+  },
+  {
+    "id": "event_0250",
+    "category": "entertainment",
+    "subcategory": "cat_meme",
+    "title": "公司群里猫的表情包刷屏",
+    "text": "同事养了只猫，开始每天在群里发猫的表情包。leader 没说话。",
+    "tone": "playful",
+    "rarity": "common",
+    "trigger": "employed",
+    "effect": {
+      "mental": 1,
+      "fatigue": 0,
+      "reputation_xp": 0
+    },
+    "source_name": "V2EX",
+    "source_url": "https://v2ex.com/t/1045679",
+    "source_date": "2024-04-08",
+    "confidence": "medium"
+  }
+]

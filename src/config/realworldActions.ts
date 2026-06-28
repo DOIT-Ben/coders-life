@@ -1,8 +1,6 @@
-import actionsCsv from '../data/realworld/04_actions.csv?raw';
-import nutritionCsv from '../data/realworld/nutrition_actions.csv?raw';
-import addictionCsv from '../data/realworld/addiction_recovery_actions.csv?raw';
+import actionRows from '../data/realworld/realworld_actions.json';
 import type { ActionConfig, ActionPrimaryCategory, ActionStressLevel, ActionSubcategory, EffectDelta } from '../types/game';
-import { numberFrom, parseCsv, tagsFrom } from './realworldParser';
+import { numberFrom, tagsFrom } from './realworldParser';
 
 interface RealworldActionRow {
   action_id: string;
@@ -94,11 +92,5 @@ function mapRow(row: Record<string, string>): ActionConfig {
   };
 }
 
-const rows = [
-  ...parseCsv(actionsCsv),
-  ...parseCsv(nutritionCsv),
-  ...parseCsv(addictionCsv)
-];
-
-export const REALWORLD_ACTIONS: ActionConfig[] = rows.map(mapRow);
+export const REALWORLD_ACTIONS: ActionConfig[] = (actionRows as Record<string, string>[]).map(mapRow);
 export const REALWORLD_ACTION_COUNT = REALWORLD_ACTIONS.length;
