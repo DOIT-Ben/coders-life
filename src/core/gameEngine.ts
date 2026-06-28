@@ -36,7 +36,22 @@ export function createInitialState(track: CareerTrack = 'frontend', cityTier: Ci
     month: 0,
     age: AGE.start,
     phase: 'seed',
-    world: { aiReplacement: 8, economyCycle: 'neutral', cycleMonth: 0, marketHeat: 60 },
+    world: {
+      aiReplacement: 8,
+      modelCapability: 18,
+      toolAdoption: 16,
+      organizationReadiness: 22,
+      regulationTrust: 45,
+      taskAutomationByRole: {
+        frontend: 42,
+        backend: 28,
+        fullstack: 34,
+        ai_product: 20
+      },
+      economyCycle: 'neutral',
+      cycleMonth: 0,
+      marketHeat: 60
+    },
     stats: {
       techXp: skillXp.techXp,
       aiXp: skillXp.aiXp,

@@ -3,7 +3,7 @@ export type ID = string;
 export type CityTier = 'tier1' | 'tier2' | 'tier3';
 export type EconomyCycle = 'boom' | 'neutral' | 'recession' | 'crisis';
 export type EmploymentStatus = 'student' | 'jobless' | 'employed' | 'freelance' | 'founder' | 'retired';
-export type CompanyType = 'none' | 'startup' | 'private' | 'bigtech' | 'foreign';
+export type CompanyType = 'none' | 'startup' | 'private' | 'bigtech' | 'foreign' | 'traditional_enterprise' | 'outsourcing' | 'public_sector';
 export type CareerTrack = 'frontend' | 'backend' | 'fullstack' | 'ai_product';
 export type LifePhaseId = 'seed' | 'growth' | 'crisis' | 'choice' | 'after45';
 export type LogType = 'info' | 'good' | 'warn' | 'bad' | 'event' | 'unlock' | 'ending';
@@ -41,6 +41,11 @@ export type ActionStressLevel = 0 | 1 | 2 | 3;
 
 export interface WorldState {
   aiReplacement: number;
+  modelCapability: number;
+  toolAdoption: number;
+  organizationReadiness: number;
+  regulationTrust: number;
+  taskAutomationByRole: Record<string, number>;
   economyCycle: EconomyCycle;
   cycleMonth: number;
   marketHeat: number;

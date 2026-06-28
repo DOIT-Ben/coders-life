@@ -22,6 +22,19 @@ const DEFAULT_HIDDEN = {
   lastWeeklyReviewMonth: 0
 };
 
+const DEFAULT_WORLD = {
+  modelCapability: 18,
+  toolAdoption: 16,
+  organizationReadiness: 22,
+  regulationTrust: 45,
+  taskAutomationByRole: {
+    frontend: 42,
+    backend: 28,
+    fullstack: 34,
+    ai_product: 20
+  }
+};
+
 function withDefaults(state: GameState): GameState {
   const careerDefaults = {
     pendingApplications: 0,
@@ -31,6 +44,7 @@ function withDefaults(state: GameState): GameState {
   };
   return {
     ...state,
+    world: { ...DEFAULT_WORLD, ...(state.world ?? {}), taskAutomationByRole: { ...DEFAULT_WORLD.taskAutomationByRole, ...(state.world?.taskAutomationByRole ?? {}) } },
     career: { ...careerDefaults, ...(state.career ?? {}) },
     hidden: { ...DEFAULT_HIDDEN, ...(state.hidden ?? {}) },
     flags: state.flags ?? {},

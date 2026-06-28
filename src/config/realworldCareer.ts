@@ -69,6 +69,26 @@ function mapCareerRole(row: CareerRoleRow): CareerRoleConfig {
 
 export const CAREER_ROLES: CareerRoleConfig[] = (rows as CareerRoleRow[]).map(mapCareerRole);
 
+export interface CareerRoute {
+  id: string;
+  label: string;
+  transitionCost: number;
+  requiredCapital: number;
+  aiExposure: number;
+}
+
+export const CAREER_ROUTES: CareerRoute[] = [
+  { id: 'testing', label: '测试工程', transitionCost: 18, requiredCapital: 12, aiExposure: 55 },
+  { id: 'data_engineering', label: '数据工程', transitionCost: 34, requiredCapital: 30, aiExposure: 45 },
+  { id: 'security', label: '安全工程', transitionCost: 42, requiredCapital: 38, aiExposure: 28 },
+  { id: 'mobile', label: '移动端', transitionCost: 28, requiredCapital: 24, aiExposure: 38 },
+  { id: 'embedded', label: '嵌入式', transitionCost: 48, requiredCapital: 42, aiExposure: 22 },
+  { id: 'sre', label: 'SRE/平台工程', transitionCost: 36, requiredCapital: 34, aiExposure: 32 },
+  { id: 'technical_management', label: '技术管理', transitionCost: 44, requiredCapital: 55, aiExposure: 25 },
+  { id: 'industry_expert', label: '行业专家', transitionCost: 40, requiredCapital: 50, aiExposure: 18 },
+  { id: 'indie_developer', label: '独立开发者', transitionCost: 52, requiredCapital: 45, aiExposure: 42 }
+];
+
 export function findCareerRole(input: {
   track: string;
   cityTier?: string;

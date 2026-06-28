@@ -1,4 +1,5 @@
 import rows from '../data/realworld/realworld_company_types.json';
+import type { CompanyType } from '../types/game';
 import { numberFrom } from './realworldParser';
 
 export interface CompanyArchetypeConfig {
@@ -52,6 +53,87 @@ function mapCompany(row: CompanyArchetypeRow): CompanyArchetypeConfig {
 }
 
 export const COMPANY_ARCHETYPES: CompanyArchetypeConfig[] = (rows as CompanyArchetypeRow[]).map(mapCompany);
+
+export interface CompanyProfile {
+  salaryCoef: number;
+  overtimeRisk: number;
+  layoffRisk: number;
+  promotionSpeed: number;
+  learningTime: number;
+  psychologicalSafety: number;
+  aiAdoption: number;
+}
+
+export const COMPANY_PROFILES: Record<Exclude<CompanyType, 'none'>, CompanyProfile> = {
+  startup: {
+    salaryCoef: 0.7,
+    overtimeRisk: 95,
+    layoffRisk: 80,
+    promotionSpeed: 75,
+    learningTime: 1.5,
+    psychologicalSafety: 35,
+    aiAdoption: 55
+  },
+  private: {
+    salaryCoef: 0.8,
+    overtimeRisk: 75,
+    layoffRisk: 65,
+    promotionSpeed: 50,
+    learningTime: 1.3,
+    psychologicalSafety: 45,
+    aiAdoption: 55
+  },
+  bigtech: {
+    salaryCoef: 1.45,
+    overtimeRisk: 90,
+    layoffRisk: 70,
+    promotionSpeed: 30,
+    learningTime: 1.4,
+    psychologicalSafety: 38,
+    aiAdoption: 85
+  },
+  foreign: {
+    salaryCoef: 1.3,
+    overtimeRisk: 15,
+    layoffRisk: 10,
+    promotionSpeed: 55,
+    learningTime: 1.15,
+    psychologicalSafety: 82,
+    aiAdoption: 35
+  },
+  traditional_enterprise: {
+    salaryCoef: 0.85,
+    overtimeRisk: 45,
+    layoffRisk: 25,
+    promotionSpeed: 25,
+    learningTime: 0.85,
+    psychologicalSafety: 58,
+    aiAdoption: 32
+  },
+  outsourcing: {
+    salaryCoef: 0.65,
+    overtimeRisk: 85,
+    layoffRisk: 75,
+    promotionSpeed: 15,
+    learningTime: 0.5,
+    psychologicalSafety: 30,
+    aiAdoption: 80
+  },
+  public_sector: {
+    salaryCoef: 0.85,
+    overtimeRisk: 30,
+    layoffRisk: 5,
+    promotionSpeed: 15,
+    learningTime: 0.75,
+    psychologicalSafety: 70,
+    aiAdoption: 25
+  }
+};
+
+export function getCompanyProfile(companyType: CompanyType): CompanyProfile {
+  if (companyType === 'none') return COMPANY_PROFILES.private;
+  return COMPANY_PROFILES[companyType];
+}
 
 export function findCompanyArchetype(companyType: string): CompanyArchetypeConfig | undefined {
   return COMPANY_ARCHETYPES.find(item => item.companyType === companyType);

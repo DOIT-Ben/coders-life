@@ -8,6 +8,9 @@ import { settleEconomy } from '../systems/economySystem';
 import { settleLifeStagePressure } from '../systems/lifePressureSystem';
 import { settleRelationshipDebt } from '../systems/relationshipSystem';
 import { getAction } from '../config/actions';
+import { deriveRoleAiPressure, settleLaborMarket } from '../systems/laborMarketSystem';
+import { COMPANY_PROFILES } from '../config/realworldCompanies';
+import { CAREER_ROUTES } from '../config/realworldCareer';
 
 const seed = 24680;
 
@@ -423,5 +426,86 @@ describe('real-world action consequences', () => {
     expect(inventory?.reason).toContain('耳机');
     expect(household?.available).toBe(false);
     expect(household?.reason).toContain('家庭');
+  });
+});
+
+describe('phase 3 world career ai and age model', () => {
+  it('derives AI pressure by role, company type, and organization readiness', () => {
+    const frontend = createInitialState('frontend', 'tier2', seed);
+    frontend.world.modelCapability = 80;
+    frontend.world.toolAdoption = 75;
+    frontend.world.organizationReadiness = 80;
+    frontend.career.companyType = 'bigtech';
+
+    const backend = createInitialState('backend', 'tier2', seed);
+    backend.world.modelCapability = 80;
+    backend.world.toolAdoption = 75;
+    backend.world.organizationReadiness = 20;
+    backend.career.companyType = 'foreign';
+
+    const frontendPressure = deriveRoleAiPressure(frontend);
+    const backendPressure = deriveRoleAiPressure(backend);
+
+    expect(frontendPressure).toBeGreaterThan(backendPressure);
+    expect(frontendPressure).not.toBe(frontend.world.aiReplacement);
+  });
+
+  it('does not directly reduce skill or employability just because age increased', () => {
+    const state = createInitialState('backend', 'tier2', seed);
+    state.age = 45;
+    state.careerProfile.skillFreshness = 72;
+    state.careerProfile.careerCapital = 82;
+    state.careerProfile.employability = 70;
+    state.socialProfile.networkStrength = 74;
+    state.world.economyCycle = 'neutral';
+
+    const next = settleLaborMarket(state);
+
+    expect(next.stats.techXp).toBe(state.stats.techXp);
+    expect(next.careerProfile.employability).toBeGreaterThanOrEqual(state.careerProfile.employability);
+    expect(next.laborMarket.ageFriction).toBeLessThan(20);
+  });
+
+  it('applies distinct company profile effects for startup big tech foreign enterprise outsourcing and public sector', () => {
+    expect(COMPANY_PROFILES.startup.overtimeRisk).toBeGreaterThan(COMPANY_PROFILES.foreign.overtimeRisk);
+    expect(COMPANY_PROFILES.bigtech.salaryCoef).toBeGreaterThan(COMPANY_PROFILES.outsourcing.salaryCoef);
+    expect(COMPANY_PROFILES.public_sector.layoffRisk).toBeLessThan(COMPANY_PROFILES.startup.layoffRisk);
+    expect(COMPANY_PROFILES.traditional_enterprise.psychologicalSafety).toBeGreaterThan(0);
+    expect(COMPANY_PROFILES.foreign.learningTime).toBeGreaterThan(COMPANY_PROFILES.outsourcing.learningTime);
+  });
+
+  it('uses company profile modifiers in labor market risk calculations', () => {
+    const startup = createInitialState('frontend', 'tier1', seed);
+    startup.career.companyType = 'startup';
+    startup.career.employmentStatus = 'employed';
+
+    const foreign = createInitialState('frontend', 'tier1', seed);
+    foreign.career.companyType = 'foreign';
+    foreign.career.employmentStatus = 'employed';
+
+    const startupNext = settleLaborMarket(startup);
+    const foreignNext = settleLaborMarket(foreign);
+
+    expect(startupNext.careerProfile.layoffRisk).toBeGreaterThan(foreignNext.careerProfile.layoffRisk);
+    expect(startupNext.lifePressure.timeScarcity).toBeGreaterThan(foreignNext.lifePressure.timeScarcity);
+    expect(foreignNext.laborMarket.hiringStrictness).toBeLessThan(startupNext.laborMarket.hiringStrictness);
+  });
+
+  it('defines expanded career routes with transition costs', () => {
+    expect(CAREER_ROUTES.map(route => route.id)).toEqual(expect.arrayContaining([
+      'testing',
+      'data_engineering',
+      'security',
+      'mobile',
+      'embedded',
+      'sre',
+      'technical_management',
+      'industry_expert',
+      'indie_developer'
+    ]));
+    CAREER_ROUTES.forEach(route => {
+      expect(route.transitionCost).toBeGreaterThan(0);
+      expect(route.requiredCapital).toBeGreaterThanOrEqual(0);
+    });
   });
 });
