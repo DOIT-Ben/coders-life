@@ -1,4 +1,12 @@
 import type { GameState } from '../types/game';
+import {
+  DEFAULT_CAREER_PROFILE,
+  DEFAULT_FINANCE_STATE,
+  DEFAULT_HEALTH_PROFILE,
+  DEFAULT_LABOR_MARKET,
+  DEFAULT_LIFE_PRESSURE,
+  DEFAULT_SOCIAL_PROFILE
+} from '../core/realworldDefaults';
 
 const SAVE_KEY = 'programmer_survival_v6_save';
 const DEFAULT_HIDDEN = {
@@ -15,6 +23,12 @@ function withDefaults(state: GameState): GameState {
     ...state,
     hidden: { ...DEFAULT_HIDDEN, ...(state.hidden ?? {}) },
     flags: state.flags ?? {},
+    finance: { ...DEFAULT_FINANCE_STATE, ...(state.finance ?? {}) },
+    healthProfile: { ...DEFAULT_HEALTH_PROFILE, ...(state.healthProfile ?? {}) },
+    careerProfile: { ...DEFAULT_CAREER_PROFILE, ...(state.careerProfile ?? {}) },
+    socialProfile: { ...DEFAULT_SOCIAL_PROFILE, ...(state.socialProfile ?? {}) },
+    laborMarket: { ...DEFAULT_LABOR_MARKET, ...(state.laborMarket ?? {}) },
+    lifePressure: { ...DEFAULT_LIFE_PRESSURE, ...(state.lifePressure ?? {}) },
     cooldowns: state.cooldowns ?? {},
     inventory: state.inventory ?? {},
     unlockedAchievements: state.unlockedAchievements ?? [],

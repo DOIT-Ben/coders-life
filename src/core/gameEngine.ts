@@ -4,6 +4,14 @@ import { ACTIONS, getAction } from '../config/actions';
 import { getPhase, getAge, applyDelta } from './formulas';
 import { settleMonth } from './monthlyLoop';
 import { createActionHistoryEntry, resolveActionEffect } from '../systems/actionRuleSystem';
+import {
+  DEFAULT_CAREER_PROFILE,
+  DEFAULT_FINANCE_STATE,
+  DEFAULT_HEALTH_PROFILE,
+  DEFAULT_LABOR_MARKET,
+  DEFAULT_LIFE_PRESSURE,
+  DEFAULT_SOCIAL_PROFILE
+} from './realworldDefaults';
 
 export function createInitialState(track: CareerTrack = 'frontend', cityTier: CityTier = 'tier2', seed = Date.now() % 1000000): GameState {
   const initial: GameState = {
@@ -37,6 +45,12 @@ export function createInitialState(track: CareerTrack = 'frontend', cityTier: Ci
       offerAttempts: 0,
       promotionScore: 0
     },
+    finance: { ...DEFAULT_FINANCE_STATE },
+    healthProfile: { ...DEFAULT_HEALTH_PROFILE },
+    careerProfile: { ...DEFAULT_CAREER_PROFILE },
+    socialProfile: { ...DEFAULT_SOCIAL_PROFILE },
+    laborMarket: { ...DEFAULT_LABOR_MARKET },
+    lifePressure: { ...DEFAULT_LIFE_PRESSURE },
     flags: {},
     cooldowns: {},
     inventory: {},

@@ -72,6 +72,56 @@ export interface CareerState {
   promotionScore: number;
 }
 
+export interface FinanceState {
+  monthlyIncome: number;
+  monthlyFixedCost: number;
+  emergencyFundMonths: number;
+  debt: number;
+  cashflowStress: number;
+}
+
+export interface HealthProfile {
+  sleepDebt: number;
+  nutritionQuality: number;
+  exerciseHabit: number;
+  chronicStress: number;
+  recoveryQuality: number;
+  healthDebt: number;
+}
+
+export interface CareerProfile {
+  employability: number;
+  aiLeverage: number;
+  deliveryReliability: number;
+  promotionReadiness: number;
+  layoffRisk: number;
+  careerCapital: number;
+}
+
+export interface SocialProfile {
+  familySupport: number;
+  friendSupport: number;
+  networkStrength: number;
+  relationshipDebt: number;
+  safetyNet: number;
+}
+
+export interface LaborMarketState {
+  demandIndex: number;
+  aiDisruption: number;
+  hiringStrictness: number;
+  layoffPressure: number;
+  freelanceDemand: number;
+}
+
+export interface LifePressureState {
+  agePressure: number;
+  familyResponsibility: number;
+  housingPressure: number;
+  comparisonPressure: number;
+  timeScarcity: number;
+}
+
 export interface GameLog {
   id: string;
   month: number;
@@ -116,6 +166,12 @@ export interface GameState {
   world: WorldState;
   stats: PlayerStats;
   career: CareerState;
+  finance: FinanceState;
+  healthProfile: HealthProfile;
+  careerProfile: CareerProfile;
+  socialProfile: SocialProfile;
+  laborMarket: LaborMarketState;
+  lifePressure: LifePressureState;
   flags: Record<string, boolean | number | string>;
   cooldowns: Record<string, number>;
   inventory: Record<string, number>;
