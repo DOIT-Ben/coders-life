@@ -3,6 +3,7 @@ import { createInitialState } from '../core/gameEngine';
 import { eventIntensity, getMonthlyEventCandidates } from '../systems/eventSystem';
 import { checkEnding } from '../systems/endingSystem';
 import { deriveBurnoutRisk, deriveCareerStability, deriveEmployability, deriveHealthDebt, deriveLifeSatisfaction } from '../systems/derivedStateSystem';
+import { ENDINGS } from '../config/endings';
 
 const seed = 13579;
 
@@ -198,5 +199,16 @@ describe('state-driven real-world events and endings', () => {
 
     expect(next.gameOver).toBe(true);
     expect(next.logs[next.logs.length - 1]?.text).toContain('价值匹配');
+  });
+
+  it('keeps ending copy respectful for crisis illness unemployment and AI paths', () => {
+    const blockedTerms = ['崩溃', '崩塌', '长期徒刑', '软弱', '被AI替代'];
+
+    ENDINGS.forEach(ending => {
+      const text = typeof ending.text === 'function' ? ending.text(createInitialState('frontend', 'tier2', seed)) : ending.text;
+      blockedTerms.forEach(term => {
+        expect(`${ending.title} ${text}`).not.toContain(term);
+      });
+    });
   });
 });

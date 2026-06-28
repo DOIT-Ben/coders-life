@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "simulate": "tsx scripts/simulate.ts"
+    "simulate": "tsx scripts/simulate.ts",
+    "simulate:batch": "tsx scripts/simulateBatch.ts"
   },
   "dependencies": {
     "react": "19.2.7",

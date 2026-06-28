@@ -39,6 +39,12 @@ function conditionFor(id: string): EndingConfig['condition'] {
     state.crisis.severeIllness.active &&
     state.month - (state.crisis.severeIllness.startedMonth ?? state.month) >= 6;
   if (id === 'ai_left_behind') return state => state.age >= 40 && state.world.toolAdoption >= 65 && state.careerProfile.aiLeverage <= 25 && state.careerProfile.employability <= 25;
+  if (id === 'stuck_indie') return state => state.career.employmentStatus === 'freelance' && state.month >= 24 && state.stats.passiveIncomeMonthly <= 5000 && state.stats.burnout >= 70;
+  if (id === 'depression_chronic') return state =>
+    state.stats.mental <= 5 &&
+    state.crisis.mentalHealth.active &&
+    state.month - (state.crisis.mentalHealth.startedMonth ?? state.month) >= 6;
+  if (id === 'lost_purpose') return state => state.age >= 35 && state.stats.identity <= 10;
   if (id === 'debt_trap') return state => state.stats.cash <= -100000;
   return state => state.gameOver && false;
 }
@@ -47,16 +53,36 @@ export const REALWORLD_FAIL_ENDINGS: EndingConfig[] = (failEndingRows as Record<
   const typed = row as unknown as FailEndingRow;
   return withEndingEvidence({
     id: typed.ending_id,
-    title: typed.title,
+    title: respectfulTitle(typed.ending_id, typed.title),
     category: typed.category,
     condition: conditionFor(typed.ending_id),
-    text: `${typed.ending_text} ${typed.value_message}`
+    text: respectfulText(typed.ending_id, `${typed.ending_text} ${typed.value_message}`)
   }, {
     sourceLevel: 'case_study',
     confidence: 'medium',
     source: typed.real_world_reference
   });
 });
+
+function respectfulTitle(id: string, title: string): string {
+  const overrides: Record<string, string> = {
+    burnout_collapse: '燃尽恢复失败',
+    health_shutdown: '健康危机未恢复',
+    depression_chronic: '心理健康长期低谷'
+  };
+  return overrides[id] ?? title;
+}
+
+function respectfulText(id: string, text: string): string {
+  const overrides: Record<string, string> = {
+    burnout_collapse: '你在职业压力最重的阶段进了医院，医生建议至少休三个月。那一刻你意识到，长期过载不是个人勋章，而是需要边界、恢复和组织支持共同处理的风险。',
+    long_term_unemployed: '你投了很多岗位，回复从“不合适”变成沉默。最难的不只是现金流，而是身份感被反复消耗。长期待业需要重建节奏、作品、支持网络和市场入口。',
+    health_shutdown: '你在医院走廊里等体检报告，开始重新理解恢复、睡眠和医疗支持的优先级。健康风险不是最后一刻才出现，它需要被更早纳入计划。',
+    depression_chronic: '你按时吃药，定期复查，也在学习和低能量状态长期相处。抑郁不是简单的心情波动，而是需要医疗、支持系统和生活节奏一起管理的慢性议题。',
+    ai_left_behind: '组织的工具链变化很快，你需要把经验迁移到 AI 协作、领域判断和责任边界上。问题不是谁消失，而是任务结构被重新分配。'
+  };
+  return overrides[id] ?? text;
+}
 
 const STATE_DRIVEN_FAIL_ENDING_DEFINITIONS = [
   {

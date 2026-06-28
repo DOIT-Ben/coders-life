@@ -1,0 +1,7 @@
+{
+  "maxBankruptcyRate": 0.85,
+  "maxBurnoutRate": 0.7,
+  "maxHealthCrisisRate": 0.7,
+  "maxRepeatedActionDominance": 0.95,
+  "minDeterministicReplayRate": 1
+}

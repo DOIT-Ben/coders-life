@@ -1,24 +1,10 @@
-import { createInitialState, applyAction, getAvailableActions } from '../src/core/gameEngine';
-import type { GameState } from '../src/types/game';
-import { resolvePendingEventChoiceForSimulation } from '../src/systems/autoChoiceSystem';
-
-function chooseAction(state: GameState): string {
-  const available = getAvailableActions(state).filter(a => a.available);
-  if (state.stats.mental < 30) return available.find(a => a.id === 'therapy')?.id ?? 'rest';
-  if (state.stats.health < 35) return available.find(a => a.id === 'exercise')?.id ?? 'rest';
-  if (state.career.employmentStatus !== 'employed') {
-    return available.find(a => a.id === 'job_hunt')?.id
-      ?? available.find(a => a.id === 'project_practice')?.id
-      ?? available.find(a => a.id === 'system_learning')?.id
-      ?? available[0].id;
-  }
-  return available.find(a => a.id === 'regular_work')?.id ?? available[0].id;
-}
+import { createInitialState, applyAction } from '../src/core/gameEngine';
+import { chooseActionForStrategy, resolvePendingEventChoiceForSimulation } from '../src/systems/autoChoiceSystem';
 
 let state = createInitialState('frontend', 'tier2', 20260622);
 while (!state.gameOver && state.month < 280) {
   state = resolvePendingEventChoiceForSimulation(state);
-  state = applyAction(state, chooseAction(state));
+  state = applyAction(state, chooseActionForStrategy(state, 'stable_cashflow'));
 }
 
 console.log(JSON.stringify({
