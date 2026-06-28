@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
 import appSource from '../App.tsx?raw';
+
+const appCss = readFileSync(new URL('../styles/app.css', import.meta.url), 'utf8');
 
 describe('v1 frontend contract', () => {
   it('keeps v2 implementation labels out of the visible v1 shell', () => {
@@ -39,22 +42,37 @@ describe('v1 frontend contract', () => {
   });
 
   it('shows a compact real-world pressure summary without implementation jargon', () => {
-    ['现实压力', '现金流', '健康债', '职业风险', '关系支撑', '市场压力'].forEach(label => {
+    ['现实压力', '现金流压力', '健康债', '职业风险', '关系债', '市场压力'].forEach(label => {
       expect(appSource).toContain(label);
     });
     ['应急垫', '恢复质量', '可雇佣', '关系债'].forEach(label => {
       expect(appSource).toContain(label);
     });
     expect(appSource).toContain('PressureSummary');
+    expect(appSource).toContain('pressure-bar');
+    expect(appSource).toContain('pressure-delta');
+    expect(appSource).toContain('lastPressure');
     expect(appSource).not.toContain('realworld kernel');
     expect(appSource).not.toContain('V2底层');
   });
 
-  it('shows action tradeoffs inline using benefit and risk labels', () => {
-    expect(appSource).toContain('action-tradeoff');
-    expect(appSource).toContain('收益：');
-    expect(appSource).toContain('代价：');
+  it('shows action cards as separated immediate debt and opportunity rows', () => {
+    ['即时', '隐债', '机会'].forEach(label => {
+      expect(appSource).toContain(label);
+    });
+    expect(appSource).toContain('action-effects');
+    expect(appSource).toContain('effect-row immediate');
+    expect(appSource).toContain('effect-row debt');
+    expect(appSource).toContain('effect-row opportunity');
     expect(appSource).toContain('benefitLabel');
     expect(appSource).toContain('riskLabel');
+  });
+
+  it('keeps dense action cards readable instead of compressing text together', () => {
+    expect(appCss).not.toContain('min-height: 84px');
+    expect(appCss).toContain('align-items: stretch');
+    expect(appCss).toContain('justify-content: flex-start');
+    expect(appCss).toContain('.action-effects');
+    expect(appCss).toContain('grid-template-columns: 1fr;');
   });
 });

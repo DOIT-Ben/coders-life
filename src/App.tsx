@@ -10,6 +10,14 @@ import { applyDelta } from './core/formulas';
 import { addLog } from './core/gameEngine';
 import './styles/app.css';
 
+type PressureSnapshot = {
+  cashflow: number;
+  healthDebt: number;
+  layoffRisk: number;
+  relationshipDebt: number;
+  marketPressure: number;
+};
+
 const v1CareerCopy: Record<CareerTrack, {
   role: string;
   name: string;
@@ -263,6 +271,8 @@ function GameScreen({
   setSaveStatus: (status: string) => void;
 }) {
   const [selectedActionCategory, setSelectedActionCategory] = useState<ActionCategoryId>('entertainment');
+  const [lastPressure, setLastPressure] = useState<PressureSnapshot>(() => createPressureSnapshot(state));
+  const [pressureDelta, setPressureDelta] = useState<PressureSnapshot | undefined>();
   const visible = getVisibleStats(state);
   const actions = getAvailableActions(state);
   const actionById = new Map(actions.map(action => [action.id, action]));
@@ -273,6 +283,18 @@ function GameScreen({
   const career = v1CareerCopy[state.career.track] ?? { name: getCareer(state.career.track).name };
   const endingText = state.endingId ? state.logs[state.logs.length - 1]?.text : undefined;
   const day = state.month * 30;
+
+  useEffect(() => {
+    const nextPressure = createPressureSnapshot(state);
+    setPressureDelta({
+      cashflow: nextPressure.cashflow - lastPressure.cashflow,
+      healthDebt: nextPressure.healthDebt - lastPressure.healthDebt,
+      layoffRisk: nextPressure.layoffRisk - lastPressure.layoffRisk,
+      relationshipDebt: nextPressure.relationshipDebt - lastPressure.relationshipDebt,
+      marketPressure: nextPressure.marketPressure - lastPressure.marketPressure
+    });
+    setLastPressure(nextPressure);
+  }, [state.month]);
 
   function handleSave() {
     try {
@@ -310,7 +332,7 @@ function GameScreen({
         <StatCard label="存款 (万)" value={Number(cashWan.toFixed(1))} max={100} color="var(--amber)" sub={cashWan >= 100 ? '已达 100万应急垫' : `目标：100万应急垫`} />
         <StatCard label="AI熟练度" value={visible.ai} color="var(--mint)" />
       </div>
-      <PressureSummary state={state} />
+      <PressureSummary state={state} lastPressure={lastPressure} deltas={pressureDelta} />
 
       <div className={visible.mental < 25 ? 'crisis show' : 'crisis'}>⚠ 精神状态危急！继续下去你可能会崩溃...</div>
       {state.gameOver && <div className="crisis show">人生结局：{state.logs[state.logs.length - 1]?.title}。{endingText}</div>}
@@ -358,9 +380,10 @@ function GameScreen({
                     {action?.reason ? <span className="cn">{action.reason}</span> : null}
                   </div>
                   {action ? (
-                    <div className="action-tradeoff">
-                      <span>收益：{action.benefitLabel}</span>
-                      <span>代价：{action.riskLabel}</span>
+                    <div className="action-effects">
+                      <div className="effect-row immediate"><span className="effect-label">即时</span><span className="effect-copy">{slot.summary}</span></div>
+                      <div className="effect-row debt"><span className="effect-label">隐债</span><span className="effect-copy">{action.riskLabel}</span></div>
+                      <div className="effect-row opportunity"><span className="effect-label">机会</span><span className="effect-copy">{action.benefitLabel}</span></div>
                     </div>
                   ) : null}
                 </button>
@@ -375,15 +398,31 @@ function GameScreen({
   );
 }
 
-function PressureSummary({ state }: { state: GameState }) {
-  const support = Math.round(state.socialProfile.safetyNet);
+function createPressureSnapshot(state: GameState): PressureSnapshot {
+  return {
+    cashflow: Math.round(state.finance.cashflowStress),
+    healthDebt: Math.round(state.healthProfile.healthDebt),
+    layoffRisk: Math.round(state.careerProfile.layoffRisk),
+    relationshipDebt: Math.round(state.socialProfile.relationshipDebt),
+    marketPressure: Math.round(state.laborMarket.layoffPressure)
+  };
+}
+
+function pressureTone(value: number) {
+  if (value >= 70) return 'bad';
+  if (value >= 40) return 'warn';
+  return 'good';
+}
+
+function PressureSummary({ state, lastPressure, deltas }: { state: GameState; lastPressure: PressureSnapshot; deltas?: PressureSnapshot }) {
   const runway = Number(state.finance.emergencyFundMonths.toFixed(1));
+  const pressure = createPressureSnapshot(state);
   const pressureItems = [
-    { label: '现金流', value: Math.round(state.finance.cashflowStress), sub: `应急垫 ${runway}月`, tone: state.finance.cashflowStress >= 70 ? 'bad' : state.finance.cashflowStress >= 40 ? 'warn' : 'good' },
-    { label: '健康债', value: Math.round(state.healthProfile.healthDebt), sub: `恢复质量 ${Math.round(state.healthProfile.recoveryQuality)}`, tone: state.healthProfile.healthDebt >= 70 ? 'bad' : state.healthProfile.healthDebt >= 40 ? 'warn' : 'good' },
-    { label: '职业风险', value: Math.round(state.careerProfile.layoffRisk), sub: `可雇佣 ${Math.round(state.careerProfile.employability)}`, tone: state.careerProfile.layoffRisk >= 70 ? 'bad' : state.careerProfile.layoffRisk >= 40 ? 'warn' : 'good' },
-    { label: '关系支撑', value: support, sub: `关系债 ${Math.round(state.socialProfile.relationshipDebt)}`, tone: support <= 25 ? 'bad' : support <= 45 ? 'warn' : 'good' },
-    { label: '市场压力', value: Math.round(state.laborMarket.layoffPressure), sub: `岗位 ${Math.round(state.laborMarket.jobOpenings)}`, tone: state.laborMarket.layoffPressure >= 70 ? 'bad' : state.laborMarket.layoffPressure >= 40 ? 'warn' : 'good' }
+    { key: 'cashflow' as const, icon: '¥', label: '现金流压力', value: pressure.cashflow, sub: `应急垫 ${runway}月`, tone: pressureTone(pressure.cashflow) },
+    { key: 'healthDebt' as const, icon: '+', label: '健康债', value: pressure.healthDebt, sub: `恢复质量 ${Math.round(state.healthProfile.recoveryQuality)}`, tone: pressureTone(pressure.healthDebt) },
+    { key: 'layoffRisk' as const, icon: '!', label: '职业风险', value: pressure.layoffRisk, sub: `可雇佣 ${Math.round(state.careerProfile.employability)}`, tone: pressureTone(pressure.layoffRisk) },
+    { key: 'relationshipDebt' as const, icon: '#', label: '关系债', value: pressure.relationshipDebt, sub: `关系债 ${pressure.relationshipDebt}`, tone: pressureTone(pressure.relationshipDebt) },
+    { key: 'marketPressure' as const, icon: '~', label: '市场压力', value: pressure.marketPressure, sub: `岗位 ${Math.round(state.laborMarket.jobOpenings)}`, tone: pressureTone(pressure.marketPressure) }
   ];
 
   return (
@@ -392,16 +431,30 @@ function PressureSummary({ state }: { state: GameState }) {
       <div className="pressure-grid">
         {pressureItems.map(item => (
           <div className={`pressure-item ${item.tone}`} key={item.label}>
+            <span className="pressure-icon">{item.icon}</span>
             <span className="pressure-copy">
-              <span className="pressure-label">{item.label}</span>
-              <span className="pressure-sub">{item.sub}</span>
+              <span className="pressure-label"><span>{item.label}</span><span className="pressure-sub">{item.sub}</span></span>
+              <span className="pressure-bar"><span style={{ width: `${Math.max(4, Math.min(100, item.value))}%` }} /></span>
             </span>
-            <span className="pressure-value">{item.value}</span>
+            <span className="pressure-metric">
+              <span className="pressure-value">{item.value}</span>
+              <span className={pressureDeltaClass(deltas?.[item.key] ?? item.value - lastPressure[item.key])}>{pressureDeltaText(deltas?.[item.key] ?? item.value - lastPressure[item.key])}</span>
+            </span>
           </div>
         ))}
       </div>
     </div>
   );
+}
+
+function pressureDeltaText(delta: number) {
+  if (Math.abs(delta) <= 3) return '';
+  return `${delta > 0 ? '+' : ''}${delta}${delta > 0 ? ' ↑' : ' ↓'}`;
+}
+
+function pressureDeltaClass(delta: number) {
+  if (Math.abs(delta) <= 3) return 'pressure-delta muted';
+  return delta > 0 ? 'pressure-delta up' : 'pressure-delta down';
 }
 
 function LifeLogV1({ state }: { state: GameState }) {
