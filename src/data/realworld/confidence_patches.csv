@@ -1,0 +1,5 @@
+﻿company_type,field,current_value,suggested_value,confidence,reason
+自由职业,source_url,(empty),https://www.indiehackers.com/,medium,IndieHackers 是独立开发者最大社区，可作为基础来源
+自由职业,confidence,(missing),medium,,原 csv 漏掉 confidence 字段；自由职业数据方差极大，标 medium 较合理
+远程,source_url,(empty),https://eleduck.com/,medium,电鸭社区是国内远程工作最大招聘平台
+创业,confidence,medium,medium,,保持原值；创业公司 5 年存活率 < 3%，数据方差极大

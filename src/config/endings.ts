@@ -1,7 +1,8 @@
 import type { EndingConfig } from '../types/game';
 import { getVisibleStats } from '../core/formulas';
+import { REALWORLD_FAIL_ENDINGS } from './realworldEndings';
 
-export const ENDINGS: EndingConfig[] = [
+export const CORE_ENDINGS: EndingConfig[] = [
   { id: 'bankrupt', title: '提前出局：现金流断裂', category: 'fail', condition: s => s.stats.cash <= 0, text: '存款归零后，选择自由也随之归零。你没有输给技术，而是输给了没有缓冲。' },
   { id: 'burnout', title: '提前出局：燃尽崩溃', category: 'fail', condition: s => s.stats.mental <= 0 || s.stats.burnout >= 100, text: '你证明了自己能扛，但也证明了人不是机器。' },
   { id: 'health_fail', title: '提前出局：身体停机', category: 'fail', condition: s => s.stats.health <= 0, text: '身体替你做了那个你一直不愿意做的决定：停下来。' },
@@ -10,3 +11,5 @@ export const ENDINGS: EndingConfig[] = [
   { id: 'capital_free', title: '资本路结局：财务喘息', category: 'capital', condition: s => s.age >= 45 && s.stats.cash + s.stats.portfolio >= 6000000, text: '你拥有了拒绝一部分生活的能力。但自由之后，仍然要回答意义。' },
   { id: 'find_self', title: '隐藏结局：找回自己', category: 'hidden', condition: s => s.age >= 45 && s.stats.mental >= 60 && s.stats.health >= 60 && getVisibleStats(s).identity >= 70, text: '你没有把人生玩成一场单维竞速。你学会了选择，也保住了自己。' }
 ];
+
+export const ENDINGS: EndingConfig[] = [...REALWORLD_FAIL_ENDINGS, ...CORE_ENDINGS];

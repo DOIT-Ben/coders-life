@@ -1,5 +1,6 @@
 import type { ActionConfig, ActionPrimaryCategory, ActionStressLevel, ActionSubcategory, EffectDelta, GameState } from '../types/game';
 import { getVisibleStats } from '../core/formulas';
+import { REALWORLD_ACTIONS } from './realworldActions';
 
 type ActionGroup = ActionConfig['group'];
 
@@ -25,7 +26,7 @@ function action(input: {
   return { durationMonths: 1, ...input };
 }
 
-export const ACTIONS: ActionConfig[] = [
+export const CORE_ACTIONS: ActionConfig[] = [
   action({
     id: 'system_learning', name: '系统学习', icon: '📘', group: 'learn',
     primaryCategory: 'growth', subcategory: 'foundations', tags: ['learning', 'foundation', 'focus'],
@@ -317,6 +318,11 @@ export const ACTIONS: ActionConfig[] = [
     visibleEffect: { cash: -50000, reputationXp: 20, aiXp: 12, mental: -22, health: -8, burnout: 18, identity: 5, fatigue: 16, boundaryScore: -8 },
     require: s => getVisibleStats(s).tech >= 75 && getVisibleStats(s).ai >= 45 && s.stats.cash >= 500000
   })
+];
+
+export const ACTIONS: ActionConfig[] = [
+  ...CORE_ACTIONS,
+  ...REALWORLD_ACTIONS.filter(realworldAction => !CORE_ACTIONS.some(coreAction => coreAction.id === realworldAction.id))
 ];
 
 export function getAction(id: string) {

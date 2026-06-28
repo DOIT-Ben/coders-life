@@ -1,0 +1,12 @@
+﻿action_id,current_source_name,suggested_source_name,suggested_source_url,confidence,patch_reason
+请补查,经验归纳,中国睡眠研究会 2024 白皮书,https://www.sohu.com/a/767066237_121644338,high,原条目缺来源；中国睡眠研究会是最权威中文睡眠数据
+请补查,综合,WHO 体力活动指南 2020,https://bjsm.bmj.com/content/54/24/1451,high,原条目泛化为'综合'；WHO 指南是直接对应源
+请补查,经验归纳,Stubbs 2018 Lancet Psychiatry,https://pubmed.ncbi.nlm.nih.gov/30122241/,high,运动与抑郁的直接学术支撑
+请补查,综合,APA Stress and Body,https://www.apa.org/topics/stress/body,high,压力对生理的影响有 7 个系统综述
+请补查,经验归纳,Sabia 2021 Nature Communications,https://www.nature.com/articles/s41467-021-22396-w,high,失眠 25 年随访研究；可作为睡眠不足长期效应
+请补查,经验归纳,Cal Newport Deep Work,https://www.calnewport.com/books/deep-work/,medium,Deep Work 是深度工作主题最有影响力的书
+请补查,综合,Zettelkasten Method,https://zettelkasten.de/,medium,卡片笔记法原始网站
+请补查,经验归纳,Google Engineering Practices,https://google.github.io/eng-practices/review/,high,Google Code Review 实践
+请补查,经验归纳,GitHub Copilot Research,https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/,high,GitHub 官方 Copilot 效率研究
+请补查,综合,IndieHackers 独立开发者数据,https://www.indiehackers.com/,medium,独立开发者真实收入分布数据
+请补查,经验归纳,Stack Overflow 2024 Survey,https://survey.stackoverflow.co/2024/,high,全球最权威的开发者调查

@@ -27,6 +27,8 @@ export type ActionSubcategory =
   | 'media_reading'
   | 'body_repair'
   | 'mind_repair'
+  | 'nutrition'
+  | 'addiction_recovery'
   | 'life_ritual'
   | 'outdoor_nature'
   | 'maker_hobby'
@@ -182,7 +184,7 @@ export interface EventConfig {
   chain?: string;
   type: 'daily' | 'triggered' | 'random' | 'major';
   category?: string;
-  source?: 'core' | 'popup_pool';
+  source?: 'core' | 'popup_pool' | 'realworld_data';
   rarity?: PopupRarity;
   kind?: PopupKind;
   weight: number | ((state: GameState) => number);
