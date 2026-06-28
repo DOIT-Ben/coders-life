@@ -4,6 +4,7 @@ import { CITY_COSTS, findCityCost } from '../config/realworldCities';
 import { COMPANY_ARCHETYPES, findCompanyArchetype } from '../config/realworldCompanies';
 import { HEALTH_RULES, findHealthRulesByFactor } from '../config/realworldHealthRules';
 import { LIFE_STAGES, findLifeStage } from '../config/realworldLifeStages';
+import { UNPARSED_REALWORLD_ACTION_REQUIREMENTS } from '../config/realworldActions';
 
 describe('real-world configuration loaders', () => {
   it('loads career role salary bands with lookup helpers', () => {
@@ -76,5 +77,17 @@ describe('real-world configuration loaders', () => {
       confidence: 'high'
     });
     expect(pressureStage?.risks).toContain('35岁');
+  });
+
+  it('keeps unparsed real-world action requirements visible for conversion', () => {
+    expect(UNPARSED_REALWORLD_ACTION_REQUIREMENTS).toEqual(expect.arrayContaining([
+      'GitHub 账号',
+      '有面试机会',
+      '有竞争 offer'
+    ]));
+    expect(UNPARSED_REALWORLD_ACTION_REQUIREMENTS).not.toContain('在职');
+    expect(UNPARSED_REALWORLD_ACTION_REQUIREMENTS).not.toContain('20 万以上本金');
+    expect(UNPARSED_REALWORLD_ACTION_REQUIREMENTS).not.toContain('耳机');
+    expect(UNPARSED_REALWORLD_ACTION_REQUIREMENTS).not.toContain('有家庭');
   });
 });

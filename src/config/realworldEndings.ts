@@ -19,7 +19,13 @@ function conditionFor(id: string): EndingConfig['condition'] {
   if (id === 'skill_obsolete') return state => state.age >= 38 && state.stats.techXp <= 80 && state.stats.aiXp <= 30;
   if (id === 'relationship_bankrupt') return state => state.age >= 35 && state.stats.relation <= 10;
   if (id === 'startup_failure') return state => state.flags.venture_status === 'closed' || (state.age >= 35 && state.stats.cash <= 50000 && state.career.employmentStatus === 'founder');
-  if (id === 'long_term_unemployed') return state => state.career.employmentStatus === 'jobless' && state.career.offerAttempts >= 30 && state.stats.cash <= 100000;
+  if (id === 'long_term_unemployed') {
+    return state =>
+      state.career.employmentStatus === 'jobless' &&
+      state.careerProfile.monthsUnemployed >= 12 &&
+      state.career.totalApplications >= 30 &&
+      state.stats.cash <= 100000;
+  }
   if (id === 'health_shutdown') return state => state.stats.health <= 15;
   if (id === 'ai_left_behind') return state => state.age >= 40 && state.world.aiReplacement >= 65 && state.stats.aiXp <= 25;
   if (id === 'debt_trap') return state => state.stats.cash <= -100000;

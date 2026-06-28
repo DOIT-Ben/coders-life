@@ -106,7 +106,11 @@ export function applyDelta(state: GameState, effect: EffectDelta): GameState {
   if (effect.portfolio) s.portfolio = Math.max(0, s.portfolio + effect.portfolio);
   if (effect.passiveIncomeMonthly) s.passiveIncomeMonthly = Math.max(0, s.passiveIncomeMonthly + effect.passiveIncomeMonthly);
   if (effect.portfolioCount) next.career.portfolioCount += effect.portfolioCount;
-  if (effect.offerAttempts) next.career.offerAttempts += effect.offerAttempts;
+  if (effect.offerAttempts) {
+    next.career.offerAttempts += effect.offerAttempts;
+    next.career.pendingApplications += effect.offerAttempts;
+    if (effect.offerAttempts > 0) next.career.totalApplications += effect.offerAttempts;
+  }
   if (effect.promotionScore) next.career.promotionScore += effect.promotionScore;
   if (effect.monthsInJob) next.career.monthsInJob += effect.monthsInJob;
   if (effect.focus) next.hidden.focus = clamp(next.hidden.focus + effect.focus, 0, 100);

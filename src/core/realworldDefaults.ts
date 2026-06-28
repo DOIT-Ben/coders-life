@@ -3,6 +3,7 @@ import type {
   CareerTrack,
   FinanceState,
   HealthProfile,
+  HouseholdState,
   LaborMarketState,
   LifePressureState,
   SocialProfile
@@ -51,12 +52,18 @@ export const DEFAULT_CAREER_PROFILE: CareerProfile = createDefaultCareerProfile(
 
 export const DEFAULT_SOCIAL_PROFILE: SocialProfile = {
   familySupport: 48,
-  partnerSupport: 34,
+  partnerSupport: 0,
   friendSupport: 42,
   networkStrength: 22,
   loneliness: 28,
   relationshipDebt: 18,
   safetyNet: 34
+};
+
+export const DEFAULT_HOUSEHOLD_STATE: HouseholdState = {
+  hasPartner: false,
+  children: 0,
+  hasParents: true
 };
 
 export const DEFAULT_LABOR_MARKET: LaborMarketState = {

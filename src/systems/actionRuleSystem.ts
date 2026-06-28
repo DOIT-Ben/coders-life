@@ -131,22 +131,22 @@ export function applyRealworldActionEffect(state: GameState, action: ActionConfi
   const effect = mergeRealworldEffect(inferred, action.realworldEffect ?? {});
 
   if (effect.finance) {
-    next.finance = mergeNested(next.finance, effect.finance);
+    next.finance = mergeFinanceState(next.finance, effect.finance);
   }
   if (effect.healthProfile) {
-    next.healthProfile = mergeNested(next.healthProfile, effect.healthProfile);
+    next.healthProfile = mergeScoreState(next.healthProfile, effect.healthProfile);
   }
   if (effect.careerProfile) {
-    next.careerProfile = mergeNested(next.careerProfile, effect.careerProfile);
+    next.careerProfile = mergeScoreState(next.careerProfile, effect.careerProfile);
   }
   if (effect.socialProfile) {
-    next.socialProfile = mergeNested(next.socialProfile, effect.socialProfile);
+    next.socialProfile = mergeScoreState(next.socialProfile, effect.socialProfile);
   }
   if (effect.laborMarket) {
-    next.laborMarket = mergeNested(next.laborMarket, effect.laborMarket);
+    next.laborMarket = mergeScoreState(next.laborMarket, effect.laborMarket);
   }
   if (effect.lifePressure) {
-    next.lifePressure = mergeNested(next.lifePressure, effect.lifePressure);
+    next.lifePressure = mergeLifePressureState(next.lifePressure, effect.lifePressure);
   }
 
   return next;
@@ -274,7 +274,20 @@ function mergeRealworldEffect(base: RealworldEffectDelta, extra: RealworldEffect
   };
 }
 
-function mergeNested<T extends object>(current: T, delta: Partial<T>): T {
+function mergeFinanceState<T extends object>(current: T, delta: Partial<T>): T {
+  const next = { ...current };
+  Object.entries(delta as Record<string, unknown>).forEach(([key, value]) => {
+    if (typeof value !== 'number') return;
+    const currentValue = (next[key as keyof T] as number) ?? 0;
+    const merged = currentValue + value;
+    next[key as keyof T] = (key === 'cashflowStress'
+      ? clamp(merged, 0, 100)
+      : Math.max(0, merged)) as T[keyof T];
+  });
+  return next;
+}
+
+function mergeScoreState<T extends object>(current: T, delta: Partial<T>): T {
   const next = { ...current };
   Object.entries(delta as Record<string, unknown>).forEach(([key, value]) => {
     if (typeof value === 'number') {
@@ -282,4 +295,8 @@ function mergeNested<T extends object>(current: T, delta: Partial<T>): T {
     }
   });
   return next;
+}
+
+function mergeLifePressureState<T extends object>(current: T, delta: Partial<T>): T {
+  return mergeScoreState(current, delta);
 }

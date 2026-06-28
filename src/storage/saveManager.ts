@@ -3,6 +3,7 @@ import {
   DEFAULT_CAREER_PROFILE,
   DEFAULT_FINANCE_STATE,
   DEFAULT_HEALTH_PROFILE,
+  DEFAULT_HOUSEHOLD_STATE,
   DEFAULT_LABOR_MARKET,
   DEFAULT_LIFE_PRESSURE,
   DEFAULT_SOCIAL_PROFILE,
@@ -20,14 +21,22 @@ const DEFAULT_HIDDEN = {
 };
 
 function withDefaults(state: GameState): GameState {
+  const careerDefaults = {
+    pendingApplications: 0,
+    totalApplications: state.career?.offerAttempts ?? 0,
+    totalInterviews: 0,
+    totalOffers: 0
+  };
   return {
     ...state,
+    career: { ...careerDefaults, ...(state.career ?? {}) },
     hidden: { ...DEFAULT_HIDDEN, ...(state.hidden ?? {}) },
     flags: state.flags ?? {},
     finance: { ...DEFAULT_FINANCE_STATE, ...(state.finance ?? {}) },
     healthProfile: { ...DEFAULT_HEALTH_PROFILE, ...(state.healthProfile ?? {}) },
     careerProfile: { ...createDefaultCareerProfile(state.career?.track ?? 'frontend'), ...DEFAULT_CAREER_PROFILE, ...(state.careerProfile ?? {}) },
     socialProfile: { ...DEFAULT_SOCIAL_PROFILE, ...(state.socialProfile ?? {}) },
+    household: { ...DEFAULT_HOUSEHOLD_STATE, ...(state.household ?? {}) },
     laborMarket: { ...DEFAULT_LABOR_MARKET, ...(state.laborMarket ?? {}) },
     lifePressure: { ...DEFAULT_LIFE_PRESSURE, ...(state.lifePressure ?? {}) },
     cooldowns: state.cooldowns ?? {},

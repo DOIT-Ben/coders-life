@@ -8,13 +8,18 @@ export function settleCareerOpportunities(state: GameState): GameState {
   const visible = getVisibleStats(state);
   const rng = monthRng(state.seed, state.month, 'career');
 
-  if (state.career.employmentStatus !== 'employed' && state.career.offerAttempts > 0) {
+  if (state.career.employmentStatus !== 'employed' && state.career.pendingApplications > 0) {
     const chance = Math.min(0.75, 0.10 + visible.tech * 0.006 + visible.ai * 0.002 + state.career.portfolioCount * 0.04 + (state.flags.referral_bonus ? 0.12 : 0));
     if (rng() < chance) {
-      next = applyDelta(next, { setEmploymentStatus: 'employed', setCompanyType: 'private', setJobLevel: 1, setFlag: { had_first_job: true, referral_bonus: false }, offerAttempts: -state.career.offerAttempts });
+      next = applyDelta(next, { setEmploymentStatus: 'employed', setCompanyType: 'private', setJobLevel: 1, setFlag: { had_first_job: true, referral_bonus: false }, offerAttempts: -state.career.pendingApplications });
+      next.career.pendingApplications = 0;
+      next.career.totalInterviews += 1;
+      next.career.totalOffers += 1;
       next = addLog(next, { type: 'good', title: '拿到第一份工作', text: '你终于进入了行业。真正的长期游戏现在才开始。' });
     } else {
       next = applyDelta(next, { offerAttempts: -1, mental: -2 });
+      next.career.pendingApplications = Math.max(0, next.career.pendingApplications);
+      next.career.totalInterviews += rng() < 0.25 ? 1 : 0;
     }
   }
 
@@ -45,7 +50,7 @@ export function settleCareerOpportunities(state: GameState): GameState {
     next.careerProfile.companyArchetype = next.career.companyType;
     next.careerProfile.performance = Math.max(0, next.careerProfile.performance - 1);
     next.careerProfile.monthsUnemployed += 1;
-    next.careerProfile.interviewMomentum = Math.max(0, Math.min(100, next.careerProfile.interviewMomentum + next.career.offerAttempts * 2 - next.laborMarket.hiringStrictness * 0.02));
+    next.careerProfile.interviewMomentum = Math.max(0, Math.min(100, next.careerProfile.interviewMomentum + next.career.pendingApplications * 2 - next.laborMarket.hiringStrictness * 0.02));
     next.careerProfile.skillFreshness = Math.max(0, next.careerProfile.skillFreshness - 0.4);
     next.careerProfile.employability = Math.max(0, Math.min(100, next.careerProfile.employability - next.laborMarket.hiringStrictness * 0.015 + visible.tech * 0.01 + visible.ai * 0.01));
   }

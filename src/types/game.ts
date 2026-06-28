@@ -69,6 +69,10 @@ export interface CareerState {
   cityTier: CityTier;
   portfolioCount: number;
   offerAttempts: number;
+  pendingApplications: number;
+  totalApplications: number;
+  totalInterviews: number;
+  totalOffers: number;
   promotionScore: number;
 }
 
@@ -140,6 +144,12 @@ export interface LifePressureState {
   commutePressure: number;
   comparisonPressure: number;
   timeScarcity: number;
+}
+
+export interface HouseholdState {
+  hasPartner: boolean;
+  children: number;
+  hasParents: boolean;
 }
 
 export interface GameLog {
@@ -250,6 +260,7 @@ export interface GameState {
   healthProfile: HealthProfile;
   careerProfile: CareerProfile;
   socialProfile: SocialProfile;
+  household: HouseholdState;
   laborMarket: LaborMarketState;
   lifePressure: LifePressureState;
   flags: Record<string, boolean | number | string>;
@@ -305,6 +316,15 @@ export interface RealworldEffectDelta {
   lifePressure?: Partial<LifePressureState>;
 }
 
+export interface ActionRequirements {
+  employed?: boolean;
+  minCash?: number;
+  minTech?: number;
+  minAi?: number;
+  inventory?: ID;
+  household?: 'family' | 'partner' | 'child' | 'parent';
+}
+
 export interface ActionConfig {
   id: ID;
   name: string;
@@ -322,6 +342,7 @@ export interface ActionConfig {
   visibleEffect: EffectDelta;
   hiddenEffect?: EffectDelta;
   realworldEffect?: RealworldEffectDelta;
+  requirements?: ActionRequirements;
   cooldownMonths?: number;
   require?: (state: GameState) => boolean;
   disabledReason?: (state: GameState) => string | undefined;

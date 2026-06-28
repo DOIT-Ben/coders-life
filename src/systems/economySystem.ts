@@ -9,7 +9,7 @@ export function settleEconomy(state: GameState): GameState {
   const rng = monthRng(state.seed, state.month, 'portfolio');
   const monthlyPortfolioReturn = state.stats.portfolio > 0 ? Math.round(state.stats.portfolio * ((rng() - 0.46) * 0.035)) : 0;
   return applyDelta(state, {
-    cash: salary + passive - cost + monthlyPortfolioReturn,
+    cash: salary + passive - cost,
     portfolio: monthlyPortfolioReturn
   });
 }

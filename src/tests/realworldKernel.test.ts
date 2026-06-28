@@ -1,8 +1,13 @@
 import { describe, expect, it, vi } from 'vitest';
-import { applyAction, createInitialState } from '../core/gameEngine';
+import { applyAction, createInitialState, getAvailableActions } from '../core/gameEngine';
 import { settleMonth } from '../core/monthlyLoop';
 import { applyDelta } from '../core/formulas';
 import { resolvePendingEventChoiceForSimulation } from '../systems/autoChoiceSystem';
+import { applyRealworldActionEffect } from '../systems/actionRuleSystem';
+import { settleEconomy } from '../systems/economySystem';
+import { settleLifeStagePressure } from '../systems/lifePressureSystem';
+import { settleRelationshipDebt } from '../systems/relationshipSystem';
+import { getAction } from '../config/actions';
 
 const seed = 24680;
 
@@ -268,5 +273,155 @@ describe('real-world action consequences', () => {
     expect(next.careerProfile.deliveryReliability).toBeLessThan(state.careerProfile.deliveryReliability);
     expect(next.careerProfile.layoffRisk).toBeGreaterThan(state.careerProfile.layoffRisk);
     expect(next.socialProfile.relationshipDebt).toBeGreaterThanOrEqual(state.socialProfile.relationshipDebt);
+  });
+
+  it('keeps finance money fields in yuan scale when applying real-world action effects', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    const next = applyRealworldActionEffect(state, getAction('I2001'));
+
+    expect(next.finance.monthlyIncome).toBeGreaterThan(100);
+  });
+
+  it('clamps score-like real-world fields without clamping finance amount fields', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    const next = applyRealworldActionEffect(state, {
+      id: 'test-finance-scale',
+      name: 'test',
+      icon: '',
+      group: 'money',
+      primaryCategory: 'income',
+      subcategory: 'side_income',
+      tags: [],
+      stressLevel: 1,
+      repeatKey: 'test',
+      benefitLabel: '',
+      riskLabel: '',
+      durationMonths: 1,
+      description: '',
+      visibleEffect: {},
+      realworldEffect: {
+        finance: { monthlyIncome: 12000, monthlyFixedCost: 9000, debt: 150000 },
+        careerProfile: { employability: 200 },
+        lifePressure: { timeScarcity: 180 }
+      }
+    });
+
+    expect(next.finance.monthlyIncome).toBe(12000);
+    expect(next.finance.monthlyFixedCost).toBe(14200);
+    expect(next.finance.debt).toBe(150000);
+    expect(next.careerProfile.employability).toBe(100);
+    expect(next.lifePressure.timeScarcity).toBe(100);
+  });
+
+  it('settles portfolio returns into portfolio only, not cash', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.stats.cash = 100000;
+    state.stats.portfolio = 1000000;
+    state.stats.passiveIncomeMonthly = 1200;
+    state.career.employmentStatus = 'jobless';
+    state.finance.monthlyIncome = 0;
+
+    const next = settleEconomy(state);
+    const expectedCashDelta = state.stats.passiveIncomeMonthly - 6500;
+
+    expect(next.stats.cash).toBe(state.stats.cash + expectedCashDelta);
+    expect(next.stats.portfolio).not.toBe(state.stats.portfolio);
+  });
+
+  it('tracks pending and lifetime job-search counters separately', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.stats.techXp = 120;
+    state.career.portfolioCount = 1;
+
+    const next = applyAction(state, 'job_hunt');
+
+    expect(next.career.pendingApplications).toBeGreaterThanOrEqual(0);
+    expect(next.career.totalApplications).toBeGreaterThan(state.career.totalApplications);
+    expect(next.career.totalInterviews).toBeGreaterThanOrEqual(state.career.totalInterviews);
+    expect(next.career.totalOffers).toBeGreaterThanOrEqual(state.career.totalOffers);
+  });
+
+  it('does not trigger long-term unemployment from lifetime applications alone', async () => {
+    const { checkEnding } = await import('../systems/endingSystem');
+    const state = createInitialState('frontend', 'tier1', seed);
+    state.career.employmentStatus = 'jobless';
+    state.career.totalApplications = 50;
+    state.career.pendingApplications = 0;
+    state.careerProfile.monthsUnemployed = 2;
+    state.stats.cash = 50000;
+
+    const next = checkEnding(state);
+
+    expect(next.gameOver).toBe(false);
+  });
+
+  it('can reach long-term unemployment from sustained joblessness and low cash', async () => {
+    const { checkEnding } = await import('../systems/endingSystem');
+    const state = createInitialState('frontend', 'tier1', seed);
+    state.career.employmentStatus = 'jobless';
+    state.career.totalApplications = 45;
+    state.career.pendingApplications = 0;
+    state.careerProfile.monthsUnemployed = 14;
+    state.stats.cash = 20000;
+
+    const next = checkEnding(state);
+
+    expect(next.gameOver).toBe(true);
+    expect(next.endingId).toBe('long_term_unemployed');
+  });
+
+  it('does not create partner support or child-care pressure when household members are absent', () => {
+    const state = createInitialState('frontend', 'tier1', seed);
+    state.age = 36;
+    state.household.hasPartner = false;
+    state.household.children = 0;
+    state.socialProfile.partnerSupport = 34;
+    state.lifePressure.familyResponsibility = 70;
+    state.lifePressure.childCarePressure = 0;
+
+    const pressure = settleLifeStagePressure(state);
+    const relationship = settleRelationshipDebt(pressure);
+
+    expect(pressure.lifePressure.childCarePressure).toBe(0);
+    expect(relationship.socialProfile.safetyNet).toBeLessThanOrEqual(
+      (state.socialProfile.familySupport + state.socialProfile.friendSupport + state.socialProfile.networkStrength) / 3
+    );
+  });
+
+  it('uses structured requirements to disable real-world actions', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.stats.cash = 1000;
+    state.stats.techXp = 0;
+    state.stats.aiXp = 0;
+    state.career.employmentStatus = 'jobless';
+    state.household.hasPartner = false;
+    state.household.children = 0;
+    state.household.hasParents = false;
+    state.inventory = {};
+    const aiState = structuredClone(state);
+    aiState.stats.cash = 500000;
+    aiState.stats.techXp = 1000;
+
+    const actions = getAvailableActions(state);
+    const aiActions = getAvailableActions(aiState);
+    const employedOnly = actions.find(action => action.id === 'W2001');
+    const minCash = actions.find(action => action.id === 'I2201');
+    const minTech = actions.find(action => action.id === 'G2101');
+    const minAi = aiActions.find(action => action.id === 'I2203');
+    const inventory = actions.find(action => action.id === 'R2005');
+    const household = actions.find(action => action.id === 'RS2101');
+
+    expect(employedOnly?.available).toBe(false);
+    expect(employedOnly?.reason).toContain('在职');
+    expect(minCash?.available).toBe(false);
+    expect(minCash?.reason).toContain('现金');
+    expect(minTech?.available).toBe(false);
+    expect(minTech?.reason).toContain('技术');
+    expect(minAi?.available).toBe(false);
+    expect(minAi?.reason).toContain('AI');
+    expect(inventory?.available).toBe(false);
+    expect(inventory?.reason).toContain('耳机');
+    expect(household?.available).toBe(false);
+    expect(household?.reason).toContain('家庭');
   });
 });

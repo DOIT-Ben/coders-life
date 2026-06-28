@@ -7,8 +7,12 @@ export function settleLifeStagePressure(state: GameState): GameState {
   const housingBase = state.career.cityTier === 'tier1' ? 54 : state.career.cityTier === 'tier2' ? 38 : 24;
   const familyResponsibility = clamp(state.lifePressure.familyResponsibility + (state.age >= 30 ? 0.35 : 0.08), 0, 100);
   const housingPressure = clamp(housingBase + Math.max(0, 3 - state.finance.emergencyFundMonths) * 4, 0, 100);
-  const parentCarePressure = clamp(state.lifePressure.parentCarePressure + (state.age >= 35 ? 0.18 : state.age >= 30 ? 0.06 : 0.01), 0, 100);
-  const childCarePressure = clamp(state.lifePressure.childCarePressure + (familyResponsibility > 45 && state.age >= 30 ? 0.12 : 0), 0, 100);
+  const parentCarePressure = state.household.hasParents
+    ? clamp(state.lifePressure.parentCarePressure + (state.age >= 35 ? 0.18 : state.age >= 30 ? 0.06 : 0.01), 0, 100)
+    : 0;
+  const childCarePressure = state.household.children > 0
+    ? clamp(state.lifePressure.childCarePressure + (familyResponsibility > 45 && state.age >= 30 ? 0.12 * state.household.children : 0), 0, 100)
+    : 0;
   const commutePressure = clamp(state.lifePressure.commutePressure + (state.career.cityTier === 'tier1' ? 0.08 : -0.03), 0, 100);
   const stagePressure = clamp((agePressureTarget + familyResponsibility + housingPressure + parentCarePressure + childCarePressure + commutePressure) / 6, 0, 100);
   const supportBuffer = (state.socialProfile.familySupport + state.socialProfile.friendSupport + state.socialProfile.safetyNet) / 9;
