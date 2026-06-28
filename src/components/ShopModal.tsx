@@ -1,7 +1,6 @@
 import type { GameState } from '../types/game';
 import { SHOP_ITEMS } from '../config/shop';
-import { applyDelta } from '../core/formulas';
-import { addLog } from '../core/logs';
+import { buyShopItem } from '../systems/shopSystem';
 
 export function ShopModal({ state, setState }: { state: GameState; setState: (s: GameState) => void }) {
   function buy(id: string) {
@@ -9,10 +8,7 @@ export function ShopModal({ state, setState }: { state: GameState; setState: (s:
     const owned = state.inventory[id] ?? 0;
     if (item.maxCount && owned >= item.maxCount) return;
     if (state.stats.cash < item.price) return;
-    let next = applyDelta(state, { cash: -item.price, ...item.effect });
-    next.inventory[id] = owned + 1;
-    next = addLog(next, { type: 'good', title: `购买：${item.name}`, text: item.description });
-    setState(next);
+    setState(buyShopItem(state, id));
   }
   return (
     <section className="panel shop-panel">

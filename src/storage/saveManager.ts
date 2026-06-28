@@ -6,7 +6,9 @@ import {
   DEFAULT_HOUSEHOLD_STATE,
   DEFAULT_LABOR_MARKET,
   DEFAULT_LIFE_PRESSURE,
+  DEFAULT_MONTHLY_PLAN,
   DEFAULT_SOCIAL_PROFILE,
+  createDefaultProjectPortfolio,
   createDefaultCareerProfile
 } from '../core/realworldDefaults';
 
@@ -39,6 +41,8 @@ function withDefaults(state: GameState): GameState {
     household: { ...DEFAULT_HOUSEHOLD_STATE, ...(state.household ?? {}) },
     laborMarket: { ...DEFAULT_LABOR_MARKET, ...(state.laborMarket ?? {}) },
     lifePressure: { ...DEFAULT_LIFE_PRESSURE, ...(state.lifePressure ?? {}) },
+    monthlyPlan: { ...DEFAULT_MONTHLY_PLAN, ...(state.monthlyPlan ?? {}) },
+    projects: { ...createDefaultProjectPortfolio(), ...(state.projects ?? {}) },
     cooldowns: state.cooldowns ?? {},
     inventory: state.inventory ?? {},
     unlockedAchievements: state.unlockedAchievements ?? [],

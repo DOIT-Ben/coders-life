@@ -6,6 +6,9 @@ import type {
   HouseholdState,
   LaborMarketState,
   LifePressureState,
+  MonthlyPlan,
+  ProjectPortfolioState,
+  ProjectState,
   SocialProfile
 } from '../types/game';
 
@@ -88,3 +91,30 @@ export const DEFAULT_LIFE_PRESSURE: LifePressureState = {
   comparisonPressure: 36,
   timeScarcity: 24
 };
+
+export const DEFAULT_MONTHLY_PLAN: MonthlyPlan = {
+  timeBudget: { available: 100, used: 0 },
+  energyBudget: { available: 100, used: 0 },
+  selectedActionIds: []
+};
+
+function createDefaultProjectState(): ProjectState {
+  return {
+    progress: 0,
+    quality: 0,
+    completed: false,
+    efficiency: 1
+  };
+}
+
+export function createDefaultProjectPortfolio(): ProjectPortfolioState {
+  return {
+    projectPractice: createDefaultProjectState(),
+    courseStudy: createDefaultProjectState(),
+    writing: createDefaultProjectState(),
+    openSource: createDefaultProjectState(),
+    fitness: createDefaultProjectState(),
+    sideBusiness: createDefaultProjectState(),
+    aiTooling: createDefaultProjectState()
+  };
+}

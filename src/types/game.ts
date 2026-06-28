@@ -178,6 +178,34 @@ export interface HiddenState {
   lastPhaseReview?: LifePhaseId;
 }
 
+export interface MonthlyBudget {
+  available: number;
+  used: number;
+}
+
+export interface MonthlyPlan {
+  timeBudget: MonthlyBudget;
+  energyBudget: MonthlyBudget;
+  selectedActionIds: ID[];
+}
+
+export interface ProjectState {
+  progress: number;
+  quality: number;
+  completed: boolean;
+  efficiency: number;
+}
+
+export interface ProjectPortfolioState {
+  projectPractice: ProjectState;
+  courseStudy: ProjectState;
+  writing: ProjectState;
+  openSource: ProjectState;
+  fitness: ProjectState;
+  sideBusiness: ProjectState;
+  aiTooling: ProjectState;
+}
+
 export interface ActionHistoryEntry {
   id: ID;
   repeatKey: string;
@@ -275,6 +303,8 @@ export interface GameState {
   turningPoints: TurningPoint[];
   pendingEventChoice?: PendingEventChoice;
   hidden: HiddenState;
+  monthlyPlan: MonthlyPlan;
+  projects: ProjectPortfolioState;
   logs: GameLog[];
   gameOver: boolean;
   endingId?: string;

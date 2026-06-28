@@ -115,6 +115,27 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.event-choice-option');
   });
 
+  it('shows monthly time and energy budget while preserving fixed action scrolling', () => {
+    ['月度计划', '时间预算', '精力预算'].forEach(label => {
+      expect(appSource).toContain(label);
+    });
+    expect(appSource).toContain('calculateMonthlyPlanBudget');
+    expect(appSource).toContain('monthly-budget');
+    expect(appCss).toContain('.monthly-budget');
+    expect(appCss).toContain('height: calc(var(--action-slot-height) * 4 + var(--action-slot-gap) * 3);');
+    expect(appCss).toContain('overflow-y: auto');
+  });
+
+  it('uses the monthly planning API from action buttons', () => {
+    expect(appSource).toContain('planMonth(state, [action.id])');
+    expect(appSource).not.toContain('setState(applyAction(state, action.id))');
+  });
+
+  it('routes shop purchases through durable shop effects', () => {
+    expect(appSource).toContain('buyShopItem');
+    expect(appSource).not.toContain('applyDelta(state, { cash: -item.price, ...item.effect })');
+  });
+
   it('marks purchased shop items with an owned state', () => {
     expect(appSource).toContain('shop-item owned');
     expect(appSource).toContain('已装备');

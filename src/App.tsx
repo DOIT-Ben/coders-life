@@ -1,15 +1,16 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import type { CareerTrack, CityTier, GameState, LogType } from './types/game';
-import { createInitialState, applyAction, getAvailableActions } from './core/gameEngine';
+import { createInitialState, getAvailableActions, planMonth } from './core/gameEngine';
 import { getVisibleStats } from './core/formulas';
 import { saveGame, loadGame, clearSave } from './storage/saveManager';
 import { CAREERS, getCareer } from './config/careers';
 import { ACHIEVEMENTS } from './config/achievements';
 import { SHOP_ITEMS } from './config/shop';
-import { applyDelta } from './core/formulas';
 import { addLog } from './core/logs';
 import { getActionInsights, getBodySignal } from './systems/actionInsightSystem';
 import { applyEventChoice } from './systems/eventSystem';
+import { calculateMonthlyPlanBudget } from './systems/monthlyPlanSystem';
+import { buyShopItem } from './systems/shopSystem';
 import './styles/app.css';
 
 type AchievementProgress = {
@@ -302,6 +303,7 @@ function GameScreen({
   const day = state.month * 30;
   const bodySignal = getBodySignal(state);
   const recentDecisionLog = [...state.decisionLog].slice(-3).reverse();
+  const monthlyBudget = calculateMonthlyPlanBudget(state);
 
   useEffect(() => {
     const nextPressure = createPressureSnapshot(state);
@@ -372,6 +374,11 @@ function GameScreen({
         <div className="right-col">
           <div className="action-card">
             <div className="action-hdr">⚡ 行动选择</div>
+            <div className="monthly-budget" aria-label="月度计划预算">
+              <span>月度计划</span>
+              <span>时间预算 {monthlyBudget.timeBudget.available - monthlyBudget.timeBudget.used}/{monthlyBudget.timeBudget.available}</span>
+              <span>精力预算 {monthlyBudget.energyBudget.available - monthlyBudget.energyBudget.used}/{monthlyBudget.energyBudget.available}</span>
+            </div>
             <div className="action-tabs" role="tablist" aria-label="行动分类">
               {actionCategories.map(category => (
                 <button
@@ -393,7 +400,7 @@ function GameScreen({
                 const disabled = !action?.available || state.gameOver;
                 const insight = action ? getActionInsights(state, action) : undefined;
                 return (
-                <button className="action-btn" key={slot.id} disabled={disabled} onClick={() => action && setState(applyAction(state, action.id))}>
+                <button className="action-btn" key={slot.id} disabled={disabled} onClick={() => action && setState(planMonth(state, [action.id]))}>
                   <div className="action-main">
                     <span className="a-name">{slot.icon} {slot.label}</span>
                     <span className="a-cost">{slot.summary}</span>
@@ -601,10 +608,7 @@ function ShopDialog({ state, setState, close }: { state: GameState; setState: (s
     const owned = state.inventory[id] ?? 0;
     if (item.maxCount && owned >= item.maxCount) return;
     if (state.stats.cash < item.price) return;
-    let next = applyDelta(state, { cash: -item.price, ...item.effect });
-    next.inventory[id] = owned + 1;
-    next = addLog(next, { type: 'good', title: `购买：${item.name}`, text: item.description });
-    setState(next);
+    setState(buyShopItem(state, id));
   }
 
   return (

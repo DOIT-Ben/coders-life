@@ -4,6 +4,7 @@ import { createInitialState, applyAction } from '../core/gameEngine';
 import { applyEventChoice, triggerMonthlyEvent } from '../systems/eventSystem';
 import { getActionInsights, getBodySignal } from '../systems/actionInsightSystem';
 import { settleMonth } from '../core/monthlyLoop';
+import { buyShopItem } from '../systems/shopSystem';
 
 const seed = 24680;
 
@@ -142,5 +143,52 @@ describe('decision support and first-stage functional optimization', () => {
     expect(settled.month).toBe(withChoice.month);
     expect(settled.stats.cash).toBe(withChoice.stats.cash);
     expect(settled.pendingEventChoice?.id).toBe('choice_layoff_warning');
+  });
+
+  it('turns durable action outcomes into staged progress instead of instant final rewards', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    const next = applyAction(state, 'project_practice');
+
+    expect(next.projects.projectPractice.progress).toBeGreaterThan(state.projects.projectPractice.progress);
+    expect(next.career.portfolioCount).toBe(state.career.portfolioCount);
+    expect(next.projects.projectPractice.completed).toBe(false);
+  });
+
+  it('converts staged project progress into final outcomes when complete', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+
+    for (let i = 0; i < 4; i += 1) state = applyAction(state, 'project_practice');
+
+    expect(state.projects.projectPractice.completed).toBe(true);
+    expect(state.career.portfolioCount).toBeGreaterThan(0);
+  });
+
+  it('makes shop purchases affect conditions and efficiency instead of instant raw stat boosts', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    const afterChair = buyShopItem(state, 'ergonomic_chair');
+    const afterCourse = buyShopItem(state, 'system_course');
+    const afterInsurance = buyShopItem(state, 'medical_insurance');
+    const afterAiPro = buyShopItem(state, 'ai_pro');
+    const afterHousing = buyShopItem(state, 'private_room');
+
+    expect(afterChair.inventory.ergonomic_chair).toBe(1);
+    expect(afterChair.healthProfile.sedentaryLoad).toBeLessThan(state.healthProfile.sedentaryLoad);
+    expect(afterChair.stats.health).toBe(state.stats.health);
+
+    expect(afterCourse.inventory.system_course).toBe(1);
+    expect(afterCourse.projects.courseStudy.efficiency).toBeGreaterThan(state.projects.courseStudy.efficiency);
+    expect(afterCourse.stats.techXp).toBe(state.stats.techXp);
+
+    expect(afterInsurance.inventory.medical_insurance).toBe(1);
+    expect(afterInsurance.finance.monthlyFixedCost).toBeGreaterThan(state.finance.monthlyFixedCost);
+    expect(afterInsurance.stats.mental).toBe(state.stats.mental);
+
+    expect(afterAiPro.inventory.ai_pro).toBe(1);
+    expect(afterAiPro.projects.aiTooling.efficiency).toBeGreaterThan(state.projects.aiTooling.efficiency);
+    expect(afterAiPro.stats.aiXp).toBe(state.stats.aiXp);
+
+    expect(afterHousing.inventory.private_room).toBe(1);
+    expect(afterHousing.lifePressure.commutePressure).toBeLessThanOrEqual(state.lifePressure.commutePressure);
+    expect(afterHousing.stats.mental).toBe(state.stats.mental);
   });
 });

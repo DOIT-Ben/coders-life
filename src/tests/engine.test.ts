@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
-import { createInitialState, applyAction, getAvailableActions } from '../core/gameEngine';
+import { createInitialState, applyAction, getAvailableActions, planMonth } from '../core/gameEngine';
+import { calculateMonthlyPlanBudget } from '../systems/monthlyPlanSystem';
 import { EVENTS } from '../config/events';
 import { POPUP_EVENT_COUNT } from '../config/popupEvents';
 import { ACTIONS } from '../config/actions';
@@ -154,5 +155,45 @@ describe('game engine', () => {
 
     expect(loaded?.actionHistory).toEqual([]);
     vi.unstubAllGlobals();
+  });
+
+  it('plans a month with multiple actions inside time and energy budgets', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    const next = planMonth(state, ['system_learning', 'walk_sunlight']);
+
+    expect(next.month).toBe(1);
+    expect(next.monthlyPlan.selectedActionIds).toEqual(['system_learning', 'walk_sunlight']);
+    expect(next.monthlyPlan.timeBudget.used).toBeLessThanOrEqual(next.monthlyPlan.timeBudget.available);
+    expect(next.monthlyPlan.energyBudget.used).toBeLessThanOrEqual(next.monthlyPlan.energyBudget.available);
+    expect(next.decisionLog.map(entry => entry.actionId)).toEqual(['system_learning', 'walk_sunlight']);
+  });
+
+  it('rejects monthly plans that exceed available time or energy', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.career.employmentStatus = 'employed';
+    state.stats.techXp = 1000;
+    state.stats.aiXp = 1000;
+    state.stats.cash = 800000;
+    state.hidden.fatigue = 95;
+    state.healthProfile.sleepDebt = 80;
+    const budget = calculateMonthlyPlanBudget(state);
+
+    const next = planMonth(state, ['overtime_sprint', 'freelance', 'startup_try']);
+    const lastLog = next.logs[next.logs.length - 1];
+
+    expect(budget.energyBudget.available).toBeLessThan(100);
+    expect(next.month).toBe(state.month);
+    expect(lastLog?.title).toBe('月度计划超载');
+    expect(lastLog?.type).toBe('warn');
+  });
+
+  it('keeps applyAction as a compatibility wrapper for one-action monthly planning', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    const planned = planMonth(state, ['system_learning']);
+    const wrapped = applyAction(state, 'system_learning');
+
+    expect(wrapped.month).toBe(planned.month);
+    expect(wrapped.stats.techXp).toBe(planned.stats.techXp);
+    expect(wrapped.monthlyPlan.selectedActionIds).toEqual(['system_learning']);
   });
 });
