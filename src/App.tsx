@@ -415,27 +415,29 @@ function GameScreen({
                 );
               })}
             </div>
-            {bodySignal ? (
-              <div className="body-signal">
-                <div>
-                  <span className="signal-title">{bodySignal.title}</span>
-                  <span className="signal-text">{bodySignal.text}</span>
-                </div>
-                <span className="signal-score">{Math.round(bodySignal.severity)}</span>
-              </div>
-            ) : null}
-            {recentDecisionLog.length > 0 ? (
-              <div className="decision-log-mini">
-                <div className="mini-log-title">决策日志</div>
-                {recentDecisionLog.map(entry => (
-                  <div className="mini-log-row" key={entry.id}>
-                    <span>D·{entry.month * 30}</span>
-                    <span>{entry.actionName}</span>
-                    <span>{[...entry.gains, ...entry.costs].slice(0, 2).join(' / ')}</span>
+            <div className="action-support-scroll">
+              {bodySignal ? (
+                <div className="body-signal">
+                  <div>
+                    <span className="signal-title">{bodySignal.title}</span>
+                    <span className="signal-text">{bodySignal.text}</span>
                   </div>
-                ))}
-              </div>
-            ) : null}
+                  <span className="signal-score">{Math.round(bodySignal.severity)}</span>
+                </div>
+              ) : null}
+              {recentDecisionLog.length > 0 ? (
+                <div className="decision-log-mini">
+                  <div className="mini-log-title">决策日志</div>
+                  {recentDecisionLog.map(entry => (
+                    <div className="mini-log-row" key={entry.id}>
+                      <span>D·{entry.month * 30}</span>
+                      <span>{entry.actionName}</span>
+                      <span>{[...entry.gains, ...entry.costs].slice(0, 2).join(' / ')}</span>
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>

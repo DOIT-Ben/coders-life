@@ -491,14 +491,15 @@ body {
 .log-tag.lucky    { background: #A8F0D0; color: #0A6040; }
 
 /* RIGHT COL — matches the left panel height */
-.right-col { display: flex; flex-direction: column; min-height: 520px; }
+.right-col { display: flex; flex-direction: column; min-height: 520px; height: min(55vh, 560px); }
 
 .action-card {
   background: var(--card); border: 1.5px solid var(--border);
   border-radius: var(--r);
   display: flex; flex-direction: column;
-  overflow: visible; box-shadow: var(--shadow);
+  overflow: hidden; box-shadow: var(--shadow);
   min-height: 0;
+  height: 100%;
 }
 .action-hdr {
   padding: 11px 14px; border-bottom: 1px solid #EDE5D5;
@@ -507,7 +508,7 @@ body {
 }
 .action-tabs {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 6px;
   padding: 8px;
   border-bottom: 1px solid #EDE5D5;
@@ -537,9 +538,9 @@ body {
   box-shadow: 0 2px 8px rgba(92,107,192,.18);
 }
 .action-list {
-  --action-slot-height: 174px;
+  --action-slot-height: 76px;
   --action-slot-gap: 9px;
-  padding: 8px 8px 14px;
+  padding: 8px;
   display: flex; flex-direction: column;
   gap: var(--action-slot-gap);
   height: calc(var(--action-slot-height) * 4 + var(--action-slot-gap) * 3);
@@ -566,15 +567,15 @@ body {
   border: 1.5px solid var(--border);
   border-radius: 8px; color: var(--text);
   font-family: "Avenir Next", "Trebuchet MS", "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 13px; font-weight: 600;
+  font-size: 12px; font-weight: 600;
   cursor: pointer;
   transition: all .13s ease;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  gap: 8px;
-  padding: 11px 12px 12px;
+  gap: 5px;
+  padding: 9px 10px;
   overflow: hidden;
   min-width: 0;
 }
@@ -617,7 +618,7 @@ body {
   padding-top: 2px;
 }
 .a-cost {
-  font-family: monospace; font-size: 10px;
+  font-family: monospace; font-size: 9px;
   text-align: right; line-height: 1.45;
   flex-shrink: 0;
   min-width: 58px;
@@ -628,15 +629,15 @@ body {
   width: 100%;
   min-height: 0;
   border-top: 1px solid rgba(226,213,190,.8);
-  padding-top: 7px;
+  padding-top: 5px;
   color: var(--text2);
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 500;
   line-height: 1.5;
   text-align: left;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -648,15 +649,15 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-  min-height: 20px;
+  min-height: 18px;
   overflow: hidden;
 }
 .action-badge {
   display: inline-flex;
   align-items: center;
   max-width: 96px;
-  height: 20px;
-  padding: 0 7px;
+  height: 18px;
+  padding: 0 6px;
   border-radius: 999px;
   border: 1px solid rgba(178,165,138,.72);
   background: rgba(255,253,248,.72);
@@ -676,9 +677,19 @@ body {
   background: #FFE8E2;
   color: #963E3E;
 }
+.action-support-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-top: 1px solid #EDE5D5;
+  padding: 0 0 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #CCC8BC transparent;
+}
 .action-effects {
   width: 100%;
-  display: grid;
+  display: none;
   grid-template-columns: 1fr;
   gap: 5px;
   color: var(--text3);

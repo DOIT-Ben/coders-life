@@ -92,6 +92,9 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('height: calc(var(--action-slot-height) * 4 + var(--action-slot-gap) * 3);');
     expect(appCss).toContain('overflow-y: auto');
     expect(appCss).toContain('.action-empty-slot');
+    expect(appCss).toContain('height: min(55vh, 560px);');
+    expect(appCss).toContain('overflow: hidden; box-shadow: var(--shadow);');
+    expect(appCss).toContain('.action-support-scroll');
   });
 
   it('surfaces first-stage functional guidance without breaking v1 shell', () => {
