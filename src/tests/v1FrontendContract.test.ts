@@ -114,4 +114,21 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.decision-log-mini');
     expect(appCss).toContain('.event-choice-option');
   });
+
+  it('marks purchased shop items with an owned state', () => {
+    expect(appSource).toContain('shop-item owned');
+    expect(appSource).toContain('已装备');
+    expect(appSource).toContain('已购入');
+    expect(appCss).toContain('.shop-item.owned');
+    expect(appCss).toContain('.btn-buy.owned');
+  });
+
+  it('shows achievement progress instead of identical locked badges', () => {
+    expect(appSource).toContain('getAchievementProgress');
+    expect(appSource).toContain('ach-progress');
+    expect(appSource).toContain('ach-progress-bar');
+    expect(appSource).toContain('ach-desc');
+    expect(appCss).toContain('.ach-progress');
+    expect(appCss).toContain('.ach-progress-bar');
+  });
 });

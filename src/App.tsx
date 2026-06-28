@@ -12,6 +12,11 @@ import { getActionInsights, getBodySignal } from './systems/actionInsightSystem'
 import { applyEventChoice } from './systems/eventSystem';
 import './styles/app.css';
 
+type AchievementProgress = {
+  ratio: number;
+  text: string;
+};
+
 type PressureSnapshot = {
   cashflow: number;
   healthDebt: number;
@@ -532,12 +537,61 @@ function AchievementDialog({ state, close }: { state: GameState; close: () => vo
         <div className="ach-grid">
           {ACHIEVEMENTS.map(achievement => {
             const ok = state.unlockedAchievements.includes(achievement.id);
-            return <div className={ok ? 'ach-badge unlocked' : 'ach-badge'} key={achievement.id}><span className="ach-icon">{achievement.icon}</span><div className="ach-name">{achievement.name}</div></div>;
+            const progress = getAchievementProgress(state, achievement.id);
+            return (
+              <div className={ok ? 'ach-badge unlocked' : 'ach-badge'} key={achievement.id}>
+                <span className="ach-icon">{achievement.icon}</span>
+                <div className="ach-name">{achievement.name}</div>
+                <div className="ach-desc">{achievement.description}</div>
+                <div className="ach-progress" aria-label={`${achievement.name}进度 ${progress.text}`}>
+                  <span className="ach-progress-bar" style={{ width: `${ok ? 100 : Math.round(progress.ratio * 100)}%` }} />
+                </div>
+                <div className="ach-desc">{ok ? '已解锁' : progress.text}</div>
+              </div>
+            );
           })}
         </div>
       </div>
     </div>
   );
+}
+
+function getAchievementProgress(state: GameState, achievementId: string): AchievementProgress {
+  const visible = getVisibleStats(state);
+  const progress = (current: number, target: number, unit = ''): AchievementProgress => {
+    const safeTarget = Math.max(1, target);
+    const safeCurrent = Math.max(0, current);
+    return {
+      ratio: Math.max(0, Math.min(1, safeCurrent / safeTarget)),
+      text: `${Math.min(Math.floor(safeCurrent), target)} / ${target}${unit}`
+    };
+  };
+
+  switch (achievementId) {
+    case 'first_offer':
+      return { ratio: state.flags.had_first_job ? 1 : 0, text: state.flags.had_first_job ? '1 / 1' : '0 / 1' };
+    case 'emergency_fund':
+      return progress(state.stats.cash, 150000, '元');
+    case 'one_million':
+      return progress(state.stats.cash, 1000000, '元');
+    case 'ai_native':
+      return progress(visible.ai, 70);
+    case 'tech_senior':
+      return progress(visible.tech, 72);
+    case 'survive_35':
+      return progress(state.age, 35, '岁');
+    case 'no_overwork_year': {
+      const monthRatio = Math.min(1, state.month / 36);
+      const healthRatio = Math.min(1, state.stats.health / 70);
+      const mentalRatio = Math.min(1, state.stats.mental / 70);
+      const ratio = Math.min(monthRatio, healthRatio, mentalRatio);
+      return { ratio, text: `${Math.round(ratio * 100)}%` };
+    }
+    case 'side_income':
+      return progress(state.stats.passiveIncomeMonthly, 3000, '元/月');
+    default:
+      return { ratio: 0, text: '0%' };
+  }
 }
 
 function ShopDialog({ state, setState, close }: { state: GameState; setState: (state: GameState) => void; close: () => void }) {
@@ -559,8 +613,20 @@ function ShopDialog({ state, setState, close }: { state: GameState; setState: (s
         <div className="modal-head"><div className="modal-title">🛒 补给商店</div><button onClick={close}>×</button></div>
         {SHOP_ITEMS.map(item => {
           const owned = state.inventory[item.id] ?? 0;
-          const disabled = state.stats.cash < item.price || Boolean(item.maxCount && owned >= item.maxCount);
-          return <div className="shop-item" key={item.id}><div><div className="shop-name">{item.name}</div><div className="shop-desc">{item.description}{owned > 0 ? ` · 已拥有 ${owned}` : ''}</div></div><button className="btn-buy" disabled={disabled} onClick={() => buy(item.id)}>¥{item.price.toLocaleString()}</button></div>;
+          const isMaxed = Boolean(item.maxCount && owned >= item.maxCount);
+          const disabled = state.stats.cash < item.price || isMaxed;
+          const buttonText = isMaxed
+            ? item.maxCount === 1 ? '已装备' : '已购入'
+            : `¥${item.price.toLocaleString()}`;
+          return (
+            <div className={owned > 0 ? 'shop-item owned' : 'shop-item'} key={item.id}>
+              <div>
+                <div className="shop-name">{owned > 0 ? '✓ ' : ''}{item.name}</div>
+                <div className="shop-desc">{item.description}{owned > 0 ? ` · 已拥有 ${owned}` : ''}</div>
+              </div>
+              <button className={isMaxed ? 'btn-buy owned' : 'btn-buy'} disabled={disabled} onClick={() => buy(item.id)}>{buttonText}</button>
+            </div>
+          );
         })}
       </div>
     </div>

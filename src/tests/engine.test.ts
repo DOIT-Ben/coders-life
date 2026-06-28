@@ -11,8 +11,13 @@ describe('game engine', () => {
     const state = createInitialState('frontend', 'tier2', seed);
     expect(state.age).toBe(22);
     expect(state.stats.cash).toBe(100000);
-    expect(state.stats.techXp).toBe(0);
-    expect(state.stats.aiXp).toBe(0);
+    expect(state.stats.techXp).toBeGreaterThan(0);
+    expect(state.stats.aiXp).toBeGreaterThan(0);
+  });
+
+  it('starts backend engineers with visible technical ability', () => {
+    const state = createInitialState('backend', 'tier2', seed);
+    expect(state.stats.techXp).toBeGreaterThan(0);
   });
 
   it('advances by month after action', () => {
@@ -93,6 +98,17 @@ describe('game engine', () => {
     expect(latestMentalGain).toBeLessThan(firstMentalGain);
     expect(afterRepeats.hidden.focus).toBeLessThan(once.hidden.focus);
     expect(afterRepeats.logs.some(log => log.text.includes('连续重复'))).toBe(true);
+  });
+
+  it('adds repeated action variation instead of duplicating the same inner monologue', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    const first = applyAction(state, 'rest');
+    const second = applyAction(first, 'rest');
+    const restLogs = second.logs.filter(log => log.title.includes('休息摸鱼'));
+
+    expect(restLogs).toHaveLength(2);
+    expect(restLogs[1].text).toContain('又一次');
+    expect(restLogs[1].text).not.toBe(restLogs[0].text);
   });
 
   it('increases burnout risk for high-pressure work under weak health and fatigue', () => {

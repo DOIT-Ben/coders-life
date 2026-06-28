@@ -16,7 +16,15 @@ import {
   createDefaultCareerProfile
 } from './realworldDefaults';
 
+const initialSkillXp: Record<CareerTrack, { techXp: number; aiXp: number; reputationXp: number }> = {
+  frontend: { techXp: 32, aiXp: 12, reputationXp: 4 },
+  backend: { techXp: 40, aiXp: 8, reputationXp: 4 },
+  fullstack: { techXp: 36, aiXp: 16, reputationXp: 6 },
+  ai_product: { techXp: 30, aiXp: 28, reputationXp: 6 }
+};
+
 export function createInitialState(track: CareerTrack = 'frontend', cityTier: CityTier = 'tier2', seed = Date.now() % 1000000): GameState {
+  const skillXp = initialSkillXp[track];
   const initial: GameState = {
     version: GAME_VERSION,
     seed,
@@ -25,9 +33,9 @@ export function createInitialState(track: CareerTrack = 'frontend', cityTier: Ci
     phase: 'seed',
     world: { aiReplacement: 8, economyCycle: 'neutral', cycleMonth: 0, marketHeat: 60 },
     stats: {
-      techXp: 0,
-      aiXp: 0,
-      reputationXp: 0,
+      techXp: skillXp.techXp,
+      aiXp: skillXp.aiXp,
+      reputationXp: skillXp.reputationXp,
       mental: 76,
       health: 82,
       burnout: 0,
@@ -75,7 +83,7 @@ export function createInitialState(track: CareerTrack = 'frontend', cityTier: Ci
     logs: [],
     gameOver: false
   };
-  return addLog(initial, { type: 'info', title: '人生开始', text: '22岁，10万元，技术0，AI0。时代不会等你，但你可以选择怎么开始。' });
+  return addLog(initial, { type: 'info', title: '人生开始', text: '22岁，10万元，带着入行基础与一点AI经验。时代不会等你，但你可以选择怎么开始。' });
 }
 
 export function getAvailableActions(state: GameState) {
@@ -91,6 +99,7 @@ export function applyAction(state: GameState, actionId: string): GameState {
   const action = getAction(actionId);
   if (action.require && !action.require(state)) return state;
   const resolved = resolveActionEffect(state, action);
+  const recentSameActionCount = state.actionHistory.filter(item => item.id === action.id && state.month - item.month < 6).length;
   let next = applyDelta(state, resolved.effect);
   next = applyRealworldActionEffect(next, action);
   next = addDecisionLog(next, action, resolved.effect);
@@ -99,7 +108,10 @@ export function applyAction(state: GameState, actionId: string): GameState {
     createActionHistoryEntry(state, action)
   ].slice(-24);
   if (action.cooldownMonths) next.cooldowns[action.id] = action.cooldownMonths;
-  next = addLog(next, { type: 'info', title: action.name, text: resolved.logText });
+  const logText = recentSameActionCount > 0
+    ? `又一次选择${action.name}。${resolved.logText}`
+    : resolved.logText;
+  next = addLog(next, { type: 'info', title: action.name, text: logText });
   next = addTutorialLogs(next, action);
   for (let i = 0; i < action.durationMonths; i++) {
     next = settleMonth(next);
