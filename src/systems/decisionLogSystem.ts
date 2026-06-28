@@ -22,7 +22,7 @@ function summarizeEffect(effect: EffectDelta) {
   labels.forEach(([key, label]) => {
     const value = effect[key];
     if (typeof value !== 'number' || value === 0) return;
-    const text = `${label}${value > 0 ? '+' : ''}${value}`;
+    const text = key === 'cash' && value < 0 ? `成本${value}` : `${label}${value > 0 ? '+' : ''}${value}`;
     if ((key === 'burnout' || key === 'fatigue') ? value > 0 : value < 0) costs.push(text);
     else gains.push(text);
   });

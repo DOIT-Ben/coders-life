@@ -65,6 +65,19 @@ describe('decision support and first-stage functional optimization', () => {
     expect(next.flags.tutorial_overtime_sprint).toBe(true);
   });
 
+  it('records cost and hidden recovery effects in decision logs', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    const next = applyAction(state, 'massage');
+
+    const entry = next.decisionLog[0];
+    const combined = [...entry.gains, ...entry.costs].join(' / ');
+
+    expect(combined).toContain('精神+10');
+    expect(combined).toContain('健康+5');
+    expect(combined).toContain('疲劳-10');
+    expect(combined).toContain('成本-600');
+  });
+
   it('records turning points only once when pressure crosses threshold', () => {
     const state = createInitialState('frontend', 'tier2', seed);
     state.healthProfile.healthDebt = 69;

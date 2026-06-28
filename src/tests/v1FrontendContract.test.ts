@@ -54,6 +54,9 @@ describe('v1 frontend contract', () => {
     expect(appSource).toContain('lastPressure');
     expect(appSource).not.toContain('realworld kernel');
     expect(appSource).not.toContain('V2底层');
+    expect(appCss).toContain('grid-template-columns: repeat(3, minmax(120px, 1fr));');
+    expect(appCss).not.toContain('grid-template-columns: repeat(5, minmax(128px, 1fr));');
+    expect(appCss).toContain('white-space: normal;');
   });
 
   it('shows action cards as separated immediate debt and opportunity rows', () => {
@@ -66,6 +69,7 @@ describe('v1 frontend contract', () => {
     expect(appSource).toContain('effect-row opportunity');
     expect(appSource).toContain('benefitLabel');
     expect(appSource).toContain('riskLabel');
+    expect(appCss).not.toContain('display: none;\n  grid-template-columns: 1fr;');
   });
 
   it('keeps dense action cards readable instead of compressing text together', () => {
