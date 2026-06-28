@@ -20,10 +20,20 @@ export function settleCareerOpportunities(state: GameState): GameState {
 
   if (next.career.employmentStatus === 'employed') {
     const perf = getMonthlyPerformance(next);
+    const reliabilityDelta = perf >= 65 ? 0.8 : perf < 45 ? -1.2 : 0.2;
+    const capitalDelta = (visible.tech + visible.ai + visible.reputation) / 260;
+    next = structuredClone(next);
+    next.careerProfile.deliveryReliability = Math.max(0, Math.min(100, next.careerProfile.deliveryReliability + reliabilityDelta));
+    next.careerProfile.promotionReadiness = Math.max(0, Math.min(100, next.careerProfile.promotionReadiness + perf * 0.025 - next.laborMarket.hiringStrictness * 0.005));
+    next.careerProfile.careerCapital = Math.max(0, Math.min(100, next.careerProfile.careerCapital + capitalDelta));
+    next.careerProfile.employability = Math.max(0, Math.min(100, next.careerProfile.employability + capitalDelta * 0.7 + next.careerProfile.aiLeverage * 0.01 - next.laborMarket.hiringStrictness * 0.01));
     if (next.career.promotionScore >= 45 && perf >= 60 && next.career.jobLevel < 4) {
       next = applyDelta(next, { setJobLevel: next.career.jobLevel + 1, promotionScore: -45, reputationXp: 10, mental: 4 });
       next = addLog(next, { type: 'good', title: '职业晋升', text: '长期稳定输出终于被看见。你的岗位层级提升了。' });
     }
+  } else {
+    next = structuredClone(next);
+    next.careerProfile.employability = Math.max(0, Math.min(100, next.careerProfile.employability - next.laborMarket.hiringStrictness * 0.015 + visible.tech * 0.01 + visible.ai * 0.01));
   }
   return next;
 }

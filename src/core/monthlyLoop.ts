@@ -8,15 +8,25 @@ import { settleCareerOpportunities } from '../systems/careerSystem';
 import { checkAchievements } from '../systems/achievementSystem';
 import { checkEnding } from '../systems/endingSystem';
 import { addPeriodicReviews, settleHiddenState } from '../systems/reviewSystem';
+import { settleLaborMarket } from '../systems/laborMarketSystem';
+import { settleFixedFinance } from '../systems/financeSystem';
+import { settleHealthDebt } from '../systems/healthDebtSystem';
+import { settleRelationshipDebt } from '../systems/relationshipSystem';
+import { settleLifeStagePressure } from '../systems/lifePressureSystem';
 
 export function settleMonth(state: GameState): GameState {
   let next = advanceMonthCounter(state);
   next = advanceWorld(next);
+  next = settleLaborMarket(next);
   next = settleEconomy(next);
+  next = settleFixedFinance(next);
   next = settleHealth(next);
+  next = settleHealthDebt(next);
   next = settleHiddenState(next);
+  next = settleRelationshipDebt(next);
   next = settleCareerOpportunities(next);
   next = triggerMonthlyEvent(next);
+  next = settleLifeStagePressure(next);
   next = addPeriodicReviews(next);
   next = checkAchievements(next);
   next = checkEnding(next);

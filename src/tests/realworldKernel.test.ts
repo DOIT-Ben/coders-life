@@ -1,5 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { createInitialState } from '../core/gameEngine';
+import { settleMonth } from '../core/monthlyLoop';
+import { applyDelta } from '../core/formulas';
 
 const seed = 24680;
 
@@ -91,5 +93,110 @@ describe('real-world simulation kernel state model', () => {
     expect(loaded?.lifePressure.agePressure).toBeGreaterThanOrEqual(0);
 
     vi.unstubAllGlobals();
+  });
+});
+
+describe('real-world monthly causal pipeline', () => {
+  it('turns overtime debt into chronic health and boundary damage', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.career.employmentStatus = 'employed';
+    state.hidden.fatigue = 88;
+    state.hidden.boundaryScore = 18;
+    state.stats.burnout = 72;
+    state.healthProfile.sleepDebt = 42;
+    state.healthProfile.chronicStress = 64;
+
+    const next = settleMonth(state);
+
+    expect(next.healthProfile.sleepDebt).toBeGreaterThan(state.healthProfile.sleepDebt);
+    expect(next.healthProfile.healthDebt).toBeGreaterThan(state.healthProfile.healthDebt);
+    expect(next.stats.health).toBeLessThan(state.stats.health);
+    expect(next.hidden.boundaryScore).toBeLessThan(state.hidden.boundaryScore);
+  });
+
+  it('raises cashflow stress when unemployment burns through emergency fund', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.career.employmentStatus = 'jobless';
+    state.stats.cash = 4000;
+    state.finance.monthlyIncome = 0;
+    state.finance.monthlyFixedCost = 9000;
+    state.finance.emergencyFundMonths = 0.4;
+
+    const next = settleMonth(state);
+
+    expect(next.finance.cashflowStress).toBeGreaterThan(state.finance.cashflowStress);
+    expect(next.finance.emergencyFundMonths).toBeLessThan(state.finance.emergencyFundMonths);
+    expect(next.stats.mental).toBeLessThan(state.stats.mental);
+  });
+
+  it('links recession and weak employability to labor market layoff pressure', () => {
+    const state = createInitialState('backend', 'tier1', seed);
+    state.career.employmentStatus = 'employed';
+    state.world.economyCycle = 'recession';
+    state.world.aiReplacement = 72;
+    state.careerProfile.employability = 24;
+    state.careerProfile.aiLeverage = 8;
+
+    const next = settleMonth(state);
+
+    expect(next.laborMarket.layoffPressure).toBeGreaterThan(state.laborMarket.layoffPressure);
+    expect(next.careerProfile.layoffRisk).toBeGreaterThan(state.careerProfile.layoffRisk);
+  });
+
+  it('uses nutrition and recovery quality to stabilize monthly health debt', () => {
+    const poor = createInitialState('frontend', 'tier2', seed);
+    poor.healthProfile.nutritionQuality = 18;
+    poor.healthProfile.recoveryQuality = 24;
+    poor.healthProfile.exerciseHabit = 8;
+
+    const good = createInitialState('frontend', 'tier2', seed);
+    good.healthProfile.nutritionQuality = 86;
+    good.healthProfile.recoveryQuality = 82;
+    good.healthProfile.exerciseHabit = 72;
+
+    const poorNext = settleMonth(poor);
+    const goodNext = settleMonth(good);
+
+    expect(poorNext.healthProfile.healthDebt).toBeGreaterThan(goodNext.healthProfile.healthDebt);
+    expect(goodNext.stats.health).toBeGreaterThanOrEqual(poorNext.stats.health);
+  });
+
+  it('increases life pressure with age and family responsibility', () => {
+    const state = createInitialState('frontend', 'tier1', seed);
+    state.month = 132;
+    state.age = 33;
+    state.lifePressure.familyResponsibility = 54;
+    state.lifePressure.timeScarcity = 20;
+    state.healthProfile.sleepDebt = 40;
+    state.hidden.fatigue = 78;
+    state.career.employmentStatus = 'jobless';
+    state.stats.cash = 3000;
+    state.finance.monthlyFixedCost = 9000;
+
+    const next = settleMonth(state);
+
+    expect(next.lifePressure.agePressure).toBeGreaterThan(state.lifePressure.agePressure);
+    expect(next.lifePressure.timeScarcity).toBeGreaterThan(state.lifePressure.timeScarcity);
+    expect(next.lifePressure.comparisonPressure).toBeGreaterThan(state.lifePressure.comparisonPressure);
+  });
+
+  it('can simulate from 22 to 45 with the real-world pipeline', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+    state.career.employmentStatus = 'employed';
+    state.career.companyType = 'private';
+    state.career.jobLevel = 2;
+    state.stats.cash = 300000;
+    state.healthProfile.nutritionQuality = 76;
+    state.healthProfile.recoveryQuality = 74;
+    state.healthProfile.exerciseHabit = 62;
+
+    for (let i = 0; i < 276 && !state.gameOver; i += 1) {
+      state = settleMonth(applyDelta(state, { techXp: 3, aiXp: 2, reputationXp: 1, mental: 1, health: 1 }));
+    }
+
+    expect(state.age).toBeGreaterThanOrEqual(45);
+    expect(Number.isFinite(state.finance.cashflowStress)).toBe(true);
+    expect(Number.isFinite(state.healthProfile.healthDebt)).toBe(true);
+    expect(Number.isFinite(state.careerProfile.layoffRisk)).toBe(true);
   });
 });
