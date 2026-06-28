@@ -13,16 +13,16 @@
     "simulate": "tsx scripts/simulate.ts"
   },
   "dependencies": {
-    "react": "latest",
-    "react-dom": "latest"
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "latest",
-    "vite": "latest",
-    "typescript": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "vitest": "latest",
-    "tsx": "latest"
+    "@vitejs/plugin-react": "6.0.2",
+    "vite": "8.0.16",
+    "typescript": "6.0.3",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "vitest": "4.1.9",
+    "tsx": "4.22.4"
   }
 }
