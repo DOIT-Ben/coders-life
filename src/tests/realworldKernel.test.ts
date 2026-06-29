@@ -562,13 +562,13 @@ describe('real-world action consequences', () => {
     ready.finance.monthlySalary = 18000;
     ready.finance.debt = 80000;
     ready.inventory = {
-      github_account: true,
-      linkedin_account: true,
-      recording_tool: true,
-      password_manager: true,
-      credit_card: true,
-      kitchen: true,
-      quiet_space: true
+      github_account: 1,
+      linkedin_account: 1,
+      recording_tool: 1,
+      password_manager: 1,
+      credit_card: 1,
+      kitchen: 1,
+      quiet_space: 1
     };
     ready.flags = { competing_offer: true, has_friends: true };
     ready.lifePressure.timeScarcity = 20;
