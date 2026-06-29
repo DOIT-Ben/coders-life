@@ -5,14 +5,17 @@ import { applyEventChoice, triggerMonthlyEvent } from '../systems/eventSystem';
 import { getActionInsights, getBodySignal } from '../systems/actionInsightSystem';
 import { settleMonth } from '../core/monthlyLoop';
 import { buyShopItem } from '../systems/shopSystem';
+import { deriveHealthDebt } from '../systems/derivedStateSystem';
 
 const seed = 24680;
 
 describe('decision support and first-stage functional optimization', () => {
   it('shows risk badges for high-pressure actions when health debt is high', () => {
     const state = createInitialState('frontend', 'tier2', seed);
-    state.healthProfile.healthDebt = 76;
-    state.healthProfile.sleepDebt = 68;
+    state.healthProfile.healthDebt = 90;
+    state.healthProfile.sleepDebt = 82;
+    state.healthProfile.chronicStress = 70;
+    state.healthProfile.sedentaryLoad = 70;
     state.hidden.fatigue = 72;
 
     const overtime = ACTIONS.find(action => action.id === 'overtime_sprint')!;
@@ -41,7 +44,7 @@ describe('decision support and first-stage functional optimization', () => {
     state.healthProfile.sleepDebt = 64;
     state.healthProfile.sedentaryLoad = 82;
     state.healthProfile.chronicStress = 58;
-    state.healthProfile.healthDebt = 66;
+    state.healthProfile.healthDebt = 58;
     state.hidden.fatigue = 55;
 
     const signal = getBodySignal(state);
@@ -49,6 +52,21 @@ describe('decision support and first-stage functional optimization', () => {
     expect(signal?.title).toBe('后背持续酸痛');
     expect(signal?.suggestedActionIds).toContain('exercise');
     expect(signal?.suggestedActionIds).toContain('massage');
+  });
+
+  it('uses centralized derived pressure metrics for body signals', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.healthProfile.healthDebt = 90;
+    state.healthProfile.sleepDebt = 64;
+    state.healthProfile.chronicStress = 40;
+    state.healthProfile.sedentaryLoad = 30;
+    state.hidden.fatigue = 30;
+
+    const signal = getBodySignal(state);
+
+    expect(signal?.dimension).toBe('healthDebt');
+    expect(signal?.severity).toBe(deriveHealthDebt(state).value);
+    expect(signal?.severity).not.toBe(state.healthProfile.healthDebt);
   });
 
   it('records decision logs and one-time tutorial logs after action choices', () => {
@@ -81,9 +99,14 @@ describe('decision support and first-stage functional optimization', () => {
 
   it('records turning points only once when pressure crosses threshold', () => {
     const state = createInitialState('frontend', 'tier2', seed);
-    state.healthProfile.healthDebt = 69;
-    state.healthProfile.sleepDebt = 88;
-    state.healthProfile.chronicStress = 88;
+    state.healthProfile.healthDebt = 58;
+    state.healthProfile.sleepDebt = 85;
+    state.healthProfile.chronicStress = 85;
+    state.healthProfile.sedentaryLoad = 55;
+    state.healthProfile.recoveryQuality = 10;
+    state.healthProfile.nutritionQuality = 10;
+    state.hidden.fatigue = 92;
+    state.hidden.boundaryScore = 10;
 
     const crossed = settleMonth(state);
     const repeated = settleMonth(crossed);

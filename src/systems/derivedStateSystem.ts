@@ -8,6 +8,13 @@ export interface DerivedMetric {
   explanation: string;
 }
 
+export interface DerivedPressureSnapshot {
+  healthDebt: number;
+  cashflowStress: number;
+  layoffRisk: number;
+  relationshipDebt: number;
+}
+
 export function deriveBurnoutRisk(state: GameState): DerivedMetric {
   const value = clamp(state.stats.burnout * 0.65 + state.healthProfile.healthDebt * 0.18 + state.healthProfile.chronicStress * 0.12 + state.hidden.fatigue * 0.15, 0, 100);
   return { label: '燃尽风险', value, explanation: '由燃尽、慢性压力和疲劳共同决定。' };
@@ -31,4 +38,19 @@ export function deriveHealthDebt(state: GameState): DerivedMetric {
 export function deriveLifeSatisfaction(state: GameState): DerivedMetric {
   const value = clamp(calculateValueFit(state), 0, 100);
   return { label: '生活满意度', value, explanation: '价值匹配由玩家选择或行为形成的价值权重，与财富、健康、关系、自由和探索等状态共同决定。' };
+}
+
+export function derivePressureSnapshot(state: GameState): DerivedPressureSnapshot {
+  return {
+    healthDebt: deriveHealthDebt(state).value,
+    cashflowStress: clamp(state.finance.cashflowStress, 0, 100),
+    layoffRisk: clamp(100 - deriveCareerStability(state).value, 0, 100),
+    relationshipDebt: clamp(
+      state.socialProfile.relationshipDebt * 0.72 +
+      state.socialProfile.loneliness * 0.16 +
+      Math.max(0, 45 - state.stats.relation) * 0.12,
+      0,
+      100
+    )
+  };
 }

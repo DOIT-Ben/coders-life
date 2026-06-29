@@ -11,7 +11,7 @@ import { getActionInsights, getBodySignal } from './systems/actionInsightSystem'
 import { applyEventChoice } from './systems/eventSystem';
 import { actionPlanCost, buildMonthlyPlan, canExecuteAction, isPlanOverBudget } from './systems/monthlyPlanSystem';
 import { buyShopItem } from './systems/shopSystem';
-import { deriveCareerStability, deriveEmployability, deriveHealthDebt, deriveLifeSatisfaction } from './systems/derivedStateSystem';
+import { deriveCareerStability, deriveEmployability, deriveHealthDebt, deriveLifeSatisfaction, derivePressureSnapshot } from './systems/derivedStateSystem';
 import './styles/app.css';
 
 type AchievementProgress = {
@@ -570,11 +570,12 @@ function GameScreen({
 }
 
 function createPressureSnapshot(state: GameState): PressureSnapshot {
+  const pressure = derivePressureSnapshot(state);
   return {
-    cashflow: Math.round(state.finance.cashflowStress),
-    healthDebt: Math.round(state.healthProfile.healthDebt),
-    layoffRisk: Math.round(state.careerProfile.layoffRisk),
-    relationshipDebt: Math.round(state.socialProfile.relationshipDebt),
+    cashflow: Math.round(pressure.cashflowStress),
+    healthDebt: Math.round(pressure.healthDebt),
+    layoffRisk: Math.round(pressure.layoffRisk),
+    relationshipDebt: Math.round(pressure.relationshipDebt),
     marketPressure: Math.round(state.laborMarket.layoffPressure)
   };
 }

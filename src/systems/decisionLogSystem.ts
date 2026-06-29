@@ -1,5 +1,6 @@
 import type { ActionConfig, DecisionLogEntry, EffectDelta, GameLog, GameState, LogType, TurningPoint } from '../types/game';
 import { getActionInsights } from './actionInsightSystem';
+import { derivePressureSnapshot } from './derivedStateSystem';
 
 function summarizeEffect(effect: EffectDelta) {
   const gains: string[] = [];
@@ -90,19 +91,21 @@ function appendSystemLog(state: GameState, input: { type: LogType; title: string
 const TURNING_POINTS: Array<{
   key: TurningPoint['dimension'];
   label: string;
-  value: (state: GameState) => number;
+  value: (snapshot: ReturnType<typeof derivePressureSnapshot>) => number;
 }> = [
-  { key: 'healthDebt', label: '健康债', value: state => state.healthProfile.healthDebt },
-  { key: 'cashflowStress', label: '现金流压力', value: state => state.finance.cashflowStress },
-  { key: 'layoffRisk', label: '职业风险', value: state => state.careerProfile.layoffRisk },
-  { key: 'relationshipDebt', label: '关系债', value: state => state.socialProfile.relationshipDebt }
+  { key: 'healthDebt', label: '健康债', value: snapshot => snapshot.healthDebt },
+  { key: 'cashflowStress', label: '现金流压力', value: snapshot => snapshot.cashflowStress },
+  { key: 'layoffRisk', label: '职业风险', value: snapshot => snapshot.layoffRisk },
+  { key: 'relationshipDebt', label: '关系债', value: snapshot => snapshot.relationshipDebt }
 ];
 
 export function recordTurningPoints(prev: GameState, current: GameState): GameState {
   let next = current;
+  const prevSnapshot = derivePressureSnapshot(prev);
+  const currentSnapshot = derivePressureSnapshot(current);
   TURNING_POINTS.forEach(item => {
-    const before = item.value(prev);
-    const after = item.value(current);
+    const before = item.value(prevSnapshot);
+    const after = item.value(currentSnapshot);
     const already = (current.turningPoints ?? []).some(point => point.dimension === item.key);
     if (before < 70 && after >= 70 && !already) {
       const point: TurningPoint = {
