@@ -119,16 +119,24 @@ describe('v1 frontend contract', () => {
     ['月度计划', '时间预算', '精力预算'].forEach(label => {
       expect(appSource).toContain(label);
     });
-    expect(appSource).toContain('calculateMonthlyPlanBudget');
+    expect(appSource).toContain('buildMonthlyPlan');
+    expect(appSource).toContain('isPlanOverBudget');
     expect(appSource).toContain('monthly-budget');
     expect(appCss).toContain('.monthly-budget');
     expect(appCss).toContain('height: calc(var(--action-slot-height) * 4 + var(--action-slot-gap) * 3);');
     expect(appCss).toContain('overflow-y: auto');
   });
 
-  it('uses the monthly planning API from action buttons', () => {
-    expect(appSource).toContain('planMonth(state, [action.id])');
+  it('lets players build and submit a multi-action monthly plan from the action panel', () => {
+    ['plannedActionIds', 'togglePlannedAction', 'submitMonthlyPlan', '执行本月计划', '已选行动'].forEach(token => {
+      expect(appSource).toContain(token);
+    });
+    expect(appSource).toContain('buildMonthlyPlan(state, plannedActions)');
+    expect(appSource).toContain('planMonth(state, plannedActionIds)');
+    expect(appSource).not.toContain('planMonth(state, [action.id])');
     expect(appSource).not.toContain('setState(applyAction(state, action.id))');
+    expect(appCss).toContain('.monthly-plan-panel');
+    expect(appCss).toContain('.monthly-plan-submit');
   });
 
   it('routes shop purchases through durable shop effects', () => {

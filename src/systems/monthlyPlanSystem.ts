@@ -1,5 +1,10 @@
 import type { ActionConfig, GameState, MonthlyPlan } from '../types/game';
 
+export type ActionExecutionCheck = {
+  ok: boolean;
+  reason?: string;
+};
+
 export function calculateMonthlyPlanBudget(state: GameState): MonthlyPlan {
   let timeAvailable = 100;
   let energyAvailable = 100;
@@ -50,4 +55,19 @@ export function buildMonthlyPlan(state: GameState, actions: ActionConfig[]): Mon
 
 export function isPlanOverBudget(plan: MonthlyPlan): boolean {
   return plan.timeBudget.used > plan.timeBudget.available || plan.energyBudget.used > plan.energyBudget.available;
+}
+
+export function canExecuteAction(state: GameState, action: ActionConfig, currentPlan: ActionConfig[] = []): ActionExecutionCheck {
+  if (state.gameOver) return { ok: false, reason: '游戏已经结束。' };
+  if (state.pendingEventChoice) return { ok: false, reason: '请先处理当前事件。' };
+  if (state.cooldowns[action.id] && state.cooldowns[action.id] > 0) {
+    return { ok: false, reason: `冷却中：${state.cooldowns[action.id]}个月` };
+  }
+  if (currentPlan.some(planned => planned.id === action.id)) {
+    return { ok: false, reason: '本月计划已包含该行动。' };
+  }
+  if (action.require && !action.require(state)) {
+    return { ok: false, reason: action.disabledReason?.(state) ?? '当前条件不足。' };
+  }
+  return { ok: true };
 }

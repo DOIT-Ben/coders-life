@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import type { CareerTrack, CityTier, GameState, LogType } from './types/game';
+import type { ActionConfig, CareerTrack, CityTier, GameState, LogType } from './types/game';
 import { createInitialState, getAvailableActions, planMonth } from './core/gameEngine';
 import { getVisibleStats } from './core/formulas';
 import { saveGame, loadGame, clearSave } from './storage/saveManager';
@@ -9,7 +9,7 @@ import { SHOP_ITEMS } from './config/shop';
 import { addLog } from './core/logs';
 import { getActionInsights, getBodySignal } from './systems/actionInsightSystem';
 import { applyEventChoice } from './systems/eventSystem';
-import { calculateMonthlyPlanBudget } from './systems/monthlyPlanSystem';
+import { actionPlanCost, buildMonthlyPlan, canExecuteAction, isPlanOverBudget } from './systems/monthlyPlanSystem';
 import { buyShopItem } from './systems/shopSystem';
 import { deriveCareerStability, deriveEmployability, deriveHealthDebt, deriveLifeSatisfaction } from './systems/derivedStateSystem';
 import './styles/app.css';
@@ -25,6 +25,11 @@ type PressureSnapshot = {
   layoffRisk: number;
   relationshipDebt: number;
   marketPressure: number;
+};
+
+type AvailableAction = ActionConfig & {
+  available: boolean;
+  reason?: string;
 };
 
 const v1CareerCopy: Record<CareerTrack, {
@@ -283,10 +288,11 @@ function GameScreen({
   setSaveStatus: (status: string) => void;
 }) {
   const [selectedActionCategory, setSelectedActionCategory] = useState<ActionCategoryId>('entertainment');
+  const [plannedActionIds, setPlannedActionIds] = useState<string[]>([]);
   const [lastPressure, setLastPressure] = useState<PressureSnapshot>(() => createPressureSnapshot(state));
   const [pressureDelta, setPressureDelta] = useState<PressureSnapshot | undefined>();
   const visible = getVisibleStats(state);
-  const actions = getAvailableActions(state);
+  const actions = getAvailableActions(state) as AvailableAction[];
   const actionById = new Map(actions.map(action => [action.id, action]));
   const currentCategory = actionCategories.find(category => category.id === selectedActionCategory) ?? actionCategories[0];
   const actionSlots = [
@@ -304,7 +310,13 @@ function GameScreen({
   const day = state.month * 30;
   const bodySignal = getBodySignal(state);
   const recentDecisionLog = [...state.decisionLog].slice(-3).reverse();
-  const monthlyBudget = calculateMonthlyPlanBudget(state);
+  const plannedActions = plannedActionIds.flatMap(id => {
+    const action = actionById.get(id);
+    return action ? [action] : [];
+  });
+  const monthlyBudget = buildMonthlyPlan(state, plannedActions);
+  const planOverBudget = isPlanOverBudget(monthlyBudget);
+  const canSubmitMonthlyPlan = plannedActionIds.length > 0 && !planOverBudget && !state.pendingEventChoice && !state.gameOver;
 
   useEffect(() => {
     const nextPressure = createPressureSnapshot(state);
@@ -317,6 +329,33 @@ function GameScreen({
     });
     setLastPressure(nextPressure);
   }, [state.month]);
+
+  useEffect(() => {
+    setPlannedActionIds([]);
+  }, [state.month, state.pendingEventChoice?.id, state.gameOver]);
+
+  function togglePlannedAction(action: AvailableAction) {
+    setPlannedActionIds(current => {
+      if (current.includes(action.id)) return current.filter(id => id !== action.id);
+      const currentActions = current.flatMap(id => {
+        const item = actionById.get(id);
+        return item ? [item] : [];
+      });
+      const check = canExecuteAction(state, action, currentActions);
+      if (!check.ok) return current;
+      return [...current, action.id];
+    });
+  }
+
+  function removePlannedAction(actionId: string) {
+    setPlannedActionIds(current => current.filter(id => id !== actionId));
+  }
+
+  function submitMonthlyPlan() {
+    if (!canSubmitMonthlyPlan) return;
+    setState(planMonth(state, plannedActionIds));
+    setPlannedActionIds([]);
+  }
 
   function handleSave() {
     try {
@@ -380,6 +419,24 @@ function GameScreen({
               <span>时间预算 {monthlyBudget.timeBudget.available - monthlyBudget.timeBudget.used}/{monthlyBudget.timeBudget.available}</span>
               <span>精力预算 {monthlyBudget.energyBudget.available - monthlyBudget.energyBudget.used}/{monthlyBudget.energyBudget.available}</span>
             </div>
+            <div className="monthly-plan-panel" aria-label="已选行动">
+              <div className="monthly-plan-head">
+                <span>已选行动 {plannedActionIds.length}</span>
+                {planOverBudget ? <span className="monthly-plan-warn">预算超载</span> : <span className="monthly-plan-ok">可提交</span>}
+              </div>
+              <div className="monthly-plan-items">
+                {plannedActions.length > 0 ? plannedActions.map(action => {
+                  const cost = actionPlanCost(action);
+                  return (
+                    <button className="monthly-plan-chip" type="button" key={action.id} onClick={() => removePlannedAction(action.id)}>
+                      <span>{action.name}</span>
+                      <span>{cost.time}时/{cost.energy}精</span>
+                    </button>
+                  );
+                }) : <span className="monthly-plan-empty">从下方行动中加入本月计划</span>}
+              </div>
+              {state.pendingEventChoice ? <div className="monthly-plan-note">请先处理事件选择，再提交本月计划。</div> : null}
+            </div>
             <div className="action-tabs" role="tablist" aria-label="行动分类">
               {actionCategories.map(category => (
                 <button
@@ -398,10 +455,11 @@ function GameScreen({
                   return <div className="action-empty-slot" aria-hidden="true" key={slot.id} />;
                 }
                 const action = actionById.get(slot.id);
-                const disabled = !action?.available || state.gameOver;
+                const selected = Boolean(action && plannedActionIds.includes(action.id));
+                const disabled = !action?.available || state.gameOver || Boolean(state.pendingEventChoice);
                 const insight = action ? getActionInsights(state, action) : undefined;
                 return (
-                <button className="action-btn" key={slot.id} disabled={disabled} onClick={() => action && setState(planMonth(state, [action.id]))}>
+                <button className={selected ? 'action-btn planned' : 'action-btn'} key={slot.id} disabled={disabled && !selected} onClick={() => action && togglePlannedAction(action)}>
                   <div className="action-main">
                     <span className="a-name">{slot.icon} {slot.label}</span>
                     <span className="a-cost">{slot.summary}</span>
@@ -416,6 +474,7 @@ function GameScreen({
                   <div className="action-detail">
                     <span>{action?.description ?? '当前条件不足，暂时不能执行。'}</span>
                     {action?.reason ? <span className="cn">{action.reason}</span> : null}
+                    {selected ? <span className="cp">已加入本月计划，点击可取消。</span> : null}
                   </div>
                   {action ? (
                     <div className="action-effects">
@@ -429,6 +488,9 @@ function GameScreen({
               })}
             </div>
             <div className="action-support-scroll">
+              <button className="monthly-plan-submit" type="button" disabled={!canSubmitMonthlyPlan} onClick={submitMonthlyPlan}>
+                执行本月计划
+              </button>
               {bodySignal ? (
                 <div className="body-signal">
                   <div>
