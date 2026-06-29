@@ -105,6 +105,11 @@ export interface HealthProfile {
 
 export interface CareerProfile {
   roleKey: CareerTrack;
+  currentRoleId: string;
+  roleHistory: string[];
+  transitionProgress: Record<string, number>;
+  domainExperience: Record<string, number>;
+  transferableSkills: number;
   companyArchetype: string;
   performance: number;
   employability: number;

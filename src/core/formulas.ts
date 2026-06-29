@@ -1,5 +1,6 @@
 import { CITY_CONFIG, ECONOMY_CONFIG, JOB_LEVELS, MONEY_TARGETS } from '../config/balance';
 import type { GameState, EffectDelta } from '../types/game';
+import { getCompanyProfile } from '../config/realworldCompanies';
 
 export function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
@@ -39,8 +40,9 @@ export function getGrossSalary(state: GameState): number {
   const level = JOB_LEVELS[state.career.jobLevel] ?? JOB_LEVELS[0];
   const city = CITY_CONFIG[state.career.cityTier];
   const economy = ECONOMY_CONFIG[state.world.economyCycle];
+  const company = getCompanyProfile(state.career.companyType);
   const aiPressure = 1 - Math.max(0, state.world.aiReplacement - getVisibleStats(state).ai) * 0.002;
-  return Math.round(level.baseSalary * city.salaryCoef * economy.salaryCoef * clamp(aiPressure, 0.76, 1.08));
+  return Math.round(level.baseSalary * city.salaryCoef * economy.salaryCoef * company.salaryCoef * clamp(aiPressure, 0.76, 1.08));
 }
 
 export function estimateIncomeTax(monthlyGross: number, socialFund: number): number {

@@ -39,6 +39,11 @@ export const DEFAULT_HEALTH_PROFILE: HealthProfile = {
 export function createDefaultCareerProfile(track: CareerTrack = 'frontend'): CareerProfile {
   return {
     roleKey: track,
+    currentRoleId: track,
+    roleHistory: [track],
+    transitionProgress: {},
+    domainExperience: {},
+    transferableSkills: 28,
     companyArchetype: 'none',
     performance: 42,
     employability: 34,

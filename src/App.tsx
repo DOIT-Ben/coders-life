@@ -114,7 +114,10 @@ const actionCategories: Array<{
     items: [
       { id: 'job_hunt', icon: '📨', label: '求职投递', immediateText: '机会 +1 / 精神 -6 / 需要作品', summary: <><span className="cp">机会+1</span><br /><span className="cn">精神-6</span><br /><span className="cn">需作品</span></> },
       { id: 'jump_job', icon: '🎯', label: '面试跳槽', immediateText: '机会跃迁 / 消耗 2 个月 / 有冷却', summary: <><span className="cp">机会跃迁</span><br /><span className="cn">消耗2个月</span><br /><span className="cn">有冷却</span></> },
-      { id: 'open_source', icon: '🌐', label: '开源贡献', immediateText: '声望 +10 / 技术 +8 / 精神 -6', summary: <><span className="cp">声望+10</span><br /><span className="cp">技术+8</span><br /><span className="cn">精神-6</span></> }
+      { id: 'open_source', icon: '🌐', label: '开源贡献', immediateText: '声望 +10 / 技术 +8 / 精神 -6', summary: <><span className="cp">声望+10</span><br /><span className="cp">技术+8</span><br /><span className="cn">精神-6</span></> },
+      { id: 'transition_testing', icon: '🧭', label: '测试路线', immediateText: '路线进度 / 技术 +6 / 成本 -0.12万', summary: <><span className="cp">路线进度</span><br /><span className="cp">技术+6</span><br /><span className="cn">成本-0.12万</span></> },
+      { id: 'transition_data_engineering', icon: '🧭', label: '数据路线', immediateText: '路线进度 / 技术 +8 / 成本 -0.18万', summary: <><span className="cp">路线进度</span><br /><span className="cp">技术+8</span><br /><span className="cn">成本-0.18万</span></> },
+      { id: 'transition_security', icon: '🧭', label: '安全路线', immediateText: '路线进度 / 技术 +8 / 成本 -0.22万', summary: <><span className="cp">路线进度</span><br /><span className="cp">技术+8</span><br /><span className="cn">成本-0.22万</span></> }
     ]
   },
   {

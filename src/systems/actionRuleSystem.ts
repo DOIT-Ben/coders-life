@@ -1,9 +1,15 @@
 import type { ActionConfig, ActionHistoryEntry, EffectDelta, GameState, RealworldEffectDelta } from '../types/game';
 import { clamp } from '../core/formulas';
+import { CAREER_ROUTES } from '../config/realworldCareer';
 
 const XP_KEYS = ['techXp', 'aiXp', 'reputationXp', 'portfolio'] as const;
 const RECOVERY_SUBCATEGORIES = new Set(['digital_entertainment', 'media_reading', 'body_repair', 'mind_repair', 'life_ritual', 'outdoor_nature']);
 const DIGITAL_SUBCATEGORIES = new Set(['digital_entertainment', 'media_reading']);
+const TRANSITION_ACTIONS: Record<string, string> = {
+  transition_testing: 'testing',
+  transition_data_engineering: 'data_engineering',
+  transition_security: 'security'
+};
 
 type NumericEffectKey =
   | 'techXp'
@@ -147,6 +153,37 @@ export function applyRealworldActionEffect(state: GameState, action: ActionConfi
   }
   if (effect.lifePressure) {
     next.lifePressure = mergeLifePressureState(next.lifePressure, effect.lifePressure);
+  }
+
+  return applyCareerTransitionEffect(next, action);
+}
+
+function applyCareerTransitionEffect(state: GameState, action: ActionConfig): GameState {
+  const routeId = TRANSITION_ACTIONS[action.id];
+  if (!routeId) return state;
+  const route = CAREER_ROUTES.find(item => item.id === routeId);
+  if (!route) return state;
+
+  const next = structuredClone(state);
+  const currentProgress = next.careerProfile.transitionProgress[routeId] ?? 0;
+  const transferableBonus = next.careerProfile.transferableSkills * 0.25 + next.career.portfolioCount * 4;
+  const gained = Math.round(route.transitionCost + transferableBonus);
+  const progress = clamp(currentProgress + gained, 0, 100);
+  next.careerProfile.transitionProgress = {
+    ...next.careerProfile.transitionProgress,
+    [routeId]: progress
+  };
+  next.careerProfile.domainExperience = {
+    ...next.careerProfile.domainExperience,
+    [routeId]: (next.careerProfile.domainExperience[routeId] ?? 0) + 1
+  };
+  next.careerProfile.transferableSkills = clamp(next.careerProfile.transferableSkills + 1.5, 0, 100);
+
+  if (progress >= 100 && next.careerProfile.currentRoleId !== routeId) {
+    next.careerProfile.currentRoleId = routeId;
+    next.careerProfile.roleHistory = [...new Set([...next.careerProfile.roleHistory, routeId])];
+    next.careerProfile.aiLeverage = clamp(next.careerProfile.aiLeverage - route.aiExposure * 0.03 + 4, 0, 100);
+    next.careerProfile.careerCapital = clamp(next.careerProfile.careerCapital + route.requiredCapital * 0.08, 0, 100);
   }
 
   return next;

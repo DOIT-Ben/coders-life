@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { applyAction, createInitialState, getAvailableActions } from '../core/gameEngine';
 import { settleMonth } from '../core/monthlyLoop';
-import { applyDelta } from '../core/formulas';
+import { applyDelta, getGrossSalary } from '../core/formulas';
 import { resolvePendingEventChoiceForSimulation } from '../systems/autoChoiceSystem';
 import { applyRealworldActionEffect } from '../systems/actionRuleSystem';
 import { settleEconomy } from '../systems/economySystem';
@@ -529,6 +529,38 @@ describe('phase 3 world career ai and age model', () => {
     expect(foreignNext.laborMarket.hiringStrictness).toBeLessThan(startupNext.laborMarket.hiringStrictness);
   });
 
+  it('uses company salary coefficients in gross salary calculations', () => {
+    const bigtech = createInitialState('frontend', 'tier1', seed);
+    bigtech.career.employmentStatus = 'employed';
+    bigtech.career.companyType = 'bigtech';
+    bigtech.career.jobLevel = 2;
+
+    const outsourcing = createInitialState('frontend', 'tier1', seed);
+    outsourcing.career.employmentStatus = 'employed';
+    outsourcing.career.companyType = 'outsourcing';
+    outsourcing.career.jobLevel = 2;
+
+    expect(getGrossSalary(bigtech)).toBeGreaterThan(getGrossSalary(outsourcing));
+  });
+
+  it('uses company promotion speed in monthly promotion readiness', () => {
+    const startup = createInitialState('frontend', 'tier2', seed);
+    startup.career.employmentStatus = 'employed';
+    startup.career.companyType = 'startup';
+    startup.stats.techXp = 1000;
+    startup.stats.aiXp = 600;
+    startup.stats.mental = 90;
+    startup.stats.health = 90;
+
+    const publicSector = structuredClone(startup);
+    publicSector.career.companyType = 'public_sector';
+
+    const startupNext = settleMonth(startup);
+    const publicNext = settleMonth(publicSector);
+
+    expect(startupNext.careerProfile.promotionReadiness).toBeGreaterThan(publicNext.careerProfile.promotionReadiness);
+  });
+
   it('defines expanded career routes with transition costs', () => {
     expect(CAREER_ROUTES.map(route => route.id)).toEqual(expect.arrayContaining([
       'testing',
@@ -544,6 +576,31 @@ describe('phase 3 world career ai and age model', () => {
     CAREER_ROUTES.forEach(route => {
       expect(route.transitionCost).toBeGreaterThan(0);
       expect(route.requiredCapital).toBeGreaterThanOrEqual(0);
+    });
+  });
+
+  it('lets players transition into three expanded career routes through real actions', () => {
+    const routeActions = [
+      ['transition_testing', 'testing'],
+      ['transition_data_engineering', 'data_engineering'],
+      ['transition_security', 'security']
+    ] as const;
+
+    routeActions.forEach(([actionId, routeId]) => {
+      let state = createInitialState('frontend', 'tier2', seed);
+      state.stats.techXp = 1200;
+      state.stats.aiXp = 800;
+      state.stats.reputationXp = 600;
+      state.careerProfile.careerCapital = 80;
+      state.career.portfolioCount = 3;
+
+      for (let i = 0; i < 3 && state.careerProfile.currentRoleId !== routeId; i += 1) {
+        state = applyAction(state, actionId);
+      }
+
+      expect(state.careerProfile.currentRoleId).toBe(routeId);
+      expect(state.careerProfile.roleHistory).toContain(routeId);
+      expect(state.careerProfile.transitionProgress[routeId]).toBeGreaterThanOrEqual(100);
     });
   });
 });
