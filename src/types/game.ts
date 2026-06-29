@@ -168,10 +168,21 @@ export interface PlayerValueProfile {
   exploration: number;
 }
 
+export type CrisisPhase = 'inactive' | 'active' | 'recovering' | 'recovered' | 'failed';
+
+export interface CrisisEpisode {
+  startedMonth: number;
+  resolvedMonth?: number;
+  outcome?: 'recovered' | 'failed';
+}
+
 export interface CrisisChapter {
   active: boolean;
+  phase: CrisisPhase;
   startedMonth?: number;
+  lastResolvedMonth?: number;
   recoveryProgress: number;
+  episodes: CrisisEpisode[];
 }
 
 export interface CrisisState {

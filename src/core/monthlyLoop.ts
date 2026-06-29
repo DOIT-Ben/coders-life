@@ -14,6 +14,7 @@ import { settleHealthDebt } from '../systems/healthDebtSystem';
 import { settleRelationshipDebt } from '../systems/relationshipSystem';
 import { settleLifeStagePressure } from '../systems/lifePressureSystem';
 import { recordTurningPoints } from '../systems/decisionLogSystem';
+import { settleCrisisState } from '../systems/crisisSystem';
 
 export function settleMonth(state: GameState): GameState {
   if (state.pendingEventChoice) return state;
@@ -32,6 +33,7 @@ export function settleMonth(state: GameState): GameState {
   next = settleLifeStagePressure(next);
   next = addPeriodicReviews(next);
   next = recordTurningPoints(before, next);
+  next = settleCrisisState(next);
   next = checkAchievements(next);
   next = checkEnding(next);
   return next;

@@ -154,13 +154,13 @@ export function createReachabilityProbe(endingId: string): GameState {
     state.stats.burnout = 100;
     state.stats.mental = 0;
     state.stats.health = 20;
-    state.crisis.burnout = { active: true, startedMonth: state.month - 7, recoveryProgress: 0 };
+    state.crisis.burnout = { active: false, phase: 'failed', startedMonth: undefined, lastResolvedMonth: state.month, recoveryProgress: 0, episodes: [{ startedMonth: state.month - 7, resolvedMonth: state.month, outcome: 'failed' }] };
   }
   if (endingId.includes('health')) {
     state.stats.health = 0;
     state.healthProfile.healthDebt = 95;
     state.healthProfile.chronicStress = 90;
-    state.crisis.severeIllness = { active: true, startedMonth: state.month - 7, recoveryProgress: 0 };
+    state.crisis.severeIllness = { active: false, phase: 'failed', startedMonth: undefined, lastResolvedMonth: state.month, recoveryProgress: 0, episodes: [{ startedMonth: state.month - 7, resolvedMonth: state.month, outcome: 'failed' }] };
   }
   if (endingId.includes('cashflow')) {
     state.finance.cashflowStress = 95;
@@ -186,7 +186,7 @@ export function createReachabilityProbe(endingId: string): GameState {
     state.careerProfile.monthsUnemployed = 14;
     state.career.totalApplications = 45;
     state.stats.cash = 20000;
-    state.crisis.majorUnemployment = { active: true, startedMonth: state.month - 7, recoveryProgress: 0 };
+    state.crisis.majorUnemployment = { active: false, phase: 'failed', startedMonth: undefined, lastResolvedMonth: state.month, recoveryProgress: 0, episodes: [{ startedMonth: state.month - 7, resolvedMonth: state.month, outcome: 'failed' }] };
   }
   if (endingId.includes('ai')) {
     state.age = 40;
@@ -203,7 +203,7 @@ export function createReachabilityProbe(endingId: string): GameState {
   }
   if (endingId.includes('depression')) {
     state.stats.mental = 0;
-    state.crisis.mentalHealth = { active: true, startedMonth: state.month - 7, recoveryProgress: 0 };
+    state.crisis.mentalHealth = { active: false, phase: 'failed', startedMonth: undefined, lastResolvedMonth: state.month, recoveryProgress: 0, episodes: [{ startedMonth: state.month - 7, resolvedMonth: state.month, outcome: 'failed' }] };
   }
   if (endingId.includes('lost_purpose')) state.stats.identity = 5;
   if (endingId === 'ordinary_tool') {

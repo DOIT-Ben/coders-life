@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { createInitialState } from '../core/gameEngine';
+import { createInitialState, planMonth } from '../core/gameEngine';
+import { settleMonth } from '../core/monthlyLoop';
 import { eventIntensity, getMonthlyEventCandidates } from '../systems/eventSystem';
+import { applyEventChoice } from '../systems/eventSystem';
 import { checkEnding } from '../systems/endingSystem';
 import { deriveBurnoutRisk, deriveCareerStability, deriveEmployability, deriveHealthDebt, deriveLifeSatisfaction } from '../systems/derivedStateSystem';
 import { ENDINGS } from '../config/endings';
@@ -168,7 +170,7 @@ describe('state-driven real-world events and endings', () => {
   it('only ends burnout or health crisis after an unrecovered hard fail state', () => {
     const state = createInitialState('frontend', 'tier2', seed);
     state.stats.burnout = 100;
-    state.stats.mental = 0;
+    state.stats.mental = 8;
     state.stats.health = 0;
     state.crisis.burnout.active = true;
     state.crisis.burnout.startedMonth = state.month - 7;
@@ -179,6 +181,76 @@ describe('state-driven real-world events and endings', () => {
 
     expect(next.gameOver).toBe(true);
     expect(next.endingId).toMatch(/burnout|health/);
+  });
+
+  it('closes a burnout crisis after recovery actions improve the player state', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+    state.career.employmentStatus = 'employed';
+    state.stats.techXp = 1000;
+    state.stats.burnout = 96;
+    state.stats.mental = 10;
+    state.hidden.fatigue = 72;
+    state.hidden.boundaryScore = 24;
+
+    state = checkEnding(state);
+    expect(state.crisis.burnout.active).toBe(true);
+
+    for (let i = 0; i < 5 && state.crisis.burnout.active; i += 1) {
+      state = planMonth(state, ['therapy', 'sleep_repair']);
+    }
+
+    expect(state.gameOver).toBe(false);
+    expect(state.crisis.burnout.active).toBe(false);
+    expect(state.crisis.burnout.phase).toBe('recovered');
+    expect(state.crisis.burnout.episodes.length).toBeGreaterThanOrEqual(1);
+    expect(state.logs.some(log => log.title === '燃尽恢复完成')).toBe(true);
+  });
+
+  it('fails an unrecovered burnout crisis after the recovery window expires', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+    state.career.employmentStatus = 'employed';
+    state.stats.burnout = 100;
+    state.stats.mental = 40;
+    state.hidden.fatigue = 96;
+    state.hidden.boundaryScore = 8;
+    state = checkEnding(state);
+
+    for (let i = 0; i < 7 && !state.gameOver; i += 1) {
+      state.stats.burnout = 100;
+      state.stats.mental = 40;
+      state.hidden.fatigue = 96;
+      state = settleMonth(state);
+      if (state.pendingEventChoice) {
+        state = applyEventChoice(state, state.pendingEventChoice.choices[0].id);
+      }
+    }
+
+    expect(state.gameOver).toBe(true);
+    expect(state.endingId).toMatch(/burnout/);
+    expect(state.crisis.burnout.phase).toBe('failed');
+  });
+
+  it('starts a new crisis episode after recovery instead of reusing the old timestamp', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+    state.stats.burnout = 96;
+    state.stats.mental = 10;
+    state = checkEnding(state);
+    const firstStartedMonth = state.crisis.burnout.startedMonth;
+
+    for (let i = 0; i < 5 && state.crisis.burnout.active; i += 1) {
+      state = planMonth(state, ['therapy', 'sleep_repair']);
+    }
+    expect(state.crisis.burnout.active).toBe(false);
+
+    state.stats.burnout = 96;
+    state.stats.mental = 8;
+    state = checkEnding(state);
+
+    expect(state.gameOver).toBe(false);
+    expect(state.crisis.burnout.active).toBe(true);
+    expect(state.crisis.burnout.startedMonth).toBe(state.month);
+    expect(state.crisis.burnout.startedMonth).not.toBe(firstStartedMonth);
+    expect(state.crisis.burnout.episodes.length).toBeGreaterThanOrEqual(1);
   });
 
   it('adds value fit to mature endings instead of only money title tech and ai', () => {

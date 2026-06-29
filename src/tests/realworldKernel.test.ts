@@ -132,6 +132,38 @@ describe('real-world simulation kernel state model', () => {
     expect(loaded?.lifePressure.agePressure).toBeGreaterThanOrEqual(0);
     expect(loaded?.values.health).toBeGreaterThan(0);
     expect(loaded?.crisis.burnout.active).toBe(false);
+    expect(loaded?.crisis.burnout.phase).toBe('inactive');
+    expect(loaded?.crisis.burnout.episodes).toEqual([]);
+
+    vi.unstubAllGlobals();
+  });
+
+  it('migrates legacy active crisis saves with episode history fields', async () => {
+    vi.resetModules();
+    const store = new Map<string, string>();
+    vi.stubGlobal('localStorage', {
+      getItem: (key: string) => store.get(key) ?? null,
+      setItem: (key: string, value: string) => store.set(key, value),
+      removeItem: (key: string) => store.delete(key)
+    });
+
+    const state = createInitialState('frontend', 'tier2', seed);
+    const legacy = structuredClone(state) as unknown as Record<string, unknown>;
+    legacy.crisis = {
+      burnout: { active: true, startedMonth: 3, recoveryProgress: 24 },
+      mentalHealth: { active: false, recoveryProgress: 0 },
+      severeIllness: { active: false, recoveryProgress: 0 },
+      majorUnemployment: { active: false, recoveryProgress: 0 }
+    };
+    store.set('programmer_survival_v6_save', JSON.stringify(legacy));
+
+    const { loadGame } = await import('../storage/saveManager');
+    const loaded = loadGame();
+
+    expect(loaded?.crisis.burnout.active).toBe(true);
+    expect(loaded?.crisis.burnout.phase).toBe('active');
+    expect(loaded?.crisis.burnout.episodes).toEqual([{ startedMonth: 3 }]);
+    expect(loaded?.crisis.burnout.recoveryProgress).toBe(24);
 
     vi.unstubAllGlobals();
   });

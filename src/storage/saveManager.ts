@@ -1,4 +1,4 @@
-import type { GameState } from '../types/game';
+import type { CrisisChapter, GameState } from '../types/game';
 import {
   DEFAULT_CAREER_PROFILE,
   DEFAULT_CRISIS_STATE,
@@ -37,6 +37,22 @@ const DEFAULT_WORLD = {
   }
 };
 
+function migrateCrisisChapter(saved: Partial<CrisisChapter> | undefined, fallback: CrisisChapter): CrisisChapter {
+  const active = saved?.active ?? fallback.active;
+  const startedMonth = saved?.startedMonth;
+  const phase = saved?.phase ?? (active ? 'active' : 'inactive');
+  const episodes = saved?.episodes ?? (typeof startedMonth === 'number' ? [{ startedMonth }] : []);
+  return {
+    ...fallback,
+    ...saved,
+    active,
+    phase,
+    startedMonth,
+    recoveryProgress: saved?.recoveryProgress ?? fallback.recoveryProgress,
+    episodes
+  };
+}
+
 function withDefaults(state: GameState): GameState {
   const careerDefaults = {
     pendingApplications: 0,
@@ -59,10 +75,10 @@ function withDefaults(state: GameState): GameState {
     lifePressure: { ...DEFAULT_LIFE_PRESSURE, ...(state.lifePressure ?? {}) },
     values: { ...DEFAULT_PLAYER_VALUES, ...(state.values ?? {}) },
     crisis: {
-      burnout: { ...DEFAULT_CRISIS_STATE.burnout, ...(state.crisis?.burnout ?? {}) },
-      mentalHealth: { ...DEFAULT_CRISIS_STATE.mentalHealth, ...(state.crisis?.mentalHealth ?? {}) },
-      severeIllness: { ...DEFAULT_CRISIS_STATE.severeIllness, ...(state.crisis?.severeIllness ?? {}) },
-      majorUnemployment: { ...DEFAULT_CRISIS_STATE.majorUnemployment, ...(state.crisis?.majorUnemployment ?? {}) }
+      burnout: migrateCrisisChapter(state.crisis?.burnout, DEFAULT_CRISIS_STATE.burnout),
+      mentalHealth: migrateCrisisChapter(state.crisis?.mentalHealth, DEFAULT_CRISIS_STATE.mentalHealth),
+      severeIllness: migrateCrisisChapter(state.crisis?.severeIllness, DEFAULT_CRISIS_STATE.severeIllness),
+      majorUnemployment: migrateCrisisChapter(state.crisis?.majorUnemployment, DEFAULT_CRISIS_STATE.majorUnemployment)
     },
     monthlyPlan: { ...DEFAULT_MONTHLY_PLAN, ...(state.monthlyPlan ?? {}) },
     projects: { ...createDefaultProjectPortfolio(), ...(state.projects ?? {}) },

@@ -106,10 +106,10 @@ export const DEFAULT_PLAYER_VALUES: PlayerValueProfile = {
 };
 
 export const DEFAULT_CRISIS_STATE: CrisisState = {
-  burnout: { active: false, recoveryProgress: 0 },
-  mentalHealth: { active: false, recoveryProgress: 0 },
-  severeIllness: { active: false, recoveryProgress: 0 },
-  majorUnemployment: { active: false, recoveryProgress: 0 }
+  burnout: { active: false, phase: 'inactive', recoveryProgress: 0, episodes: [] },
+  mentalHealth: { active: false, phase: 'inactive', recoveryProgress: 0, episodes: [] },
+  severeIllness: { active: false, phase: 'inactive', recoveryProgress: 0, episodes: [] },
+  majorUnemployment: { active: false, phase: 'inactive', recoveryProgress: 0, episodes: [] }
 };
 
 export const DEFAULT_MONTHLY_PLAN: MonthlyPlan = {
