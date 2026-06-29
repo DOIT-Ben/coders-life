@@ -327,8 +327,17 @@ export interface EventChoiceConfig {
 
 export interface EvidenceMetadata {
   sourceLevel: 'empirical' | 'industry_report' | 'case_study' | 'synthetic';
+  sourceType?: 'peer_reviewed' | 'official_statistics' | 'industry_survey' | 'media' | 'community_story' | 'synthetic';
   confidence: 'low' | 'medium' | 'high';
   source?: string;
+  title?: string;
+  url?: string;
+  publicationDate?: string;
+  population?: string;
+  sampleSize?: number;
+  applicableScope?: string[];
+  parameterRationale?: string;
+  verifiedAt?: string;
 }
 
 export interface PendingEventChoice {

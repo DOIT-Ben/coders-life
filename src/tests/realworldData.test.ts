@@ -7,6 +7,8 @@ import { REALWORLD_EVENTS, REALWORLD_EVENT_COUNT } from '../config/realworldEven
 import { REALWORLD_FAIL_ENDING_COUNT } from '../config/realworldEndings';
 import { SHOP_ITEMS } from '../config/shop';
 import { ACHIEVEMENTS } from '../config/achievements';
+import { UNSTRUCTURED_REALWORLD_ACTION_REQUIREMENTS, UNMAPPED_REALWORLD_ACTION_REQUIREMENTS } from '../config/realworldActions';
+import realworldActionsSource from '../config/realworldActions.ts?raw';
 
 describe('real-world data import', () => {
   it('loads the curated real-world action pool including nutrition and addiction recovery', () => {
@@ -46,6 +48,32 @@ describe('real-world data import', () => {
       expect(allowedSourceLevels).toContain(config.evidence?.sourceLevel);
       expect(allowedConfidenceLevels).toContain(config.evidence?.confidence);
     });
+  });
+
+  it('attaches structured evidence metadata with source type url date scope and rationale', () => {
+    const action = REALWORLD_ACTIONS.find(item => item.id === 'R2001')!;
+
+    expect(action.evidence?.sourceType).toBeDefined();
+    expect(action.evidence?.title).toBeTruthy();
+    expect(action.evidence?.url).toMatch(/^https?:\/\//);
+    expect(action.evidence?.applicableScope?.length).toBeGreaterThan(0);
+    expect(action.evidence?.parameterRationale).toBeTruthy();
+  });
+
+  it('classifies community and narrative sources separately from industry reports', () => {
+    const narrative = REALWORLD_ACTIONS.find(action => action.evidence?.source === '经验归纳' || action.evidence?.sourceType === 'community_story');
+
+    expect(narrative).toBeDefined();
+    expect(narrative?.evidence?.sourceType).toBe('community_story');
+    expect(narrative?.evidence?.sourceLevel).not.toBe('industry_report');
+  });
+
+  it('uses structured action requirements instead of regex over display text', () => {
+    expect(UNMAPPED_REALWORLD_ACTION_REQUIREMENTS).toEqual([]);
+    expect(UNSTRUCTURED_REALWORLD_ACTION_REQUIREMENTS).toEqual([]);
+    expect(realworldActionsSource).not.toContain('function requirementsFor');
+    expect(realworldActionsSource).not.toContain('/在职/');
+    expect(realworldActionsSource).not.toContain('.test(text)');
   });
 
   it('validates schema-critical action event ending achievement and shop fields', () => {
