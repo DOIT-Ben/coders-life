@@ -214,4 +214,18 @@ describe('decision support and first-stage functional optimization', () => {
     expect(afterHousing.lifePressure.commutePressure).toBeLessThanOrEqual(state.lifePressure.commutePressure);
     expect(afterHousing.stats.mental).toBe(state.stats.mental);
   });
+
+  it('adds shop subscriptions insurance and housing rent on top of base living cost', () => {
+    let state = createInitialState('frontend', 'tier1', seed);
+    state.stats.cash = 50000;
+
+    const base = settleMonth(state);
+    state = buyShopItem(state, 'ai_pro');
+    state = buyShopItem(state, 'medical_insurance');
+    state = buyShopItem(state, 'private_room');
+    const settled = settleMonth(state);
+
+    expect(settled.finance.monthlyFixedCost).toBe(base.finance.monthlyFixedCost + 1080);
+    expect(settled.finance.monthlyRent).toBeGreaterThan(base.finance.monthlyRent);
+  });
 });

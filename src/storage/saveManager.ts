@@ -82,6 +82,14 @@ function migrateProjectState(saved: Partial<ProjectState> | undefined, fallback:
   };
 }
 
+function migrateFinance(state: GameState): GameState['finance'] {
+  const saved = state.finance ?? {};
+  const monthlyFixedCost = typeof saved.monthlyFixedCost === 'number' && saved.monthlyFixedCost > 0 && saved.monthlyFixedCost <= 6500
+    ? 0
+    : saved.monthlyFixedCost;
+  return { ...DEFAULT_FINANCE_STATE, ...saved, monthlyFixedCost: monthlyFixedCost ?? DEFAULT_FINANCE_STATE.monthlyFixedCost };
+}
+
 function withDefaults(state: GameState): GameState {
   const careerDefaults = {
     pendingApplications: 0,
@@ -95,7 +103,7 @@ function withDefaults(state: GameState): GameState {
     career: { ...careerDefaults, ...(state.career ?? {}) },
     hidden: { ...DEFAULT_HIDDEN, ...(state.hidden ?? {}) },
     flags: state.flags ?? {},
-    finance: { ...DEFAULT_FINANCE_STATE, ...(state.finance ?? {}) },
+    finance: migrateFinance(state),
     healthProfile: { ...DEFAULT_HEALTH_PROFILE, ...(state.healthProfile ?? {}) },
     careerProfile: { ...createDefaultCareerProfile(state.career?.track ?? 'frontend'), ...DEFAULT_CAREER_PROFILE, ...(state.careerProfile ?? {}) },
     socialProfile: { ...DEFAULT_SOCIAL_PROFILE, ...(state.socialProfile ?? {}) },
@@ -116,6 +124,9 @@ function withDefaults(state: GameState): GameState {
     unlockedAchievements: state.unlockedAchievements ?? [],
     seenEvents: state.seenEvents ?? [],
     eventMemory: state.eventMemory ?? {},
+    eventChainProgress: state.eventChainProgress ?? {},
+    eventLastTriggeredMonth: state.eventLastTriggeredMonth ?? {},
+    eventChoiceMemory: state.eventChoiceMemory ?? {},
     pendingEffects: state.pendingEffects ?? [],
     actionHistory: state.actionHistory ?? [],
     decisionLog: state.decisionLog ?? [],

@@ -32,7 +32,6 @@ export function buyShopItem(state: GameState, id: string): GameState {
       break;
     case 'ai_pro':
       next.projects.aiTooling.efficiency += 0.2;
-      next.finance.monthlyFixedCost += item.monthlyCost ?? 0;
       break;
     case 'gym_card':
       next.projects.fitness.efficiency += 0.2;

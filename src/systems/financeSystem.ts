@@ -3,7 +3,8 @@ import { applyDelta, clamp, getMonthlyCost, getNetSalary } from '../core/formula
 
 export function settleFixedFinance(state: GameState): GameState {
   const salary = getNetSalary(state);
-  const fixedCost = Math.max(getMonthlyCost(state), state.finance.monthlyFixedCost || 0);
+  const debtPayment = Math.round(state.finance.debt * 0.012);
+  const fixedCost = getMonthlyCost(state) + (state.finance.monthlyFixedCost || 0) + debtPayment;
   const passive = state.stats.passiveIncomeMonthly;
   const monthlyIncome = salary + passive;
   const net = monthlyIncome - fixedCost;
@@ -19,8 +20,8 @@ export function settleFixedFinance(state: GameState): GameState {
     monthlyIncome,
     monthlySalary: salary,
     monthlyFixedCost: fixedCost,
-    monthlyRent: Math.max(state.finance.monthlyRent, Math.round(fixedCost * 0.38)),
-    monthlyDebtPayment: Math.round(state.finance.debt * 0.012),
+    monthlyRent: Math.max(state.finance.monthlyRent, Math.round(getMonthlyCost(state) * 0.38)),
+    monthlyDebtPayment: debtPayment,
     emergencyFundMonths,
     cashflowStress
   };

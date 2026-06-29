@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createInitialState, planMonth } from '../core/gameEngine';
 import { settleMonth } from '../core/monthlyLoop';
-import { eventIntensity, getMonthlyEventCandidates } from '../systems/eventSystem';
+import { eventIntensity, getMonthlyEventCandidates, triggerMonthlyEvent } from '../systems/eventSystem';
 import { applyEventChoice } from '../systems/eventSystem';
 import { checkEnding } from '../systems/endingSystem';
 import { deriveBurnoutRisk, deriveCareerStability, deriveEmployability, deriveHealthDebt, deriveLifeSatisfaction } from '../systems/derivedStateSystem';
@@ -117,6 +117,16 @@ describe('state-driven real-world events and endings', () => {
 
     expect(candidates.some(event => event.id === 'state_health_warning')).toBe(false);
     expect(candidates.every(event => !event.mutuallyExclusiveTags?.includes('health_alert') || event.id !== 'minor_illness')).toBe(true);
+  });
+
+  it('keeps event chain progress separate from cooldown timestamps', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    const first = triggerMonthlyEvent(state, { forceEvent: 'coworker_ai_1' });
+    const second = triggerMonthlyEvent(first, { forceEvent: 'leader_talk_ai' });
+
+    expect(second.eventChainProgress.ai_shift).toBe(2);
+    expect(second.eventLastTriggeredMonth.ai_shift).toBe(first.month);
+    expect(second.eventChoiceMemory.ai_shift).toBeUndefined();
   });
 
   it('raises event intensity when exposure and world cycle risks increase', () => {

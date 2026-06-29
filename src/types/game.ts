@@ -372,6 +372,9 @@ export interface GameState {
   unlockedAchievements: string[];
   seenEvents: string[];
   eventMemory: Record<string, number>;
+  eventChainProgress: Record<string, number>;
+  eventLastTriggeredMonth: Record<string, number>;
+  eventChoiceMemory: Record<string, number>;
   pendingEffects: PendingEffect[];
   actionHistory: ActionHistoryEntry[];
   decisionLog: DecisionLogEntry[];

@@ -257,8 +257,8 @@ describe('real-world monthly causal pipeline', () => {
     let state = createInitialState('frontend', 'tier2', seed);
     state.career.employmentStatus = 'employed';
     state.career.companyType = 'private';
-    state.career.jobLevel = 2;
-    state.stats.cash = 300000;
+    state.career.jobLevel = 3;
+    state.stats.cash = 1200000;
     state.healthProfile.nutritionQuality = 76;
     state.healthProfile.recoveryQuality = 74;
     state.healthProfile.exerciseHabit = 62;
@@ -346,7 +346,7 @@ describe('real-world action consequences', () => {
     });
 
     expect(next.finance.monthlyIncome).toBe(12000);
-    expect(next.finance.monthlyFixedCost).toBe(14200);
+    expect(next.finance.monthlyFixedCost).toBe(9000);
     expect(next.finance.debt).toBe(150000);
     expect(next.careerProfile.employability).toBe(100);
     expect(next.lifePressure.timeScarcity).toBe(100);
