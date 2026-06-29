@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
 import { CAREER_ROLES, findCareerRole } from '../config/realworldCareer';
 import { CITY_COSTS, findCityCost } from '../config/realworldCities';
 import { COMPANY_ARCHETYPES, findCompanyArchetype } from '../config/realworldCompanies';
@@ -79,12 +80,14 @@ describe('real-world configuration loaders', () => {
     expect(pressureStage?.risks).toContain('35岁');
   });
 
-  it('keeps unparsed real-world action requirements visible for conversion', () => {
-    expect(UNPARSED_REALWORLD_ACTION_REQUIREMENTS).toEqual(expect.arrayContaining([
-      'GitHub 账号',
-      '有面试机会',
-      '有竞争 offer'
-    ]));
+  it('keeps real-world action requirements structurally mapped', () => {
+    const source = readFileSync(new URL('../config/realworldActions.ts', import.meta.url), 'utf8');
+
+    expect(UNPARSED_REALWORLD_ACTION_REQUIREMENTS).toEqual([]);
+    ['GitHub 账号', '有面试机会', '有竞争 offer'].forEach(text => {
+      expect(source).toContain(`'${text}'`);
+    });
+    expect(source).toContain("'在职': { employed: true }");
     expect(UNPARSED_REALWORLD_ACTION_REQUIREMENTS).not.toContain('在职');
     expect(UNPARSED_REALWORLD_ACTION_REQUIREMENTS).not.toContain('20 万以上本金');
     expect(UNPARSED_REALWORLD_ACTION_REQUIREMENTS).not.toContain('耳机');

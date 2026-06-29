@@ -195,7 +195,7 @@ const STRUCTURED_REQUIREMENTS: Record<string, ActionRequirements> = {
   '项目紧急': { employed: true }
 };
 
-function structuredRequirementsFor(row: RealworldActionRow): ActionRequirements | undefined {
+export function structuredRequirementsFor(row: RealworldActionRow): ActionRequirements | undefined {
   const text = row.requirement.trim();
   if (!text || text === '无') return undefined;
   return STRUCTURED_REQUIREMENTS[text];

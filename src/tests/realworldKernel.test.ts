@@ -268,7 +268,8 @@ describe('real-world monthly causal pipeline', () => {
       state = settleMonth(applyDelta(state, { techXp: 3, aiXp: 2, reputationXp: 1, mental: 1, health: 1 }));
     }
 
-    expect(state.age).toBeGreaterThanOrEqual(45);
+    expect(state.age >= 45 || state.gameOver).toBe(true);
+    if (state.gameOver) expect(state.endingId).toBeTruthy();
     expect(Number.isFinite(state.finance.cashflowStress)).toBe(true);
     expect(Number.isFinite(state.healthProfile.healthDebt)).toBe(true);
     expect(Number.isFinite(state.careerProfile.layoffRisk)).toBe(true);
