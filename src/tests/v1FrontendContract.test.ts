@@ -161,6 +161,16 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.ach-progress-bar');
   });
 
+  it('shows project progress and quality instead of hiding staged outcomes', () => {
+    ['ProjectProgressPanel', '项目进度', '质量', 'completedInstances', 'activeInstance'].forEach(token => {
+      expect(appSource).toContain(token);
+    });
+    expect(appSource).not.toContain("immediateText: '作品 +1 / 技术 +12 / 成本 -0.3万'");
+    expect(appSource).not.toContain("immediateText: '声望 +18 / 被动收入 / 精神 -10'");
+    expect(appCss).toContain('.project-progress-panel');
+    expect(appCss).toContain('.project-progress-bar');
+  });
+
   it('uses respectful crisis age and AI copy in the visible shell', () => {
     ['职业转型窗口', 'AI协作能力', '恢复窗口'].forEach(label => {
       expect(appSource).toContain(label);

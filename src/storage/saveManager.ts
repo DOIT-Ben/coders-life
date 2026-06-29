@@ -1,4 +1,4 @@
-import type { CrisisChapter, GameState } from '../types/game';
+import type { CrisisChapter, GameState, ProjectPortfolioState, ProjectState } from '../types/game';
 import {
   DEFAULT_CAREER_PROFILE,
   DEFAULT_CRISIS_STATE,
@@ -53,6 +53,35 @@ function migrateCrisisChapter(saved: Partial<CrisisChapter> | undefined, fallbac
   };
 }
 
+function migrateProjects(saved: Partial<ProjectPortfolioState> | undefined): ProjectPortfolioState {
+  const defaults = createDefaultProjectPortfolio();
+  return (Object.keys(defaults) as Array<keyof ProjectPortfolioState>).reduce((projects, key) => {
+    projects[key] = migrateProjectState(saved?.[key], defaults[key], key);
+    return projects;
+  }, {} as ProjectPortfolioState);
+}
+
+function migrateProjectState(saved: Partial<ProjectState> | undefined, fallback: ProjectState, key: keyof ProjectPortfolioState): ProjectState {
+  const completedInstances = saved?.completedInstances ?? (saved?.completed
+    ? [{
+        id: `${String(key)}-legacy-completed`,
+        kind: key,
+        status: 'released' as const,
+        progress: 100,
+        quality: saved.quality ?? 60,
+        audienceFit: Math.max(35, Math.min(100, saved.quality ?? 60)),
+        startedMonth: 0,
+        completedMonth: 0
+      }]
+    : []);
+  return {
+    ...fallback,
+    ...saved,
+    completedInstances,
+    activeInstance: saved?.activeInstance
+  };
+}
+
 function withDefaults(state: GameState): GameState {
   const careerDefaults = {
     pendingApplications: 0,
@@ -81,7 +110,7 @@ function withDefaults(state: GameState): GameState {
       majorUnemployment: migrateCrisisChapter(state.crisis?.majorUnemployment, DEFAULT_CRISIS_STATE.majorUnemployment)
     },
     monthlyPlan: { ...DEFAULT_MONTHLY_PLAN, ...(state.monthlyPlan ?? {}) },
-    projects: { ...createDefaultProjectPortfolio(), ...(state.projects ?? {}) },
+    projects: migrateProjects(state.projects),
     cooldowns: state.cooldowns ?? {},
     inventory: state.inventory ?? {},
     unlockedAchievements: state.unlockedAchievements ?? [],

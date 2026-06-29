@@ -94,7 +94,7 @@ const actionCategories: Array<{
     items: [
       { id: 'ai_training', icon: '📡', label: '学习AI工具', immediateText: 'AI +18 / 技术 +4 / 精神 -4', summary: <><span className="cp">AI+18</span><br /><span className="cp">技术+4</span><br /><span className="cn">精神-4</span></> },
       { id: 'system_learning', icon: '📘', label: '系统学习', immediateText: '技术 +18 / 专注 +6 / 成本 -0.2万', summary: <><span className="cp">技术+18</span><br /><span className="cp">专注+6</span><br /><span className="cn">成本-0.2万</span></> },
-      { id: 'project_practice', icon: '🧪', label: '项目实战', immediateText: '作品 +1 / 技术 +12 / 成本 -0.3万', summary: <><span className="cp">作品+1</span><br /><span className="cp">技术+12</span><br /><span className="cn">成本-0.3万</span></> },
+      { id: 'project_practice', icon: '🧪', label: '项目实战', immediateText: '项目进度 +34 / 技术 +12 / 完成后作品 +1', summary: <><span className="cp">进度+34</span><br /><span className="cp">技术+12</span><br /><span className="cn">成本-0.3万</span></> },
       { id: 'writing_share', icon: '✍️', label: '技术写作', immediateText: '声望 +12 / 技术 +4 / 精神 -5', summary: <><span className="cp">声望+12</span><br /><span className="cp">技术+4</span><br /><span className="cn">精神-5</span></> }
     ]
   },
@@ -105,7 +105,7 @@ const actionCategories: Array<{
       { id: 'regular_work', icon: '💼', label: '认真上班', immediateText: '绩效 +4 / 技术 +6 / 精神 -5', summary: <><span className="cp">绩效+4</span><br /><span className="cp">技术+6</span><br /><span className="cn">精神-5</span></> },
       { id: 'overtime_sprint', icon: '💻', label: '加班写代码', immediateText: '奖金 +0.35万 / 技术 +10 / 精神 -14', summary: <><span className="cp">奖金+0.35万</span><br /><span className="cp">技术+10</span><br /><span className="cn">精神-14</span></> },
       { id: 'freelance', icon: '💰', label: '接私活', immediateText: '现金 +1.2万 / 精神 -12 / 健康 -4', summary: <><span className="cp">现金+1.2万</span><br /><span className="cn">精神-12</span><br /><span className="cn">健康-4</span></> },
-      { id: 'content_product', icon: '🎬', label: '自媒体/课程', immediateText: '声望 +18 / 被动收入 / 精神 -10', summary: <><span className="cp">声望+18</span><br /><span className="cp">被动收入</span><br /><span className="cn">精神-10</span></> }
+      { id: 'content_product', icon: '🎬', label: '自媒体/课程', immediateText: '项目进度 +38 / 声望 +18 / 完成后被动收入', summary: <><span className="cp">进度+38</span><br /><span className="cp">声望+18</span><br /><span className="cn">精神-10</span></> }
     ]
   },
   {
@@ -410,6 +410,7 @@ function GameScreen({
             </div>
           </div>
           <LifeLogV1 state={state} />
+          <ProjectProgressPanel state={state} />
         </div>
         <div className="right-col">
           <div className="action-card">
@@ -599,6 +600,39 @@ function LifeLogV1({ state }: { state: GameState }) {
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+function ProjectProgressPanel({ state }: { state: GameState }) {
+  const projects = [
+    { label: '项目实战', project: state.projects.projectPractice },
+    { label: '技术写作', project: state.projects.writing },
+    { label: '开源贡献', project: state.projects.openSource },
+    { label: '副业产品', project: state.projects.sideBusiness }
+  ];
+  const visibleProjects = projects.filter(item => item.project.activeInstance || item.project.completedInstances.length > 0).slice(0, 4);
+  if (visibleProjects.length === 0) return null;
+
+  return (
+    <div className="project-progress-panel">
+      <div className="project-progress-title">项目进度</div>
+      {visibleProjects.map(item => {
+        const activeInstance = item.project.activeInstance;
+        const progress = Math.round(activeInstance?.progress ?? 0);
+        const quality = Math.round(activeInstance?.quality ?? 0);
+        return (
+          <div className="project-progress-row" key={item.label}>
+            <div className="project-progress-meta">
+              <span>{item.label}</span>
+              <span>质量 {quality} · 已发布 {item.project.completedInstances.length}</span>
+            </div>
+            <div className="project-progress-bar">
+              <span style={{ width: `${Math.max(4, Math.min(100, progress))}%` }} />
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }

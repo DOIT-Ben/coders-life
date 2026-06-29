@@ -163,6 +163,29 @@ describe('decision support and first-stage functional optimization', () => {
     expect(state.career.portfolioCount).toBeGreaterThan(0);
   });
 
+  it('can complete a second project practice instance through repeated real actions', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+
+    for (let i = 0; i < 8; i += 1) state = applyAction(state, 'project_practice');
+
+    expect(state.projects.projectPractice.completedInstances).toHaveLength(2);
+    const activeInstance = state.projects.projectPractice.activeInstance;
+    expect(activeInstance).toBeDefined();
+    expect(activeInstance?.status).toBe('active');
+    expect(activeInstance?.progress).toBeGreaterThan(0);
+    expect(state.career.portfolioCount).toBe(2);
+  });
+
+  it('tracks visible project progress and quality on the active project instance', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+
+    state = applyAction(state, 'project_practice');
+
+    expect(state.projects.projectPractice.activeInstance?.progress).toBeGreaterThan(0);
+    expect(state.projects.projectPractice.activeInstance?.quality).toBeGreaterThan(0);
+    expect(state.projects.projectPractice.activeInstance?.status).toBe('active');
+  });
+
   it('makes shop purchases affect conditions and efficiency instead of instant raw stat boosts', () => {
     const state = createInitialState('frontend', 'tier2', seed);
     const afterChair = buyShopItem(state, 'ergonomic_chair');

@@ -234,6 +234,19 @@ export interface ProjectState {
   quality: number;
   completed: boolean;
   efficiency: number;
+  activeInstance?: ProjectInstance;
+  completedInstances: ProjectInstance[];
+}
+
+export interface ProjectInstance {
+  id: ID;
+  kind: keyof ProjectPortfolioState;
+  status: 'active' | 'released' | 'abandoned';
+  progress: number;
+  quality: number;
+  audienceFit: number;
+  startedMonth: number;
+  completedMonth?: number;
 }
 
 export interface ProjectPortfolioState {

@@ -123,7 +123,8 @@ function createDefaultProjectState(): ProjectState {
     progress: 0,
     quality: 0,
     completed: false,
-    efficiency: 1
+    efficiency: 1,
+    completedInstances: []
   };
 }
 
