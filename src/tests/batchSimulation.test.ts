@@ -66,7 +66,7 @@ describe('batch simulation release gate', () => {
     expect(thresholds.minCoveredEndingCount).toBeGreaterThanOrEqual(2);
   });
 
-  it('does not validate ending reachability through synthetic terminal probes', () => {
+  it('reports legal ending coverage from actual simulated trajectories', () => {
     const result = runBatchSimulation({
       seedsPerScenario: 1,
       strategies: ['stable_cashflow'],
@@ -75,8 +75,18 @@ describe('batch simulation release gate', () => {
       maxMonths: 2
     });
 
-    expect(result.invariants.noSyntheticEndingReachability).toBe(true);
+    expect(result.invariants.legalEndingCoverage).toBe(false);
     expect(Object.keys(result.invariants.coveredEndings)).toEqual(Object.keys(result.distributions.endingFrequencies));
+  });
+
+  it('uses legal trajectory coverage instead of an always-true synthetic reachability gate', () => {
+    const earlyState = createInitialState('frontend', 'tier2', 42);
+    earlyState.endingId = undefined;
+
+    const invariants = validateSimulationInvariants([earlyState]);
+
+    expect(invariants).not.toHaveProperty('noSyntheticEndingReachability');
+    expect(invariants.legalEndingCoverage).toBe(false);
   });
 
   it('reports invariant failures for impossible states', () => {

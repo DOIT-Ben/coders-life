@@ -99,7 +99,7 @@ export function runBatchSimulation(options: BatchSimulationOptions): BatchSimula
   const releasePassed =
     invariants.percentageFieldsInRange &&
     invariants.noImpossibleHouseholdPressure &&
-    invariants.noSyntheticEndingReachability &&
+    invariants.legalEndingCoverage &&
     invariants.deterministicReplay &&
     bankruptcyRate <= thresholds.maxBankruptcyRate &&
     burnoutRate <= thresholds.maxBurnoutRate &&
@@ -139,7 +139,7 @@ export function validateSimulationInvariants(states: GameState[], coveredEndings
       const partnerSupportOk = state.household.hasPartner || state.socialProfile.partnerSupport === 0;
       return childPressureOk && partnerSupportOk;
     }),
-    noSyntheticEndingReachability: true,
+    legalEndingCoverage: Object.keys(coveredEndings).some(id => id !== 'none'),
     coveredEndings,
     deterministicReplay: true
   };
@@ -258,11 +258,40 @@ function projectReplayState(state: GameState) {
   return {
     month: state.month,
     age: state.age,
-    cash: state.stats.cash,
-    mental: state.stats.mental,
-    health: state.stats.health,
+    phase: state.phase,
+    world: state.world,
+    stats: state.stats,
+    career: state.career,
+    finance: state.finance,
+    healthProfile: state.healthProfile,
+    careerProfile: state.careerProfile,
+    socialProfile: state.socialProfile,
+    household: state.household,
+    laborMarket: state.laborMarket,
+    lifePressure: state.lifePressure,
+    values: state.values,
+    crisis: state.crisis,
+    flags: state.flags,
+    cooldowns: state.cooldowns,
+    inventory: state.inventory,
+    eventMemory: state.eventMemory,
+    eventChainProgress: state.eventChainProgress,
+    eventLastTriggeredMonth: state.eventLastTriggeredMonth,
+    eventChoiceMemory: state.eventChoiceMemory,
+    pendingEffects: state.pendingEffects,
+    actionHistory: state.actionHistory,
+    decisionLog: state.decisionLog,
+    turningPoints: state.turningPoints,
+    pendingEventChoice: state.pendingEventChoice,
+    hidden: state.hidden,
+    monthlyPlan: state.monthlyPlan,
+    projects: state.projects,
+    unlockedAchievements: state.unlockedAchievements,
+    seenEvents: state.seenEvents,
+    gameOver: state.gameOver,
     endingId: state.endingId,
-    achievements: state.unlockedAchievements
+    logCount: state.logs.length,
+    logTitles: state.logs.map(log => [log.month, log.type, log.title, log.text])
   };
 }
 
@@ -271,9 +300,9 @@ if (process.argv[1]?.endsWith('simulateBatch.ts')) {
   const result = runBatchSimulation({
     seedsPerScenario,
     strategies: parseList(process.env.STRATEGIES) as AutoStrategyId[] | undefined,
-    careers: (parseList(process.env.CAREERS) as CareerTrack[] | undefined) ?? ['frontend'],
-    cityTiers: (parseList(process.env.CITIES) as CityTier[] | undefined) ?? ['tier2'],
-    maxMonths: process.env.MAX_MONTHS ? Number(process.env.MAX_MONTHS) : 36
+    careers: parseList(process.env.CAREERS) as CareerTrack[] | undefined,
+    cityTiers: parseList(process.env.CITIES) as CityTier[] | undefined,
+    maxMonths: process.env.MAX_MONTHS ? Number(process.env.MAX_MONTHS) : 120
   });
   console.log(JSON.stringify(result, null, 2));
   if (!result.releaseGate.passed) process.exitCode = 1;

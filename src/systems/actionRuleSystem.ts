@@ -206,7 +206,7 @@ function applyCareerTransitionEffect(state: GameState, action: ActionConfig): Ga
   const next = structuredClone(state);
   const currentProgress = next.careerProfile.transitionProgress[routeId] ?? 0;
   const transferableBonus = next.careerProfile.transferableSkills * 0.25 + next.career.portfolioCount * 4;
-  const gained = Math.round(route.transitionCost + transferableBonus);
+  const gained = Math.max(12, Math.round(72 - route.transitionCost + transferableBonus));
   const progress = clamp(currentProgress + gained, 0, 100);
   next.careerProfile.transitionProgress = {
     ...next.careerProfile.transitionProgress,

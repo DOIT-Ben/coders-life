@@ -523,6 +523,66 @@ describe('real-world action consequences', () => {
     expect(household?.available).toBe(false);
     expect(household?.reason).toContain('家庭');
   });
+
+  it('gates account offer income debt and time requirements with real state predicates', () => {
+    const blocked = createInitialState('frontend', 'tier2', seed);
+    blocked.stats.cash = 1000;
+    blocked.stats.techXp = 0;
+    blocked.stats.aiXp = 0;
+    blocked.career.employmentStatus = 'jobless';
+    blocked.career.totalOffers = 0;
+    blocked.career.pendingApplications = 0;
+    blocked.career.totalInterviews = 0;
+    blocked.finance.monthlyIncome = 0;
+    blocked.finance.monthlySalary = 0;
+    blocked.finance.debt = 0;
+    blocked.inventory = {};
+    blocked.flags = {};
+    blocked.lifePressure.timeScarcity = 95;
+    blocked.hidden.fatigue = 95;
+
+    const blockedActions = getAvailableActions(blocked);
+    expect(blockedActions.find(action => action.id === 'G2204')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'J2007')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'C2002')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'J2003')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'I2302')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'I2303')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'G2201')?.available).toBe(false);
+
+    const ready = structuredClone(blocked);
+    ready.stats.cash = 120000;
+    ready.stats.techXp = 500;
+    ready.stats.aiXp = 300;
+    ready.career.employmentStatus = 'employed';
+    ready.career.totalOffers = 2;
+    ready.career.pendingApplications = 2;
+    ready.career.totalInterviews = 1;
+    ready.finance.monthlyIncome = 18000;
+    ready.finance.monthlySalary = 18000;
+    ready.finance.debt = 80000;
+    ready.inventory = {
+      github_account: true,
+      linkedin_account: true,
+      recording_tool: true,
+      password_manager: true,
+      credit_card: true,
+      kitchen: true,
+      quiet_space: true
+    };
+    ready.flags = { competing_offer: true, has_friends: true };
+    ready.lifePressure.timeScarcity = 20;
+    ready.hidden.fatigue = 20;
+
+    const readyActions = getAvailableActions(ready);
+    expect(readyActions.find(action => action.id === 'G2204')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'J2007')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'C2002')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'J2003')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'I2302')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'I2303')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'G2201')?.available).toBe(true);
+  });
 });
 
 describe('phase 3 world career ai and age model', () => {
@@ -696,5 +756,21 @@ describe('phase 3 world career ai and age model', () => {
       expect(state.careerProfile.roleHistory).toContain(routeId);
       expect(state.careerProfile.transitionProgress[routeId]).toBeGreaterThanOrEqual(100);
     });
+  });
+
+  it('makes higher transition-cost routes progress slower under equal player state', () => {
+    const testing = createInitialState('frontend', 'tier2', seed);
+    testing.stats.techXp = 1200;
+    testing.stats.aiXp = 800;
+    testing.stats.reputationXp = 600;
+    testing.careerProfile.careerCapital = 80;
+    testing.career.portfolioCount = 3;
+
+    const security = structuredClone(testing);
+
+    const testingNext = applyAction(testing, 'transition_testing');
+    const securityNext = applyAction(security, 'transition_security');
+
+    expect(securityNext.careerProfile.transitionProgress.security).toBeLessThan(testingNext.careerProfile.transitionProgress.testing);
   });
 });

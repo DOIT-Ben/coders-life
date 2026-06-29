@@ -427,10 +427,20 @@ export interface RealworldEffectDelta {
 
 export interface ActionRequirements {
   employed?: boolean;
+  employmentOrInterview?: boolean;
   minCash?: number;
   minTech?: number;
   minAi?: number;
   inventory?: ID;
+  flag?: ID;
+  minOffers?: number;
+  minInterviews?: number;
+  positiveIncome?: boolean;
+  debtBalance?: boolean;
+  timeAvailable?: boolean;
+  focusAvailable?: boolean;
+  socialSupport?: boolean;
+  smokingHabit?: boolean;
   household?: 'family' | 'partner' | 'child' | 'parent';
 }
 
