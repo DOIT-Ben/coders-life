@@ -6,6 +6,7 @@ import { applyEventChoice } from '../systems/eventSystem';
 import { checkEnding } from '../systems/endingSystem';
 import { deriveBurnoutRisk, deriveCareerStability, deriveEmployability, deriveHealthDebt, deriveLifeSatisfaction } from '../systems/derivedStateSystem';
 import { ENDINGS } from '../config/endings';
+import { ACHIEVEMENTS } from '../config/achievements';
 
 const seed = 13579;
 
@@ -175,6 +176,53 @@ describe('state-driven real-world events and endings', () => {
     healthFirst.values = { wealth: 0.1, craft: 0.2, stability: 0.2, freedom: 0.2, relationships: 0.8, health: 1, impact: 0.1, exploration: 0.1 };
 
     expect(deriveLifeSatisfaction(wealthFirst).value).toBeGreaterThan(deriveLifeSatisfaction(healthFirst).value);
+  });
+
+  it('keeps achievement descriptions aligned with their unlock conditions', () => {
+    const transitionWindow = ACHIEVEMENTS.find(achievement => achievement.id === 'survive_35')!;
+    const noOverworkYear = ACHIEVEMENTS.find(achievement => achievement.id === 'no_overwork_year')!;
+
+    const weakWindow = createInitialState('frontend', 'tier2', seed);
+    weakWindow.age = 35;
+    weakWindow.stats.cash = 1000;
+    weakWindow.healthProfile.recoveryQuality = 20;
+    weakWindow.careerProfile.transferableSkills = 10;
+
+    const readyWindow = structuredClone(weakWindow);
+    readyWindow.stats.cash = 150000;
+    readyWindow.healthProfile.recoveryQuality = 65;
+    readyWindow.careerProfile.transferableSkills = 45;
+
+    expect(transitionWindow.description).toContain('现金缓冲');
+    expect(transitionWindow.description).toContain('恢复能力');
+    expect(transitionWindow.description).toContain('可迁移技能');
+    expect(transitionWindow.condition(weakWindow)).toBe(false);
+    expect(transitionWindow.condition(readyWindow)).toBe(true);
+
+    const overworked = createInitialState('frontend', 'tier2', seed);
+    overworked.month = 36;
+    overworked.stats.health = 82;
+    overworked.stats.mental = 82;
+    overworked.actionHistory = [
+      { id: 'overtime_sprint', repeatKey: 'overtime', primaryCategory: 'career', subcategory: 'deep_work', stressLevel: 3, month: 32 }
+    ];
+
+    const balanced = structuredClone(overworked);
+    balanced.actionHistory = [
+      { id: 'exercise', repeatKey: 'exercise_training', primaryCategory: 'recovery', subcategory: 'body_repair', stressLevel: 1, month: 32 }
+    ];
+
+    expect(noOverworkYear.description).toContain('12个月');
+    expect(noOverworkYear.condition(overworked)).toBe(false);
+    expect(noOverworkYear.condition(balanced)).toBe(true);
+  });
+
+  it('uses respectful normal ending copy without ordinary tool framing', () => {
+    const ordinary = ENDINGS.find(ending => ending.id === 'ordinary_tool')!;
+
+    expect(ordinary.title).not.toContain('工具人');
+    expect(ordinary.text).not.toContain('工具人');
+    expect(ordinary.title).toContain('普通结局');
   });
 
   it('routes burnout and mental health collapse into recovery crisis before hard failure', () => {

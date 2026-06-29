@@ -157,6 +157,10 @@ describe('v1 frontend contract', () => {
     expect(appSource).toContain('ach-progress');
     expect(appSource).toContain('ach-progress-bar');
     expect(appSource).toContain('ach-desc');
+    ['缓冲', '恢复', '迁移', '近12个月有高压加班记录'].forEach(token => {
+      expect(appSource).toContain(token);
+    });
+    expect(appSource).not.toContain('工具人的一生');
     expect(appCss).toContain('.ach-progress');
     expect(appCss).toContain('.ach-progress-bar');
   });
