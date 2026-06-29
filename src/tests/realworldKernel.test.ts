@@ -118,6 +118,7 @@ describe('real-world simulation kernel state model', () => {
 
     expect(loaded?.finance.emergencyFundMonths).toBeGreaterThan(0);
     expect(loaded?.finance.monthlySalary).toBeGreaterThanOrEqual(0);
+    expect(loaded?.finance.fixedObligationsMonthly).toBeGreaterThanOrEqual(0);
     expect(loaded?.healthProfile.sedentaryLoad).toBeGreaterThanOrEqual(0);
     expect(loaded?.healthProfile.chronicRisk).toBeGreaterThanOrEqual(0);
     expect(loaded?.careerProfile.skillFreshness).toBeGreaterThan(0);
@@ -134,6 +135,28 @@ describe('real-world simulation kernel state model', () => {
     expect(loaded?.crisis.burnout.active).toBe(false);
     expect(loaded?.crisis.burnout.phase).toBe('inactive');
     expect(loaded?.crisis.burnout.episodes).toEqual([]);
+
+    vi.unstubAllGlobals();
+  });
+
+  it('migrates legacy monthly fixed cost snapshots without recursive obligations', async () => {
+    vi.resetModules();
+    const store = new Map<string, string>();
+    vi.stubGlobal('localStorage', {
+      getItem: (key: string) => store.get(key) ?? null,
+      setItem: (key: string, value: string) => store.set(key, value),
+      removeItem: (key: string) => store.delete(key)
+    });
+
+    const legacy = createInitialState('frontend', 'tier2', seed);
+    legacy.finance.monthlyFixedCost = 6500;
+    store.set('programmer_survival_v6_save', JSON.stringify(legacy));
+
+    const { loadGame } = await import('../storage/saveManager');
+    const loaded = loadGame();
+
+    expect(loaded?.finance.monthlyFixedCost).toBe(0);
+    expect(loaded?.finance.fixedObligationsMonthly).toBe(0);
 
     vi.unstubAllGlobals();
   });

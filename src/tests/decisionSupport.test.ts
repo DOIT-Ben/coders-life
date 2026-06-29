@@ -226,7 +226,7 @@ describe('decision support and first-stage functional optimization', () => {
     expect(afterCourse.stats.techXp).toBe(state.stats.techXp);
 
     expect(afterInsurance.inventory.medical_insurance).toBe(1);
-    expect(afterInsurance.finance.monthlyFixedCost).toBeGreaterThan(state.finance.monthlyFixedCost);
+    expect(afterInsurance.finance.fixedObligationsMonthly).toBeGreaterThan(state.finance.fixedObligationsMonthly);
     expect(afterInsurance.stats.mental).toBe(state.stats.mental);
 
     expect(afterAiPro.inventory.ai_pro).toBe(1);
@@ -250,5 +250,24 @@ describe('decision support and first-stage functional optimization', () => {
 
     expect(settled.finance.monthlyFixedCost).toBe(base.finance.monthlyFixedCost + 1080);
     expect(settled.finance.monthlyRent).toBeGreaterThan(base.finance.monthlyRent);
+  });
+
+  it('keeps fixed obligations stable across consecutive months and charges cash', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+    state.career.employmentStatus = 'jobless';
+    state.stats.cash = 100000;
+    state.finance.debt = 50000;
+    state = buyShopItem(state, 'ai_pro');
+    state = buyShopItem(state, 'medical_insurance');
+    state = buyShopItem(state, 'private_room');
+
+    const first = settleMonth(state);
+    const second = settleMonth(first);
+
+    expect(first.finance.fixedObligationsMonthly).toBe(second.finance.fixedObligationsMonthly);
+    expect(second.finance.monthlyFixedCost).toBeLessThan(first.finance.monthlyFixedCost * 1.05);
+    expect(first.finance.monthlyDebtPayment).toBe(600);
+    expect(second.stats.cash).toBeLessThan(first.stats.cash - first.finance.monthlyDebtPayment);
+    expect(second.finance.debt).toBeLessThan(first.finance.debt);
   });
 });

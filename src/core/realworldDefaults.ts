@@ -18,6 +18,7 @@ export const DEFAULT_FINANCE_STATE: FinanceState = {
   monthlyIncome: 0,
   monthlySalary: 0,
   monthlyFixedCost: 0,
+  fixedObligationsMonthly: 0,
   monthlyRent: 2200,
   monthlyDebtPayment: 0,
   emergencyFundMonths: 19.2,

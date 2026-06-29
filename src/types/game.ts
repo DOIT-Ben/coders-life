@@ -85,6 +85,7 @@ export interface FinanceState {
   monthlyIncome: number;
   monthlySalary: number;
   monthlyFixedCost: number;
+  fixedObligationsMonthly: number;
   monthlyRent: number;
   monthlyDebtPayment: number;
   emergencyFundMonths: number;

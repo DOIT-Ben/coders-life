@@ -84,10 +84,19 @@ function migrateProjectState(saved: Partial<ProjectState> | undefined, fallback:
 
 function migrateFinance(state: GameState): GameState['finance'] {
   const saved = state.finance ?? {};
-  const monthlyFixedCost = typeof saved.monthlyFixedCost === 'number' && saved.monthlyFixedCost > 0 && saved.monthlyFixedCost <= 6500
+  const legacyMonthlyFixedCost = typeof saved.monthlyFixedCost === 'number' ? saved.monthlyFixedCost : 0;
+  const fixedObligationsMonthly = typeof saved.fixedObligationsMonthly === 'number'
+    ? saved.fixedObligationsMonthly
+    : legacyMonthlyFixedCost > 6500 ? legacyMonthlyFixedCost - 6500 : 0;
+  const monthlyFixedCost = legacyMonthlyFixedCost > 0 && legacyMonthlyFixedCost <= 6500
     ? 0
-    : saved.monthlyFixedCost;
-  return { ...DEFAULT_FINANCE_STATE, ...saved, monthlyFixedCost: monthlyFixedCost ?? DEFAULT_FINANCE_STATE.monthlyFixedCost };
+    : DEFAULT_FINANCE_STATE.monthlyFixedCost;
+  return {
+    ...DEFAULT_FINANCE_STATE,
+    ...saved,
+    fixedObligationsMonthly,
+    monthlyFixedCost
+  };
 }
 
 function withDefaults(state: GameState): GameState {

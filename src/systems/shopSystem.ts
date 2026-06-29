@@ -37,7 +37,7 @@ export function buyShopItem(state: GameState, id: string): GameState {
       next.projects.fitness.efficiency += 0.2;
       break;
     case 'medical_insurance':
-      next.finance.monthlyFixedCost += 80;
+      next.finance.fixedObligationsMonthly += 80;
       next.finance.cashflowStress = Math.max(0, next.finance.cashflowStress - 2);
       break;
     case 'private_room':
