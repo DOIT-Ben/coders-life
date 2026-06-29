@@ -1,5 +1,6 @@
 import type { GameState } from '../types/game';
 import { clamp } from '../core/formulas';
+import { calculateValueFit } from './valueSystem';
 
 export interface DerivedMetric {
   label: string;
@@ -28,6 +29,6 @@ export function deriveHealthDebt(state: GameState): DerivedMetric {
 }
 
 export function deriveLifeSatisfaction(state: GameState): DerivedMetric {
-  const value = clamp(state.stats.mental * 0.22 + state.stats.health * 0.2 + state.stats.identity * 0.22 + state.stats.relation * 0.18 + Math.min(100, state.stats.cash / 10000) * 0.18, 0, 100);
-  return { label: '生活满意度', value, explanation: '价值匹配来自健康、关系、身份感、现金缓冲和精神状态的组合。' };
+  const value = clamp(calculateValueFit(state), 0, 100);
+  return { label: '生活满意度', value, explanation: '价值匹配由玩家选择或行为形成的价值权重，与财富、健康、关系、自由和探索等状态共同决定。' };
 }

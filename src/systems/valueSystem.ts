@@ -4,7 +4,7 @@ import { clamp, getVisibleStats } from '../core/formulas';
 export function calculateValueFit(state: GameState): number {
   const visible = getVisibleStats(state);
   const valueScores = {
-    wealth: clamp((state.stats.cash + state.stats.portfolio) / 30000, 0, 100),
+    wealth: clamp((state.stats.cash + state.stats.portfolio) / 10000, 0, 100),
     craft: visible.tech,
     stability: clamp(100 - state.finance.cashflowStress * 0.45 - state.careerProfile.layoffRisk * 0.35, 0, 100),
     freedom: clamp(state.hidden.boundaryScore * 0.55 + state.stats.passiveIncomeMonthly / 80, 0, 100),

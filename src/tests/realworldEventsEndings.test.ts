@@ -163,6 +163,20 @@ describe('state-driven real-world events and endings', () => {
     expect(deriveLifeSatisfaction(state).explanation).toContain('价值');
   });
 
+  it('uses player value priorities when deriving life satisfaction', () => {
+    const wealthFirst = createInitialState('frontend', 'tier2', seed);
+    wealthFirst.stats.cash = 900000;
+    wealthFirst.stats.health = 35;
+    wealthFirst.stats.relation = 30;
+    wealthFirst.stats.identity = 35;
+    wealthFirst.values = { wealth: 1, craft: 0.2, stability: 0.2, freedom: 0.2, relationships: 0.1, health: 0.1, impact: 0.1, exploration: 0.1 };
+
+    const healthFirst = structuredClone(wealthFirst);
+    healthFirst.values = { wealth: 0.1, craft: 0.2, stability: 0.2, freedom: 0.2, relationships: 0.8, health: 1, impact: 0.1, exploration: 0.1 };
+
+    expect(deriveLifeSatisfaction(wealthFirst).value).toBeGreaterThan(deriveLifeSatisfaction(healthFirst).value);
+  });
+
   it('routes burnout and mental health collapse into recovery crisis before hard failure', () => {
     const state = createInitialState('frontend', 'tier2', seed);
     state.stats.burnout = 100;

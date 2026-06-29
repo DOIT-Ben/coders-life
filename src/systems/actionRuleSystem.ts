@@ -156,7 +156,45 @@ export function applyRealworldActionEffect(state: GameState, action: ActionConfi
     next.lifePressure = mergeLifePressureState(next.lifePressure, effect.lifePressure);
   }
 
-  return applyCareerTransitionEffect(next, action);
+  return applyCareerTransitionEffect(applyValueDrift(next, action), action);
+}
+
+function applyValueDrift(state: GameState, action: ActionConfig): GameState {
+  const drift: Partial<Record<keyof GameState['values'], number>> = {};
+
+  if (action.primaryCategory === 'income' || action.subcategory === 'cash_management') {
+    drift.wealth = 0.04;
+    drift.stability = 0.025;
+    if (action.subcategory === 'side_income' || action.subcategory === 'venture') drift.freedom = 0.025;
+  }
+  if (action.primaryCategory === 'career') {
+    drift.stability = (drift.stability ?? 0) + 0.035;
+    drift.craft = (drift.craft ?? 0) + 0.02;
+  }
+  if (action.primaryCategory === 'growth') {
+    drift.craft = (drift.craft ?? 0) + 0.035;
+    if (action.subcategory === 'visibility' || action.subcategory === 'portfolio') {
+      drift.impact = 0.03;
+      drift.exploration = 0.025;
+    }
+  }
+  if (action.primaryCategory === 'recovery') {
+    drift.health = 0.04;
+    if (action.subcategory === 'mind_repair' || action.subcategory === 'outdoor_nature') drift.freedom = 0.02;
+  }
+  if (action.primaryCategory === 'relationship_safety') {
+    drift.relationships = 0.04;
+    drift.stability = (drift.stability ?? 0) + 0.015;
+  }
+
+  if (Object.keys(drift).length === 0) return state;
+
+  const next = structuredClone(state);
+  Object.entries(drift).forEach(([key, amount]) => {
+    const valueKey = key as keyof GameState['values'];
+    next.values[valueKey] = clamp(next.values[valueKey] + amount, 0.1, 1.2);
+  });
+  return next;
 }
 
 function applyCareerTransitionEffect(state: GameState, action: ActionConfig): GameState {

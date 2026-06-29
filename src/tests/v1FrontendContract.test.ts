@@ -171,6 +171,14 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.project-progress-bar');
   });
 
+  it('lets players choose a value profile before starting a game', () => {
+    ['valueProfileId', 'VALUE_PROFILES', '财富缓冲', '健康关系', '创造探索'].forEach(token => {
+      expect(appSource).toContain(token);
+    });
+    expect(appSource).toContain('createInitialState(track, cityTier, undefined, valueProfile.values)');
+    expect(appCss).toContain('.value-profile-grid');
+  });
+
   it('uses respectful crisis age and AI copy in the visible shell', () => {
     ['职业转型窗口', 'AI协作能力', '恢复窗口'].forEach(label => {
       expect(appSource).toContain(label);

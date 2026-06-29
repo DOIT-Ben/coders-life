@@ -1,4 +1,4 @@
-import type { CareerTrack, CityTier, GameState } from '../types/game';
+import type { CareerTrack, CityTier, GameState, PlayerValueProfile } from '../types/game';
 import { AGE, GAME_VERSION } from '../config/balance';
 import { ACTIONS, getAction } from '../config/actions';
 import { getPhase, getAge, applyDelta } from './formulas';
@@ -30,7 +30,12 @@ const initialSkillXp: Record<CareerTrack, { techXp: number; aiXp: number; reputa
   ai_product: { techXp: 30, aiXp: 28, reputationXp: 6 }
 };
 
-export function createInitialState(track: CareerTrack = 'frontend', cityTier: CityTier = 'tier2', seed = Date.now() % 1000000): GameState {
+export function createInitialState(
+  track: CareerTrack = 'frontend',
+  cityTier: CityTier = 'tier2',
+  seed = Date.now() % 1000000,
+  values: PlayerValueProfile = DEFAULT_PLAYER_VALUES
+): GameState {
   const skillXp = initialSkillXp[track];
   const initial: GameState = {
     version: GAME_VERSION,
@@ -89,7 +94,7 @@ export function createInitialState(track: CareerTrack = 'frontend', cityTier: Ci
     household: { ...DEFAULT_HOUSEHOLD_STATE },
     laborMarket: { ...DEFAULT_LABOR_MARKET },
     lifePressure: { ...DEFAULT_LIFE_PRESSURE },
-    values: { ...DEFAULT_PLAYER_VALUES },
+    values: { ...values },
     crisis: structuredClone(DEFAULT_CRISIS_STATE),
     flags: {},
     cooldowns: {},

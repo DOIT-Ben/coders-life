@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import type { ActionConfig, CareerTrack, CityTier, GameState, LogType } from './types/game';
+import type { ActionConfig, CareerTrack, CityTier, GameState, LogType, PlayerValueProfile } from './types/game';
 import { createInitialState, getAvailableActions, planMonth } from './core/gameEngine';
 import { getVisibleStats } from './core/formulas';
 import { saveGame, loadGame, clearSave } from './storage/saveManager';
@@ -157,10 +157,32 @@ const cityOptions: Array<{ id: CityTier; label: string }> = [
   { id: 'tier3', label: '三线：低成本低上限' }
 ];
 
+const VALUE_PROFILES: Array<{ id: string; label: string; summary: string; values: PlayerValueProfile }> = [
+  {
+    id: 'wealth_buffer',
+    label: '财富缓冲',
+    summary: '现金安全、职业稳定和选择空间优先',
+    values: { wealth: 1, craft: 0.45, stability: 0.85, freedom: 0.7, relationships: 0.35, health: 0.5, impact: 0.35, exploration: 0.35 }
+  },
+  {
+    id: 'health_relation',
+    label: '健康关系',
+    summary: '恢复质量、亲密关系和长期生活感优先',
+    values: { wealth: 0.35, craft: 0.45, stability: 0.65, freedom: 0.55, relationships: 1, health: 1, impact: 0.45, exploration: 0.45 }
+  },
+  {
+    id: 'creative_explore',
+    label: '创造探索',
+    summary: '作品、影响力、自由和新路线优先',
+    values: { wealth: 0.45, craft: 0.85, stability: 0.35, freedom: 0.85, relationships: 0.45, health: 0.55, impact: 1, exploration: 1 }
+  }
+];
+
 export default function App() {
   const [state, setState] = useState<GameState | undefined>(() => loadGame());
   const [track, setTrack] = useState<CareerTrack>('frontend');
   const [cityTier, setCityTier] = useState<CityTier>('tier2');
+  const [valueProfileId, setValueProfileId] = useState(VALUE_PROFILES[0].id);
   const [modal, setModal] = useState<'ach' | 'shop' | 'ending' | undefined>();
   const [saveStatus, setSaveStatus] = useState('');
   const savedState = !state ? loadGame() : undefined;
@@ -174,7 +196,8 @@ export default function App() {
   }, [saveStatus]);
 
   function startGame() {
-    setState(createInitialState(track, cityTier));
+    const valueProfile = VALUE_PROFILES.find(profile => profile.id === valueProfileId) ?? VALUE_PROFILES[0];
+    setState(createInitialState(track, cityTier, undefined, valueProfile.values));
   }
 
   function resetGame() {
@@ -194,7 +217,15 @@ export default function App() {
     <div className="wrap">
       <TitleCard hasSave={Boolean(savedState)} inGame={Boolean(state)} onContinue={() => savedState && setState(savedState)} />
       {!state ? (
-        <CareerScreen track={track} setTrack={setTrack} cityTier={cityTier} setCityTier={setCityTier} startGame={startGame} />
+        <CareerScreen
+          track={track}
+          setTrack={setTrack}
+          cityTier={cityTier}
+          setCityTier={setCityTier}
+          valueProfileId={valueProfileId}
+          setValueProfileId={setValueProfileId}
+          startGame={startGame}
+        />
       ) : (
         <GameScreen state={state} setState={setState} openModal={setModal} changeCharacter={changeCharacter} saveStatus={saveStatus} setSaveStatus={setSaveStatus} />
       )}
@@ -223,12 +254,16 @@ function CareerScreen({
   setTrack,
   cityTier,
   setCityTier,
+  valueProfileId,
+  setValueProfileId,
   startGame
 }: {
   track: CareerTrack;
   setTrack: (track: CareerTrack) => void;
   cityTier: CityTier;
   setCityTier: (cityTier: CityTier) => void;
+  valueProfileId: string;
+  setValueProfileId: (valueProfileId: string) => void;
   startGame: () => void;
 }) {
   return (
@@ -269,6 +304,15 @@ function CareerScreen({
           {cityOptions.map(option => <option key={option.id} value={option.id}>{option.label}</option>)}
         </select>
       </label>
+      <div className="section-label">&gt; 选择你的价值优先级 _</div>
+      <div className="value-profile-grid">
+        {VALUE_PROFILES.map(profile => (
+          <button className={valueProfileId === profile.id ? 'value-profile-card selected' : 'value-profile-card'} key={profile.id} type="button" onClick={() => setValueProfileId(profile.id)}>
+            <span>{profile.label}</span>
+            <small>{profile.summary}</small>
+          </button>
+        ))}
+      </div>
       <button className="btn-start" onClick={startGame}>&gt; 开始生存 _</button>
       <div className="quote">「AI 改写的是任务结构，长期价值来自判断、责任和领域理解」</div>
     </div>

@@ -299,6 +299,23 @@ describe('real-world action consequences', () => {
     expect(next.healthProfile.recoveryQuality).toBeGreaterThan(state.healthProfile.recoveryQuality);
   });
 
+  it('lets repeated real actions shape player value priorities', () => {
+    let healthFirst = createInitialState('frontend', 'tier2', seed);
+    healthFirst = applyAction(healthFirst, 'exercise');
+    healthFirst = applyAction(healthFirst, 'therapy');
+
+    let incomeFirst = createInitialState('frontend', 'tier2', seed);
+    incomeFirst.stats.techXp = 300;
+    incomeFirst.career.employmentStatus = 'employed';
+    incomeFirst = applyAction(incomeFirst, 'freelance');
+    incomeFirst = applyAction(incomeFirst, 'regular_work');
+
+    expect(healthFirst.values.health).toBeGreaterThan(createInitialState('frontend', 'tier2', seed).values.health);
+    expect(healthFirst.values.health).toBeGreaterThan(incomeFirst.values.health);
+    expect(incomeFirst.values.wealth).toBeGreaterThan(healthFirst.values.wealth);
+    expect(incomeFirst.values.stability).toBeGreaterThan(healthFirst.values.stability);
+  });
+
   it('applies opportunity costs and market risk from side income actions', () => {
     const state = createInitialState('frontend', 'tier2', seed);
     state.stats.techXp = 300;
