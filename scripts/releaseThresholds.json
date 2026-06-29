@@ -1,7 +1,9 @@
 {
-  "maxBankruptcyRate": 0.85,
-  "maxBurnoutRate": 0.7,
-  "maxHealthCrisisRate": 0.7,
-  "maxRepeatedActionDominance": 0.95,
+  "maxBankruptcyRate": 0.65,
+  "maxBurnoutRate": 0.5,
+  "maxHealthCrisisRate": 0.5,
+  "maxRepeatedActionDominance": 0.72,
+  "minAverageMonthlyPlanSize": 1.4,
+  "minCoveredEndingCount": 2,
   "minDeterministicReplayRate": 1
 }

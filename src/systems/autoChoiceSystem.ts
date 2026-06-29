@@ -1,6 +1,7 @@
 import type { GameState } from '../types/game';
 import { getAvailableActions } from '../core/gameEngine';
 import { applyEventChoice } from './eventSystem';
+import { buildMonthlyPlan, canExecuteAction, isPlanOverBudget } from './monthlyPlanSystem';
 
 export type AutoStrategyId =
   | 'stable_cashflow'
@@ -52,5 +53,59 @@ export function chooseActionForStrategy(state: GameState, strategyId: AutoStrate
       return available[Math.abs((state.seed + state.month * 17) % Math.max(1, available.length))]?.id ?? 'rest';
     case 'extreme_repeated_action':
       return pick('overtime_sprint', 'regular_work');
+  }
+}
+
+export function chooseMonthlyPlanForStrategy(state: GameState, strategyId: AutoStrategyId): string[] {
+  const available = getAvailableActions(state).filter(action => action.available);
+  const candidates = preferredActionsForStrategy(state, strategyId);
+  const plan: typeof available = [];
+
+  candidates.forEach(id => {
+    const action = available.find(item => item.id === id);
+    if (!action) return;
+    if (!canExecuteAction(state, action, plan).ok) return;
+    const nextPlan = [...plan, action];
+    if (isPlanOverBudget(buildMonthlyPlan(state, nextPlan))) return;
+    plan.push(action);
+  });
+
+  if (plan.length === 0) {
+    const fallback = chooseActionForStrategy(state, strategyId);
+    return [fallback];
+  }
+  return plan.slice(0, 3).map(action => action.id);
+}
+
+function preferredActionsForStrategy(state: GameState, strategyId: AutoStrategyId): string[] {
+  if (state.stats.mental < 24 || state.crisis.burnout.active || state.crisis.mentalHealth.active) return ['therapy', 'sleep_repair', 'rest'];
+  if (state.stats.health < 30 || state.crisis.severeIllness.active) return ['exercise', 'sleep_repair', 'rest'];
+  if (state.career.employmentStatus !== 'employed') return ['job_hunt', 'project_practice', 'system_learning'];
+
+  switch (strategyId) {
+    case 'stable_cashflow':
+      return state.finance.cashflowStress > 60
+        ? ['freelance', 'regular_work', 'sleep_repair']
+        : ['regular_work', 'system_learning', 'exercise'];
+    case 'career_sprint':
+      return ['deep_work', 'project_practice', 'writing_share', 'regular_work'];
+    case 'health_first':
+      return ['exercise', 'sleep_repair', 'therapy', 'regular_work'];
+    case 'relationship_first':
+      return ['family_call', 'networking', 'friend_dinner', 'regular_work'];
+    case 'ai_transition':
+      return ['ai_training', 'system_learning', 'project_practice', 'regular_work'];
+    case 'indie_side_business':
+      return ['content_product', 'freelance', 'writing_share', 'project_practice'];
+    case 'random_baseline': {
+      const ids = getAvailableActions(state)
+        .filter(action => action.available)
+        .map(action => action.id)
+        .sort();
+      const start = Math.abs((state.seed + state.month * 17) % Math.max(1, ids.length));
+      return [ids[start], ids[(start + 5) % ids.length], ids[(start + 11) % ids.length]].filter(Boolean);
+    }
+    case 'extreme_repeated_action':
+      return ['overtime_sprint', 'regular_work', 'freelance'];
   }
 }

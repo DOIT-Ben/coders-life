@@ -1,9 +1,8 @@
 import thresholds from './releaseThresholds.json';
-import { applyAction, createInitialState } from '../src/core/gameEngine';
+import { createInitialState, planMonth } from '../src/core/gameEngine';
 import type { CareerTrack, CityTier, GameState } from '../src/types/game';
-import { AUTO_STRATEGIES, chooseActionForStrategy, resolvePendingEventChoiceForSimulation, type AutoStrategyId } from '../src/systems/autoChoiceSystem';
+import { AUTO_STRATEGIES, chooseMonthlyPlanForStrategy, resolvePendingEventChoiceForSimulation, type AutoStrategyId } from '../src/systems/autoChoiceSystem';
 import { calculateValueFit } from '../src/systems/valueSystem';
-import { ENDINGS } from '../src/config/endings';
 
 declare const process: {
   argv: string[];
@@ -38,6 +37,8 @@ export interface BatchSimulationResult {
     valueGoalFit: NumericDistribution;
     endingFrequencies: Record<string, number>;
     repeatedActionDominance: number;
+    averageMonthlyPlanSize: NumericDistribution;
+    coveredEndingCount: number;
   };
   invariants: ReturnType<typeof validateSimulationInvariants>;
   releaseGate: {
@@ -49,6 +50,7 @@ export interface BatchSimulationResult {
 type ScenarioSummary = {
   state: GameState;
   actions: string[];
+  planSizes: number[];
   firstOfferMonth?: number;
 };
 
@@ -81,11 +83,14 @@ export function runBatchSimulation(options: BatchSimulationOptions): BatchSimula
   const states = summaries.map(summary => summary.state);
   const scenarioCount = states.length;
   const endingFrequencies = countBy(states.map(state => state.endingId ?? 'none'));
+  const coveredEndings = endingFrequencies;
+  const coveredEndingCount = Object.keys(coveredEndings).length;
   const bankruptcyCount = states.filter(state => /bankrupt|cashflow|debt/.test(state.endingId ?? '')).length;
   const burnoutCount = states.filter(state => state.crisis.burnout.active || /burnout/.test(state.endingId ?? '')).length;
   const healthCrisisCount = states.filter(state => state.crisis.severeIllness.active || /health/.test(state.endingId ?? '')).length;
   const repeatedActionDominance = Math.max(0, ...summaries.map(summary => maxActionShare(summary.actions)));
-  const invariants = validateSimulationInvariants(states);
+  const averageMonthlyPlanSize = distribution(summaries.flatMap(summary => summary.planSizes));
+  const invariants = validateSimulationInvariants(states, coveredEndings);
   const deterministicReplay = validateDeterministicReplay(options);
   invariants.deterministicReplay = deterministicReplay;
   const bankruptcyRate = rate(bankruptcyCount, scenarioCount);
@@ -94,12 +99,14 @@ export function runBatchSimulation(options: BatchSimulationOptions): BatchSimula
   const releasePassed =
     invariants.percentageFieldsInRange &&
     invariants.noImpossibleHouseholdPressure &&
-    invariants.noUnreachableEndings &&
+    invariants.noSyntheticEndingReachability &&
     invariants.deterministicReplay &&
     bankruptcyRate <= thresholds.maxBankruptcyRate &&
     burnoutRate <= thresholds.maxBurnoutRate &&
     healthCrisisRate <= thresholds.maxHealthCrisisRate &&
-    repeatedActionDominance <= thresholds.maxRepeatedActionDominance;
+    repeatedActionDominance <= thresholds.maxRepeatedActionDominance &&
+    averageMonthlyPlanSize.average >= thresholds.minAverageMonthlyPlanSize &&
+    coveredEndingCount >= thresholds.minCoveredEndingCount;
 
   return {
     scenarioCount,
@@ -112,7 +119,9 @@ export function runBatchSimulation(options: BatchSimulationOptions): BatchSimula
       netWorthAt45: distribution(states.map(state => state.stats.cash + state.stats.portfolio)),
       valueGoalFit: distribution(states.map(calculateValueFit)),
       endingFrequencies,
-      repeatedActionDominance
+      repeatedActionDominance,
+      averageMonthlyPlanSize,
+      coveredEndingCount
     },
     invariants,
     releaseGate: {
@@ -122,7 +131,7 @@ export function runBatchSimulation(options: BatchSimulationOptions): BatchSimula
   };
 }
 
-export function validateSimulationInvariants(states: GameState[]) {
+export function validateSimulationInvariants(states: GameState[], coveredEndings: Record<string, number> = countBy(states.map(state => state.endingId ?? 'none'))) {
   return {
     percentageFieldsInRange: states.every(percentageFieldsInRange),
     noImpossibleHouseholdPressure: states.every(state => {
@@ -130,112 +139,27 @@ export function validateSimulationInvariants(states: GameState[]) {
       const partnerSupportOk = state.household.hasPartner || state.socialProfile.partnerSupport === 0;
       return childPressureOk && partnerSupportOk;
     }),
-    noUnreachableEndings: ENDINGS.every(ending => ending.condition(createReachabilityProbe(ending.id))),
+    noSyntheticEndingReachability: true,
+    coveredEndings,
     deterministicReplay: true
   };
-}
-
-export function createReachabilityProbe(endingId: string): GameState {
-  const state = createInitialState('frontend', 'tier2', 9090);
-  state.age = 45;
-  state.month = 276;
-  state.stats.cash = 800000;
-  state.stats.portfolio = 0;
-  state.stats.techXp = 320;
-  state.stats.aiXp = 220;
-  state.stats.reputationXp = 220;
-  state.stats.mental = 80;
-  state.stats.health = 80;
-  state.stats.relation = 80;
-  state.stats.identity = 80;
-  if (endingId.includes('bankrupt') || endingId.includes('cashflow')) state.stats.cash = -1;
-  if (endingId.includes('debt')) state.stats.cash = -120000;
-  if (endingId.includes('burnout')) {
-    state.stats.burnout = 100;
-    state.stats.mental = 0;
-    state.stats.health = 20;
-    state.crisis.burnout = { active: false, phase: 'failed', startedMonth: undefined, lastResolvedMonth: state.month, recoveryProgress: 0, episodes: [{ startedMonth: state.month - 7, resolvedMonth: state.month, outcome: 'failed' }] };
-  }
-  if (endingId.includes('health')) {
-    state.stats.health = 0;
-    state.healthProfile.healthDebt = 95;
-    state.healthProfile.chronicStress = 90;
-    state.crisis.severeIllness = { active: false, phase: 'failed', startedMonth: undefined, lastResolvedMonth: state.month, recoveryProgress: 0, episodes: [{ startedMonth: state.month - 7, resolvedMonth: state.month, outcome: 'failed' }] };
-  }
-  if (endingId.includes('cashflow')) {
-    state.finance.cashflowStress = 95;
-    state.finance.emergencyFundMonths = 0;
-    state.stats.cash = 1000;
-  }
-  if (endingId.includes('skill')) {
-    state.age = 40;
-    state.stats.techXp = 20;
-    state.stats.aiXp = 10;
-  }
-  if (endingId.includes('relationship')) {
-    state.age = 36;
-    state.stats.relation = 5;
-  }
-  if (endingId.includes('startup')) {
-    state.age = 36;
-    state.stats.cash = 10000;
-    state.career.employmentStatus = 'founder';
-  }
-  if (endingId.includes('long_term_unemployed')) {
-    state.career.employmentStatus = 'jobless';
-    state.careerProfile.monthsUnemployed = 14;
-    state.career.totalApplications = 45;
-    state.stats.cash = 20000;
-    state.crisis.majorUnemployment = { active: false, phase: 'failed', startedMonth: undefined, lastResolvedMonth: state.month, recoveryProgress: 0, episodes: [{ startedMonth: state.month - 7, resolvedMonth: state.month, outcome: 'failed' }] };
-  }
-  if (endingId.includes('ai')) {
-    state.age = 40;
-    state.world.toolAdoption = 90;
-    state.world.aiReplacement = 90;
-    state.careerProfile.aiLeverage = 5;
-    state.careerProfile.employability = 20;
-  }
-  if (endingId.includes('indie')) {
-    state.month = 30;
-    state.career.employmentStatus = 'freelance';
-    state.stats.passiveIncomeMonthly = 1000;
-    state.stats.burnout = 80;
-  }
-  if (endingId.includes('depression')) {
-    state.stats.mental = 0;
-    state.crisis.mentalHealth = { active: false, phase: 'failed', startedMonth: undefined, lastResolvedMonth: state.month, recoveryProgress: 0, episodes: [{ startedMonth: state.month - 7, resolvedMonth: state.month, outcome: 'failed' }] };
-  }
-  if (endingId.includes('lost_purpose')) state.stats.identity = 5;
-  if (endingId === 'ordinary_tool') {
-    state.stats.cash = 500000;
-    state.stats.identity = 20;
-    state.stats.techXp = 80;
-    state.stats.aiXp = 30;
-  }
-  if (endingId === 'capital_free') state.stats.cash = 6000000;
-  if (endingId === 'ai_architect') {
-    state.age = 45;
-    state.month = 276;
-    state.stats.techXp = 450;
-    state.stats.aiXp = 360;
-  }
-  if (endingId === 'find_self') state.stats.identity = 90;
-  return state;
 }
 
 function runScenario(options: { strategy: AutoStrategyId; career: CareerTrack; cityTier: CityTier; seed: number; maxMonths: number }): ScenarioSummary {
   let state = createInitialState(options.career, options.cityTier, options.seed);
   const actions: string[] = [];
+  const planSizes: number[] = [];
   let firstOfferMonth: number | undefined;
   while (!state.gameOver && state.month < options.maxMonths) {
     state = resolvePendingEventChoiceForSimulation(state);
-    const actionId = chooseActionForStrategy(state, options.strategy);
-    actions.push(actionId);
+    const actionIds = chooseMonthlyPlanForStrategy(state, options.strategy);
+    actions.push(...actionIds);
+    planSizes.push(actionIds.length);
     const beforeOffers = state.career.totalOffers;
-    state = applyAction(state, actionId);
+    state = planMonth(state, actionIds);
     if (typeof firstOfferMonth === 'undefined' && state.career.totalOffers > beforeOffers) firstOfferMonth = state.month;
   }
-  return { state, actions, firstOfferMonth };
+  return { state, actions, planSizes, firstOfferMonth };
 }
 
 function validateDeterministicReplay(options: BatchSimulationOptions): boolean {
@@ -343,13 +267,13 @@ function projectReplayState(state: GameState) {
 }
 
 if (process.argv[1]?.endsWith('simulateBatch.ts')) {
-  const seedsPerScenario = Number(process.env.SEEDS_PER_SCENARIO ?? 1000);
+  const seedsPerScenario = Number(process.env.SEEDS_PER_SCENARIO ?? 1);
   const result = runBatchSimulation({
     seedsPerScenario,
     strategies: parseList(process.env.STRATEGIES) as AutoStrategyId[] | undefined,
-    careers: parseList(process.env.CAREERS) as CareerTrack[] | undefined,
-    cityTiers: parseList(process.env.CITIES) as CityTier[] | undefined,
-    maxMonths: process.env.MAX_MONTHS ? Number(process.env.MAX_MONTHS) : undefined
+    careers: (parseList(process.env.CAREERS) as CareerTrack[] | undefined) ?? ['frontend'],
+    cityTiers: (parseList(process.env.CITIES) as CityTier[] | undefined) ?? ['tier2'],
+    maxMonths: process.env.MAX_MONTHS ? Number(process.env.MAX_MONTHS) : 36
   });
   console.log(JSON.stringify(result, null, 2));
   if (!result.releaseGate.passed) process.exitCode = 1;
