@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { applyAction, createInitialState, getAvailableActions } from '../core/gameEngine';
 import { settleMonth } from '../core/monthlyLoop';
-import { applyDelta, getGrossSalary } from '../core/formulas';
+import { applyDelta, getGrossSalary, getMonthlyCost } from '../core/formulas';
 import { resolvePendingEventChoiceForSimulation } from '../systems/autoChoiceSystem';
 import { applyRealworldActionEffect } from '../systems/actionRuleSystem';
 import { settleEconomy } from '../systems/economySystem';
@@ -429,6 +429,23 @@ describe('real-world action consequences', () => {
     );
   });
 
+  it('does not create family responsibility or living cost from age alone', () => {
+    const young = createInitialState('frontend', 'tier2', seed);
+    young.age = 26;
+    young.household.hasParents = false;
+    young.household.hasPartner = false;
+    young.household.children = 0;
+    young.lifePressure.familyResponsibility = 0;
+
+    const older = structuredClone(young);
+    older.age = 42;
+
+    const settled = settleLifeStagePressure(older);
+
+    expect(settled.lifePressure.familyResponsibility).toBe(0);
+    expect(getMonthlyCost(older)).toBe(getMonthlyCost(young));
+  });
+
   it('uses structured requirements to disable real-world actions', () => {
     const state = createInitialState('frontend', 'tier2', seed);
     state.stats.cash = 1000;
@@ -486,6 +503,42 @@ describe('phase 3 world career ai and age model', () => {
 
     expect(frontendPressure).toBeGreaterThan(backendPressure);
     expect(frontendPressure).not.toBe(frontend.world.aiReplacement);
+  });
+
+  it('does not directly penalize salary from the old global AI replacement meter alone', () => {
+    const lowReplacement = createInitialState('frontend', 'tier1', seed);
+    lowReplacement.career.employmentStatus = 'employed';
+    lowReplacement.career.companyType = 'foreign';
+    lowReplacement.career.jobLevel = 2;
+    lowReplacement.world.aiReplacement = 5;
+    lowReplacement.world.modelCapability = 50;
+    lowReplacement.world.toolAdoption = 50;
+    lowReplacement.world.organizationReadiness = 50;
+    lowReplacement.careerProfile.aiLeverage = 50;
+
+    const highReplacement = structuredClone(lowReplacement);
+    highReplacement.world.aiReplacement = 95;
+
+    expect(getGrossSalary(highReplacement)).toBe(getGrossSalary(lowReplacement));
+  });
+
+  it('uses role AI pressure rather than old global replacement to scale growth actions', () => {
+    const pressuredState = createInitialState('frontend', 'tier2', seed);
+    pressuredState.world.aiReplacement = 95;
+    pressuredState.world.modelCapability = 85;
+    pressuredState.world.toolAdoption = 85;
+    pressuredState.world.organizationReadiness = 85;
+    pressuredState.careerProfile.aiLeverage = 5;
+
+    const calmState = structuredClone(pressuredState);
+    calmState.world.taskAutomationByRole.frontend = 10;
+    calmState.world.organizationReadiness = 5;
+    calmState.careerProfile.aiLeverage = 80;
+
+    const pressured = applyAction(pressuredState, 'system_learning');
+    const calm = applyAction(calmState, 'system_learning');
+
+    expect(calm.stats.techXp - calmState.stats.techXp).toBeGreaterThan(pressured.stats.techXp - pressuredState.stats.techXp);
   });
 
   it('does not directly reduce skill or employability just because age increased', () => {

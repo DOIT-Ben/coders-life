@@ -41,8 +41,24 @@ export function getGrossSalary(state: GameState): number {
   const city = CITY_CONFIG[state.career.cityTier];
   const economy = ECONOMY_CONFIG[state.world.economyCycle];
   const company = getCompanyProfile(state.career.companyType);
-  const aiPressure = 1 - Math.max(0, state.world.aiReplacement - getVisibleStats(state).ai) * 0.002;
+  const aiPressure = 1 - Math.max(0, deriveRoleAiPressureForFormula(state) - getVisibleStats(state).ai) * 0.002;
   return Math.round(level.baseSalary * city.salaryCoef * economy.salaryCoef * company.salaryCoef * clamp(aiPressure, 0.76, 1.08));
+}
+
+function deriveRoleAiPressureForFormula(state: GameState): number {
+  const company = getCompanyProfile(state.career.companyType);
+  const roleAutomation = state.world.taskAutomationByRole[state.career.track] ?? 35;
+  return clamp(
+    roleAutomation * 0.35 +
+    state.world.modelCapability * 0.35 +
+    state.world.toolAdoption * 0.22 +
+    state.world.organizationReadiness * 0.2 +
+    company.aiAdoption * 0.18 +
+    (100 - state.world.regulationTrust) * 0.05 -
+    state.careerProfile.aiLeverage * 0.18,
+    0,
+    100
+  );
 }
 
 export function estimateIncomeTax(monthlyGross: number, socialFund: number): number {
@@ -70,8 +86,7 @@ export function getMonthlyCost(state: GameState): number {
   const city = CITY_CONFIG[state.career.cityTier];
   const subscriptionCost = Object.keys(state.inventory).includes('ai_pro') ? 200 : 0;
   const housingPremium = state.inventory.private_room ? 800 : 0;
-  const agePressure = Math.max(0, state.age - 32) * 70;
-  return Math.round(city.livingCost + subscriptionCost + housingPremium + agePressure);
+  return Math.round(city.livingCost + subscriptionCost + housingPremium);
 }
 
 export function getMonthlyPerformance(state: GameState): number {

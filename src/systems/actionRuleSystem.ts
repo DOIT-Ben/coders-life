@@ -1,6 +1,7 @@
 import type { ActionConfig, ActionHistoryEntry, EffectDelta, GameState, RealworldEffectDelta } from '../types/game';
 import { clamp } from '../core/formulas';
 import { CAREER_ROUTES } from '../config/realworldCareer';
+import { deriveRoleAiPressure } from './laborMarketSystem';
 
 const XP_KEYS = ['techXp', 'aiXp', 'reputationXp', 'portfolio'] as const;
 const RECOVERY_SUBCATEGORIES = new Set(['digital_entertainment', 'media_reading', 'body_repair', 'mind_repair', 'life_ritual', 'outdoor_nature']);
@@ -191,7 +192,7 @@ function applyCareerTransitionEffect(state: GameState, action: ActionConfig): Ga
 
 function aiAndEconomyScale(state: GameState, action: ActionConfig): number {
   let scale = 1;
-  if ((action.primaryCategory === 'growth' || action.primaryCategory === 'career') && state.world.aiReplacement > state.stats.aiXp / 6) {
+  if ((action.primaryCategory === 'growth' || action.primaryCategory === 'career') && deriveRoleAiPressure(state) > state.careerProfile.aiLeverage + 28) {
     scale -= 0.08;
   }
   if (state.world.economyCycle === 'recession' || state.world.economyCycle === 'crisis') {
