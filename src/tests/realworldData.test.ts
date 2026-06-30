@@ -81,6 +81,14 @@ describe('real-world data import', () => {
     expect(REALWORLD_ACTIONS.filter(action => action.requirements && Object.keys(action.requirements).length === 0)).toEqual([]);
   });
 
+  it('loads executable requirements from source data rather than display text', () => {
+    expect(realworldActionsSource).not.toContain('const STRUCTURED_REQUIREMENTS');
+    expect(realworldActionsSource).not.toMatch(/Record<string,\s*ActionRequirements>/);
+
+    const githubAction = REALWORLD_ACTIONS.find(action => action.requirements?.inventory === 'github_account');
+    expect(githubAction?.requirements).toEqual({ inventory: 'github_account' });
+  });
+
   it('validates schema-critical action event ending achievement and shop fields', () => {
     ACTIONS.forEach(action => {
       expect(action.id).toBeTruthy();

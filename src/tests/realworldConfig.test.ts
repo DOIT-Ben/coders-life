@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
+import actionRows from '../data/realworld/realworld_actions.json';
 import { CAREER_ROLES, findCareerRole } from '../config/realworldCareer';
 import { CITY_COSTS, findCityCost } from '../config/realworldCities';
 import { COMPANY_ARCHETYPES, findCompanyArchetype } from '../config/realworldCompanies';
@@ -81,13 +82,15 @@ describe('real-world configuration loaders', () => {
   });
 
   it('keeps real-world action requirements structurally mapped', () => {
+    const sourceRows = actionRows as Array<{ requirement: string; requirements?: Record<string, unknown> }>;
     const source = readFileSync(new URL('../config/realworldActions.ts', import.meta.url), 'utf8');
 
     expect(UNPARSED_REALWORLD_ACTION_REQUIREMENTS).toEqual([]);
-    ['GitHub 账号', '有面试机会', '有竞争 offer'].forEach(text => {
-      expect(source).toContain(`'${text}'`);
-    });
-    expect(source).toContain("'在职': { employed: true }");
+    expect(source).not.toContain('const STRUCTURED_REQUIREMENTS');
+    expect(sourceRows.find(row => row.requirement === 'GitHub 账号')?.requirements).toEqual({ inventory: 'github_account' });
+    expect(sourceRows.find(row => row.requirement === '有面试机会')?.requirements).toEqual({ minInterviews: 1 });
+    expect(sourceRows.find(row => row.requirement === '有竞争 offer')?.requirements).toEqual({ minOffers: 2 });
+    expect(sourceRows.find(row => row.requirement === '在职')?.requirements).toEqual({ employed: true });
     expect(UNPARSED_REALWORLD_ACTION_REQUIREMENTS).not.toContain('在职');
     expect(UNPARSED_REALWORLD_ACTION_REQUIREMENTS).not.toContain('20 万以上本金');
     expect(UNPARSED_REALWORLD_ACTION_REQUIREMENTS).not.toContain('耳机');
