@@ -31,6 +31,7 @@ interface RealworldActionRow {
   real_world_logic: string;
   source_name: string;
   source_url: string;
+  source_date?: string;
   confidence: string;
   requirements?: ActionRequirements;
 }
@@ -125,8 +126,7 @@ function checkRequirements(state: GameState, requirements: ActionRequirements): 
   return undefined;
 }
 
-function mapRow(row: Record<string, string>): ActionConfig {
-  const typed = row as unknown as RealworldActionRow;
+function mapRow(typed: RealworldActionRow): ActionConfig {
   const cooldown = numberFrom(typed.cooldown_months);
   const requirements = structuredRequirementsFor(typed);
   return {
@@ -152,7 +152,7 @@ function mapRow(row: Record<string, string>): ActionConfig {
   };
 }
 
-function evidenceFor(row: Record<string, string>): EvidenceMetadata {
+function evidenceFor(row: RealworldActionRow): EvidenceMetadata {
   const sourceName = row.source_name || '未标注来源';
   return createEvidenceMetadata({
     sourceName,
@@ -165,13 +165,15 @@ function evidenceFor(row: Record<string, string>): EvidenceMetadata {
   });
 }
 
-export const REALWORLD_ACTIONS: ActionConfig[] = (actionRows as Record<string, string>[]).map(row => withActionEvidence(mapRow(row), evidenceFor(row)));
+const REALWORLD_ACTION_ROWS = actionRows as RealworldActionRow[];
+
+export const REALWORLD_ACTIONS: ActionConfig[] = REALWORLD_ACTION_ROWS.map(row => withActionEvidence(mapRow(row), evidenceFor(row)));
 export const REALWORLD_ACTION_COUNT = REALWORLD_ACTIONS.length;
 export const UNMAPPED_REALWORLD_ACTION_REQUIREMENTS = Array.from(new Set(
-  (actionRows as Record<string, string>[])
+  REALWORLD_ACTION_ROWS
     .filter(row => {
       const text = (row.requirement ?? '').trim();
-      return text && text !== '无' && !structuredRequirementsFor(row as unknown as RealworldActionRow);
+      return text && text !== '无' && !structuredRequirementsFor(row);
     })
     .map(row => row.requirement.trim())
 )).sort();
