@@ -1,5 +1,7 @@
 import type { CrisisChapter, GameState, ProjectPortfolioState, ProjectState } from '../types/game';
 import { CITY_CONFIG } from '../config/balance';
+import { EVENTS } from '../config/events';
+import { EVENT_CHOICES } from '../config/eventChoices';
 import {
   DEFAULT_CAREER_PROFILE,
   DEFAULT_CRISIS_STATE,
@@ -37,6 +39,9 @@ const DEFAULT_WORLD = {
     ai_product: 20
   }
 };
+
+const KNOWN_EVENT_COOLDOWN_KEYS = new Set(EVENTS.map(event => event.cooldownKey ?? event.chain ?? event.id));
+const KNOWN_EVENT_CHOICE_MEMORY_KEYS = new Set(EVENT_CHOICES.flatMap(event => event.choices.map(choice => choice.memoryKey)));
 
 function migrateCrisisChapter(saved: Partial<CrisisChapter> | undefined, fallback: CrisisChapter): CrisisChapter {
   const active = saved?.active ?? fallback.active;
@@ -99,6 +104,26 @@ function migrateFinance(state: GameState): GameState['finance'] {
   };
 }
 
+function migrateEventLastTriggeredMonth(state: GameState): Record<string, number> {
+  const migrated = { ...(state.eventLastTriggeredMonth ?? {}) };
+  Object.entries(state.eventMemory ?? {}).forEach(([key, value]) => {
+    if (typeof value === 'number' && KNOWN_EVENT_COOLDOWN_KEYS.has(key) && typeof migrated[key] !== 'number') {
+      migrated[key] = value;
+    }
+  });
+  return migrated;
+}
+
+function migrateEventChoiceMemory(state: GameState): Record<string, number> {
+  const migrated = { ...(state.eventChoiceMemory ?? {}) };
+  Object.entries(state.eventMemory ?? {}).forEach(([key, value]) => {
+    if (typeof value === 'number' && KNOWN_EVENT_CHOICE_MEMORY_KEYS.has(key) && typeof migrated[key] !== 'number') {
+      migrated[key] = value;
+    }
+  });
+  return migrated;
+}
+
 function withDefaults(state: GameState): GameState {
   const careerDefaults = {
     pendingApplications: 0,
@@ -134,10 +159,10 @@ function withDefaults(state: GameState): GameState {
     inventory: state.inventory ?? {},
     unlockedAchievements: state.unlockedAchievements ?? [],
     seenEvents: state.seenEvents ?? [],
-    eventMemory: state.eventMemory ?? {},
     eventChainProgress: state.eventChainProgress ?? {},
-    eventLastTriggeredMonth: state.eventLastTriggeredMonth ?? {},
-    eventChoiceMemory: state.eventChoiceMemory ?? {},
+    eventLastTriggeredMonth: migrateEventLastTriggeredMonth(state),
+    eventChoiceMemory: migrateEventChoiceMemory(state),
+    eventMemory: state.eventMemory ?? {},
     pendingEffects: state.pendingEffects ?? [],
     actionHistory: state.actionHistory ?? [],
     decisionLog: state.decisionLog ?? [],

@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { createInitialState, planMonth } from '../core/gameEngine';
 import { settleMonth } from '../core/monthlyLoop';
 import { eventIntensity, getMonthlyEventCandidates, triggerMonthlyEvent } from '../systems/eventSystem';
@@ -131,6 +131,31 @@ describe('state-driven real-world events and endings', () => {
     expect(second.eventChainProgress.ai_shift).toBe(2);
     expect(second.eventLastTriggeredMonth.ai_shift).toBe(first.month);
     expect(second.eventChoiceMemory.ai_shift).toBeUndefined();
+  });
+
+  it('migrates legacy event memory into cooldown and choice memory fields', async () => {
+    vi.resetModules();
+    const store = new Map<string, string>();
+    vi.stubGlobal('localStorage', {
+      getItem: (key: string) => store.get(key) ?? null,
+      setItem: (key: string, value: string) => store.set(key, value),
+      removeItem: (key: string) => store.delete(key)
+    });
+    const legacy = createInitialState('frontend', 'tier2', seed);
+    legacy.eventMemory = {
+      health_warning: legacy.month - 2,
+      layoff_response_quiet_job_search: 3
+    };
+    delete (legacy as unknown as { eventLastTriggeredMonth?: unknown }).eventLastTriggeredMonth;
+    delete (legacy as unknown as { eventChoiceMemory?: unknown }).eventChoiceMemory;
+    store.set('programmer_survival_v6_save', JSON.stringify(legacy));
+
+    const { loadGame } = await import('../storage/saveManager');
+    const loaded = loadGame();
+
+    expect(loaded?.eventLastTriggeredMonth.health_warning).toBe(legacy.month - 2);
+    expect(loaded?.eventChoiceMemory.layoff_response_quiet_job_search).toBe(3);
+    vi.unstubAllGlobals();
   });
 
   it('raises event intensity when exposure and world cycle risks increase', () => {
