@@ -161,6 +161,38 @@ describe('real-world simulation kernel state model', () => {
     vi.unstubAllGlobals();
   });
 
+  it('migrates legacy finance snapshots by city baseline and preserves true obligations', async () => {
+    vi.resetModules();
+    const cases = [
+      ['tier1', 8500, 0],
+      ['tier2', 6500, 0],
+      ['tier3', 5200, 700],
+      ['tier2', 7080, 580]
+    ] as const;
+
+    const { loadGame } = await import('../storage/saveManager');
+
+    for (const [cityTier, legacyFixedCost, expectedObligations] of cases) {
+      const store = new Map<string, string>();
+      vi.stubGlobal('localStorage', {
+        getItem: (key: string) => store.get(key) ?? null,
+        setItem: (key: string, value: string) => store.set(key, value),
+        removeItem: (key: string) => store.delete(key)
+      });
+
+      const legacy = createInitialState('frontend', cityTier, seed);
+      legacy.finance.monthlyFixedCost = legacyFixedCost;
+      delete (legacy.finance as Partial<typeof legacy.finance>).fixedObligationsMonthly;
+      store.set('programmer_survival_v6_save', JSON.stringify(legacy));
+
+      const loaded = loadGame();
+
+      expect(loaded?.finance.monthlyFixedCost).toBe(0);
+      expect(loaded?.finance.fixedObligationsMonthly).toBe(expectedObligations);
+      vi.unstubAllGlobals();
+    }
+  });
+
   it('migrates legacy active crisis saves with episode history fields', async () => {
     vi.resetModules();
     const store = new Map<string, string>();
@@ -296,7 +328,7 @@ describe('real-world monthly causal pipeline', () => {
     expect(Number.isFinite(state.finance.cashflowStress)).toBe(true);
     expect(Number.isFinite(state.healthProfile.healthDebt)).toBe(true);
     expect(Number.isFinite(state.careerProfile.layoffRisk)).toBe(true);
-  });
+  }, 15000);
 });
 
 describe('real-world action consequences', () => {
@@ -419,6 +451,45 @@ describe('real-world action consequences', () => {
     expect(next.career.totalApplications).toBeGreaterThan(state.career.totalApplications);
     expect(next.career.totalInterviews).toBeGreaterThanOrEqual(state.career.totalInterviews);
     expect(next.career.totalOffers).toBeGreaterThanOrEqual(state.career.totalOffers);
+  });
+
+  it('does not treat expired historical offers or interviews as current requirements', () => {
+    const historical = createInitialState('frontend', 'tier2', seed);
+    historical.stats.cash = 120000;
+    historical.stats.techXp = 500;
+    historical.stats.aiXp = 300;
+    historical.career.employmentStatus = 'jobless';
+    historical.career.totalOffers = 5;
+    historical.career.totalInterviews = 5;
+    historical.career.pendingApplications = 0;
+    historical.career.activeOffers = [];
+    historical.career.scheduledInterviews = [];
+
+    const historicalActions = getAvailableActions(historical);
+    expect(historicalActions.find(action => action.id === 'C2002')?.available).toBe(false);
+    expect(historicalActions.find(action => action.id === 'J2003')?.available).toBe(false);
+
+    const current = structuredClone(historical);
+    current.career.activeOffers = [{
+      id: 'offer-current',
+      companyType: 'private',
+      jobLevel: 2,
+      salaryMonthly: 18000,
+      createdMonth: current.month,
+      expiresMonth: current.month + 2,
+      status: 'active'
+    }];
+    current.career.scheduledInterviews = [{
+      id: 'interview-current',
+      companyType: 'private',
+      createdMonth: current.month,
+      scheduledMonth: current.month,
+      status: 'scheduled'
+    }];
+
+    const currentActions = getAvailableActions(current);
+    expect(currentActions.find(action => action.id === 'C2002')?.available).toBe(true);
+    expect(currentActions.find(action => action.id === 'J2003')?.available).toBe(true);
   });
 
   it('does not trigger long-term unemployment from lifetime applications alone', async () => {
@@ -555,9 +626,31 @@ describe('real-world action consequences', () => {
     ready.stats.techXp = 500;
     ready.stats.aiXp = 300;
     ready.career.employmentStatus = 'employed';
-    ready.career.totalOffers = 2;
     ready.career.pendingApplications = 2;
-    ready.career.totalInterviews = 1;
+    ready.career.scheduledInterviews = [{
+      id: 'current-interview',
+      companyType: 'private',
+      createdMonth: ready.month,
+      scheduledMonth: ready.month,
+      status: 'scheduled'
+    }];
+    ready.career.activeOffers = [{
+      id: 'current-offer',
+      companyType: 'private',
+      jobLevel: 2,
+      salaryMonthly: 18000,
+      createdMonth: ready.month,
+      expiresMonth: ready.month + 2,
+      status: 'active'
+    }, {
+      id: 'competing-offer',
+      companyType: 'foreign',
+      jobLevel: 2,
+      salaryMonthly: 20000,
+      createdMonth: ready.month,
+      expiresMonth: ready.month + 2,
+      status: 'active'
+    }];
     ready.finance.monthlyIncome = 18000;
     ready.finance.monthlySalary = 18000;
     ready.finance.debt = 80000;

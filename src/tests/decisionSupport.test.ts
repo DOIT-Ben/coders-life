@@ -238,6 +238,32 @@ describe('decision support and first-stage functional optimization', () => {
     expect(afterHousing.stats.mental).toBe(state.stats.mental);
   });
 
+  it('provides real purchase paths for structured requirement tools', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+    state.stats.cash = 50000;
+
+    [
+      'developer_accounts',
+      'basic_kitchen',
+      'credit_card',
+      'recording_tool',
+      'quiet_space',
+      'screen_time_app',
+      'password_manager'
+    ].forEach(itemId => {
+      state = buyShopItem(state, itemId);
+    });
+
+    expect(state.inventory.github_account).toBe(1);
+    expect(state.inventory.linkedin_account).toBe(1);
+    expect(state.inventory.kitchen).toBe(1);
+    expect(state.inventory.credit_card).toBe(1);
+    expect(state.inventory.recording_tool).toBe(1);
+    expect(state.inventory.quiet_space).toBe(1);
+    expect(state.inventory.screen_time_app).toBe(1);
+    expect(state.inventory.password_manager).toBe(1);
+  });
+
   it('adds shop subscriptions insurance and housing rent on top of base living cost', () => {
     let state = createInitialState('frontend', 'tier1', seed);
     state.stats.cash = 50000;

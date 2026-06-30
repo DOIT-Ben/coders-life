@@ -203,15 +203,17 @@ export function structuredRequirementsFor(row: RealworldActionRow): ActionRequir
 
 function checkRequirements(state: GameState, requirements: ActionRequirements): string | undefined {
   const visible = getVisibleStats(state);
+  const activeOffers = (state.career.activeOffers ?? []).filter(offer => offer.status === 'active' && offer.expiresMonth >= state.month);
+  const scheduledInterviews = (state.career.scheduledInterviews ?? []).filter(interview => interview.status === 'scheduled' && interview.scheduledMonth >= state.month);
   if (requirements.employed && state.career.employmentStatus !== 'employed') return '需要在职。';
-  if (requirements.employmentOrInterview && state.career.employmentStatus !== 'employed' && state.career.pendingApplications <= 0 && state.career.totalInterviews <= 0 && state.career.totalOffers <= 0) return '需要在职、面试机会或 offer。';
+  if (requirements.employmentOrInterview && state.career.employmentStatus !== 'employed' && scheduledInterviews.length <= 0 && activeOffers.length <= 0) return '需要在职、面试机会或 offer。';
   if (typeof requirements.minCash === 'number' && state.stats.cash < requirements.minCash) return `需要现金至少 ${requirements.minCash} 元。`;
   if (typeof requirements.minTech === 'number' && visible.tech < requirements.minTech) return `需要技术至少 ${requirements.minTech}。`;
   if (typeof requirements.minAi === 'number' && visible.ai < requirements.minAi) return `需要 AI 能力至少 ${requirements.minAi}。`;
   if (requirements.inventory && !state.inventory[requirements.inventory]) return requirements.inventory === 'headphones' ? '需要耳机等对应物品。' : '需要对应工具或物品。';
   if (requirements.flag && !state.flags[requirements.flag]) return '需要先形成对应状态。';
-  if (typeof requirements.minOffers === 'number' && state.career.totalOffers < requirements.minOffers) return `需要至少 ${requirements.minOffers} 个 offer。`;
-  if (typeof requirements.minInterviews === 'number' && state.career.pendingApplications + state.career.totalInterviews < requirements.minInterviews) return `需要至少 ${requirements.minInterviews} 个面试机会。`;
+  if (typeof requirements.minOffers === 'number' && activeOffers.length < requirements.minOffers) return `需要至少 ${requirements.minOffers} 个当前有效 offer。`;
+  if (typeof requirements.minInterviews === 'number' && scheduledInterviews.length < requirements.minInterviews) return `需要至少 ${requirements.minInterviews} 个当前面试机会。`;
   if (requirements.positiveIncome && state.finance.monthlyIncome + state.finance.monthlySalary + state.stats.passiveIncomeMonthly <= 0) return '需要真实正收入。';
   if (requirements.debtBalance && state.finance.debt <= 0) return '需要存在贷款或债务余额。';
   if (requirements.timeAvailable && (state.lifePressure.timeScarcity > 70 || state.hidden.fatigue > 82)) return '需要可支配时间和精力。';

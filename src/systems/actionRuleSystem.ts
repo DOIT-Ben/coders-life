@@ -2,6 +2,7 @@ import type { ActionConfig, ActionHistoryEntry, EffectDelta, GameState, Realworl
 import { clamp } from '../core/formulas';
 import { CAREER_ROUTES } from '../config/realworldCareer';
 import { deriveRoleAiPressure } from './laborMarketSystem';
+import { acceptActiveOffer } from './careerSystem';
 
 const XP_KEYS = ['techXp', 'aiXp', 'reputationXp', 'portfolio'] as const;
 const RECOVERY_SUBCATEGORIES = new Set(['digital_entertainment', 'media_reading', 'body_repair', 'mind_repair', 'life_ritual', 'outdoor_nature']);
@@ -156,7 +157,20 @@ export function applyRealworldActionEffect(state: GameState, action: ActionConfi
     next.lifePressure = mergeLifePressureState(next.lifePressure, effect.lifePressure);
   }
 
-  return applyCareerTransitionEffect(applyValueDrift(next, action), action);
+  return applyCareerOpportunityActionEffect(applyCareerTransitionEffect(applyValueDrift(next, action), action), action);
+}
+
+function applyCareerOpportunityActionEffect(state: GameState, action: ActionConfig): GameState {
+  if (action.id === 'C2002') return acceptActiveOffer(state);
+  if (action.id === 'J2003') {
+    const scheduled = state.career.scheduledInterviews.find(interview => interview.status === 'scheduled' && interview.scheduledMonth >= state.month);
+    if (!scheduled) return state;
+    const next = structuredClone(state);
+    next.career.scheduledInterviews = next.career.scheduledInterviews.map(interview => interview.id === scheduled.id ? { ...interview, scheduledMonth: state.month, status: 'scheduled' } : interview);
+    next.careerProfile.interviewMomentum = clamp(next.careerProfile.interviewMomentum + 6, 0, 100);
+    return next;
+  }
+  return state;
 }
 
 function applyValueDrift(state: GameState, action: ActionConfig): GameState {

@@ -78,7 +78,31 @@ export interface CareerState {
   totalApplications: number;
   totalInterviews: number;
   totalOffers: number;
+  scheduledInterviews: InterviewOpportunity[];
+  activeOffers: JobOffer[];
   promotionScore: number;
+}
+
+export type InterviewStatus = 'scheduled' | 'completed' | 'expired' | 'declined';
+
+export interface InterviewOpportunity {
+  id: ID;
+  companyType: CompanyType;
+  createdMonth: number;
+  scheduledMonth: number;
+  status: InterviewStatus;
+}
+
+export type JobOfferStatus = 'active' | 'accepted' | 'declined' | 'expired';
+
+export interface JobOffer {
+  id: ID;
+  companyType: CompanyType;
+  jobLevel: number;
+  salaryMonthly: number;
+  createdMonth: number;
+  expiresMonth: number;
+  status: JobOfferStatus;
 }
 
 export interface FinanceState {
