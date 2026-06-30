@@ -5,10 +5,24 @@ import appSource from '../App.tsx?raw';
 const appCss = readFileSync(new URL('../styles/app.css', import.meta.url), 'utf8');
 
 describe('v1 frontend contract', () => {
+  const worldStatusBarSource = readFileSync(new URL('../components/WorldStatusBar.tsx', import.meta.url), 'utf8');
+  const debugPanelSource = readFileSync(new URL('../components/DebugPanel.tsx', import.meta.url), 'utf8');
+
   it('keeps v2 implementation labels out of the visible v1 shell', () => {
     expect(appSource).not.toContain('V2 ENGINE');
     expect(appSource).not.toContain('AI重构');
     expect(appSource).not.toContain('隐藏状态');
+  });
+
+  it('does not surface legacy global AI replacement in status or debug UI', () => {
+    expect(worldStatusBarSource).not.toContain('state.world.aiReplacement');
+    expect(worldStatusBarSource).not.toContain('AI重构');
+    expect(worldStatusBarSource).toContain('deriveRoleAiPressure');
+    expect(worldStatusBarSource).toContain('岗位AI压力');
+
+    expect(debugPanelSource).not.toContain('aiReplacement');
+    expect(debugPanelSource).toContain('deriveRoleAiPressure');
+    expect(debugPanelSource).toContain('laborAiDisruption');
   });
 
   it('uses categorized action tabs with detailed sub-actions', () => {

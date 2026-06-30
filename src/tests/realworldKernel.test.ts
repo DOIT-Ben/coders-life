@@ -8,7 +8,7 @@ import { settleEconomy } from '../systems/economySystem';
 import { settleLifeStagePressure } from '../systems/lifePressureSystem';
 import { settleRelationshipDebt } from '../systems/relationshipSystem';
 import { getAction } from '../config/actions';
-import { deriveRoleAiPressure, settleLaborMarket } from '../systems/laborMarketSystem';
+import { deriveRoleAiPressure, hasAiPressure, settleLaborMarket } from '../systems/laborMarketSystem';
 import { COMPANY_PROFILES } from '../config/realworldCompanies';
 import { CAREER_ROUTES } from '../config/realworldCareer';
 
@@ -714,6 +714,18 @@ describe('phase 3 world career ai and age model', () => {
     highReplacement.world.aiReplacement = 95;
 
     expect(getGrossSalary(highReplacement)).toBe(getGrossSalary(lowReplacement));
+  });
+
+  it('does not trigger AI pressure from legacy aiReplacement alone', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.world.aiReplacement = 95;
+    state.world.modelCapability = 10;
+    state.world.toolAdoption = 10;
+    state.world.organizationReadiness = 10;
+    state.laborMarket.aiDisruption = 12;
+    state.careerProfile.aiLeverage = 70;
+
+    expect(hasAiPressure(state, 35)).toBe(false);
   });
 
   it('uses role AI pressure rather than old global replacement to scale growth actions', () => {

@@ -1,4 +1,5 @@
 import type { EventConfig } from '../types/game';
+import { deriveRoleAiPressure } from '../systems/laborMarketSystem';
 
 export const STATE_DRIVEN_EVENTS: EventConfig[] = [
   {
@@ -49,8 +50,8 @@ export const STATE_DRIVEN_EVENTS: EventConfig[] = [
     type: 'triggered',
     category: 'career',
     rarity: 'uncommon',
-    weight: state => 2 + Math.max(0, state.world.aiReplacement - state.careerProfile.aiLeverage) * 0.05,
-    condition: state => state.world.aiReplacement >= 70 && state.careerProfile.aiLeverage <= 25,
+    weight: state => 2 + Math.max(0, deriveRoleAiPressure(state) - state.careerProfile.aiLeverage) * 0.05,
+    condition: state => deriveRoleAiPressure(state) >= 70 && state.careerProfile.aiLeverage <= 25,
     effect: { mental: -4, identity: -1 },
     text: '不是所有岗位都会消失，但低杠杆、低迁移能力的工作正在被重估。'
   }

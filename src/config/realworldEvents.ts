@@ -1,6 +1,7 @@
 import eventRows from '../data/realworld/realworld_events.json';
 import type { EffectDelta, EventConfig, PopupRarity } from '../types/game';
 import { withEventEvidence } from './evidence';
+import { hasAiPressure } from '../systems/laborMarketSystem';
 
 interface RealworldEventRow {
   id: string;
@@ -45,7 +46,7 @@ function conditionFor(trigger: string): EventConfig['condition'] {
   if (trigger === 'employed') return state => state.career.employmentStatus === 'employed';
   if (trigger === 'jobless') return state => state.career.employmentStatus === 'jobless';
   if (trigger === 'age35') return state => state.age >= 35;
-  if (trigger === 'ai_pressure') return state => state.world.aiReplacement >= 35;
+  if (trigger === 'ai_pressure') return state => hasAiPressure(state, 35);
   if (trigger === 'high_burnout') return state => state.stats.burnout >= 55;
   if (trigger === 'low_health') return state => state.stats.health <= 45;
   return undefined;

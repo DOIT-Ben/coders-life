@@ -5,17 +5,18 @@ import { POPUP_EVENTS } from './popupEvents';
 import { REALWORLD_EVENTS } from './realworldEvents';
 import { STATE_DRIVEN_EVENTS } from './stateDrivenEvents';
 import { withEventEvidence } from './evidence';
+import { deriveRoleAiPressure, hasAiPressure } from '../systems/laborMarketSystem';
 
 export const CORE_EVENTS: EventConfig[] = [
   {
     id: 'coworker_ai_1', title: '同事开始用AI', chain: 'ai_shift', type: 'triggered', weight: 8,
-    condition: s => s.world.aiReplacement > 20 && !s.seenEvents.includes('coworker_ai_1'),
+    condition: s => hasAiPressure(s, 28) && !s.seenEvents.includes('coworker_ai_1'),
     effect: { mental: -2, aiXp: 6 },
     text: '你发现同事开始用AI写脚本，效率突然拉开了一点。'
   },
   {
     id: 'leader_talk_ai', title: '组长找你谈话', chain: 'ai_shift', type: 'triggered', weight: 5,
-    condition: s => s.seenEvents.includes('coworker_ai_1') && getVisibleStats(s).ai < s.world.aiReplacement * 0.5,
+    condition: s => s.seenEvents.includes('coworker_ai_1') && getVisibleStats(s).ai < deriveRoleAiPressure(s) * 0.5,
     effect: { mental: -8, reputationXp: -4 },
     text: '组长委婉提醒你：团队正在重新评估每个人的人机协作能力。'
   },

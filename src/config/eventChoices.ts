@@ -1,4 +1,5 @@
 import type { GameState, PendingEventChoice } from '../types/game';
+import { hasAiPressure } from '../systems/laborMarketSystem';
 
 export const EVENT_CHOICES: Array<PendingEventChoice & { condition?: (state: GameState) => boolean; weight: number }> = [
   {
@@ -41,7 +42,7 @@ export const EVENT_CHOICES: Array<PendingEventChoice & { condition?: (state: Gam
     text: '组里开始要求所有提交先过 AI 审查。它能找出问题，也会暴露你的工程习惯。',
     chain: 'ai_code_review',
     weight: 6,
-    condition: state => state.world.aiReplacement >= 35 || state.laborMarket.aiDisruption >= 45,
+    condition: state => hasAiPressure(state, 45),
     choices: [
       {
         id: 'learn_ai_review_flow',

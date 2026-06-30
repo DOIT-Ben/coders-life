@@ -47,7 +47,10 @@ describe('state-driven real-world events and endings', () => {
 
   it('includes AI skill-obsolescence warnings when disruption outpaces leverage', () => {
     const state = createInitialState('frontend', 'tier2', seed);
-    state.world.aiReplacement = 82;
+    state.world.modelCapability = 90;
+    state.world.toolAdoption = 85;
+    state.world.organizationReadiness = 85;
+    state.world.taskAutomationByRole.frontend = 85;
     state.careerProfile.aiLeverage = 10;
 
     const candidates = getMonthlyEventCandidates(state);
