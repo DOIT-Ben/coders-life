@@ -9,6 +9,8 @@ import { SHOP_ITEMS } from '../config/shop';
 import { ACHIEVEMENTS } from '../config/achievements';
 import { UNSTRUCTURED_REALWORLD_ACTION_REQUIREMENTS, UNMAPPED_REALWORLD_ACTION_REQUIREMENTS } from '../config/realworldActions';
 import realworldActionsSource from '../config/realworldActions.ts?raw';
+import shopSystemSource from '../systems/shopSystem.ts?raw';
+import { createInitialState } from '../core/gameEngine';
 
 describe('real-world data import', () => {
   it('loads the curated real-world action pool including nutrition and addiction recovery', () => {
@@ -30,6 +32,17 @@ describe('real-world data import', () => {
     expect(REALWORLD_EVENT_COUNT).toBe(250);
     expect(EVENTS.some(event => event.id === 'realworld_event_0001')).toBe(true);
     expect(EVENTS.some(event => event.source === 'realworld_data' && event.category === 'ai')).toBe(true);
+  });
+
+  it('attaches structured source metadata to imported real-world events', () => {
+    const event = REALWORLD_EVENTS.find(item => item.id === 'realworld_event_0001')!;
+
+    expect(event.evidence?.sourceType).toBe('community_story');
+    expect(event.evidence?.sourceLevel).toBe('case_study');
+    expect(event.evidence?.url).toMatch(/^https?:\/\//);
+    expect(event.evidence?.publicationDate).toBe('2025-04-12');
+    expect(event.evidence?.applicableScope).toEqual(['work', 'requirement_change']);
+    expect(event.evidence?.parameterRationale).toContain('work');
   });
 
   it('adds explicit failure endings from the supplementary data', () => {
@@ -79,6 +92,29 @@ describe('real-world data import', () => {
   it('does not map display requirements to empty always-true predicates', () => {
     expect(realworldActionsSource).not.toMatch(/['"][^'"]+['"]:\s*\{\s*\}/);
     expect(REALWORLD_ACTIONS.filter(action => action.requirements && Object.keys(action.requirements).length === 0)).toEqual([]);
+  });
+
+  it('has a real acquisition path for every inventory requirement', () => {
+    const requiredInventory = new Set(REALWORLD_ACTIONS
+      .map(action => action.requirements?.inventory)
+      .filter((item): item is string => Boolean(item)));
+    const initial = createInitialState('frontend', 'tier2', 20260630);
+    const obtainableInventory = new Set([
+      ...Object.keys(initial.inventory),
+      ...SHOP_ITEMS.map(item => item.id),
+      ...Array.from(shopSystemSource.matchAll(/next\.inventory\.([a-zA-Z0-9_]+)\s*=/g)).map(match => match[1])
+    ]);
+
+    expect(requiredInventory.size).toBeGreaterThan(0);
+    expect([...requiredInventory].sort()).toEqual([...obtainableInventory].filter(item => requiredInventory.has(item)).sort());
+  });
+
+  it('loads executable requirements from source data rather than display text', () => {
+    expect(realworldActionsSource).not.toContain('const STRUCTURED_REQUIREMENTS');
+    expect(realworldActionsSource).not.toMatch(/Record<string,\s*ActionRequirements>/);
+
+    const githubAction = REALWORLD_ACTIONS.find(action => action.requirements?.inventory === 'github_account');
+    expect(githubAction?.requirements).toEqual({ inventory: 'github_account' });
   });
 
   it('validates schema-critical action event ending achievement and shop fields', () => {

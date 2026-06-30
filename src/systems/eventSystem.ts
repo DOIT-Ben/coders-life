@@ -64,7 +64,6 @@ export function applyEventChoice(state: GameState, choiceId: string): GameState 
   next = applyRealworldChoiceEffect(next, choice);
   next.pendingEventChoice = undefined;
   next.eventChoiceMemory[choice.memoryKey] = (next.eventChoiceMemory[choice.memoryKey] ?? 0) + 1;
-  next.eventMemory[choice.memoryKey] = (next.eventMemory[choice.memoryKey] ?? 0) + 1;
   next = addLog(next, { type: 'info', title: choice.label, text: choice.text });
   return next;
 }

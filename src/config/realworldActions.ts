@@ -1,7 +1,7 @@
 import actionRows from '../data/realworld/realworld_actions.json';
 import type { ActionConfig, ActionPrimaryCategory, ActionRequirements, ActionStressLevel, ActionSubcategory, EffectDelta, EvidenceMetadata, GameState, RealworldEffectDelta } from '../types/game';
 import { getVisibleStats } from '../core/formulas';
-import { withActionEvidence } from './evidence';
+import { createEvidenceMetadata, withActionEvidence } from './evidence';
 import { numberFrom, tagsFrom } from './realworldParser';
 
 interface RealworldActionRow {
@@ -31,7 +31,9 @@ interface RealworldActionRow {
   real_world_logic: string;
   source_name: string;
   source_url: string;
+  source_date?: string;
   confidence: string;
+  requirements?: ActionRequirements;
 }
 
 function groupFor(primary: string): ActionConfig['group'] {
@@ -92,113 +94,10 @@ function realworldEffectFor(row: RealworldActionRow): RealworldEffectDelta {
   return {};
 }
 
-const STRUCTURED_REQUIREMENTS: Record<string, ActionRequirements> = {
-  '10 万字内容储备': { minTech: 35 },
-  '12 个月存款': { minCash: 62400 },
-  '20 万以上本金': { minCash: 200000 },
-  '3 年以上经验': { minTech: 45 },
-  '30 万以上可损失': { minCash: 300000 },
-  '30 万以上本金': { minCash: 300000 },
-  '5 年以上经验': { minTech: 60 },
-  'GitHub 账号': { inventory: 'github_account' },
-  'LinkedIn 账号': { inventory: 'linkedin_account' },
-  'N+1 谈判': { employmentOrInterview: true },
-  'Python 基础': { minTech: 25 },
-  oncall: { employed: true },
-  '专业背景': { minTech: 60 },
-  '专业英语': { minTech: 35 },
-  '会用 IDE': { minTech: 10 },
-  '会用 Python': { minTech: 25 },
-  '会记账': { focusAvailable: true },
-  '可上 X': { focusAvailable: true },
-  '可买工具': { minCash: 5000 },
-  '可买菜': { minCash: 5000 },
-  '可买设备': { minCash: 5000 },
-  '可做饭': { inventory: 'kitchen' },
-  '可公开': { focusAvailable: true },
-  '可关闭通知': { focusAvailable: true },
-  '可协调': { socialSupport: true },
-  '可建站': { minTech: 25 },
-  '可戒': { smokingHabit: true },
-  '可承担': { minCash: 5000 },
-  '可承担费用': { minCash: 5000 },
-  '可控制': { focusAvailable: true },
-  '可支配收入': { minCash: 5000 },
-  '可支配时间': { timeAvailable: true },
-  '可支配预算': { minCash: 5000 },
-  '可数字工具': { focusAvailable: true },
-  '可早起': { timeAvailable: true },
-  '可练': { timeAvailable: true },
-  '可耐受咖啡因': { focusAvailable: true },
-  '可讲课': { minTech: 45 },
-  '可调升降桌': { minCash: 2000 },
-  '团队有 PR': { employed: true },
-  '在职': { employed: true },
-  '在职或可面试': { employmentOrInterview: true },
-  '基础算法': { minTech: 25 },
-  '基础词汇': { minTech: 10 },
-  '密码管理器': { inventory: 'password_manager' },
-  '录屏工具': { inventory: 'recording_tool' },
-  '无打扰环境': { inventory: 'quiet_space' },
-  '有 GitHub 账号': { inventory: 'github_account' },
-  '有 LinkedIn': { inventory: 'linkedin_account' },
-  '有 MVP 能力': { minTech: 45, minAi: 20 },
-  '有 offer': { minOffers: 1 },
-  '有 offer 或现雇主': { employmentOrInterview: true },
-  '有上级': { employed: true },
-  '有专精方向': { minTech: 60 },
-  '有信用卡': { inventory: 'credit_card' },
-  '有内容选题': { focusAvailable: true },
-  '有判断力': { minTech: 20 },
-  '有前辈': { socialSupport: true },
-  '有厨房': { inventory: 'kitchen' },
-  '有可写主题': { focusAvailable: true },
-  '有可推荐朋友': { socialSupport: true },
-  '有家庭': { household: 'family' },
-  '有技术深度': { minTech: 60 },
-  '有新人': { employed: true },
-  '有时间': { timeAvailable: true },
-  '有朋友': { socialSupport: true },
-  '有正收入': { positiveIncome: true },
-  '有烟瘾': { smokingHabit: true },
-  '有父母': { household: 'parent' },
-  '有窗': { inventory: 'window' },
-  '有竞争 offer': { minOffers: 2 },
-  '有耐心': { focusAvailable: true },
-  '有话题': { socialSupport: true },
-  '有贷款余额': { debtBalance: true },
-  '有闲钱 5 万以上': { minCash: 50000 },
-  '有面试机会': { minInterviews: 1 },
-  '有预算': { minCash: 5000 },
-  '有题材': { focusAvailable: true },
-  '本地有社区': { socialSupport: true },
-  '深度领域': { minTech: 60 },
-  '稳定粉丝': { minTech: 35, minAi: 10 },
-  '纸笔/工具': { focusAvailable: true },
-  '耳机': { inventory: 'headphones' },
-  '能坐下读书': { focusAvailable: true },
-  '至少 6 个月存款': { minCash: 31200 },
-  '英文阅读': { minTech: 20 },
-  '计时器': { focusAvailable: true },
-  '设备': { minCash: 5000 },
-  '识字': { minTech: 5 },
-  '距离合适': { timeAvailable: true },
-  '长期主义': { focusAvailable: true },
-  '附近绿地': { timeAvailable: true },
-  '需备用活动': { focusAvailable: true },
-  '需替代活动': { focusAvailable: true },
-  '需装屏幕时间 app': { inventory: 'screen_time_app' },
-  '需要基本厨具': { inventory: 'kitchen' },
-  '需要意志力或尼古丁替代': { smokingHabit: true },
-  '需要替代活动': { focusAvailable: true },
-  '需要朋友/家人': { household: 'family' },
-  '项目紧急': { employed: true }
-};
-
 export function structuredRequirementsFor(row: RealworldActionRow): ActionRequirements | undefined {
   const text = row.requirement.trim();
   if (!text || text === '无') return undefined;
-  return STRUCTURED_REQUIREMENTS[text];
+  return row.requirements;
 }
 
 function checkRequirements(state: GameState, requirements: ActionRequirements): string | undefined {
@@ -227,8 +126,7 @@ function checkRequirements(state: GameState, requirements: ActionRequirements): 
   return undefined;
 }
 
-function mapRow(row: Record<string, string>): ActionConfig {
-  const typed = row as unknown as RealworldActionRow;
+function mapRow(typed: RealworldActionRow): ActionConfig {
   const cooldown = numberFrom(typed.cooldown_months);
   const requirements = structuredRequirementsFor(typed);
   return {
@@ -254,41 +152,28 @@ function mapRow(row: Record<string, string>): ActionConfig {
   };
 }
 
-function evidenceFor(row: Record<string, string>): EvidenceMetadata {
+function evidenceFor(row: RealworldActionRow): EvidenceMetadata {
   const sourceName = row.source_name || '未标注来源';
-  const sourceType = sourceTypeFor(sourceName, row.source_url);
-  const confidence = (row.confidence === 'high' || row.confidence === 'medium' || row.confidence === 'low') ? row.confidence : 'medium';
-  return {
-    sourceLevel: sourceType === 'community_story' || sourceType === 'media' ? 'case_study' : sourceType === 'synthetic' ? 'synthetic' : 'industry_report',
-    sourceType,
-    confidence,
-    source: sourceName,
-    title: sourceName,
-    url: row.source_url || undefined,
-    publicationDate: row.source_date || undefined,
-    applicableScope: [row.primary_category, row.subcategory].filter(Boolean),
-    parameterRationale: `行动数值由 ${sourceName} 对 ${row.benefit_label || row.risk_label || row.primary_category} 的描述映射，并由类别、压力等级和持续时间约束。`,
-    verifiedAt: '2026-06-29'
-  };
+  return createEvidenceMetadata({
+    sourceName,
+    sourceUrl: row.source_url,
+    sourceDate: row.source_date,
+    category: row.primary_category,
+    subcategory: row.subcategory,
+    confidence: row.confidence,
+    rationaleSubject: row.benefit_label || row.risk_label || row.primary_category
+  });
 }
 
-function sourceTypeFor(sourceName: string, sourceUrl?: string): EvidenceMetadata['sourceType'] {
-  const text = `${sourceName} ${sourceUrl ?? ''}`.toLowerCase();
-  if (sourceName === '经验归纳' || text.includes('indiehackers') || text.includes('medium') || text.includes('substack')) return 'community_story';
-  if (text.includes('who') || sourceName.includes('国家') || sourceName.includes('卫健委') || sourceName.includes('医保局') || sourceName.includes('cdc') || sourceName.includes('nist')) return 'official_statistics';
-  if (text.includes('journal') || text.includes('lancet') || text.includes('jama') || text.includes('nejm') || text.includes('cochrane') || text.includes('nature') || text.includes('psychological') || text.includes('pubmed')) return 'peer_reviewed';
-  if (text.includes('hbr') || text.includes('reuters') || text.includes('pew') || text.includes('youtube') || text.includes('linkedin') || text.includes('github') || text.includes('stackoverflow') || text.includes('survey')) return 'industry_survey';
-  if (text.includes('blog') || text.includes('news') || text.includes('sina') || text.includes('sohu') || text.includes('toutiao')) return 'media';
-  return 'industry_survey';
-}
+const REALWORLD_ACTION_ROWS = actionRows as RealworldActionRow[];
 
-export const REALWORLD_ACTIONS: ActionConfig[] = (actionRows as Record<string, string>[]).map(row => withActionEvidence(mapRow(row), evidenceFor(row)));
+export const REALWORLD_ACTIONS: ActionConfig[] = REALWORLD_ACTION_ROWS.map(row => withActionEvidence(mapRow(row), evidenceFor(row)));
 export const REALWORLD_ACTION_COUNT = REALWORLD_ACTIONS.length;
 export const UNMAPPED_REALWORLD_ACTION_REQUIREMENTS = Array.from(new Set(
-  (actionRows as Record<string, string>[])
+  REALWORLD_ACTION_ROWS
     .filter(row => {
       const text = (row.requirement ?? '').trim();
-      return text && text !== '无' && !structuredRequirementsFor(row as unknown as RealworldActionRow);
+      return text && text !== '无' && !structuredRequirementsFor(row);
     })
     .map(row => row.requirement.trim())
 )).sort();

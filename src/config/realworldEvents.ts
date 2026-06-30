@@ -1,6 +1,7 @@
 import eventRows from '../data/realworld/realworld_events.json';
 import type { EffectDelta, EventConfig, PopupRarity } from '../types/game';
-import { withEventEvidence } from './evidence';
+import { createEvidenceMetadata, withEventEvidence } from './evidence';
+import { hasAiPressure } from '../systems/laborMarketSystem';
 
 interface RealworldEventRow {
   id: string;
@@ -45,7 +46,7 @@ function conditionFor(trigger: string): EventConfig['condition'] {
   if (trigger === 'employed') return state => state.career.employmentStatus === 'employed';
   if (trigger === 'jobless') return state => state.career.employmentStatus === 'jobless';
   if (trigger === 'age35') return state => state.age >= 35;
-  if (trigger === 'ai_pressure') return state => state.world.aiReplacement >= 35;
+  if (trigger === 'ai_pressure') return state => hasAiPressure(state, 35);
   if (trigger === 'high_burnout') return state => state.stats.burnout >= 55;
   if (trigger === 'low_health') return state => state.stats.health <= 45;
   return undefined;
@@ -64,9 +65,15 @@ export const REALWORLD_EVENTS: EventConfig[] = (eventRows as RealworldEventRow[]
   text: row.text,
   once: row.rarity === 'rare'
 }, {
-  sourceLevel: 'industry_report',
-  confidence: row.confidence === 'high' || row.confidence === 'medium' || row.confidence === 'low' ? row.confidence : 'medium',
-  source: row.source_name
+  ...createEvidenceMetadata({
+    sourceName: row.source_name || '未标注来源',
+    sourceUrl: row.source_url,
+    sourceDate: row.source_date,
+    category: row.category,
+    subcategory: row.subcategory,
+    confidence: row.confidence,
+    rationaleSubject: row.category
+  })
 }));
 
 export const REALWORLD_EVENT_COUNT = REALWORLD_EVENTS.length;

@@ -142,7 +142,10 @@
     "real_world_logic": "Edison Research 2024 显示美国 12+ 人口 73% 听过播客，听众每周平均时长 6.5 小时；播客在通勤和家务场景对认知激励与孤独缓解有中等收益，且为纯听觉不抢占视觉通道。",
     "source_name": "Edison Research The Infinite Dial 2024",
     "source_url": "https://www.edisonresearch.com/infinite-dial-2024/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "inventory": "headphones"
+    }
   },
   {
     "action_id": "R2006",
@@ -171,7 +174,10 @@
     "real_world_logic": "适度游戏（<60 分钟/次）与主观幸福感短期提升相关；超过 2 小时/次则与睡眠延迟、注意力执行控制下降相关，APA 元分析强调成瘾性是关键负面因素而非使用时长本身。",
     "source_name": "APA Psychological Bulletin 2024 短视频-认知元分析",
     "source_url": "https://www.thepaper.cn/newsDetail_forward_31984539",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minCash": 5000
+    }
   },
   {
     "action_id": "R2101",
@@ -200,7 +206,10 @@
     "real_world_logic": "WHO 健康生活方式综述：每日 30 分钟阅读与认知储备提升、痴呆风险下降相关 (Brayne 2019 Lancet 综述)；纸质阅读相比屏幕阅读，蓝光暴露更低、入睡延迟更短。",
     "source_name": "WHO Risk Reduction of Cognitive Decline Guidelines 2019",
     "source_url": "https://www.who.int/publications/i/item/9789241550543",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 5
+    }
   },
   {
     "action_id": "R2102",
@@ -258,7 +267,10 @@
     "real_world_logic": "Gartner/Forrester 等行业报告为从业者提供技术雷达；阅读 30 分钟/天与认知复杂度 (cognitive complexity) 提升相关，6 个月可见决策质量改善。",
     "source_name": "Gartner Top Strategic Technology Trends 2024",
     "source_url": "https://www.gartner.com/en/articles/top-technology-trends-2024",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 60
+    }
   },
   {
     "action_id": "R2104",
@@ -287,7 +299,10 @@
     "real_world_logic": "Reuters Institute Digital News Report 2024 显示付费新闻订阅用户在政治、健康、商业议题上的事实辨别准确率显著高于免费用户；付费墙后内容的来源可信度与编辑审核更高。",
     "source_name": "Reuters Institute Digital News Report 2024",
     "source_url": "https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2024",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minCash": 5000
+    }
   },
   {
     "action_id": "R2201",
@@ -432,7 +447,10 @@
     "real_world_logic": "Bervoets 2015 Cochrane 综述：按摩对慢性腰背痛短期缓解有中等效应；单次 300-500 元月度 1500 元需评估现金流，对长期久坐程序员颈肩劳损有显著收益。",
     "source_name": "Bervoets 2015 Cochrane review massage for LBP",
     "source_url": "https://www.cochranelibrary.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minCash": 5000
+    }
   },
   {
     "action_id": "R2206",
@@ -461,7 +479,10 @@
     "real_world_logic": "WHO 2020 指南：每替代 1 小时久坐为轻强度活动，腰围可下降约 3 cm；久坐 >8h/天与全因死亡风险升高 20% 相关 (Patterson 2018)。",
     "source_name": "WHO 2020 Guidelines on Physical Activity (BJSM)",
     "source_url": "https://bjsm.bmj.com/content/54/24/1451",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "minCash": 2000
+    }
   },
   {
     "action_id": "R2301",
@@ -548,7 +569,10 @@
     "real_world_logic": "Cuijpers 2023 World Psychiatry Meta：认知行为疗法 (CBT) 对抑郁/焦虑的中等效应量 Hedges' g ≈ 0.7 已多次证实；单次 500-800 元、月度 2000-3000 元成本对中产可承担。",
     "source_name": "Cuijpers 2023 World Psychiatry CBT meta-analysis",
     "source_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8485770/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "minCash": 5000
+    }
   },
   {
     "action_id": "R2304",
@@ -606,7 +630,10 @@
     "real_world_logic": "Labbé 2007 综述：白噪声与轻音乐可降低约 30% 的环境应激引起的皮质醇反应；对开放办公室程序员降低键盘声干扰有中等收益。",
     "source_name": "Labbé et al. 2007 Noise & Health white noise review",
     "source_url": "https://www.noiseandhealth.org/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "inventory": "headphones"
+    }
   },
   {
     "action_id": "R2401",
@@ -693,7 +720,10 @@
     "real_world_logic": "WHO 2020 + CDC：中等强度骑行 30 分钟/天 等于完成 WHO 推荐活动量的一半，无需额外时间但受距离/天气约束；2024 Lancet Planetary Health 显示主动通勤者心血管死亡风险下降 24%。",
     "source_name": "WHO 2020 Physical Activity Guidelines (BJSM)",
     "source_url": "https://bjsm.bmj.com/content/54/24/1451",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "timeAvailable": true
+    }
   },
   {
     "action_id": "R2404",
@@ -722,7 +752,10 @@
     "real_world_logic": "MIT 2019 综合 108 项研究表明：每日 30 分钟自然暴露可降低抑郁风险 20%；绿色环境暴露可降低唾液皮质醇约 12% (Park 2010)。",
     "source_name": "Park 2010 Environ Health Prev Med green exercise review",
     "source_url": "https://link.springer.com/article/10.1007/s12199-010-0147-9",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "timeAvailable": true
+    }
   },
   {
     "action_id": "R2405",
@@ -751,7 +784,10 @@
     "real_world_logic": "Stewart 2014 Medical Hypotheses + UGA 2015：每日户外光照 <30 分钟持续 3 个月可导致维生素 D 合成不足与季节性情感障碍 (SAD) 风险升高；自然光暴露调节昼夜节律改善睡眠质量。",
     "source_name": "UGA News Vitamin D & Mental Health 2015",
     "source_url": "https://news.uga.edu/vitamin-d-deficiency-linked-to-mental-health/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "inventory": "window"
+    }
   },
   {
     "action_id": "R2501",
@@ -780,7 +816,10 @@
     "real_world_logic": "Daily routine 行为科学：固定 20 分钟晨间例行（冥想/写日记/规划）对长期目标感和身份认同极有帮助，需 3 个月以上坚持才能固化。",
     "source_name": "NCBI PMC 6603626 Mindfulness Science Review",
     "source_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6603626/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "timeAvailable": true
+    }
   },
   {
     "action_id": "R2502",
@@ -809,7 +848,10 @@
     "real_world_logic": "中国居民膳食指南 2022：推荐食盐 <5g/天、烹调油 25-30g/天；外卖普遍超标的盐油与超加工食品摄入显著增加代谢风险；自己做饭可显著控制摄入。",
     "source_name": "中国居民膳食指南 2022",
     "source_url": "https://www.chinanutri.cn/yyjkzx/yyzhuanti/202203/t20220314_257561.html",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "inventory": "kitchen"
+    }
   },
   {
     "action_id": "R2503",
@@ -896,7 +938,10 @@
     "real_world_logic": "Sparrow 2011 Science：阅读纸质书比屏幕阅读在 6 个月后知识保留率显著更高；每天 30 分钟持续阅读与认知储备提升、痴呆风险下降相关。",
     "source_name": "Sparrow et al. 2011 Science Google effects on memory",
     "source_url": "https://www.science.org/doi/10.1126/science.1207745",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 5
+    }
   },
   {
     "action_id": "G2002",
@@ -925,7 +970,10 @@
     "real_world_logic": "持续技术博客是慢反馈技能，前 6 个月几乎无直接回报，但持续 1 年后对求职跳槽、咨询机会撬动作用显著；写作产出复用率极低边际成本。",
     "source_name": "IEEE Software 2023 technical writing impact",
     "source_url": "https://www.computer.org/publications/software",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "G2003",
@@ -954,7 +1002,10 @@
     "real_world_logic": "WHO 2020 + Stubbs/Schuch 2018 AJP：成人每周 150-300 分钟中等强度活动 + 2 次力量训练；高水平活动者抑郁风险降低 17%（OR=0.83）。",
     "source_name": "Stubbs/Schuch 2018 Am J Psychiatry PA & depression",
     "source_url": "https://pubmed.ncbi.nlm.nih.gov/30122241/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "timeAvailable": true
+    }
   },
   {
     "action_id": "G2004",
@@ -983,7 +1034,10 @@
     "real_world_logic": "ETS 2023 TOEIC 全球数据：亚洲技术从业者英语 TOEIC 750+ 占比仅 18%；技术英语是一手文档、论文、外企面试的核心杠杆。",
     "source_name": "ETS TOEIC Test Data 2023",
     "source_url": "https://www.ets.org/toeic",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 10
+    }
   },
   {
     "action_id": "G2005",
@@ -1012,7 +1066,10 @@
     "real_world_logic": "MIT OpenCourseWare 2023：每周 ≥10 小时深度学习连续 3 个月，技术复杂度评分显著提升；要求连续 4-8 周高强度专注，与加班冲突时极易中断。",
     "source_name": "MIT OpenCourseWare Effectiveness Study 2023",
     "source_url": "https://ocw.mit.edu/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "G2006",
@@ -1128,7 +1185,10 @@
     "real_world_logic": "swyx 2020 Learn In Public 文章：公开学习 6 个月可见明显的弱连接扩展与被动合作邀约；社区反馈对长期学习动机的维持效果显著。",
     "source_name": "swyx 2020 Learn in Public",
     "source_url": "https://www.swyx.io/learn-in-public/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "G2101",
@@ -1157,7 +1217,10 @@
     "real_world_logic": "GitHub 2022 Copilot 实验（N=95 专业人士）：使用 Copilot 完成 JavaScript HTTP 服务任务快 55%（1h11m vs 2h41m）；73% 用户报告进入心流；87% 节省心智消耗。",
     "source_name": "GitHub Research: Quantifying Copilot's Impact 2022",
     "source_url": "https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "minTech": 25
+    }
   },
   {
     "action_id": "G2102",
@@ -1186,7 +1249,10 @@
     "real_world_logic": "Google eng-practices 强调代码审查是质量门控，LLM 辅助 PR review 可在 30 秒内捕获多数基本错误；2024 Meta internal study 显示 LLM-augmented review 命中率约 35%。",
     "source_name": "Google Engineering Practices Code Review",
     "source_url": "https://google.github.io/eng-practices/review/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "minTech": 10
+    }
   },
   {
     "action_id": "G2103",
@@ -1215,7 +1281,10 @@
     "real_world_logic": "Pinecone 2024 调研：RAG 是 67% 企业 LLM 落地的核心模式；向量数据库与 Embedding 复用率高，是 AI 工程化最稳定的中间层技能。",
     "source_name": "Pinecone State of AI Engineering Survey 2024",
     "source_url": "https://www.pinecone.io/learn/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 25
+    }
   },
   {
     "action_id": "G2104",
@@ -1273,7 +1342,10 @@
     "real_world_logic": "Cursor 官方 2024 调研：订阅用户在重复任务上平均节省 30-50% 时间；2024 Cursor 测评圈普遍认为 20 美元/月对程序员是 ROI 极高的投资。",
     "source_name": "Cursor Official Productivity Survey 2024",
     "source_url": "https://cursor.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minCash": 5000
+    }
   },
   {
     "action_id": "G2106",
@@ -1302,7 +1374,10 @@
     "real_world_logic": "arXiv cs.AI 2024 月均提交约 4000 篇；保持每周 1 篇精读是技术人员 AI 前沿感知的最小剂量，对项目技术选型决策有显著影响。",
     "source_name": "arXiv cs.AI submissions statistics",
     "source_url": "https://arxiv.org/list/cs.AI/recent",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 20
+    }
   },
   {
     "action_id": "G2201",
@@ -1331,7 +1406,10 @@
     "real_world_logic": "GitHub Octoverse 2023：活跃维护 Side Project 的开发者面试通过率比无作品者高 30%+；可观察代码是高级岗位的核心信号。",
     "source_name": "GitHub Octoverse 2023 Developer Report",
     "source_url": "https://github.blog/news-insights/research/octoverse-2023/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "timeAvailable": true
+    }
   },
   {
     "action_id": "G2202",
@@ -1360,7 +1438,10 @@
     "real_world_logic": "IEEE/ACM 论文与公开技术白皮书是技术权威性的核心背书；Google Research 招聘数据显示白皮书贡献者的 P7+ 通过率高于平均 2.4 倍。",
     "source_name": "Google Research Hiring Criteria",
     "source_url": "https://research.google/careers/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 60
+    }
   },
   {
     "action_id": "G2203",
@@ -1389,7 +1470,10 @@
     "real_world_logic": "YouTube 2024 数据显示 tech demo 视频在程序员群体的留存与转发率显著高于博客；GitHub repo README 配 demo 视频能提升 star 数 ~40%。",
     "source_name": "YouTube Engineering Blog 2024",
     "source_url": "https://blog.youtube/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "inventory": "recording_tool"
+    }
   },
   {
     "action_id": "G2204",
@@ -1418,7 +1502,10 @@
     "real_world_logic": "GitHub Octoverse 2023：首次贡献开源项目的开发者 6 个月后晋升到高级岗位比例显著高于非贡献者；网络效应强。",
     "source_name": "GitHub Octoverse 2023 Developer Report",
     "source_url": "https://github.blog/news-insights/research/octoverse-2023/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "inventory": "github_account"
+    }
   },
   {
     "action_id": "G2205",
@@ -1447,7 +1534,10 @@
     "real_world_logic": "GitHub Sponsors 2024 报告：维护良好的长期项目对求职/咨询/技术谈判溢价巨大；99% 项目 GitHub Sponsors 月收入 <$100，但职业杠杆巨大。",
     "source_name": "GitHub Sponsors page",
     "source_url": "https://github.com/sponsors",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "G2301",
@@ -1476,7 +1566,10 @@
     "real_world_logic": "LinkedIn 2024 算法报告：每周 ≥3 条专业内容的用户被动接触猎头/HR 的概率是普通用户的 4.2 倍；6 个月以上活跃可形成稳定被动通道。",
     "source_name": "LinkedIn Algorithm Insights 2024",
     "source_url": "https://www.linkedin.com/business/marketing/blog",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "G2302",
@@ -1505,7 +1598,10 @@
     "real_world_logic": "Medium 2024 数据显示技术类 1000 字以上深度文章平均阅读完成率高于 80%；SEO 与分享转化率显著高于短贴。",
     "source_name": "Medium State of the Story 2024",
     "source_url": "https://medium.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "G2303",
@@ -1534,7 +1630,10 @@
     "real_world_logic": "Edison Research 2024：播客在科技从业者中的月到达率 64%，嘉宾曝光对个人品牌的复用价值远超博客；1 次优质访谈相当于 5 篇深度博客。",
     "source_name": "Edison Research Infinite Dial 2024",
     "source_url": "https://www.edisonresearch.com/infinite-dial-2024/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "socialSupport": true
+    }
   },
   {
     "action_id": "G2304",
@@ -1563,7 +1662,10 @@
     "real_world_logic": "30 分钟分享需 5-10 小时准备，但能快速建立技术品牌并锻炼表达力；Google Performance Review 内部数据：内部分享数与晋升评估相关系数 r≈0.4。",
     "source_name": "Google re:Work Performance Research",
     "source_url": "https://rework.withgoogle.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "G2305",
@@ -1592,7 +1694,10 @@
     "real_world_logic": "Meetup.com 2024 数据：技术 Meetup 演讲者的弱关系网络在 6 个月内扩展约 3 倍；现场演讲对长期职业资产有 5 年以上长尾效应。",
     "source_name": "Meetup.com Trends Report 2024",
     "source_url": "https://www.meetup.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "socialSupport": true
+    }
   },
   {
     "action_id": "W2001",
@@ -1621,7 +1726,10 @@
     "real_world_logic": "Stack Overflow 2024 Developer Survey：程序员中位年薪约 7.7 万美元，业务代码产出可量化、收入稳定；但长期重复会消耗技术激情。",
     "source_name": "Stack Overflow Developer Survey 2024",
     "source_url": "https://survey.stackoverflow.co/2024/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "employed": true
+    }
   },
   {
     "action_id": "W2002",
@@ -1650,7 +1758,10 @@
     "real_world_logic": "Google 工程实践：代码审查是质量门控，Google 研究显示严格 CR 显著降低线上故障率并促进团队技术对齐；review 大量烂代码消耗心力。",
     "source_name": "Google Engineering Practices Code Review",
     "source_url": "https://google.github.io/eng-practices/review/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "employed": true
+    }
   },
   {
     "action_id": "W2003",
@@ -1679,7 +1790,10 @@
     "real_world_logic": "Google SRE Book：故障排查是 oncall 必备技能，长期反复触发同类故障说明架构债严重；1 次大病往往能换取架构改进资源。",
     "source_name": "Google SRE Book 2016 (O'Reilly)",
     "source_url": "https://sre.google/sre-book/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "employed": true
+    }
   },
   {
     "action_id": "W2004",
@@ -1737,7 +1851,10 @@
     "real_world_logic": "Perlow 2017 HBR The Meeting Manifesto：研究显示每周超过 50% 的会议对决策无影响；建议用 4 问剔除无效会议，可恢复约 8h/周专注时间。",
     "source_name": "Perlow 2017 HBR Beating the Trap of Useless Meetings",
     "source_url": "https://hbr.org/2017/09/the-meeting-manifesto",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "employed": true
+    }
   },
   {
     "action_id": "W2006",
@@ -1766,7 +1883,10 @@
     "real_world_logic": "Ervasti 2021 Lancet Regional Health Europe (4 国队列 N=59,599 + 44,262)：每周 ≥55h 长期工作与 65 岁前 CVD 死亡 HR=1.68、感染 HR=1.37、糖尿病 HR=1.18 显著相关。",
     "source_name": "Ervasti et al. 2021 Lancet RH Europe long working hours",
     "source_url": "https://www.sciencedirect.com/science/article/pii/S2666776221001897",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "employed": true
+    }
   },
   {
     "action_id": "W2007",
@@ -1795,7 +1915,10 @@
     "real_world_logic": "Cal Newport Deep Work (2016) + Ericsson 1993 Deliberate Practice：高质量 4 小时不打断是技术性工作最高产出的时间块；1,500,000+ 册全球销量验证其方法可迁移。",
     "source_name": "Cal Newport Deep Work Rules 2016",
     "source_url": "https://www.calnewport.com/books/deep-work/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "inventory": "quiet_space"
+    }
   },
   {
     "action_id": "W2008",
@@ -1824,7 +1947,10 @@
     "real_world_logic": "Google Project Oxygen 2018：高质量 1:1 是高绩效经理的核心行为之一；按月 1:1 的员工满意度比无定期 1:1 的员工高 32%。",
     "source_name": "Google Project Oxygen 2018",
     "source_url": "https://rework.withgoogle.com/blog/the-evolution-of-project-oxygen/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "employed": true
+    }
   },
   {
     "action_id": "W2101",
@@ -1853,7 +1979,10 @@
     "real_world_logic": "Cal Newport Time-Block Planner：把每日任务拆为 30-60 分钟块并预分配；研究显示时间块用户每周深度工作时间增加约 50%。",
     "source_name": "Cal Newport Time-Block Planner",
     "source_url": "https://www.calnewport.com/books/deep-work/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "W2102",
@@ -1882,7 +2011,10 @@
     "real_world_logic": "Cal Newport Digital Minimalism + Microsoft Research 2022 focus study：关闭通知 1 小时深度块的程序员代码产出质量与速度均显著高于多任务组。",
     "source_name": "Cal Newport Digital Minimalism 2019",
     "source_url": "https://www.calnewport.com/books/deep-work/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "W2103",
@@ -1911,7 +2043,10 @@
     "real_world_logic": "EFSA 2015 Caffeine Safety Opinion：单次 200mg (约 2 杯美式) 是提升警觉性的有效剂量，超过 400mg/天 (4 杯) 与焦虑、入睡延迟、心率升高显著相关。",
     "source_name": "EFSA 2015 Scientific Opinion on Caffeine",
     "source_url": "https://www.efsa.europa.eu/en/efsajournal/pub/4102",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "W2104",
@@ -1940,7 +2075,10 @@
     "real_world_logic": "Cirillo 2006 Pomodoro Technique：25 分钟工作 + 5 分钟休息的循环可降低启动阻力；4 轮 (≈2h) 是高质量产出的最小可重复单位。",
     "source_name": "Cirillo 2006 The Pomodoro Technique",
     "source_url": "https://francescocirillo.com/pages/pomodoro-technique",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "W2105",
@@ -1969,7 +2107,10 @@
     "real_world_logic": "Schmidt 2012 JPSP morningness-eveningness：晨型人在前额叶执行功能测试上得分高于夜型人 8-12%；Morning 90 分钟创作块是高产出的低成本策略。",
     "source_name": "Schmidt 2012 JPSP morningness-eveningness",
     "source_url": "https://psycnet.apa.org/record/2012-99999-000",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "timeAvailable": true
+    }
   },
   {
     "action_id": "J2001",
@@ -1998,7 +2139,10 @@
     "real_world_logic": "Indeed Hiring Lab 2023：海投简历回复率通常 <5%；Glassdoor 2022 调研建议单份高质量简历比 10 份通用简历面试率高 3 倍。",
     "source_name": "Indeed Hiring Lab 2023 Resume Report",
     "source_url": "https://www.hiringlab.org/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "employmentOrInterview": true
+    }
   },
   {
     "action_id": "J2002",
@@ -2027,7 +2171,10 @@
     "real_world_logic": "LeetCode 2024 调研：日均 1 题坚持 3 个月能应付中等难度 FAANG 面试；持续刷题 6 个月以上的用户在 algorithm round 通过率约 65%。",
     "source_name": "LeetCode 2024 Annual Survey",
     "source_url": "https://leetcode.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 25
+    }
   },
   {
     "action_id": "J2003",
@@ -2056,7 +2203,10 @@
     "real_world_logic": "LinkedIn 2024 调研：面试对短期心理负担较大但对认清市场行情、评估自身价位极有价值；不面试永远不知道市场给多少钱。",
     "source_name": "LinkedIn Talent Insights 2024",
     "source_url": "https://www.linkedin.com/business/talent",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minInterviews": 1
+    }
   },
   {
     "action_id": "J2004",
@@ -2085,7 +2235,10 @@
     "real_world_logic": "Glassdoor 2023 调研：合理谈薪通常能拿到 10-30% 涨幅；不谈判的候选人在同一岗位平均损失约 7,500 美元/年。",
     "source_name": "Glassdoor 2023 Negotiation Pay Analysis",
     "source_url": "https://www.glassdoor.com/research/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "employmentOrInterview": true
+    }
   },
   {
     "action_id": "J2005",
@@ -2114,7 +2267,10 @@
     "real_world_logic": "Jobvite 2023 调研：内推跳过 HR 初筛并显著提升面试率 (约 4-5 倍)；长期不联系临时找朋友推荐成功率很低。",
     "source_name": "Jobvite 2023 Job Seeker Nation Survey",
     "source_url": "https://www.jobvite.com/job-seeker-nation-report/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "socialSupport": true
+    }
   },
   {
     "action_id": "J2006",
@@ -2143,7 +2299,10 @@
     "real_world_logic": "LinkedIn 2024 招聘趋势：选定 2-3 个靠谱猎头长期合作能稳定提供一手岗位信息；简历可能被多手转发建议主动管理可见性。",
     "source_name": "LinkedIn 2024 Global Recruiting Trends",
     "source_url": "https://business.linkedin.com/talent-solutions/resources/talent-acquisition",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 45
+    }
   },
   {
     "action_id": "J2007",
@@ -2172,7 +2331,10 @@
     "real_world_logic": "LinkedIn 2024 数据：持续更新 LinkedIn 6 个月以上的用户被动收到猎头/HR 主动接触的频率是普通用户的 3 倍。",
     "source_name": "LinkedIn 2024 Profile Visibility Stats",
     "source_url": "https://www.linkedin.com/business/marketing/blog",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "inventory": "linkedin_account"
+    }
   },
   {
     "action_id": "J2008",
@@ -2201,7 +2363,10 @@
     "real_world_logic": "System Design Interview (Alex Xu)：mock 8-10 次可覆盖主流题型；Google L6+ 招聘中系统设计权重约占 40%。",
     "source_name": "Alex Xu System Design Interview Vol 1/2",
     "source_url": "https://blog.bytebytego.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 45
+    }
   },
   {
     "action_id": "C2001",
@@ -2230,7 +2395,10 @@
     "real_world_logic": "LinkedIn 2024 调研：裸辞后平均求职周期 2-4 个月，需储备至少 6 个月生活费；心理上短期内解脱但经济压力常在 2 个月后骤增。",
     "source_name": "LinkedIn Workforce Report 2024",
     "source_url": "https://economicgraph.linkedin.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minCash": 31200
+    }
   },
   {
     "action_id": "C2002",
@@ -2259,7 +2427,10 @@
     "real_world_logic": "Levels.fyi 2024 调研：在职跳槽可拿到 15-30% 涨幅，但需管理两边期望、提防背调泄露；离职谈判窗口常被原公司反 offer 干扰。",
     "source_name": "Levels.fyi 2024 Compensation Report",
     "source_url": "https://www.levels.fyi/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "minOffers": 1
+    }
   },
   {
     "action_id": "C2003",
@@ -2288,7 +2459,10 @@
     "real_world_logic": "Layoffs.fyi 2024 统计：科技行业 2023 年累计裁员超 24 万人；被裁短期心理冲击巨大，但配合 N+1 赔偿金常是难得的窗口期。",
     "source_name": "Layoffs.fyi Tracker",
     "source_url": "https://layoffs.fyi/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "employmentOrInterview": true
+    }
   },
   {
     "action_id": "C2004",
@@ -2317,7 +2491,10 @@
     "real_world_logic": "Burning Glass 2018 转行报告：转行通常需要 6-12 个月收入下降期，前 3 个月最艰难；需保留至少 12 个月生活费，否则极易被房租逼回老路。",
     "source_name": "Burning Glass 转行报告 2018",
     "source_url": "https://www.burningglassinstitute.org/research",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minCash": 62400
+    }
   },
   {
     "action_id": "C2005",
@@ -2346,7 +2523,10 @@
     "real_world_logic": "LinkedIn Talent Insights 2024：反 offer 短期加薪但 6-12 个月内离开原公司的概率 >50%；HR 留人成本被算入下一次调薪黑名单。",
     "source_name": "LinkedIn Counter Offer Analysis 2024",
     "source_url": "https://www.linkedin.com/business/talent",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minOffers": 2
+    }
   },
   {
     "action_id": "CV2001",
@@ -2375,7 +2555,10 @@
     "real_world_logic": "Google re:Work 2018：内部分享数与年度绩效评分相关系数约 0.4；30 分钟分享需 5-10 小时准备但对晋升/跳槽材料积累非常划算。",
     "source_name": "Google re:Work Manager Research",
     "source_url": "https://rework.withgoogle.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "CV2002",
@@ -2404,7 +2587,10 @@
     "real_world_logic": "Substack 2024 调研：技术 Newsletter 订阅用户年留存率约 70%，是个人品牌的稳定资产；变现路径长但被动价值高。",
     "source_name": "Substack 2024 State of the News Ecosystem",
     "source_url": "https://substack.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "CV2003",
@@ -2433,7 +2619,10 @@
     "real_world_logic": "Meetup.com 2024 调研：技术演讲嘉宾在 6 个月内的弱关系扩展是普通参与者的 3 倍；对跳槽、咨询机会撬动作用显著。",
     "source_name": "Meetup.com Trends Report 2024",
     "source_url": "https://www.meetup.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "CV2004",
@@ -2462,7 +2651,10 @@
     "real_world_logic": "GitHub Octoverse 2023：活跃维护个人 Profile + 公开代码 + Pin 项目的开发者面试通过率高于非公开账号者约 35%。",
     "source_name": "GitHub Octoverse 2023 Developer Report",
     "source_url": "https://github.blog/news-insights/research/octoverse-2023/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "inventory": "github_account"
+    }
   },
   {
     "action_id": "I2001",
@@ -2491,7 +2683,10 @@
     "real_world_logic": "Stack Overflow 2024 调研：约 25% 程序员有副业；私活按月增收 5k-15k 常见，但占用主业精力易被发现，长期看对简历/技术深度收益有限。",
     "source_name": "Stack Overflow Developer Survey 2024 Side Income",
     "source_url": "https://survey.stackoverflow.co/2024/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "employed": true
+    }
   },
   {
     "action_id": "I2002",
@@ -2520,7 +2715,10 @@
     "real_world_logic": "Toptal 2024 调研：高级工程师时薪 500-1500 元（人民币/小时）是常见区间；需管理客户预期并防止与本职时间冲突；口碑一旦受损难修复。",
     "source_name": "Toptal 2024 Freelance Developer Report",
     "source_url": "https://www.toptal.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 60
+    }
   },
   {
     "action_id": "I2003",
@@ -2549,7 +2747,11 @@
     "real_world_logic": "Substack 2024 调研：付费技术 Newsletter 头部 10% 创作者月收入约 1k-5k 美元；尾部基本为 0，是 J 型收入曲线。",
     "source_name": "Substack 2024 State of the News Ecosystem",
     "source_url": "https://substack.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 35,
+      "minAi": 10
+    }
   },
   {
     "action_id": "I2004",
@@ -2578,7 +2780,10 @@
     "real_world_logic": "Coursera 2024 调研：技术直播课小时单价 200-800 元；前期备课投入大，6 个月稳定后可达月入 5k-15k。",
     "source_name": "Coursera 2024 Instructor Report",
     "source_url": "https://www.coursera.org/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 45
+    }
   },
   {
     "action_id": "I2005",
@@ -2607,7 +2812,10 @@
     "real_world_logic": "Gengo 2024 + ProZ 调研：技术翻译千字单价 80-200 元；天花板较低但启动快、风险低。",
     "source_name": "Gengo Translator Report 2024",
     "source_url": "https://gengo.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 35
+    }
   },
   {
     "action_id": "I2006",
@@ -2636,7 +2844,10 @@
     "real_world_logic": "ATA 2024 企业培训师日薪 5,000-30,000 元；高频出差且需要长期客户关系管理，复利高但前期投入大。",
     "source_name": "American Training Resources 2024 Survey",
     "source_url": "https://www.amanet.org/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 60
+    }
   },
   {
     "action_id": "I2101",
@@ -2665,7 +2876,10 @@
     "real_world_logic": "Udemy 2024 调研：技术课程前 2-3 个月几乎零收入，需要持续半年才能稳定；依赖个人 IP 流量，是 J 型曲线。",
     "source_name": "Udemy 2024 Instructor Insights",
     "source_url": "https://www.udemy.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 60
+    }
   },
   {
     "action_id": "I2102",
@@ -2694,7 +2908,11 @@
     "real_world_logic": "IndieHackers 2024 调研：独立开发者收入曲线极右偏，99% 项目零收入但头部项目可月入几万；前提是先做出 MVP 并跑通付费。",
     "source_name": "IndieHackers 2024 State of Independent Work",
     "source_url": "https://www.indiehackers.com/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "minTech": 45,
+      "minAi": 20
+    }
   },
   {
     "action_id": "I2103",
@@ -2723,7 +2941,10 @@
     "real_world_logic": "YouTube 2024 数据：技术自媒体前 6 个月涨粉通常 <1k，需持续 1 年以上才可能接到广告；收益曲线长尾但可作为求职副证。",
     "source_name": "YouTube Engineering Blog 2024",
     "source_url": "https://blog.youtube/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "I2104",
@@ -2752,7 +2973,10 @@
     "real_world_logic": "GitHub Sponsors 2024 报告：99% 项目月收入 <$100，但维护良好的项目对求职/咨询/技术谈判溢价巨大；总累计返给维护者 $40M+。",
     "source_name": "GitHub Sponsors page",
     "source_url": "https://github.com/sponsors",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "minTech": 60
+    }
   },
   {
     "action_id": "I2105",
@@ -2781,7 +3005,10 @@
     "real_world_logic": "Manning/O'Reilly 2024 调研：技术书作者版税约 7-15% 首年；销量 1-5k 册算中等，5k+ 算畅销；写作投入 6-18 个月。",
     "source_name": "Manning 2024 Author Survey",
     "source_url": "https://www.manning.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 35
+    }
   },
   {
     "action_id": "I2201",
@@ -2810,7 +3037,10 @@
     "real_world_logic": "Forrester 2024 中小企业调研：90% 小店活不过 1 年；电商竞争极端激烈；程序员副业常见失败原因是把技术思维套用到非技术业务。",
     "source_name": "Forrester 2024 SMB Retail Failure Rate",
     "source_url": "https://www.forrester.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minCash": 200000
+    }
   },
   {
     "action_id": "I2202",
@@ -2839,7 +3069,10 @@
     "real_world_logic": "Kickstarter 2024 调研：硬件类目完成率约 36%，失败原因前三是供应链 (28%)、研发延期 (24%)、合规 (18%)。",
     "source_name": "Kickstarter Hardware Failure Mode Study 2024",
     "source_url": "https://www.kickstarter.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minCash": 300000
+    }
   },
   {
     "action_id": "I2203",
@@ -2868,7 +3101,11 @@
     "real_world_logic": "a16z 2024 Top 100 AI 消费级应用：头部产品 ARR 可达 $1M+/年；尾部多在 12 个月内放弃。",
     "source_name": "a16z 2024 Top 100 Gen AI Consumer Apps",
     "source_url": "https://a16z.com/generative-ai-consumer-100/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 45,
+      "minAi": 20
+    }
   },
   {
     "action_id": "I2204",
@@ -2897,7 +3134,10 @@
     "real_world_logic": "AngelList 2024 调研：天使投资回报高度右偏，70% 项目亏光本金，头部 5% 贡献 90% 收益；不适合作为主收入路径。",
     "source_name": "AngelList 2024 Angel Returns Report",
     "source_url": "https://angel.co/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minCash": 300000
+    }
   },
   {
     "action_id": "I2301",
@@ -2926,7 +3166,10 @@
     "real_world_logic": "Vanguard 2024 + Bogleheads 经典三基金组合：长期定投标普 500 指数年化约 7-10%；频繁看盘、择时贡献为负。",
     "source_name": "Bogleheads Wiki Getting Started",
     "source_url": "https://www.bogleheads.org/wiki/Getting_started",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "minCash": 50000
+    }
   },
   {
     "action_id": "I2302",
@@ -2955,7 +3198,10 @@
     "real_world_logic": "Mohammed 2021 SSRN Emergency Savings：至少 3-6 个月生活费储备能扛住失业/疾病，对焦虑水平降幅大于任何理财收益。",
     "source_name": "Mohammed et al. 2021 SSRN Emergency Savings Analysis",
     "source_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3788277",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "positiveIncome": true
+    }
   },
   {
     "action_id": "I2303",
@@ -2984,7 +3230,10 @@
     "real_world_logic": "Federal Reserve 2023 信用卡利率平均 22.8%；提前还高息贷款等同于锁定无风险 22% 收益，但对现金流灵活性是巨大牺牲。",
     "source_name": "Federal Reserve G.19 Consumer Credit 2023",
     "source_url": "https://www.federalreserve.gov/releases/g19/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "debtBalance": true
+    }
   },
   {
     "action_id": "I2304",
@@ -3013,7 +3262,10 @@
     "real_world_logic": "Wang 2022 JCR 报复性消费研究：高强度加班后常出现报复性消费，单次 5k-2w 不等，短期情绪缓解但长期挤压储蓄并形成循环。",
     "source_name": "Wang et al. 2022 Journal of Consumer Research revenge spending",
     "source_url": "https://www.jcr.org/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "inventory": "credit_card"
+    }
   },
   {
     "action_id": "I2305",
@@ -3042,7 +3294,10 @@
     "real_world_logic": "Friedman 2022 SSRN Emergency Savings 6 月效应：6 个月生活费储备能扛住被动失业/疾病，焦虑水平降幅大于任何理财收益。",
     "source_name": "Friedman 2022 SSRN Emergency Savings Buffer Effects",
     "source_url": "https://www.brookings.edu/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "positiveIncome": true
+    }
   },
   {
     "action_id": "RS2001",
@@ -3100,7 +3355,10 @@
     "real_world_logic": "WHO 2008 Social Determinants of Health：亲密关系是社会支持的核心维度；长期孤独与心血管事件、痴呆风险升高 30% 以上相关。",
     "source_name": "WHO 2008 Closing the Gap in a Generation Social Determinants",
     "source_url": "https://www.who.int/publications/i/item/9789241565486",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "timeAvailable": true
+    }
   },
   {
     "action_id": "RS2003",
@@ -3129,7 +3387,10 @@
     "real_world_logic": "Sutcliffe 2012 Personality & Social Psychology Review：每月 1 次线下聚会能将关系流失率从 30%/6 月降到 8%/6 月。",
     "source_name": "Sutcliffe et al. 2012 PSPR relationship maintenance",
     "source_url": "https://journals.sagepub.com/doi/10.1177/1088868313504492",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "socialSupport": true
+    }
   },
   {
     "action_id": "RS2004",
@@ -3158,7 +3419,10 @@
     "real_world_logic": "Algoe 2013 Emotion reciprocity：双向互惠支持显著提升主观幸福感与焦虑缓冲能力；主动给予是建立社会资本的高 ROI 行为。",
     "source_name": "Algoe 2013 Emotion gratitude & social connection",
     "source_url": "https://psycnet.apa.org/record/2013-09377-001",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "timeAvailable": true
+    }
   },
   {
     "action_id": "RS2005",
@@ -3187,7 +3451,10 @@
     "real_world_logic": "Aron 2013 Self-Expansion Model：与亲密他人进行 45 分钟的 36 个递进问题对话显著提升关系满意度与自我扩张感。",
     "source_name": "Aron et al. 2013 Psychological Science 36 questions",
     "source_url": "https://journals.sagepub.com/doi/10.1177/1088868313504492",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "timeAvailable": true
+    }
   },
   {
     "action_id": "RS2101",
@@ -3216,7 +3483,10 @@
     "real_world_logic": "WHO 2008 Social Determinants + Umberson 2010 J Health Soc Behav：频繁家庭支持显著降低全因死亡风险；高频家庭摩擦反向加重抑郁。",
     "source_name": "Umberson 2010 JHSB Social Relationships & Health",
     "source_url": "https://pubmed.ncbi.nlm.nih.gov/20630854/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "household": "family"
+    }
   },
   {
     "action_id": "RS2102",
@@ -3245,7 +3515,10 @@
     "real_world_logic": "Cohen 2007 JCCP Social Ties 与炎症生物标志物：每周家庭联系频率与 IL-6、CRP 等炎症指标负相关。",
     "source_name": "Cohen et al. 2007 J Consulting & Clinical Psychology",
     "source_url": "https://psycnet.apa.org/record/2007-10583-003",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "household": "parent"
+    }
   },
   {
     "action_id": "RS2103",
@@ -3274,7 +3547,10 @@
     "real_world_logic": "American Red Cross 2024 家庭应急计划指南：建立 3 人紧急联络网显著提升灾难事件中的家庭生存率与心理韧性。",
     "source_name": "American Red Cross 2024 Family Emergency Planning Guide",
     "source_url": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies.html",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "household": "family"
+    }
   },
   {
     "action_id": "RS2104",
@@ -3303,7 +3579,10 @@
     "real_world_logic": "国家医保局 2024 城乡居民医保人均财政补助 670 元；为父母补缴基本医保显著降低 1 次大病对家庭现金流的冲击。",
     "source_name": "国家医保局 2024 医保筹资通知",
     "source_url": "http://www.nhsa.gov.cn/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minCash": 5000
+    }
   },
   {
     "action_id": "RS2201",
@@ -3332,7 +3611,10 @@
     "real_world_logic": "Granovetter 1973 American Journal Sociology：弱关系是 80% 高薪跳槽的来源；Meetup 是低成本的弱关系维护场。",
     "source_name": "Granovetter 1973 AJS Strength of Weak Ties",
     "source_url": "https://www.jstor.org/stable/2776392",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "socialSupport": true
+    }
   },
   {
     "action_id": "RS2202",
@@ -3361,7 +3643,10 @@
     "real_world_logic": "X (Twitter) 2024 算法：KOL 信息流在前 24 小时的曝光放大 4 倍；订阅而非关注是控制噪声的关键。",
     "source_name": "X Algorithm Insights 2024",
     "source_url": "https://blog.twitter.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "RS2203",
@@ -3390,7 +3675,10 @@
     "real_world_logic": "Kaitin 2010 Nature Reviews Drug Discovery：行业大会对参会者的弱关系扩展效应是普通在线活动的 6-8 倍。",
     "source_name": "Kaitin 2010 Nature Reviews Drug Discovery conference value",
     "source_url": "https://www.nature.com/nrd/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minCash": 5000
+    }
   },
   {
     "action_id": "RS2204",
@@ -3448,7 +3736,10 @@
     "real_world_logic": "Reich-Hile 2023 Harvard Business Review 弱关系激活：季度 5 条问候消息即可激活潜在机会；6 月后召回率显著高于无联系组。",
     "source_name": "Reich-Hile 2023 HBR Activate Your Dormant Ties",
     "source_url": "https://hbr.org/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "socialSupport": true
+    }
   },
   {
     "action_id": "RS2301",
@@ -3477,7 +3768,10 @@
     "real_world_logic": "Cuijpers 2023 World Psychiatry CBT Meta：循证 CBT 对抑郁焦虑的中等效应量 Hedges' g ≈ 0.7；定期心理治疗是预防复发最有效的方式之一。",
     "source_name": "Cuijpers et al. 2023 World Psychiatry CBT meta",
     "source_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8485770/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "minCash": 5000
+    }
   },
   {
     "action_id": "RS2302",
@@ -3506,7 +3800,10 @@
     "real_world_logic": "国家金融监督管理总局 2024 保险业数据：百万医疗+意外+重疾月保费 500-1500 元，应对高强度工作下的突发健康风险；不配置则一次大病可击穿多年储蓄。",
     "source_name": "国家金融监督管理总局 2024 年统计",
     "source_url": "https://www.nfra.gov.cn/",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "household": "family"
+    }
   },
   {
     "action_id": "RS2303",
@@ -3535,7 +3832,10 @@
     "real_world_logic": "Friedman 2022 SSRN Emergency Savings：6 个月生活费储备能扛住被动失业/疾病，对焦虑水平降幅大于任何理财收益。",
     "source_name": "Friedman 2022 SSRN Emergency Savings Buffer Effects",
     "source_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3788277",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "positiveIncome": true
+    }
   },
   {
     "action_id": "RS2304",
@@ -3651,7 +3951,10 @@
     "real_world_logic": "Browne 2016 The Money Therapist：每月 30 分钟财务对账能将被动超支降低约 25%，焦虑水平与财务控制感正相关。",
     "source_name": "Browne 2016 The Money Therapist",
     "source_url": "https://www.fpanet.org/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "RS2403",
@@ -3680,7 +3983,10 @@
     "real_world_logic": "LinkedIn 2024 算法：每 90 天更新简历或增加技能端的用户被搜索次数提升约 40%；维护成本低、回报稳定。",
     "source_name": "LinkedIn 2024 Algorithm Insights",
     "source_url": "https://www.linkedin.com/business/marketing/blog",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "inventory": "linkedin_account"
+    }
   },
   {
     "action_id": "RS2404",
@@ -3709,7 +4015,10 @@
     "real_world_logic": "NIST 2024 password guidelines + 1Password 2024 调研：使用密码管理器用户平均每周节省 12 分钟登录时间，且大幅降低账号泄露风险。",
     "source_name": "NIST SP 800-63B Digital Identity Guidelines 2024",
     "source_url": "https://pages.nist.gov/800-63-3/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "inventory": "password_manager"
+    }
   },
   {
     "action_id": "MK2001",
@@ -3738,7 +4047,10 @@
     "real_world_logic": "Csikszentmihalyi 1990 Flow + Ko 2023 Maker Movement：木工/3D 打印等手工能让程序员获得代码外的'实体感'作品，对身份多样性有增益；工具成本 500-3000 元起步。",
     "source_name": "Csikszentmihalyi 1990 Flow The Psychology of Optimal Experience",
     "source_url": "https://www.harpercollins.com/products/flow-mihaly-csikszentmihalyi",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minCash": 5000
+    }
   },
   {
     "action_id": "MK2002",
@@ -3796,7 +4108,10 @@
     "real_world_logic": "ACSM 2024 Health & Fitness Trends：潜水/滑雪/攀岩等小众运动月均 2000-5000 元，能迅速进入新圈子并强制离开屏幕，对身体和社交都高 ROI。",
     "source_name": "ACSM Worldwide Fitness Trends 2024",
     "source_url": "https://www.acsm.org/education-resources/trending-topics-resources/acsm-worldwide-fitness-trends",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minCash": 5000
+    }
   },
   {
     "action_id": "MK2004",
@@ -3825,7 +4140,10 @@
     "real_world_logic": "Schellenberg 2004 Psychological Science：每周 1 小时以上音乐学习与 IQ 提升、工作记忆改善相关；成人也能在 6 个月内达到可演奏水平。",
     "source_name": "Schellenberg 2004 Psychological Science music lessons",
     "source_url": "https://www.science.org/doi/10.1111/j.0956-7976.2004.00711.x",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "timeAvailable": true
+    }
   },
   {
     "action_id": "MK2005",
@@ -3854,7 +4172,10 @@
     "real_world_logic": "Formlabs 2024 报告：3D 打印入门级 FDM 设备 1,500-5,000 元；每月 1-2 个小作品能显著提升工程问题拆解能力与实体反馈。",
     "source_name": "Formlabs 2024 3D Printing Trends Report",
     "source_url": "https://formlabs.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minCash": 5000
+    }
   },
   {
     "action_id": "R2601",
@@ -3883,7 +4204,10 @@
     "real_world_logic": "Aune 2017 International Journal of Epidemiology Meta（95 项队列）：每日 ≥5 份蔬果全因死亡风险下降 13%、心血管死亡下降 12%。",
     "source_name": "Aune et al. 2017 IJE Fruit & Vegetable Meta",
     "source_url": "https://academic.oup.com/ije/article/46/3/1029/3039481",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "minCash": 5000
+    }
   },
   {
     "action_id": "R2602",
@@ -3912,7 +4236,10 @@
     "real_world_logic": "Lara-Castor 2023 BMJ Global Health Meta（含 450 万参与者）：每日 ≥1 份含糖饮料与 2 型糖尿病风险升高 26%、心血管死亡升高 8% 相关。",
     "source_name": "Lara-Castor 2023 BMJ Global Health SSB Meta",
     "source_url": "https://gh.bmj.com/content/8/3/e011623",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "smokingHabit": true
+    }
   },
   {
     "action_id": "R2603",
@@ -3941,7 +4268,10 @@
     "real_world_logic": "Chen 2020 Clinical Nutrition Meta（7 项队列 22 万人）：每周 ≥3 天不吃早餐与心血管病风险升高 22%、全因死亡风险升高 25% 相关。",
     "source_name": "Chen et al. 2020 Clinical Nutrition Breakfast Meta",
     "source_url": "https://www.sciencedirect.com/science/article/abs/pii/S0261561420300406",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "timeAvailable": true
+    }
   },
   {
     "action_id": "R2604",
@@ -3970,7 +4300,10 @@
     "real_world_logic": "EFSA 2015 Caffeine Safety Opinion：每天咖啡因 >400mg（约 4 杯美式）与心率加快、焦虑、入睡延迟相关；400mg 以下对健康成人安全。",
     "source_name": "EFSA 2015 Caffeine Safety Opinion",
     "source_url": "https://www.efsa.europa.eu/en/efsajournal/pub/4102",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "R2605",
@@ -3999,7 +4332,10 @@
     "real_world_logic": "WHO 2024 Alcohol Fact Sheet：2019 年全球 260 万死亡与酒精相关；每周 ≤14 单位（≈7 杯啤酒）是 WHO 低风险阈值。",
     "source_name": "WHO Alcohol Fact Sheet 2024",
     "source_url": "https://www.who.int/news-room/fact-sheets/detail/alcohol",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "R2606",
@@ -4028,7 +4364,10 @@
     "real_world_logic": "CDC Smoking Fact Sheet：每年 480,000 美国人死于吸烟（含二手烟），戒烟 5-10 年后 CVD 死亡风险降至接近非吸烟者水平。",
     "source_name": "CDC Cigarette Smoking Fact Sheet",
     "source_url": "https://www.cdc.gov/tobacco/about/index.html",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "smokingHabit": true
+    }
   },
   {
     "action_id": "R2701",
@@ -4057,7 +4396,10 @@
     "real_world_logic": "GBD 2017 Diet Lancet：高糖饮食与糖尿病、心血管事件、肥胖显著相关；糖激活与药物成瘾相似的多巴胺奖励回路。",
     "source_name": "GBD 2017 Diet Collaborators The Lancet",
     "source_url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(19)30041-8/fulltext",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "R2702",
@@ -4086,7 +4428,10 @@
     "real_world_logic": "CDC E-Cigarette Fact Sheet 2024：青少年使用电子烟与认知发展、情绪调节受损相关；成人长期使用与肺损伤、心血管风险升高相关。",
     "source_name": "CDC E-Cigarette Fact Sheet 2024",
     "source_url": "https://www.cdc.gov/tobacco/about/index.html",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "smokingHabit": true
+    }
   },
   {
     "action_id": "R2705",
@@ -4115,7 +4460,10 @@
     "real_world_logic": "GBD 2017 Diet Lancet + 中国居民膳食指南 2022：外卖高盐高油与 BMI 升高、胰岛素抵抗加速相关；每周外卖 >5 餐者代谢综合征风险升高 1.5 倍。",
     "source_name": "中国居民膳食指南 2022",
     "source_url": "https://www.chinanutri.cn/yyjkzx/yyzhuanti/202203/t20220314_257561.html",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "inventory": "kitchen"
+    }
   },
   {
     "action_id": "W2201",
@@ -4144,7 +4492,10 @@
     "real_world_logic": "Perlow 2017 HBR：拒绝 50% 的非关键会议可恢复约 8h/周专注时间；用 4 问（目标/决策/必备/可异步）剔除。",
     "source_name": "Perlow 2017 HBR Beating the Trap of Useless Meetings",
     "source_url": "https://hbr.org/2017/09/the-meeting-manifesto",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 20
+    }
   },
   {
     "action_id": "J2101",
@@ -4173,7 +4524,10 @@
     "real_world_logic": "Stack Overflow 2024 调研：有个人作品集网站的开发者面试通过率比纯 LinkedIn 简历高约 25%；是 P5+ 岗位面试加分项。",
     "source_name": "Stack Overflow Developer Survey 2024",
     "source_url": "https://survey.stackoverflow.co/2024/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 25
+    }
   },
   {
     "action_id": "G2401",
@@ -4231,7 +4585,10 @@
     "real_world_logic": "Google re:Work 2018：担任 Onboarding 导师 6 个月以上的员工晋升率比无导师经验者高 28%；沟通与影响力是可观察信号。",
     "source_name": "Google re:Work Onboarding Research",
     "source_url": "https://rework.withgoogle.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "employed": true
+    }
   },
   {
     "action_id": "W2401",
@@ -4260,7 +4617,10 @@
     "real_world_logic": "Harvard Business Review 2022 跨部门协作研究：完成 1 个跨部门项目后员工的横向影响力评分平均提升 35%。",
     "source_name": "HBR 2022 Cross Functional Collaboration",
     "source_url": "https://hbr.org/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "socialSupport": true
+    }
   },
   {
     "action_id": "RS2501",
@@ -4289,7 +4649,10 @@
     "real_world_logic": "FTC 2024 Consumer Sentinel Network：60+ 人群在网络诈骗中损失占比最大；教父母识别钓鱼链接/陌生电话能显著降低家庭财务风险。",
     "source_name": "FTC 2024 Consumer Sentinel Report",
     "source_url": "https://www.ftc.gov/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "RS2502",
@@ -4318,7 +4681,10 @@
     "real_world_logic": "Adobe 2024 Future of Work：家庭共享知识库（密码/遗嘱/财务/医疗）能将紧急情况下的家庭响应时间从 24h 降到 2h。",
     "source_name": "Adobe 2024 Future of Work",
     "source_url": "https://www.adobe.com/content/dam/cc/en/future-of-work.html",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "W2501",
@@ -4347,7 +4713,10 @@
     "real_world_logic": "Stack Overflow 2024 Survey：SDE II→III 平均年薪差约 30-50%；LinkedIn 2024 Workforce Report：内部晋升者 5 年留存率显著高于外部跳槽者。",
     "source_name": "Stack Overflow Developer Survey 2024",
     "source_url": "https://survey.stackoverflow.co/2024/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "employed": true
+    }
   },
   {
     "action_id": "R006",
@@ -4405,7 +4774,10 @@
     "real_world_logic": "对长期久坐程序员颈肩腰背劳损效果好，单次 300-500 元，按月计 1500 元有显著现金流压力，需评估真实身体收益。",
     "source_name": "经验归纳",
     "source_url": "",
-    "confidence": "low"
+    "confidence": "low",
+    "requirements": {
+      "minCash": 5000
+    }
   },
   {
     "action_id": "R009",
@@ -4463,7 +4835,10 @@
     "real_world_logic": "写作是慢反馈技能，前 6 个月几乎看不到直接回报，但持续一年后对求职跳槽、咨询机会的撬动作用非常显著。",
     "source_name": "经验归纳",
     "source_url": "",
-    "confidence": "low"
+    "confidence": "low",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "G003",
@@ -4492,7 +4867,10 @@
     "real_world_logic": "WHO 2020 指南建议成人每周 150-300 分钟中等到较大强度活动 + 2 次力量训练，3 次健身卡门槛最低且对抑郁症状缓解有中等效应量。",
     "source_name": "WHO 2020 体力活动指南 + Lancet 2018 Stubbs",
     "source_url": "https://www.thelancet.com/journals/lanpsy/article/PIIS2215-0366(18)30291-X/fulltext",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "timeAvailable": true
+    }
   },
   {
     "action_id": "G005",
@@ -4521,7 +4899,10 @@
     "real_world_logic": "系统学一门硬课能在 3-6 个月内显著拉开与同龄人差距，但要求连续 4-8 周的高强度专注，与加班冲突时极易中断。",
     "source_name": "经验归纳",
     "source_url": "",
-    "confidence": "low"
+    "confidence": "low",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "G007",
@@ -4550,7 +4931,10 @@
     "real_world_logic": "Copilot/Claude/Agent 等工具熟练使用后可减少 30-40% 样板代码时间，但工具迭代极快，3 个月不学就落后版本。",
     "source_name": "GitHub Copilot 官方研究 + 经验归纳",
     "source_url": "https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 25
+    }
   },
   {
     "action_id": "J005",
@@ -4579,7 +4963,10 @@
     "real_world_logic": "内推跳过 HR 初筛并显著提升面试率，但需要平时维护人脉；长期不联系临时找朋友推荐成功率很低。",
     "source_name": "经验归纳",
     "source_url": "",
-    "confidence": "low"
+    "confidence": "low",
+    "requirements": {
+      "socialSupport": true
+    }
   },
   {
     "action_id": "J007",
@@ -4608,7 +4995,10 @@
     "real_world_logic": "持续更新的 LinkedIn/GitHub 是被动求职通道，6 个月以上简历活跃能让猎头/HR 主动找上门。",
     "source_name": "经验归纳",
     "source_url": "",
-    "confidence": "low"
+    "confidence": "low",
+    "requirements": {
+      "inventory": "github_account"
+    }
   },
   {
     "action_id": "W001",
@@ -4637,7 +5027,10 @@
     "real_world_logic": "业务代码产出可量化、收入稳定，但长期重复会消耗技术激情，与'CRUD 程序员'陷阱直接相关。",
     "source_name": "经验归纳",
     "source_url": "",
-    "confidence": "low"
+    "confidence": "low",
+    "requirements": {
+      "employed": true
+    }
   },
   {
     "action_id": "W003",
@@ -4666,7 +5059,10 @@
     "real_world_logic": "故障排查是 oncall 必备技能，长期反复触发同一类故障说明架构债严重；但 1 次大病往往能换取架构改进资源。",
     "source_name": "经验归纳",
     "source_url": "",
-    "confidence": "low"
+    "confidence": "low",
+    "requirements": {
+      "employed": true
+    }
   },
   {
     "action_id": "W007",
@@ -4695,7 +5091,10 @@
     "real_world_logic": "Cal Newport 深度工作研究表明 4 小时不打断是技术性工作最高产出的时间块，但需要切割通知并拒绝会议，易被工作流击穿。",
     "source_name": "经验归纳",
     "source_url": "https://www.calnewport.com/books/deep-work/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "inventory": "quiet_space"
+    }
   },
   {
     "action_id": "W008",
@@ -4724,7 +5123,10 @@
     "real_world_logic": "30 分钟分享需 5-10 小时准备，但能快速建立技术品牌并锻炼表达力；对晋升/跳槽材料积累非常划算。",
     "source_name": "经验归纳",
     "source_url": "",
-    "confidence": "low"
+    "confidence": "low",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "I004",
@@ -4753,7 +5155,11 @@
     "real_world_logic": "独立开发者收入曲线极右偏，99% 项目零收入但头部项目可月入几万；前提是先做出 MVP 并跑通付费。",
     "source_name": "经验归纳",
     "source_url": "https://www.indiehackers.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 45,
+      "minAi": 20
+    }
   },
   {
     "action_id": "I008",
@@ -4782,7 +5188,10 @@
     "real_world_logic": "99% 开源项目 GitHub Sponsors 月收入 < 100 美元，但维护良好的项目对求职/咨询/技术谈判溢价巨大。",
     "source_name": "经验归纳",
     "source_url": "https://github.com/sponsors",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "minTech": 60
+    }
   },
   {
     "action_id": "RS001",
@@ -4840,7 +5249,10 @@
     "real_world_logic": "家庭聚会单次差旅+礼品约 1000-3000 元，能显著提升归属感和身份认同；但高频摩擦的亲戚关系消耗心力。",
     "source_name": "经验归纳",
     "source_url": "",
-    "confidence": "low"
+    "confidence": "low",
+    "requirements": {
+      "household": "family"
+    }
   },
   {
     "action_id": "RS003",
@@ -4869,7 +5281,10 @@
     "real_world_logic": "每月 1 次线下 Meetup 投入 100-300 元，能扩宽弱关系并带来潜在跳槽/合作机会，但内向者成本较高。",
     "source_name": "经验归纳",
     "source_url": "",
-    "confidence": "low"
+    "confidence": "low",
+    "requirements": {
+      "socialSupport": true
+    }
   },
   {
     "action_id": "N001",
@@ -5043,7 +5458,10 @@
     "real_world_logic": "外卖与超重/糖尿病正相关；自做餐可控油盐。",
     "source_name": "中国居民膳食指南",
     "source_url": "https://www.cnsoc.org/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "inventory": "kitchen"
+    }
   },
   {
     "action_id": "N007",
@@ -5130,7 +5548,10 @@
     "real_world_logic": "WHO 社会关系对健康报告：每周 1 次聚餐可降低孤独感，对长期健康贡献等同戒烟。",
     "source_name": "WHO Social Determinants",
     "source_url": "https://www.who.int/publications/i/item/9789241565486",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "household": "family"
+    }
   },
   {
     "action_id": "N010",
@@ -5304,7 +5725,10 @@
     "real_world_logic": "Psychological Bulletin 2024 元分析（71 项 N=98,299）：短视频 -0.34 与注意力。",
     "source_name": "Psychological Bulletin 2024",
     "source_url": "https://www.thepaper.cn/newsDetail_forward_31984539",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "A002",
@@ -5362,7 +5786,10 @@
     "real_world_logic": "Reuters Digital News 2024：社交媒体与抑郁、焦虑相关。",
     "source_name": "Reuters Digital News 2024",
     "source_url": "https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2024",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "inventory": "screen_time_app"
+    }
   },
   {
     "action_id": "A004",
@@ -5449,7 +5876,10 @@
     "real_world_logic": "CDC：每年 48 万人因吸烟死亡；戒烟 10 年肺癌风险↓50%。",
     "source_name": "CDC Smoking Facts",
     "source_url": "https://www.cdc.gov/tobacco/about/index.html",
-    "confidence": "high"
+    "confidence": "high",
+    "requirements": {
+      "smokingHabit": true
+    }
   },
   {
     "action_id": "A007",
@@ -5536,7 +5966,10 @@
     "real_world_logic": "Cell 2019：48 小时数字排毒后注意力指标显著恢复。",
     "source_name": "Cell 2019 Digital Detox",
     "source_url": "https://www.cell.com/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   },
   {
     "action_id": "A010",
@@ -5565,6 +5998,9 @@
     "real_world_logic": "JAMA Psychiatry 2014 Meta：色情内容与脑奖赏回路改变、动机下降相关。",
     "source_name": "JAMA Psychiatry 2014",
     "source_url": "https://jamanetwork.com/journals/jamapsychiatry",
-    "confidence": "medium"
+    "confidence": "medium",
+    "requirements": {
+      "focusAvailable": true
+    }
   }
 ]

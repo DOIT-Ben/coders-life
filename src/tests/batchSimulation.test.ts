@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
 import { createInitialState } from '../core/gameEngine';
 import { AUTO_STRATEGIES, chooseActionForStrategy, chooseMonthlyPlanForStrategy } from '../systems/autoChoiceSystem';
 import { runBatchSimulation, validateSimulationInvariants } from '../../scripts/simulateBatch';
@@ -92,6 +93,13 @@ describe('batch simulation release gate', () => {
     expect(thresholds.minSuccessEndingCount).toBeGreaterThanOrEqual(1);
     expect(thresholds.minBalancedEndingCount).toBeGreaterThanOrEqual(1);
     expect(thresholds.minFailureEndingCount).toBeGreaterThanOrEqual(1);
+    expect(thresholds.minDeterministicReplayRate).toBe(1);
+  });
+
+  it('uses the deterministic replay threshold in the release gate', () => {
+    const source = readFileSync(new URL('../../scripts/simulateBatch.ts', import.meta.url), 'utf8');
+
+    expect(source).toContain('deterministicReplayRate >= thresholds.minDeterministicReplayRate');
   });
 
   it('reports legal ending coverage from actual simulated trajectories', () => {
@@ -106,6 +114,23 @@ describe('batch simulation release gate', () => {
     expect(result.invariants.legalEndingCoverage).toBe(false);
     expect(Object.keys(result.invariants.coveredEndings)).not.toContain('none');
   });
+
+  it('reports structured release gate evidence for audit review', () => {
+    const result = runBatchSimulation({
+      seedsPerScenario: 1,
+      strategies: ['stable_cashflow', 'health_first', 'ai_transition'],
+      careers: ['frontend'],
+      cityTiers: ['tier2'],
+      maxMonths: 280
+    });
+
+    expect(result.releaseGate.evidence.scenarioCount).toBe(result.scenarioCount);
+    expect(result.releaseGate.evidence.endingFamilies.none).toBe(0);
+    expect(result.releaseGate.evidence.coveredEndings).not.toHaveProperty('none');
+    expect(result.releaseGate.evidence.deterministicReplay.sample.maxMonths).toBeGreaterThan(0);
+    expect(result.releaseGate.evidence.deterministicReplay.finalStateHash).toMatch(/^[a-f0-9]{64}$/);
+    expect(result.releaseGate.evidence.deterministicReplay.passed).toBe(true);
+  }, 20000);
 
   it('uses legal trajectory coverage instead of an always-true synthetic reachability gate', () => {
     const earlyState = createInitialState('frontend', 'tier2', 42);

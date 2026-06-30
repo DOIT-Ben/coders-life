@@ -1,6 +1,7 @@
 import type { GameState, LifePhaseId } from '../types/game';
 import { addLog } from '../core/logs';
 import { applyDelta, getVisibleStats } from '../core/formulas';
+import { deriveRoleAiPressure } from './laborMarketSystem';
 
 const phaseLabel: Record<LifePhaseId, string> = {
   seed: '入行准备期',
@@ -29,7 +30,7 @@ export function settleHiddenState(state: GameState): GameState {
     fatigue: state.stats.burnout > 45 ? 2 : -2,
     boundaryScore: state.hidden.fatigue > 65 ? -1 : 0,
     buildProjectState: state.hidden.focus > 55 ? 1 : 0,
-    toolHabitState: state.world.aiReplacement > getVisibleStats(state).ai ? 1 : 0
+    toolHabitState: deriveRoleAiPressure(state) > getVisibleStats(state).ai ? 1 : 0
   });
 }
 

@@ -136,7 +136,7 @@ describe('decision support and first-stage functional optimization', () => {
     vi.unstubAllGlobals();
   });
 
-  it('creates branch event choices and applies selected effects into event memory', () => {
+  it('records new branch event choices only in split event choice memory', () => {
     const state = createInitialState('backend', 'tier1', seed);
     state.career.employmentStatus = 'employed';
     state.laborMarket.layoffPressure = 88;
@@ -149,7 +149,8 @@ describe('decision support and first-stage functional optimization', () => {
     const next = applyEventChoice(withChoice, 'quiet_job_search');
 
     expect(next.pendingEventChoice).toBeUndefined();
-    expect(next.eventMemory.layoff_response_quiet_job_search).toBe(1);
+    expect(next.eventChoiceMemory.layoff_response_quiet_job_search).toBe(1);
+    expect(next.eventMemory.layoff_response_quiet_job_search).toBeUndefined();
     expect(next.careerProfile.interviewMomentum).toBeGreaterThan(state.careerProfile.interviewMomentum);
     expect(next.logs.some(log => log.title.includes('悄悄投简历'))).toBe(true);
   });

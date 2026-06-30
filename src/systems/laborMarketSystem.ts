@@ -4,13 +4,17 @@ import { getCompanyProfile } from '../config/realworldCompanies';
 
 export function deriveRoleAiPressure(state: GameState): number {
   const company = getCompanyProfile(state.career.companyType);
-  const roleAutomation = state.world.taskAutomationByRole[state.career.track] ?? state.world.aiReplacement;
+  const roleAutomation = state.world.taskAutomationByRole[state.career.track] ?? 35;
   const capability = state.world.modelCapability * 0.35;
   const adoption = state.world.toolAdoption * 0.22;
   const readiness = state.world.organizationReadiness * 0.2;
   const companyAdoption = company.aiAdoption * 0.18;
   const regulationDrag = (100 - state.world.regulationTrust) * 0.05;
   return clamp(roleAutomation * 0.35 + capability + adoption + readiness + companyAdoption + regulationDrag - state.careerProfile.aiLeverage * 0.18, 0, 100);
+}
+
+export function hasAiPressure(state: GameState, threshold: number): boolean {
+  return deriveRoleAiPressure(state) >= threshold || state.laborMarket.aiDisruption >= threshold;
 }
 
 export function settleLaborMarket(state: GameState): GameState {
