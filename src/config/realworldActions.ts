@@ -1,7 +1,7 @@
 import actionRows from '../data/realworld/realworld_actions.json';
 import type { ActionConfig, ActionPrimaryCategory, ActionRequirements, ActionStressLevel, ActionSubcategory, EffectDelta, EvidenceMetadata, GameState, RealworldEffectDelta } from '../types/game';
 import { getVisibleStats } from '../core/formulas';
-import { withActionEvidence } from './evidence';
+import { createEvidenceMetadata, withActionEvidence } from './evidence';
 import { numberFrom, tagsFrom } from './realworldParser';
 
 interface RealworldActionRow {
@@ -154,30 +154,15 @@ function mapRow(row: Record<string, string>): ActionConfig {
 
 function evidenceFor(row: Record<string, string>): EvidenceMetadata {
   const sourceName = row.source_name || '未标注来源';
-  const sourceType = sourceTypeFor(sourceName, row.source_url);
-  const confidence = (row.confidence === 'high' || row.confidence === 'medium' || row.confidence === 'low') ? row.confidence : 'medium';
-  return {
-    sourceLevel: sourceType === 'community_story' || sourceType === 'media' ? 'case_study' : sourceType === 'synthetic' ? 'synthetic' : 'industry_report',
-    sourceType,
-    confidence,
-    source: sourceName,
-    title: sourceName,
-    url: row.source_url || undefined,
-    publicationDate: row.source_date || undefined,
-    applicableScope: [row.primary_category, row.subcategory].filter(Boolean),
-    parameterRationale: `行动数值由 ${sourceName} 对 ${row.benefit_label || row.risk_label || row.primary_category} 的描述映射，并由类别、压力等级和持续时间约束。`,
-    verifiedAt: '2026-06-29'
-  };
-}
-
-function sourceTypeFor(sourceName: string, sourceUrl?: string): EvidenceMetadata['sourceType'] {
-  const text = `${sourceName} ${sourceUrl ?? ''}`.toLowerCase();
-  if (sourceName === '经验归纳' || text.includes('indiehackers') || text.includes('medium') || text.includes('substack')) return 'community_story';
-  if (text.includes('who') || sourceName.includes('国家') || sourceName.includes('卫健委') || sourceName.includes('医保局') || sourceName.includes('cdc') || sourceName.includes('nist')) return 'official_statistics';
-  if (text.includes('journal') || text.includes('lancet') || text.includes('jama') || text.includes('nejm') || text.includes('cochrane') || text.includes('nature') || text.includes('psychological') || text.includes('pubmed')) return 'peer_reviewed';
-  if (text.includes('hbr') || text.includes('reuters') || text.includes('pew') || text.includes('youtube') || text.includes('linkedin') || text.includes('github') || text.includes('stackoverflow') || text.includes('survey')) return 'industry_survey';
-  if (text.includes('blog') || text.includes('news') || text.includes('sina') || text.includes('sohu') || text.includes('toutiao')) return 'media';
-  return 'industry_survey';
+  return createEvidenceMetadata({
+    sourceName,
+    sourceUrl: row.source_url,
+    sourceDate: row.source_date,
+    category: row.primary_category,
+    subcategory: row.subcategory,
+    confidence: row.confidence,
+    rationaleSubject: row.benefit_label || row.risk_label || row.primary_category
+  });
 }
 
 export const REALWORLD_ACTIONS: ActionConfig[] = (actionRows as Record<string, string>[]).map(row => withActionEvidence(mapRow(row), evidenceFor(row)));

@@ -32,6 +32,17 @@ describe('real-world data import', () => {
     expect(EVENTS.some(event => event.source === 'realworld_data' && event.category === 'ai')).toBe(true);
   });
 
+  it('attaches structured source metadata to imported real-world events', () => {
+    const event = REALWORLD_EVENTS.find(item => item.id === 'realworld_event_0001')!;
+
+    expect(event.evidence?.sourceType).toBe('community_story');
+    expect(event.evidence?.sourceLevel).toBe('case_study');
+    expect(event.evidence?.url).toMatch(/^https?:\/\//);
+    expect(event.evidence?.publicationDate).toBe('2025-04-12');
+    expect(event.evidence?.applicableScope).toEqual(['work', 'requirement_change']);
+    expect(event.evidence?.parameterRationale).toContain('work');
+  });
+
   it('adds explicit failure endings from the supplementary data', () => {
     expect(REALWORLD_FAIL_ENDING_COUNT).toBe(10);
     expect(ENDINGS.some(ending => ending.id === 'burnout_collapse' && ending.category === 'fail')).toBe(true);
