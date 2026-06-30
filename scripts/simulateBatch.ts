@@ -59,6 +59,7 @@ export interface BatchSimulationResult {
       };
       coveredEndings: Record<string, number>;
       deterministicReplay: DeterministicReplayEvidence;
+      deterministicReplayRate: number;
     };
   };
 }
@@ -126,7 +127,8 @@ export function runBatchSimulation(options: BatchSimulationOptions): BatchSimula
   const averageMonthlyPlanSize = distribution(summaries.flatMap(summary => summary.planSizes));
   const invariants = validateSimulationInvariants(states, coveredEndings);
   const deterministicReplay = validateDeterministicReplay(options);
-  invariants.deterministicReplay = deterministicReplay.passed;
+  const deterministicReplayRate = deterministicReplay.passed ? 1 : 0;
+  invariants.deterministicReplay = deterministicReplayRate >= thresholds.minDeterministicReplayRate;
   const bankruptcyRate = rate(bankruptcyCount, scenarioCount);
   const burnoutRate = rate(burnoutCount, scenarioCount);
   const healthCrisisRate = rate(healthCrisisCount, scenarioCount);
@@ -137,7 +139,7 @@ export function runBatchSimulation(options: BatchSimulationOptions): BatchSimula
     invariants.successEndingCoverage &&
     invariants.balancedEndingCoverage &&
     invariants.failureEndingCoverage &&
-    deterministicReplay.passed &&
+    deterministicReplayRate >= thresholds.minDeterministicReplayRate &&
     bankruptcyRate <= thresholds.maxBankruptcyRate &&
     burnoutRate <= thresholds.maxBurnoutRate &&
     healthCrisisRate <= thresholds.maxHealthCrisisRate &&
@@ -180,7 +182,8 @@ export function runBatchSimulation(options: BatchSimulationOptions): BatchSimula
           none: 0
         },
         coveredEndings,
-        deterministicReplay
+        deterministicReplay,
+        deterministicReplayRate
       }
     }
   };

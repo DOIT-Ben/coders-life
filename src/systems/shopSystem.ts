@@ -65,6 +65,10 @@ export function buyShopItem(state: GameState, id: string): GameState {
       next.inventory.quiet_space = Math.max(next.inventory.quiet_space ?? 0, 1);
       next.hidden.focus = Math.min(100, next.hidden.focus + 3);
       break;
+    case 'window_light':
+      next.inventory.window = Math.max(next.inventory.window ?? 0, 1);
+      next.healthProfile.recoveryQuality = Math.min(100, next.healthProfile.recoveryQuality + 2);
+      break;
     case 'screen_time_app':
       next.inventory.screen_time_app = Math.max(next.inventory.screen_time_app ?? 0, 1);
       next.hidden.focus = Math.min(100, next.hidden.focus + 2);

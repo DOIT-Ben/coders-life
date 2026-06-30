@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
 import { createInitialState } from '../core/gameEngine';
 import { AUTO_STRATEGIES, chooseActionForStrategy, chooseMonthlyPlanForStrategy } from '../systems/autoChoiceSystem';
 import { runBatchSimulation, validateSimulationInvariants } from '../../scripts/simulateBatch';
@@ -92,6 +93,13 @@ describe('batch simulation release gate', () => {
     expect(thresholds.minSuccessEndingCount).toBeGreaterThanOrEqual(1);
     expect(thresholds.minBalancedEndingCount).toBeGreaterThanOrEqual(1);
     expect(thresholds.minFailureEndingCount).toBeGreaterThanOrEqual(1);
+    expect(thresholds.minDeterministicReplayRate).toBe(1);
+  });
+
+  it('uses the deterministic replay threshold in the release gate', () => {
+    const source = readFileSync(new URL('../../scripts/simulateBatch.ts', import.meta.url), 'utf8');
+
+    expect(source).toContain('deterministicReplayRate >= thresholds.minDeterministicReplayRate');
   });
 
   it('reports legal ending coverage from actual simulated trajectories', () => {

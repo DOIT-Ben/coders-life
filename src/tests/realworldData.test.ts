@@ -9,6 +9,8 @@ import { SHOP_ITEMS } from '../config/shop';
 import { ACHIEVEMENTS } from '../config/achievements';
 import { UNSTRUCTURED_REALWORLD_ACTION_REQUIREMENTS, UNMAPPED_REALWORLD_ACTION_REQUIREMENTS } from '../config/realworldActions';
 import realworldActionsSource from '../config/realworldActions.ts?raw';
+import shopSystemSource from '../systems/shopSystem.ts?raw';
+import { createInitialState } from '../core/gameEngine';
 
 describe('real-world data import', () => {
   it('loads the curated real-world action pool including nutrition and addiction recovery', () => {
@@ -90,6 +92,21 @@ describe('real-world data import', () => {
   it('does not map display requirements to empty always-true predicates', () => {
     expect(realworldActionsSource).not.toMatch(/['"][^'"]+['"]:\s*\{\s*\}/);
     expect(REALWORLD_ACTIONS.filter(action => action.requirements && Object.keys(action.requirements).length === 0)).toEqual([]);
+  });
+
+  it('has a real acquisition path for every inventory requirement', () => {
+    const requiredInventory = new Set(REALWORLD_ACTIONS
+      .map(action => action.requirements?.inventory)
+      .filter((item): item is string => Boolean(item)));
+    const initial = createInitialState('frontend', 'tier2', 20260630);
+    const obtainableInventory = new Set([
+      ...Object.keys(initial.inventory),
+      ...SHOP_ITEMS.map(item => item.id),
+      ...Array.from(shopSystemSource.matchAll(/next\.inventory\.([a-zA-Z0-9_]+)\s*=/g)).map(match => match[1])
+    ]);
+
+    expect(requiredInventory.size).toBeGreaterThan(0);
+    expect([...requiredInventory].sort()).toEqual([...obtainableInventory].filter(item => requiredInventory.has(item)).sort());
   });
 
   it('loads executable requirements from source data rather than display text', () => {

@@ -15,6 +15,7 @@ const SHOP_ITEM_DEFINITIONS = [
   { id: 'credit_card', category: 'risk', name: '信用卡', price: 0, maxCount: 1, description: '获得短期支付工具，也增加消费纪律要求。', effect: {} },
   { id: 'recording_tool', category: 'equipment', name: '录屏工具', price: 300, maxCount: 1, description: '可录制技术 demo 和作品说明。', effect: {} },
   { id: 'quiet_space', category: 'housing', name: '安静工作角', price: 1200, maxCount: 1, description: '提供无打扰环境，降低深度工作和公开创作摩擦。', effect: {} },
+  { id: 'window_light', category: 'housing', name: '窗边自然光位', price: 300, maxCount: 1, description: '整理出有窗和自然光的位置，支持日照恢复类行动。', effect: {} },
   { id: 'screen_time_app', category: 'subscription', name: '屏幕时间工具', price: 120, maxCount: 1, description: '帮助限制短视频和娱乐应用使用。', effect: {} },
   { id: 'password_manager', category: 'subscription', name: '密码管理器', price: 120, maxCount: 1, description: '改善账号安全和数字文件整理效率。', effect: {} }
 ] satisfies ShopItemConfig[];

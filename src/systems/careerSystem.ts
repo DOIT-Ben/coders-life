@@ -47,10 +47,6 @@ export function settleCareerOpportunities(state: GameState): GameState {
     });
   }
 
-  if (next.career.employmentStatus !== 'employed' && currentOffers(next).length > 0) {
-    next = acceptActiveOffer(next);
-  }
-
   if (next.career.employmentStatus === 'employed') {
     next = settleEmployedCareer(next, visible);
   } else {

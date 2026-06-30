@@ -492,6 +492,32 @@ describe('real-world action consequences', () => {
     expect(currentActions.find(action => action.id === 'J2003')?.available).toBe(true);
   });
 
+  it('does not auto-accept active offers during monthly settlement without C2002', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.career.employmentStatus = 'jobless';
+    state.career.companyType = 'none';
+    state.career.pendingApplications = 0;
+    state.career.scheduledInterviews = [];
+    state.career.activeOffers = [{
+      id: 'manual-offer',
+      companyType: 'private',
+      jobLevel: 1,
+      salaryMonthly: 16000,
+      createdMonth: state.month,
+      expiresMonth: state.month + 2,
+      status: 'active'
+    }];
+
+    const settled = settleMonth(state);
+
+    expect(settled.career.employmentStatus).toBe('jobless');
+    expect(settled.career.activeOffers[0].status).toBe('active');
+
+    const accepted = applyAction(state, 'C2002');
+    expect(accepted.career.employmentStatus).toBe('employed');
+    expect(accepted.career.activeOffers[0].status).toBe('accepted');
+  });
+
   it('does not trigger long-term unemployment from lifetime applications alone', async () => {
     const { checkEnding } = await import('../systems/endingSystem');
     const state = createInitialState('frontend', 'tier1', seed);
