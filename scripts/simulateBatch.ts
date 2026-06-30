@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import thresholds from './releaseThresholds.json';
 import { createInitialState, planMonth } from '../src/core/gameEngine';
 import type { CareerTrack, CityTier, GameState } from '../src/types/game';
@@ -48,7 +49,30 @@ export interface BatchSimulationResult {
   releaseGate: {
     thresholds: typeof thresholds;
     passed: boolean;
+    evidence: {
+      scenarioCount: number;
+      endingFamilies: {
+        success: number;
+        balanced: number;
+        failure: number;
+        none: number;
+      };
+      coveredEndings: Record<string, number>;
+      deterministicReplay: DeterministicReplayEvidence;
+    };
   };
+}
+
+interface DeterministicReplayEvidence {
+  passed: boolean;
+  sample: {
+    strategy: AutoStrategyId;
+    career: CareerTrack;
+    cityTier: CityTier;
+    seed: number;
+    maxMonths: number;
+  };
+  finalStateHash: string;
 }
 
 type ScenarioSummary = {
@@ -102,7 +126,7 @@ export function runBatchSimulation(options: BatchSimulationOptions): BatchSimula
   const averageMonthlyPlanSize = distribution(summaries.flatMap(summary => summary.planSizes));
   const invariants = validateSimulationInvariants(states, coveredEndings);
   const deterministicReplay = validateDeterministicReplay(options);
-  invariants.deterministicReplay = deterministicReplay;
+  invariants.deterministicReplay = deterministicReplay.passed;
   const bankruptcyRate = rate(bankruptcyCount, scenarioCount);
   const burnoutRate = rate(burnoutCount, scenarioCount);
   const healthCrisisRate = rate(healthCrisisCount, scenarioCount);
@@ -113,7 +137,7 @@ export function runBatchSimulation(options: BatchSimulationOptions): BatchSimula
     invariants.successEndingCoverage &&
     invariants.balancedEndingCoverage &&
     invariants.failureEndingCoverage &&
-    invariants.deterministicReplay &&
+    deterministicReplay.passed &&
     bankruptcyRate <= thresholds.maxBankruptcyRate &&
     burnoutRate <= thresholds.maxBurnoutRate &&
     healthCrisisRate <= thresholds.maxHealthCrisisRate &&
@@ -146,7 +170,18 @@ export function runBatchSimulation(options: BatchSimulationOptions): BatchSimula
     invariants,
     releaseGate: {
       thresholds,
-      passed: releasePassed
+      passed: releasePassed,
+      evidence: {
+        scenarioCount,
+        endingFamilies: {
+          success: successEndingCount,
+          balanced: balancedEndingCount,
+          failure: failureEndingCount,
+          none: 0
+        },
+        coveredEndings,
+        deterministicReplay
+      }
     }
   };
 }
@@ -188,7 +223,7 @@ function runScenario(options: { strategy: AutoStrategyId; career: CareerTrack; c
   return { state, actions, planSizes, firstOfferMonth };
 }
 
-function validateDeterministicReplay(options: BatchSimulationOptions): boolean {
+function validateDeterministicReplay(options: BatchSimulationOptions): DeterministicReplayEvidence {
   const sampleOptions = {
     strategy: options.strategies?.[0] ?? 'stable_cashflow',
     career: options.careers?.[0] ?? 'frontend',
@@ -198,7 +233,14 @@ function validateDeterministicReplay(options: BatchSimulationOptions): boolean {
   };
   const first = runScenario(sampleOptions);
   const second = runScenario(sampleOptions);
-  return JSON.stringify(projectReplayState(first.state)) === JSON.stringify(projectReplayState(second.state));
+  const firstProjected = projectReplayState(first.state);
+  const secondProjected = projectReplayState(second.state);
+  const firstSerialized = JSON.stringify(firstProjected);
+  return {
+    passed: firstSerialized === JSON.stringify(secondProjected),
+    sample: sampleOptions,
+    finalStateHash: createHash('sha256').update(firstSerialized).digest('hex')
+  };
 }
 
 function percentageFieldsInRange(state: GameState): boolean {

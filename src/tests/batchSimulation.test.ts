@@ -107,6 +107,23 @@ describe('batch simulation release gate', () => {
     expect(Object.keys(result.invariants.coveredEndings)).not.toContain('none');
   });
 
+  it('reports structured release gate evidence for audit review', () => {
+    const result = runBatchSimulation({
+      seedsPerScenario: 1,
+      strategies: ['stable_cashflow', 'health_first', 'ai_transition'],
+      careers: ['frontend'],
+      cityTiers: ['tier2'],
+      maxMonths: 280
+    });
+
+    expect(result.releaseGate.evidence.scenarioCount).toBe(result.scenarioCount);
+    expect(result.releaseGate.evidence.endingFamilies.none).toBe(0);
+    expect(result.releaseGate.evidence.coveredEndings).not.toHaveProperty('none');
+    expect(result.releaseGate.evidence.deterministicReplay.sample.maxMonths).toBeGreaterThan(0);
+    expect(result.releaseGate.evidence.deterministicReplay.finalStateHash).toMatch(/^[a-f0-9]{64}$/);
+    expect(result.releaseGate.evidence.deterministicReplay.passed).toBe(true);
+  }, 20000);
+
   it('uses legal trajectory coverage instead of an always-true synthetic reachability gate', () => {
     const earlyState = createInitialState('frontend', 'tier2', 42);
     earlyState.endingId = undefined;
