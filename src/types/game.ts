@@ -78,13 +78,38 @@ export interface CareerState {
   totalApplications: number;
   totalInterviews: number;
   totalOffers: number;
+  scheduledInterviews: InterviewOpportunity[];
+  activeOffers: JobOffer[];
   promotionScore: number;
+}
+
+export type InterviewStatus = 'scheduled' | 'completed' | 'expired' | 'declined';
+
+export interface InterviewOpportunity {
+  id: ID;
+  companyType: CompanyType;
+  createdMonth: number;
+  scheduledMonth: number;
+  status: InterviewStatus;
+}
+
+export type JobOfferStatus = 'active' | 'accepted' | 'declined' | 'expired';
+
+export interface JobOffer {
+  id: ID;
+  companyType: CompanyType;
+  jobLevel: number;
+  salaryMonthly: number;
+  createdMonth: number;
+  expiresMonth: number;
+  status: JobOfferStatus;
 }
 
 export interface FinanceState {
   monthlyIncome: number;
   monthlySalary: number;
   monthlyFixedCost: number;
+  fixedObligationsMonthly: number;
   monthlyRent: number;
   monthlyDebtPayment: number;
   emergencyFundMonths: number;
@@ -426,10 +451,20 @@ export interface RealworldEffectDelta {
 
 export interface ActionRequirements {
   employed?: boolean;
+  employmentOrInterview?: boolean;
   minCash?: number;
   minTech?: number;
   minAi?: number;
   inventory?: ID;
+  flag?: ID;
+  minOffers?: number;
+  minInterviews?: number;
+  positiveIncome?: boolean;
+  debtBalance?: boolean;
+  timeAvailable?: boolean;
+  focusAvailable?: boolean;
+  socialSupport?: boolean;
+  smokingHabit?: boolean;
   household?: 'family' | 'partner' | 'child' | 'parent';
 }
 

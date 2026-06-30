@@ -85,6 +85,8 @@ export function createInitialState(
       totalApplications: 0,
       totalInterviews: 0,
       totalOffers: 0,
+      scheduledInterviews: [],
+      activeOffers: [],
       promotionScore: 0
     },
     finance: { ...DEFAULT_FINANCE_STATE },

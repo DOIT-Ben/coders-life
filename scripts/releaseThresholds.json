@@ -5,5 +5,8 @@
   "maxRepeatedActionDominance": 0.72,
   "minAverageMonthlyPlanSize": 1.4,
   "minCoveredEndingCount": 2,
+  "minSuccessEndingCount": 1,
+  "minBalancedEndingCount": 1,
+  "minFailureEndingCount": 1,
   "minDeterministicReplayRate": 1
 }

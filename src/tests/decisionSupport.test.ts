@@ -226,7 +226,7 @@ describe('decision support and first-stage functional optimization', () => {
     expect(afterCourse.stats.techXp).toBe(state.stats.techXp);
 
     expect(afterInsurance.inventory.medical_insurance).toBe(1);
-    expect(afterInsurance.finance.monthlyFixedCost).toBeGreaterThan(state.finance.monthlyFixedCost);
+    expect(afterInsurance.finance.fixedObligationsMonthly).toBeGreaterThan(state.finance.fixedObligationsMonthly);
     expect(afterInsurance.stats.mental).toBe(state.stats.mental);
 
     expect(afterAiPro.inventory.ai_pro).toBe(1);
@@ -236,6 +236,32 @@ describe('decision support and first-stage functional optimization', () => {
     expect(afterHousing.inventory.private_room).toBe(1);
     expect(afterHousing.lifePressure.commutePressure).toBeLessThanOrEqual(state.lifePressure.commutePressure);
     expect(afterHousing.stats.mental).toBe(state.stats.mental);
+  });
+
+  it('provides real purchase paths for structured requirement tools', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+    state.stats.cash = 50000;
+
+    [
+      'developer_accounts',
+      'basic_kitchen',
+      'credit_card',
+      'recording_tool',
+      'quiet_space',
+      'screen_time_app',
+      'password_manager'
+    ].forEach(itemId => {
+      state = buyShopItem(state, itemId);
+    });
+
+    expect(state.inventory.github_account).toBe(1);
+    expect(state.inventory.linkedin_account).toBe(1);
+    expect(state.inventory.kitchen).toBe(1);
+    expect(state.inventory.credit_card).toBe(1);
+    expect(state.inventory.recording_tool).toBe(1);
+    expect(state.inventory.quiet_space).toBe(1);
+    expect(state.inventory.screen_time_app).toBe(1);
+    expect(state.inventory.password_manager).toBe(1);
   });
 
   it('adds shop subscriptions insurance and housing rent on top of base living cost', () => {
@@ -250,5 +276,24 @@ describe('decision support and first-stage functional optimization', () => {
 
     expect(settled.finance.monthlyFixedCost).toBe(base.finance.monthlyFixedCost + 1080);
     expect(settled.finance.monthlyRent).toBeGreaterThan(base.finance.monthlyRent);
+  });
+
+  it('keeps fixed obligations stable across consecutive months and charges cash', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+    state.career.employmentStatus = 'jobless';
+    state.stats.cash = 100000;
+    state.finance.debt = 50000;
+    state = buyShopItem(state, 'ai_pro');
+    state = buyShopItem(state, 'medical_insurance');
+    state = buyShopItem(state, 'private_room');
+
+    const first = settleMonth(state);
+    const second = settleMonth(first);
+
+    expect(first.finance.fixedObligationsMonthly).toBe(second.finance.fixedObligationsMonthly);
+    expect(second.finance.monthlyFixedCost).toBeLessThan(first.finance.monthlyFixedCost * 1.05);
+    expect(first.finance.monthlyDebtPayment).toBe(600);
+    expect(second.stats.cash).toBeLessThan(first.stats.cash - first.finance.monthlyDebtPayment);
+    expect(second.finance.debt).toBeLessThan(first.finance.debt);
   });
 });

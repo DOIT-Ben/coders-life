@@ -76,6 +76,11 @@ describe('real-world data import', () => {
     expect(realworldActionsSource).not.toContain('.test(text)');
   });
 
+  it('does not map display requirements to empty always-true predicates', () => {
+    expect(realworldActionsSource).not.toMatch(/['"][^'"]+['"]:\s*\{\s*\}/);
+    expect(REALWORLD_ACTIONS.filter(action => action.requirements && Object.keys(action.requirements).length === 0)).toEqual([]);
+  });
+
   it('validates schema-critical action event ending achievement and shop fields', () => {
     ACTIONS.forEach(action => {
       expect(action.id).toBeTruthy();

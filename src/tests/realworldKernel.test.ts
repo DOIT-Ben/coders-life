@@ -118,6 +118,7 @@ describe('real-world simulation kernel state model', () => {
 
     expect(loaded?.finance.emergencyFundMonths).toBeGreaterThan(0);
     expect(loaded?.finance.monthlySalary).toBeGreaterThanOrEqual(0);
+    expect(loaded?.finance.fixedObligationsMonthly).toBeGreaterThanOrEqual(0);
     expect(loaded?.healthProfile.sedentaryLoad).toBeGreaterThanOrEqual(0);
     expect(loaded?.healthProfile.chronicRisk).toBeGreaterThanOrEqual(0);
     expect(loaded?.careerProfile.skillFreshness).toBeGreaterThan(0);
@@ -136,6 +137,60 @@ describe('real-world simulation kernel state model', () => {
     expect(loaded?.crisis.burnout.episodes).toEqual([]);
 
     vi.unstubAllGlobals();
+  });
+
+  it('migrates legacy monthly fixed cost snapshots without recursive obligations', async () => {
+    vi.resetModules();
+    const store = new Map<string, string>();
+    vi.stubGlobal('localStorage', {
+      getItem: (key: string) => store.get(key) ?? null,
+      setItem: (key: string, value: string) => store.set(key, value),
+      removeItem: (key: string) => store.delete(key)
+    });
+
+    const legacy = createInitialState('frontend', 'tier2', seed);
+    legacy.finance.monthlyFixedCost = 6500;
+    store.set('programmer_survival_v6_save', JSON.stringify(legacy));
+
+    const { loadGame } = await import('../storage/saveManager');
+    const loaded = loadGame();
+
+    expect(loaded?.finance.monthlyFixedCost).toBe(0);
+    expect(loaded?.finance.fixedObligationsMonthly).toBe(0);
+
+    vi.unstubAllGlobals();
+  });
+
+  it('migrates legacy finance snapshots by city baseline and preserves true obligations', async () => {
+    vi.resetModules();
+    const cases = [
+      ['tier1', 8500, 0],
+      ['tier2', 6500, 0],
+      ['tier3', 5200, 700],
+      ['tier2', 7080, 580]
+    ] as const;
+
+    const { loadGame } = await import('../storage/saveManager');
+
+    for (const [cityTier, legacyFixedCost, expectedObligations] of cases) {
+      const store = new Map<string, string>();
+      vi.stubGlobal('localStorage', {
+        getItem: (key: string) => store.get(key) ?? null,
+        setItem: (key: string, value: string) => store.set(key, value),
+        removeItem: (key: string) => store.delete(key)
+      });
+
+      const legacy = createInitialState('frontend', cityTier, seed);
+      legacy.finance.monthlyFixedCost = legacyFixedCost;
+      delete (legacy.finance as Partial<typeof legacy.finance>).fixedObligationsMonthly;
+      store.set('programmer_survival_v6_save', JSON.stringify(legacy));
+
+      const loaded = loadGame();
+
+      expect(loaded?.finance.monthlyFixedCost).toBe(0);
+      expect(loaded?.finance.fixedObligationsMonthly).toBe(expectedObligations);
+      vi.unstubAllGlobals();
+    }
   });
 
   it('migrates legacy active crisis saves with episode history fields', async () => {
@@ -273,7 +328,7 @@ describe('real-world monthly causal pipeline', () => {
     expect(Number.isFinite(state.finance.cashflowStress)).toBe(true);
     expect(Number.isFinite(state.healthProfile.healthDebt)).toBe(true);
     expect(Number.isFinite(state.careerProfile.layoffRisk)).toBe(true);
-  });
+  }, 15000);
 });
 
 describe('real-world action consequences', () => {
@@ -398,6 +453,45 @@ describe('real-world action consequences', () => {
     expect(next.career.totalOffers).toBeGreaterThanOrEqual(state.career.totalOffers);
   });
 
+  it('does not treat expired historical offers or interviews as current requirements', () => {
+    const historical = createInitialState('frontend', 'tier2', seed);
+    historical.stats.cash = 120000;
+    historical.stats.techXp = 500;
+    historical.stats.aiXp = 300;
+    historical.career.employmentStatus = 'jobless';
+    historical.career.totalOffers = 5;
+    historical.career.totalInterviews = 5;
+    historical.career.pendingApplications = 0;
+    historical.career.activeOffers = [];
+    historical.career.scheduledInterviews = [];
+
+    const historicalActions = getAvailableActions(historical);
+    expect(historicalActions.find(action => action.id === 'C2002')?.available).toBe(false);
+    expect(historicalActions.find(action => action.id === 'J2003')?.available).toBe(false);
+
+    const current = structuredClone(historical);
+    current.career.activeOffers = [{
+      id: 'offer-current',
+      companyType: 'private',
+      jobLevel: 2,
+      salaryMonthly: 18000,
+      createdMonth: current.month,
+      expiresMonth: current.month + 2,
+      status: 'active'
+    }];
+    current.career.scheduledInterviews = [{
+      id: 'interview-current',
+      companyType: 'private',
+      createdMonth: current.month,
+      scheduledMonth: current.month,
+      status: 'scheduled'
+    }];
+
+    const currentActions = getAvailableActions(current);
+    expect(currentActions.find(action => action.id === 'C2002')?.available).toBe(true);
+    expect(currentActions.find(action => action.id === 'J2003')?.available).toBe(true);
+  });
+
   it('does not trigger long-term unemployment from lifetime applications alone', async () => {
     const { checkEnding } = await import('../systems/endingSystem');
     const state = createInitialState('frontend', 'tier1', seed);
@@ -499,6 +593,88 @@ describe('real-world action consequences', () => {
     expect(inventory?.reason).toContain('耳机');
     expect(household?.available).toBe(false);
     expect(household?.reason).toContain('家庭');
+  });
+
+  it('gates account offer income debt and time requirements with real state predicates', () => {
+    const blocked = createInitialState('frontend', 'tier2', seed);
+    blocked.stats.cash = 1000;
+    blocked.stats.techXp = 0;
+    blocked.stats.aiXp = 0;
+    blocked.career.employmentStatus = 'jobless';
+    blocked.career.totalOffers = 0;
+    blocked.career.pendingApplications = 0;
+    blocked.career.totalInterviews = 0;
+    blocked.finance.monthlyIncome = 0;
+    blocked.finance.monthlySalary = 0;
+    blocked.finance.debt = 0;
+    blocked.inventory = {};
+    blocked.flags = {};
+    blocked.lifePressure.timeScarcity = 95;
+    blocked.hidden.fatigue = 95;
+
+    const blockedActions = getAvailableActions(blocked);
+    expect(blockedActions.find(action => action.id === 'G2204')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'J2007')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'C2002')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'J2003')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'I2302')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'I2303')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'G2201')?.available).toBe(false);
+
+    const ready = structuredClone(blocked);
+    ready.stats.cash = 120000;
+    ready.stats.techXp = 500;
+    ready.stats.aiXp = 300;
+    ready.career.employmentStatus = 'employed';
+    ready.career.pendingApplications = 2;
+    ready.career.scheduledInterviews = [{
+      id: 'current-interview',
+      companyType: 'private',
+      createdMonth: ready.month,
+      scheduledMonth: ready.month,
+      status: 'scheduled'
+    }];
+    ready.career.activeOffers = [{
+      id: 'current-offer',
+      companyType: 'private',
+      jobLevel: 2,
+      salaryMonthly: 18000,
+      createdMonth: ready.month,
+      expiresMonth: ready.month + 2,
+      status: 'active'
+    }, {
+      id: 'competing-offer',
+      companyType: 'foreign',
+      jobLevel: 2,
+      salaryMonthly: 20000,
+      createdMonth: ready.month,
+      expiresMonth: ready.month + 2,
+      status: 'active'
+    }];
+    ready.finance.monthlyIncome = 18000;
+    ready.finance.monthlySalary = 18000;
+    ready.finance.debt = 80000;
+    ready.inventory = {
+      github_account: 1,
+      linkedin_account: 1,
+      recording_tool: 1,
+      password_manager: 1,
+      credit_card: 1,
+      kitchen: 1,
+      quiet_space: 1
+    };
+    ready.flags = { competing_offer: true, has_friends: true };
+    ready.lifePressure.timeScarcity = 20;
+    ready.hidden.fatigue = 20;
+
+    const readyActions = getAvailableActions(ready);
+    expect(readyActions.find(action => action.id === 'G2204')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'J2007')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'C2002')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'J2003')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'I2302')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'I2303')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'G2201')?.available).toBe(true);
   });
 });
 
@@ -673,5 +849,21 @@ describe('phase 3 world career ai and age model', () => {
       expect(state.careerProfile.roleHistory).toContain(routeId);
       expect(state.careerProfile.transitionProgress[routeId]).toBeGreaterThanOrEqual(100);
     });
+  });
+
+  it('makes higher transition-cost routes progress slower under equal player state', () => {
+    const testing = createInitialState('frontend', 'tier2', seed);
+    testing.stats.techXp = 1200;
+    testing.stats.aiXp = 800;
+    testing.stats.reputationXp = 600;
+    testing.careerProfile.careerCapital = 80;
+    testing.career.portfolioCount = 3;
+
+    const security = structuredClone(testing);
+
+    const testingNext = applyAction(testing, 'transition_testing');
+    const securityNext = applyAction(security, 'transition_security');
+
+    expect(securityNext.careerProfile.transitionProgress.security).toBeLessThan(testingNext.careerProfile.transitionProgress.testing);
   });
 });

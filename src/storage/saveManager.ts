@@ -1,4 +1,5 @@
 import type { CrisisChapter, GameState, ProjectPortfolioState, ProjectState } from '../types/game';
+import { CITY_CONFIG } from '../config/balance';
 import {
   DEFAULT_CAREER_PROFILE,
   DEFAULT_CRISIS_STATE,
@@ -84,10 +85,18 @@ function migrateProjectState(saved: Partial<ProjectState> | undefined, fallback:
 
 function migrateFinance(state: GameState): GameState['finance'] {
   const saved = state.finance ?? {};
-  const monthlyFixedCost = typeof saved.monthlyFixedCost === 'number' && saved.monthlyFixedCost > 0 && saved.monthlyFixedCost <= 6500
-    ? 0
-    : saved.monthlyFixedCost;
-  return { ...DEFAULT_FINANCE_STATE, ...saved, monthlyFixedCost: monthlyFixedCost ?? DEFAULT_FINANCE_STATE.monthlyFixedCost };
+  const legacyMonthlyFixedCost = typeof saved.monthlyFixedCost === 'number' ? saved.monthlyFixedCost : 0;
+  const cityTier = state.career?.cityTier ?? 'tier2';
+  const baselineCost = CITY_CONFIG[cityTier].livingCost;
+  const fixedObligationsMonthly = typeof saved.fixedObligationsMonthly === 'number'
+    ? saved.fixedObligationsMonthly
+    : Math.max(0, legacyMonthlyFixedCost - baselineCost);
+  return {
+    ...DEFAULT_FINANCE_STATE,
+    ...saved,
+    fixedObligationsMonthly,
+    monthlyFixedCost: DEFAULT_FINANCE_STATE.monthlyFixedCost
+  };
 }
 
 function withDefaults(state: GameState): GameState {
@@ -95,7 +104,9 @@ function withDefaults(state: GameState): GameState {
     pendingApplications: 0,
     totalApplications: state.career?.offerAttempts ?? 0,
     totalInterviews: 0,
-    totalOffers: 0
+    totalOffers: 0,
+    scheduledInterviews: [],
+    activeOffers: []
   };
   return {
     ...state,
