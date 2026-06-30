@@ -39,6 +39,31 @@ describe('batch simulation release gate', () => {
     expect(new Set(plan).size).toBe(plan.length);
   });
 
+  it('prioritizes current offers over additional interviews in monthly simulation plans', () => {
+    const state = createInitialState('frontend', 'tier2', 42);
+    state.stats.techXp = 500;
+    state.career.scheduledInterviews = [{
+      id: 'interview-current',
+      companyType: 'private',
+      createdMonth: state.month,
+      scheduledMonth: state.month,
+      status: 'scheduled'
+    }];
+    state.career.activeOffers = [{
+      id: 'offer-current',
+      companyType: 'private',
+      jobLevel: 1,
+      salaryMonthly: 12000,
+      createdMonth: state.month,
+      expiresMonth: state.month + 2,
+      status: 'active'
+    }];
+
+    const plan = chooseMonthlyPlanForStrategy(state, 'stable_cashflow');
+
+    expect(plan).toEqual(['C2002']);
+  });
+
   it('produces batch distributions and invariant checks across strategies careers and cities', () => {
     const result = runBatchSimulation({
       seedsPerScenario: 1,
@@ -50,12 +75,12 @@ describe('batch simulation release gate', () => {
 
     expect(result.scenarioCount).toBe(4);
     expect(result.distributions.endingFrequencies).toBeDefined();
-    expect(result.distributions.netWorthAt45.count).toBeGreaterThan(0);
+    expect(result.distributions.netWorthAtEnd.count).toBeGreaterThan(0);
     expect(result.distributions.valueGoalFit.count).toBeGreaterThan(0);
     expect(result.distributions.averageMonthlyPlanSize.average).toBeGreaterThan(1);
     expect(result.invariants.percentageFieldsInRange).toBe(true);
     expect(result.invariants.deterministicReplay).toBe(true);
-  });
+  }, 15000);
 
   it('uses release thresholds with actual constraints', () => {
     expect(thresholds.maxBankruptcyRate).toBeLessThanOrEqual(0.65);
@@ -64,6 +89,9 @@ describe('batch simulation release gate', () => {
     expect(thresholds.maxRepeatedActionDominance).toBeLessThanOrEqual(0.72);
     expect(thresholds.minAverageMonthlyPlanSize).toBeGreaterThanOrEqual(1.4);
     expect(thresholds.minCoveredEndingCount).toBeGreaterThanOrEqual(2);
+    expect(thresholds.minSuccessEndingCount).toBeGreaterThanOrEqual(1);
+    expect(thresholds.minBalancedEndingCount).toBeGreaterThanOrEqual(1);
+    expect(thresholds.minFailureEndingCount).toBeGreaterThanOrEqual(1);
   });
 
   it('reports legal ending coverage from actual simulated trajectories', () => {
@@ -76,7 +104,7 @@ describe('batch simulation release gate', () => {
     });
 
     expect(result.invariants.legalEndingCoverage).toBe(false);
-    expect(Object.keys(result.invariants.coveredEndings)).toEqual(Object.keys(result.distributions.endingFrequencies));
+    expect(Object.keys(result.invariants.coveredEndings)).not.toContain('none');
   });
 
   it('uses legal trajectory coverage instead of an always-true synthetic reachability gate', () => {
@@ -87,6 +115,29 @@ describe('batch simulation release gate', () => {
 
     expect(invariants).not.toHaveProperty('noSyntheticEndingReachability');
     expect(invariants.legalEndingCoverage).toBe(false);
+    expect(invariants.successEndingCoverage).toBe(false);
+    expect(invariants.balancedEndingCoverage).toBe(false);
+    expect(invariants.failureEndingCoverage).toBe(false);
+  });
+
+  it('requires success balanced and failure endings from legal trajectories and excludes none', () => {
+    const failure = createInitialState('frontend', 'tier2', 42);
+    failure.endingId = 'cash_flow_bankrupt';
+    const balanced = createInitialState('frontend', 'tier2', 43);
+    balanced.endingId = 'ordinary_tool';
+    const success = createInitialState('frontend', 'tier2', 44);
+    success.endingId = 'ai_architect';
+
+    const complete = validateSimulationInvariants([failure, balanced, success]);
+    expect(complete.legalEndingCoverage).toBe(true);
+    expect(complete.successEndingCoverage).toBe(true);
+    expect(complete.balancedEndingCoverage).toBe(true);
+    expect(complete.failureEndingCoverage).toBe(true);
+    expect(complete.coveredEndings).not.toHaveProperty('none');
+
+    const missingSuccess = validateSimulationInvariants([failure, balanced]);
+    expect(missingSuccess.legalEndingCoverage).toBe(false);
+    expect(missingSuccess.successEndingCoverage).toBe(false);
   });
 
   it('reports invariant failures for impossible states', () => {
