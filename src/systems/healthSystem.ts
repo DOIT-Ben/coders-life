@@ -32,5 +32,7 @@ export function settleHealth(state: GameState): GameState {
     next = applyDelta(next, { techXp: count });
   }
 
+  if (inv.ai_pro) next = applyDelta(next, { aiXp: 2 });
+
   return next;
 }

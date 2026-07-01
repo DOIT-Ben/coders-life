@@ -309,14 +309,14 @@ describe('state-driven real-world events and endings', () => {
   it('fails an unrecovered burnout crisis after the recovery window expires', () => {
     let state = createInitialState('frontend', 'tier2', seed);
     state.career.employmentStatus = 'employed';
-    state.stats.burnout = 100;
-    state.stats.mental = 40;
+    state.stats.burnout = 94;
+    state.stats.mental = 10;
     state.hidden.fatigue = 96;
     state.hidden.boundaryScore = 8;
     state = checkEnding(state);
 
     for (let i = 0; i < 7 && !state.gameOver; i += 1) {
-      state.stats.burnout = 100;
+      state.stats.burnout = 94;
       state.stats.mental = 40;
       state.hidden.fatigue = 96;
       state = settleMonth(state);

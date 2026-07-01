@@ -56,6 +56,7 @@ export function buyShopItem(state: GameState, id: string): GameState {
       break;
     case 'credit_card':
       next.inventory.credit_card = Math.max(next.inventory.credit_card ?? 0, 1);
+      next.stats.cash += 2000;
       break;
     case 'recording_tool':
       next.inventory.recording_tool = Math.max(next.inventory.recording_tool ?? 0, 1);

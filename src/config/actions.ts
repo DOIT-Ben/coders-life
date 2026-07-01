@@ -252,7 +252,7 @@ export const CORE_ACTIONS: ActionConfig[] = [
     primaryCategory: 'recovery', subcategory: 'life_ritual', tags: ['coffee', 'tea', 'focus'],
     stressLevel: 0, repeatKey: 'life_ritual', benefitLabel: '小型可控快乐', riskLabel: '咖啡因和消费会累积',
     description: '给下午一个重启按钮，但别把咖啡当睡眠替代品。',
-    visibleEffect: { mental: 4, focus: 5, cash: -120, fatigue: 1 }
+    visibleEffect: { mental: 6, burnout: -2, focus: 7, cash: -120, fatigue: -3, boundaryScore: 2 }
   }),
   action({
     id: 'hardware_tinkering', name: '折腾硬件', icon: '⌨️', group: 'recover',
