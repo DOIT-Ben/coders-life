@@ -296,7 +296,7 @@ describe('state-driven real-world events and endings', () => {
     expect(state.crisis.burnout.active).toBe(true);
 
     for (let i = 0; i < 5 && state.crisis.burnout.active; i += 1) {
-      state = planMonth(state, ['therapy', 'sleep_repair']);
+      state = planMonth(state, ['sleep_repair', 'meditation']);
     }
 
     expect(state.gameOver).toBe(false);
@@ -338,7 +338,7 @@ describe('state-driven real-world events and endings', () => {
     const firstStartedMonth = state.crisis.burnout.startedMonth;
 
     for (let i = 0; i < 5 && state.crisis.burnout.active; i += 1) {
-      state = planMonth(state, ['therapy', 'sleep_repair']);
+      state = planMonth(state, ['sleep_repair', 'meditation']);
     }
     expect(state.crisis.burnout.active).toBe(false);
 
