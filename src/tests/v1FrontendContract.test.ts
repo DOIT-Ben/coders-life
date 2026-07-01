@@ -131,8 +131,8 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('overflow-y: auto');
   });
 
-  it('exposes bookmark navigation in header and disables tab-based bookmark toggle', () => {
-    expect(gameContainerSource).toContain('focusBookmarks');
+  it('exposes bookmark navigation in header and opens a bookmark management modal', () => {
+    expect(gameContainerSource).toContain("openModal('bookmark')");
     ['成就', '商店', '收藏', '保存'].forEach(token => {
       expect(gameContainerSource).toContain(token);
     });

@@ -101,8 +101,14 @@ export default function GameContainer({
   onRestart: () => void;
 }) {
   const [state, setState] = useState<GameState>(() => savedState ?? createInitialState(track, cityTier, undefined, valueProfile));
-  const [modal, setModal] = useState<'ach' | 'shop' | 'ending' | undefined>();
+  const [modal, setModal] = useState<'ach' | 'shop' | 'ending' | 'bookmark' | undefined>();
   const [saveStatus, setSaveStatus] = useState('');
+  const [bookmarkedActionIds, setBookmarkedActionIds] = useState<string[]>(() => {
+    try {
+      const raw = localStorage.getItem('ms_bookmarks');
+      return raw ? (JSON.parse(raw) as string[]) : [];
+    } catch { return []; }
+  });
 
   useEffect(() => { saveGame(state); }, [state]);
   useEffect(() => { if (state.gameOver) setModal('ending'); }, [state.gameOver]);
@@ -112,11 +118,24 @@ export default function GameContainer({
     return () => window.clearTimeout(timer);
   }, [saveStatus]);
 
+  function toggleBookmark(actionId: string) {
+    setBookmarkedActionIds(current => {
+      const next = current.includes(actionId)
+        ? current.filter(id => id !== actionId)
+        : [...current, actionId];
+      localStorage.setItem('ms_bookmarks', JSON.stringify(next));
+      return next;
+    });
+  }
+
+  const availableActions = useMemo(() => getAvailableActions(state), [state.month]);
+
   return (
     <>
-      <GameScreen state={state} setState={setState} openModal={setModal} changeCharacter={onChangeCharacter} saveStatus={saveStatus} setSaveStatus={setSaveStatus} />
+      <GameScreen state={state} setState={setState} openModal={setModal} changeCharacter={onChangeCharacter} saveStatus={saveStatus} setSaveStatus={setSaveStatus} bookmarkedActionIds={bookmarkedActionIds} toggleBookmark={toggleBookmark} />
       {modal === 'ach' && <AchievementDialog state={state} close={() => setModal(undefined)} />}
       {modal === 'shop' && <ShopDialog state={state} setState={setState} close={() => setModal(undefined)} />}
+      {modal === 'bookmark' && <BookmarkDialog actions={availableActions} bookmarkedIds={bookmarkedActionIds} toggleBookmark={toggleBookmark} close={() => setModal(undefined)} />}
       {modal === 'ending' && <EndingDialog state={state} close={() => setModal(undefined)} restart={onRestart} />}
       {state.pendingEventChoice && <EventChoiceDialog state={state} setState={setState} />}
     </>
@@ -129,37 +148,27 @@ function GameScreen({
   openModal,
   changeCharacter,
   saveStatus,
-  setSaveStatus
+  setSaveStatus,
+  bookmarkedActionIds,
+  toggleBookmark
 }: {
   state: GameState;
   setState: (state: GameState) => void;
-  openModal: (modal: 'ach' | 'shop' | 'ending') => void;
+  openModal: (modal: 'ach' | 'shop' | 'ending' | 'bookmark') => void;
   changeCharacter: () => void;
   saveStatus: string;
   setSaveStatus: (status: string) => void;
+  bookmarkedActionIds: string[];
+  toggleBookmark: (actionId: string) => void;
 }) {
-  const [selectedActionGroup, setSelectedActionGroup] = useState<ActionConfig['group'] | 'bookmark'>(DEFAULT_ACTION_GROUP);
-  const [bookmarkSubTab, setBookmarkSubTab] = useState<ActionConfig['group'] | 'all'>('all');
+  const [selectedActionGroup, setSelectedActionGroup] = useState<ActionConfig['group']>(DEFAULT_ACTION_GROUP);
   const [searchQuery, setSearchQuery] = useState('');
-  const [bookmarkedActionIds, setBookmarkedActionIds] = useState<string[]>(() => {
-    try {
-      const raw = localStorage.getItem('ms_bookmarks');
-      return raw ? (JSON.parse(raw) as string[]) : [];
-    } catch { return []; }
-  });
   const [lastPressure, setLastPressure] = useState<PressureSnapshot>(() => createPressureSnapshot(state));
   const [pressureDelta, setPressureDelta] = useState<PressureSnapshot | undefined>();
   const visible = getVisibleStats(state);
   const actions = useMemo(() => getAvailableActions(state), [state.month, state.pendingEventChoice?.id, state.gameOver, state.career.employmentStatus, state.stats.cash, state.career.portfolioCount, state.stats.techXp, state.stats.aiXp, state.stats.reputationXp]);
   const groupActions = useMemo(() => {
-    let filtered: AvailableAction[];
-    if (selectedActionGroup === 'bookmark') {
-      filtered = bookmarkSubTab === 'all'
-        ? actions.filter(action => bookmarkedActionIds.includes(action.id))
-        : actions.filter(action => action.group === bookmarkSubTab);
-    } else {
-      filtered = actions.filter(action => action.group === selectedActionGroup);
-    }
+    let filtered = actions.filter(action => action.group === selectedActionGroup);
     if (searchQuery.trim()) {
       const q = searchQuery.trim().toLowerCase();
       filtered = filtered.filter(action =>
@@ -168,7 +177,7 @@ function GameScreen({
       );
     }
     return filtered;
-  }, [actions, selectedActionGroup, bookmarkSubTab, searchQuery, bookmarkedActionIds]);
+  }, [actions, selectedActionGroup, searchQuery]);
   const cashWan = state.stats.cash / 10000;
   const totalMonths = 23 * 12;
   const progress = Math.min(100, state.month / totalMonths * 100);
@@ -190,25 +199,9 @@ function GameScreen({
     setLastPressure(nextPressure);
   }, [state.month]);
 
-  function toggleBookmark(actionId: string) {
-    setBookmarkedActionIds(current => {
-      const next = current.includes(actionId)
-        ? current.filter(id => id !== actionId)
-        : [...current, actionId];
-      localStorage.setItem('ms_bookmarks', JSON.stringify(next));
-      return next;
-    });
-  }
-
   function executeAction(action: AvailableAction) {
     if (!action.available || state.gameOver || state.pendingEventChoice) return;
     setState(planMonth(state, [action.id]));
-  }
-
-  function focusBookmarks() {
-    setSelectedActionGroup('bookmark');
-    setBookmarkSubTab('all');
-    setSearchQuery('');
   }
 
   function handleSave() {
@@ -235,7 +228,7 @@ function GameScreen({
         <div className="ghdr-right">
           <button className="btn-h" onClick={() => openModal('ach')}>成就</button>
           <button className="btn-h" onClick={() => openModal('shop')}>商店</button>
-          <button className="btn-h" onClick={focusBookmarks}>收藏</button>
+          <button className="btn-h" onClick={() => openModal('bookmark')}>收藏</button>
           <button className="btn-h" onClick={handleSave}>保存</button>
           <button className="btn-h red" onClick={changeCharacter}>换角色</button>
         </div>
@@ -269,36 +262,18 @@ function GameScreen({
         </div>
         <div className="right-col">
           <div className="action-card">
-            <div className="action-hdr">{selectedActionGroup === 'bookmark' ? '★ 收藏管理' : '⚡ 行动选择'}</div>
-            <div className="action-tabs" role="tablist" aria-label={selectedActionGroup === 'bookmark' ? '收藏分类' : '行动分类'}>
-              {selectedActionGroup === 'bookmark' ? (
-                <>
-                  {([{ id: 'all' as const, label: '已收藏' }, ...ACTION_GROUP_MAP] as Array<{ id: ActionConfig['group'] | 'all'; label: string }>).map(tab => (
-                    <button
-                      className={tab.id === bookmarkSubTab ? 'action-tab active' : 'action-tab'}
-                      key={tab.id}
-                      onClick={() => { setBookmarkSubTab(tab.id); setSearchQuery(''); }}
-                      type="button"
-                    >
-                      {tab.label}
-                    </button>
-                  ))}
-                  <button className="action-tab" type="button" onClick={() => { setSelectedActionGroup(DEFAULT_ACTION_GROUP); setSearchQuery(''); }}>
-                    返回
-                  </button>
-                </>
-              ) : (
-                ACTION_GROUP_MAP.map(group => (
-                  <button
-                    className={group.id === selectedActionGroup ? 'action-tab active' : 'action-tab'}
-                    key={group.id}
-                    onClick={() => { setSelectedActionGroup(group.id); setSearchQuery(''); }}
-                    type="button"
-                  >
-                    {group.label}
-                  </button>
-                ))
-              )}
+            <div className="action-hdr">⚡ 行动选择</div>
+            <div className="action-tabs" role="tablist" aria-label="行动分类">
+              {ACTION_GROUP_MAP.map(group => (
+                <button
+                  className={group.id === selectedActionGroup ? 'action-tab active' : 'action-tab'}
+                  key={group.id}
+                  onClick={() => { setSelectedActionGroup(group.id); setSearchQuery(''); }}
+                  type="button"
+                >
+                  {group.label}
+                </button>
+              ))}
               <span className="action-tab-search">
                 <input
                   className="action-tab-search-input"
@@ -316,19 +291,17 @@ function GameScreen({
               ) : (
                 groupActions.map(slotAction => {
                   const insight = getActionInsights(state, slotAction);
-                  const isBookmarkMode = selectedActionGroup === 'bookmark';
                   const isBookmarked = bookmarkedActionIds.includes(slotAction.id);
                   return (
                   <button
                     className="action-btn"
                     key={slotAction.id}
-                    disabled={isBookmarkMode ? false : (!slotAction.available || state.gameOver || Boolean(state.pendingEventChoice))}
-                    onClick={() => isBookmarkMode ? toggleBookmark(slotAction.id) : executeAction(slotAction)}
+                    disabled={!slotAction.available || state.gameOver || Boolean(state.pendingEventChoice)}
+                    onClick={() => executeAction(slotAction)}
                   >
                     <div className="act-head">
                       <span className="act-icon">{slotAction.icon}</span>
                       <span className="act-name">{slotAction.name}</span>
-                      {isBookmarkMode && isBookmarked ? <span className="act-bookmark-on">★ 已收藏</span> : null}
                     </div>
                     <div className="act-chips">{renderEffectChips(slotAction.visibleEffect)}</div>
                     <div className="act-desc">{slotAction.description}</div>
@@ -344,11 +317,9 @@ function GameScreen({
                       </div>
                     ) : null}
                     {slotAction.reason ? <div className="act-reason">{slotAction.reason}</div> : null}
-                    {!isBookmarkMode ? (
-                      <span className={`act-bookmark ${isBookmarked ? 'on' : ''}`} onClick={e => { e.stopPropagation(); toggleBookmark(slotAction.id); }} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); toggleBookmark(slotAction.id); } }} role="button" tabIndex={0} aria-label="收藏">
-                        {isBookmarked ? '★' : '☆'}
-                      </span>
-                    ) : null}
+                    <span className={`act-bookmark ${isBookmarked ? 'on' : ''}`} onClick={e => { e.stopPropagation(); toggleBookmark(slotAction.id); }} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); toggleBookmark(slotAction.id); } }} role="button" tabIndex={0} aria-label="收藏">
+                      {isBookmarked ? '★' : '☆'}
+                    </span>
                   </button>
                   );
                 })
@@ -696,4 +667,86 @@ function logLabel(type: LogType) {
   if (type === 'warn') return 'WARN';
   if (type === 'event') return 'EVENT';
   return 'INFO';
+}
+
+function BookmarkDialog({
+  actions,
+  bookmarkedIds,
+  toggleBookmark,
+  close
+}: {
+  actions: AvailableAction[];
+  bookmarkedIds: string[];
+  toggleBookmark: (actionId: string) => void;
+  close: () => void;
+}) {
+  const [tab, setTab] = useState<ActionConfig['group'] | 'bookmarked'>('bookmarked');
+
+  const grouped = useMemo(() => {
+    const map: Record<string, AvailableAction[]> = {};
+    for (const action of actions) {
+      const key = action.group;
+      if (!map[key]) map[key] = [];
+      map[key].push(action);
+    }
+    return map;
+  }, [actions]);
+
+  const displayed = tab === 'bookmarked'
+    ? actions.filter(action => bookmarkedIds.includes(action.id))
+    : (grouped[tab] ?? []);
+
+  return (
+    <div className="modal-overlay open">
+      <div className="modal wide-modal">
+        <div className="modal-head"><div className="modal-title">★ 收藏管理</div><button onClick={close}>×</button></div>
+        <div className="action-tabs" role="tablist" aria-label="收藏分类">
+          <button
+            className={tab === 'bookmarked' ? 'action-tab active' : 'action-tab'}
+            onClick={() => setTab('bookmarked')}
+            type="button"
+          >
+            已收藏
+          </button>
+          {ACTION_GROUP_MAP.map(group => (
+            <button
+              className={group.id === tab ? 'action-tab active' : 'action-tab'}
+              key={group.id}
+              onClick={() => setTab(group.id)}
+              type="button"
+            >
+              {group.label}
+            </button>
+          ))}
+        </div>
+        <div className="shop-list" style={{ maxHeight: 'min(60dvh, 480px)', overflowY: 'auto' }}>
+          {displayed.length === 0 ? (
+            <div className="action-empty-state">{tab === 'bookmarked' ? '还没有收藏任何行动' : '当前分类下没有行动'}</div>
+          ) : (
+            displayed.map(action => {
+              const isBookmarked = bookmarkedIds.includes(action.id);
+              return (
+                <div className={isBookmarked ? 'shop-item owned' : 'shop-item'} key={action.id}>
+                  <div>
+                    <div className="shop-name">
+                      <span style={{ marginRight: 8 }}>{action.icon}</span>
+                      {action.name}
+                    </div>
+                    <div className="shop-desc">{action.description}</div>
+                    <div className="act-chips" style={{ marginTop: 4 }}>{renderEffectChips(action.visibleEffect)}</div>
+                  </div>
+                  <button
+                    className={isBookmarked ? 'btn-buy owned' : 'btn-buy'}
+                    onClick={() => toggleBookmark(action.id)}
+                  >
+                    {isBookmarked ? '★ 已收藏' : '☆ 收藏'}
+                  </button>
+                </div>
+              );
+            })
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
