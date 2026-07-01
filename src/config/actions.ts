@@ -153,7 +153,7 @@ export const CORE_ACTIONS: ActionConfig[] = [
     primaryCategory: 'recovery', subcategory: 'outdoor_nature', tags: ['walk', 'sunlight', 'low_cost'],
     stressLevel: 0, repeatKey: 'outdoor_reset', benefitLabel: '低成本打断久坐', riskLabel: '收益温和',
     description: '下楼走一圈，把眼睛和脑子从屏幕里拿出来。',
-    visibleEffect: { mental: 5, health: 3, burnout: -3, fatigue: -5, focus: 3, boundaryScore: 2 }
+    visibleEffect: { mental: 4, health: 2, burnout: -3, fatigue: -4, focus: 2, boundaryScore: 1 }
   }),
   action({
     id: 'stretching', name: '拉伸放松', icon: '🧎', group: 'recover',
@@ -173,8 +173,9 @@ export const CORE_ACTIONS: ActionConfig[] = [
     id: 'therapy', name: '心理咨询/复盘', icon: '🧘', group: 'recover',
     primaryCategory: 'recovery', subcategory: 'mind_repair', tags: ['therapy', 'review', 'burnout'],
     stressLevel: 0, repeatKey: 'mind_repair', benefitLabel: '清理燃尽负荷', riskLabel: '需要花钱和面对问题',
+    cooldownMonths: 6,
     description: '不是失败，而是清理燃尽负荷。',
-    visibleEffect: { mental: 18, burnout: -12, cash: -2400, identity: 2, fatigue: -10, boundaryScore: 8 }
+    visibleEffect: { mental: 12, burnout: -8, cash: -2400, identity: 2, fatigue: -10, boundaryScore: 8 }
   }),
   action({
     id: 'rest', name: '休息摸鱼', icon: '🛋️', group: 'recover',

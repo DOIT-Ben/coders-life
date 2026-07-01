@@ -65,7 +65,35 @@ export const CORE_EVENTS: EventConfig[] = [
     category: 'family',
     condition: s => s.household.hasParents || s.household.hasPartner || s.household.children > 0,
     effect: s => ({ cash: s.inventory.medical_insurance ? -8000 : -30000, relation: 4, mental: -10 }),
-    text: '家庭责任不是坏事，但它会把“风险管理”从概念变成账单。'
+    text: '家庭责任不是坏事，但它会把"风险管理"从概念变成账单。'
+  },
+  {
+    id: 'loneliness_toll', title: '社交孤立', type: 'triggered', weight: s => s.stats.relation < 30 && s.age > 28 ? 8 : 0,
+    category: 'social',
+    condition: s => s.stats.relation < 30 && s.age > 28,
+    effect: { mental: -6, burnout: 3, identity: -1 },
+    text: '很久没和人认真说话了。技术上越来越熟练，但有些问题没法靠 Stack Overflow 解决。'
+  },
+  {
+    id: 'friend_bailout', title: '朋友伸出援手', type: 'triggered', weight: s => s.stats.relation > 55 && s.stats.cash < 5000 && s.stats.cash > 0 ? 6 : 0,
+    category: 'social',
+    condition: s => s.stats.relation > 55 && s.stats.cash < 5000 && s.stats.cash > 0,
+    effect: { cash: 4000, mental: 8, relation: 2 },
+    text: '你不好意思开口，但朋友还是问了。这一刻你明白：关系不是负债，是最实在的缓冲层。'
+  },
+  {
+    id: 'family_support', title: '家人关心', type: 'random', weight: s => s.stats.relation > 40 && s.stats.mental < 40 ? 5 : 1,
+    category: 'social',
+    condition: s => s.stats.relation > 40,
+    effect: { mental: 5, relation: 2 },
+    text: '家人发来一条消息："最近还好吗？"你停了一下，发现自己很久没有这样被问过。'
+  },
+  {
+    id: 'network_lead', title: '弱关系带来机会', type: 'random', weight: s => s.stats.relation > 50 && s.career.employmentStatus === 'jobless' ? 7 : s.stats.relation > 50 ? 2 : 0,
+    category: 'career',
+    condition: s => s.stats.relation > 50 && s.career.portfolioCount >= 1,
+    effect: { reputationXp: 6, offerAttempts: 1, mental: 3 },
+    text: '一个很久没联系的同行给你推了一条招聘信息。弱关系的价值常常在你最不需要它的时候积累，在最需要的时候兑现。'
   }
 ];
 
