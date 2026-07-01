@@ -17,7 +17,8 @@ import type {
 export const DEFAULT_FINANCE_STATE: FinanceState = {
   monthlyIncome: 0,
   monthlySalary: 0,
-  monthlyFixedCost: 5200,
+  monthlyFixedCost: 0,
+  fixedObligationsMonthly: 0,
   monthlyRent: 2200,
   monthlyDebtPayment: 0,
   emergencyFundMonths: 19.2,
@@ -39,6 +40,11 @@ export const DEFAULT_HEALTH_PROFILE: HealthProfile = {
 export function createDefaultCareerProfile(track: CareerTrack = 'frontend'): CareerProfile {
   return {
     roleKey: track,
+    currentRoleId: track,
+    roleHistory: [track],
+    transitionProgress: {},
+    domainExperience: {},
+    transferableSkills: 28,
     companyArchetype: 'none',
     performance: 42,
     employability: 34,
@@ -106,10 +112,10 @@ export const DEFAULT_PLAYER_VALUES: PlayerValueProfile = {
 };
 
 export const DEFAULT_CRISIS_STATE: CrisisState = {
-  burnout: { active: false, recoveryProgress: 0 },
-  mentalHealth: { active: false, recoveryProgress: 0 },
-  severeIllness: { active: false, recoveryProgress: 0 },
-  majorUnemployment: { active: false, recoveryProgress: 0 }
+  burnout: { active: false, phase: 'inactive', recoveryProgress: 0, episodes: [] },
+  mentalHealth: { active: false, phase: 'inactive', recoveryProgress: 0, episodes: [] },
+  severeIllness: { active: false, phase: 'inactive', recoveryProgress: 0, episodes: [] },
+  majorUnemployment: { active: false, phase: 'inactive', recoveryProgress: 0, episodes: [] }
 };
 
 export const DEFAULT_MONTHLY_PLAN: MonthlyPlan = {
@@ -123,7 +129,8 @@ function createDefaultProjectState(): ProjectState {
     progress: 0,
     quality: 0,
     completed: false,
-    efficiency: 1
+    efficiency: 1,
+    completedInstances: []
   };
 }
 

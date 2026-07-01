@@ -1,4 +1,4 @@
-import type { CareerTrack, CityTier, GameState } from '../types/game';
+import type { CareerTrack, CityTier, GameState, PlayerValueProfile } from '../types/game';
 import { AGE, GAME_VERSION } from '../config/balance';
 import { ACTIONS, getAction } from '../config/actions';
 import { getPhase, getAge, applyDelta } from './formulas';
@@ -6,7 +6,7 @@ import { settleMonth } from './monthlyLoop';
 import { addLog } from './logs';
 import { applyRealworldActionEffect, createActionHistoryEntry, resolveActionEffect } from '../systems/actionRuleSystem';
 import { addDecisionLog, addTutorialLogs } from '../systems/decisionLogSystem';
-import { buildMonthlyPlan, isPlanOverBudget } from '../systems/monthlyPlanSystem';
+import { buildMonthlyPlan, canExecuteAction, isPlanOverBudget } from '../systems/monthlyPlanSystem';
 import { advanceProjectProgress, resolveProjectActionEffect } from '../systems/projectSystem';
 import {
   DEFAULT_CAREER_PROFILE,
@@ -30,7 +30,12 @@ const initialSkillXp: Record<CareerTrack, { techXp: number; aiXp: number; reputa
   ai_product: { techXp: 30, aiXp: 28, reputationXp: 6 }
 };
 
-export function createInitialState(track: CareerTrack = 'frontend', cityTier: CityTier = 'tier2', seed = Date.now() % 1000000): GameState {
+export function createInitialState(
+  track: CareerTrack = 'frontend',
+  cityTier: CityTier = 'tier2',
+  seed = Date.now() % 1000000,
+  values: PlayerValueProfile = DEFAULT_PLAYER_VALUES
+): GameState {
   const skillXp = initialSkillXp[track];
   const initial: GameState = {
     version: GAME_VERSION,
@@ -80,6 +85,8 @@ export function createInitialState(track: CareerTrack = 'frontend', cityTier: Ci
       totalApplications: 0,
       totalInterviews: 0,
       totalOffers: 0,
+      scheduledInterviews: [],
+      activeOffers: [],
       promotionScore: 0
     },
     finance: { ...DEFAULT_FINANCE_STATE },
@@ -89,7 +96,7 @@ export function createInitialState(track: CareerTrack = 'frontend', cityTier: Ci
     household: { ...DEFAULT_HOUSEHOLD_STATE },
     laborMarket: { ...DEFAULT_LABOR_MARKET },
     lifePressure: { ...DEFAULT_LIFE_PRESSURE },
-    values: { ...DEFAULT_PLAYER_VALUES },
+    values: { ...values },
     crisis: structuredClone(DEFAULT_CRISIS_STATE),
     flags: {},
     cooldowns: {},
@@ -97,6 +104,9 @@ export function createInitialState(track: CareerTrack = 'frontend', cityTier: Ci
     unlockedAchievements: [],
     seenEvents: [],
     eventMemory: {},
+    eventChainProgress: {},
+    eventLastTriggeredMonth: {},
+    eventChoiceMemory: {},
     pendingEffects: [],
     actionHistory: [],
     decisionLog: [],
@@ -120,8 +130,8 @@ export function createInitialState(track: CareerTrack = 'frontend', cityTier: Ci
 export function getAvailableActions(state: GameState) {
   return ACTIONS.map(action => ({
     ...action,
-    available: action.require ? action.require(state) : true,
-    reason: action.disabledReason?.(state)
+    available: canExecuteAction(state, action).ok,
+    reason: canExecuteAction(state, action).reason ?? action.disabledReason?.(state)
   }));
 }
 
@@ -132,7 +142,7 @@ export function applyAction(state: GameState, actionId: string): GameState {
 function applyActionWithinMonth(state: GameState, actionId: string): GameState {
   if (state.gameOver) return state;
   const action = getAction(actionId);
-  if (action.require && !action.require(state)) return state;
+  if (!canExecuteAction(state, action).ok) return state;
   const resolved = resolveActionEffect(state, action);
   const recentSameActionCount = state.actionHistory.filter(item => item.id === action.id && state.month - item.month < 6).length;
   const projectAdjustedEffect = resolveProjectActionEffect(state, action, resolved.effect);
@@ -156,7 +166,26 @@ function applyActionWithinMonth(state: GameState, actionId: string): GameState {
 export function planMonth(state: GameState, actionIds: string[]): GameState {
   if (state.gameOver) return state;
   const actions = actionIds.map(getAction);
-  if (actions.some(action => action.require && !action.require(state))) return state;
+  const duplicateActionId = actionIds.find((id, index) => actionIds.indexOf(id) !== index);
+  if (duplicateActionId) {
+    return addLog(structuredClone(state), {
+      type: 'warn',
+      title: '月度计划包含重复行动',
+      text: '同一个月内不能重复安排同一项行动，请改成不同类型的组合。'
+    });
+  }
+
+  for (let index = 0; index < actions.length; index += 1) {
+    const action = actions[index];
+    const check = canExecuteAction(state, action, actions.slice(0, index));
+    if (!check.ok) {
+      return addLog(structuredClone(state), {
+        type: 'warn',
+        title: '月度计划行动不可执行',
+        text: `${action.name}暂时不能加入本月计划：${check.reason ?? '当前条件不足。'}`
+      });
+    }
+  }
 
   const monthlyPlan = buildMonthlyPlan(state, actions);
   if (isPlanOverBudget(monthlyPlan)) {

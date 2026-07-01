@@ -1,4 +1,4 @@
-import type { ActionConfig, EffectDelta, GameState, ProjectState } from '../types/game';
+import type { ActionConfig, EffectDelta, GameState, ProjectInstance, ProjectState } from '../types/game';
 import { applyDelta } from '../core/formulas';
 
 type ProjectKey = keyof GameState['projects'];
@@ -30,14 +30,52 @@ export function advanceProjectProgress(state: GameState, action: ActionConfig): 
 
   const next = structuredClone(state);
   const project = next.projects[projectConfig.key] as ProjectState;
-  if (project.completed) return next;
+  const active = project.activeInstance ?? createProjectInstance(projectConfig.key, state.month);
 
   const progressGain = projectConfig.progress * project.efficiency;
-  project.progress = Math.min(100, project.progress + progressGain);
-  project.quality = Math.min(100, project.quality + progressGain * (action.stressLevel >= 3 ? 0.45 : 0.65));
+  active.progress = Math.min(100, active.progress + progressGain);
+  active.quality = Math.min(100, active.quality + progressGain * (action.stressLevel >= 3 ? 0.45 : 0.65));
+  active.audienceFit = Math.min(100, active.audienceFit + progressGain * (action.primaryCategory === 'growth' ? 0.35 : 0.25));
+  project.activeInstance = active;
+  syncLegacyProjectFields(project);
 
-  if (project.progress < 100) return next;
+  if (active.progress < 100) return next;
 
-  project.completed = true;
-  return applyDelta(next, projectConfig.completionEffect);
+  const released: ProjectInstance = {
+    ...active,
+    status: 'released',
+    progress: 100,
+    completedMonth: state.month
+  };
+  project.completedInstances = [...project.completedInstances, released];
+  project.activeInstance = createProjectInstance(projectConfig.key, state.month);
+  syncLegacyProjectFields(project);
+
+  return applyDelta(next, scaleCompletionEffect(projectConfig.completionEffect, released));
+}
+
+function createProjectInstance(kind: ProjectKey, month: number): ProjectInstance {
+  return {
+    id: `${String(kind)}-${month}`,
+    kind,
+    status: 'active',
+    progress: 0,
+    quality: 0,
+    audienceFit: 35,
+    startedMonth: month
+  };
+}
+
+function syncLegacyProjectFields(project: ProjectState): void {
+  project.progress = project.activeInstance?.progress ?? 0;
+  project.quality = project.activeInstance?.quality ?? 0;
+  project.completed = project.completedInstances.length > 0;
+}
+
+function scaleCompletionEffect(effect: EffectDelta, instance: ProjectInstance): EffectDelta {
+  const qualityScale = 0.75 + Math.max(0, instance.quality) / 160;
+  const next: EffectDelta = { ...effect };
+  if (typeof next.reputationXp === 'number') next.reputationXp = Math.round(next.reputationXp * qualityScale);
+  if (typeof next.passiveIncomeMonthly === 'number') next.passiveIncomeMonthly = Math.round(next.passiveIncomeMonthly * qualityScale);
+  return next;
 }

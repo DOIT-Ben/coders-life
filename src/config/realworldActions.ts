@@ -1,7 +1,7 @@
 import actionRows from '../data/realworld/realworld_actions.json';
-import type { ActionConfig, ActionPrimaryCategory, ActionRequirements, ActionStressLevel, ActionSubcategory, EffectDelta, GameState, RealworldEffectDelta } from '../types/game';
+import type { ActionConfig, ActionPrimaryCategory, ActionRequirements, ActionStressLevel, ActionSubcategory, EffectDelta, EvidenceMetadata, GameState, RealworldEffectDelta } from '../types/game';
 import { getVisibleStats } from '../core/formulas';
-import { withActionEvidence } from './evidence';
+import { createEvidenceMetadata, withActionEvidence } from './evidence';
 import { numberFrom, tagsFrom } from './realworldParser';
 
 interface RealworldActionRow {
@@ -31,7 +31,9 @@ interface RealworldActionRow {
   real_world_logic: string;
   source_name: string;
   source_url: string;
+  source_date?: string;
   confidence: string;
+  requirements?: ActionRequirements;
 }
 
 function groupFor(primary: string): ActionConfig['group'] {
@@ -92,35 +94,31 @@ function realworldEffectFor(row: RealworldActionRow): RealworldEffectDelta {
   return {};
 }
 
-function requirementsFor(row: RealworldActionRow): ActionRequirements | undefined {
+export function structuredRequirementsFor(row: RealworldActionRow): ActionRequirements | undefined {
   const text = row.requirement.trim();
-  const requirements: ActionRequirements = {};
   if (!text || text === '无') return undefined;
-
-  if (/在职/.test(text)) requirements.employed = true;
-  if (/20 万以上本金|20 万以上/.test(text)) requirements.minCash = Math.max(requirements.minCash ?? 0, 200000);
-  if (/30 万以上本金|30 万以上可损失|30 万以上/.test(text)) requirements.minCash = Math.max(requirements.minCash ?? 0, 300000);
-  if (/有闲钱 5 万以上/.test(text)) requirements.minCash = Math.max(requirements.minCash ?? 0, 50000);
-  if (/至少 6 个月存款/.test(text)) requirements.minCash = Math.max(requirements.minCash ?? 0, 6 * 5200);
-  if (/有预算|可承担费用|可承担|可支配预算|可支配收入|可买工具|可买设备|可买菜/.test(text)) requirements.minCash = Math.max(requirements.minCash ?? 0, 5000);
-  if (/3 年以上经验/.test(text)) requirements.minTech = Math.max(requirements.minTech ?? 0, 45);
-  if (/5 年以上经验|有技术深度|深度领域|专业背景|有专精方向/.test(text)) requirements.minTech = Math.max(requirements.minTech ?? 0, 60);
-  if (/基础算法|会用 Python|Python 基础/.test(text)) requirements.minTech = Math.max(requirements.minTech ?? 0, 25);
-  if (/有 MVP 能力/.test(text)) requirements.minTech = Math.max(requirements.minTech ?? 0, 45);
-  if (/AI/.test(row.name) || /会用 AI|AI 工具/.test(text)) requirements.minAi = Math.max(requirements.minAi ?? 0, 20);
-  if (/耳机/.test(text)) requirements.inventory = 'headphones';
-  if (/有家庭|需要朋友\/家人/.test(text)) requirements.household = 'family';
-  if (/有父母/.test(text)) requirements.household = 'parent';
-  return Object.keys(requirements).length ? requirements : undefined;
+  return row.requirements;
 }
 
 function checkRequirements(state: GameState, requirements: ActionRequirements): string | undefined {
   const visible = getVisibleStats(state);
+  const activeOffers = (state.career.activeOffers ?? []).filter(offer => offer.status === 'active' && offer.expiresMonth >= state.month);
+  const scheduledInterviews = (state.career.scheduledInterviews ?? []).filter(interview => interview.status === 'scheduled' && interview.scheduledMonth >= state.month);
   if (requirements.employed && state.career.employmentStatus !== 'employed') return '需要在职。';
+  if (requirements.employmentOrInterview && state.career.employmentStatus !== 'employed' && scheduledInterviews.length <= 0 && activeOffers.length <= 0) return '需要在职、面试机会或 offer。';
   if (typeof requirements.minCash === 'number' && state.stats.cash < requirements.minCash) return `需要现金至少 ${requirements.minCash} 元。`;
   if (typeof requirements.minTech === 'number' && visible.tech < requirements.minTech) return `需要技术至少 ${requirements.minTech}。`;
   if (typeof requirements.minAi === 'number' && visible.ai < requirements.minAi) return `需要 AI 能力至少 ${requirements.minAi}。`;
-  if (requirements.inventory && !state.inventory[requirements.inventory]) return '需要耳机等对应物品。';
+  if (requirements.inventory && !state.inventory[requirements.inventory]) return requirements.inventory === 'headphones' ? '需要耳机等对应物品。' : '需要对应工具或物品。';
+  if (requirements.flag && !state.flags[requirements.flag]) return '需要先形成对应状态。';
+  if (typeof requirements.minOffers === 'number' && activeOffers.length < requirements.minOffers) return `需要至少 ${requirements.minOffers} 个当前有效 offer。`;
+  if (typeof requirements.minInterviews === 'number' && scheduledInterviews.length < requirements.minInterviews) return `需要至少 ${requirements.minInterviews} 个当前面试机会。`;
+  if (requirements.positiveIncome && state.finance.monthlyIncome + state.finance.monthlySalary + state.stats.passiveIncomeMonthly <= 0) return '需要真实正收入。';
+  if (requirements.debtBalance && state.finance.debt <= 0) return '需要存在贷款或债务余额。';
+  if (requirements.timeAvailable && (state.lifePressure.timeScarcity > 70 || state.hidden.fatigue > 82)) return '需要可支配时间和精力。';
+  if (requirements.focusAvailable && (state.hidden.focus < 18 || state.hidden.fatigue > 86)) return '需要基本专注条件。';
+  if (requirements.socialSupport && state.socialProfile.friendSupport + state.socialProfile.networkStrength + (state.flags.has_friends ? 30 : 0) < 40) return '需要朋友、人脉或社区支持。';
+  if (requirements.smokingHabit && !state.flags.smoking_habit) return '需要先存在烟瘾或尼古丁依赖状态。';
   if (requirements.household === 'family' && !state.household.hasPartner && state.household.children === 0 && !state.household.hasParents) return '需要家庭成员。';
   if (requirements.household === 'partner' && !state.household.hasPartner) return '需要伴侣。';
   if (requirements.household === 'child' && state.household.children <= 0) return '需要子女。';
@@ -128,10 +126,9 @@ function checkRequirements(state: GameState, requirements: ActionRequirements): 
   return undefined;
 }
 
-function mapRow(row: Record<string, string>): ActionConfig {
-  const typed = row as unknown as RealworldActionRow;
+function mapRow(typed: RealworldActionRow): ActionConfig {
   const cooldown = numberFrom(typed.cooldown_months);
-  const requirements = requirementsFor(typed);
+  const requirements = structuredRequirementsFor(typed);
   return {
     id: typed.action_id,
     name: typed.name,
@@ -155,17 +152,30 @@ function mapRow(row: Record<string, string>): ActionConfig {
   };
 }
 
-export const REALWORLD_ACTIONS: ActionConfig[] = (actionRows as Record<string, string>[]).map(row => withActionEvidence(mapRow(row), {
-  sourceLevel: 'industry_report',
-  confidence: (row.confidence === 'high' || row.confidence === 'medium' || row.confidence === 'low') ? row.confidence : 'medium',
-  source: row.source_name
-}));
+function evidenceFor(row: RealworldActionRow): EvidenceMetadata {
+  const sourceName = row.source_name || '未标注来源';
+  return createEvidenceMetadata({
+    sourceName,
+    sourceUrl: row.source_url,
+    sourceDate: row.source_date,
+    category: row.primary_category,
+    subcategory: row.subcategory,
+    confidence: row.confidence,
+    rationaleSubject: row.benefit_label || row.risk_label || row.primary_category
+  });
+}
+
+const REALWORLD_ACTION_ROWS = actionRows as RealworldActionRow[];
+
+export const REALWORLD_ACTIONS: ActionConfig[] = REALWORLD_ACTION_ROWS.map(row => withActionEvidence(mapRow(row), evidenceFor(row)));
 export const REALWORLD_ACTION_COUNT = REALWORLD_ACTIONS.length;
-export const UNPARSED_REALWORLD_ACTION_REQUIREMENTS = Array.from(new Set(
-  (actionRows as Record<string, string>[])
+export const UNMAPPED_REALWORLD_ACTION_REQUIREMENTS = Array.from(new Set(
+  REALWORLD_ACTION_ROWS
     .filter(row => {
       const text = (row.requirement ?? '').trim();
-      return text && text !== '无' && !requirementsFor(row as unknown as RealworldActionRow);
+      return text && text !== '无' && !structuredRequirementsFor(row);
     })
     .map(row => row.requirement.trim())
 )).sort();
+export const UNSTRUCTURED_REALWORLD_ACTION_REQUIREMENTS: string[] = [];
+export const UNPARSED_REALWORLD_ACTION_REQUIREMENTS = UNMAPPED_REALWORLD_ACTION_REQUIREMENTS;

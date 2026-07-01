@@ -1,6 +1,7 @@
 import failEndingRows from '../data/realworld/realworld_fail_endings.json';
-import type { EndingConfig } from '../types/game';
+import type { EndingConfig, GameState } from '../types/game';
 import { withEndingEvidence } from './evidence';
+import { isUnrecoveredHardCrisis } from '../systems/crisisSystem';
 
 interface FailEndingRow {
   ending_id: string;
@@ -15,12 +16,13 @@ interface FailEndingRow {
 }
 
 function conditionFor(id: string): EndingConfig['condition'] {
+  const crisisFailed = (state: GameState, key: keyof GameState['crisis']) =>
+    state.crisis[key].phase === 'failed' || isUnrecoveredHardCrisis(state, key);
   if (id === 'burnout_collapse') return state =>
     state.stats.burnout >= 85 &&
     state.stats.health <= 25 &&
     state.stats.mental <= 20 &&
-    state.crisis.burnout.active &&
-    state.month - (state.crisis.burnout.startedMonth ?? state.month) >= 6;
+    crisisFailed(state, 'burnout');
   if (id === 'cash_flow_bankrupt') return state => state.stats.cash <= 0;
   if (id === 'skill_obsolete') return state => state.age >= 38 && state.stats.techXp <= 80 && state.stats.aiXp <= 30;
   if (id === 'relationship_bankrupt') return state => state.age >= 35 && state.stats.relation <= 10;
@@ -31,19 +33,16 @@ function conditionFor(id: string): EndingConfig['condition'] {
       state.careerProfile.monthsUnemployed >= 12 &&
       state.career.totalApplications >= 30 &&
       state.stats.cash <= 100000 &&
-      state.crisis.majorUnemployment.active &&
-      state.month - (state.crisis.majorUnemployment.startedMonth ?? state.month) >= 6;
+      crisisFailed(state, 'majorUnemployment');
   }
   if (id === 'health_shutdown') return state =>
     state.stats.health <= 0 &&
-    state.crisis.severeIllness.active &&
-    state.month - (state.crisis.severeIllness.startedMonth ?? state.month) >= 6;
+    crisisFailed(state, 'severeIllness');
   if (id === 'ai_left_behind') return state => state.age >= 40 && state.world.toolAdoption >= 65 && state.careerProfile.aiLeverage <= 25 && state.careerProfile.employability <= 25;
   if (id === 'stuck_indie') return state => state.career.employmentStatus === 'freelance' && state.month >= 24 && state.stats.passiveIncomeMonthly <= 5000 && state.stats.burnout >= 70;
   if (id === 'depression_chronic') return state =>
     state.stats.mental <= 5 &&
-    state.crisis.mentalHealth.active &&
-    state.month - (state.crisis.mentalHealth.startedMonth ?? state.month) >= 6;
+    crisisFailed(state, 'mentalHealth');
   if (id === 'lost_purpose') return state => state.age >= 35 && state.stats.identity <= 10;
   if (id === 'debt_trap') return state => state.stats.cash <= -100000;
   return state => state.gameOver && false;
@@ -89,7 +88,7 @@ const STATE_DRIVEN_FAIL_ENDING_DEFINITIONS = [
     id: 'realworld_health_debt_collapse',
     title: '长期健康债未恢复',
     category: 'fail',
-    condition: state => state.healthProfile.healthDebt >= 90 && state.healthProfile.chronicStress >= 85 && state.age >= 35 && state.crisis.severeIllness.active && state.month - (state.crisis.severeIllness.startedMonth ?? state.month) >= 6,
+    condition: state => state.healthProfile.healthDebt >= 90 && state.healthProfile.chronicStress >= 85 && state.age >= 35 && (state.crisis.severeIllness.phase === 'failed' || isUnrecoveredHardCrisis(state, 'severeIllness')),
     text: '多年累积的睡眠债、压力债和恢复不足变成了硬约束。真实世界里，健康风险需要制度、医疗和生活节奏共同处理。'
   },
   {

@@ -78,13 +78,38 @@ export interface CareerState {
   totalApplications: number;
   totalInterviews: number;
   totalOffers: number;
+  scheduledInterviews: InterviewOpportunity[];
+  activeOffers: JobOffer[];
   promotionScore: number;
+}
+
+export type InterviewStatus = 'scheduled' | 'completed' | 'expired' | 'declined';
+
+export interface InterviewOpportunity {
+  id: ID;
+  companyType: CompanyType;
+  createdMonth: number;
+  scheduledMonth: number;
+  status: InterviewStatus;
+}
+
+export type JobOfferStatus = 'active' | 'accepted' | 'declined' | 'expired';
+
+export interface JobOffer {
+  id: ID;
+  companyType: CompanyType;
+  jobLevel: number;
+  salaryMonthly: number;
+  createdMonth: number;
+  expiresMonth: number;
+  status: JobOfferStatus;
 }
 
 export interface FinanceState {
   monthlyIncome: number;
   monthlySalary: number;
   monthlyFixedCost: number;
+  fixedObligationsMonthly: number;
   monthlyRent: number;
   monthlyDebtPayment: number;
   emergencyFundMonths: number;
@@ -105,6 +130,11 @@ export interface HealthProfile {
 
 export interface CareerProfile {
   roleKey: CareerTrack;
+  currentRoleId: string;
+  roleHistory: string[];
+  transitionProgress: Record<string, number>;
+  domainExperience: Record<string, number>;
+  transferableSkills: number;
   companyArchetype: string;
   performance: number;
   employability: number;
@@ -168,10 +198,21 @@ export interface PlayerValueProfile {
   exploration: number;
 }
 
+export type CrisisPhase = 'inactive' | 'active' | 'recovering' | 'recovered' | 'failed';
+
+export interface CrisisEpisode {
+  startedMonth: number;
+  resolvedMonth?: number;
+  outcome?: 'recovered' | 'failed';
+}
+
 export interface CrisisChapter {
   active: boolean;
+  phase: CrisisPhase;
   startedMonth?: number;
+  lastResolvedMonth?: number;
   recoveryProgress: number;
+  episodes: CrisisEpisode[];
 }
 
 export interface CrisisState {
@@ -223,6 +264,19 @@ export interface ProjectState {
   quality: number;
   completed: boolean;
   efficiency: number;
+  activeInstance?: ProjectInstance;
+  completedInstances: ProjectInstance[];
+}
+
+export interface ProjectInstance {
+  id: ID;
+  kind: keyof ProjectPortfolioState;
+  status: 'active' | 'released' | 'abandoned';
+  progress: number;
+  quality: number;
+  audienceFit: number;
+  startedMonth: number;
+  completedMonth?: number;
 }
 
 export interface ProjectPortfolioState {
@@ -298,8 +352,17 @@ export interface EventChoiceConfig {
 
 export interface EvidenceMetadata {
   sourceLevel: 'empirical' | 'industry_report' | 'case_study' | 'synthetic';
+  sourceType?: 'peer_reviewed' | 'official_statistics' | 'industry_survey' | 'media' | 'community_story' | 'synthetic';
   confidence: 'low' | 'medium' | 'high';
   source?: string;
+  title?: string;
+  url?: string;
+  publicationDate?: string;
+  population?: string;
+  sampleSize?: number;
+  applicableScope?: string[];
+  parameterRationale?: string;
+  verifiedAt?: string;
 }
 
 export interface PendingEventChoice {
@@ -334,6 +397,9 @@ export interface GameState {
   unlockedAchievements: string[];
   seenEvents: string[];
   eventMemory: Record<string, number>;
+  eventChainProgress: Record<string, number>;
+  eventLastTriggeredMonth: Record<string, number>;
+  eventChoiceMemory: Record<string, number>;
   pendingEffects: PendingEffect[];
   actionHistory: ActionHistoryEntry[];
   decisionLog: DecisionLogEntry[];
@@ -385,10 +451,20 @@ export interface RealworldEffectDelta {
 
 export interface ActionRequirements {
   employed?: boolean;
+  employmentOrInterview?: boolean;
   minCash?: number;
   minTech?: number;
   minAi?: number;
   inventory?: ID;
+  flag?: ID;
+  minOffers?: number;
+  minInterviews?: number;
+  positiveIncome?: boolean;
+  debtBalance?: boolean;
+  timeAvailable?: boolean;
+  focusAvailable?: boolean;
+  socialSupport?: boolean;
+  smokingHabit?: boolean;
   household?: 'family' | 'partner' | 'child' | 'parent';
 }
 

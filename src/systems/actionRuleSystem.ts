@@ -1,9 +1,17 @@
 import type { ActionConfig, ActionHistoryEntry, EffectDelta, GameState, RealworldEffectDelta } from '../types/game';
 import { clamp } from '../core/formulas';
+import { CAREER_ROUTES } from '../config/realworldCareer';
+import { deriveRoleAiPressure } from './laborMarketSystem';
+import { acceptActiveOffer } from './careerSystem';
 
 const XP_KEYS = ['techXp', 'aiXp', 'reputationXp', 'portfolio'] as const;
 const RECOVERY_SUBCATEGORIES = new Set(['digital_entertainment', 'media_reading', 'body_repair', 'mind_repair', 'life_ritual', 'outdoor_nature']);
 const DIGITAL_SUBCATEGORIES = new Set(['digital_entertainment', 'media_reading']);
+const TRANSITION_ACTIONS: Record<string, string> = {
+  transition_testing: 'testing',
+  transition_data_engineering: 'data_engineering',
+  transition_security: 'security'
+};
 
 type NumericEffectKey =
   | 'techXp'
@@ -149,12 +157,94 @@ export function applyRealworldActionEffect(state: GameState, action: ActionConfi
     next.lifePressure = mergeLifePressureState(next.lifePressure, effect.lifePressure);
   }
 
+  return applyCareerOpportunityActionEffect(applyCareerTransitionEffect(applyValueDrift(next, action), action), action);
+}
+
+function applyCareerOpportunityActionEffect(state: GameState, action: ActionConfig): GameState {
+  if (action.id === 'C2002') return acceptActiveOffer(state);
+  if (action.id === 'J2003') {
+    const scheduled = state.career.scheduledInterviews.find(interview => interview.status === 'scheduled' && interview.scheduledMonth >= state.month);
+    if (!scheduled) return state;
+    const next = structuredClone(state);
+    next.career.scheduledInterviews = next.career.scheduledInterviews.map(interview => interview.id === scheduled.id ? { ...interview, scheduledMonth: state.month, status: 'scheduled' } : interview);
+    next.careerProfile.interviewMomentum = clamp(next.careerProfile.interviewMomentum + 6, 0, 100);
+    return next;
+  }
+  return state;
+}
+
+function applyValueDrift(state: GameState, action: ActionConfig): GameState {
+  const drift: Partial<Record<keyof GameState['values'], number>> = {};
+
+  if (action.primaryCategory === 'income' || action.subcategory === 'cash_management') {
+    drift.wealth = 0.04;
+    drift.stability = 0.025;
+    if (action.subcategory === 'side_income' || action.subcategory === 'venture') drift.freedom = 0.025;
+  }
+  if (action.primaryCategory === 'career') {
+    drift.stability = (drift.stability ?? 0) + 0.035;
+    drift.craft = (drift.craft ?? 0) + 0.02;
+  }
+  if (action.primaryCategory === 'growth') {
+    drift.craft = (drift.craft ?? 0) + 0.035;
+    if (action.subcategory === 'visibility' || action.subcategory === 'portfolio') {
+      drift.impact = 0.03;
+      drift.exploration = 0.025;
+    }
+  }
+  if (action.primaryCategory === 'recovery') {
+    drift.health = 0.04;
+    if (action.subcategory === 'mind_repair' || action.subcategory === 'outdoor_nature') drift.freedom = 0.02;
+  }
+  if (action.primaryCategory === 'relationship_safety') {
+    drift.relationships = 0.04;
+    drift.stability = (drift.stability ?? 0) + 0.015;
+  }
+
+  if (Object.keys(drift).length === 0) return state;
+
+  const next = structuredClone(state);
+  Object.entries(drift).forEach(([key, amount]) => {
+    const valueKey = key as keyof GameState['values'];
+    next.values[valueKey] = clamp(next.values[valueKey] + amount, 0.1, 1.2);
+  });
+  return next;
+}
+
+function applyCareerTransitionEffect(state: GameState, action: ActionConfig): GameState {
+  const routeId = TRANSITION_ACTIONS[action.id];
+  if (!routeId) return state;
+  const route = CAREER_ROUTES.find(item => item.id === routeId);
+  if (!route) return state;
+
+  const next = structuredClone(state);
+  const currentProgress = next.careerProfile.transitionProgress[routeId] ?? 0;
+  const transferableBonus = next.careerProfile.transferableSkills * 0.25 + next.career.portfolioCount * 4;
+  const gained = Math.max(12, Math.round(72 - route.transitionCost + transferableBonus));
+  const progress = clamp(currentProgress + gained, 0, 100);
+  next.careerProfile.transitionProgress = {
+    ...next.careerProfile.transitionProgress,
+    [routeId]: progress
+  };
+  next.careerProfile.domainExperience = {
+    ...next.careerProfile.domainExperience,
+    [routeId]: (next.careerProfile.domainExperience[routeId] ?? 0) + 1
+  };
+  next.careerProfile.transferableSkills = clamp(next.careerProfile.transferableSkills + 1.5, 0, 100);
+
+  if (progress >= 100 && next.careerProfile.currentRoleId !== routeId) {
+    next.careerProfile.currentRoleId = routeId;
+    next.careerProfile.roleHistory = [...new Set([...next.careerProfile.roleHistory, routeId])];
+    next.careerProfile.aiLeverage = clamp(next.careerProfile.aiLeverage - route.aiExposure * 0.03 + 4, 0, 100);
+    next.careerProfile.careerCapital = clamp(next.careerProfile.careerCapital + route.requiredCapital * 0.08, 0, 100);
+  }
+
   return next;
 }
 
 function aiAndEconomyScale(state: GameState, action: ActionConfig): number {
   let scale = 1;
-  if ((action.primaryCategory === 'growth' || action.primaryCategory === 'career') && state.world.aiReplacement > state.stats.aiXp / 6) {
+  if ((action.primaryCategory === 'growth' || action.primaryCategory === 'career') && deriveRoleAiPressure(state) > state.careerProfile.aiLeverage + 28) {
     scale -= 0.08;
   }
   if (state.world.economyCycle === 'recession' || state.world.economyCycle === 'crisis') {

@@ -1,10 +1,10 @@
-import { createInitialState, applyAction } from '../src/core/gameEngine';
-import { chooseActionForStrategy, resolvePendingEventChoiceForSimulation } from '../src/systems/autoChoiceSystem';
+import { createInitialState, planMonth } from '../src/core/gameEngine';
+import { chooseMonthlyPlanForStrategy, resolvePendingEventChoiceForSimulation } from '../src/systems/autoChoiceSystem';
 
 let state = createInitialState('frontend', 'tier2', 20260622);
 while (!state.gameOver && state.month < 280) {
   state = resolvePendingEventChoiceForSimulation(state);
-  state = applyAction(state, chooseActionForStrategy(state, 'stable_cashflow'));
+  state = planMonth(state, chooseMonthlyPlanForStrategy(state, 'stable_cashflow'));
 }
 
 console.log(JSON.stringify({

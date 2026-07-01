@@ -5,10 +5,24 @@ import appSource from '../App.tsx?raw';
 const appCss = readFileSync(new URL('../styles/app.css', import.meta.url), 'utf8');
 
 describe('v1 frontend contract', () => {
+  const worldStatusBarSource = readFileSync(new URL('../components/WorldStatusBar.tsx', import.meta.url), 'utf8');
+  const debugPanelSource = readFileSync(new URL('../components/DebugPanel.tsx', import.meta.url), 'utf8');
+
   it('keeps v2 implementation labels out of the visible v1 shell', () => {
     expect(appSource).not.toContain('V2 ENGINE');
     expect(appSource).not.toContain('AI重构');
     expect(appSource).not.toContain('隐藏状态');
+  });
+
+  it('does not surface legacy global AI replacement in status or debug UI', () => {
+    expect(worldStatusBarSource).not.toContain('state.world.aiReplacement');
+    expect(worldStatusBarSource).not.toContain('AI重构');
+    expect(worldStatusBarSource).toContain('deriveRoleAiPressure');
+    expect(worldStatusBarSource).toContain('岗位AI压力');
+
+    expect(debugPanelSource).not.toContain('aiReplacement');
+    expect(debugPanelSource).toContain('deriveRoleAiPressure');
+    expect(debugPanelSource).toContain('laborAiDisruption');
   });
 
   it('uses categorized action tabs with detailed sub-actions', () => {
@@ -119,16 +133,24 @@ describe('v1 frontend contract', () => {
     ['月度计划', '时间预算', '精力预算'].forEach(label => {
       expect(appSource).toContain(label);
     });
-    expect(appSource).toContain('calculateMonthlyPlanBudget');
+    expect(appSource).toContain('buildMonthlyPlan');
+    expect(appSource).toContain('isPlanOverBudget');
     expect(appSource).toContain('monthly-budget');
     expect(appCss).toContain('.monthly-budget');
     expect(appCss).toContain('height: calc(var(--action-slot-height) * 4 + var(--action-slot-gap) * 3);');
     expect(appCss).toContain('overflow-y: auto');
   });
 
-  it('uses the monthly planning API from action buttons', () => {
-    expect(appSource).toContain('planMonth(state, [action.id])');
+  it('lets players build and submit a multi-action monthly plan from the action panel', () => {
+    ['plannedActionIds', 'togglePlannedAction', 'submitMonthlyPlan', '执行本月计划', '已选行动'].forEach(token => {
+      expect(appSource).toContain(token);
+    });
+    expect(appSource).toContain('buildMonthlyPlan(state, plannedActions)');
+    expect(appSource).toContain('planMonth(state, plannedActionIds)');
+    expect(appSource).not.toContain('planMonth(state, [action.id])');
     expect(appSource).not.toContain('setState(applyAction(state, action.id))');
+    expect(appCss).toContain('.monthly-plan-panel');
+    expect(appCss).toContain('.monthly-plan-submit');
   });
 
   it('routes shop purchases through durable shop effects', () => {
@@ -149,8 +171,30 @@ describe('v1 frontend contract', () => {
     expect(appSource).toContain('ach-progress');
     expect(appSource).toContain('ach-progress-bar');
     expect(appSource).toContain('ach-desc');
+    ['缓冲', '恢复', '迁移', '近12个月有高压加班记录'].forEach(token => {
+      expect(appSource).toContain(token);
+    });
+    expect(appSource).not.toContain('工具人的一生');
     expect(appCss).toContain('.ach-progress');
     expect(appCss).toContain('.ach-progress-bar');
+  });
+
+  it('shows project progress and quality instead of hiding staged outcomes', () => {
+    ['ProjectProgressPanel', '项目进度', '质量', 'completedInstances', 'activeInstance'].forEach(token => {
+      expect(appSource).toContain(token);
+    });
+    expect(appSource).not.toContain("immediateText: '作品 +1 / 技术 +12 / 成本 -0.3万'");
+    expect(appSource).not.toContain("immediateText: '声望 +18 / 被动收入 / 精神 -10'");
+    expect(appCss).toContain('.project-progress-panel');
+    expect(appCss).toContain('.project-progress-bar');
+  });
+
+  it('lets players choose a value profile before starting a game', () => {
+    ['valueProfileId', 'VALUE_PROFILES', '财富缓冲', '健康关系', '创造探索'].forEach(token => {
+      expect(appSource).toContain(token);
+    });
+    expect(appSource).toContain('createInitialState(track, cityTier, undefined, valueProfile.values)');
+    expect(appCss).toContain('.value-profile-grid');
   });
 
   it('uses respectful crisis age and AI copy in the visible shell', () => {

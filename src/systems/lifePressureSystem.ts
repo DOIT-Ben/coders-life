@@ -5,7 +5,10 @@ export function settleLifeStagePressure(state: GameState): GameState {
   const next = structuredClone(state);
   const agePressureTarget = clamp(Math.max(0, state.age - 24) * 2.8, 0, 100);
   const housingBase = state.career.cityTier === 'tier1' ? 54 : state.career.cityTier === 'tier2' ? 38 : 24;
-  const familyResponsibility = clamp(state.lifePressure.familyResponsibility + (state.age >= 30 ? 0.35 : 0.08), 0, 100);
+  const hasFamilyCommitment = state.household.hasParents || state.household.hasPartner || state.household.children > 0;
+  const familyResponsibility = hasFamilyCommitment
+    ? clamp(state.lifePressure.familyResponsibility + (state.age >= 30 ? 0.35 : 0.08), 0, 100)
+    : 0;
   const housingPressure = clamp(housingBase + Math.max(0, 3 - state.finance.emergencyFundMonths) * 4, 0, 100);
   const parentCarePressure = state.household.hasParents
     ? clamp(state.lifePressure.parentCarePressure + (state.age >= 35 ? 0.18 : state.age >= 30 ? 0.06 : 0.01), 0, 100)

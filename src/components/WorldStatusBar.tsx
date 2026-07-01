@@ -1,9 +1,11 @@
 import type { GameState } from '../types/game';
 import { ECONOMY_CONFIG } from '../config/balance';
 import { getVisibleStats } from '../core/formulas';
+import { deriveRoleAiPressure } from '../systems/laborMarketSystem';
 
 export function WorldStatusBar({ state }: { state: GameState }) {
   const visible = getVisibleStats(state);
+  const roleAiPressure = deriveRoleAiPressure(state);
   const weakSpot = [
     ['技术', visible.tech],
     ['AI', visible.ai],
@@ -18,7 +20,7 @@ export function WorldStatusBar({ state }: { state: GameState }) {
         <span>第 {state.month} 个月 · {state.age} 岁 · 当前弱项：{weakSpot}</span>
       </div>
       <div className="world-pills">
-        <span>AI重构 {state.world.aiReplacement.toFixed(1)}%</span>
+        <span>岗位AI压力 {roleAiPressure.toFixed(1)}%</span>
         <span>{ECONOMY_CONFIG[state.world.economyCycle].label}</span>
         <span>{phaseLabel(state.phase)}</span>
         <span>边界 {Math.round(state.hidden.boundaryScore)}</span>

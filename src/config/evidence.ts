@@ -5,6 +5,43 @@ export const DEFAULT_EVIDENCE: EvidenceMetadata = {
   confidence: 'medium'
 };
 
+export interface EvidenceInput {
+  sourceName: string;
+  sourceUrl?: string;
+  sourceDate?: string;
+  category?: string;
+  subcategory?: string;
+  confidence?: string;
+  rationaleSubject: string;
+}
+
+export function classifyEvidenceSource(sourceName: string, sourceUrl?: string): EvidenceMetadata['sourceType'] {
+  const text = `${sourceName} ${sourceUrl ?? ''}`.toLowerCase();
+  if (sourceName === '经验归纳' || text.includes('v2ex') || text.includes('indiehackers') || text.includes('medium') || text.includes('substack')) return 'community_story';
+  if (text.includes('who') || sourceName.includes('国家') || sourceName.includes('卫健委') || sourceName.includes('医保局') || sourceName.includes('cdc') || sourceName.includes('nist')) return 'official_statistics';
+  if (text.includes('journal') || text.includes('lancet') || text.includes('jama') || text.includes('nejm') || text.includes('cochrane') || text.includes('nature') || text.includes('psychological') || text.includes('pubmed')) return 'peer_reviewed';
+  if (text.includes('hbr') || text.includes('reuters') || text.includes('pew') || text.includes('youtube') || text.includes('linkedin') || text.includes('github') || text.includes('stackoverflow') || text.includes('survey')) return 'industry_survey';
+  if (text.includes('blog') || text.includes('news') || text.includes('sina') || text.includes('sohu') || text.includes('toutiao')) return 'media';
+  return 'industry_survey';
+}
+
+export function createEvidenceMetadata(input: EvidenceInput): EvidenceMetadata {
+  const sourceType = classifyEvidenceSource(input.sourceName, input.sourceUrl);
+  const confidence = input.confidence === 'high' || input.confidence === 'medium' || input.confidence === 'low' ? input.confidence : 'medium';
+  return {
+    sourceLevel: sourceType === 'community_story' || sourceType === 'media' ? 'case_study' : sourceType === 'synthetic' ? 'synthetic' : 'industry_report',
+    sourceType,
+    confidence,
+    source: input.sourceName,
+    title: input.sourceName,
+    url: input.sourceUrl || undefined,
+    publicationDate: input.sourceDate || undefined,
+    applicableScope: [input.category, input.subcategory].filter((item): item is string => Boolean(item)),
+    parameterRationale: `数值由 ${input.sourceName} 对 ${input.rationaleSubject} 的描述映射，并由类别、压力等级和持续时间约束。`,
+    verifiedAt: '2026-06-29'
+  };
+}
+
 export function withActionEvidence(action: ActionConfig, evidence: EvidenceMetadata = DEFAULT_EVIDENCE): ActionConfig {
   return { ...action, evidence: action.evidence ?? evidence };
 }

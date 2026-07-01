@@ -187,6 +187,46 @@ describe('game engine', () => {
     expect(lastLog?.type).toBe('warn');
   });
 
+  it('rejects duplicate actions in the same monthly plan instead of applying them twice', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+
+    const next = planMonth(state, ['system_learning', 'system_learning']);
+    const lastLog = next.logs[next.logs.length - 1];
+
+    expect(next.month).toBe(state.month);
+    expect(next.stats.techXp).toBe(state.stats.techXp);
+    expect(next.decisionLog).toHaveLength(0);
+    expect(lastLog?.title).toBe('月度计划包含重复行动');
+    expect(lastLog?.type).toBe('warn');
+  });
+
+  it('revalidates cooldowns while executing a monthly plan', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.stats.techXp = 1000;
+    state.stats.aiXp = 1000;
+    state.stats.cash = 800000;
+
+    const next = planMonth(state, ['jump_job', 'jump_job']);
+    const lastLog = next.logs[next.logs.length - 1];
+
+    expect(next.month).toBe(state.month);
+    expect(next.career.totalInterviews).toBe(state.career.totalInterviews);
+    expect(lastLog?.title).toBe('月度计划包含重复行动');
+  });
+
+  it('rejects a plan containing an action that is already on cooldown', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.cooldowns.system_learning = 1;
+
+    const next = planMonth(state, ['system_learning', 'walk_sunlight']);
+    const lastLog = next.logs[next.logs.length - 1];
+
+    expect(next.month).toBe(state.month);
+    expect(next.stats.techXp).toBe(state.stats.techXp);
+    expect(lastLog?.title).toBe('月度计划行动不可执行');
+    expect(lastLog?.type).toBe('warn');
+  });
+
   it('keeps applyAction as a compatibility wrapper for one-action monthly planning', () => {
     const state = createInitialState('frontend', 'tier2', seed);
     const planned = planMonth(state, ['system_learning']);

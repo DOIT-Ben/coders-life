@@ -1,4 +1,7 @@
-import type { GameState } from '../types/game';
+import type { CrisisChapter, GameState, ProjectPortfolioState, ProjectState } from '../types/game';
+import { CITY_CONFIG } from '../config/balance';
+import { EVENTS } from '../config/events';
+import { EVENT_CHOICES } from '../config/eventChoices';
 import {
   DEFAULT_CAREER_PROFILE,
   DEFAULT_CRISIS_STATE,
@@ -37,12 +40,98 @@ const DEFAULT_WORLD = {
   }
 };
 
+const KNOWN_EVENT_COOLDOWN_KEYS = new Set(EVENTS.map(event => event.cooldownKey ?? event.chain ?? event.id));
+const KNOWN_EVENT_CHOICE_MEMORY_KEYS = new Set(EVENT_CHOICES.flatMap(event => event.choices.map(choice => choice.memoryKey)));
+
+function migrateCrisisChapter(saved: Partial<CrisisChapter> | undefined, fallback: CrisisChapter): CrisisChapter {
+  const active = saved?.active ?? fallback.active;
+  const startedMonth = saved?.startedMonth;
+  const phase = saved?.phase ?? (active ? 'active' : 'inactive');
+  const episodes = saved?.episodes ?? (typeof startedMonth === 'number' ? [{ startedMonth }] : []);
+  return {
+    ...fallback,
+    ...saved,
+    active,
+    phase,
+    startedMonth,
+    recoveryProgress: saved?.recoveryProgress ?? fallback.recoveryProgress,
+    episodes
+  };
+}
+
+function migrateProjects(saved: Partial<ProjectPortfolioState> | undefined): ProjectPortfolioState {
+  const defaults = createDefaultProjectPortfolio();
+  return (Object.keys(defaults) as Array<keyof ProjectPortfolioState>).reduce((projects, key) => {
+    projects[key] = migrateProjectState(saved?.[key], defaults[key], key);
+    return projects;
+  }, {} as ProjectPortfolioState);
+}
+
+function migrateProjectState(saved: Partial<ProjectState> | undefined, fallback: ProjectState, key: keyof ProjectPortfolioState): ProjectState {
+  const completedInstances = saved?.completedInstances ?? (saved?.completed
+    ? [{
+        id: `${String(key)}-legacy-completed`,
+        kind: key,
+        status: 'released' as const,
+        progress: 100,
+        quality: saved.quality ?? 60,
+        audienceFit: Math.max(35, Math.min(100, saved.quality ?? 60)),
+        startedMonth: 0,
+        completedMonth: 0
+      }]
+    : []);
+  return {
+    ...fallback,
+    ...saved,
+    completedInstances,
+    activeInstance: saved?.activeInstance
+  };
+}
+
+function migrateFinance(state: GameState): GameState['finance'] {
+  const saved = state.finance ?? {};
+  const legacyMonthlyFixedCost = typeof saved.monthlyFixedCost === 'number' ? saved.monthlyFixedCost : 0;
+  const cityTier = state.career?.cityTier ?? 'tier2';
+  const baselineCost = CITY_CONFIG[cityTier].livingCost;
+  const fixedObligationsMonthly = typeof saved.fixedObligationsMonthly === 'number'
+    ? saved.fixedObligationsMonthly
+    : Math.max(0, legacyMonthlyFixedCost - baselineCost);
+  return {
+    ...DEFAULT_FINANCE_STATE,
+    ...saved,
+    fixedObligationsMonthly,
+    monthlyFixedCost: DEFAULT_FINANCE_STATE.monthlyFixedCost
+  };
+}
+
+function migrateEventLastTriggeredMonth(state: GameState): Record<string, number> {
+  const migrated = { ...(state.eventLastTriggeredMonth ?? {}) };
+  Object.entries(state.eventMemory ?? {}).forEach(([key, value]) => {
+    if (typeof value === 'number' && KNOWN_EVENT_COOLDOWN_KEYS.has(key) && typeof migrated[key] !== 'number') {
+      migrated[key] = value;
+    }
+  });
+  return migrated;
+}
+
+function migrateEventChoiceMemory(state: GameState): Record<string, number> {
+  const migrated = { ...(state.eventChoiceMemory ?? {}) };
+  Object.entries(state.eventMemory ?? {}).forEach(([key, value]) => {
+    if (typeof value === 'number' && KNOWN_EVENT_CHOICE_MEMORY_KEYS.has(key) && typeof migrated[key] !== 'number') {
+      migrated[key] = value;
+    }
+  });
+  return migrated;
+}
+
 function withDefaults(state: GameState): GameState {
   const careerDefaults = {
     pendingApplications: 0,
     totalApplications: state.career?.offerAttempts ?? 0,
     totalInterviews: 0,
-    totalOffers: 0
+    totalOffers: 0,
+    scheduledInterviews: [],
+    activeOffers: []
   };
   return {
     ...state,
@@ -50,7 +139,7 @@ function withDefaults(state: GameState): GameState {
     career: { ...careerDefaults, ...(state.career ?? {}) },
     hidden: { ...DEFAULT_HIDDEN, ...(state.hidden ?? {}) },
     flags: state.flags ?? {},
-    finance: { ...DEFAULT_FINANCE_STATE, ...(state.finance ?? {}) },
+    finance: migrateFinance(state),
     healthProfile: { ...DEFAULT_HEALTH_PROFILE, ...(state.healthProfile ?? {}) },
     careerProfile: { ...createDefaultCareerProfile(state.career?.track ?? 'frontend'), ...DEFAULT_CAREER_PROFILE, ...(state.careerProfile ?? {}) },
     socialProfile: { ...DEFAULT_SOCIAL_PROFILE, ...(state.socialProfile ?? {}) },
@@ -59,17 +148,20 @@ function withDefaults(state: GameState): GameState {
     lifePressure: { ...DEFAULT_LIFE_PRESSURE, ...(state.lifePressure ?? {}) },
     values: { ...DEFAULT_PLAYER_VALUES, ...(state.values ?? {}) },
     crisis: {
-      burnout: { ...DEFAULT_CRISIS_STATE.burnout, ...(state.crisis?.burnout ?? {}) },
-      mentalHealth: { ...DEFAULT_CRISIS_STATE.mentalHealth, ...(state.crisis?.mentalHealth ?? {}) },
-      severeIllness: { ...DEFAULT_CRISIS_STATE.severeIllness, ...(state.crisis?.severeIllness ?? {}) },
-      majorUnemployment: { ...DEFAULT_CRISIS_STATE.majorUnemployment, ...(state.crisis?.majorUnemployment ?? {}) }
+      burnout: migrateCrisisChapter(state.crisis?.burnout, DEFAULT_CRISIS_STATE.burnout),
+      mentalHealth: migrateCrisisChapter(state.crisis?.mentalHealth, DEFAULT_CRISIS_STATE.mentalHealth),
+      severeIllness: migrateCrisisChapter(state.crisis?.severeIllness, DEFAULT_CRISIS_STATE.severeIllness),
+      majorUnemployment: migrateCrisisChapter(state.crisis?.majorUnemployment, DEFAULT_CRISIS_STATE.majorUnemployment)
     },
     monthlyPlan: { ...DEFAULT_MONTHLY_PLAN, ...(state.monthlyPlan ?? {}) },
-    projects: { ...createDefaultProjectPortfolio(), ...(state.projects ?? {}) },
+    projects: migrateProjects(state.projects),
     cooldowns: state.cooldowns ?? {},
     inventory: state.inventory ?? {},
     unlockedAchievements: state.unlockedAchievements ?? [],
     seenEvents: state.seenEvents ?? [],
+    eventChainProgress: state.eventChainProgress ?? {},
+    eventLastTriggeredMonth: migrateEventLastTriggeredMonth(state),
+    eventChoiceMemory: migrateEventChoiceMemory(state),
     eventMemory: state.eventMemory ?? {},
     pendingEffects: state.pendingEffects ?? [],
     actionHistory: state.actionHistory ?? [],

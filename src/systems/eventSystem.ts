@@ -6,9 +6,11 @@ import { clamp } from '../core/formulas';
 import { monthRng, weightedPick } from '../core/rng';
 import { addLog } from '../core/logs';
 
-export function triggerMonthlyEvent(state: GameState, options?: { forceChoice?: string }): GameState {
+export function triggerMonthlyEvent(state: GameState, options?: { forceChoice?: string; forceEvent?: string }): GameState {
   const forcedChoice = options?.forceChoice ? EVENT_CHOICES.find(event => event.id === options.forceChoice) : undefined;
   if (forcedChoice) return createPendingEventChoice(state, forcedChoice);
+  const forcedEvent = options?.forceEvent ? EVENTS.find(event => event.id === options.forceEvent) : undefined;
+  if (forcedEvent) return applyEvent(state, forcedEvent);
   if (state.pendingEventChoice) return state;
 
   const rng = monthRng(state.seed, state.month, 'event');
@@ -21,14 +23,18 @@ export function triggerMonthlyEvent(state: GameState, options?: { forceChoice?: 
   const candidates = getMonthlyEventCandidates(state);
   const event = weightedPick<EventConfig>(candidates, e => eventIntensity(state, e), rng);
   if (!event) return state;
+  return applyEvent(state, event);
+}
+
+function applyEvent(state: GameState, event: EventConfig): GameState {
   const effect = typeof event.effect === 'function' ? event.effect(state) : event.effect;
   const text = typeof event.text === 'function' ? event.text(state) : event.text;
   let next = applyDelta(state, effect);
   if (event.once || event.rarity === 'rare' || event.source !== 'popup_pool') {
     next.seenEvents = [...new Set([...next.seenEvents, event.id])];
   }
-  if (event.chain) next.eventMemory[event.chain] = (next.eventMemory[event.chain] ?? 0) + 1;
-  if (event.cooldownKey) next.eventMemory[event.cooldownKey] = state.month;
+  if (event.chain) next.eventChainProgress[event.chain] = (next.eventChainProgress[event.chain] ?? 0) + 1;
+  if (event.cooldownKey ?? event.chain) next.eventLastTriggeredMonth[event.cooldownKey ?? event.chain!] = state.month;
   next = addLog(next, { type: 'event', title: event.title, text });
   return next;
 }
@@ -43,7 +49,7 @@ function createPendingEventChoice(state: GameState, event: PendingEventChoice): 
     choices: event.choices
   };
   next.seenEvents = [...new Set([...next.seenEvents, event.id])];
-  if (event.chain) next.eventMemory[event.chain] = (next.eventMemory[event.chain] ?? 0) + 1;
+  if (event.chain) next.eventChainProgress[event.chain] = (next.eventChainProgress[event.chain] ?? 0) + 1;
   next = addLog(next, { type: 'event', title: event.title, text: event.text });
   return next;
 }
@@ -57,7 +63,7 @@ export function applyEventChoice(state: GameState, choiceId: string): GameState 
   let next = applyDelta(state, choice.effect);
   next = applyRealworldChoiceEffect(next, choice);
   next.pendingEventChoice = undefined;
-  next.eventMemory[choice.memoryKey] = (next.eventMemory[choice.memoryKey] ?? 0) + 1;
+  next.eventChoiceMemory[choice.memoryKey] = (next.eventChoiceMemory[choice.memoryKey] ?? 0) + 1;
   next = addLog(next, { type: 'info', title: choice.label, text: choice.text });
   return next;
 }
@@ -135,7 +141,7 @@ export function getMonthlyEventCandidates(state: GameState): EventConfig[] {
     if (event.condition && !event.condition(state)) return false;
     if ((event.exposure?.(state) ?? 1) <= 0) return false;
     const cooldownKey = event.cooldownKey ?? event.chain ?? event.id;
-    const lastSeenMonth = state.eventMemory[cooldownKey];
+    const lastSeenMonth = state.eventLastTriggeredMonth[cooldownKey] ?? state.eventMemory[cooldownKey];
     if (typeof lastSeenMonth === 'number' && state.month - lastSeenMonth < (event.cooldownMonths ?? 0)) return false;
     const tags = event.mutuallyExclusiveTags ?? [];
     if (tags.some(tag => activeTags.has(tag))) return false;

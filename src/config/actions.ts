@@ -318,6 +318,30 @@ export const CORE_ACTIONS: ActionConfig[] = [
     description: '高风险、高波动，成功靠积累，不靠冲动。',
     visibleEffect: { cash: -50000, reputationXp: 20, aiXp: 12, mental: -22, health: -8, burnout: 18, identity: 5, fatigue: 16, boundaryScore: -8 },
     require: s => getVisibleStats(s).tech >= 75 && getVisibleStats(s).ai >= 45 && s.stats.cash >= 500000
+  }),
+  action({
+    id: 'transition_testing', name: '转向测试工程', icon: '🧭', group: 'career',
+    primaryCategory: 'career', subcategory: 'job_search', tags: ['career_transition', 'testing', 'quality'],
+    stressLevel: 1, repeatKey: 'career_transition_testing', benefitLabel: '进入质量工程路线', riskLabel: '需要补测试体系与业务理解',
+    description: '用现有工程经验补齐测试体系、质量度量和自动化能力。',
+    visibleEffect: { techXp: 6, reputationXp: 2, mental: -4, cash: -1200, identity: 2, fatigue: 2 },
+    require: s => getVisibleStats(s).tech >= 35 && s.careerProfile.careerCapital >= 25
+  }),
+  action({
+    id: 'transition_data_engineering', name: '转向数据工程', icon: '🧭', group: 'career',
+    primaryCategory: 'career', subcategory: 'job_search', tags: ['career_transition', 'data_engineering', 'pipeline'],
+    stressLevel: 2, repeatKey: 'career_transition_data_engineering', benefitLabel: '进入数据平台路线', riskLabel: '需要补数据建模与平台经验',
+    description: '把工程基础迁移到数据管道、建模和平台可靠性。',
+    visibleEffect: { techXp: 8, aiXp: 3, reputationXp: 2, mental: -6, cash: -1800, identity: 2, fatigue: 3 },
+    require: s => getVisibleStats(s).tech >= 45 && s.careerProfile.careerCapital >= 35 && s.career.portfolioCount >= 1
+  }),
+  action({
+    id: 'transition_security', name: '转向安全工程', icon: '🧭', group: 'career',
+    primaryCategory: 'career', subcategory: 'job_search', tags: ['career_transition', 'security', 'risk'],
+    stressLevel: 2, repeatKey: 'career_transition_security', benefitLabel: '进入安全工程路线', riskLabel: '需要补攻防、合规和风险判断',
+    description: '把工程经验迁移到安全评审、攻防基础和风险治理。',
+    visibleEffect: { techXp: 8, reputationXp: 3, mental: -7, cash: -2200, identity: 3, fatigue: 4 },
+    require: s => getVisibleStats(s).tech >= 50 && s.careerProfile.careerCapital >= 45 && s.career.portfolioCount >= 2
   })
 ];
 

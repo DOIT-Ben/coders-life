@@ -5,14 +5,17 @@ import { applyEventChoice, triggerMonthlyEvent } from '../systems/eventSystem';
 import { getActionInsights, getBodySignal } from '../systems/actionInsightSystem';
 import { settleMonth } from '../core/monthlyLoop';
 import { buyShopItem } from '../systems/shopSystem';
+import { deriveHealthDebt } from '../systems/derivedStateSystem';
 
 const seed = 24680;
 
 describe('decision support and first-stage functional optimization', () => {
   it('shows risk badges for high-pressure actions when health debt is high', () => {
     const state = createInitialState('frontend', 'tier2', seed);
-    state.healthProfile.healthDebt = 76;
-    state.healthProfile.sleepDebt = 68;
+    state.healthProfile.healthDebt = 90;
+    state.healthProfile.sleepDebt = 82;
+    state.healthProfile.chronicStress = 70;
+    state.healthProfile.sedentaryLoad = 70;
     state.hidden.fatigue = 72;
 
     const overtime = ACTIONS.find(action => action.id === 'overtime_sprint')!;
@@ -41,7 +44,7 @@ describe('decision support and first-stage functional optimization', () => {
     state.healthProfile.sleepDebt = 64;
     state.healthProfile.sedentaryLoad = 82;
     state.healthProfile.chronicStress = 58;
-    state.healthProfile.healthDebt = 66;
+    state.healthProfile.healthDebt = 58;
     state.hidden.fatigue = 55;
 
     const signal = getBodySignal(state);
@@ -49,6 +52,21 @@ describe('decision support and first-stage functional optimization', () => {
     expect(signal?.title).toBe('后背持续酸痛');
     expect(signal?.suggestedActionIds).toContain('exercise');
     expect(signal?.suggestedActionIds).toContain('massage');
+  });
+
+  it('uses centralized derived pressure metrics for body signals', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.healthProfile.healthDebt = 90;
+    state.healthProfile.sleepDebt = 64;
+    state.healthProfile.chronicStress = 40;
+    state.healthProfile.sedentaryLoad = 30;
+    state.hidden.fatigue = 30;
+
+    const signal = getBodySignal(state);
+
+    expect(signal?.dimension).toBe('healthDebt');
+    expect(signal?.severity).toBe(deriveHealthDebt(state).value);
+    expect(signal?.severity).not.toBe(state.healthProfile.healthDebt);
   });
 
   it('records decision logs and one-time tutorial logs after action choices', () => {
@@ -81,9 +99,14 @@ describe('decision support and first-stage functional optimization', () => {
 
   it('records turning points only once when pressure crosses threshold', () => {
     const state = createInitialState('frontend', 'tier2', seed);
-    state.healthProfile.healthDebt = 69;
-    state.healthProfile.sleepDebt = 88;
-    state.healthProfile.chronicStress = 88;
+    state.healthProfile.healthDebt = 58;
+    state.healthProfile.sleepDebt = 85;
+    state.healthProfile.chronicStress = 85;
+    state.healthProfile.sedentaryLoad = 55;
+    state.healthProfile.recoveryQuality = 10;
+    state.healthProfile.nutritionQuality = 10;
+    state.hidden.fatigue = 92;
+    state.hidden.boundaryScore = 10;
 
     const crossed = settleMonth(state);
     const repeated = settleMonth(crossed);
@@ -113,7 +136,7 @@ describe('decision support and first-stage functional optimization', () => {
     vi.unstubAllGlobals();
   });
 
-  it('creates branch event choices and applies selected effects into event memory', () => {
+  it('records new branch event choices only in split event choice memory', () => {
     const state = createInitialState('backend', 'tier1', seed);
     state.career.employmentStatus = 'employed';
     state.laborMarket.layoffPressure = 88;
@@ -126,7 +149,8 @@ describe('decision support and first-stage functional optimization', () => {
     const next = applyEventChoice(withChoice, 'quiet_job_search');
 
     expect(next.pendingEventChoice).toBeUndefined();
-    expect(next.eventMemory.layoff_response_quiet_job_search).toBe(1);
+    expect(next.eventChoiceMemory.layoff_response_quiet_job_search).toBe(1);
+    expect(next.eventMemory.layoff_response_quiet_job_search).toBeUndefined();
     expect(next.careerProfile.interviewMomentum).toBeGreaterThan(state.careerProfile.interviewMomentum);
     expect(next.logs.some(log => log.title.includes('悄悄投简历'))).toBe(true);
   });
@@ -163,6 +187,29 @@ describe('decision support and first-stage functional optimization', () => {
     expect(state.career.portfolioCount).toBeGreaterThan(0);
   });
 
+  it('can complete a second project practice instance through repeated real actions', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+
+    for (let i = 0; i < 8; i += 1) state = applyAction(state, 'project_practice');
+
+    expect(state.projects.projectPractice.completedInstances).toHaveLength(2);
+    const activeInstance = state.projects.projectPractice.activeInstance;
+    expect(activeInstance).toBeDefined();
+    expect(activeInstance?.status).toBe('active');
+    expect(activeInstance?.progress).toBeGreaterThan(0);
+    expect(state.career.portfolioCount).toBe(2);
+  });
+
+  it('tracks visible project progress and quality on the active project instance', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+
+    state = applyAction(state, 'project_practice');
+
+    expect(state.projects.projectPractice.activeInstance?.progress).toBeGreaterThan(0);
+    expect(state.projects.projectPractice.activeInstance?.quality).toBeGreaterThan(0);
+    expect(state.projects.projectPractice.activeInstance?.status).toBe('active');
+  });
+
   it('makes shop purchases affect conditions and efficiency instead of instant raw stat boosts', () => {
     const state = createInitialState('frontend', 'tier2', seed);
     const afterChair = buyShopItem(state, 'ergonomic_chair');
@@ -180,7 +227,7 @@ describe('decision support and first-stage functional optimization', () => {
     expect(afterCourse.stats.techXp).toBe(state.stats.techXp);
 
     expect(afterInsurance.inventory.medical_insurance).toBe(1);
-    expect(afterInsurance.finance.monthlyFixedCost).toBeGreaterThan(state.finance.monthlyFixedCost);
+    expect(afterInsurance.finance.fixedObligationsMonthly).toBeGreaterThan(state.finance.fixedObligationsMonthly);
     expect(afterInsurance.stats.mental).toBe(state.stats.mental);
 
     expect(afterAiPro.inventory.ai_pro).toBe(1);
@@ -190,5 +237,64 @@ describe('decision support and first-stage functional optimization', () => {
     expect(afterHousing.inventory.private_room).toBe(1);
     expect(afterHousing.lifePressure.commutePressure).toBeLessThanOrEqual(state.lifePressure.commutePressure);
     expect(afterHousing.stats.mental).toBe(state.stats.mental);
+  });
+
+  it('provides real purchase paths for structured requirement tools', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+    state.stats.cash = 50000;
+
+    [
+      'developer_accounts',
+      'basic_kitchen',
+      'credit_card',
+      'recording_tool',
+      'quiet_space',
+      'screen_time_app',
+      'password_manager'
+    ].forEach(itemId => {
+      state = buyShopItem(state, itemId);
+    });
+
+    expect(state.inventory.github_account).toBe(1);
+    expect(state.inventory.linkedin_account).toBe(1);
+    expect(state.inventory.kitchen).toBe(1);
+    expect(state.inventory.credit_card).toBe(1);
+    expect(state.inventory.recording_tool).toBe(1);
+    expect(state.inventory.quiet_space).toBe(1);
+    expect(state.inventory.screen_time_app).toBe(1);
+    expect(state.inventory.password_manager).toBe(1);
+  });
+
+  it('adds shop subscriptions insurance and housing rent on top of base living cost', () => {
+    let state = createInitialState('frontend', 'tier1', seed);
+    state.stats.cash = 50000;
+
+    const base = settleMonth(state);
+    state = buyShopItem(state, 'ai_pro');
+    state = buyShopItem(state, 'medical_insurance');
+    state = buyShopItem(state, 'private_room');
+    const settled = settleMonth(state);
+
+    expect(settled.finance.monthlyFixedCost).toBe(base.finance.monthlyFixedCost + 1080);
+    expect(settled.finance.monthlyRent).toBeGreaterThan(base.finance.monthlyRent);
+  });
+
+  it('keeps fixed obligations stable across consecutive months and charges cash', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+    state.career.employmentStatus = 'jobless';
+    state.stats.cash = 100000;
+    state.finance.debt = 50000;
+    state = buyShopItem(state, 'ai_pro');
+    state = buyShopItem(state, 'medical_insurance');
+    state = buyShopItem(state, 'private_room');
+
+    const first = settleMonth(state);
+    const second = settleMonth(first);
+
+    expect(first.finance.fixedObligationsMonthly).toBe(second.finance.fixedObligationsMonthly);
+    expect(second.finance.monthlyFixedCost).toBeLessThan(first.finance.monthlyFixedCost * 1.05);
+    expect(first.finance.monthlyDebtPayment).toBe(600);
+    expect(second.stats.cash).toBeLessThan(first.stats.cash - first.finance.monthlyDebtPayment);
+    expect(second.finance.debt).toBeLessThan(first.finance.debt);
   });
 });

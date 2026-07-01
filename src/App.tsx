@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import type { CareerTrack, CityTier, GameState, LogType } from './types/game';
+import type { ActionConfig, CareerTrack, CityTier, GameState, LogType, PlayerValueProfile } from './types/game';
 import { createInitialState, getAvailableActions, planMonth } from './core/gameEngine';
 import { getVisibleStats } from './core/formulas';
 import { saveGame, loadGame, clearSave } from './storage/saveManager';
@@ -9,9 +9,9 @@ import { SHOP_ITEMS } from './config/shop';
 import { addLog } from './core/logs';
 import { getActionInsights, getBodySignal } from './systems/actionInsightSystem';
 import { applyEventChoice } from './systems/eventSystem';
-import { calculateMonthlyPlanBudget } from './systems/monthlyPlanSystem';
+import { actionPlanCost, buildMonthlyPlan, canExecuteAction, isPlanOverBudget } from './systems/monthlyPlanSystem';
 import { buyShopItem } from './systems/shopSystem';
-import { deriveCareerStability, deriveEmployability, deriveHealthDebt, deriveLifeSatisfaction } from './systems/derivedStateSystem';
+import { deriveCareerStability, deriveEmployability, deriveHealthDebt, deriveLifeSatisfaction, derivePressureSnapshot } from './systems/derivedStateSystem';
 import './styles/app.css';
 
 type AchievementProgress = {
@@ -25,6 +25,11 @@ type PressureSnapshot = {
   layoffRisk: number;
   relationshipDebt: number;
   marketPressure: number;
+};
+
+type AvailableAction = ActionConfig & {
+  available: boolean;
+  reason?: string;
 };
 
 const v1CareerCopy: Record<CareerTrack, {
@@ -89,7 +94,7 @@ const actionCategories: Array<{
     items: [
       { id: 'ai_training', icon: '📡', label: '学习AI工具', immediateText: 'AI +18 / 技术 +4 / 精神 -4', summary: <><span className="cp">AI+18</span><br /><span className="cp">技术+4</span><br /><span className="cn">精神-4</span></> },
       { id: 'system_learning', icon: '📘', label: '系统学习', immediateText: '技术 +18 / 专注 +6 / 成本 -0.2万', summary: <><span className="cp">技术+18</span><br /><span className="cp">专注+6</span><br /><span className="cn">成本-0.2万</span></> },
-      { id: 'project_practice', icon: '🧪', label: '项目实战', immediateText: '作品 +1 / 技术 +12 / 成本 -0.3万', summary: <><span className="cp">作品+1</span><br /><span className="cp">技术+12</span><br /><span className="cn">成本-0.3万</span></> },
+      { id: 'project_practice', icon: '🧪', label: '项目实战', immediateText: '项目进度 +34 / 技术 +12 / 完成后作品 +1', summary: <><span className="cp">进度+34</span><br /><span className="cp">技术+12</span><br /><span className="cn">成本-0.3万</span></> },
       { id: 'writing_share', icon: '✍️', label: '技术写作', immediateText: '声望 +12 / 技术 +4 / 精神 -5', summary: <><span className="cp">声望+12</span><br /><span className="cp">技术+4</span><br /><span className="cn">精神-5</span></> }
     ]
   },
@@ -100,7 +105,7 @@ const actionCategories: Array<{
       { id: 'regular_work', icon: '💼', label: '认真上班', immediateText: '绩效 +4 / 技术 +6 / 精神 -5', summary: <><span className="cp">绩效+4</span><br /><span className="cp">技术+6</span><br /><span className="cn">精神-5</span></> },
       { id: 'overtime_sprint', icon: '💻', label: '加班写代码', immediateText: '奖金 +0.35万 / 技术 +10 / 精神 -14', summary: <><span className="cp">奖金+0.35万</span><br /><span className="cp">技术+10</span><br /><span className="cn">精神-14</span></> },
       { id: 'freelance', icon: '💰', label: '接私活', immediateText: '现金 +1.2万 / 精神 -12 / 健康 -4', summary: <><span className="cp">现金+1.2万</span><br /><span className="cn">精神-12</span><br /><span className="cn">健康-4</span></> },
-      { id: 'content_product', icon: '🎬', label: '自媒体/课程', immediateText: '声望 +18 / 被动收入 / 精神 -10', summary: <><span className="cp">声望+18</span><br /><span className="cp">被动收入</span><br /><span className="cn">精神-10</span></> }
+      { id: 'content_product', icon: '🎬', label: '自媒体/课程', immediateText: '项目进度 +38 / 声望 +18 / 完成后被动收入', summary: <><span className="cp">进度+38</span><br /><span className="cp">声望+18</span><br /><span className="cn">精神-10</span></> }
     ]
   },
   {
@@ -109,7 +114,10 @@ const actionCategories: Array<{
     items: [
       { id: 'job_hunt', icon: '📨', label: '求职投递', immediateText: '机会 +1 / 精神 -6 / 需要作品', summary: <><span className="cp">机会+1</span><br /><span className="cn">精神-6</span><br /><span className="cn">需作品</span></> },
       { id: 'jump_job', icon: '🎯', label: '面试跳槽', immediateText: '机会跃迁 / 消耗 2 个月 / 有冷却', summary: <><span className="cp">机会跃迁</span><br /><span className="cn">消耗2个月</span><br /><span className="cn">有冷却</span></> },
-      { id: 'open_source', icon: '🌐', label: '开源贡献', immediateText: '声望 +10 / 技术 +8 / 精神 -6', summary: <><span className="cp">声望+10</span><br /><span className="cp">技术+8</span><br /><span className="cn">精神-6</span></> }
+      { id: 'open_source', icon: '🌐', label: '开源贡献', immediateText: '声望 +10 / 技术 +8 / 精神 -6', summary: <><span className="cp">声望+10</span><br /><span className="cp">技术+8</span><br /><span className="cn">精神-6</span></> },
+      { id: 'transition_testing', icon: '🧭', label: '测试路线', immediateText: '路线进度 / 技术 +6 / 成本 -0.12万', summary: <><span className="cp">路线进度</span><br /><span className="cp">技术+6</span><br /><span className="cn">成本-0.12万</span></> },
+      { id: 'transition_data_engineering', icon: '🧭', label: '数据路线', immediateText: '路线进度 / 技术 +8 / 成本 -0.18万', summary: <><span className="cp">路线进度</span><br /><span className="cp">技术+8</span><br /><span className="cn">成本-0.18万</span></> },
+      { id: 'transition_security', icon: '🧭', label: '安全路线', immediateText: '路线进度 / 技术 +8 / 成本 -0.22万', summary: <><span className="cp">路线进度</span><br /><span className="cp">技术+8</span><br /><span className="cn">成本-0.22万</span></> }
     ]
   },
   {
@@ -149,10 +157,32 @@ const cityOptions: Array<{ id: CityTier; label: string }> = [
   { id: 'tier3', label: '三线：低成本低上限' }
 ];
 
+const VALUE_PROFILES: Array<{ id: string; label: string; summary: string; values: PlayerValueProfile }> = [
+  {
+    id: 'wealth_buffer',
+    label: '财富缓冲',
+    summary: '现金安全、职业稳定和选择空间优先',
+    values: { wealth: 1, craft: 0.45, stability: 0.85, freedom: 0.7, relationships: 0.35, health: 0.5, impact: 0.35, exploration: 0.35 }
+  },
+  {
+    id: 'health_relation',
+    label: '健康关系',
+    summary: '恢复质量、亲密关系和长期生活感优先',
+    values: { wealth: 0.35, craft: 0.45, stability: 0.65, freedom: 0.55, relationships: 1, health: 1, impact: 0.45, exploration: 0.45 }
+  },
+  {
+    id: 'creative_explore',
+    label: '创造探索',
+    summary: '作品、影响力、自由和新路线优先',
+    values: { wealth: 0.45, craft: 0.85, stability: 0.35, freedom: 0.85, relationships: 0.45, health: 0.55, impact: 1, exploration: 1 }
+  }
+];
+
 export default function App() {
   const [state, setState] = useState<GameState | undefined>(() => loadGame());
   const [track, setTrack] = useState<CareerTrack>('frontend');
   const [cityTier, setCityTier] = useState<CityTier>('tier2');
+  const [valueProfileId, setValueProfileId] = useState(VALUE_PROFILES[0].id);
   const [modal, setModal] = useState<'ach' | 'shop' | 'ending' | undefined>();
   const [saveStatus, setSaveStatus] = useState('');
   const savedState = !state ? loadGame() : undefined;
@@ -166,7 +196,8 @@ export default function App() {
   }, [saveStatus]);
 
   function startGame() {
-    setState(createInitialState(track, cityTier));
+    const valueProfile = VALUE_PROFILES.find(profile => profile.id === valueProfileId) ?? VALUE_PROFILES[0];
+    setState(createInitialState(track, cityTier, undefined, valueProfile.values));
   }
 
   function resetGame() {
@@ -186,7 +217,15 @@ export default function App() {
     <div className="wrap">
       <TitleCard hasSave={Boolean(savedState)} inGame={Boolean(state)} onContinue={() => savedState && setState(savedState)} />
       {!state ? (
-        <CareerScreen track={track} setTrack={setTrack} cityTier={cityTier} setCityTier={setCityTier} startGame={startGame} />
+        <CareerScreen
+          track={track}
+          setTrack={setTrack}
+          cityTier={cityTier}
+          setCityTier={setCityTier}
+          valueProfileId={valueProfileId}
+          setValueProfileId={setValueProfileId}
+          startGame={startGame}
+        />
       ) : (
         <GameScreen state={state} setState={setState} openModal={setModal} changeCharacter={changeCharacter} saveStatus={saveStatus} setSaveStatus={setSaveStatus} />
       )}
@@ -215,12 +254,16 @@ function CareerScreen({
   setTrack,
   cityTier,
   setCityTier,
+  valueProfileId,
+  setValueProfileId,
   startGame
 }: {
   track: CareerTrack;
   setTrack: (track: CareerTrack) => void;
   cityTier: CityTier;
   setCityTier: (cityTier: CityTier) => void;
+  valueProfileId: string;
+  setValueProfileId: (valueProfileId: string) => void;
   startGame: () => void;
 }) {
   return (
@@ -261,6 +304,15 @@ function CareerScreen({
           {cityOptions.map(option => <option key={option.id} value={option.id}>{option.label}</option>)}
         </select>
       </label>
+      <div className="section-label">&gt; 选择你的价值优先级 _</div>
+      <div className="value-profile-grid">
+        {VALUE_PROFILES.map(profile => (
+          <button className={valueProfileId === profile.id ? 'value-profile-card selected' : 'value-profile-card'} key={profile.id} type="button" onClick={() => setValueProfileId(profile.id)}>
+            <span>{profile.label}</span>
+            <small>{profile.summary}</small>
+          </button>
+        ))}
+      </div>
       <button className="btn-start" onClick={startGame}>&gt; 开始生存 _</button>
       <div className="quote">「AI 改写的是任务结构，长期价值来自判断、责任和领域理解」</div>
     </div>
@@ -283,10 +335,11 @@ function GameScreen({
   setSaveStatus: (status: string) => void;
 }) {
   const [selectedActionCategory, setSelectedActionCategory] = useState<ActionCategoryId>('entertainment');
+  const [plannedActionIds, setPlannedActionIds] = useState<string[]>([]);
   const [lastPressure, setLastPressure] = useState<PressureSnapshot>(() => createPressureSnapshot(state));
   const [pressureDelta, setPressureDelta] = useState<PressureSnapshot | undefined>();
   const visible = getVisibleStats(state);
-  const actions = getAvailableActions(state);
+  const actions = getAvailableActions(state) as AvailableAction[];
   const actionById = new Map(actions.map(action => [action.id, action]));
   const currentCategory = actionCategories.find(category => category.id === selectedActionCategory) ?? actionCategories[0];
   const actionSlots = [
@@ -304,7 +357,13 @@ function GameScreen({
   const day = state.month * 30;
   const bodySignal = getBodySignal(state);
   const recentDecisionLog = [...state.decisionLog].slice(-3).reverse();
-  const monthlyBudget = calculateMonthlyPlanBudget(state);
+  const plannedActions = plannedActionIds.flatMap(id => {
+    const action = actionById.get(id);
+    return action ? [action] : [];
+  });
+  const monthlyBudget = buildMonthlyPlan(state, plannedActions);
+  const planOverBudget = isPlanOverBudget(monthlyBudget);
+  const canSubmitMonthlyPlan = plannedActionIds.length > 0 && !planOverBudget && !state.pendingEventChoice && !state.gameOver;
 
   useEffect(() => {
     const nextPressure = createPressureSnapshot(state);
@@ -317,6 +376,33 @@ function GameScreen({
     });
     setLastPressure(nextPressure);
   }, [state.month]);
+
+  useEffect(() => {
+    setPlannedActionIds([]);
+  }, [state.month, state.pendingEventChoice?.id, state.gameOver]);
+
+  function togglePlannedAction(action: AvailableAction) {
+    setPlannedActionIds(current => {
+      if (current.includes(action.id)) return current.filter(id => id !== action.id);
+      const currentActions = current.flatMap(id => {
+        const item = actionById.get(id);
+        return item ? [item] : [];
+      });
+      const check = canExecuteAction(state, action, currentActions);
+      if (!check.ok) return current;
+      return [...current, action.id];
+    });
+  }
+
+  function removePlannedAction(actionId: string) {
+    setPlannedActionIds(current => current.filter(id => id !== actionId));
+  }
+
+  function submitMonthlyPlan() {
+    if (!canSubmitMonthlyPlan) return;
+    setState(planMonth(state, plannedActionIds));
+    setPlannedActionIds([]);
+  }
 
   function handleSave() {
     try {
@@ -371,6 +457,7 @@ function GameScreen({
             </div>
           </div>
           <LifeLogV1 state={state} />
+          <ProjectProgressPanel state={state} />
         </div>
         <div className="right-col">
           <div className="action-card">
@@ -379,6 +466,24 @@ function GameScreen({
               <span>月度计划</span>
               <span>时间预算 {monthlyBudget.timeBudget.available - monthlyBudget.timeBudget.used}/{monthlyBudget.timeBudget.available}</span>
               <span>精力预算 {monthlyBudget.energyBudget.available - monthlyBudget.energyBudget.used}/{monthlyBudget.energyBudget.available}</span>
+            </div>
+            <div className="monthly-plan-panel" aria-label="已选行动">
+              <div className="monthly-plan-head">
+                <span>已选行动 {plannedActionIds.length}</span>
+                {planOverBudget ? <span className="monthly-plan-warn">预算超载</span> : <span className="monthly-plan-ok">可提交</span>}
+              </div>
+              <div className="monthly-plan-items">
+                {plannedActions.length > 0 ? plannedActions.map(action => {
+                  const cost = actionPlanCost(action);
+                  return (
+                    <button className="monthly-plan-chip" type="button" key={action.id} onClick={() => removePlannedAction(action.id)}>
+                      <span>{action.name}</span>
+                      <span>{cost.time}时/{cost.energy}精</span>
+                    </button>
+                  );
+                }) : <span className="monthly-plan-empty">从下方行动中加入本月计划</span>}
+              </div>
+              {state.pendingEventChoice ? <div className="monthly-plan-note">请先处理事件选择，再提交本月计划。</div> : null}
             </div>
             <div className="action-tabs" role="tablist" aria-label="行动分类">
               {actionCategories.map(category => (
@@ -398,10 +503,11 @@ function GameScreen({
                   return <div className="action-empty-slot" aria-hidden="true" key={slot.id} />;
                 }
                 const action = actionById.get(slot.id);
-                const disabled = !action?.available || state.gameOver;
+                const selected = Boolean(action && plannedActionIds.includes(action.id));
+                const disabled = !action?.available || state.gameOver || Boolean(state.pendingEventChoice);
                 const insight = action ? getActionInsights(state, action) : undefined;
                 return (
-                <button className="action-btn" key={slot.id} disabled={disabled} onClick={() => action && setState(planMonth(state, [action.id]))}>
+                <button className={selected ? 'action-btn planned' : 'action-btn'} key={slot.id} disabled={disabled && !selected} onClick={() => action && togglePlannedAction(action)}>
                   <div className="action-main">
                     <span className="a-name">{slot.icon} {slot.label}</span>
                     <span className="a-cost">{slot.summary}</span>
@@ -416,6 +522,7 @@ function GameScreen({
                   <div className="action-detail">
                     <span>{action?.description ?? '当前条件不足，暂时不能执行。'}</span>
                     {action?.reason ? <span className="cn">{action.reason}</span> : null}
+                    {selected ? <span className="cp">已加入本月计划，点击可取消。</span> : null}
                   </div>
                   {action ? (
                     <div className="action-effects">
@@ -429,6 +536,9 @@ function GameScreen({
               })}
             </div>
             <div className="action-support-scroll">
+              <button className="monthly-plan-submit" type="button" disabled={!canSubmitMonthlyPlan} onClick={submitMonthlyPlan}>
+                执行本月计划
+              </button>
               {bodySignal ? (
                 <div className="body-signal">
                   <div>
@@ -460,11 +570,12 @@ function GameScreen({
 }
 
 function createPressureSnapshot(state: GameState): PressureSnapshot {
+  const pressure = derivePressureSnapshot(state);
   return {
-    cashflow: Math.round(state.finance.cashflowStress),
-    healthDebt: Math.round(state.healthProfile.healthDebt),
-    layoffRisk: Math.round(state.careerProfile.layoffRisk),
-    relationshipDebt: Math.round(state.socialProfile.relationshipDebt),
+    cashflow: Math.round(pressure.cashflowStress),
+    healthDebt: Math.round(pressure.healthDebt),
+    layoffRisk: Math.round(pressure.layoffRisk),
+    relationshipDebt: Math.round(pressure.relationshipDebt),
     marketPressure: Math.round(state.laborMarket.layoffPressure)
   };
 }
@@ -541,6 +652,39 @@ function LifeLogV1({ state }: { state: GameState }) {
   );
 }
 
+function ProjectProgressPanel({ state }: { state: GameState }) {
+  const projects = [
+    { label: '项目实战', project: state.projects.projectPractice },
+    { label: '技术写作', project: state.projects.writing },
+    { label: '开源贡献', project: state.projects.openSource },
+    { label: '副业产品', project: state.projects.sideBusiness }
+  ];
+  const visibleProjects = projects.filter(item => item.project.activeInstance || item.project.completedInstances.length > 0).slice(0, 4);
+  if (visibleProjects.length === 0) return null;
+
+  return (
+    <div className="project-progress-panel">
+      <div className="project-progress-title">项目进度</div>
+      {visibleProjects.map(item => {
+        const activeInstance = item.project.activeInstance;
+        const progress = Math.round(activeInstance?.progress ?? 0);
+        const quality = Math.round(activeInstance?.quality ?? 0);
+        return (
+          <div className="project-progress-row" key={item.label}>
+            <div className="project-progress-meta">
+              <span>{item.label}</span>
+              <span>质量 {quality} · 已发布 {item.project.completedInstances.length}</span>
+            </div>
+            <div className="project-progress-bar">
+              <span style={{ width: `${Math.max(4, Math.min(100, progress))}%` }} />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function AchievementDialog({ state, close }: { state: GameState; close: () => void }) {
   return (
     <div className="modal-overlay open">
@@ -590,14 +734,22 @@ function getAchievementProgress(state: GameState, achievementId: string): Achiev
       return progress(visible.ai, 70);
     case 'tech_senior':
       return progress(visible.tech, 72);
-    case 'survive_35':
-      return progress(state.age, 35, '岁');
+    case 'survive_35': {
+      const ageRatio = Math.min(1, state.age / 35);
+      const cashRatio = Math.min(1, state.stats.cash / 150000);
+      const recoveryRatio = Math.min(1, state.healthProfile.recoveryQuality / 60);
+      const skillRatio = Math.min(1, state.careerProfile.transferableSkills / 40);
+      const ratio = Math.min(ageRatio, cashRatio, recoveryRatio, skillRatio);
+      return { ratio, text: `${state.age}/35岁 · 缓冲${Math.min(Math.floor(state.stats.cash), 150000)}/150000元 · 恢复${Math.floor(state.healthProfile.recoveryQuality)}/60 · 迁移${Math.floor(state.careerProfile.transferableSkills)}/40` };
+    }
     case 'no_overwork_year': {
-      const monthRatio = Math.min(1, state.month / 36);
+      const recentOvertime = (state.actionHistory ?? []).some(action => action.id === 'overtime_sprint' && state.month - action.month <= 12);
+      const monthRatio = Math.min(1, state.month / 12);
       const healthRatio = Math.min(1, state.stats.health / 70);
       const mentalRatio = Math.min(1, state.stats.mental / 70);
-      const ratio = Math.min(monthRatio, healthRatio, mentalRatio);
-      return { ratio, text: `${Math.round(ratio * 100)}%` };
+      const overtimeRatio = recentOvertime ? 0 : 1;
+      const ratio = Math.min(monthRatio, healthRatio, mentalRatio, overtimeRatio);
+      return { ratio, text: recentOvertime ? '近12个月有高压加班记录' : `${Math.min(state.month, 12)} / 12个月 · 健康${Math.floor(state.stats.health)}/70 · 精神${Math.floor(state.stats.mental)}/70` };
     }
     case 'side_income':
       return progress(state.stats.passiveIncomeMonthly, 3000, '元/月');

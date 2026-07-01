@@ -1,4 +1,5 @@
 import type { ActionConfig, ActionInsight, BodySignal, GameState, RiskBadge } from '../types/game';
+import { derivePressureSnapshot } from './derivedStateSystem';
 
 function recentRepeatCount(state: GameState, repeatKey: string) {
   return (state.actionHistory ?? []).filter(item => item.repeatKey === repeatKey && state.month - item.month < 6).length;
@@ -9,6 +10,7 @@ function isHealthSensitive(action: ActionConfig) {
 }
 
 export function getBodySignal(state: GameState): BodySignal | undefined {
+  const pressure = derivePressureSnapshot(state);
   const signals: BodySignal[] = [
     {
       title: '睡眠债在累积',
@@ -33,9 +35,9 @@ export function getBodySignal(state: GameState): BodySignal | undefined {
     },
     {
       title: '健康债接近警戒线',
-      text: `健康债 ${Math.round(state.healthProfile.healthDebt)}，继续透支会增加失败结局风险。`,
+      text: `健康债 ${Math.round(pressure.healthDebt)}，继续透支会增加失败结局风险。`,
       dimension: 'healthDebt',
-      severity: state.healthProfile.healthDebt,
+      severity: pressure.healthDebt,
       suggestedActionIds: ['sleep_repair', 'exercise', 'therapy']
     },
     {
@@ -73,8 +75,9 @@ export function getActionInsights(state: GameState, action: ActionConfig): Actio
     riskWarnings.push(`${bodySignal.title}：${bodySignal.text}`);
   }
 
-  if (action.stressLevel >= 3 && state.healthProfile.healthDebt >= 65) {
-    riskWarnings.push(`健康债 ${Math.round(state.healthProfile.healthDebt)} 已接近警戒线，高压行动会放大燃尽风险。`);
+  const pressure = derivePressureSnapshot(state);
+  if (action.stressLevel >= 3 && pressure.healthDebt >= 65) {
+    riskWarnings.push(`健康债 ${Math.round(pressure.healthDebt)} 已接近警戒线，高压行动会放大燃尽风险。`);
   }
 
   return {

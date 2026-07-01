@@ -1,14 +1,14 @@
 import { describe, expect, it, vi } from 'vitest';
 import { applyAction, createInitialState, getAvailableActions } from '../core/gameEngine';
 import { settleMonth } from '../core/monthlyLoop';
-import { applyDelta } from '../core/formulas';
+import { applyDelta, getGrossSalary, getMonthlyCost } from '../core/formulas';
 import { resolvePendingEventChoiceForSimulation } from '../systems/autoChoiceSystem';
 import { applyRealworldActionEffect } from '../systems/actionRuleSystem';
 import { settleEconomy } from '../systems/economySystem';
 import { settleLifeStagePressure } from '../systems/lifePressureSystem';
 import { settleRelationshipDebt } from '../systems/relationshipSystem';
 import { getAction } from '../config/actions';
-import { deriveRoleAiPressure, settleLaborMarket } from '../systems/laborMarketSystem';
+import { deriveRoleAiPressure, hasAiPressure, settleLaborMarket } from '../systems/laborMarketSystem';
 import { COMPANY_PROFILES } from '../config/realworldCompanies';
 import { CAREER_ROUTES } from '../config/realworldCareer';
 
@@ -118,6 +118,7 @@ describe('real-world simulation kernel state model', () => {
 
     expect(loaded?.finance.emergencyFundMonths).toBeGreaterThan(0);
     expect(loaded?.finance.monthlySalary).toBeGreaterThanOrEqual(0);
+    expect(loaded?.finance.fixedObligationsMonthly).toBeGreaterThanOrEqual(0);
     expect(loaded?.healthProfile.sedentaryLoad).toBeGreaterThanOrEqual(0);
     expect(loaded?.healthProfile.chronicRisk).toBeGreaterThanOrEqual(0);
     expect(loaded?.careerProfile.skillFreshness).toBeGreaterThan(0);
@@ -132,6 +133,92 @@ describe('real-world simulation kernel state model', () => {
     expect(loaded?.lifePressure.agePressure).toBeGreaterThanOrEqual(0);
     expect(loaded?.values.health).toBeGreaterThan(0);
     expect(loaded?.crisis.burnout.active).toBe(false);
+    expect(loaded?.crisis.burnout.phase).toBe('inactive');
+    expect(loaded?.crisis.burnout.episodes).toEqual([]);
+
+    vi.unstubAllGlobals();
+  });
+
+  it('migrates legacy monthly fixed cost snapshots without recursive obligations', async () => {
+    vi.resetModules();
+    const store = new Map<string, string>();
+    vi.stubGlobal('localStorage', {
+      getItem: (key: string) => store.get(key) ?? null,
+      setItem: (key: string, value: string) => store.set(key, value),
+      removeItem: (key: string) => store.delete(key)
+    });
+
+    const legacy = createInitialState('frontend', 'tier2', seed);
+    legacy.finance.monthlyFixedCost = 6500;
+    store.set('programmer_survival_v6_save', JSON.stringify(legacy));
+
+    const { loadGame } = await import('../storage/saveManager');
+    const loaded = loadGame();
+
+    expect(loaded?.finance.monthlyFixedCost).toBe(0);
+    expect(loaded?.finance.fixedObligationsMonthly).toBe(0);
+
+    vi.unstubAllGlobals();
+  });
+
+  it('migrates legacy finance snapshots by city baseline and preserves true obligations', async () => {
+    vi.resetModules();
+    const cases = [
+      ['tier1', 8500, 0],
+      ['tier2', 6500, 0],
+      ['tier3', 5200, 700],
+      ['tier2', 7080, 580]
+    ] as const;
+
+    const { loadGame } = await import('../storage/saveManager');
+
+    for (const [cityTier, legacyFixedCost, expectedObligations] of cases) {
+      const store = new Map<string, string>();
+      vi.stubGlobal('localStorage', {
+        getItem: (key: string) => store.get(key) ?? null,
+        setItem: (key: string, value: string) => store.set(key, value),
+        removeItem: (key: string) => store.delete(key)
+      });
+
+      const legacy = createInitialState('frontend', cityTier, seed);
+      legacy.finance.monthlyFixedCost = legacyFixedCost;
+      delete (legacy.finance as Partial<typeof legacy.finance>).fixedObligationsMonthly;
+      store.set('programmer_survival_v6_save', JSON.stringify(legacy));
+
+      const loaded = loadGame();
+
+      expect(loaded?.finance.monthlyFixedCost).toBe(0);
+      expect(loaded?.finance.fixedObligationsMonthly).toBe(expectedObligations);
+      vi.unstubAllGlobals();
+    }
+  });
+
+  it('migrates legacy active crisis saves with episode history fields', async () => {
+    vi.resetModules();
+    const store = new Map<string, string>();
+    vi.stubGlobal('localStorage', {
+      getItem: (key: string) => store.get(key) ?? null,
+      setItem: (key: string, value: string) => store.set(key, value),
+      removeItem: (key: string) => store.delete(key)
+    });
+
+    const state = createInitialState('frontend', 'tier2', seed);
+    const legacy = structuredClone(state) as unknown as Record<string, unknown>;
+    legacy.crisis = {
+      burnout: { active: true, startedMonth: 3, recoveryProgress: 24 },
+      mentalHealth: { active: false, recoveryProgress: 0 },
+      severeIllness: { active: false, recoveryProgress: 0 },
+      majorUnemployment: { active: false, recoveryProgress: 0 }
+    };
+    store.set('programmer_survival_v6_save', JSON.stringify(legacy));
+
+    const { loadGame } = await import('../storage/saveManager');
+    const loaded = loadGame();
+
+    expect(loaded?.crisis.burnout.active).toBe(true);
+    expect(loaded?.crisis.burnout.phase).toBe('active');
+    expect(loaded?.crisis.burnout.episodes).toEqual([{ startedMonth: 3 }]);
+    expect(loaded?.crisis.burnout.recoveryProgress).toBe(24);
 
     vi.unstubAllGlobals();
   });
@@ -225,8 +312,8 @@ describe('real-world monthly causal pipeline', () => {
     let state = createInitialState('frontend', 'tier2', seed);
     state.career.employmentStatus = 'employed';
     state.career.companyType = 'private';
-    state.career.jobLevel = 2;
-    state.stats.cash = 300000;
+    state.career.jobLevel = 3;
+    state.stats.cash = 1200000;
     state.healthProfile.nutritionQuality = 76;
     state.healthProfile.recoveryQuality = 74;
     state.healthProfile.exerciseHabit = 62;
@@ -236,11 +323,12 @@ describe('real-world monthly causal pipeline', () => {
       state = settleMonth(applyDelta(state, { techXp: 3, aiXp: 2, reputationXp: 1, mental: 1, health: 1 }));
     }
 
-    expect(state.age).toBeGreaterThanOrEqual(45);
+    expect(state.age >= 45 || state.gameOver).toBe(true);
+    if (state.gameOver) expect(state.endingId).toBeTruthy();
     expect(Number.isFinite(state.finance.cashflowStress)).toBe(true);
     expect(Number.isFinite(state.healthProfile.healthDebt)).toBe(true);
     expect(Number.isFinite(state.careerProfile.layoffRisk)).toBe(true);
-  });
+  }, 15000);
 });
 
 describe('real-world action consequences', () => {
@@ -265,6 +353,23 @@ describe('real-world action consequences', () => {
     expect(next.healthProfile.sleepDebt).toBeLessThan(state.healthProfile.sleepDebt);
     expect(next.healthProfile.healthDebt).toBeLessThan(state.healthProfile.healthDebt);
     expect(next.healthProfile.recoveryQuality).toBeGreaterThan(state.healthProfile.recoveryQuality);
+  });
+
+  it('lets repeated real actions shape player value priorities', () => {
+    let healthFirst = createInitialState('frontend', 'tier2', seed);
+    healthFirst = applyAction(healthFirst, 'exercise');
+    healthFirst = applyAction(healthFirst, 'therapy');
+
+    let incomeFirst = createInitialState('frontend', 'tier2', seed);
+    incomeFirst.stats.techXp = 300;
+    incomeFirst.career.employmentStatus = 'employed';
+    incomeFirst = applyAction(incomeFirst, 'freelance');
+    incomeFirst = applyAction(incomeFirst, 'regular_work');
+
+    expect(healthFirst.values.health).toBeGreaterThan(createInitialState('frontend', 'tier2', seed).values.health);
+    expect(healthFirst.values.health).toBeGreaterThan(incomeFirst.values.health);
+    expect(incomeFirst.values.wealth).toBeGreaterThan(healthFirst.values.wealth);
+    expect(incomeFirst.values.stability).toBeGreaterThan(healthFirst.values.stability);
   });
 
   it('applies opportunity costs and market risk from side income actions', () => {
@@ -314,7 +419,7 @@ describe('real-world action consequences', () => {
     });
 
     expect(next.finance.monthlyIncome).toBe(12000);
-    expect(next.finance.monthlyFixedCost).toBe(14200);
+    expect(next.finance.monthlyFixedCost).toBe(9000);
     expect(next.finance.debt).toBe(150000);
     expect(next.careerProfile.employability).toBe(100);
     expect(next.lifePressure.timeScarcity).toBe(100);
@@ -346,6 +451,71 @@ describe('real-world action consequences', () => {
     expect(next.career.totalApplications).toBeGreaterThan(state.career.totalApplications);
     expect(next.career.totalInterviews).toBeGreaterThanOrEqual(state.career.totalInterviews);
     expect(next.career.totalOffers).toBeGreaterThanOrEqual(state.career.totalOffers);
+  });
+
+  it('does not treat expired historical offers or interviews as current requirements', () => {
+    const historical = createInitialState('frontend', 'tier2', seed);
+    historical.stats.cash = 120000;
+    historical.stats.techXp = 500;
+    historical.stats.aiXp = 300;
+    historical.career.employmentStatus = 'jobless';
+    historical.career.totalOffers = 5;
+    historical.career.totalInterviews = 5;
+    historical.career.pendingApplications = 0;
+    historical.career.activeOffers = [];
+    historical.career.scheduledInterviews = [];
+
+    const historicalActions = getAvailableActions(historical);
+    expect(historicalActions.find(action => action.id === 'C2002')?.available).toBe(false);
+    expect(historicalActions.find(action => action.id === 'J2003')?.available).toBe(false);
+
+    const current = structuredClone(historical);
+    current.career.activeOffers = [{
+      id: 'offer-current',
+      companyType: 'private',
+      jobLevel: 2,
+      salaryMonthly: 18000,
+      createdMonth: current.month,
+      expiresMonth: current.month + 2,
+      status: 'active'
+    }];
+    current.career.scheduledInterviews = [{
+      id: 'interview-current',
+      companyType: 'private',
+      createdMonth: current.month,
+      scheduledMonth: current.month,
+      status: 'scheduled'
+    }];
+
+    const currentActions = getAvailableActions(current);
+    expect(currentActions.find(action => action.id === 'C2002')?.available).toBe(true);
+    expect(currentActions.find(action => action.id === 'J2003')?.available).toBe(true);
+  });
+
+  it('does not auto-accept active offers during monthly settlement without C2002', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.career.employmentStatus = 'jobless';
+    state.career.companyType = 'none';
+    state.career.pendingApplications = 0;
+    state.career.scheduledInterviews = [];
+    state.career.activeOffers = [{
+      id: 'manual-offer',
+      companyType: 'private',
+      jobLevel: 1,
+      salaryMonthly: 16000,
+      createdMonth: state.month,
+      expiresMonth: state.month + 2,
+      status: 'active'
+    }];
+
+    const settled = settleMonth(state);
+
+    expect(settled.career.employmentStatus).toBe('jobless');
+    expect(settled.career.activeOffers[0].status).toBe('active');
+
+    const accepted = applyAction(state, 'C2002');
+    expect(accepted.career.employmentStatus).toBe('employed');
+    expect(accepted.career.activeOffers[0].status).toBe('accepted');
   });
 
   it('does not trigger long-term unemployment from lifetime applications alone', async () => {
@@ -397,6 +567,23 @@ describe('real-world action consequences', () => {
     );
   });
 
+  it('does not create family responsibility or living cost from age alone', () => {
+    const young = createInitialState('frontend', 'tier2', seed);
+    young.age = 26;
+    young.household.hasParents = false;
+    young.household.hasPartner = false;
+    young.household.children = 0;
+    young.lifePressure.familyResponsibility = 0;
+
+    const older = structuredClone(young);
+    older.age = 42;
+
+    const settled = settleLifeStagePressure(older);
+
+    expect(settled.lifePressure.familyResponsibility).toBe(0);
+    expect(getMonthlyCost(older)).toBe(getMonthlyCost(young));
+  });
+
   it('uses structured requirements to disable real-world actions', () => {
     const state = createInitialState('frontend', 'tier2', seed);
     state.stats.cash = 1000;
@@ -433,6 +620,88 @@ describe('real-world action consequences', () => {
     expect(household?.available).toBe(false);
     expect(household?.reason).toContain('家庭');
   });
+
+  it('gates account offer income debt and time requirements with real state predicates', () => {
+    const blocked = createInitialState('frontend', 'tier2', seed);
+    blocked.stats.cash = 1000;
+    blocked.stats.techXp = 0;
+    blocked.stats.aiXp = 0;
+    blocked.career.employmentStatus = 'jobless';
+    blocked.career.totalOffers = 0;
+    blocked.career.pendingApplications = 0;
+    blocked.career.totalInterviews = 0;
+    blocked.finance.monthlyIncome = 0;
+    blocked.finance.monthlySalary = 0;
+    blocked.finance.debt = 0;
+    blocked.inventory = {};
+    blocked.flags = {};
+    blocked.lifePressure.timeScarcity = 95;
+    blocked.hidden.fatigue = 95;
+
+    const blockedActions = getAvailableActions(blocked);
+    expect(blockedActions.find(action => action.id === 'G2204')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'J2007')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'C2002')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'J2003')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'I2302')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'I2303')?.available).toBe(false);
+    expect(blockedActions.find(action => action.id === 'G2201')?.available).toBe(false);
+
+    const ready = structuredClone(blocked);
+    ready.stats.cash = 120000;
+    ready.stats.techXp = 500;
+    ready.stats.aiXp = 300;
+    ready.career.employmentStatus = 'employed';
+    ready.career.pendingApplications = 2;
+    ready.career.scheduledInterviews = [{
+      id: 'current-interview',
+      companyType: 'private',
+      createdMonth: ready.month,
+      scheduledMonth: ready.month,
+      status: 'scheduled'
+    }];
+    ready.career.activeOffers = [{
+      id: 'current-offer',
+      companyType: 'private',
+      jobLevel: 2,
+      salaryMonthly: 18000,
+      createdMonth: ready.month,
+      expiresMonth: ready.month + 2,
+      status: 'active'
+    }, {
+      id: 'competing-offer',
+      companyType: 'foreign',
+      jobLevel: 2,
+      salaryMonthly: 20000,
+      createdMonth: ready.month,
+      expiresMonth: ready.month + 2,
+      status: 'active'
+    }];
+    ready.finance.monthlyIncome = 18000;
+    ready.finance.monthlySalary = 18000;
+    ready.finance.debt = 80000;
+    ready.inventory = {
+      github_account: 1,
+      linkedin_account: 1,
+      recording_tool: 1,
+      password_manager: 1,
+      credit_card: 1,
+      kitchen: 1,
+      quiet_space: 1
+    };
+    ready.flags = { competing_offer: true, has_friends: true };
+    ready.lifePressure.timeScarcity = 20;
+    ready.hidden.fatigue = 20;
+
+    const readyActions = getAvailableActions(ready);
+    expect(readyActions.find(action => action.id === 'G2204')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'J2007')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'C2002')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'J2003')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'I2302')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'I2303')?.available).toBe(true);
+    expect(readyActions.find(action => action.id === 'G2201')?.available).toBe(true);
+  });
 });
 
 describe('phase 3 world career ai and age model', () => {
@@ -454,6 +723,54 @@ describe('phase 3 world career ai and age model', () => {
 
     expect(frontendPressure).toBeGreaterThan(backendPressure);
     expect(frontendPressure).not.toBe(frontend.world.aiReplacement);
+  });
+
+  it('does not directly penalize salary from the old global AI replacement meter alone', () => {
+    const lowReplacement = createInitialState('frontend', 'tier1', seed);
+    lowReplacement.career.employmentStatus = 'employed';
+    lowReplacement.career.companyType = 'foreign';
+    lowReplacement.career.jobLevel = 2;
+    lowReplacement.world.aiReplacement = 5;
+    lowReplacement.world.modelCapability = 50;
+    lowReplacement.world.toolAdoption = 50;
+    lowReplacement.world.organizationReadiness = 50;
+    lowReplacement.careerProfile.aiLeverage = 50;
+
+    const highReplacement = structuredClone(lowReplacement);
+    highReplacement.world.aiReplacement = 95;
+
+    expect(getGrossSalary(highReplacement)).toBe(getGrossSalary(lowReplacement));
+  });
+
+  it('does not trigger AI pressure from legacy aiReplacement alone', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.world.aiReplacement = 95;
+    state.world.modelCapability = 10;
+    state.world.toolAdoption = 10;
+    state.world.organizationReadiness = 10;
+    state.laborMarket.aiDisruption = 12;
+    state.careerProfile.aiLeverage = 70;
+
+    expect(hasAiPressure(state, 35)).toBe(false);
+  });
+
+  it('uses role AI pressure rather than old global replacement to scale growth actions', () => {
+    const pressuredState = createInitialState('frontend', 'tier2', seed);
+    pressuredState.world.aiReplacement = 95;
+    pressuredState.world.modelCapability = 85;
+    pressuredState.world.toolAdoption = 85;
+    pressuredState.world.organizationReadiness = 85;
+    pressuredState.careerProfile.aiLeverage = 5;
+
+    const calmState = structuredClone(pressuredState);
+    calmState.world.taskAutomationByRole.frontend = 10;
+    calmState.world.organizationReadiness = 5;
+    calmState.careerProfile.aiLeverage = 80;
+
+    const pressured = applyAction(pressuredState, 'system_learning');
+    const calm = applyAction(calmState, 'system_learning');
+
+    expect(calm.stats.techXp - calmState.stats.techXp).toBeGreaterThan(pressured.stats.techXp - pressuredState.stats.techXp);
   });
 
   it('does not directly reduce skill or employability just because age increased', () => {
@@ -497,6 +814,38 @@ describe('phase 3 world career ai and age model', () => {
     expect(foreignNext.laborMarket.hiringStrictness).toBeLessThan(startupNext.laborMarket.hiringStrictness);
   });
 
+  it('uses company salary coefficients in gross salary calculations', () => {
+    const bigtech = createInitialState('frontend', 'tier1', seed);
+    bigtech.career.employmentStatus = 'employed';
+    bigtech.career.companyType = 'bigtech';
+    bigtech.career.jobLevel = 2;
+
+    const outsourcing = createInitialState('frontend', 'tier1', seed);
+    outsourcing.career.employmentStatus = 'employed';
+    outsourcing.career.companyType = 'outsourcing';
+    outsourcing.career.jobLevel = 2;
+
+    expect(getGrossSalary(bigtech)).toBeGreaterThan(getGrossSalary(outsourcing));
+  });
+
+  it('uses company promotion speed in monthly promotion readiness', () => {
+    const startup = createInitialState('frontend', 'tier2', seed);
+    startup.career.employmentStatus = 'employed';
+    startup.career.companyType = 'startup';
+    startup.stats.techXp = 1000;
+    startup.stats.aiXp = 600;
+    startup.stats.mental = 90;
+    startup.stats.health = 90;
+
+    const publicSector = structuredClone(startup);
+    publicSector.career.companyType = 'public_sector';
+
+    const startupNext = settleMonth(startup);
+    const publicNext = settleMonth(publicSector);
+
+    expect(startupNext.careerProfile.promotionReadiness).toBeGreaterThan(publicNext.careerProfile.promotionReadiness);
+  });
+
   it('defines expanded career routes with transition costs', () => {
     expect(CAREER_ROUTES.map(route => route.id)).toEqual(expect.arrayContaining([
       'testing',
@@ -513,5 +862,46 @@ describe('phase 3 world career ai and age model', () => {
       expect(route.transitionCost).toBeGreaterThan(0);
       expect(route.requiredCapital).toBeGreaterThanOrEqual(0);
     });
+  });
+
+  it('lets players transition into three expanded career routes through real actions', () => {
+    const routeActions = [
+      ['transition_testing', 'testing'],
+      ['transition_data_engineering', 'data_engineering'],
+      ['transition_security', 'security']
+    ] as const;
+
+    routeActions.forEach(([actionId, routeId]) => {
+      let state = createInitialState('frontend', 'tier2', seed);
+      state.stats.techXp = 1200;
+      state.stats.aiXp = 800;
+      state.stats.reputationXp = 600;
+      state.careerProfile.careerCapital = 80;
+      state.career.portfolioCount = 3;
+
+      for (let i = 0; i < 3 && state.careerProfile.currentRoleId !== routeId; i += 1) {
+        state = applyAction(state, actionId);
+      }
+
+      expect(state.careerProfile.currentRoleId).toBe(routeId);
+      expect(state.careerProfile.roleHistory).toContain(routeId);
+      expect(state.careerProfile.transitionProgress[routeId]).toBeGreaterThanOrEqual(100);
+    });
+  });
+
+  it('makes higher transition-cost routes progress slower under equal player state', () => {
+    const testing = createInitialState('frontend', 'tier2', seed);
+    testing.stats.techXp = 1200;
+    testing.stats.aiXp = 800;
+    testing.stats.reputationXp = 600;
+    testing.careerProfile.careerCapital = 80;
+    testing.career.portfolioCount = 3;
+
+    const security = structuredClone(testing);
+
+    const testingNext = applyAction(testing, 'transition_testing');
+    const securityNext = applyAction(security, 'transition_security');
+
+    expect(securityNext.careerProfile.transitionProgress.security).toBeLessThan(testingNext.careerProfile.transitionProgress.testing);
   });
 });

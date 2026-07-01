@@ -1,9 +1,12 @@
-import { describe, expect, it } from 'vitest';
-import { createInitialState } from '../core/gameEngine';
-import { eventIntensity, getMonthlyEventCandidates } from '../systems/eventSystem';
+import { describe, expect, it, vi } from 'vitest';
+import { createInitialState, planMonth } from '../core/gameEngine';
+import { settleMonth } from '../core/monthlyLoop';
+import { eventIntensity, getMonthlyEventCandidates, triggerMonthlyEvent } from '../systems/eventSystem';
+import { applyEventChoice } from '../systems/eventSystem';
 import { checkEnding } from '../systems/endingSystem';
 import { deriveBurnoutRisk, deriveCareerStability, deriveEmployability, deriveHealthDebt, deriveLifeSatisfaction } from '../systems/derivedStateSystem';
 import { ENDINGS } from '../config/endings';
+import { ACHIEVEMENTS } from '../config/achievements';
 
 const seed = 13579;
 
@@ -44,7 +47,10 @@ describe('state-driven real-world events and endings', () => {
 
   it('includes AI skill-obsolescence warnings when disruption outpaces leverage', () => {
     const state = createInitialState('frontend', 'tier2', seed);
-    state.world.aiReplacement = 82;
+    state.world.modelCapability = 90;
+    state.world.toolAdoption = 85;
+    state.world.organizationReadiness = 85;
+    state.world.taskAutomationByRole.frontend = 85;
     state.careerProfile.aiLeverage = 10;
 
     const candidates = getMonthlyEventCandidates(state);
@@ -117,6 +123,41 @@ describe('state-driven real-world events and endings', () => {
     expect(candidates.every(event => !event.mutuallyExclusiveTags?.includes('health_alert') || event.id !== 'minor_illness')).toBe(true);
   });
 
+  it('keeps event chain progress separate from cooldown timestamps', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    const first = triggerMonthlyEvent(state, { forceEvent: 'coworker_ai_1' });
+    const second = triggerMonthlyEvent(first, { forceEvent: 'leader_talk_ai' });
+
+    expect(second.eventChainProgress.ai_shift).toBe(2);
+    expect(second.eventLastTriggeredMonth.ai_shift).toBe(first.month);
+    expect(second.eventChoiceMemory.ai_shift).toBeUndefined();
+  });
+
+  it('migrates legacy event memory into cooldown and choice memory fields', async () => {
+    vi.resetModules();
+    const store = new Map<string, string>();
+    vi.stubGlobal('localStorage', {
+      getItem: (key: string) => store.get(key) ?? null,
+      setItem: (key: string, value: string) => store.set(key, value),
+      removeItem: (key: string) => store.delete(key)
+    });
+    const legacy = createInitialState('frontend', 'tier2', seed);
+    legacy.eventMemory = {
+      health_warning: legacy.month - 2,
+      layoff_response_quiet_job_search: 3
+    };
+    delete (legacy as unknown as { eventLastTriggeredMonth?: unknown }).eventLastTriggeredMonth;
+    delete (legacy as unknown as { eventChoiceMemory?: unknown }).eventChoiceMemory;
+    store.set('programmer_survival_v6_save', JSON.stringify(legacy));
+
+    const { loadGame } = await import('../storage/saveManager');
+    const loaded = loadGame();
+
+    expect(loaded?.eventLastTriggeredMonth.health_warning).toBe(legacy.month - 2);
+    expect(loaded?.eventChoiceMemory.layoff_response_quiet_job_search).toBe(3);
+    vi.unstubAllGlobals();
+  });
+
   it('raises event intensity when exposure and world cycle risks increase', () => {
     const calmState = createInitialState('frontend', 'tier2', seed);
     calmState.career.employmentStatus = 'employed';
@@ -151,6 +192,67 @@ describe('state-driven real-world events and endings', () => {
     expect(deriveLifeSatisfaction(state).explanation).toContain('价值');
   });
 
+  it('uses player value priorities when deriving life satisfaction', () => {
+    const wealthFirst = createInitialState('frontend', 'tier2', seed);
+    wealthFirst.stats.cash = 900000;
+    wealthFirst.stats.health = 35;
+    wealthFirst.stats.relation = 30;
+    wealthFirst.stats.identity = 35;
+    wealthFirst.values = { wealth: 1, craft: 0.2, stability: 0.2, freedom: 0.2, relationships: 0.1, health: 0.1, impact: 0.1, exploration: 0.1 };
+
+    const healthFirst = structuredClone(wealthFirst);
+    healthFirst.values = { wealth: 0.1, craft: 0.2, stability: 0.2, freedom: 0.2, relationships: 0.8, health: 1, impact: 0.1, exploration: 0.1 };
+
+    expect(deriveLifeSatisfaction(wealthFirst).value).toBeGreaterThan(deriveLifeSatisfaction(healthFirst).value);
+  });
+
+  it('keeps achievement descriptions aligned with their unlock conditions', () => {
+    const transitionWindow = ACHIEVEMENTS.find(achievement => achievement.id === 'survive_35')!;
+    const noOverworkYear = ACHIEVEMENTS.find(achievement => achievement.id === 'no_overwork_year')!;
+
+    const weakWindow = createInitialState('frontend', 'tier2', seed);
+    weakWindow.age = 35;
+    weakWindow.stats.cash = 1000;
+    weakWindow.healthProfile.recoveryQuality = 20;
+    weakWindow.careerProfile.transferableSkills = 10;
+
+    const readyWindow = structuredClone(weakWindow);
+    readyWindow.stats.cash = 150000;
+    readyWindow.healthProfile.recoveryQuality = 65;
+    readyWindow.careerProfile.transferableSkills = 45;
+
+    expect(transitionWindow.description).toContain('现金缓冲');
+    expect(transitionWindow.description).toContain('恢复能力');
+    expect(transitionWindow.description).toContain('可迁移技能');
+    expect(transitionWindow.condition(weakWindow)).toBe(false);
+    expect(transitionWindow.condition(readyWindow)).toBe(true);
+
+    const overworked = createInitialState('frontend', 'tier2', seed);
+    overworked.month = 36;
+    overworked.stats.health = 82;
+    overworked.stats.mental = 82;
+    overworked.actionHistory = [
+      { id: 'overtime_sprint', repeatKey: 'overtime', primaryCategory: 'career', subcategory: 'deep_work', stressLevel: 3, month: 32 }
+    ];
+
+    const balanced = structuredClone(overworked);
+    balanced.actionHistory = [
+      { id: 'exercise', repeatKey: 'exercise_training', primaryCategory: 'recovery', subcategory: 'body_repair', stressLevel: 1, month: 32 }
+    ];
+
+    expect(noOverworkYear.description).toContain('12个月');
+    expect(noOverworkYear.condition(overworked)).toBe(false);
+    expect(noOverworkYear.condition(balanced)).toBe(true);
+  });
+
+  it('uses respectful normal ending copy without ordinary tool framing', () => {
+    const ordinary = ENDINGS.find(ending => ending.id === 'ordinary_tool')!;
+
+    expect(ordinary.title).not.toContain('工具人');
+    expect(ordinary.text).not.toContain('工具人');
+    expect(ordinary.title).toContain('普通结局');
+  });
+
   it('routes burnout and mental health collapse into recovery crisis before hard failure', () => {
     const state = createInitialState('frontend', 'tier2', seed);
     state.stats.burnout = 100;
@@ -168,7 +270,7 @@ describe('state-driven real-world events and endings', () => {
   it('only ends burnout or health crisis after an unrecovered hard fail state', () => {
     const state = createInitialState('frontend', 'tier2', seed);
     state.stats.burnout = 100;
-    state.stats.mental = 0;
+    state.stats.mental = 8;
     state.stats.health = 0;
     state.crisis.burnout.active = true;
     state.crisis.burnout.startedMonth = state.month - 7;
@@ -179,6 +281,76 @@ describe('state-driven real-world events and endings', () => {
 
     expect(next.gameOver).toBe(true);
     expect(next.endingId).toMatch(/burnout|health/);
+  });
+
+  it('closes a burnout crisis after recovery actions improve the player state', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+    state.career.employmentStatus = 'employed';
+    state.stats.techXp = 1000;
+    state.stats.burnout = 96;
+    state.stats.mental = 10;
+    state.hidden.fatigue = 72;
+    state.hidden.boundaryScore = 24;
+
+    state = checkEnding(state);
+    expect(state.crisis.burnout.active).toBe(true);
+
+    for (let i = 0; i < 5 && state.crisis.burnout.active; i += 1) {
+      state = planMonth(state, ['therapy', 'sleep_repair']);
+    }
+
+    expect(state.gameOver).toBe(false);
+    expect(state.crisis.burnout.active).toBe(false);
+    expect(state.crisis.burnout.phase).toBe('recovered');
+    expect(state.crisis.burnout.episodes.length).toBeGreaterThanOrEqual(1);
+    expect(state.logs.some(log => log.title === '燃尽恢复完成')).toBe(true);
+  });
+
+  it('fails an unrecovered burnout crisis after the recovery window expires', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+    state.career.employmentStatus = 'employed';
+    state.stats.burnout = 100;
+    state.stats.mental = 40;
+    state.hidden.fatigue = 96;
+    state.hidden.boundaryScore = 8;
+    state = checkEnding(state);
+
+    for (let i = 0; i < 7 && !state.gameOver; i += 1) {
+      state.stats.burnout = 100;
+      state.stats.mental = 40;
+      state.hidden.fatigue = 96;
+      state = settleMonth(state);
+      if (state.pendingEventChoice) {
+        state = applyEventChoice(state, state.pendingEventChoice.choices[0].id);
+      }
+    }
+
+    expect(state.gameOver).toBe(true);
+    expect(state.endingId).toMatch(/burnout/);
+    expect(state.crisis.burnout.phase).toBe('failed');
+  });
+
+  it('starts a new crisis episode after recovery instead of reusing the old timestamp', () => {
+    let state = createInitialState('frontend', 'tier2', seed);
+    state.stats.burnout = 96;
+    state.stats.mental = 10;
+    state = checkEnding(state);
+    const firstStartedMonth = state.crisis.burnout.startedMonth;
+
+    for (let i = 0; i < 5 && state.crisis.burnout.active; i += 1) {
+      state = planMonth(state, ['therapy', 'sleep_repair']);
+    }
+    expect(state.crisis.burnout.active).toBe(false);
+
+    state.stats.burnout = 96;
+    state.stats.mental = 8;
+    state = checkEnding(state);
+
+    expect(state.gameOver).toBe(false);
+    expect(state.crisis.burnout.active).toBe(true);
+    expect(state.crisis.burnout.startedMonth).toBe(state.month);
+    expect(state.crisis.burnout.startedMonth).not.toBe(firstStartedMonth);
+    expect(state.crisis.burnout.episodes.length).toBeGreaterThanOrEqual(1);
   });
 
   it('adds value fit to mature endings instead of only money title tech and ai', () => {
