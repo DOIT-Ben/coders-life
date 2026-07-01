@@ -772,23 +772,25 @@ function ShopDialog({ state, setState, close }: { state: GameState; setState: (s
     <div className="modal-overlay open">
       <div className="modal">
         <div className="modal-head"><div className="modal-title">🛒 补给商店</div><button onClick={close}>×</button></div>
-        {SHOP_ITEMS.map(item => {
-          const owned = state.inventory[item.id] ?? 0;
-          const isMaxed = Boolean(item.maxCount && owned >= item.maxCount);
-          const disabled = state.stats.cash < item.price || isMaxed;
-          const buttonText = isMaxed
-            ? item.maxCount === 1 ? '已装备' : '已购入'
-            : `¥${item.price.toLocaleString()}`;
-          return (
-            <div className={owned > 0 ? 'shop-item owned' : 'shop-item'} key={item.id}>
-              <div>
-                <div className="shop-name">{owned > 0 ? '✓ ' : ''}{item.name}</div>
-                <div className="shop-desc">{item.description}{owned > 0 ? ` · 已拥有 ${owned}` : ''}</div>
+        <div className="shop-list">
+          {SHOP_ITEMS.map(item => {
+            const owned = state.inventory[item.id] ?? 0;
+            const isMaxed = Boolean(item.maxCount && owned >= item.maxCount);
+            const disabled = state.stats.cash < item.price || isMaxed;
+            const buttonText = isMaxed
+              ? item.maxCount === 1 ? '已装备' : '已购入'
+              : `¥${item.price.toLocaleString()}`;
+            return (
+              <div className={owned > 0 ? 'shop-item owned' : 'shop-item'} key={item.id}>
+                <div>
+                  <div className="shop-name">{owned > 0 ? '✓ ' : ''}{item.name}</div>
+                  <div className="shop-desc">{item.description}{owned > 0 ? ` · 已拥有 ${owned}` : ''}</div>
+                </div>
+                <button className={isMaxed ? 'btn-buy owned' : 'btn-buy'} disabled={disabled} onClick={() => buy(item.id)}>{buttonText}</button>
               </div>
-              <button className={isMaxed ? 'btn-buy owned' : 'btn-buy'} disabled={disabled} onClick={() => buy(item.id)}>{buttonText}</button>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );

@@ -575,8 +575,8 @@ body {
 .log-bubble.lucky { background: #F0FFF8; }
 .log-tag.lucky    { background: #A8F0D0; color: #0A6040; }
 
-/* RIGHT COL — matches the left panel height */
-.right-col { display: flex; flex-direction: column; min-height: 520px; height: min(55vh, 560px); }
+/* RIGHT COL — viewport-bound with internal scrolling */
+.right-col { display: flex; flex-direction: column; min-height: 0; height: min(72dvh, 680px); overflow: hidden; }
 
 .action-card {
   background: var(--card); border: 1.5px solid var(--border);
@@ -672,6 +672,12 @@ body {
   padding: 8px;
   border-bottom: 1px solid #EDE5D5;
   background: #FAF6EE;
+  flex: 0 0 auto;
+  max-height: 116px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #CCC8BC transparent;
 }
 .action-tab {
   border: 1.5px solid var(--border);
@@ -703,10 +709,13 @@ body {
   display: flex; flex-direction: column;
   gap: var(--action-slot-gap);
   height: calc(var(--action-slot-height) * 4 + var(--action-slot-gap) * 3);
+  max-height: calc(100% - 46px);
   min-height: 0;
-  flex: 0 0 auto;
+  flex: 0 1 auto;
   overflow-y: auto;
   overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #CCC8BC transparent;
 }
 .v1-action-grid {
   display: grid;
@@ -1017,6 +1026,10 @@ body {
   background: var(--card); border: 1.5px solid var(--border);
   border-radius: 14px; padding: 24px;
   max-width: 420px; width: 100%;
+  max-height: min(720px, calc(100dvh - 32px));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   box-shadow: 0 24px 64px rgba(60,40,10,.18);
 }
 .modal-title { font-size: 21px; font-weight: 700; margin-bottom: 8px; }
@@ -1149,6 +1162,15 @@ body {
 .quote { text-align: center; padding: 14px; font-size: 12px; color: var(--text3); font-style: italic; }
 
 /* SHOP */
+.shop-list {
+  min-height: 0;
+  max-height: min(64dvh, 560px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #CCC8BC transparent;
+}
 .shop-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #EDE5D5; }
 .shop-item.owned {
   margin: 0 -8px;
@@ -1217,7 +1239,14 @@ button { font: inherit; }
 button.career-card { text-align: left; width: 100%; }
 .city-line { display:flex; align-items:center; gap:10px; margin: 8px 0 12px; color: var(--text2); font-size: 13px; }
 .city-line select { flex: 1; border: 1.5px solid var(--border); border-radius: 8px; background: var(--card); color: var(--text); padding: 10px 12px; }
-.modal-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+.modal-head {
+  flex: 0 0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: 12px;
+  margin-bottom:16px;
+}
 .modal-head button { background:none; border:none; font-size:22px; cursor:pointer; color:var(--text3); }
 .wide-modal { max-width: 480px; }
 .action-btn:disabled .cn { color: #A09080; }

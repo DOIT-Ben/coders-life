@@ -166,6 +166,21 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.btn-buy.owned');
   });
 
+  it('keeps shop and action panels scrollable inside the viewport', () => {
+    expect(appSource).toContain('shop-list');
+    expect(appCss).toContain('max-height: min(720px, calc(100dvh - 32px));');
+    expect(appCss).toContain('display: flex;\n  flex-direction: column;');
+    expect(appCss).toContain('.modal-head {\n  flex: 0 0 auto;');
+    expect(appCss).toContain('.shop-list');
+    expect(appCss).toContain('overflow-y: auto');
+    expect(appCss).toContain('max-height: min(64dvh, 560px);');
+    expect(appCss).toContain('.right-col { display: flex; flex-direction: column; min-height: 0; height: min(72dvh, 680px); overflow: hidden; }');
+    expect(appCss).toContain('.action-tabs');
+    expect(appCss).toContain('overflow-y: auto');
+    expect(appCss).toContain('.action-card');
+    expect(appCss).toContain('min-height: 0;');
+  });
+
   it('shows achievement progress instead of identical locked badges', () => {
     expect(appSource).toContain('getAchievementProgress');
     expect(appSource).toContain('ach-progress');
