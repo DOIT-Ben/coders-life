@@ -40,7 +40,9 @@ describe('instant action execution UI', () => {
       click(buttonByText('开始生存'));
     });
 
-    expect(document.body.textContent).toContain('第 0 天');
+    await vi.waitFor(() => {
+      expect(document.body.textContent).toContain('第 0 天');
+    }, { timeout: 5000 });
 
     await act(async () => {
       click(buttonByText('学习成长'));

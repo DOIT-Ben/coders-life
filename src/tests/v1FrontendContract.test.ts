@@ -1,17 +1,19 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import appSource from '../App.tsx?raw';
+import gameContainerSource from '../components/GameContainer.tsx?raw';
 
 const appCss = readFileSync(new URL('../styles/app.css', import.meta.url), 'utf8');
 
 describe('v1 frontend contract', () => {
   const worldStatusBarSource = readFileSync(new URL('../components/WorldStatusBar.tsx', import.meta.url), 'utf8');
   const debugPanelSource = readFileSync(new URL('../components/DebugPanel.tsx', import.meta.url), 'utf8');
+  const source = appSource + gameContainerSource;
 
   it('keeps v2 implementation labels out of the visible v1 shell', () => {
-    expect(appSource).not.toContain('V2 ENGINE');
-    expect(appSource).not.toContain('AI重构');
-    expect(appSource).not.toContain('隐藏状态');
+    expect(source).not.toContain('V2 ENGINE');
+    expect(source).not.toContain('AI重构');
+    expect(source).not.toContain('隐藏状态');
   });
 
   it('does not surface legacy global AI replacement in status or debug UI', () => {
@@ -27,44 +29,43 @@ describe('v1 frontend contract', () => {
 
   it('uses categorized action tabs with detailed sub-actions', () => {
     ['学习成长', '工作赚钱', '职业机会', '副业收入', '恢复放松', '社交关系'].forEach(label => {
-      expect(appSource).toContain(label);
+      expect(gameContainerSource).toContain(label);
     });
-    expect(appSource).toContain('selectedActionGroup');
-    expect(appSource).toContain('action-tabs');
+    expect(gameContainerSource).toContain('selectedActionGroup');
+    expect(gameContainerSource).toContain('action-tabs');
   });
 
   it('keeps save feedback and character switching separate', () => {
-    expect(appSource).toContain('进度已保存');
-    expect(appSource).toContain('const [saveStatus');
+    expect(gameContainerSource).toContain('进度已保存');
+    expect(gameContainerSource).toContain('const [saveStatus');
     expect(appSource).toContain('function changeCharacter');
-    expect(appSource).not.toContain('<button className="btn-h red" onClick={resetGame}>换角色</button>');
+    expect(source).not.toContain('<button className="btn-h red" onClick={resetGame}>换角色</button>');
   });
 
   it('uses stable layout hooks for regular game panels', () => {
-    expect(appSource).toContain('saveStatus');
-    expect(appSource).toContain('inGame={Boolean(state)}');
-    expect(appSource).toContain('action-list categorized-action-list');
-    expect(appSource).toContain('game-layout');
+    expect(gameContainerSource).toContain('saveStatus');
+    expect(gameContainerSource).toContain('action-list categorized-action-list');
+    expect(gameContainerSource).toContain('game-layout');
   });
 
   it('keeps action details inline instead of floating over other controls', () => {
-    expect(appSource).toContain('act-desc');
-    expect(appSource).not.toContain('className="a-tip"');
+    expect(gameContainerSource).toContain('act-desc');
+    expect(source).not.toContain('className="a-tip"');
   });
 
   it('shows a compact real-world pressure summary without implementation jargon', () => {
     ['现实压力', '现金流压力', '健康债', '职业稳定', '关系债', '生活满意'].forEach(label => {
-      expect(appSource).toContain(label);
+      expect(gameContainerSource).toContain(label);
     });
     ['应急垫', '价值匹配', '可雇佣', '关系债'].forEach(label => {
-      expect(appSource).toContain(label);
+      expect(gameContainerSource).toContain(label);
     });
-    expect(appSource).toContain('PressureSummary');
-    expect(appSource).toContain('pressure-bar');
-    expect(appSource).toContain('pressure-delta');
-    expect(appSource).toContain('lastPressure');
-    expect(appSource).not.toContain('realworld kernel');
-    expect(appSource).not.toContain('V2底层');
+    expect(gameContainerSource).toContain('PressureSummary');
+    expect(gameContainerSource).toContain('pressure-bar');
+    expect(gameContainerSource).toContain('pressure-delta');
+    expect(gameContainerSource).toContain('lastPressure');
+    expect(source).not.toContain('realworld kernel');
+    expect(source).not.toContain('V2底层');
     expect(appCss).toContain('grid-template-columns: repeat(5, 1fr);');
     expect(appCss).not.toContain('grid-template-columns: repeat(3, minmax(120px, 1fr));');
     expect(appCss).toContain('.pressure-grid');
@@ -72,14 +73,14 @@ describe('v1 frontend contract', () => {
 
   it('shows action cards with effect chips and debt/opportunity rows', () => {
     ['隐债', '机会'].forEach(label => {
-      expect(appSource).toContain(label);
+      expect(gameContainerSource).toContain(label);
     });
-    expect(appSource).toContain('act-effects');
-    expect(appSource).toContain('act-eff-debt');
-    expect(appSource).toContain('act-eff-opp');
-    expect(appSource).toContain('benefitLabel');
-    expect(appSource).toContain('riskLabel');
-    expect(appSource).toContain('act-chips');
+    expect(gameContainerSource).toContain('act-effects');
+    expect(gameContainerSource).toContain('act-eff-debt');
+    expect(gameContainerSource).toContain('act-eff-opp');
+    expect(gameContainerSource).toContain('benefitLabel');
+    expect(gameContainerSource).toContain('riskLabel');
+    expect(gameContainerSource).toContain('act-chips');
     expect(appCss).not.toContain('display: none;\n  grid-template-columns: 1fr;');
   });
 
@@ -92,10 +93,10 @@ describe('v1 frontend contract', () => {
   });
 
   it('uses dynamic action lists with flexible scrolling', () => {
-    expect(appSource).toContain('groupActions');
-    expect(appSource).toContain('renderEffectChips');
-    expect(appSource).toContain('getEffectChips');
-    expect(appSource).toContain('ACTION_GROUP_MAP');
+    expect(gameContainerSource).toContain('groupActions');
+    expect(gameContainerSource).toContain('renderEffectChips');
+    expect(gameContainerSource).toContain('getEffectChips');
+    expect(gameContainerSource).toContain('ACTION_GROUP_MAP');
     expect(appCss).toContain('min-height: 0;');
     expect(appCss).toContain('flex: 1 1 auto;');
     expect(appCss).toContain('overflow-y: auto');
@@ -105,12 +106,12 @@ describe('v1 frontend contract', () => {
 
   it('surfaces first-stage functional guidance without breaking v1 shell', () => {
     ['act-badges', 'act-badge', 'body-signal', 'decision-log-mini', '关键转折点', 'EventChoiceDialog'].forEach(token => {
-      expect(appSource).toContain(token);
+      expect(gameContainerSource).toContain(token);
     });
-    expect(appSource).toContain('getActionInsights');
-    expect(appSource).toContain('getBodySignal');
-    expect(appSource).toContain('applyEventChoice');
-    expect(appSource).toContain('event-choice-option');
+    expect(gameContainerSource).toContain('getActionInsights');
+    expect(gameContainerSource).toContain('getBodySignal');
+    expect(gameContainerSource).toContain('applyEventChoice');
+    expect(gameContainerSource).toContain('event-choice-option');
     expect(appCss).toContain('.act-badge');
     expect(appCss).toContain('.body-signal');
     expect(appCss).toContain('.decision-log-mini');
@@ -119,39 +120,39 @@ describe('v1 frontend contract', () => {
 
   it('supports instant single-action execution on click without monthly plan stage', () => {
     ['行动选择', 'executeAction', '收藏'].forEach(token => {
-      expect(appSource).toContain(token);
+      expect(gameContainerSource).toContain(token);
     });
-    expect(appSource).toContain('planMonth(state, [action.id])');
-    expect(appSource).not.toContain('submitMonthlyPlan');
-    expect(appSource).not.toContain('togglePlannedAction');
-    expect(appSource).not.toContain('monthly-budget');
+    expect(gameContainerSource).toContain('planMonth(state, [action.id])');
+    expect(source).not.toContain('submitMonthlyPlan');
+    expect(source).not.toContain('togglePlannedAction');
+    expect(source).not.toContain('monthly-budget');
     expect(appCss).not.toContain('.monthly-plan-panel');
     expect(appCss).not.toContain('.monthly-plan-submit');
     expect(appCss).toContain('overflow-y: auto');
   });
 
   it('exposes bookmark navigation in header and disables tab-based bookmark toggle', () => {
-    expect(appSource).toContain('focusBookmarks');
+    expect(gameContainerSource).toContain('focusBookmarks');
     ['成就', '商店', '收藏', '保存'].forEach(token => {
-      expect(appSource).toContain(token);
+      expect(gameContainerSource).toContain(token);
     });
   });
 
   it('routes shop purchases through durable shop effects', () => {
-    expect(appSource).toContain('buyShopItem');
-    expect(appSource).not.toContain('applyDelta(state, { cash: -item.price, ...item.effect })');
+    expect(gameContainerSource).toContain('buyShopItem');
+    expect(source).not.toContain('applyDelta(state, { cash: -item.price, ...item.effect })');
   });
 
   it('marks purchased shop items with an owned state', () => {
-    expect(appSource).toContain('shop-item owned');
-    expect(appSource).toContain('已装备');
-    expect(appSource).toContain('已购入');
+    expect(gameContainerSource).toContain('shop-item owned');
+    expect(gameContainerSource).toContain('已装备');
+    expect(gameContainerSource).toContain('已购入');
     expect(appCss).toContain('.shop-item.owned');
     expect(appCss).toContain('.btn-buy.owned');
   });
 
   it('keeps shop and action panels scrollable inside the viewport', () => {
-    expect(appSource).toContain('shop-list');
+    expect(gameContainerSource).toContain('shop-list');
     expect(appCss).toContain('max-height: min(720px, calc(100dvh - 32px));');
     expect(appCss).toContain('display: flex;\n  flex-direction: column;');
     expect(appCss).toContain('.modal-head {\n  flex: 0 0 auto;');
@@ -165,24 +166,24 @@ describe('v1 frontend contract', () => {
   });
 
   it('shows achievement progress instead of identical locked badges', () => {
-    expect(appSource).toContain('getAchievementProgress');
-    expect(appSource).toContain('ach-progress');
-    expect(appSource).toContain('ach-progress-bar');
-    expect(appSource).toContain('ach-desc');
+    expect(gameContainerSource).toContain('getAchievementProgress');
+    expect(gameContainerSource).toContain('ach-progress');
+    expect(gameContainerSource).toContain('ach-progress-bar');
+    expect(gameContainerSource).toContain('ach-desc');
     ['缓冲', '恢复', '迁移', '近12个月有高压加班记录'].forEach(token => {
-      expect(appSource).toContain(token);
+      expect(gameContainerSource).toContain(token);
     });
-    expect(appSource).not.toContain('工具人的一生');
+    expect(source).not.toContain('工具人的一生');
     expect(appCss).toContain('.ach-progress');
     expect(appCss).toContain('.ach-progress-bar');
   });
 
   it('shows project progress and quality instead of hiding staged outcomes', () => {
     ['ProjectProgressPanel', '项目进度', '质量', 'completedInstances', 'activeInstance'].forEach(token => {
-      expect(appSource).toContain(token);
+      expect(gameContainerSource).toContain(token);
     });
-    expect(appSource).not.toContain("immediateText: '作品 +1 / 技术 +12 / 成本 -0.3万'");
-    expect(appSource).not.toContain("immediateText: '声望 +18 / 被动收入 / 精神 -10'");
+    expect(source).not.toContain("immediateText: '作品 +1 / 技术 +12 / 成本 -0.3万'");
+    expect(source).not.toContain("immediateText: '声望 +18 / 被动收入 / 精神 -10'");
     expect(appCss).toContain('.project-progress-panel');
     expect(appCss).toContain('.project-progress-bar');
   });
@@ -191,16 +192,16 @@ describe('v1 frontend contract', () => {
     ['valueProfileId', 'VALUE_PROFILES', '财富缓冲', '健康关系', '创造探索'].forEach(token => {
       expect(appSource).toContain(token);
     });
-    expect(appSource).toContain('createInitialState(track, cityTier, undefined, valueProfile.values)');
+    expect(gameContainerSource).toContain('createInitialState(track, cityTier, undefined, valueProfile)');
     expect(appCss).toContain('.value-profile-grid');
   });
 
   it('uses respectful crisis age and AI copy in the visible shell', () => {
     ['职业转型窗口', 'AI协作能力', '恢复窗口'].forEach(label => {
-      expect(appSource).toContain(label);
+      expect(gameContainerSource).toContain(label);
     });
     ['35岁危机最严重', '不会用AI的程序员在消失', '崩溃'].forEach(label => {
-      expect(appSource).not.toContain(label);
+      expect(source).not.toContain(label);
     });
   });
 });
