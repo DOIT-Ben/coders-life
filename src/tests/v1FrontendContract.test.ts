@@ -26,13 +26,10 @@ describe('v1 frontend contract', () => {
   });
 
   it('uses categorized action tabs with detailed sub-actions', () => {
-    ['学习成长', '工作赚钱', '职业机会', '娱乐恢复', '健康心理', '社交关系'].forEach(label => {
+    ['学习成长', '工作赚钱', '职业机会', '副业收入', '恢复放松', '社交关系'].forEach(label => {
       expect(appSource).toContain(label);
     });
-    ['打游戏', '泡脚', '按摩', '刷剧放空', '睡眠修复'].forEach(label => {
-      expect(appSource).toContain(label);
-    });
-    expect(appSource).toContain('selectedActionCategory');
+    expect(appSource).toContain('selectedActionGroup');
     expect(appSource).toContain('action-tabs');
   });
 
@@ -51,7 +48,7 @@ describe('v1 frontend contract', () => {
   });
 
   it('keeps action details inline instead of floating over other controls', () => {
-    expect(appSource).toContain('action-detail');
+    expect(appSource).toContain('act-desc');
     expect(appSource).not.toContain('className="a-tip"');
   });
 
@@ -68,89 +65,76 @@ describe('v1 frontend contract', () => {
     expect(appSource).toContain('lastPressure');
     expect(appSource).not.toContain('realworld kernel');
     expect(appSource).not.toContain('V2底层');
-    expect(appCss).toContain('grid-template-columns: repeat(3, minmax(120px, 1fr));');
-    expect(appCss).not.toContain('grid-template-columns: repeat(5, minmax(128px, 1fr));');
-    expect(appCss).toContain('white-space: normal;');
+    expect(appCss).toContain('grid-template-columns: repeat(5, 1fr);');
+    expect(appCss).not.toContain('grid-template-columns: repeat(3, minmax(120px, 1fr));');
+    expect(appCss).toContain('.pressure-grid');
   });
 
-  it('shows action cards as separated immediate debt and opportunity rows', () => {
-    ['即时', '隐债', '机会'].forEach(label => {
+  it('shows action cards with effect chips and debt/opportunity rows', () => {
+    ['隐债', '机会'].forEach(label => {
       expect(appSource).toContain(label);
     });
-    expect(appSource).toContain('action-effects');
-    expect(appSource).toContain('effect-row immediate');
-    expect(appSource).toContain('effect-row debt');
-    expect(appSource).toContain('effect-row opportunity');
+    expect(appSource).toContain('act-effects');
+    expect(appSource).toContain('act-eff-debt');
+    expect(appSource).toContain('act-eff-opp');
     expect(appSource).toContain('benefitLabel');
     expect(appSource).toContain('riskLabel');
+    expect(appSource).toContain('act-chips');
     expect(appCss).not.toContain('display: none;\n  grid-template-columns: 1fr;');
   });
 
   it('keeps dense action cards readable instead of compressing text together', () => {
     expect(appCss).not.toContain('min-height: 84px');
     expect(appCss).toContain('align-items: stretch');
-    expect(appCss).toContain('justify-content: flex-start');
-    expect(appCss).toContain('.action-effects');
-    expect(appCss).toContain('grid-template-columns: 1fr;');
+    expect(appCss).toContain('flex-direction: column');
+    expect(appCss).toContain('.act-effects');
+    expect(appCss).toContain('flex-direction: column;');
   });
 
-  it('does not collapse multiline action effects into embedded text', () => {
-    expect(appSource).toContain('immediateText');
-    expect(appSource).not.toContain('<span className="effect-copy">{slot.summary}</span>');
-    expect(appCss).not.toContain('.effect-copy br { display: none; }');
-    expect(appCss).toContain('white-space: normal');
-    expect(appCss).toContain('overflow-wrap: anywhere');
-  });
-
-  it('uses four fixed action slots per category with scroll for overflow', () => {
-    expect(appSource).toContain('ACTION_VISIBLE_SLOTS');
-    expect(appSource).toContain('actionSlots');
-    expect(appSource).toContain('action-empty-slot');
-    expect(appCss).toContain('--action-slot-height');
-    expect(appCss).toContain('height: calc(var(--action-slot-height) * 4 + var(--action-slot-gap) * 3);');
+  it('uses dynamic action lists with flexible scrolling', () => {
+    expect(appSource).toContain('groupActions');
+    expect(appSource).toContain('renderEffectChips');
+    expect(appSource).toContain('getEffectChips');
+    expect(appSource).toContain('ACTION_GROUP_MAP');
+    expect(appCss).toContain('min-height: 0;');
+    expect(appCss).toContain('flex: 1 1 auto;');
     expect(appCss).toContain('overflow-y: auto');
-    expect(appCss).toContain('.action-empty-slot');
-    expect(appCss).toContain('height: min(55vh, 560px);');
     expect(appCss).toContain('overflow: hidden; box-shadow: var(--shadow);');
     expect(appCss).toContain('.action-support-scroll');
   });
 
   it('surfaces first-stage functional guidance without breaking v1 shell', () => {
-    ['action-badges', 'action-badge', 'body-signal', 'decision-log-mini', '关键转折点', 'EventChoiceDialog'].forEach(token => {
+    ['act-badges', 'act-badge', 'body-signal', 'decision-log-mini', '关键转折点', 'EventChoiceDialog'].forEach(token => {
       expect(appSource).toContain(token);
     });
     expect(appSource).toContain('getActionInsights');
     expect(appSource).toContain('getBodySignal');
     expect(appSource).toContain('applyEventChoice');
     expect(appSource).toContain('event-choice-option');
-    expect(appCss).toContain('.action-badge');
+    expect(appCss).toContain('.act-badge');
     expect(appCss).toContain('.body-signal');
     expect(appCss).toContain('.decision-log-mini');
     expect(appCss).toContain('.event-choice-option');
   });
 
-  it('shows monthly time and energy budget while preserving fixed action scrolling', () => {
-    ['月度计划', '时间预算', '精力预算'].forEach(label => {
-      expect(appSource).toContain(label);
+  it('supports instant single-action execution on click without monthly plan stage', () => {
+    ['行动选择', 'executeAction', '收藏'].forEach(token => {
+      expect(appSource).toContain(token);
     });
-    expect(appSource).toContain('buildMonthlyPlan');
-    expect(appSource).toContain('isPlanOverBudget');
-    expect(appSource).toContain('monthly-budget');
-    expect(appCss).toContain('.monthly-budget');
-    expect(appCss).toContain('height: calc(var(--action-slot-height) * 4 + var(--action-slot-gap) * 3);');
+    expect(appSource).toContain('planMonth(state, [action.id])');
+    expect(appSource).not.toContain('submitMonthlyPlan');
+    expect(appSource).not.toContain('togglePlannedAction');
+    expect(appSource).not.toContain('monthly-budget');
+    expect(appCss).not.toContain('.monthly-plan-panel');
+    expect(appCss).not.toContain('.monthly-plan-submit');
     expect(appCss).toContain('overflow-y: auto');
   });
 
-  it('lets players build and submit a multi-action monthly plan from the action panel', () => {
-    ['plannedActionIds', 'togglePlannedAction', 'submitMonthlyPlan', '执行本月计划', '已选行动'].forEach(token => {
+  it('exposes bookmark navigation in header and disables tab-based bookmark toggle', () => {
+    expect(appSource).toContain('focusBookmarks');
+    ['成就', '商店', '收藏', '保存'].forEach(token => {
       expect(appSource).toContain(token);
     });
-    expect(appSource).toContain('buildMonthlyPlan(state, plannedActions)');
-    expect(appSource).toContain('planMonth(state, plannedActionIds)');
-    expect(appSource).not.toContain('planMonth(state, [action.id])');
-    expect(appSource).not.toContain('setState(applyAction(state, action.id))');
-    expect(appCss).toContain('.monthly-plan-panel');
-    expect(appCss).toContain('.monthly-plan-submit');
   });
 
   it('routes shop purchases through durable shop effects', () => {
@@ -176,7 +160,6 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('max-height: min(64dvh, 560px);');
     expect(appCss).toContain('.right-col { display: flex; flex-direction: column; min-height: 0; height: min(72dvh, 680px); overflow: hidden; }');
     expect(appCss).toContain('.action-tabs');
-    expect(appCss).toContain('overflow-y: auto');
     expect(appCss).toContain('.action-card');
     expect(appCss).toContain('min-height: 0;');
   });

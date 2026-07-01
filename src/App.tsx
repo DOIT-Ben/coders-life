@@ -1,5 +1,5 @@
-import { useEffect, useState, type ReactNode } from 'react';
-import type { ActionConfig, CareerTrack, CityTier, GameState, LogType, PlayerValueProfile } from './types/game';
+import { useEffect, useState, useMemo, type ReactNode } from 'react';
+import type { ActionConfig, CareerTrack, CityTier, EffectDelta, GameState, LogType, PlayerValueProfile } from './types/game';
 import { createInitialState, getAvailableActions, planMonth } from './core/gameEngine';
 import { getVisibleStats } from './core/formulas';
 import { saveGame, loadGame, clearSave } from './storage/saveManager';
@@ -9,7 +9,6 @@ import { SHOP_ITEMS } from './config/shop';
 import { addLog } from './core/logs';
 import { getActionInsights, getBodySignal } from './systems/actionInsightSystem';
 import { applyEventChoice } from './systems/eventSystem';
-import { actionPlanCost, buildMonthlyPlan, canExecuteAction, isPlanOverBudget } from './systems/monthlyPlanSystem';
 import { buyShopItem } from './systems/shopSystem';
 import { deriveCareerStability, deriveEmployability, deriveHealthDebt, deriveLifeSatisfaction, derivePressureSnapshot } from './systems/derivedStateSystem';
 import './styles/app.css';
@@ -32,124 +31,60 @@ type AvailableAction = ActionConfig & {
   reason?: string;
 };
 
-const v1CareerCopy: Record<CareerTrack, {
-  role: string;
-  name: string;
-  tag: string;
-  accent: string;
-  stats: { tech: number; mental: number; cash: number; ai: number };
-  traits: [string, string];
-}> = {
-  frontend: {
-    role: 'FRONTEND · 前端',
-    name: '前端工程师',
-    tag: 'CSS 披风侠',
-    accent: '#38bdf8',
-    stats: { tech: 70, mental: 85, cash: 12, ai: 25 },
-    traits: ['精神消耗慢，AI学习快', '框架更新快，容易焦虑']
-  },
-  backend: {
-    role: 'BACKEND · 后端',
-    name: '后端工程师',
-    tag: '咖啡机房长',
-    accent: '#4ade80',
-    stats: { tech: 80, mental: 75, cash: 16, ai: 20 },
-    traits: ['收入稳定，技能贬值慢', '职业转型窗口更早出现']
-  },
-  fullstack: {
-    role: 'FULLSTACK · 全栈',
-    name: '全栈工程师',
-    tag: '八手救火员',
-    accent: '#fb923c',
-    stats: { tech: 75, mental: 70, cash: 14, ai: 35 },
-    traits: ['AI协作能力强，综合能力高', '什么都会但不精']
-  },
-  ai_product: {
-    role: 'AI_ENG · AI工程',
-    name: 'AI工程师',
-    tag: '幻觉捕鸭队',
-    accent: '#c084fc',
-    stats: { tech: 65, mental: 80, cash: 20, ai: 50 },
-    traits: ['起薪高，未来前景好', '内卷严重，学习压力大']
-  }
+const ACTION_GROUP_MAP: Array<{ id: ActionConfig['group']; label: string }> = [
+  { id: 'learn', label: '学习成长' },
+  { id: 'work', label: '工作赚钱' },
+  { id: 'career', label: '职业机会' },
+  { id: 'money', label: '副业收入' },
+  { id: 'recover', label: '恢复放松' },
+  { id: 'relationship', label: '社交关系' },
+];
+const DEFAULT_ACTION_GROUP: ActionConfig['group'] = 'recover';
+
+const EFFECT_LABELS: Partial<Record<keyof EffectDelta, string>> = {
+  techXp: '技术', aiXp: 'AI', reputationXp: '声望',
+  mental: '精神', health: '健康', burnout: '燃尽',
+  relation: '关系', identity: '身份',
+  cash: '现金', portfolio: '投资', passiveIncomeMonthly: '被动收入',
+  portfolioCount: '作品', offerAttempts: '求职',
+  promotionScore: '绩效', monthsInJob: '工龄',
+  focus: '专注', fatigue: '疲劳', boundaryScore: '边界',
+  buildProjectState: '项目进度', toolHabitState: '工具习惯',
 };
 
-type ActionCategoryId = 'learn' | 'workMoney' | 'careerChance' | 'entertainment' | 'healthMind' | 'relationship';
-const ACTION_VISIBLE_SLOTS = 4;
-
-const actionCategories: Array<{
-  id: ActionCategoryId;
-  label: string;
-  items: Array<{
-    id: string;
-    label: string;
-    icon: string;
-    summary: ReactNode;
-    immediateText: string;
-  }>;
-}> = [
-  {
-    id: 'learn',
-    label: '学习成长',
-    items: [
-      { id: 'ai_training', icon: '📡', label: '学习AI工具', immediateText: 'AI +18 / 技术 +4 / 精神 -4', summary: <><span className="cp">AI+18</span><br /><span className="cp">技术+4</span><br /><span className="cn">精神-4</span></> },
-      { id: 'system_learning', icon: '📘', label: '系统学习', immediateText: '技术 +18 / 专注 +6 / 成本 -0.2万', summary: <><span className="cp">技术+18</span><br /><span className="cp">专注+6</span><br /><span className="cn">成本-0.2万</span></> },
-      { id: 'project_practice', icon: '🧪', label: '项目实战', immediateText: '项目进度 +34 / 技术 +12 / 完成后作品 +1', summary: <><span className="cp">进度+34</span><br /><span className="cp">技术+12</span><br /><span className="cn">成本-0.3万</span></> },
-      { id: 'writing_share', icon: '✍️', label: '技术写作', immediateText: '声望 +12 / 技术 +4 / 精神 -5', summary: <><span className="cp">声望+12</span><br /><span className="cp">技术+4</span><br /><span className="cn">精神-5</span></> }
-    ]
-  },
-  {
-    id: 'workMoney',
-    label: '工作赚钱',
-    items: [
-      { id: 'regular_work', icon: '💼', label: '认真上班', immediateText: '绩效 +4 / 技术 +6 / 精神 -5', summary: <><span className="cp">绩效+4</span><br /><span className="cp">技术+6</span><br /><span className="cn">精神-5</span></> },
-      { id: 'overtime_sprint', icon: '💻', label: '加班写代码', immediateText: '奖金 +0.35万 / 技术 +10 / 精神 -14', summary: <><span className="cp">奖金+0.35万</span><br /><span className="cp">技术+10</span><br /><span className="cn">精神-14</span></> },
-      { id: 'freelance', icon: '💰', label: '接私活', immediateText: '现金 +1.2万 / 精神 -12 / 健康 -4', summary: <><span className="cp">现金+1.2万</span><br /><span className="cn">精神-12</span><br /><span className="cn">健康-4</span></> },
-      { id: 'content_product', icon: '🎬', label: '自媒体/课程', immediateText: '项目进度 +38 / 声望 +18 / 完成后被动收入', summary: <><span className="cp">进度+38</span><br /><span className="cp">声望+18</span><br /><span className="cn">精神-10</span></> }
-    ]
-  },
-  {
-    id: 'careerChance',
-    label: '职业机会',
-    items: [
-      { id: 'job_hunt', icon: '📨', label: '求职投递', immediateText: '机会 +1 / 精神 -6 / 需要作品', summary: <><span className="cp">机会+1</span><br /><span className="cn">精神-6</span><br /><span className="cn">需作品</span></> },
-      { id: 'jump_job', icon: '🎯', label: '面试跳槽', immediateText: '机会跃迁 / 消耗 2 个月 / 有冷却', summary: <><span className="cp">机会跃迁</span><br /><span className="cn">消耗2个月</span><br /><span className="cn">有冷却</span></> },
-      { id: 'open_source', icon: '🌐', label: '开源贡献', immediateText: '声望 +10 / 技术 +8 / 精神 -6', summary: <><span className="cp">声望+10</span><br /><span className="cp">技术+8</span><br /><span className="cn">精神-6</span></> },
-      { id: 'transition_testing', icon: '🧭', label: '测试路线', immediateText: '路线进度 / 技术 +6 / 成本 -0.12万', summary: <><span className="cp">路线进度</span><br /><span className="cp">技术+6</span><br /><span className="cn">成本-0.12万</span></> },
-      { id: 'transition_data_engineering', icon: '🧭', label: '数据路线', immediateText: '路线进度 / 技术 +8 / 成本 -0.18万', summary: <><span className="cp">路线进度</span><br /><span className="cp">技术+8</span><br /><span className="cn">成本-0.18万</span></> },
-      { id: 'transition_security', icon: '🧭', label: '安全路线', immediateText: '路线进度 / 技术 +8 / 成本 -0.22万', summary: <><span className="cp">路线进度</span><br /><span className="cp">技术+8</span><br /><span className="cn">成本-0.22万</span></> }
-    ]
-  },
-  {
-    id: 'entertainment',
-    label: '娱乐恢复',
-    items: [
-      { id: 'rest', icon: '🛋️', label: '摸鱼休息', immediateText: '精神 +10 / 健康 +4 / 技术 -2', summary: <><span className="cp">精神+10</span><br /><span className="cp">健康+4</span><br /><span className="cn">技术-2</span></> },
-      { id: 'gaming_break', icon: '🎮', label: '打游戏', immediateText: '精神 +12 / 疲劳 -5 / 专注 -6', summary: <><span className="cp">精神+12</span><br /><span className="cp">疲劳-5</span><br /><span className="cn">专注-6</span></> },
-      { id: 'foot_soak', icon: '♨️', label: '泡脚', immediateText: '精神 +6 / 健康 +3 / 成本 -120', summary: <><span className="cp">精神+6</span><br /><span className="cp">健康+3</span><br /><span className="cn">成本-120</span></> },
-      { id: 'massage', icon: '💆', label: '按摩', immediateText: '健康 +5 / 疲劳 -10 / 成本 -600', summary: <><span className="cp">健康+5</span><br /><span className="cp">疲劳-10</span><br /><span className="cn">成本-600</span></> },
-      { id: 'binge_watch', icon: '📺', label: '刷剧放空', immediateText: '精神 +8 / 疲劳 -4 / 专注 -3', summary: <><span className="cp">精神+8</span><br /><span className="cp">疲劳-4</span><br /><span className="cn">专注-3</span></> },
-      { id: 'sleep_repair', icon: '🌙', label: '睡眠修复', immediateText: '精神 +14 / 健康 +6 / 技术 -1', summary: <><span className="cp">精神+14</span><br /><span className="cp">健康+6</span><br /><span className="cn">技术-1</span></> }
-    ]
-  },
-  {
-    id: 'healthMind',
-    label: '健康心理',
-    items: [
-      { id: 'exercise', icon: '🏃', label: '健身训练', immediateText: '健康 +8 / 精神 +3 / 成本 -0.15万', summary: <><span className="cp">健康+8</span><br /><span className="cp">精神+3</span><br /><span className="cn">成本-0.15万</span></> },
-      { id: 'therapy', icon: '🧘', label: '心理咨询', immediateText: '精神 +18 / 燃尽 -12 / 成本 -0.24万', summary: <><span className="cp">精神+18</span><br /><span className="cp">燃尽-12</span><br /><span className="cn">成本-0.24万</span></> },
-      { id: 'sleep_repair', icon: '🌙', label: '睡眠修复', immediateText: '精神 +14 / 疲劳 -12 / 无产出', summary: <><span className="cp">精神+14</span><br /><span className="cp">疲劳-12</span><br /><span className="cn">无产出</span></> }
-    ]
-  },
-  {
-    id: 'relationship',
-    label: '社交关系',
-    items: [
-      { id: 'networking', icon: '🤝', label: '社交人脉', immediateText: '声望 +5 / 关系 +6 / 成本 -0.1万', summary: <><span className="cp">声望+5</span><br /><span className="cp">关系+6</span><br /><span className="cn">成本-0.1万</span></> },
-      { id: 'writing_share', icon: '✍️', label: '行业交流', immediateText: '声望 +12 / 身份 +2 / 精神 -5', summary: <><span className="cp">声望+12</span><br /><span className="cp">身份+2</span><br /><span className="cn">精神-5</span></> }
-    ]
-  }
+const EFFECT_ORDER: (keyof EffectDelta)[] = [
+  'techXp', 'aiXp', 'reputationXp', 'mental', 'health', 'burnout',
+  'relation', 'identity', 'focus', 'fatigue', 'boundaryScore',
+  'buildProjectState', 'toolHabitState', 'cash', 'portfolio',
+  'passiveIncomeMonthly', 'portfolioCount', 'offerAttempts',
+  'promotionScore', 'monthsInJob'
 ];
+
+type EffectChip = { label: string; value: number; positive: boolean; display: string };
+
+function getEffectChips(effect: EffectDelta): EffectChip[] {
+  return EFFECT_ORDER
+    .map(key => {
+      const value = effect[key] as number | undefined;
+      if (value === undefined || value === 0) return null;
+      const label = EFFECT_LABELS[key] ?? key;
+      const sign = value > 0 ? '+' : '';
+      const display = key === 'cash'
+        ? `${sign}${(value / 10000).toFixed(value % 10000 === 0 ? 0 : 1)}万`
+        : `${sign}${value}`;
+      return { label, value, positive: value > 0, display };
+    })
+    .filter(Boolean) as EffectChip[];
+}
+
+function renderEffectChips(effect: EffectDelta, limit = 4) {
+  const chips = getEffectChips(effect).slice(0, limit);
+  return chips.map((chip, index) => (
+    <span className={`eff-chip ${chip.positive ? 'up' : 'down'}`} key={index}>
+      {chip.label}&nbsp;{chip.display}
+    </span>
+  ));
+}
 
 const cityOptions: Array<{ id: CityTier; label: string }> = [
   { id: 'tier1', label: '一线：高收入高成本' },
@@ -266,37 +201,37 @@ function CareerScreen({
   setValueProfileId: (valueProfileId: string) => void;
   startGame: () => void;
 }) {
+  const careerHighlights: Record<CareerTrack, string[]> = {
+    frontend: ['AI 学习快，反馈周期短', '框架更新快，易焦虑'],
+    backend: ['收入稳定，技能贬值慢', '转型窗口更早出现'],
+    fullstack: ['综合能力强，副业友好', '边界模糊，燃尽风险高'],
+    ai_product: ['起薪高，行业前景好', '内卷严重，不确定性高'],
+  };
   return (
     <div className="screen active">
       <div className="section-label">&gt; 选择你的职业路径 _</div>
       <div className="career-grid">
-        {CAREERS.map(career => {
-          const copy = v1CareerCopy[career.id];
-          return (
-            <button className={track === career.id ? 'career-card selected' : 'career-card'} key={career.id} onClick={() => setTrack(career.id)}>
-              <div className="sel-check">✓</div>
-              <div className="career-top">
-                <img className="career-avatar" src={career.avatar} alt="" />
-                <div>
-                  <div className="c-accent" style={{ background: copy.accent }} />
-                  <div className="c-role">{copy.role}</div>
-                  <div className="c-name">{copy.name}</div>
-                  <div className="c-tag">{copy.tag}</div>
+        {CAREERS.map(career => (
+          <button className={track === career.id ? 'career-card selected' : 'career-card'} key={career.id} onClick={() => setTrack(career.id)}>
+            <div className="sel-check">✓</div>
+            <div className="career-top">
+              <img className="career-avatar" src={career.avatar} alt="" />
+              <div>
+                <div className="c-role">{career.id.toUpperCase()}</div>
+                <div className="c-name">{career.name}</div>
+                <div className="c-tag">{career.subtitle}</div>
+              </div>
+            </div>
+            <div className="c-traits">
+              {(careerHighlights[career.id] ?? [career.description]).map((trait, index) => (
+                <div className="trait" key={index}>
+                  <span>{index === 0 ? '✦' : '⚠'}</span>
+                  <span>{trait}</span>
                 </div>
-              </div>
-              <div className="c-stats">
-                <MiniStat label="技术" value={copy.stats.tech} color="#38bdf8" />
-                <MiniStat label="精神" value={copy.stats.mental} color="var(--mint)" />
-                <MiniStat label="存款" value={copy.stats.cash} color="var(--amber)" />
-                <MiniStat label="AI熟练" value={copy.stats.ai} color="var(--purple)" />
-              </div>
-              <div className="c-traits">
-                <div className="trait"><span>✦</span><span>{copy.traits[0]}</span></div>
-                <div className="trait"><span className="danger">⚠</span><span>{copy.traits[1]}</span></div>
-              </div>
-            </button>
-          );
-        })}
+              ))}
+            </div>
+          </button>
+        ))}
       </div>
       <label className="city-line">
         <span>城市层级</span>
@@ -334,36 +269,45 @@ function GameScreen({
   saveStatus: string;
   setSaveStatus: (status: string) => void;
 }) {
-  const [selectedActionCategory, setSelectedActionCategory] = useState<ActionCategoryId>('entertainment');
-  const [plannedActionIds, setPlannedActionIds] = useState<string[]>([]);
+  const [selectedActionGroup, setSelectedActionGroup] = useState<ActionConfig['group'] | 'bookmark'>(DEFAULT_ACTION_GROUP);
+  const [bookmarkSubTab, setBookmarkSubTab] = useState<ActionConfig['group'] | 'all'>('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [bookmarkedActionIds, setBookmarkedActionIds] = useState<string[]>(() => {
+    try {
+      const raw = localStorage.getItem('ms_bookmarks');
+      return raw ? (JSON.parse(raw) as string[]) : [];
+    } catch { return []; }
+  });
   const [lastPressure, setLastPressure] = useState<PressureSnapshot>(() => createPressureSnapshot(state));
   const [pressureDelta, setPressureDelta] = useState<PressureSnapshot | undefined>();
   const visible = getVisibleStats(state);
-  const actions = getAvailableActions(state) as AvailableAction[];
-  const actionById = new Map(actions.map(action => [action.id, action]));
-  const currentCategory = actionCategories.find(category => category.id === selectedActionCategory) ?? actionCategories[0];
-  const actionSlots = [
-    ...currentCategory.items,
-    ...Array.from({ length: Math.max(0, ACTION_VISIBLE_SLOTS - currentCategory.items.length) }, (_, index) => ({
-      id: `empty-${selectedActionCategory}-${index}`,
-      empty: true as const
-    }))
-  ];
+  const actions = useMemo(() => getAvailableActions(state), [state.month, state.pendingEventChoice?.id, state.gameOver, state.career.employmentStatus, state.stats.cash, state.career.portfolioCount, state.stats.techXp, state.stats.aiXp, state.stats.reputationXp]);
+  const groupActions = useMemo(() => {
+    let filtered: AvailableAction[];
+    if (selectedActionGroup === 'bookmark') {
+      filtered = bookmarkSubTab === 'all'
+        ? actions.filter(action => bookmarkedActionIds.includes(action.id))
+        : actions.filter(action => action.group === bookmarkSubTab);
+    } else {
+      filtered = actions.filter(action => action.group === selectedActionGroup);
+    }
+    if (searchQuery.trim()) {
+      const q = searchQuery.trim().toLowerCase();
+      filtered = filtered.filter(action =>
+        action.name.toLowerCase().includes(q) ||
+        (action.description ?? '').toLowerCase().includes(q)
+      );
+    }
+    return filtered;
+  }, [actions, selectedActionGroup, bookmarkSubTab, searchQuery, bookmarkedActionIds]);
   const cashWan = state.stats.cash / 10000;
   const totalMonths = 23 * 12;
   const progress = Math.min(100, state.month / totalMonths * 100);
-  const career = v1CareerCopy[state.career.track] ?? { name: getCareer(state.career.track).name };
+  const careerConfig = getCareer(state.career.track);
   const endingText = state.endingId ? state.logs[state.logs.length - 1]?.text : undefined;
   const day = state.month * 30;
   const bodySignal = getBodySignal(state);
   const recentDecisionLog = [...state.decisionLog].slice(-3).reverse();
-  const plannedActions = plannedActionIds.flatMap(id => {
-    const action = actionById.get(id);
-    return action ? [action] : [];
-  });
-  const monthlyBudget = buildMonthlyPlan(state, plannedActions);
-  const planOverBudget = isPlanOverBudget(monthlyBudget);
-  const canSubmitMonthlyPlan = plannedActionIds.length > 0 && !planOverBudget && !state.pendingEventChoice && !state.gameOver;
 
   useEffect(() => {
     const nextPressure = createPressureSnapshot(state);
@@ -377,31 +321,25 @@ function GameScreen({
     setLastPressure(nextPressure);
   }, [state.month]);
 
-  useEffect(() => {
-    setPlannedActionIds([]);
-  }, [state.month, state.pendingEventChoice?.id, state.gameOver]);
-
-  function togglePlannedAction(action: AvailableAction) {
-    setPlannedActionIds(current => {
-      if (current.includes(action.id)) return current.filter(id => id !== action.id);
-      const currentActions = current.flatMap(id => {
-        const item = actionById.get(id);
-        return item ? [item] : [];
-      });
-      const check = canExecuteAction(state, action, currentActions);
-      if (!check.ok) return current;
-      return [...current, action.id];
+  function toggleBookmark(actionId: string) {
+    setBookmarkedActionIds(current => {
+      const next = current.includes(actionId)
+        ? current.filter(id => id !== actionId)
+        : [...current, actionId];
+      localStorage.setItem('ms_bookmarks', JSON.stringify(next));
+      return next;
     });
   }
 
-  function removePlannedAction(actionId: string) {
-    setPlannedActionIds(current => current.filter(id => id !== actionId));
+  function executeAction(action: AvailableAction) {
+    if (!action.available || state.gameOver || state.pendingEventChoice) return;
+    setState(planMonth(state, [action.id]));
   }
 
-  function submitMonthlyPlan() {
-    if (!canSubmitMonthlyPlan) return;
-    setState(planMonth(state, plannedActionIds));
-    setPlannedActionIds([]);
+  function focusBookmarks() {
+    setSelectedActionGroup('bookmark');
+    setBookmarkSubTab('all');
+    setSearchQuery('');
   }
 
   function handleSave() {
@@ -419,7 +357,7 @@ function GameScreen({
     <div className="screen active">
       <div className="game-hdr">
         <div className="ghdr-left">
-          <div className="ghdr-pill">{career.name}</div>
+          <div className="ghdr-pill">{careerConfig.name}</div>
           <span className="ghdr-div">|</span>
           <div className="ghdr-pill">第 {day} 天</div>
           <span className="ghdr-div">|</span>
@@ -428,6 +366,7 @@ function GameScreen({
         <div className="ghdr-right">
           <button className="btn-h" onClick={() => openModal('ach')}>成就</button>
           <button className="btn-h" onClick={() => openModal('shop')}>商店</button>
+          <button className="btn-h" onClick={focusBookmarks}>收藏</button>
           <button className="btn-h" onClick={handleSave}>保存</button>
           <button className="btn-h red" onClick={changeCharacter}>换角色</button>
         </div>
@@ -435,10 +374,10 @@ function GameScreen({
       <div className={saveStatus ? 'save-toast show' : 'save-toast'}>{saveStatus}</div>
 
       <div className="stats-row">
-        <StatCard label="技术能力" value={visible.tech} color="var(--teal)" />
-        <StatCard label="精神状态" value={visible.mental} color={visible.mental < 25 ? 'var(--red)' : visible.mental < 50 ? 'var(--amber)' : 'var(--sky)'} />
-        <StatCard label="存款 (万)" value={Number(cashWan.toFixed(1))} max={100} color="var(--amber)" sub={cashWan >= 100 ? '已达 100万应急垫' : `目标：100万应急垫`} />
-        <StatCard label="AI协作能力" value={visible.ai} color="var(--mint)" />
+        <StatCard label="技术能力" value={visible.tech} color="var(--teal)" sub="核心竞争力" />
+        <StatCard label="精神状态" value={visible.mental} color={visible.mental < 25 ? 'var(--red)' : visible.mental < 50 ? 'var(--amber)' : 'var(--sky)'} sub="影响决策质量" />
+        <StatCard label="存款 (万)" value={Number(cashWan.toFixed(1))} max={100} color="var(--amber)" sub={cashWan >= 100 ? '已达 100万应急垫' : '目标：100万应急垫'} />
+        <StatCard label="AI协作能力" value={visible.ai} color="var(--mint)" sub="人机协作效率" />
       </div>
       <PressureSummary state={state} lastPressure={lastPressure} deltas={pressureDelta} />
 
@@ -461,84 +400,92 @@ function GameScreen({
         </div>
         <div className="right-col">
           <div className="action-card">
-            <div className="action-hdr">⚡ 行动选择</div>
-            <div className="monthly-budget" aria-label="月度计划预算">
-              <span>月度计划</span>
-              <span>时间预算 {monthlyBudget.timeBudget.available - monthlyBudget.timeBudget.used}/{monthlyBudget.timeBudget.available}</span>
-              <span>精力预算 {monthlyBudget.energyBudget.available - monthlyBudget.energyBudget.used}/{monthlyBudget.energyBudget.available}</span>
-            </div>
-            <div className="monthly-plan-panel" aria-label="已选行动">
-              <div className="monthly-plan-head">
-                <span>已选行动 {plannedActionIds.length}</span>
-                {planOverBudget ? <span className="monthly-plan-warn">预算超载</span> : <span className="monthly-plan-ok">可提交</span>}
-              </div>
-              <div className="monthly-plan-items">
-                {plannedActions.length > 0 ? plannedActions.map(action => {
-                  const cost = actionPlanCost(action);
-                  return (
-                    <button className="monthly-plan-chip" type="button" key={action.id} onClick={() => removePlannedAction(action.id)}>
-                      <span>{action.name}</span>
-                      <span>{cost.time}时/{cost.energy}精</span>
+            <div className="action-hdr">{selectedActionGroup === 'bookmark' ? '★ 收藏管理' : '⚡ 行动选择'}</div>
+            <div className="action-tabs" role="tablist" aria-label={selectedActionGroup === 'bookmark' ? '收藏分类' : '行动分类'}>
+              {selectedActionGroup === 'bookmark' ? (
+                <>
+                  {([{ id: 'all' as const, label: '已收藏' }, ...ACTION_GROUP_MAP] as Array<{ id: ActionConfig['group'] | 'all'; label: string }>).map(tab => (
+                    <button
+                      className={tab.id === bookmarkSubTab ? 'action-tab active' : 'action-tab'}
+                      key={tab.id}
+                      onClick={() => { setBookmarkSubTab(tab.id); setSearchQuery(''); }}
+                      type="button"
+                    >
+                      {tab.label}
                     </button>
-                  );
-                }) : <span className="monthly-plan-empty">从下方行动中加入本月计划</span>}
-              </div>
-              {state.pendingEventChoice ? <div className="monthly-plan-note">请先处理事件选择，再提交本月计划。</div> : null}
-            </div>
-            <div className="action-tabs" role="tablist" aria-label="行动分类">
-              {actionCategories.map(category => (
-                <button
-                  className={category.id === selectedActionCategory ? 'action-tab active' : 'action-tab'}
-                  key={category.id}
-                  onClick={() => setSelectedActionCategory(category.id)}
-                  type="button"
-                >
-                  {category.label}
-                </button>
-              ))}
+                  ))}
+                  <button className="action-tab" type="button" onClick={() => { setSelectedActionGroup(DEFAULT_ACTION_GROUP); setSearchQuery(''); }}>
+                    返回
+                  </button>
+                </>
+              ) : (
+                ACTION_GROUP_MAP.map(group => (
+                  <button
+                    className={group.id === selectedActionGroup ? 'action-tab active' : 'action-tab'}
+                    key={group.id}
+                    onClick={() => { setSelectedActionGroup(group.id); setSearchQuery(''); }}
+                    type="button"
+                  >
+                    {group.label}
+                  </button>
+                ))
+              )}
+              <span className="action-tab-search">
+                <input
+                  className="action-tab-search-input"
+                  type="text"
+                  placeholder="搜索..."
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                />
+                {searchQuery && <button className="action-tab-search-clear" type="button" onClick={() => setSearchQuery('')}>✕</button>}
+              </span>
             </div>
             <div className="action-list categorized-action-list">
-              {actionSlots.map(slot => {
-                if ('empty' in slot) {
-                  return <div className="action-empty-slot" aria-hidden="true" key={slot.id} />;
-                }
-                const action = actionById.get(slot.id);
-                const selected = Boolean(action && plannedActionIds.includes(action.id));
-                const disabled = !action?.available || state.gameOver || Boolean(state.pendingEventChoice);
-                const insight = action ? getActionInsights(state, action) : undefined;
-                return (
-                <button className={selected ? 'action-btn planned' : 'action-btn'} key={slot.id} disabled={disabled && !selected} onClick={() => action && togglePlannedAction(action)}>
-                  <div className="action-main">
-                    <span className="a-name">{slot.icon} {slot.label}</span>
-                    <span className="a-cost">{slot.summary}</span>
-                  </div>
-                  {insight && insight.badges.length > 0 ? (
-                    <div className="action-badges" aria-label="行动风险提示">
-                      {insight.badges.slice(0, 3).map(badge => (
-                        <span className={`action-badge ${badge.tone}`} key={`${slot.id}-${badge.label}`}>{badge.label}</span>
-                      ))}
+              {groupActions.length === 0 ? (
+                <div className="action-empty-state">当前分类下没有可用行动</div>
+              ) : (
+                groupActions.map(slotAction => {
+                  const insight = getActionInsights(state, slotAction);
+                  const isBookmarkMode = selectedActionGroup === 'bookmark';
+                  const isBookmarked = bookmarkedActionIds.includes(slotAction.id);
+                  return (
+                  <button
+                    className="action-btn"
+                    key={slotAction.id}
+                    disabled={isBookmarkMode ? false : (!slotAction.available || state.gameOver || Boolean(state.pendingEventChoice))}
+                    onClick={() => isBookmarkMode ? toggleBookmark(slotAction.id) : executeAction(slotAction)}
+                  >
+                    <div className="act-head">
+                      <span className="act-icon">{slotAction.icon}</span>
+                      <span className="act-name">{slotAction.name}</span>
+                      {isBookmarkMode && isBookmarked ? <span className="act-bookmark-on">★ 已收藏</span> : null}
                     </div>
-                  ) : null}
-                  <div className="action-detail">
-                    <span>{action?.description ?? '当前条件不足，暂时不能执行。'}</span>
-                    {action?.reason ? <span className="cn">{action.reason}</span> : null}
-                    {selected ? <span className="cp">已加入本月计划，点击可取消。</span> : null}
-                  </div>
-                  {action ? (
-                    <div className="action-effects">
-                      <div className="effect-row immediate"><span className="effect-label">即时</span><span className="effect-copy">{slot.immediateText}</span></div>
-                      <div className="effect-row debt"><span className="effect-label">隐债</span><span className="effect-copy">{action.riskLabel}</span></div>
-                      <div className="effect-row opportunity"><span className="effect-label">机会</span><span className="effect-copy">{action.benefitLabel}</span></div>
+                    <div className="act-chips">{renderEffectChips(slotAction.visibleEffect)}</div>
+                    <div className="act-desc">{slotAction.description}</div>
+                    <div className="act-effects">
+                      <span className="act-eff"><span className="act-eff-label act-eff-debt">隐债</span><span className="act-eff-text">{slotAction.riskLabel}</span></span>
+                      <span className="act-eff"><span className="act-eff-label act-eff-opp">机会</span><span className="act-eff-text">{slotAction.benefitLabel}</span></span>
                     </div>
-                  ) : null}
-                </button>
-                );
-              })}
+                    {insight && insight.badges.length > 0 ? (
+                      <div className="act-badges">
+                        {insight.badges.slice(0, 3).map(badge => (
+                          <span className={`act-badge ${badge.tone}`} key={`${slotAction.id}-${badge.label}`}>{badge.label}</span>
+                        ))}
+                      </div>
+                    ) : null}
+                    {slotAction.reason ? <div className="act-reason">{slotAction.reason}</div> : null}
+                    {!isBookmarkMode ? (
+                      <span className={`act-bookmark ${isBookmarked ? 'on' : ''}`} onClick={e => { e.stopPropagation(); toggleBookmark(slotAction.id); }} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); toggleBookmark(slotAction.id); } }} role="button" tabIndex={0} aria-label="收藏">
+                        {isBookmarked ? '★' : '☆'}
+                      </span>
+                    ) : null}
+                  </button>
+                  );
+                })
+              )}
             </div>
             <div className="action-support-scroll">
-              <button className="monthly-plan-submit" type="button" disabled={!canSubmitMonthlyPlan} onClick={submitMonthlyPlan}>
-                执行本月计划
-              </button>
               {bodySignal ? (
                 <div className="body-signal">
                   <div>

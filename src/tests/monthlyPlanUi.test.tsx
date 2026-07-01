@@ -16,7 +16,7 @@ function buttonByText(text: string): HTMLButtonElement {
   return button as HTMLButtonElement;
 }
 
-describe('monthly plan UI interaction', () => {
+describe('instant action execution UI', () => {
   beforeEach(() => {
     localStorage.clear();
     vi.spyOn(Math, 'random').mockReturnValue(0.42);
@@ -27,7 +27,7 @@ describe('monthly plan UI interaction', () => {
     document.body.innerHTML = '';
   });
 
-  it('selects multiple actions and advances the month only after submitting the plan', async () => {
+  it('executes a single action immediately on click and advances the month', async () => {
     const container = document.createElement('div');
     document.body.appendChild(container);
     const root = createRoot(container);
@@ -41,7 +41,6 @@ describe('monthly plan UI interaction', () => {
     });
 
     expect(document.body.textContent).toContain('第 0 天');
-    expect(document.body.textContent).toContain('已选行动 0');
 
     await act(async () => {
       click(buttonByText('学习成长'));
@@ -49,21 +48,10 @@ describe('monthly plan UI interaction', () => {
 
     await act(async () => {
       click(buttonByText('系统学习'));
-      click(buttonByText('学习AI工具'));
-    });
-
-    expect(document.body.textContent).toContain('第 0 天');
-    expect(document.body.textContent).toContain('已选行动 2');
-    expect(buttonByText('执行本月计划').disabled).toBe(false);
-
-    await act(async () => {
-      click(buttonByText('执行本月计划'));
     });
 
     expect(document.body.textContent).toContain('第 30 天');
-    expect(document.body.textContent).toContain('已选行动 0');
     expect(document.body.textContent).toContain('系统学习');
-    expect(document.body.textContent).toContain('AI工具');
 
     await act(async () => {
       root.unmount();
