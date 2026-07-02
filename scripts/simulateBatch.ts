@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import thresholds from './releaseThresholds.json';
 import { createInitialState, planMonth } from '../src/core/gameEngine';
+import { ENDINGS } from '../src/config/endings';
 import type { CareerTrack, CityTier, GameState } from '../src/types/game';
 import { AUTO_STRATEGIES, chooseMonthlyPlanForStrategy, resolvePendingEventChoiceForSimulation, type AutoStrategyId } from '../src/systems/autoChoiceSystem';
 import { calculateValueFit } from '../src/systems/valueSystem';
@@ -85,7 +86,7 @@ type ScenarioSummary = {
 
 const DEFAULT_CAREERS: CareerTrack[] = ['frontend', 'backend', 'fullstack', 'ai_product'];
 const DEFAULT_CITIES: CityTier[] = ['tier1', 'tier2', 'tier3'];
-const DEFAULT_CLI_STRATEGIES: AutoStrategyId[] = ['stable_cashflow', 'health_first', 'ai_transition'];
+const DEFAULT_CLI_STRATEGIES: AutoStrategyId[] = ['stable_cashflow', 'health_first', 'relationship_first', 'ai_transition'];
 const DEFAULT_CLI_CAREERS: CareerTrack[] = ['frontend', 'backend', 'ai_product'];
 const DEFAULT_CLI_CITIES: CityTier[] = ['tier1', 'tier2', 'tier3'];
 
@@ -219,7 +220,16 @@ function runScenario(options: { strategy: AutoStrategyId; career: CareerTrack; c
     actions.push(...actionIds);
     planSizes.push(actionIds.length);
     const beforeOffers = state.career.totalOffers;
-    state = planMonth(state, actionIds);
+    const nextState = planMonth(state, actionIds);
+    if (!nextState.gameOver && nextState.month === state.month) {
+      state = {
+        ...nextState,
+        endingId: 'no_progress_loop',
+        gameOver: true
+      };
+      break;
+    }
+    state = nextState;
     if (state.logs.length > 50) state = { ...state, logs: state.logs.slice(-50) };
     if (typeof firstOfferMonth === 'undefined' && state.career.totalOffers > beforeOffers) firstOfferMonth = state.month;
   }
@@ -380,15 +390,22 @@ if (process.argv[1]?.endsWith('simulateBatch.ts')) {
 }
 
 function isFailureEnding(id: string): boolean {
-  return /bankrupt|cashflow|debt|burnout|health|unemployed|fail|collapse|trap/.test(id);
+  const category = endingCategory(id);
+  return category === 'fail' || /bankrupt|cashflow|debt|burnout|health|unemployed|fail|collapse|trap|no_progress_loop/.test(id);
 }
 
 function isBalancedEnding(id: string): boolean {
-  return /ordinary|find_self|normal/.test(id);
+  const category = endingCategory(id);
+  return category === 'normal' || category === 'hidden' || /ordinary|connected|find_self|normal|balanced|family|craft|rural|freelance|half_retire/.test(id);
 }
 
 function isSuccessEnding(id: string): boolean {
-  return /architect|capital|free|tech|ai_/.test(id);
+  const category = endingCategory(id);
+  return category === 'tech' || category === 'capital' || /architect|capital|free|tech|ai_/.test(id);
+}
+
+function endingCategory(id: string) {
+  return ENDINGS.find(ending => ending.id === id)?.category;
 }
 
 function parseList(value: string | undefined): string[] | undefined {

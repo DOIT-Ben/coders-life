@@ -4,6 +4,7 @@ import appSource from '../App.tsx?raw';
 import gameContainerSource from '../components/GameContainer.tsx?raw';
 
 const appCss = readFileSync(new URL('../styles/app.css', import.meta.url), 'utf8');
+const ciWorkflow = readFileSync(new URL('../../.github/workflows/ci.yml', import.meta.url), 'utf8');
 
 describe('v1 frontend contract', () => {
   const worldStatusBarSource = readFileSync(new URL('../components/WorldStatusBar.tsx', import.meta.url), 'utf8');
@@ -108,16 +109,15 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.event-choice-option');
   });
 
-  it('supports instant single-action execution on click without monthly plan stage', () => {
-    ['行动选择', 'executeAction', '收藏'].forEach(token => {
+  it('supports monthly multi-action planning instead of instant single-action execution', () => {
+    ['行动选择', 'togglePlannedAction', 'submitMonthlyPlan', '收藏'].forEach(token => {
       expect(gameContainerSource).toContain(token);
     });
-    expect(gameContainerSource).toContain('planMonth(state, [action.id])');
-    expect(source).not.toContain('submitMonthlyPlan');
-    expect(source).not.toContain('togglePlannedAction');
-    expect(source).not.toContain('monthly-budget');
-    expect(appCss).not.toContain('.monthly-plan-panel');
-    expect(appCss).not.toContain('.monthly-plan-submit');
+    expect(gameContainerSource).not.toContain('planMonth(state, [action.id])');
+    expect(gameContainerSource).toContain('plannedActionIds');
+    expect(source).toContain('monthly-budget');
+    expect(appCss).toContain('.monthly-plan-panel');
+    expect(appCss).toContain('.monthly-plan-submit');
     expect(appCss).toContain('overflow-y: auto');
   });
 
@@ -146,6 +146,7 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('max-height: min(720px, calc(100dvh - 32px));');
     expect(appCss).toContain('display: flex;\n  flex-direction: column;');
     expect(appCss).toContain('.modal-head {\n  flex: 0 0 auto;');
+    expect(appCss).toContain('.modal-scroll');
     expect(appCss).toContain('.shop-list');
     expect(appCss).toContain('overflow-y: auto');
     expect(appCss).toContain('max-height: min(64dvh, 560px);');
@@ -153,6 +154,25 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.action-tabs');
     expect(appCss).toContain('.action-card');
     expect(appCss).toContain('min-height: 0;');
+  });
+
+  it('keeps mobile controls at touch-friendly sizes without disabling action panel scroll', () => {
+    expect(appCss).toContain('@media (max-width: 660px)');
+    ['.btn-h', '.action-tab', '.action-tab-search', '.action-tab-search-clear', '.act-bookmark', '.modal-head button', '.btn-buy', '.monthly-plan-submit'].forEach(selector => {
+      expect(appCss).toContain(selector);
+    });
+    expect(appCss).toContain('min-height: 44px');
+    expect(appCss).not.toContain('.left-col, .right-col { height: auto; min-height: 0; }');
+  });
+
+  it('runs CI verification on master pushes as well as remediation branches', () => {
+    expect(ciWorkflow).toContain('pull_request:');
+    expect(ciWorkflow).toContain('npm test');
+    expect(ciWorkflow).toContain('npm run build');
+    expect(ciWorkflow).toContain('npm run simulate');
+    expect(ciWorkflow).toContain('npm run simulate:batch');
+    expect(ciWorkflow).toContain('git diff --check');
+    expect(ciWorkflow).toContain('- master');
   });
 
   it('shows achievement progress instead of identical locked badges', () => {

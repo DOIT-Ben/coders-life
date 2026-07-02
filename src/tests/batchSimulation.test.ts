@@ -65,6 +65,28 @@ describe('batch simulation release gate', () => {
     expect(plan).toEqual(['C2002']);
   });
 
+  it('does not force current offer acceptance when the monthly budget cannot support it', () => {
+    const state = createInitialState('frontend', 'tier2', 42);
+    state.stats.techXp = 500;
+    state.hidden.fatigue = 500;
+    state.healthProfile.sleepDebt = 500;
+    state.healthProfile.healthDebt = 500;
+    state.career.activeOffers = [{
+      id: 'offer-current',
+      companyType: 'private',
+      jobLevel: 1,
+      salaryMonthly: 12000,
+      createdMonth: state.month,
+      expiresMonth: state.month + 2,
+      status: 'active'
+    }];
+
+    const plan = chooseMonthlyPlanForStrategy(state, 'stable_cashflow');
+
+    expect(plan).not.toEqual(['C2002']);
+    expect(plan).not.toContain('C2002');
+  });
+
   it('produces batch distributions and invariant checks across strategies careers and cities', () => {
     const result = runBatchSimulation({
       seedsPerScenario: 1,
@@ -100,6 +122,13 @@ describe('batch simulation release gate', () => {
     const source = readFileSync(new URL('../../scripts/simulateBatch.ts', import.meta.url), 'utf8');
 
     expect(source).toContain('deterministicReplayRate >= thresholds.minDeterministicReplayRate');
+  });
+
+  it('guards batch scenarios against no-progress action loops', () => {
+    const source = readFileSync(new URL('../../scripts/simulateBatch.ts', import.meta.url), 'utf8');
+
+    expect(source).toContain('nextState.month === state.month');
+    expect(source).toContain('no_progress_loop');
   });
 
   it('reports legal ending coverage from actual simulated trajectories', () => {

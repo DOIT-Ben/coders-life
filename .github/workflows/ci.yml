@@ -4,6 +4,7 @@ on:
   pull_request:
   push:
     branches:
+      - master
       - fix/v6-followup-remediation-blockers
       - fix/v6-followup-remediation
       - fix/v6-audit-remediation-p0

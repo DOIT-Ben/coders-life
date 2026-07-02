@@ -10,6 +10,7 @@ import { addLog } from '../core/logs';
 import { getActionInsights, getBodySignal } from '../systems/actionInsightSystem';
 import { applyEventChoice } from '../systems/eventSystem';
 import { buyShopItem } from '../systems/shopSystem';
+import { actionPlanCost, buildMonthlyPlan, isPlanOverBudget } from '../systems/monthlyPlanSystem';
 import { deriveCareerStability, deriveHealthDebt, deriveLifeSatisfaction, derivePressureSnapshot } from '../systems/derivedStateSystem';
 
 type AchievementProgress = {
@@ -163,8 +164,17 @@ function GameScreen({
 }) {
   const [selectedActionGroup, setSelectedActionGroup] = useState<ActionConfig['group']>(DEFAULT_ACTION_GROUP);
   const [searchQuery, setSearchQuery] = useState('');
+  const [plannedActionIds, setPlannedActionIds] = useState<string[]>([]);
   const visible = getVisibleStats(state);
   const actions = useMemo(() => getAvailableActions(state), [state.month, state.pendingEventChoice?.id, state.gameOver, state.career.employmentStatus, state.stats.cash, state.career.portfolioCount, state.stats.techXp, state.stats.aiXp, state.stats.reputationXp]);
+  const selectedActions = useMemo(
+    () => plannedActionIds
+      .map(actionId => actions.find(action => action.id === actionId))
+      .filter(Boolean) as AvailableAction[],
+    [actions, plannedActionIds]
+  );
+  const monthlyPlan = useMemo(() => buildMonthlyPlan(state, selectedActions), [state, selectedActions]);
+  const planOverBudget = isPlanOverBudget(monthlyPlan);
   const groupActions = useMemo(() => {
     let filtered = actions.filter(action => action.group === selectedActionGroup);
     if (searchQuery.trim()) {
@@ -185,9 +195,23 @@ function GameScreen({
   const bodySignal = getBodySignal(state);
   const recentDecisionLog = [...state.decisionLog].slice(-3).reverse();
 
-  function executeAction(action: AvailableAction) {
+  useEffect(() => {
+    setPlannedActionIds([]);
+  }, [state.month, state.pendingEventChoice?.id, state.gameOver]);
+
+  function togglePlannedAction(action: AvailableAction) {
+    if (state.gameOver || state.pendingEventChoice) return;
+    if (plannedActionIds.includes(action.id)) {
+      setPlannedActionIds(current => current.filter(actionId => actionId !== action.id));
+      return;
+    }
     if (!action.available || state.gameOver || state.pendingEventChoice) return;
-    setState(planMonth(state, [action.id]));
+    setPlannedActionIds(current => [...current, action.id]);
+  }
+
+  function submitMonthlyPlan() {
+    if (plannedActionIds.length === 0 || planOverBudget || state.gameOver || state.pendingEventChoice) return;
+    setState(planMonth(state, plannedActionIds));
   }
 
   function handleSave() {
@@ -271,6 +295,34 @@ function GameScreen({
                 {searchQuery && <button className="action-tab-search-clear" type="button" onClick={() => setSearchQuery('')}>✕</button>}
               </span>
             </div>
+            <div className={planOverBudget ? 'monthly-plan-panel overloaded' : 'monthly-plan-panel'}>
+              <div className="monthly-budget">
+                <span>本月计划</span>
+                <span>已选择 {plannedActionIds.length} 项</span>
+              </div>
+              <div className="monthly-budget-bars">
+                <span>时间 {monthlyPlan.timeBudget.used}/{monthlyPlan.timeBudget.available}</span>
+                <span>精力 {monthlyPlan.energyBudget.used}/{monthlyPlan.energyBudget.available}</span>
+              </div>
+              <div className="monthly-plan-chips">
+                {selectedActions.length === 0 ? (
+                  <span className="monthly-plan-empty">从下方选择本月行动</span>
+                ) : selectedActions.map(action => (
+                  <button className="monthly-plan-chip" key={action.id} type="button" onClick={() => togglePlannedAction(action)}>
+                    {action.name} ×
+                  </button>
+                ))}
+              </div>
+              {planOverBudget ? <div className="monthly-plan-warning">计划超出本月时间或精力，请减少行动。</div> : null}
+              <button
+                className="monthly-plan-submit"
+                type="button"
+                disabled={plannedActionIds.length === 0 || planOverBudget || state.gameOver || Boolean(state.pendingEventChoice)}
+                onClick={submitMonthlyPlan}
+              >
+                执行本月计划
+              </button>
+            </div>
             <div className="action-list categorized-action-list">
               {groupActions.length === 0 ? (
                 <div className="action-empty-state">当前分类下没有可用行动</div>
@@ -280,16 +332,23 @@ function GameScreen({
                   const isBookmarked = bookmarkedActionIds.includes(slotAction.id);
                   return (
                   <button
-                    className="action-btn"
+                    className={plannedActionIds.includes(slotAction.id) ? 'action-btn selected' : 'action-btn'}
                     key={slotAction.id}
                     disabled={!slotAction.available || state.gameOver || Boolean(state.pendingEventChoice)}
-                    onClick={() => executeAction(slotAction)}
+                    onClick={() => togglePlannedAction(slotAction)}
                   >
                     <div className="act-head">
                       <span className="act-icon">{slotAction.icon}</span>
                       <span className="act-name">{slotAction.name}</span>
+                      {plannedActionIds.includes(slotAction.id) ? <span className="act-check">已计划</span> : null}
                     </div>
                     <div className="act-chips">{renderEffectChips(slotAction.visibleEffect)}</div>
+                    <div className="act-cost">
+                      {(() => {
+                        const cost = actionPlanCost(slotAction);
+                        return `时间 ${cost.time} · 精力 ${cost.energy}`;
+                      })()}
+                    </div>
                     <div className="act-desc">{slotAction.description}</div>
                     <div className="act-meta">
                       <span>{slotAction.benefitLabel}</span>
@@ -451,7 +510,7 @@ function AchievementDialog({ state, close }: { state: GameState; close: () => vo
     <div className="modal-overlay open">
       <div className="modal wide-modal">
         <div className="modal-head"><div className="modal-title">成就系统</div><button onClick={close}>×</button></div>
-        <div className="ach-grid">
+        <div className="modal-scroll ach-grid">
           {ACHIEVEMENTS.map(achievement => {
             const ok = state.unlockedAchievements.includes(achievement.id);
             const progress = getAchievementProgress(state, achievement.id);
@@ -533,7 +592,7 @@ function ShopDialog({ state, setState, close }: { state: GameState; setState: (s
     <div className="modal-overlay open">
       <div className="modal">
         <div className="modal-head"><div className="modal-title">补给商店</div><button onClick={close}>×</button></div>
-        <div className="shop-list">
+        <div className="modal-scroll shop-list">
           {SHOP_ITEMS.map(item => {
             const owned = state.inventory[item.id] ?? 0;
             const isMaxed = Boolean(item.maxCount && owned >= item.maxCount);
@@ -565,14 +624,16 @@ function EventChoiceDialog({ state, setState }: { state: GameState; setState: (s
     <div className="modal-overlay open">
       <div className="modal event-choice-modal">
         <div className="modal-title">{event.title}</div>
-        <div className="modal-body">{event.text}</div>
-        <div className="event-choice-list">
-          {event.choices.map(choice => (
-            <button className="event-choice-option" key={choice.id} onClick={() => setState(applyEventChoice(state, choice.id))}>
-              <span className="event-choice-label">{choice.label}</span>
-              <span className="event-choice-text">{choice.text}</span>
-            </button>
-          ))}
+        <div className="modal-scroll">
+          <div className="modal-body">{event.text}</div>
+          <div className="event-choice-list">
+            {event.choices.map(choice => (
+              <button className="event-choice-option" key={choice.id} onClick={() => setState(applyEventChoice(state, choice.id))}>
+                <span className="event-choice-label">{choice.label}</span>
+                <span className="event-choice-text">{choice.text}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -587,22 +648,24 @@ function EndingDialog({ state, close, restart }: { state: GameState; close: () =
     <div className="modal-overlay open">
       <div className="modal">
         <div className="modal-title">{log?.title ?? '游戏结束'}</div>
-        <div className="go-stats">
-          <div className="go-stat"><div className="go-sv">{state.month}月</div><div className="go-sl">生存时长</div></div>
-          <div className="go-stat"><div className="go-sv">{visible.ai}</div><div className="go-sl">AI协作能力</div></div>
-          <div className="go-stat"><div className="go-sv">{Math.round(state.stats.cash / 10000)}万</div><div className="go-sl">最终存款</div></div>
-          <div className="go-stat"><div className="go-sv">{state.unlockedAchievements.length}</div><div className="go-sl">成就解锁</div></div>
-        </div>
-        <div className="modal-body">{log?.text}</div>
-        <div className="turning-point-box">
-          <div className="turning-point-title">关键转折点</div>
-          {turningPoints.length > 0 ? turningPoints.map(point => (
-            <div className="turning-point-row" key={point.id}>
-              <span>{point.label}</span>
-              <span>{point.value}</span>
-              <span>{point.text}</span>
-            </div>
-          )) : <div className="turning-point-empty">没有明显崩盘节点，更多是长期选择累积的结果。</div>}
+        <div className="modal-scroll">
+          <div className="go-stats">
+            <div className="go-stat"><div className="go-sv">{state.month}月</div><div className="go-sl">生存时长</div></div>
+            <div className="go-stat"><div className="go-sv">{visible.ai}</div><div className="go-sl">AI协作能力</div></div>
+            <div className="go-stat"><div className="go-sv">{Math.round(state.stats.cash / 10000)}万</div><div className="go-sl">最终存款</div></div>
+            <div className="go-stat"><div className="go-sv">{state.unlockedAchievements.length}</div><div className="go-sl">成就解锁</div></div>
+          </div>
+          <div className="modal-body">{log?.text}</div>
+          <div className="turning-point-box">
+            <div className="turning-point-title">关键转折点</div>
+            {turningPoints.length > 0 ? turningPoints.map(point => (
+              <div className="turning-point-row" key={point.id}>
+                <span>{point.label}</span>
+                <span>{point.value}</span>
+                <span>{point.text}</span>
+              </div>
+            )) : <div className="turning-point-empty">没有明显崩盘节点，更多是长期选择累积的结果。</div>}
+          </div>
         </div>
         <div className="modal-actions"><button className="btn-mp" onClick={restart}>重新开始</button><button className="btn-ms" onClick={close}>查看结果</button></div>
       </div>
@@ -693,7 +756,7 @@ function BookmarkDialog({
             </button>
           ))}
         </div>
-        <div className="shop-list" style={{ maxHeight: 'min(60dvh, 480px)', overflowY: 'auto' }}>
+        <div className="modal-scroll shop-list bookmark-list">
           {displayed.length === 0 ? (
             <div className="action-empty-state">{tab === 'bookmarked' ? '还没有收藏任何行动' : '当前分类下没有行动'}</div>
           ) : (

@@ -62,7 +62,7 @@ export function chooseMonthlyPlanForStrategy(state: GameState, strategyId: AutoS
   const available = getAvailableActions(state).filter(action => action.available);
   if (hasCurrentOffer(state)) {
     const offerAction = available.find(action => action.id === 'C2002');
-    if (offerAction) return ['C2002'];
+    if (offerAction && canExecuteAction(state, offerAction).ok && !isPlanOverBudget(buildMonthlyPlan(state, [offerAction]))) return ['C2002'];
   }
   const candidates = [...currentOpportunityActions(state), ...preferredActionsForStrategy(state, strategyId)];
   const plan: typeof available = [];

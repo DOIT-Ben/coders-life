@@ -16,7 +16,7 @@ function buttonByText(text: string): HTMLButtonElement {
   return button as HTMLButtonElement;
 }
 
-describe('instant action execution UI', () => {
+describe('monthly multi-action plan UI', () => {
   beforeEach(() => {
     localStorage.clear();
     vi.spyOn(Math, 'random').mockReturnValue(0.42);
@@ -27,7 +27,7 @@ describe('instant action execution UI', () => {
     document.body.innerHTML = '';
   });
 
-  it('executes a single action immediately on click and advances the month', async () => {
+  it('keeps selected actions pending until the player submits the monthly plan', async () => {
     const container = document.createElement('div');
     document.body.appendChild(container);
     const root = createRoot(container);
@@ -52,8 +52,23 @@ describe('instant action execution UI', () => {
       click(buttonByText('系统学习'));
     });
 
+    expect(document.body.textContent).toContain('第 0 天');
+    expect(document.body.textContent).toContain('已选择 1 项');
+
+    await act(async () => {
+      click(buttonByText('AI工具训练'));
+    });
+
+    expect(document.body.textContent).toContain('第 0 天');
+    expect(document.body.textContent).toContain('已选择 2 项');
+
+    await act(async () => {
+      click(buttonByText('执行本月计划'));
+    });
+
     expect(document.body.textContent).toContain('第 30 天');
     expect(document.body.textContent).toContain('系统学习');
+    expect(document.body.textContent).toContain('AI工具训练');
 
     await act(async () => {
       root.unmount();
