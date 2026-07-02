@@ -10,7 +10,7 @@ import { addLog } from '../core/logs';
 import { getActionInsights, getBodySignal } from '../systems/actionInsightSystem';
 import { applyEventChoice } from '../systems/eventSystem';
 import { buyShopItem } from '../systems/shopSystem';
-import { deriveCareerStability, deriveEmployability, deriveHealthDebt, deriveLifeSatisfaction, derivePressureSnapshot } from '../systems/derivedStateSystem';
+import { deriveCareerStability, deriveHealthDebt, deriveLifeSatisfaction, derivePressureSnapshot } from '../systems/derivedStateSystem';
 
 type AchievementProgress = {
   ratio: number;
@@ -163,8 +163,6 @@ function GameScreen({
 }) {
   const [selectedActionGroup, setSelectedActionGroup] = useState<ActionConfig['group']>(DEFAULT_ACTION_GROUP);
   const [searchQuery, setSearchQuery] = useState('');
-  const [lastPressure, setLastPressure] = useState<PressureSnapshot>(() => createPressureSnapshot(state));
-  const [pressureDelta, setPressureDelta] = useState<PressureSnapshot | undefined>();
   const visible = getVisibleStats(state);
   const actions = useMemo(() => getAvailableActions(state), [state.month, state.pendingEventChoice?.id, state.gameOver, state.career.employmentStatus, state.stats.cash, state.career.portfolioCount, state.stats.techXp, state.stats.aiXp, state.stats.reputationXp]);
   const groupActions = useMemo(() => {
@@ -186,18 +184,6 @@ function GameScreen({
   const day = state.month * 30;
   const bodySignal = getBodySignal(state);
   const recentDecisionLog = [...state.decisionLog].slice(-3).reverse();
-
-  useEffect(() => {
-    const nextPressure = createPressureSnapshot(state);
-    setPressureDelta({
-      cashflow: nextPressure.cashflow - lastPressure.cashflow,
-      healthDebt: nextPressure.healthDebt - lastPressure.healthDebt,
-      layoffRisk: nextPressure.layoffRisk - lastPressure.layoffRisk,
-      relationshipDebt: nextPressure.relationshipDebt - lastPressure.relationshipDebt,
-      marketPressure: nextPressure.marketPressure - lastPressure.marketPressure
-    });
-    setLastPressure(nextPressure);
-  }, [state.month]);
 
   function executeAction(action: AvailableAction) {
     if (!action.available || state.gameOver || state.pendingEventChoice) return;
@@ -241,7 +227,7 @@ function GameScreen({
         <StatCard label="存款 (万)" value={Number(cashWan.toFixed(1))} max={100} color="var(--amber)" sub={cashWan >= 100 ? '已达 100万应急垫' : '目标：100万应急垫'} />
         <StatCard label="AI协作能力" value={visible.ai} color="var(--mint)" sub="人机协作效率" />
       </div>
-      <PressureSummary state={state} lastPressure={lastPressure} deltas={pressureDelta} />
+      <PressureSummary state={state} />
 
       <div className={visible.mental < 25 ? 'crisis show' : 'crisis'}>⚠ 精神状态危急，正在进入恢复窗口...</div>
       {state.gameOver && <div className="crisis show">人生结局：{state.logs[state.logs.length - 1]?.title}。{endingText}</div>}
@@ -262,7 +248,7 @@ function GameScreen({
         </div>
         <div className="right-col">
           <div className="action-card">
-            <div className="action-hdr">⚡ 行动选择</div>
+            <div className="action-hdr">行动选择</div>
             <div className="action-tabs" role="tablist" aria-label="行动分类">
               {ACTION_GROUP_MAP.map(group => (
                 <button
@@ -305,9 +291,9 @@ function GameScreen({
                     </div>
                     <div className="act-chips">{renderEffectChips(slotAction.visibleEffect)}</div>
                     <div className="act-desc">{slotAction.description}</div>
-                    <div className="act-effects">
-                      <span className="act-eff"><span className="act-eff-label act-eff-debt">隐债</span><span className="act-eff-text">{slotAction.riskLabel}</span></span>
-                      <span className="act-eff"><span className="act-eff-label act-eff-opp">机会</span><span className="act-eff-text">{slotAction.benefitLabel}</span></span>
+                    <div className="act-meta">
+                      <span>{slotAction.benefitLabel}</span>
+                      <span>· {slotAction.riskLabel}</span>
                     </div>
                     {insight && insight.badges.length > 0 ? (
                       <div className="act-badges">
@@ -373,19 +359,17 @@ function pressureTone(value: number) {
   return 'good';
 }
 
-function PressureSummary({ state, lastPressure, deltas }: { state: GameState; lastPressure: PressureSnapshot; deltas?: PressureSnapshot }) {
-  const runway = Number(state.finance.emergencyFundMonths.toFixed(1));
+function PressureSummary({ state }: { state: GameState }) {
   const pressure = createPressureSnapshot(state);
   const healthDebt = deriveHealthDebt(state);
-  const employability = deriveEmployability(state);
   const careerStability = deriveCareerStability(state);
   const lifeSatisfaction = deriveLifeSatisfaction(state);
   const pressureItems = [
-    { key: 'cashflow' as const, icon: '¥', label: '现金流压力', value: pressure.cashflow, sub: `应急垫 ${runway}月`, tone: pressureTone(pressure.cashflow) },
-    { key: 'healthDebt' as const, icon: '+', label: '健康债', value: Math.round(healthDebt.value), sub: healthDebt.explanation, tone: pressureTone(healthDebt.value) },
-    { key: 'layoffRisk' as const, icon: '!', label: '职业稳定', value: Math.round(100 - careerStability.value), sub: `可雇佣 ${Math.round(employability.value)}`, tone: pressureTone(100 - careerStability.value) },
-    { key: 'relationshipDebt' as const, icon: '#', label: '关系债', value: pressure.relationshipDebt, sub: `关系债 ${pressure.relationshipDebt}`, tone: pressureTone(pressure.relationshipDebt) },
-    { key: 'marketPressure' as const, icon: '~', label: '生活满意', value: Math.round(100 - lifeSatisfaction.value), sub: `价值匹配 ${Math.round(lifeSatisfaction.value)} · ${lifeSatisfaction.explanation}`, tone: pressureTone(100 - lifeSatisfaction.value) }
+    { key: 'cashflow' as const, label: '现金流', value: pressure.cashflow, tone: pressureTone(pressure.cashflow) },
+    { key: 'healthDebt' as const, label: '健康债', value: Math.round(healthDebt.value), tone: pressureTone(healthDebt.value) },
+    { key: 'layoffRisk' as const, label: '职业稳定', value: Math.round(careerStability.value), tone: pressureTone(100 - careerStability.value) },
+    { key: 'relationshipDebt' as const, label: '关系债', value: pressure.relationshipDebt, tone: pressureTone(pressure.relationshipDebt) },
+    { key: 'marketPressure' as const, label: '生活满意', value: Math.round(lifeSatisfaction.value), tone: pressureTone(100 - lifeSatisfaction.value) }
   ];
 
   return (
@@ -394,14 +378,12 @@ function PressureSummary({ state, lastPressure, deltas }: { state: GameState; la
       <div className="pressure-grid">
         {pressureItems.map(item => (
           <div className={`pressure-item ${item.tone}`} key={item.label}>
-            <span className="pressure-icon">{item.icon}</span>
             <span className="pressure-copy">
-              <span className="pressure-label"><span>{item.label}</span><span className="pressure-sub">{item.sub}</span></span>
+              <span className="pressure-label">{item.label}</span>
               <span className="pressure-bar"><span style={{ width: `${Math.max(4, Math.min(100, item.value))}%` }} /></span>
             </span>
             <span className="pressure-metric">
               <span className="pressure-value">{item.value}</span>
-              <span className={pressureDeltaClass(deltas?.[item.key] ?? item.value - lastPressure[item.key])}>{pressureDeltaText(deltas?.[item.key] ?? item.value - lastPressure[item.key])}</span>
             </span>
           </div>
         ))}
@@ -410,20 +392,12 @@ function PressureSummary({ state, lastPressure, deltas }: { state: GameState; la
   );
 }
 
-function pressureDeltaText(delta: number) {
-  if (Math.abs(delta) <= 3) return '';
-  return `${delta > 0 ? '+' : ''}${delta}${delta > 0 ? ' ↑' : ' ↓'}`;
-}
 
-function pressureDeltaClass(delta: number) {
-  if (Math.abs(delta) <= 3) return 'pressure-delta muted';
-  return delta > 0 ? 'pressure-delta up' : 'pressure-delta down';
-}
 
 function LifeLogV1({ state }: { state: GameState }) {
   return (
     <div className="log-card">
-      <div className="log-hdr">📋 内心独白</div>
+      <div className="log-hdr">内心独白</div>
       <div className="log-body">
         {[...state.logs].reverse().map(log => (
           <div className="log-msg" key={log.id}>
@@ -558,7 +532,7 @@ function ShopDialog({ state, setState, close }: { state: GameState; setState: (s
   return (
     <div className="modal-overlay open">
       <div className="modal">
-        <div className="modal-head"><div className="modal-title">🛒 补给商店</div><button onClick={close}>×</button></div>
+        <div className="modal-head"><div className="modal-title">补给商店</div><button onClick={close}>×</button></div>
         <div className="shop-list">
           {SHOP_ITEMS.map(item => {
             const owned = state.inventory[item.id] ?? 0;

@@ -54,16 +54,11 @@ describe('v1 frontend contract', () => {
   });
 
   it('shows a compact real-world pressure summary without implementation jargon', () => {
-    ['现实压力', '现金流压力', '健康债', '职业稳定', '关系债', '生活满意'].forEach(label => {
-      expect(gameContainerSource).toContain(label);
-    });
-    ['应急垫', '价值匹配', '可雇佣', '关系债'].forEach(label => {
+    ['现实压力', '现金流', '健康债', '职业稳定', '关系债', '生活满意'].forEach(label => {
       expect(gameContainerSource).toContain(label);
     });
     expect(gameContainerSource).toContain('PressureSummary');
     expect(gameContainerSource).toContain('pressure-bar');
-    expect(gameContainerSource).toContain('pressure-delta');
-    expect(gameContainerSource).toContain('lastPressure');
     expect(source).not.toContain('realworld kernel');
     expect(source).not.toContain('V2底层');
     expect(appCss).toContain('grid-template-columns: repeat(5, 1fr);');
@@ -71,16 +66,11 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.pressure-grid');
   });
 
-  it('shows action cards with effect chips and debt/opportunity rows', () => {
-    ['隐债', '机会'].forEach(label => {
-      expect(gameContainerSource).toContain(label);
-    });
-    expect(gameContainerSource).toContain('act-effects');
-    expect(gameContainerSource).toContain('act-eff-debt');
-    expect(gameContainerSource).toContain('act-eff-opp');
+  it('shows action cards with effect chips and benefit/risk meta', () => {
     expect(gameContainerSource).toContain('benefitLabel');
     expect(gameContainerSource).toContain('riskLabel');
     expect(gameContainerSource).toContain('act-chips');
+    expect(gameContainerSource).toContain('act-meta');
     expect(appCss).not.toContain('display: none;\n  grid-template-columns: 1fr;');
   });
 
@@ -88,8 +78,8 @@ describe('v1 frontend contract', () => {
     expect(appCss).not.toContain('min-height: 84px');
     expect(appCss).toContain('align-items: stretch');
     expect(appCss).toContain('flex-direction: column');
-    expect(appCss).toContain('.act-effects');
-    expect(appCss).toContain('flex-direction: column;');
+    expect(appCss).toContain('.act-meta');
+    expect(appCss).toContain('gap: 12px');
   });
 
   it('uses dynamic action lists with flexible scrolling', () => {

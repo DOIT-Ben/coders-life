@@ -1,9 +1,16 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import type { CareerTrack, CityTier, GameState, PlayerValueProfile } from './types/game';
 import { CAREERS } from './config/careers';
 import './styles/app.css';
 
 const GameContainer = lazy(() => import('./components/GameContainer'));
+
+let preloaded = false;
+function preload() {
+  if (preloaded) return;
+  preloaded = true;
+  import('./components/GameContainer');
+}
 
 function checkSave(): GameState | null {
   try {
@@ -53,6 +60,8 @@ export default function App() {
   const [cityTier, setCityTier] = useState<CityTier>('tier2');
   const [valueProfileId, setValueProfileId] = useState(VALUE_PROFILES[0].id);
 
+  useEffect(() => { preload(); }, []);
+
   function startGame() {
     const valueProfile = VALUE_PROFILES.find(profile => profile.id === valueProfileId) ?? VALUE_PROFILES[0];
     setSavedState(null);
@@ -89,7 +98,13 @@ export default function App() {
           onReset={resetToCareer}
         />
       ) : (
-        <Suspense fallback={<div className="screen active"><div style={{ textAlign: 'center', padding: '48px 0' }}>加载中...</div></div>}>
+        <Suspense fallback={
+          <div className="screen active" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '40vh', gap: 16 }}>
+            <div className="loading-spinner" />
+            <div style={{ fontSize: 14, color: 'var(--text2)', fontWeight: 600 }}>加载游戏引擎...</div>
+            <div style={{ fontSize: 11, color: 'var(--text3)' }}>首次加载约需 2-5 秒</div>
+          </div>
+        }>
           <GameContainer
             track={gameConfig.track} cityTier={gameConfig.cityTier}
             valueProfile={gameConfig.valueProfile} savedState={savedState}
@@ -108,7 +123,7 @@ function TitleCard({ hasSave, inGame, onContinue }: { hasSave: boolean; inGame: 
       <h1 className="t-main">程序员生存模拟器</h1>
       <p className="t-sub">在 AI 协作时代，选择你的节奏和边界</p>
       {!inGame && <div className="t-notice">可继续上次生存，也可直接选择职业开始新局</div>}
-      {!inGame && hasSave && <><br /><button className="btn-continue" onClick={onContinue}>继续上次生存</button></>}
+      {!inGame && hasSave && <><br /><button className="btn-continue" onClick={onContinue} onMouseEnter={preload}>继续上次生存</button></>}
     </div>
   );
 }
@@ -169,7 +184,7 @@ function CareerScreen({
           </button>
         ))}
       </div>
-      <button className="btn-start" onClick={startGame}>&gt; 开始生存 _</button>
+      <button className="btn-start" onClick={startGame} onMouseEnter={preload}>&gt; 开始生存 _</button>
       <div className="quote">「AI 改写的是任务结构，长期价值来自判断、责任和领域理解」</div>
     </div>
   );
