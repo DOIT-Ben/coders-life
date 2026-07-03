@@ -9,7 +9,6 @@ import { addDecisionLog, addTutorialLogs } from '../systems/decisionLogSystem';
 import { buildMonthlyPlan, canExecuteAction, isPlanOverBudget } from '../systems/monthlyPlanSystem';
 import { advanceProjectProgress, resolveProjectActionEffect } from '../systems/projectSystem';
 import {
-  DEFAULT_CAREER_PROFILE,
   DEFAULT_CRISIS_STATE,
   DEFAULT_FINANCE_STATE,
   DEFAULT_HEALTH_PROFILE,

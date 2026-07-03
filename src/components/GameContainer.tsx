@@ -8,7 +8,7 @@ import { addLog } from '../core/logs';
 import { getActionInsights, getBodySignal } from '../systems/actionInsightSystem';
 import { actionPlanCost } from '../systems/monthlyPlanSystem';
 import { deriveCareerStability, deriveHealthDebt, deriveLifeSatisfaction, derivePressureSnapshot } from '../systems/derivedStateSystem';
-import { useUndoPill } from '../systems/undoSystem';
+import { consumeUndoPill } from '../systems/undoSystem';
 
 const GameDialogs = lazy(() => import('./GameDialogs'));
 
@@ -233,7 +233,7 @@ function GameScreen({
 
   function undoLastAction() {
     if (!undoSnapshot || (state.inventory.undo_pill ?? 0) <= 0 || state.pendingEventChoice) return;
-    setState(useUndoPill(state, undoSnapshot));
+    setState(consumeUndoPill(state, undoSnapshot));
     setUndoSnapshot(undefined);
   }
 
@@ -526,10 +526,6 @@ function ProjectProgressPanel({ state }: { state: GameState }) {
       })}
     </div>
   );
-}
-
-function MiniStat({ label, value, color }: { label: string; value: number; color: string }) {
-  return <div className="sm"><div className="sm-label">{label}</div><div className="sm-bar"><div className="sm-fill" style={{ width: `${Math.max(8, Math.min(100, value))}%`, background: color }} /></div></div>;
 }
 
 function StatCard({ label, value, color, max = 100, sub }: { label: string; value: number; color: string; max?: number; sub?: string }) {

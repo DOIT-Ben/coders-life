@@ -22,7 +22,7 @@ export function buyShopItem(state: GameState, id: string): GameState {
   if (getShopPurchaseBlockReason(state, id)) return state;
   const owned = state.inventory[id] ?? 0;
 
-  let next = structuredClone(state);
+  const next = structuredClone(state);
   next.stats.cash -= item.price;
   next.inventory[id] = owned + 1;
   if (id === 'undo_pill') next.flags[undoPillFlagKey(state)] = true;

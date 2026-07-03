@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { SHOP_ITEMS } from '../config/shop';
 import { createInitialState, applyAction } from '../core/gameEngine';
 import { buyShopItem } from '../systems/shopSystem';
-import { useUndoPill } from '../systems/undoSystem';
+import { consumeUndoPill } from '../systems/undoSystem';
 
 describe('undo pill', () => {
   it('is sold for 10000 cash and can only be bought once per phase', () => {
@@ -28,7 +28,7 @@ describe('undo pill', () => {
     const initial = createInitialState('frontend', 'tier2', 42);
     const withPill = buyShopItem(initial, 'undo_pill');
     const afterAction = applyAction(withPill, 'system_learning');
-    const undone = useUndoPill(afterAction, withPill);
+    const undone = consumeUndoPill(afterAction, withPill);
 
     expect(afterAction.month).toBeGreaterThan(withPill.month);
     expect(undone.month).toBe(withPill.month);
@@ -41,7 +41,7 @@ describe('undo pill', () => {
     const initial = createInitialState('frontend', 'tier2', 42);
     const afterAction = applyAction(initial, 'system_learning');
     const withPill = buyShopItem(afterAction, 'undo_pill');
-    const undone = useUndoPill(withPill, initial);
+    const undone = consumeUndoPill(withPill, initial);
     const afterSecondPurchase = buyShopItem(undone, 'undo_pill');
 
     expect(undone.month).toBe(initial.month);

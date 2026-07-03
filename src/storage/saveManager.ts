@@ -181,11 +181,23 @@ export function saveGame(state: GameState): void {
   localStorage.setItem(SAVE_KEY, JSON.stringify(state));
 }
 
+// 轻量健全性检查：存档是自产数据，只拦截结构性损坏（手改、截断、异物），
+// 字段级缺省仍交给 withDefaults 合并。
+function isSaneSave(value: unknown): value is GameState {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+  const state = value as Partial<GameState>;
+  return typeof state.month === 'number'
+    && typeof state.stats === 'object' && state.stats !== null
+    && typeof state.career === 'object' && state.career !== null;
+}
+
 export function loadGame(): GameState | undefined {
   const raw = localStorage.getItem(SAVE_KEY);
   if (!raw) return undefined;
   try {
-    return withDefaults(JSON.parse(raw) as GameState);
+    const parsed: unknown = JSON.parse(raw);
+    if (!isSaneSave(parsed)) return undefined;
+    return withDefaults(parsed);
   } catch {
     return undefined;
   }

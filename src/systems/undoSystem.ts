@@ -8,7 +8,7 @@ function undoPillFlagEntries(state: GameState): Array<[string, boolean | number 
   return Object.entries(state.flags).filter(([key]) => key.startsWith('undo_pill_bought_'));
 }
 
-export function useUndoPill(current: GameState, snapshot: GameState | undefined): GameState {
+export function consumeUndoPill(current: GameState, snapshot: GameState | undefined): GameState {
   const pills = current.inventory[UNDO_PILL_ID] ?? 0;
   if (!snapshot || pills <= 0) {
     return addLog(structuredClone(current), {

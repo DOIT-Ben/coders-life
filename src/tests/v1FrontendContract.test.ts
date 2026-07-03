@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import appSource from '../App.tsx?raw';
+import startProfilesSource from '../config/startProfiles.ts?raw';
 import gameContainerSource from '../components/GameContainer.tsx?raw';
 import gameDialogsSource from '../components/GameDialogs.tsx?raw';
 
@@ -264,8 +265,11 @@ describe('v1 frontend contract', () => {
   });
 
   it('lets players choose a value profile before starting a game', () => {
-    ['valueProfileId', 'VALUE_PROFILES', '财富缓冲', '健康关系', '创造探索'].forEach(token => {
+    ['valueProfileId', 'VALUE_PROFILES'].forEach(token => {
       expect(appSource).toContain(token);
+    });
+    ['财富缓冲', '健康关系', '创造探索'].forEach(token => {
+      expect(startProfilesSource).toContain(token);
     });
     expect(gameContainerSource).toContain('createInitialState(track, cityTier, undefined, valueProfile)');
     expect(appCss).toContain('.value-profile-grid');
