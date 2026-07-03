@@ -10,6 +10,7 @@ import { actionPlanCost } from '../systems/monthlyPlanSystem';
 import { consumeUndoPill } from '../systems/undoSystem';
 import { PressureSummary, ProjectProgressPanel, StatCard } from './panels';
 import LifeLog from './LifeLog';
+import CommandPalette from './CommandPalette';
 
 const GameDialogs = lazy(() => import('./GameDialogs'));
 
@@ -416,6 +417,14 @@ function GameScreen({
         </div>
       </div>
       <div className="quote">「AI 改写的是任务结构，长期价值来自判断、责任和领域理解」</div>
+      <CommandPalette
+        actions={actions}
+        onOpenModal={openModal}
+        onRunAction={executeActionNow}
+        onSave={handleSave}
+        onUndo={undoLastAction}
+        state={state}
+      />
     </div>
   );
 }
