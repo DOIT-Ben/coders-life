@@ -480,25 +480,7 @@ body {
   display: flex; flex-direction: column; gap: 6px;
   scrollbar-width: thin; scrollbar-color: var(--track) transparent;
 }
-.log-msg {
-  display: flex; gap: 8px; align-items: flex-start;
-  animation: fadeIn .3s ease;
-}
 @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; } }
-.log-day {
-  flex-shrink: 0; font-family: var(--font-mono); font-size: 10px;
-  color: var(--text3); padding-top: 6px; min-width: 32px;
-}
-.log-bubble {
-  flex: 1; border-radius: 7px; padding: 6px 10px;
-  display: flex; align-items: flex-start; gap: 8px;
-}
-.log-tag {
-  flex-shrink: 0; font-size: 10px; font-weight: 700;
-  border-radius: 4px; padding: 2px 7px; margin-top: 1px;
-  white-space: nowrap;
-}
-.log-text { font-size: 13px; line-height: 1.5; color: var(--text); }
 
 .project-progress-panel {
   background: var(--card);
@@ -546,21 +528,6 @@ body {
   min-width: 4px;
   border-radius: inherit;
   background: var(--accent);
-}
-
-/* Log types */
-.log-bubble.good  { background: var(--good-soft); }
-.log-bubble.bad   { background: var(--danger-soft); }
-.log-bubble.warn  { background: var(--warn-soft); }
-.log-bubble.info  { background: var(--surface2); }
-.log-bubble.lucky { background: var(--good-soft); }
-
-.log-tag {
-  font-size: 10px; font-weight: 700; line-height: 1;
-  padding: 2px 7px; border-radius: 4px;
-  text-transform: uppercase;
-  background: var(--primary-soft);
-  color: var(--primary);
 }
 
 /* RIGHT COL — viewport-bound with internal scrolling */
@@ -1475,7 +1442,6 @@ button.career-card { text-align: left; width: 100%; }
 .wide-modal { max-width: 480px; }
 .btn-buy:disabled { opacity: .45; cursor: not-allowed; }
 .danger { color: var(--red); }
-.log-text strong { font-weight: 700; }
 @media (max-width: 660px) { .city-line { align-items: stretch; flex-direction: column; } }
 
 .loading-spinner {

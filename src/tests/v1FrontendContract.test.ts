@@ -65,6 +65,14 @@ describe('v1 frontend contract', () => {
     expect(source).not.toContain('className="a-tip"');
   });
 
+  it('does not keep obsolete pre-commit-log bubble styles', () => {
+    ['.log-msg', '.log-day', '.log-bubble', '.log-tag', '.log-text'].forEach(selector => {
+      expect(appCss).not.toContain(selector);
+    });
+    expect(lifeLogSource).toContain('commit-row');
+    expect(appCss).toContain('.commit-row');
+  });
+
   it('shows a compact real-world pressure summary without implementation jargon', () => {
     ['现实压力', '现金流', '健康债', '职业稳定', '关系债', '生活满意'].forEach(label => {
       expect(panelsSource).toContain(label);
