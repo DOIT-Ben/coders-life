@@ -1,9 +1,16 @@
+import { useState } from 'react';
 import { buildEndingPostmortem } from '../../systems/endingPostmortemSystem';
+import { createEndingShareImage } from '../../systems/shareCardSystem';
 import type { GameState } from '../../types/game';
 import ModalShell from './ModalShell';
 
 export default function EndingDialog({ state, close, restart }: { state: GameState; close: () => void; restart: () => void }) {
   const postmortem = buildEndingPostmortem(state);
+  const [shareImage, setShareImage] = useState<string>();
+
+  function generateShareCard() {
+    setShareImage(createEndingShareImage(postmortem));
+  }
 
   return (
     <ModalShell
@@ -61,6 +68,22 @@ export default function EndingDialog({ state, close, restart }: { state: GameSta
           <ol className="postmortem-action-list">
             {postmortem.actionItems.map(item => <li key={item}>{item}</li>)}
           </ol>
+        </section>
+
+        <section className="postmortem-section share-card-section">
+          <h3>战报卡片</h3>
+          <div className="share-card-tools">
+            <button className="btn-ms" onClick={generateShareCard} type="button">生成战报</button>
+            {shareImage ? <a className="btn-mp share-download" download="coders-life-ending-card.png" href={shareImage}>下载 PNG</a> : null}
+          </div>
+          {shareImage ? (
+            <div className="share-card-preview">
+              <img alt="本局战报卡片" src={shareImage} />
+              <p>手机上可长按图片保存。</p>
+            </div>
+          ) : (
+            <p className="share-card-hint">生成一张终端风战报图，用来保存或分享本局结局。</p>
+          )}
         </section>
       </div>
     </ModalShell>

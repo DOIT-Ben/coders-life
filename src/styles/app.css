@@ -1382,6 +1382,37 @@ body {
 .postmortem-impact.good strong { color: var(--accent); }
 .postmortem-impact.warn strong { color: var(--warn); }
 .postmortem-impact.bad strong { color: var(--danger); }
+.share-card-section {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+.share-card-tools {
+  display: flex;
+  gap: 8px;
+}
+.share-download {
+  text-decoration: none;
+  text-align: center;
+}
+.share-card-preview {
+  display: grid;
+  gap: 8px;
+}
+.share-card-preview img {
+  width: min(100%, 360px);
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface2);
+}
+.share-card-preview p,
+.share-card-hint {
+  margin: 0;
+  color: var(--text2);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+}
 
 /* QUOTE */
 .quote { text-align: center; padding: 14px; font-size: 12px; color: var(--text3); font-style: italic; }

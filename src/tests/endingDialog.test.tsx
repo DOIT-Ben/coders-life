@@ -2,6 +2,11 @@
 import { act } from 'react';
 import { createRoot } from 'react-dom/client';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+
+vi.mock('../systems/shareCardSystem', () => ({
+  createEndingShareImage: vi.fn(() => 'data:image/png;base64,ending-card')
+}));
+
 import EndingDialog from '../components/dialogs/EndingDialog';
 import { createInitialState } from '../core/gameEngine';
 import type { GameState } from '../types/game';
@@ -113,5 +118,18 @@ describe('EndingDialog postmortem UI', () => {
 
     expect(restart).toHaveBeenCalledTimes(1);
     expect(close).toHaveBeenCalledTimes(1);
+  });
+
+  it('generates a share card image that can be saved or downloaded', () => {
+    renderEnding(makeState('success'));
+    const generateButton = Array.from(document.querySelectorAll('button')).find(button => button.textContent?.includes('生成战报')) as HTMLButtonElement;
+
+    act(() => generateButton.click());
+
+    const image = document.querySelector('img[alt="本局战报卡片"]') as HTMLImageElement | null;
+    const download = document.querySelector('a[download="coders-life-ending-card.png"]') as HTMLAnchorElement | null;
+    expect(image?.src).toBe('data:image/png;base64,ending-card');
+    expect(download?.href).toBe('data:image/png;base64,ending-card');
+    expect(document.body.textContent).toContain('手机上可长按图片保存');
   });
 });
