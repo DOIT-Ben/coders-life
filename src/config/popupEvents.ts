@@ -1,4 +1,3 @@
-import popupPool from '../data/popup_pool_game_ready_2026-06-18.json';
 import type { EffectDelta, EventConfig, PopupPoolItem } from '../types/game';
 
 const rarityWeight = {
@@ -25,19 +24,22 @@ function titleFor(item: PopupPoolItem): string {
   return item.category || '突发事件';
 }
 
-export const POPUP_EVENTS: EventConfig[] = (popupPool as PopupPoolItem[]).map(item => ({
-  id: `popup_${item.id}`,
-  title: titleFor(item),
-  type: item.kind === 'event' ? 'random' : 'daily',
-  category: item.category,
-  source: 'popup_pool',
-  rarity: item.rarity,
-  kind: item.kind,
-  weight: rarityWeight[item.rarity] ?? 1,
-  condition: state => state.month >= Math.floor(((item.trigger?.minDay ?? 0) / 30)),
-  effect: mapEffect(item),
-  text: item.text,
-  once: item.rarity === 'rare'
-}));
+// 弹窗事件池体积大，改为由 dataLoader 异步加载后填充，模块初始为空。
+export const POPUP_EVENTS: EventConfig[] = [];
 
-export const POPUP_EVENT_COUNT = POPUP_EVENTS.length;
+export function buildPopupEvents(pool: PopupPoolItem[]): EventConfig[] {
+  return pool.map(item => ({
+    id: `popup_${item.id}`,
+    title: titleFor(item),
+    type: item.kind === 'event' ? 'random' : 'daily',
+    category: item.category,
+    source: 'popup_pool',
+    rarity: item.rarity,
+    kind: item.kind,
+    weight: rarityWeight[item.rarity] ?? 1,
+    condition: state => state.month >= Math.floor(((item.trigger?.minDay ?? 0) / 30)),
+    effect: mapEffect(item),
+    text: item.text,
+    once: item.rarity === 'rare'
+  }));
+}

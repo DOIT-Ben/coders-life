@@ -40,7 +40,11 @@ const DEFAULT_WORLD = {
   }
 };
 
-const KNOWN_EVENT_COOLDOWN_KEYS = new Set(EVENTS.map(event => event.cooldownKey ?? event.chain ?? event.id));
+// EVENTS 的弹窗部分由 dataLoader 异步填充，键集合必须在 loadGame 调用时计算，
+// 不能在模块加载期固化，否则会漏掉后注册事件的冷却键。
+function knownEventCooldownKeys(): Set<string> {
+  return new Set(EVENTS.map(event => event.cooldownKey ?? event.chain ?? event.id));
+}
 const KNOWN_EVENT_CHOICE_MEMORY_KEYS = new Set(EVENT_CHOICES.flatMap(event => event.choices.map(choice => choice.memoryKey)));
 
 function migrateCrisisChapter(saved: Partial<CrisisChapter> | undefined, fallback: CrisisChapter): CrisisChapter {
@@ -105,9 +109,10 @@ function migrateFinance(state: GameState): GameState['finance'] {
 }
 
 function migrateEventLastTriggeredMonth(state: GameState): Record<string, number> {
+  const knownKeys = knownEventCooldownKeys();
   const migrated = { ...(state.eventLastTriggeredMonth ?? {}) };
   Object.entries(state.eventMemory ?? {}).forEach(([key, value]) => {
-    if (typeof value === 'number' && KNOWN_EVENT_COOLDOWN_KEYS.has(key) && typeof migrated[key] !== 'number') {
+    if (typeof value === 'number' && knownKeys.has(key) && typeof migrated[key] !== 'number') {
       migrated[key] = value;
     }
   });

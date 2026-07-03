@@ -16,7 +16,11 @@ function preload() {
 const LEGACY_SAVE_KEY = 'ms_game';
 
 async function loadSavedGame(): Promise<GameState | null> {
-  const { loadGame } = await import('./storage/saveManager');
+  const [{ ensureGameDataLoaded }, { loadGame }] = await Promise.all([
+    import('./config/dataLoader'),
+    import('./storage/saveManager')
+  ]);
+  await ensureGameDataLoaded();
   localStorage.removeItem(LEGACY_SAVE_KEY);
   return loadGame() ?? null;
 }
@@ -57,6 +61,7 @@ const VALUE_PROFILES: Array<{ id: string; label: string; summary: string; values
 export default function App() {
   const [gameConfig, setGameConfig] = useState<GameConfig | null>(null);
   const [savedState, setSavedState] = useState<GameState | null>(null);
+  const [dataReady, setDataReady] = useState(false);
   const [track, setTrack] = useState<CareerTrack>('frontend');
   const [cityTier, setCityTier] = useState<CityTier>('tier2');
   const [valueProfileId, setValueProfileId] = useState(VALUE_PROFILES[0].id);
@@ -65,7 +70,9 @@ export default function App() {
     preload();
     let cancelled = false;
     loadSavedGame().then(state => {
-      if (!cancelled) setSavedState(state);
+      if (cancelled) return;
+      setSavedState(state);
+      setDataReady(true);
     });
     return () => { cancelled = true; };
   }, []);
@@ -105,14 +112,10 @@ export default function App() {
           startGame={startGame}
           onReset={resetToCareer}
         />
+      ) : !dataReady ? (
+        <LoadingScreen />
       ) : (
-        <Suspense fallback={
-          <div className="screen active" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '40vh', gap: 16 }}>
-            <div className="loading-spinner" />
-            <div style={{ fontSize: 14, color: 'var(--text2)', fontWeight: 600 }}>加载游戏引擎...</div>
-            <div style={{ fontSize: 11, color: 'var(--text3)' }}>首次加载约需 2-5 秒</div>
-          </div>
-        }>
+        <Suspense fallback={<LoadingScreen />}>
           <GameContainer
             track={gameConfig.track} cityTier={gameConfig.cityTier}
             valueProfile={gameConfig.valueProfile} savedState={savedState}
@@ -120,6 +123,16 @@ export default function App() {
           />
         </Suspense>
       )}
+    </div>
+  );
+}
+
+function LoadingScreen() {
+  return (
+    <div className="screen active" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '40vh', gap: 16 }}>
+      <div className="loading-spinner" />
+      <div style={{ fontSize: 14, color: 'var(--text2)', fontWeight: 600 }}>加载游戏引擎...</div>
+      <div style={{ fontSize: 11, color: 'var(--text3)' }}>首次加载约需 2-5 秒</div>
     </div>
   );
 }

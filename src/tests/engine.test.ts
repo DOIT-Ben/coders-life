@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { createInitialState, applyAction, getAvailableActions, planMonth } from '../core/gameEngine';
 import { calculateMonthlyPlanBudget } from '../systems/monthlyPlanSystem';
 import { EVENTS } from '../config/events';
-import { POPUP_EVENT_COUNT } from '../config/popupEvents';
+import { POPUP_EVENTS } from '../config/popupEvents';
 import { ACTIONS } from '../config/actions';
 
 const seed = 12345;
@@ -36,7 +36,7 @@ describe('game engine', () => {
   });
 
   it('loads v1 popup pool as v2 events', () => {
-    expect(POPUP_EVENT_COUNT).toBe(1325);
+    expect(POPUP_EVENTS.length).toBe(1325);
     expect(EVENTS.some(event => event.source === 'popup_pool' && event.text === '需求又改版了')).toBe(true);
   });
 

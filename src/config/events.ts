@@ -1,7 +1,6 @@
 import type { EventConfig } from '../types/game';
 import { getVisibleStats } from '../core/formulas';
 import { ECONOMY_CONFIG } from './balance';
-import { POPUP_EVENTS } from './popupEvents';
 import { REALWORLD_EVENTS } from './realworldEvents';
 import { STATE_DRIVEN_EVENTS } from './stateDrivenEvents';
 import { withEventEvidence } from './evidence';
@@ -97,4 +96,9 @@ export const CORE_EVENTS: EventConfig[] = [
   }
 ];
 
-export const EVENTS: EventConfig[] = [...CORE_EVENTS, ...STATE_DRIVEN_EVENTS, ...POPUP_EVENTS, ...REALWORLD_EVENTS].map(event => withEventEvidence(event));
+export const EVENTS: EventConfig[] = [...CORE_EVENTS, ...STATE_DRIVEN_EVENTS, ...REALWORLD_EVENTS].map(event => withEventEvidence(event));
+
+export function registerEvents(events: EventConfig[]): void {
+  const knownIds = new Set(EVENTS.map(event => event.id));
+  EVENTS.push(...events.filter(event => !knownIds.has(event.id)).map(event => withEventEvidence(event)));
+}

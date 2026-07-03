@@ -1,5 +1,8 @@
 import { createInitialState, planMonth } from '../src/core/gameEngine';
 import { chooseMonthlyPlanForStrategy, resolvePendingEventChoiceForSimulation } from '../src/systems/autoChoiceSystem';
+import { ensureGameDataLoaded } from '../src/config/dataLoader';
+
+await ensureGameDataLoaded();
 
 let state = createInitialState('frontend', 'tier2', 20260622);
 while (!state.gameOver && state.month < 280) {

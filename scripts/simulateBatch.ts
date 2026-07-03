@@ -377,6 +377,8 @@ function projectReplayState(state: GameState) {
 }
 
 if (process.argv[1]?.endsWith('simulateBatch.ts')) {
+  const { ensureGameDataLoaded } = await import('../src/config/dataLoader');
+  await ensureGameDataLoaded();
   const seedsPerScenario = Number(process.env.SEEDS_PER_SCENARIO ?? 1);
   const result = runBatchSimulation({
     seedsPerScenario,
