@@ -116,8 +116,12 @@ function LoadingScreen() {
 function TitleCard({ hasSave, inGame, onContinue }: { hasSave: boolean; inGame: boolean; onContinue: () => void }) {
   return (
     <div className={inGame ? 'title-card in-game' : 'title-card'}>
+      <div className="term-bar" aria-hidden="true">
+        <span className="term-dot red" /><span className="term-dot amber" /><span className="term-dot green" />
+        <span className="term-title">coder@life: ~/{inGame ? '本局人生' : '选择出身'}</span>
+      </div>
       {import.meta.env.DEV ? <div className="bugs-tag">{DEV_BADGE_TEXT}</div> : null}
-      <h1 className="t-main">程序员生存模拟器</h1>
+      <h1 className="t-main"><span className="t-prompt">❯</span>程序员生存模拟器<span className="cursor-blink">▌</span></h1>
       <p className="t-sub">在 AI 协作时代，选择你的节奏和边界</p>
       {!inGame && <div className="t-notice">可继续上次生存，也可直接选择职业开始新局</div>}
       {!inGame && hasSave && <><br /><button className="btn-continue" onClick={onContinue} onMouseEnter={preload}>继续上次生存</button></>}
