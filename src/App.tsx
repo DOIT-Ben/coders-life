@@ -4,6 +4,7 @@ import { CAREERS } from './config/careers';
 import './styles/app.css';
 
 const GameContainer = lazy(() => import('./components/GameContainer'));
+const DEV_BADGE_TEXT = 'BUGS WELCOME';
 
 let preloaded = false;
 function preload() {
@@ -119,7 +120,7 @@ export default function App() {
 function TitleCard({ hasSave, inGame, onContinue }: { hasSave: boolean; inGame: boolean; onContinue: () => void }) {
   return (
     <div className={inGame ? 'title-card in-game' : 'title-card'}>
-      <div className="bugs-tag">BUGS WELCOME</div>
+      {import.meta.env.DEV ? <div className="bugs-tag">{DEV_BADGE_TEXT}</div> : null}
       <h1 className="t-main">程序员生存模拟器</h1>
       <p className="t-sub">在 AI 协作时代，选择你的节奏和边界</p>
       {!inGame && <div className="t-notice">可继续上次生存，也可直接选择职业开始新局</div>}

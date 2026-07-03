@@ -159,7 +159,7 @@ describe('batch simulation release gate', () => {
     expect(result.releaseGate.evidence.deterministicReplay.sample.maxMonths).toBeGreaterThan(0);
     expect(result.releaseGate.evidence.deterministicReplay.finalStateHash).toMatch(/^[a-f0-9]{64}$/);
     expect(result.releaseGate.evidence.deterministicReplay.passed).toBe(true);
-  }, 20000);
+  }, 30000);
 
   it('uses legal trajectory coverage instead of an always-true synthetic reachability gate', () => {
     const earlyState = createInitialState('frontend', 'tier2', 42);

@@ -107,9 +107,11 @@ describe('monthly multi-action plan UI', () => {
       click(feedbackButton as HTMLButtonElement);
     });
 
-    expect(document.body.textContent).toContain('提交反馈');
-    expect(document.body.textContent).toContain('界面显示/滚动问题');
-    expect(document.body.textContent).toContain('阻塞游玩');
+    await vi.waitFor(() => {
+      expect(document.body.textContent).toContain('提交反馈');
+      expect(document.body.textContent).toContain('界面显示/滚动问题');
+      expect(document.body.textContent).toContain('阻塞游玩');
+    }, { timeout: 5000 });
 
     await act(async () => {
       click(buttonByText('移动端体验问题'));

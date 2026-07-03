@@ -1,22 +1,15 @@
-import { useEffect, useState, useMemo } from 'react';
+import { lazy, Suspense, useEffect, useState, useMemo } from 'react';
 import type { ActionConfig, CareerTrack, CityTier, EffectDelta, GameState, LogType, PlayerValueProfile } from '../types/game';
 import { createInitialState, getAvailableActions, planMonth } from '../core/gameEngine';
 import { getVisibleStats } from '../core/formulas';
 import { saveGame } from '../storage/saveManager';
-import { ACHIEVEMENTS } from '../config/achievements';
-import { SHOP_ITEMS } from '../config/shop';
 import { getCareer } from '../config/careers';
 import { addLog } from '../core/logs';
 import { getActionInsights, getBodySignal } from '../systems/actionInsightSystem';
-import { applyEventChoice } from '../systems/eventSystem';
-import { buyShopItem } from '../systems/shopSystem';
 import { actionPlanCost, buildMonthlyPlan, isPlanOverBudget } from '../systems/monthlyPlanSystem';
 import { deriveCareerStability, deriveHealthDebt, deriveLifeSatisfaction, derivePressureSnapshot } from '../systems/derivedStateSystem';
 
-type AchievementProgress = {
-  ratio: number;
-  text: string;
-};
+const GameDialogs = lazy(() => import('./GameDialogs'));
 
 type PressureSnapshot = {
   cashflow: number;
@@ -26,12 +19,12 @@ type PressureSnapshot = {
   marketPressure: number;
 };
 
-type AvailableAction = ActionConfig & {
+export type AvailableAction = ActionConfig & {
   available: boolean;
   reason?: string;
 };
 
-type GameModal = 'ach' | 'shop' | 'ending' | 'bookmark' | 'feedback';
+export type GameModal = 'ach' | 'shop' | 'ending' | 'bookmark' | 'feedback';
 
 const ACTION_GROUP_MAP: Array<{ id: ActionConfig['group']; label: string }> = [
   { id: 'learn', label: '学习成长' },
@@ -42,23 +35,6 @@ const ACTION_GROUP_MAP: Array<{ id: ActionConfig['group']; label: string }> = [
   { id: 'relationship', label: '社交关系' },
 ];
 const DEFAULT_ACTION_GROUP: ActionConfig['group'] = 'recover';
-
-const FEEDBACK_TYPES = [
-  '界面显示/滚动问题',
-  '行动效果不符合预期',
-  '数值平衡问题',
-  '事件/结局不合理',
-  '存档/加载问题',
-  '移动端体验问题',
-  '想新增行动或内容'
-];
-
-const FEEDBACK_SEVERITIES = [
-  '阻塞游玩',
-  '明显影响体验',
-  '轻微问题',
-  '建议优化'
-];
 
 const EFFECT_LABELS: Partial<Record<keyof EffectDelta, string>> = {
   techXp: '技术', aiXp: 'AI', reputationXp: '声望',
@@ -154,12 +130,20 @@ export default function GameContainer({
     <>
       <GameScreen state={state} setState={setState} openModal={setModal} changeCharacter={onChangeCharacter} saveStatus={saveStatus} setSaveStatus={setSaveStatus} bookmarkedActionIds={bookmarkedActionIds} toggleBookmark={toggleBookmark} />
       <button className="feedback-fab" type="button" onClick={() => setModal('feedback')} aria-label="提交反馈">反馈</button>
-      {modal === 'ach' && <AchievementDialog state={state} close={() => setModal(undefined)} />}
-      {modal === 'shop' && <ShopDialog state={state} setState={setState} close={() => setModal(undefined)} />}
-      {modal === 'bookmark' && <BookmarkDialog actions={availableActions} bookmarkedIds={bookmarkedActionIds} toggleBookmark={toggleBookmark} close={() => setModal(undefined)} />}
-      {modal === 'ending' && <EndingDialog state={state} close={() => setModal(undefined)} restart={onRestart} />}
-      {modal === 'feedback' && <FeedbackDialog state={state} close={() => setModal(undefined)} />}
-      {state.pendingEventChoice && <EventChoiceDialog state={state} setState={setState} />}
+      {(modal || state.pendingEventChoice) ? (
+        <Suspense fallback={null}>
+          <GameDialogs
+            actions={availableActions}
+            bookmarkedIds={bookmarkedActionIds}
+            closeModal={() => setModal(undefined)}
+            modal={modal}
+            restart={onRestart}
+            setState={setState}
+            state={state}
+            toggleBookmark={toggleBookmark}
+          />
+        </Suspense>
+      ) : null}
     </>
   );
 }
@@ -351,42 +335,55 @@ function GameScreen({
                 groupActions.map(slotAction => {
                   const insight = getActionInsights(state, slotAction);
                   const isBookmarked = bookmarkedActionIds.includes(slotAction.id);
+                  const disabled = !slotAction.available || state.gameOver || Boolean(state.pendingEventChoice);
+                  const selected = plannedActionIds.includes(slotAction.id);
                   return (
-                  <button
-                    className={plannedActionIds.includes(slotAction.id) ? 'action-btn selected' : 'action-btn'}
-                    key={slotAction.id}
-                    disabled={!slotAction.available || state.gameOver || Boolean(state.pendingEventChoice)}
-                    onClick={() => togglePlannedAction(slotAction)}
-                  >
-                    <div className="act-head">
-                      <span className="act-icon">{slotAction.icon}</span>
-                      <span className="act-name">{slotAction.name}</span>
-                      {plannedActionIds.includes(slotAction.id) ? <span className="act-check">已计划</span> : null}
-                    </div>
-                    <div className="act-chips">{renderEffectChips(slotAction.visibleEffect)}</div>
-                    <div className="act-cost">
-                      {(() => {
-                        const cost = actionPlanCost(slotAction);
-                        return `时间 ${cost.time} · 精力 ${cost.energy}`;
-                      })()}
-                    </div>
-                    <div className="act-desc">{slotAction.description}</div>
-                    <div className="act-meta">
-                      <span>{slotAction.benefitLabel}</span>
-                      <span>· {slotAction.riskLabel}</span>
-                    </div>
-                    {insight && insight.badges.length > 0 ? (
-                      <div className="act-badges">
-                        {insight.badges.slice(0, 3).map(badge => (
-                          <span className={`act-badge ${badge.tone}`} key={`${slotAction.id}-${badge.label}`}>{badge.label}</span>
-                        ))}
-                      </div>
-                    ) : null}
-                    {slotAction.reason ? <div className="act-reason">{slotAction.reason}</div> : null}
-                    <span className={`act-bookmark ${isBookmarked ? 'on' : ''}`} onClick={e => { e.stopPropagation(); toggleBookmark(slotAction.id); }} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); toggleBookmark(slotAction.id); } }} role="button" tabIndex={0} aria-label="收藏">
-                      {isBookmarked ? '★' : '☆'}
-                    </span>
-                  </button>
+                    <article
+                      className={`${selected ? 'action-btn selected' : 'action-btn'}${disabled ? ' disabled' : ''}`}
+                      key={slotAction.id}
+                    >
+                      <button
+                        aria-label={`选择行动：${slotAction.name}`}
+                        className="action-btn-main"
+                        disabled={disabled}
+                        onClick={() => togglePlannedAction(slotAction)}
+                        type="button"
+                      >
+                        <div className="act-head">
+                          <span className="act-icon">{slotAction.icon}</span>
+                          <span className="act-name">{slotAction.name}</span>
+                          {selected ? <span className="act-check">已计划</span> : null}
+                        </div>
+                        <div className="act-chips">{renderEffectChips(slotAction.visibleEffect)}</div>
+                        <div className="act-cost">
+                          {(() => {
+                            const cost = actionPlanCost(slotAction);
+                            return `时间 ${cost.time} · 精力 ${cost.energy}`;
+                          })()}
+                        </div>
+                        <div className="act-desc">{slotAction.description}</div>
+                        <div className="act-meta">
+                          <span>{slotAction.benefitLabel}</span>
+                          <span>· {slotAction.riskLabel}</span>
+                        </div>
+                        {insight && insight.badges.length > 0 ? (
+                          <div className="act-badges">
+                            {insight.badges.slice(0, 3).map(badge => (
+                              <span className={`act-badge ${badge.tone}`} key={`${slotAction.id}-${badge.label}`}>{badge.label}</span>
+                            ))}
+                          </div>
+                        ) : null}
+                        {slotAction.reason ? <div className="act-reason">{slotAction.reason}</div> : null}
+                      </button>
+                      <button
+                        aria-label={`收藏行动：${slotAction.name}`}
+                        className={`act-bookmark ${isBookmarked ? 'on' : ''}`}
+                        onClick={() => toggleBookmark(slotAction.id)}
+                        type="button"
+                      >
+                        {isBookmarked ? '★' : '☆'}
+                      </button>
+                    </article>
                   );
                 })
               )}
@@ -526,256 +523,6 @@ function ProjectProgressPanel({ state }: { state: GameState }) {
   );
 }
 
-function FeedbackDialog({ state, close }: { state: GameState; close: () => void }) {
-  const [feedbackType, setFeedbackType] = useState(FEEDBACK_TYPES[0]);
-  const [severity, setSeverity] = useState(FEEDBACK_SEVERITIES[1]);
-  const [details, setDetails] = useState('');
-  const careerConfig = getCareer(state.career.track);
-  const day = state.month * 30;
-  const context = [
-    `第 ${day} 天`,
-    `${state.age} 岁`,
-    careerConfig.name,
-    state.career.employmentStatus,
-    `现金 ${Math.round(state.stats.cash / 1000) / 10} 万`,
-    `精神 ${Math.round(state.stats.mental)}`,
-    `健康 ${Math.round(state.stats.health)}`
-  ].join(' / ');
-  const issueUrl = useMemo(() => {
-    const body = [
-      '## 反馈类型',
-      feedbackType,
-      '',
-      '## 影响程度',
-      severity,
-      '',
-      '## 具体描述',
-      details.trim() || '请描述你遇到的问题或建议。',
-      '',
-      '## 当前游戏上下文',
-      context
-    ].join('\n');
-    const params = new URLSearchParams({
-      title: `[反馈] ${feedbackType} - ${severity}`,
-      body
-    });
-    return `https://github.com/DOIT-Ben/coders-life/issues/new?${params.toString()}`;
-  }, [context, details, feedbackType, severity]);
-
-  return (
-    <div className="modal-overlay open">
-      <div className="modal feedback-modal">
-        <div className="modal-head"><div className="modal-title">提交反馈</div><button onClick={close}>×</button></div>
-        <div className="modal-scroll feedback-scroll">
-          <div className="feedback-section">
-            <div className="feedback-label">反馈类型</div>
-            <div className="feedback-grid">
-              {FEEDBACK_TYPES.map(type => (
-                <button className={type === feedbackType ? 'feedback-option active' : 'feedback-option'} key={type} type="button" onClick={() => setFeedbackType(type)}>
-                  {type}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="feedback-section">
-            <div className="feedback-label">影响程度</div>
-            <div className="feedback-grid compact">
-              {FEEDBACK_SEVERITIES.map(item => (
-                <button className={item === severity ? 'feedback-option active' : 'feedback-option'} key={item} type="button" onClick={() => setSeverity(item)}>
-                  {item}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="feedback-section">
-            <label className="feedback-label" htmlFor="feedback-details">补充说明</label>
-            <textarea
-              className="feedback-textarea"
-              id="feedback-details"
-              value={details}
-              onChange={event => setDetails(event.target.value)}
-              placeholder="描述你看到的现象、期待的结果，或希望新增的内容。"
-            />
-          </div>
-          <div className="feedback-context">{context}</div>
-        </div>
-        <div className="modal-actions">
-          <a className="feedback-submit" href={issueUrl} target="_blank" rel="noreferrer">提交反馈</a>
-          <button className="btn-ms" type="button" onClick={close}>稍后再说</button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function AchievementDialog({ state, close }: { state: GameState; close: () => void }) {
-  return (
-    <div className="modal-overlay open">
-      <div className="modal wide-modal">
-        <div className="modal-head"><div className="modal-title">成就系统</div><button onClick={close}>×</button></div>
-        <div className="modal-scroll ach-grid">
-          {ACHIEVEMENTS.map(achievement => {
-            const ok = state.unlockedAchievements.includes(achievement.id);
-            const progress = getAchievementProgress(state, achievement.id);
-            return (
-              <div className={ok ? 'ach-badge unlocked' : 'ach-badge'} key={achievement.id}>
-                <span className="ach-icon">{achievement.icon}</span>
-                <div className="ach-name">{achievement.name}</div>
-                <div className="ach-desc">{achievement.description}</div>
-                <div className="ach-progress" aria-label={`${achievement.name}进度 ${progress.text}`}>
-                  <span className="ach-progress-bar" style={{ width: `${ok ? 100 : Math.round(progress.ratio * 100)}%` }} />
-                </div>
-                <div className="ach-desc">{ok ? '已解锁' : progress.text}</div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function getAchievementProgress(state: GameState, achievementId: string): AchievementProgress {
-  const visible = getVisibleStats(state);
-  const progress = (current: number, target: number, unit = ''): AchievementProgress => {
-    const safeTarget = Math.max(1, target);
-    const safeCurrent = Math.max(0, current);
-    return {
-      ratio: Math.max(0, Math.min(1, safeCurrent / safeTarget)),
-      text: `${Math.min(Math.floor(safeCurrent), target)} / ${target}${unit}`
-    };
-  };
-
-  switch (achievementId) {
-    case 'first_offer':
-      return { ratio: state.flags.had_first_job ? 1 : 0, text: state.flags.had_first_job ? '1 / 1' : '0 / 1' };
-    case 'emergency_fund':
-      return progress(state.stats.cash, 150000, '元');
-    case 'one_million':
-      return progress(state.stats.cash, 1000000, '元');
-    case 'ai_native':
-      return progress(visible.ai, 70);
-    case 'tech_senior':
-      return progress(visible.tech, 72);
-    case 'survive_35': {
-      const ageRatio = Math.min(1, state.age / 35);
-      const cashRatio = Math.min(1, state.stats.cash / 150000);
-      const recoveryRatio = Math.min(1, state.healthProfile.recoveryQuality / 60);
-      const skillRatio = Math.min(1, state.careerProfile.transferableSkills / 40);
-      const ratio = Math.min(ageRatio, cashRatio, recoveryRatio, skillRatio);
-      return { ratio, text: `${state.age}/35岁 · 缓冲${Math.min(Math.floor(state.stats.cash), 150000)}/150000元 · 恢复${Math.floor(state.healthProfile.recoveryQuality)}/60 · 迁移${Math.floor(state.careerProfile.transferableSkills)}/40` };
-    }
-    case 'no_overwork_year': {
-      const recentOvertime = (state.actionHistory ?? []).some(action => action.id === 'overtime_sprint' && state.month - action.month <= 12);
-      const monthRatio = Math.min(1, state.month / 12);
-      const healthRatio = Math.min(1, state.stats.health / 70);
-      const mentalRatio = Math.min(1, state.stats.mental / 70);
-      const overtimeRatio = recentOvertime ? 0 : 1;
-      const ratio = Math.min(monthRatio, healthRatio, mentalRatio, overtimeRatio);
-      return { ratio, text: recentOvertime ? '近12个月有高压加班记录' : `${Math.min(state.month, 12)} / 12个月 · 健康${Math.floor(state.stats.health)}/70 · 精神${Math.floor(state.stats.mental)}/70` };
-    }
-    case 'side_income':
-      return progress(state.stats.passiveIncomeMonthly, 3000, '元/月');
-    default:
-      return { ratio: 0, text: '0%' };
-  }
-}
-
-function ShopDialog({ state, setState, close }: { state: GameState; setState: (state: GameState) => void; close: () => void }) {
-  function buy(id: string) {
-    const item = SHOP_ITEMS.find(x => x.id === id);
-    if (!item) return;
-    const owned = state.inventory[id] ?? 0;
-    if (item.maxCount && owned >= item.maxCount) return;
-    if (state.stats.cash < item.price) return;
-    setState(buyShopItem(state, id));
-  }
-
-  return (
-    <div className="modal-overlay open">
-      <div className="modal">
-        <div className="modal-head"><div className="modal-title">补给商店</div><button onClick={close}>×</button></div>
-        <div className="modal-scroll shop-list">
-          {SHOP_ITEMS.map(item => {
-            const owned = state.inventory[item.id] ?? 0;
-            const isMaxed = Boolean(item.maxCount && owned >= item.maxCount);
-            const disabled = state.stats.cash < item.price || isMaxed;
-            const buttonText = isMaxed
-              ? item.maxCount === 1 ? '已装备' : '已购入'
-              : `¥${item.price.toLocaleString()}`;
-            return (
-              <div className={owned > 0 ? 'shop-item owned' : 'shop-item'} key={item.id}>
-                <div>
-                  <div className="shop-name">{owned > 0 ? '✓ ' : ''}{item.name}</div>
-                  <div className="shop-desc">{item.description}{owned > 0 ? ` · 已拥有 ${owned}` : ''}</div>
-                </div>
-                <button className={isMaxed ? 'btn-buy owned' : 'btn-buy'} disabled={disabled} onClick={() => buy(item.id)}>{buttonText}</button>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function EventChoiceDialog({ state, setState }: { state: GameState; setState: (state: GameState) => void }) {
-  const event = state.pendingEventChoice;
-  if (!event) return null;
-
-  return (
-    <div className="modal-overlay open">
-      <div className="modal event-choice-modal">
-        <div className="modal-title">{event.title}</div>
-        <div className="modal-scroll">
-          <div className="modal-body">{event.text}</div>
-          <div className="event-choice-list">
-            {event.choices.map(choice => (
-              <button className="event-choice-option" key={choice.id} onClick={() => setState(applyEventChoice(state, choice.id))}>
-                <span className="event-choice-label">{choice.label}</span>
-                <span className="event-choice-text">{choice.text}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function EndingDialog({ state, close, restart }: { state: GameState; close: () => void; restart: () => void }) {
-  const visible = getVisibleStats(state);
-  const log = state.logs[state.logs.length - 1];
-  const turningPoints = [...state.turningPoints].slice(-3).reverse();
-  return (
-    <div className="modal-overlay open">
-      <div className="modal">
-        <div className="modal-title">{log?.title ?? '游戏结束'}</div>
-        <div className="modal-scroll">
-          <div className="go-stats">
-            <div className="go-stat"><div className="go-sv">{state.month}月</div><div className="go-sl">生存时长</div></div>
-            <div className="go-stat"><div className="go-sv">{visible.ai}</div><div className="go-sl">AI协作能力</div></div>
-            <div className="go-stat"><div className="go-sv">{Math.round(state.stats.cash / 10000)}万</div><div className="go-sl">最终存款</div></div>
-            <div className="go-stat"><div className="go-sv">{state.unlockedAchievements.length}</div><div className="go-sl">成就解锁</div></div>
-          </div>
-          <div className="modal-body">{log?.text}</div>
-          <div className="turning-point-box">
-            <div className="turning-point-title">关键转折点</div>
-            {turningPoints.length > 0 ? turningPoints.map(point => (
-              <div className="turning-point-row" key={point.id}>
-                <span>{point.label}</span>
-                <span>{point.value}</span>
-                <span>{point.text}</span>
-              </div>
-            )) : <div className="turning-point-empty">没有明显崩盘节点，更多是长期选择累积的结果。</div>}
-          </div>
-        </div>
-        <div className="modal-actions"><button className="btn-mp" onClick={restart}>重新开始</button><button className="btn-ms" onClick={close}>查看结果</button></div>
-      </div>
-    </div>
-  );
-}
-
 function MiniStat({ label, value, color }: { label: string; value: number; color: string }) {
   return <div className="sm"><div className="sm-label">{label}</div><div className="sm-bar"><div className="sm-fill" style={{ width: `${Math.max(8, Math.min(100, value))}%`, background: color }} /></div></div>;
 }
@@ -807,86 +554,4 @@ function logLabel(type: LogType) {
   if (type === 'warn') return 'WARN';
   if (type === 'event') return 'EVENT';
   return 'INFO';
-}
-
-function BookmarkDialog({
-  actions,
-  bookmarkedIds,
-  toggleBookmark,
-  close
-}: {
-  actions: AvailableAction[];
-  bookmarkedIds: string[];
-  toggleBookmark: (actionId: string) => void;
-  close: () => void;
-}) {
-  const [tab, setTab] = useState<ActionConfig['group'] | 'bookmarked'>('bookmarked');
-
-  const grouped = useMemo(() => {
-    const map: Record<string, AvailableAction[]> = {};
-    for (const action of actions) {
-      const key = action.group;
-      if (!map[key]) map[key] = [];
-      map[key].push(action);
-    }
-    return map;
-  }, [actions]);
-
-  const displayed = tab === 'bookmarked'
-    ? actions.filter(action => bookmarkedIds.includes(action.id))
-    : (grouped[tab] ?? []);
-
-  return (
-    <div className="modal-overlay open">
-      <div className="modal wide-modal">
-        <div className="modal-head"><div className="modal-title">★ 收藏管理</div><button onClick={close}>×</button></div>
-        <div className="action-tabs" role="tablist" aria-label="收藏分类">
-          <button
-            className={tab === 'bookmarked' ? 'action-tab active' : 'action-tab'}
-            onClick={() => setTab('bookmarked')}
-            type="button"
-          >
-            已收藏
-          </button>
-          {ACTION_GROUP_MAP.map(group => (
-            <button
-              className={group.id === tab ? 'action-tab active' : 'action-tab'}
-              key={group.id}
-              onClick={() => setTab(group.id)}
-              type="button"
-            >
-              {group.label}
-            </button>
-          ))}
-        </div>
-        <div className="modal-scroll shop-list bookmark-list">
-          {displayed.length === 0 ? (
-            <div className="action-empty-state">{tab === 'bookmarked' ? '还没有收藏任何行动' : '当前分类下没有行动'}</div>
-          ) : (
-            displayed.map(action => {
-              const isBookmarked = bookmarkedIds.includes(action.id);
-              return (
-                <div className={isBookmarked ? 'shop-item owned' : 'shop-item'} key={action.id}>
-                  <div>
-                    <div className="shop-name">
-                      <span style={{ marginRight: 8 }}>{action.icon}</span>
-                      {action.name}
-                    </div>
-                    <div className="shop-desc">{action.description}</div>
-                    <div className="act-chips" style={{ marginTop: 4 }}>{renderEffectChips(action.visibleEffect)}</div>
-                  </div>
-                  <button
-                    className={isBookmarked ? 'btn-buy owned' : 'btn-buy'}
-                    onClick={() => toggleBookmark(action.id)}
-                  >
-                    {isBookmarked ? '★ 已收藏' : '☆ 收藏'}
-                  </button>
-                </div>
-              );
-            })
-          )}
-        </div>
-      </div>
-    </div>
-  );
 }

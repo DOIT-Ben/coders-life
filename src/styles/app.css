@@ -751,15 +751,14 @@ body {
   border-radius: 10px; color: var(--text);
   font-family: "Avenir Next", "Trebuchet MS", "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
-  cursor: pointer;
   transition: all .15s ease;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 8px;
-  padding: 12px 14px;
+  flex: 0 0 auto;
   min-width: 0;
   box-shadow: 0 1px 3px rgba(100,80,30,.06);
+  overflow: hidden;
 }
 .action-btn:hover {
   border-color: var(--primary);
@@ -771,18 +770,37 @@ body {
   background: #F2F0FF;
   box-shadow: inset 0 0 0 1px rgba(92,107,192,.12);
 }
-.action-btn:disabled {
+.action-btn.disabled {
   background: #F5F2EC;
   color: #A09080;
   border-color: #E0D8C8;
-  cursor: not-allowed;
   box-shadow: none;
 }
-.action-btn:disabled:hover {
+.action-btn.disabled:hover {
   transform: none;
   border-color: #E0D8C8;
   background: #F5F2EC;
   box-shadow: none;
+}
+.action-btn-main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  padding: 12px 44px 12px 14px;
+  text-align: left;
+  font: inherit;
+}
+.action-btn-main:disabled {
+  cursor: not-allowed;
 }
 
 .act-head {
@@ -891,6 +909,7 @@ body {
 /* Bookmark — bottom-right, muted */
 .act-bookmark {
   position: absolute;
+  z-index: 2;
   bottom: 8px;
   right: 10px;
   background: none;
@@ -1342,9 +1361,12 @@ body {
   .categorized-action-list { display: grid; grid-template-columns: 1fr; }
   .action-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .action-btn { min-height: 100px; padding: 10px; font-size: 12px; }
+  .action-btn { padding: 0; }
+  .action-btn-main { min-height: 100px; padding: 10px 48px 10px 10px; }
   .btn-h,
   .action-tab,
   .action-tab-search,
+  .action-btn-main,
   .modal-head button,
   .btn-buy,
   .feedback-fab,

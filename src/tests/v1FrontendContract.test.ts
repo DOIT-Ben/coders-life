@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import appSource from '../App.tsx?raw';
 import gameContainerSource from '../components/GameContainer.tsx?raw';
+import gameDialogsSource from '../components/GameDialogs.tsx?raw';
 
 const appCss = readFileSync(new URL('../styles/app.css', import.meta.url), 'utf8').replace(/\r\n/g, '\n');
 const ciWorkflow = readFileSync(new URL('../../.github/workflows/ci.yml', import.meta.url), 'utf8');
@@ -9,12 +10,17 @@ const ciWorkflow = readFileSync(new URL('../../.github/workflows/ci.yml', import
 describe('v1 frontend contract', () => {
   const worldStatusBarSource = readFileSync(new URL('../components/WorldStatusBar.tsx', import.meta.url), 'utf8');
   const debugPanelSource = readFileSync(new URL('../components/DebugPanel.tsx', import.meta.url), 'utf8');
-  const source = appSource + gameContainerSource;
+  const source = appSource + gameContainerSource + gameDialogsSource;
 
   it('keeps v2 implementation labels out of the visible v1 shell', () => {
     expect(source).not.toContain('V2 ENGINE');
     expect(source).not.toContain('AI重构');
     expect(source).not.toContain('隐藏状态');
+  });
+
+  it('keeps internal feedback labels out of production title chrome', () => {
+    expect(appSource).toContain('import.meta.env.DEV');
+    expect(appSource).not.toContain('<div className="bugs-tag">BUGS WELCOME</div>');
   });
 
   it('does not surface legacy global AI replacement in status or debug UI', () => {
@@ -96,13 +102,16 @@ describe('v1 frontend contract', () => {
   });
 
   it('surfaces first-stage functional guidance without breaking v1 shell', () => {
-    ['act-badges', 'act-badge', 'body-signal', 'decision-log-mini', '关键转折点', 'EventChoiceDialog'].forEach(token => {
+    ['act-badges', 'act-badge', 'body-signal', 'decision-log-mini'].forEach(token => {
       expect(gameContainerSource).toContain(token);
+    });
+    ['关键转折点', 'EventChoiceDialog'].forEach(token => {
+      expect(gameDialogsSource).toContain(token);
     });
     expect(gameContainerSource).toContain('getActionInsights');
     expect(gameContainerSource).toContain('getBodySignal');
-    expect(gameContainerSource).toContain('applyEventChoice');
-    expect(gameContainerSource).toContain('event-choice-option');
+    expect(gameDialogsSource).toContain('applyEventChoice');
+    expect(gameDialogsSource).toContain('event-choice-option');
     expect(appCss).toContain('.act-badge');
     expect(appCss).toContain('.body-signal');
     expect(appCss).toContain('.decision-log-mini');
@@ -121,6 +130,17 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('overflow-y: auto');
   });
 
+  it('keeps action cards free of nested interactive bookmark controls', () => {
+    expect(gameContainerSource).toContain('action-btn-main');
+    expect(gameContainerSource).toContain('aria-label={`选择行动：${slotAction.name}`}');
+    expect(gameContainerSource).toContain('aria-label={`收藏行动：${slotAction.name}`}');
+    expect(appCss).toMatch(/\.action-btn\s*\{[^}]*display:\s*flex;[^}]*flex-direction:\s*column;[^}]*flex:\s*0 0 auto;/s);
+    expect(appCss).toMatch(/\.action-btn-main\s*\{[^}]*position:\s*relative;[^}]*z-index:\s*1;/s);
+    expect(appCss).toMatch(/\.act-bookmark\s*\{[^}]*z-index:\s*2;/s);
+    expect(gameContainerSource).not.toContain('role="button" tabIndex={0}');
+    expect(gameContainerSource).not.toContain('<span className={`act-bookmark');
+  });
+
   it('exposes bookmark navigation in header and opens a bookmark management modal', () => {
     expect(gameContainerSource).toContain("openModal('bookmark')");
     ['成就', '商店', '收藏', '保存'].forEach(token => {
@@ -134,9 +154,9 @@ describe('v1 frontend contract', () => {
     const headerSource = gameContainerSource.slice(headerStart, headerEnd);
     expect(headerSource).not.toContain("openModal('feedback')");
     expect(headerSource).not.toContain('feedback-fab');
-    expect(gameContainerSource).toContain('FeedbackDialog');
+    expect(gameDialogsSource).toContain('FeedbackDialog');
     expect(gameContainerSource).toContain('feedback-fab');
-    expect(gameContainerSource).toContain('github.com/DOIT-Ben/coders-life/issues/new');
+    expect(gameDialogsSource).toContain('github.com/DOIT-Ben/coders-life/issues/new');
     expect(appCss).toContain('.feedback-fab');
     expect(appCss).toContain('.feedback-grid');
     expect(appCss).toContain('.feedback-option');
@@ -146,21 +166,39 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('max-height: min(68dvh, 520px);');
   });
 
+  it('loads low-frequency dialogs outside the main game container chunk', () => {
+    expect(gameContainerSource).toContain("lazy(() => import('./GameDialogs'))");
+    expect(gameContainerSource).toContain('<Suspense fallback={null}>');
+    ['FeedbackDialog', 'AchievementDialog', 'ShopDialog', 'BookmarkDialog', 'EndingDialog'].forEach(token => {
+      expect(gameContainerSource).not.toContain(`function ${token}`);
+      expect(gameDialogsSource).toContain(`function ${token}`);
+    });
+  });
+
+  it('uses accessible modal semantics and named close controls', () => {
+    expect(gameDialogsSource).toContain('function ModalShell');
+    expect(gameDialogsSource).toContain('role="dialog"');
+    expect(gameDialogsSource).toContain('aria-modal="true"');
+    expect(gameDialogsSource).toContain('aria-labelledby={titleId}');
+    expect(gameDialogsSource).toContain('aria-label={`关闭${title}`}');
+    expect(gameDialogsSource).toContain("event.key === 'Escape'");
+  });
+
   it('routes shop purchases through durable shop effects', () => {
-    expect(gameContainerSource).toContain('buyShopItem');
+    expect(gameDialogsSource).toContain('buyShopItem');
     expect(source).not.toContain('applyDelta(state, { cash: -item.price, ...item.effect })');
   });
 
   it('marks purchased shop items with an owned state', () => {
-    expect(gameContainerSource).toContain('shop-item owned');
-    expect(gameContainerSource).toContain('已装备');
-    expect(gameContainerSource).toContain('已购入');
+    expect(gameDialogsSource).toContain('shop-item owned');
+    expect(gameDialogsSource).toContain('已装备');
+    expect(gameDialogsSource).toContain('已购入');
     expect(appCss).toContain('.shop-item.owned');
     expect(appCss).toContain('.btn-buy.owned');
   });
 
   it('keeps shop and action panels scrollable inside the viewport', () => {
-    expect(gameContainerSource).toContain('shop-list');
+    expect(gameDialogsSource).toContain('shop-list');
     expect(appCss).toContain('max-height: min(720px, calc(100dvh - 32px));');
     expect(appCss).toContain('display: flex;\n  flex-direction: column;');
     expect(appCss).toContain('.modal-head {\n  flex: 0 0 auto;');
@@ -194,12 +232,12 @@ describe('v1 frontend contract', () => {
   });
 
   it('shows achievement progress instead of identical locked badges', () => {
-    expect(gameContainerSource).toContain('getAchievementProgress');
-    expect(gameContainerSource).toContain('ach-progress');
-    expect(gameContainerSource).toContain('ach-progress-bar');
-    expect(gameContainerSource).toContain('ach-desc');
+    expect(gameDialogsSource).toContain('getAchievementProgress');
+    expect(gameDialogsSource).toContain('ach-progress');
+    expect(gameDialogsSource).toContain('ach-progress-bar');
+    expect(gameDialogsSource).toContain('ach-desc');
     ['缓冲', '恢复', '迁移', '近12个月有高压加班记录'].forEach(token => {
-      expect(gameContainerSource).toContain(token);
+      expect(gameDialogsSource).toContain(token);
     });
     expect(source).not.toContain('工具人的一生');
     expect(appCss).toContain('.ach-progress');
