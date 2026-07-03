@@ -313,8 +313,21 @@ describe('v1 frontend contract', () => {
     ['财富缓冲', '健康关系', '创造探索'].forEach(token => {
       expect(startProfilesSource).toContain(token);
     });
-    expect(gameContainerSource).toContain('createInitialState(track, cityTier, undefined, valueProfile)');
+    expect(gameContainerSource).toContain('createInitialState(track, cityTier, dailyChallenge?.seed, valueProfile)');
     expect(appCss).toContain('.value-profile-grid');
+  });
+
+  it('exposes daily challenge without pulling save or event data into the first screen', () => {
+    ['今日人生', 'dailyChallenge', 'startDailyChallenge'].forEach(token => {
+      expect(appSource).toContain(token);
+    });
+    expect(appSource).toContain('readDailyChallengeHistory');
+    expect(appSource).not.toContain("from './storage/saveManager'");
+    expect(appSource).not.toContain("from './config/events'");
+    expect(appCss).toContain('.daily-challenge-panel');
+    expect(appCss).toContain('.btn-daily');
+    expect(gameContainerSource).toContain('autosave');
+    expect(gameContainerSource).toContain('dailyChallenge');
   });
 
   it('uses respectful crisis age and AI copy in the visible shell', () => {

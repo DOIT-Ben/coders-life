@@ -2,19 +2,22 @@ import { describe, expect, it } from 'vitest';
 import { planMonth } from '../core/gameEngine';
 import { DEFAULT_PLAYER_VALUES } from '../core/realworldDefaults';
 import {
-  createDailyChallengeState,
   getDailyChallenge,
   getDailyChallengeLeaderboard,
   readDailyChallengeHistory,
   recordDailyChallengeResult
 } from '../systems/dailyChallengeSystem';
+import { createDailyChallengeState } from '../systems/dailyChallengeStateSystem';
 
 function storage(initial: Record<string, string> = {}) {
   const store = new Map(Object.entries(initial));
   return {
+    get length() { return store.size; },
+    clear: () => store.clear(),
     getItem: (key: string) => store.get(key) ?? null,
-    setItem: (key: string, value: string) => store.set(key, value),
-    removeItem: (key: string) => store.delete(key)
+    key: (index: number) => Array.from(store.keys())[index] ?? null,
+    setItem: (key: string, value: string) => { store.set(key, value); },
+    removeItem: (key: string) => { store.delete(key); }
   } as Storage;
 }
 

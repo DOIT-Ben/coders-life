@@ -11,6 +11,7 @@ import { consumeUndoPill } from '../systems/undoSystem';
 import { PressureSummary, ProjectProgressPanel, StatCard } from './panels';
 import LifeLog from './LifeLog';
 import CommandPalette from './CommandPalette';
+import type { DailyChallenge } from '../systems/dailyChallengeSystem';
 
 const GameDialogs = lazy(() => import('./GameDialogs'));
 
@@ -81,6 +82,8 @@ export default function GameContainer({
   cityTier,
   valueProfile,
   savedState,
+  autosave = true,
+  dailyChallenge,
   onChangeCharacter,
   onRestart
 }: {
@@ -88,10 +91,12 @@ export default function GameContainer({
   cityTier: CityTier;
   valueProfile: PlayerValueProfile;
   savedState?: GameState | null;
+  autosave?: boolean;
+  dailyChallenge?: DailyChallenge;
   onChangeCharacter: () => void;
   onRestart: () => void;
 }) {
-  const [state, setState] = useState<GameState>(() => savedState ?? createInitialState(track, cityTier, undefined, valueProfile));
+  const [state, setState] = useState<GameState>(() => savedState ?? createInitialState(track, cityTier, dailyChallenge?.seed, valueProfile));
   const [modal, setModal] = useState<GameModal | undefined>();
   const [saveStatus, setSaveStatus] = useState('');
   const [undoSnapshot, setUndoSnapshot] = useState<GameState | undefined>();
@@ -105,7 +110,9 @@ export default function GameContainer({
     } catch { return []; }
   });
 
-  useEffect(() => { saveGame(state); }, [state]);
+  useEffect(() => {
+    if (autosave) saveGame(state);
+  }, [autosave, state]);
   useEffect(() => {
     if (!saveStatus) return;
     const timer = window.setTimeout(() => setSaveStatus(''), 1600);
@@ -138,6 +145,7 @@ export default function GameContainer({
         changeCharacter={onChangeCharacter}
         openModal={setModal}
         saveStatus={saveStatus}
+        dailyChallenge={dailyChallenge}
         setDetailAction={setDetailAction}
         setSaveStatus={setSaveStatus}
         setState={setState}
@@ -175,6 +183,7 @@ function GameScreen({
   openModal,
   changeCharacter,
   saveStatus,
+  dailyChallenge,
   setSaveStatus,
   setUndoSnapshot,
   undoSnapshot,
@@ -188,6 +197,7 @@ function GameScreen({
   openModal: (modal: GameModal) => void;
   changeCharacter: () => void;
   saveStatus: string;
+  dailyChallenge?: DailyChallenge;
   setSaveStatus: (status: string) => void;
   setUndoSnapshot: (snapshot: GameState | undefined) => void;
   undoSnapshot?: GameState;
@@ -277,6 +287,7 @@ function GameScreen({
         <div className="ghdr-left">
           <div className="ghdr-pill">{careerConfig.name}</div>
           <span className="ghdr-div">|</span>
+          {dailyChallenge ? <><div className="ghdr-pill daily">{dailyChallenge.label}</div><span className="ghdr-div">|</span></> : null}
           <div className="ghdr-pill">第 {day} 天</div>
           <span className="ghdr-div">|</span>
           <div className="ghdr-pill">{state.age} 岁</div>

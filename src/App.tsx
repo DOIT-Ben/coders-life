@@ -2,6 +2,8 @@ import { lazy, Suspense, useState, useEffect } from 'react';
 import type { CareerTrack, CityTier, GameState, PlayerValueProfile } from './types/game';
 import { CAREERS } from './config/careers';
 import { CAREER_HIGHLIGHTS, START_CITY_OPTIONS, VALUE_PROFILES } from './config/startProfiles';
+import { getDailyChallenge, readDailyChallengeHistory } from './systems/dailyChallengeSystem';
+import type { DailyChallenge, DailyChallengeResult } from './systems/dailyChallengeSystem';
 import ErrorBoundary from './components/ErrorBoundary';
 import './styles/app.css';
 
@@ -31,15 +33,18 @@ type GameConfig = {
   track: CareerTrack;
   cityTier: CityTier;
   valueProfile: PlayerValueProfile;
+  mode: { type: 'normal' } | { type: 'daily'; challenge: DailyChallenge };
 };
 
 export default function App() {
   const [gameConfig, setGameConfig] = useState<GameConfig | null>(null);
   const [savedState, setSavedState] = useState<GameState | null>(null);
+  const [dailyHistory, setDailyHistory] = useState<DailyChallengeResult[]>(() => readDailyChallengeHistory().slice(0, 3));
   const [dataReady, setDataReady] = useState(false);
   const [track, setTrack] = useState<CareerTrack>('frontend');
   const [cityTier, setCityTier] = useState<CityTier>('tier2');
   const [valueProfileId, setValueProfileId] = useState(VALUE_PROFILES[0].id);
+  const todayChallenge = getDailyChallenge();
 
   useEffect(() => {
     preload();
@@ -47,6 +52,7 @@ export default function App() {
     loadSavedGame().then(state => {
       if (cancelled) return;
       setSavedState(state);
+      setDailyHistory(readDailyChallengeHistory().slice(0, 3));
       setDataReady(true);
     });
     return () => { cancelled = true; };
@@ -55,11 +61,16 @@ export default function App() {
   function startGame() {
     const valueProfile = VALUE_PROFILES.find(profile => profile.id === valueProfileId) ?? VALUE_PROFILES[0];
     setSavedState(null);
-    setGameConfig({ track, cityTier, valueProfile: valueProfile.values });
+    setGameConfig({ track, cityTier, valueProfile: valueProfile.values, mode: { type: 'normal' } });
+  }
+
+  function startDailyChallenge() {
+    const valueProfile = VALUE_PROFILES.find(profile => profile.id === valueProfileId) ?? VALUE_PROFILES[0];
+    setGameConfig({ track, cityTier, valueProfile: valueProfile.values, mode: { type: 'daily', challenge: todayChallenge } });
   }
 
   function continueGame() {
-    if (savedState) setGameConfig({ track: savedState.career.track, cityTier: savedState.career.cityTier, valueProfile: savedState.values });
+    if (savedState) setGameConfig({ track: savedState.career.track, cityTier: savedState.career.cityTier, valueProfile: savedState.values, mode: { type: 'normal' } });
   }
 
   function resetToCareer() {
@@ -84,7 +95,10 @@ export default function App() {
           track={track} setTrack={setTrack}
           cityTier={cityTier} setCityTier={setCityTier}
           valueProfileId={valueProfileId} setValueProfileId={setValueProfileId}
+          dailyChallenge={todayChallenge}
+          dailyHistory={dailyHistory}
           startGame={startGame}
+          startDailyChallenge={startDailyChallenge}
         />
       ) : !dataReady ? (
         <LoadingScreen />
@@ -93,7 +107,9 @@ export default function App() {
           <Suspense fallback={<LoadingScreen />}>
             <GameContainer
               track={gameConfig.track} cityTier={gameConfig.cityTier}
-              valueProfile={gameConfig.valueProfile} savedState={savedState}
+              valueProfile={gameConfig.valueProfile} savedState={gameConfig.mode.type === 'normal' ? savedState : null}
+              autosave={gameConfig.mode.type === 'normal'}
+              dailyChallenge={gameConfig.mode.type === 'daily' ? gameConfig.mode.challenge : undefined}
               onChangeCharacter={changeCharacter} onRestart={resetToCareer}
             />
           </Suspense>
@@ -130,12 +146,16 @@ function TitleCard({ hasSave, inGame, onContinue }: { hasSave: boolean; inGame: 
 }
 
 function CareerScreen({
-  track, setTrack, cityTier, setCityTier, valueProfileId, setValueProfileId, startGame
+  track, setTrack, cityTier, setCityTier, valueProfileId, setValueProfileId,
+  dailyChallenge, dailyHistory, startGame, startDailyChallenge
 }: {
   track: CareerTrack; setTrack: (track: CareerTrack) => void;
   cityTier: CityTier; setCityTier: (cityTier: CityTier) => void;
   valueProfileId: string; setValueProfileId: (valueProfileId: string) => void;
+  dailyChallenge: DailyChallenge;
+  dailyHistory: DailyChallengeResult[];
   startGame: () => void;
+  startDailyChallenge: () => void;
 }) {
   return (
     <div className="screen active">
@@ -177,6 +197,21 @@ function CareerScreen({
             <small>{profile.summary}</small>
           </button>
         ))}
+      </div>
+      <div className="daily-challenge-panel">
+        <div>
+          <div className="daily-kicker">今日人生</div>
+          <div className="daily-title">{dailyChallenge.label}</div>
+          <div className="daily-copy">同一天的挑战配置一致，结局可接战报卡保存分享。</div>
+          {dailyHistory.length > 0 ? (
+            <div className="daily-history">
+              {dailyHistory.map(item => (
+                <span key={item.dateKey}>{item.dateKey} · {item.title}</span>
+              ))}
+            </div>
+          ) : <div className="daily-history empty">还没有本地挑战记录</div>}
+        </div>
+        <button className="btn-daily" onClick={startDailyChallenge} onMouseEnter={preload} type="button">今日人生</button>
       </div>
       <button className="btn-start" onClick={startGame} onMouseEnter={preload}>&gt; 开始生存 _</button>
       <div className="quote">「AI 改写的是任务结构，长期价值来自判断、责任和领域理解」</div>

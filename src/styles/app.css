@@ -173,6 +173,74 @@ body {
 }
 @media (max-width: 660px) { .value-profile-grid { grid-template-columns: 1fr; } }
 
+.daily-challenge-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(88,166,255,.08), rgba(30,36,48,.66));
+  margin: 8px 0 12px;
+  padding: 14px;
+}
+.daily-kicker {
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 900;
+}
+.daily-title {
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 900;
+  margin-top: 4px;
+}
+.daily-copy {
+  color: var(--text2);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: 5px;
+}
+.daily-history {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 9px;
+}
+.daily-history span,
+.daily-history.empty {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface2);
+  color: var(--text3);
+  padding: 4px 8px;
+  font-size: 10.5px;
+  font-weight: 800;
+}
+.btn-daily {
+  min-width: 118px;
+  min-height: 44px;
+  border: 1px solid rgba(88,166,255,.42);
+  border-radius: 8px;
+  background: var(--primary);
+  color: var(--on-accent);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 900;
+  transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+}
+.btn-daily:hover {
+  background: var(--primary-h);
+  box-shadow: 0 4px 14px rgba(88,166,255,.3);
+  transform: translateY(-1px);
+}
+@media (max-width: 660px) {
+  .daily-challenge-panel { grid-template-columns: 1fr; }
+  .btn-daily { width: 100%; }
+}
+
 .career-card {
   background: var(--card); border: 1px solid var(--border);
   border-radius: var(--r); padding: 18px 16px;
@@ -241,6 +309,11 @@ body {
   background: var(--surface2); border: 1px solid var(--border);
   border-radius: 6px; padding: 4px 12px;
   font-size: 12px; font-weight: 600; color: var(--text2);
+}
+.ghdr-pill.daily {
+  border-color: rgba(88,166,255,.42);
+  color: var(--primary);
+  background: var(--primary-soft);
 }
 .ghdr-div { color: var(--border2); }
 .ghdr-right { display: grid; grid-template-columns: repeat(4, minmax(54px, auto)); gap: 6px; flex-shrink: 0; }
