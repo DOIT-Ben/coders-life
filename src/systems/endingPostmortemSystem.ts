@@ -24,6 +24,7 @@ export interface EndingPostmortem {
   summary: string;
   category: EndingPostmortemCategory;
   categoryLabel: string;
+  challengeLabel?: string;
   timeline: PostmortemTimelineItem[];
   rootCauses: string[];
   impact: PostmortemImpactItem[];
@@ -40,7 +41,7 @@ const EMPLOYMENT_LABEL: Record<GameState['career']['employmentStatus'], string> 
   retired: '退休'
 };
 
-export function buildEndingPostmortem(state: GameState): EndingPostmortem {
+export function buildEndingPostmortem(state: GameState, options: { challengeLabel?: string } = {}): EndingPostmortem {
   const endingLog = [...state.logs].reverse().find(log => log.type === 'ending') ?? state.logs[state.logs.length - 1];
   const category = getPostmortemCategory(state);
   const visible = getVisibleStats(state);
@@ -51,6 +52,7 @@ export function buildEndingPostmortem(state: GameState): EndingPostmortem {
     summary: trimCopy(endingLog?.text ?? '这局已经结束，下面是根据本局真实路径生成的复盘。', 96),
     category,
     categoryLabel: category === 'failure' ? '失败复盘' : category === 'success' ? '成功复盘' : '平衡复盘',
+    challengeLabel: options.challengeLabel,
     timeline: buildTimeline(state),
     rootCauses,
     impact: buildImpact(state, visible),

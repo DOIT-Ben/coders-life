@@ -110,6 +110,7 @@ export default function App() {
               valueProfile={gameConfig.valueProfile} savedState={gameConfig.mode.type === 'normal' ? savedState : null}
               autosave={gameConfig.mode.type === 'normal'}
               dailyChallenge={gameConfig.mode.type === 'daily' ? gameConfig.mode.challenge : undefined}
+              onDailyChallengeHistoryChange={history => setDailyHistory(history.slice(0, 3))}
               onChangeCharacter={changeCharacter} onRestart={resetToCareer}
             />
           </Suspense>

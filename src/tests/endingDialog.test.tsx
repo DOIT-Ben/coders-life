@@ -21,7 +21,7 @@ function renderEnding(state: GameState) {
   const restart = vi.fn();
 
   act(() => {
-    root.render(<EndingDialog state={state} close={close} restart={restart} />);
+    root.render(<EndingDialog state={state} close={close} restart={restart} challengeLabel="今日人生 · 2026-07-04" />);
   });
 
   return { root, close, restart };
@@ -102,6 +102,7 @@ describe('EndingDialog postmortem UI', () => {
     expect(document.body.textContent).toContain('根因分析');
     expect(document.body.textContent).toContain('影响面');
     expect(document.body.textContent).toContain('下一局改进项');
+    expect(document.body.textContent).toContain('今日人生 · 2026-07-04');
     expect(document.body.textContent).toContain('重新开始');
     expect(document.body.textContent).toContain('查看结果');
 

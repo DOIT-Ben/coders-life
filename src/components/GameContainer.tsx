@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState, useMemo } from 'react';
+import { lazy, Suspense, useEffect, useState, useMemo, useRef } from 'react';
 import type { ActionConfig, CareerTrack, CityTier, EffectDelta, GameState, PlayerValueProfile } from '../types/game';
 import { applyAction, createInitialState, getAvailableActions } from '../core/gameEngine';
 import { getVisibleStats } from '../core/formulas';
@@ -11,7 +11,8 @@ import { consumeUndoPill } from '../systems/undoSystem';
 import { PressureSummary, ProjectProgressPanel, StatCard } from './panels';
 import LifeLog from './LifeLog';
 import CommandPalette from './CommandPalette';
-import type { DailyChallenge } from '../systems/dailyChallengeSystem';
+import type { DailyChallenge, DailyChallengeResult } from '../systems/dailyChallengeSystem';
+import { recordDailyChallengeEnding } from '../systems/dailyChallengeResultSystem';
 
 const GameDialogs = lazy(() => import('./GameDialogs'));
 
@@ -84,6 +85,7 @@ export default function GameContainer({
   savedState,
   autosave = true,
   dailyChallenge,
+  onDailyChallengeHistoryChange,
   onChangeCharacter,
   onRestart
 }: {
@@ -93,6 +95,7 @@ export default function GameContainer({
   savedState?: GameState | null;
   autosave?: boolean;
   dailyChallenge?: DailyChallenge;
+  onDailyChallengeHistoryChange?: (history: DailyChallengeResult[]) => void;
   onChangeCharacter: () => void;
   onRestart: () => void;
 }) {
@@ -103,6 +106,7 @@ export default function GameContainer({
   const [detailAction, setDetailAction] = useState<AvailableAction | undefined>();
   const [visibleActionGroupIds, setVisibleActionGroupIds] = useState<ActionConfig['group'][]>(() => ACTION_GROUP_MAP.map(group => group.id));
   const [closedEndingKey, setClosedEndingKey] = useState<string | undefined>();
+  const recordedDailyEndingKey = useRef<string | undefined>(undefined);
   const [bookmarkedActionIds, setBookmarkedActionIds] = useState<string[]>(() => {
     try {
       const raw = localStorage.getItem('ms_bookmarks');
@@ -113,6 +117,13 @@ export default function GameContainer({
   useEffect(() => {
     if (autosave) saveGame(state);
   }, [autosave, state]);
+  useEffect(() => {
+    if (!dailyChallenge || !state.gameOver) return;
+    const { history, recordKey } = recordDailyChallengeEnding(state, dailyChallenge);
+    if (recordedDailyEndingKey.current === recordKey) return;
+    recordedDailyEndingKey.current = recordKey;
+    onDailyChallengeHistoryChange?.(history);
+  }, [dailyChallenge, onDailyChallengeHistoryChange, state]);
   useEffect(() => {
     if (!saveStatus) return;
     const timer = window.setTimeout(() => setSaveStatus(''), 1600);
@@ -163,6 +174,7 @@ export default function GameContainer({
             bookmarkedIds={bookmarkedActionIds}
             detailAction={detailAction}
             closeModal={closeModal}
+            challengeLabel={dailyChallenge?.label}
             modal={effectiveModal}
             restart={onRestart}
             setVisibleActionGroupIds={setVisibleActionGroupIds}
@@ -271,6 +283,10 @@ function GameScreen({
   }
 
   function handleSave() {
+    if (dailyChallenge) {
+      setSaveStatus('今日人生不会覆盖普通存档，结局会写入本地挑战历史。');
+      return;
+    }
     try {
       saveGame(state);
       setSaveStatus('进度已保存');

@@ -9,6 +9,7 @@ function postmortem(): EndingPostmortem {
     summary: '你把 AI 当作协作层，设计人与模型共同承担交付。',
     category: 'success',
     categoryLabel: '成功复盘',
+    challengeLabel: '今日人生 · 2026-07-04',
     shareHash: 'a1b2c3',
     timeline: [
       { id: '1', month: 36, title: '现金流压力', text: '关键压力曾经越过警戒线。' }
@@ -69,6 +70,7 @@ describe('share card system', () => {
     expect(calls.join('\n')).toContain('程序员人生模拟器');
     expect(calls.join('\n')).toContain('技术路结局：AI协作架构师');
     expect(calls.join('\n')).toContain('成功复盘');
+    expect(calls.join('\n')).toContain('今日人生 · 2026-07-04');
     expect(calls.join('\n')).toContain('#a1b2c3');
     expect(calls.join('\n')).toContain('最终现金');
   });

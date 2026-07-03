@@ -28,6 +28,9 @@ export function drawEndingShareCard(canvas: HTMLCanvasElement, postmortem: Endin
   drawText(ctx, '程序员人生模拟器', PADDING, y, '30px ui-monospace, SFMono-Regular, Menlo, monospace', '#8B949E');
   y += 70;
   drawText(ctx, postmortem.categoryLabel, PADDING, y, '34px ui-monospace, SFMono-Regular, Menlo, monospace', categoryColor(postmortem.category));
+  if (postmortem.challengeLabel) {
+    drawText(ctx, postmortem.challengeLabel, CARD_WIDTH - PADDING - 360, y, '26px ui-monospace, SFMono-Regular, Menlo, monospace', '#58A6FF');
+  }
   y += 72;
   y = drawWrappedText(ctx, postmortem.title, PADDING, y, CARD_WIDTH - PADDING * 2, 58, '56px ui-monospace, SFMono-Regular, Menlo, monospace', '#F0F6FC');
   y += 28;

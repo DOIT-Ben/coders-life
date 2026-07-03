@@ -4,8 +4,18 @@ import { createEndingShareImage } from '../../systems/shareCardSystem';
 import type { GameState } from '../../types/game';
 import ModalShell from './ModalShell';
 
-export default function EndingDialog({ state, close, restart }: { state: GameState; close: () => void; restart: () => void }) {
-  const postmortem = buildEndingPostmortem(state);
+export default function EndingDialog({
+  state,
+  close,
+  restart,
+  challengeLabel
+}: {
+  state: GameState;
+  close: () => void;
+  restart: () => void;
+  challengeLabel?: string;
+}) {
+  const postmortem = buildEndingPostmortem(state, { challengeLabel });
   const [shareImage, setShareImage] = useState<string>();
 
   function generateShareCard() {
@@ -23,6 +33,7 @@ export default function EndingDialog({ state, close, restart }: { state: GameSta
       <div className="modal-scroll ending-postmortem">
         <div className="postmortem-hero">
           <span className={`postmortem-badge ${postmortem.category}`}>{postmortem.categoryLabel}</span>
+          {postmortem.challengeLabel ? <span className="postmortem-challenge">{postmortem.challengeLabel}</span> : null}
           <p>{postmortem.summary}</p>
           <span className="postmortem-hash">#{postmortem.shareHash}</span>
         </div>

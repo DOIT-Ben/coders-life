@@ -14,6 +14,7 @@ type DialogProps = {
   bookmarkedIds: string[];
   closeModal: () => void;
   detailAction?: AvailableAction;
+  challengeLabel?: string;
   modal?: GameModal;
   restart: () => void;
   setVisibleActionGroupIds: Dispatch<SetStateAction<ActionConfig['group'][]>>;
@@ -82,6 +83,7 @@ export default function GameDialogs({
   bookmarkedIds,
   closeModal,
   detailAction,
+  challengeLabel,
   modal,
   restart,
   setVisibleActionGroupIds,
@@ -97,7 +99,7 @@ export default function GameDialogs({
       {modal === 'bookmark' && <BookmarkDialog actions={actions} bookmarkedIds={bookmarkedIds} toggleBookmark={toggleBookmark} close={closeModal} />}
       {modal === 'actionDetail' && detailAction && <ActionDetailDialog action={detailAction} close={closeModal} />}
       {modal === 'actionManage' && <ActionManageDialog visibleActionGroupIds={visibleActionGroupIds} setVisibleActionGroupIds={setVisibleActionGroupIds} close={closeModal} />}
-      {modal === 'ending' && <EndingDialog state={state} close={closeModal} restart={restart} />}
+      {modal === 'ending' && <EndingDialog state={state} close={closeModal} restart={restart} challengeLabel={challengeLabel} />}
       {modal === 'feedback' && <FeedbackDialog state={state} close={closeModal} />}
       {state.pendingEventChoice && <EventChoiceDialog state={state} setState={setState} />}
     </>
