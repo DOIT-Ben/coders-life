@@ -1012,13 +1012,13 @@ body {
 }
 .modal-actions { flex: 0 0 auto; display: flex; gap: 8px; }
 .btn-mp {
-  flex: 1; padding: 11px; background: var(--primary); color: var(--on-accent);
+  flex: 1; min-height: 44px; padding: 11px; background: var(--primary); color: var(--on-accent);
   border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer;
   transition: all .15s;
 }
 .btn-mp:hover { background: var(--primary-h); box-shadow: 0 3px 10px rgba(88,166,255,.3); }
 .btn-ms {
-  flex: 1; padding: 11px; background: var(--surface2); color: var(--text2);
+  flex: 1; min-height: 44px; padding: 11px; background: var(--surface2); color: var(--text2);
   border: 1px solid var(--border); border-radius: 8px;
   font-size: 14px; cursor: pointer;   transition: background .15s;
   font-family: var(--font-mono); font-weight: 500;
@@ -1554,7 +1554,11 @@ button.career-card { text-align: left; width: 100%; }
   gap: 12px;
   margin-bottom:16px;
 }
-.modal-head button { background:none; border:none; font-size:22px; cursor:pointer; color:var(--text3); }
+.modal-head button {
+  min-width: 44px;
+  min-height: 44px;
+  background:none; border:none; font-size:22px; cursor:pointer; color:var(--text3);
+}
 .wide-modal { max-width: 480px; }
 .btn-buy:disabled { opacity: .45; cursor: not-allowed; }
 .danger { color: var(--red); }
