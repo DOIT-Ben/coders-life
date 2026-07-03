@@ -191,6 +191,7 @@ function GameScreen({
 }) {
   const [selectedActionGroup, setSelectedActionGroup] = useState<ActionConfig['group']>(DEFAULT_ACTION_GROUP);
   const [searchQuery, setSearchQuery] = useState('');
+  const [rewinding, setRewinding] = useState(false);
   const visible = getVisibleStats(state);
   const actions = useMemo(() => getAvailableActions(state), [state.month, state.pendingEventChoice?.id, state.gameOver, state.career.employmentStatus, state.stats.cash, state.career.portfolioCount, state.stats.techXp, state.stats.aiXp, state.stats.reputationXp]);
   const groupActions = useMemo(() => {
@@ -232,9 +233,22 @@ function GameScreen({
   }
 
   function undoLastAction() {
-    if (!undoSnapshot || (state.inventory.undo_pill ?? 0) <= 0 || state.pendingEventChoice) return;
+    if (state.pendingEventChoice) {
+      setSaveStatus('先处理当前事件，再考虑撤销。');
+      return;
+    }
+    if ((state.inventory.undo_pill ?? 0) <= 0) {
+      setSaveStatus('需要先在商店购入后悔药，才能撤销行动。');
+      return;
+    }
+    if (!undoSnapshot) {
+      setSaveStatus('还没有可撤销的行动，先执行一个行动。');
+      return;
+    }
     setState(consumeUndoPill(state, undoSnapshot));
     setUndoSnapshot(undefined);
+    setRewinding(true);
+    window.setTimeout(() => setRewinding(false), 950);
   }
 
   function openActionDetail(action: AvailableAction) {
@@ -267,12 +281,24 @@ function GameScreen({
           <button className="btn-h" onClick={() => openModal('ach')}>成就</button>
           <button className="btn-h" onClick={() => openModal('shop')}>商店</button>
           <button className="btn-h" onClick={() => openModal('bookmark')}>收藏</button>
-          <button className="btn-h" disabled={!undoSnapshot || (state.inventory.undo_pill ?? 0) <= 0 || Boolean(state.pendingEventChoice)} onClick={undoLastAction}>撤销</button>
+          <button
+            className={`btn-h${(!undoSnapshot || (state.inventory.undo_pill ?? 0) <= 0) ? ' dim' : ''}`}
+            onClick={undoLastAction}
+            title="消耗一瓶后悔药，撤销最近一次行动"
+          >
+            撤销{(state.inventory.undo_pill ?? 0) > 0 ? ` ×${state.inventory.undo_pill}` : ''}
+          </button>
           <button className="btn-h" onClick={handleSave}>保存</button>
           <button className="btn-h red" onClick={changeCharacter}>换角色</button>
         </div>
       </div>
       <div className={saveStatus ? 'save-toast show' : 'save-toast'}>{saveStatus}</div>
+      {rewinding && (
+        <div className="rewind-flash" aria-hidden="true">
+          <div className="rewind-cmd">⏪ git revert HEAD</div>
+          <div className="rewind-note">时间回到一个月前，后悔药 -1</div>
+        </div>
+      )}
 
       <div className="stats-row">
         <StatCard label="技术能力" value={visible.tech} color="var(--teal)" sub="核心竞争力" />

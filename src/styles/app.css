@@ -44,7 +44,7 @@
   /* Text */
   --text:     #D6DEE8;
   --text2:    #93A1B3;
-  --text3:    #66748A;
+  --text3:    #8593AA;
 
   --r:        10px;
   --shadow:   0 2px 10px rgba(0,0,0,.35);
@@ -1642,4 +1642,24 @@ button.career-card { text-align: left; width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
   .p0-badge { animation: none; }
+}
+
+/* ── 撤销（时间回溯）反馈 ── */
+.btn-h.dim { opacity: .55; }
+.rewind-flash {
+  position: fixed; inset: 0; z-index: 80; pointer-events: none;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  background: radial-gradient(ellipse at center, rgba(88,166,255,.12) 0%, rgba(8,10,14,.82) 75%);
+  animation: rewind-out .95s ease forwards;
+}
+.rewind-cmd { color: var(--primary-h); font-size: 20px; font-weight: 700; letter-spacing: 1px; }
+.rewind-note { color: var(--text); font-size: 13px; }
+@keyframes rewind-out {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rewind-flash { animation: none; opacity: 0; }
 }
