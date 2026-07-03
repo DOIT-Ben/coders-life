@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import appSource from '../App.tsx?raw';
 import gameContainerSource from '../components/GameContainer.tsx?raw';
 
-const appCss = readFileSync(new URL('../styles/app.css', import.meta.url), 'utf8');
+const appCss = readFileSync(new URL('../styles/app.css', import.meta.url), 'utf8').replace(/\r\n/g, '\n');
 const ciWorkflow = readFileSync(new URL('../../.github/workflows/ci.yml', import.meta.url), 'utf8');
 
 describe('v1 frontend contract', () => {
