@@ -31,6 +31,8 @@ type AvailableAction = ActionConfig & {
   reason?: string;
 };
 
+type GameModal = 'ach' | 'shop' | 'ending' | 'bookmark' | 'feedback';
+
 const ACTION_GROUP_MAP: Array<{ id: ActionConfig['group']; label: string }> = [
   { id: 'learn', label: '学习成长' },
   { id: 'work', label: '工作赚钱' },
@@ -40,6 +42,23 @@ const ACTION_GROUP_MAP: Array<{ id: ActionConfig['group']; label: string }> = [
   { id: 'relationship', label: '社交关系' },
 ];
 const DEFAULT_ACTION_GROUP: ActionConfig['group'] = 'recover';
+
+const FEEDBACK_TYPES = [
+  '界面显示/滚动问题',
+  '行动效果不符合预期',
+  '数值平衡问题',
+  '事件/结局不合理',
+  '存档/加载问题',
+  '移动端体验问题',
+  '想新增行动或内容'
+];
+
+const FEEDBACK_SEVERITIES = [
+  '阻塞游玩',
+  '明显影响体验',
+  '轻微问题',
+  '建议优化'
+];
 
 const EFFECT_LABELS: Partial<Record<keyof EffectDelta, string>> = {
   techXp: '技术', aiXp: 'AI', reputationXp: '声望',
@@ -102,7 +121,7 @@ export default function GameContainer({
   onRestart: () => void;
 }) {
   const [state, setState] = useState<GameState>(() => savedState ?? createInitialState(track, cityTier, undefined, valueProfile));
-  const [modal, setModal] = useState<'ach' | 'shop' | 'ending' | 'bookmark' | undefined>();
+  const [modal, setModal] = useState<GameModal | undefined>();
   const [saveStatus, setSaveStatus] = useState('');
   const [bookmarkedActionIds, setBookmarkedActionIds] = useState<string[]>(() => {
     try {
@@ -134,10 +153,12 @@ export default function GameContainer({
   return (
     <>
       <GameScreen state={state} setState={setState} openModal={setModal} changeCharacter={onChangeCharacter} saveStatus={saveStatus} setSaveStatus={setSaveStatus} bookmarkedActionIds={bookmarkedActionIds} toggleBookmark={toggleBookmark} />
+      <button className="feedback-fab" type="button" onClick={() => setModal('feedback')} aria-label="提交反馈">反馈</button>
       {modal === 'ach' && <AchievementDialog state={state} close={() => setModal(undefined)} />}
       {modal === 'shop' && <ShopDialog state={state} setState={setState} close={() => setModal(undefined)} />}
       {modal === 'bookmark' && <BookmarkDialog actions={availableActions} bookmarkedIds={bookmarkedActionIds} toggleBookmark={toggleBookmark} close={() => setModal(undefined)} />}
       {modal === 'ending' && <EndingDialog state={state} close={() => setModal(undefined)} restart={onRestart} />}
+      {modal === 'feedback' && <FeedbackDialog state={state} close={() => setModal(undefined)} />}
       {state.pendingEventChoice && <EventChoiceDialog state={state} setState={setState} />}
     </>
   );
@@ -155,7 +176,7 @@ function GameScreen({
 }: {
   state: GameState;
   setState: (state: GameState) => void;
-  openModal: (modal: 'ach' | 'shop' | 'ending' | 'bookmark') => void;
+  openModal: (modal: GameModal) => void;
   changeCharacter: () => void;
   saveStatus: string;
   setSaveStatus: (status: string) => void;
@@ -501,6 +522,88 @@ function ProjectProgressPanel({ state }: { state: GameState }) {
           </div>
         );
       })}
+    </div>
+  );
+}
+
+function FeedbackDialog({ state, close }: { state: GameState; close: () => void }) {
+  const [feedbackType, setFeedbackType] = useState(FEEDBACK_TYPES[0]);
+  const [severity, setSeverity] = useState(FEEDBACK_SEVERITIES[1]);
+  const [details, setDetails] = useState('');
+  const careerConfig = getCareer(state.career.track);
+  const day = state.month * 30;
+  const context = [
+    `第 ${day} 天`,
+    `${state.age} 岁`,
+    careerConfig.name,
+    state.career.employmentStatus,
+    `现金 ${Math.round(state.stats.cash / 1000) / 10} 万`,
+    `精神 ${Math.round(state.stats.mental)}`,
+    `健康 ${Math.round(state.stats.health)}`
+  ].join(' / ');
+  const issueUrl = useMemo(() => {
+    const body = [
+      '## 反馈类型',
+      feedbackType,
+      '',
+      '## 影响程度',
+      severity,
+      '',
+      '## 具体描述',
+      details.trim() || '请描述你遇到的问题或建议。',
+      '',
+      '## 当前游戏上下文',
+      context
+    ].join('\n');
+    const params = new URLSearchParams({
+      title: `[反馈] ${feedbackType} - ${severity}`,
+      body
+    });
+    return `https://github.com/DOIT-Ben/coders-life/issues/new?${params.toString()}`;
+  }, [context, details, feedbackType, severity]);
+
+  return (
+    <div className="modal-overlay open">
+      <div className="modal feedback-modal">
+        <div className="modal-head"><div className="modal-title">提交反馈</div><button onClick={close}>×</button></div>
+        <div className="modal-scroll feedback-scroll">
+          <div className="feedback-section">
+            <div className="feedback-label">反馈类型</div>
+            <div className="feedback-grid">
+              {FEEDBACK_TYPES.map(type => (
+                <button className={type === feedbackType ? 'feedback-option active' : 'feedback-option'} key={type} type="button" onClick={() => setFeedbackType(type)}>
+                  {type}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="feedback-section">
+            <div className="feedback-label">影响程度</div>
+            <div className="feedback-grid compact">
+              {FEEDBACK_SEVERITIES.map(item => (
+                <button className={item === severity ? 'feedback-option active' : 'feedback-option'} key={item} type="button" onClick={() => setSeverity(item)}>
+                  {item}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="feedback-section">
+            <label className="feedback-label" htmlFor="feedback-details">补充说明</label>
+            <textarea
+              className="feedback-textarea"
+              id="feedback-details"
+              value={details}
+              onChange={event => setDetails(event.target.value)}
+              placeholder="描述你看到的现象、期待的结果，或希望新增的内容。"
+            />
+          </div>
+          <div className="feedback-context">{context}</div>
+        </div>
+        <div className="modal-actions">
+          <a className="feedback-submit" href={issueUrl} target="_blank" rel="noreferrer">提交反馈</a>
+          <button className="btn-ms" type="button" onClick={close}>稍后再说</button>
+        </div>
+      </div>
     </div>
   );
 }

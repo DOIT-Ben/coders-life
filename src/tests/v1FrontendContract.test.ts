@@ -128,6 +128,24 @@ describe('v1 frontend contract', () => {
     });
   });
 
+  it('keeps feedback as a low-weight standalone entry instead of a game header action', () => {
+    const headerStart = gameContainerSource.indexOf('<div className="ghdr-right">');
+    const headerEnd = gameContainerSource.indexOf('</div>', headerStart);
+    const headerSource = gameContainerSource.slice(headerStart, headerEnd);
+    expect(headerSource).not.toContain("openModal('feedback')");
+    expect(headerSource).not.toContain('feedback-fab');
+    expect(gameContainerSource).toContain('FeedbackDialog');
+    expect(gameContainerSource).toContain('feedback-fab');
+    expect(gameContainerSource).toContain('github.com/DOIT-Ben/coders-life/issues/new');
+    expect(appCss).toContain('.feedback-fab');
+    expect(appCss).toContain('.feedback-grid');
+    expect(appCss).toContain('.feedback-option');
+    expect(appCss).toContain('.feedback-textarea');
+    expect(appCss).toContain('.feedback-submit');
+    expect(appCss).toContain('position: fixed;');
+    expect(appCss).toContain('max-height: min(68dvh, 520px);');
+  });
+
   it('routes shop purchases through durable shop effects', () => {
     expect(gameContainerSource).toContain('buyShopItem');
     expect(source).not.toContain('applyDelta(state, { cash: -item.price, ...item.effect })');
