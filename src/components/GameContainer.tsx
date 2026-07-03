@@ -212,6 +212,12 @@ function GameScreen({
   const day = state.month * 30;
   const bodySignal = getBodySignal(state);
   const recentDecisionLog = [...state.decisionLog].slice(-3).reverse();
+  const activeCrises = [
+    state.crisis.burnout.active ? '燃尽修复' : null,
+    state.crisis.mentalHealth.active ? '心理重建' : null,
+    state.crisis.severeIllness.active ? '大病治疗' : null,
+    state.crisis.majorUnemployment.active ? '长期待业' : null
+  ].filter(Boolean) as string[];
 
   useEffect(() => {
     if (!visibleActionGroupIds.includes(selectedActionGroup)) {
@@ -276,6 +282,12 @@ function GameScreen({
       </div>
       <PressureSummary state={state} />
 
+      {activeCrises.length > 0 && !state.gameOver && (
+        <div className="p0-alert" role="alert">
+          <span className="p0-badge">P0</span>
+          <span className="p0-text">{activeCrises.join(' · ')}进行中 —— 优先安排恢复类行动，值班人：你自己。</span>
+        </div>
+      )}
       <div className={visible.mental < 25 ? 'crisis show' : 'crisis'}>⚠ 精神状态危急，正在进入恢复窗口...</div>
       {state.gameOver && <div className="crisis show">人生结局：{state.logs[state.logs.length - 1]?.title}。{endingText}</div>}
 

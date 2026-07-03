@@ -9,4 +9,4 @@
 
 ## 最近变更摘要
 
-- 2026-07-03：优化批次（P0 存档修复、P1 数据分包与迁移、P2 护栏、P3 引擎修正），详见 `docs\dev-records\2026-07-03-optimization-execution.md` 与 `docs\plans\2026-07-03-project-optimization-plan.md`。
+- 2026-07-03：优化批次（存档修复、数据分包、护栏、引擎修正）+ 终端化前端重设计（暗色终端主题、commit log 日志、人生终端命令面板、P0 告警），详见 `docs\dev-records\2026-07-03-optimization-execution.md`。

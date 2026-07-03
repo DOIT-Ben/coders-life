@@ -22,3 +22,34 @@
 - `v1FrontendContract.test.ts` 会以 `?raw` 方式 grep `App.tsx` 源码；把内联配置移到 config 时必须同步更新契约测试的源文件引用。
 - Vite 静态 JSON import 会编译进 JS chunk；`saveManager → config/events → popup JSON` 这条链意味着**任何在首屏静态 import saveManager 的改动都会拖 583KB 进首屏**，务必用动态 import。
 - Windows 下 git bash 的 `/tmp` 与 node 解析路径不一致，临时产物用项目内 `.codex-run\`。
+
+---
+
+# 追加：终端化前端重设计执行记录（同日第二批次）
+
+- 规划：`docs\plans\2026-07-03-terminal-frontend-redesign.md`
+- 提交：`2303bcc`（主题）、`ce10bc4`（面板拆分+commit log）、`ac3ca42`（命令面板）、本次（P0 告警+微交互）
+
+## 做了什么
+
+1. **终端主题**：设计令牌整换为深夜终端系（墨蓝底 + 日志级别语义色），全站等宽字体，135 处硬编码浅色收敛为 token；标题卡改终端窗口 chrome。设计上刻意放弃了扫描线/闪烁特效（易显 AI 味且伤可读性），把风格重量放在 commit log 与命令面板两个"签名件"上。
+2. **面板拆分**：GameContainer 559→约 430 行，PressureSummary/ProjectProgressPanel/StatCard 拆到 panels.tsx，LifeLog 重写为 commit log 风格（确定性 FNV-1a 短哈希）。
+3. **人生终端**：Ctrl+K/反引号唤起，run/htop/log/whoami/open/save/undo + sudo 彩蛋，输出全中文。
+4. **P0 告警 + 数值滚动**：危机激活时的 oncall 风格告警条；StatCard 数值 0.5s 缓动，prefers-reduced-motion 直接跳变。
+
+## 验证
+
+- 169 测试全绿、lint 0 error、build 通过；同 seed simulate 与基线一致（未触引擎）。
+- 浏览器实测：终端面板全命令链路、run 精确执行推进月份、P0 告警条渲染、移动端 390px 无横向溢出。
+- ErrorBoundary 在开发中被 jsdom 无 matchMedia 的崩溃实际触发过一次，产品化兜底页正常显示——护栏有效。
+
+## 踩坑
+
+- jsdom 不实现 `window.matchMedia`，浏览器 API 须加存在性判断，否则组件崩溃只会表现为 ErrorBoundary 兜底、测试报"文案找不到"。
+- 契约测试断言 CSS 结构字符串：换肤必须"只换 token 值不动结构规则"；移动组件代码时逐条迁移源码断言。
+
+## 遗留（下一轮）
+
+- GameDialogs（589 行）拆分 + 结局 Postmortem 重设计。
+- 死组件清理（WorldStatusBar/DebugPanel 等 6 个未引用文件，被契约测试引用需连测试一起动）。
+- 人生脚本 DSL / 每日挑战 seed 玩法单独立项。

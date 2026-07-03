@@ -1616,3 +1616,30 @@ button.career-card { text-align: left; width: 100%; }
   .term-overlay { padding-top: 6vh; }
   .term-fab { bottom: 76px; }
 }
+
+/* ── P0 告警条（危机激活） ── */
+.p0-alert {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--danger-soft);
+  border: 1px solid var(--danger-border);
+  border-left: 3px solid var(--danger);
+  border-radius: 8px;
+  padding: 9px 12px;
+  margin-bottom: 10px;
+  font-size: 12px; color: var(--danger-h);
+}
+.p0-badge {
+  flex: 0 0 auto;
+  background: var(--danger); color: var(--on-accent);
+  font-size: 10px; font-weight: 700; letter-spacing: 1px;
+  padding: 2px 8px; border-radius: 5px;
+  animation: p0-pulse 1.6s ease-in-out infinite;
+}
+.p0-text { line-height: 1.5; }
+@keyframes p0-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .55; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .p0-badge { animation: none; }
+}
