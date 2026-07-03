@@ -13,12 +13,12 @@ function preload() {
   import('./components/GameContainer');
 }
 
-function checkSave(): GameState | null {
-  try {
-    const raw = localStorage.getItem('ms_game');
-    if (!raw) return null;
-    return JSON.parse(raw) as GameState;
-  } catch { return null; }
+const LEGACY_SAVE_KEY = 'ms_game';
+
+async function loadSavedGame(): Promise<GameState | null> {
+  const { loadGame } = await import('./storage/saveManager');
+  localStorage.removeItem(LEGACY_SAVE_KEY);
+  return loadGame() ?? null;
 }
 
 type GameConfig = {
@@ -56,12 +56,19 @@ const VALUE_PROFILES: Array<{ id: string; label: string; summary: string; values
 
 export default function App() {
   const [gameConfig, setGameConfig] = useState<GameConfig | null>(null);
-  const [savedState, setSavedState] = useState<GameState | null>(() => checkSave());
+  const [savedState, setSavedState] = useState<GameState | null>(null);
   const [track, setTrack] = useState<CareerTrack>('frontend');
   const [cityTier, setCityTier] = useState<CityTier>('tier2');
   const [valueProfileId, setValueProfileId] = useState(VALUE_PROFILES[0].id);
 
-  useEffect(() => { preload(); }, []);
+  useEffect(() => {
+    preload();
+    let cancelled = false;
+    loadSavedGame().then(state => {
+      if (!cancelled) setSavedState(state);
+    });
+    return () => { cancelled = true; };
+  }, []);
 
   function startGame() {
     const valueProfile = VALUE_PROFILES.find(profile => profile.id === valueProfileId) ?? VALUE_PROFILES[0];
@@ -74,14 +81,14 @@ export default function App() {
   }
 
   function resetToCareer() {
-    localStorage.removeItem('ms_game');
+    import('./storage/saveManager').then(({ clearSave }) => clearSave());
     setGameConfig(null);
     setSavedState(null);
   }
 
   function changeCharacter() {
     setGameConfig(null);
-    setSavedState(null);
+    loadSavedGame().then(state => setSavedState(state));
   }
 
   const hasSave = Boolean(savedState);
