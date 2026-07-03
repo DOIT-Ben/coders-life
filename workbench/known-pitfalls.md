@@ -9,3 +9,5 @@
 - **视口验证必须 rebuild**：`vite preview` 服务的是 `dist`，源码 CSS 修改后必须先 `npm run build`，否则 Playwright/浏览器检查会读到旧资产并误报。
 - **复盘关系债字段**：关系债真实存储在 `socialProfile.relationshipDebt`，`lifePressure` 没有该字段；展示层若要看综合压力，可用 `derivePressureSnapshot(state).relationshipDebt`。
 - **Canvas 测试分层**：jsdom 没有完整 Canvas 绘图实现。Canvas 纯函数用 fake context 测文本与尺寸，真实生成图片、下载入口和移动端布局必须用 `vite preview` + Playwright 验证。
+- **每日挑战首屏边界**：App 可以静态 import 轻量的日期/历史函数，但不能通过每日挑战把 `createInitialState`、引擎、`saveManager` 或 `config/events` 拉进首屏；创建挑战状态应放在游戏 chunk 或测试专用路径。
+- **GameContainer 行数临界**：批次 3 后 `GameContainer.tsx` 为 499 行，后续任何新增逻辑都应先抽到系统或子组件，否则会触发 500 行契约测试。
