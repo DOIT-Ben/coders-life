@@ -15,9 +15,7 @@ export default defineConfig(
     ],
     rules: {
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
-      // GameContainer 既有的同步派生 state 写法命中此规则，重构排期见
-      // docs\plans\2026-07-03-project-optimization-plan.md 约束 C，先降级为警告。
-      'react-hooks/set-state-in-effect': 'warn'
+      'react-hooks/set-state-in-effect': 'error'
     }
   }
 );

@@ -46,14 +46,58 @@ export default function CommandPalette({
   const [output, setOutput] = useState<OutputLine[]>([
     line('人生终端已就绪。输入 help 查看可用命令。', 'plain')
   ]);
+  const openerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  function openPalette() {
+    previousFocusRef.current = document.activeElement instanceof HTMLElement && document.activeElement !== document.body
+      ? document.activeElement
+      : openerRef.current;
+    setOpen(true);
+  }
+
+  function closePalette() {
+    setOpen(false);
+    const restoreTarget = previousFocusRef.current;
+    if (restoreTarget && document.contains(restoreTarget)) {
+      restoreTarget.focus();
+      return;
+    }
+    openerRef.current?.focus();
+  }
+
+  function getFocusableElements() {
+    return Array.from(panelRef.current?.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    ) ?? []).filter(element => !element.hasAttribute('disabled') && element.tabIndex !== -1);
+  }
+
+  function handlePanelKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closePalette();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+    const focusable = getFocusableElements();
+    if (focusable.length === 0) return;
+    const currentIndex = focusable.indexOf(document.activeElement as HTMLElement);
+    const nextIndex = event.shiftKey
+      ? currentIndex <= 0 ? focusable.length - 1 : currentIndex - 1
+      : currentIndex === focusable.length - 1 ? 0 : currentIndex + 1;
+    event.preventDefault();
+    focusable[nextIndex]?.focus();
+  }
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault();
-        setOpen(current => !current);
+        if (open) closePalette();
+        else openPalette();
         return;
       }
       if (event.key === '`' && !open) {
@@ -61,7 +105,7 @@ export default function CommandPalette({
         const tag = target?.tagName;
         if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || target?.isContentEditable) return;
         event.preventDefault();
-        setOpen(true);
+        openPalette();
       }
     }
     window.addEventListener('keydown', onKeyDown);
@@ -183,13 +227,14 @@ export default function CommandPalette({
 
   return (
     <>
-      <button className="term-fab" type="button" onClick={() => setOpen(true)} aria-label="打开人生终端">&gt;_</button>
+      <button className="term-fab" type="button" onClick={openPalette} aria-label="打开人生终端" ref={openerRef}>&gt;_</button>
       {open ? (
-        <div className="term-overlay" onClick={() => setOpen(false)}>
-          <div className="term-panel" role="dialog" aria-modal="true" aria-label="人生终端" onClick={event => event.stopPropagation()}>
+        <div className="term-overlay" onClick={closePalette}>
+          <div className="term-panel" role="dialog" aria-modal="true" aria-label="人生终端" onClick={event => event.stopPropagation()} onKeyDown={handlePanelKeyDown} ref={panelRef}>
             <div className="term-panel-head">
               <span>人生终端</span>
               <span className="term-panel-hint">Ctrl+K 或 ` 唤起 · Esc 关闭</span>
+              <button className="term-close" type="button" onClick={closePalette} aria-label="关闭人生终端">×</button>
             </div>
             <div className="term-output" ref={scrollRef}>
               {output.map(item => (
@@ -207,7 +252,6 @@ export default function CommandPalette({
                     runCommand(input);
                     setInput('');
                   }
-                  if (event.key === 'Escape') setOpen(false);
                 }}
                 placeholder="输入命令，例如 run 健身"
                 ref={inputRef}

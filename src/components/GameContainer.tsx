@@ -97,6 +97,7 @@ export default function GameContainer({
   const [undoSnapshot, setUndoSnapshot] = useState<GameState | undefined>();
   const [detailAction, setDetailAction] = useState<AvailableAction | undefined>();
   const [visibleActionGroupIds, setVisibleActionGroupIds] = useState<ActionConfig['group'][]>(() => ACTION_GROUP_MAP.map(group => group.id));
+  const [closedEndingKey, setClosedEndingKey] = useState<string | undefined>();
   const [bookmarkedActionIds, setBookmarkedActionIds] = useState<string[]>(() => {
     try {
       const raw = localStorage.getItem('ms_bookmarks');
@@ -105,7 +106,6 @@ export default function GameContainer({
   });
 
   useEffect(() => { saveGame(state); }, [state]);
-  useEffect(() => { if (state.gameOver) setModal('ending'); }, [state.gameOver]);
   useEffect(() => {
     if (!saveStatus) return;
     const timer = window.setTimeout(() => setSaveStatus(''), 1600);
@@ -122,7 +122,14 @@ export default function GameContainer({
     });
   }
 
-  const availableActions = useMemo(() => getAvailableActions(state), [state.month]);
+  const availableActions = getAvailableActions(state);
+  const currentEndingKey = state.endingId ?? `${state.month}-${state.logs[state.logs.length - 1]?.id ?? 'ending'}`;
+  const effectiveModal = modal ?? (state.gameOver && closedEndingKey !== currentEndingKey ? 'ending' : undefined);
+
+  function closeModal() {
+    if (effectiveModal === 'ending') setClosedEndingKey(currentEndingKey);
+    setModal(undefined);
+  }
 
   return (
     <>
@@ -141,14 +148,14 @@ export default function GameContainer({
         visibleActionGroupIds={visibleActionGroupIds}
       />
       <button className="feedback-fab" type="button" onClick={() => setModal('feedback')} aria-label="提交反馈">反馈</button>
-      {(modal || state.pendingEventChoice) ? (
+      {(effectiveModal || state.pendingEventChoice) ? (
         <Suspense fallback={null}>
           <GameDialogs
             actions={availableActions}
             bookmarkedIds={bookmarkedActionIds}
             detailAction={detailAction}
-            closeModal={() => setModal(undefined)}
-            modal={modal}
+            closeModal={closeModal}
+            modal={effectiveModal}
             restart={onRestart}
             setVisibleActionGroupIds={setVisibleActionGroupIds}
             setState={setState}
@@ -193,9 +200,12 @@ function GameScreen({
   const [searchQuery, setSearchQuery] = useState('');
   const [rewinding, setRewinding] = useState(false);
   const visible = getVisibleStats(state);
-  const actions = useMemo(() => getAvailableActions(state), [state.month, state.pendingEventChoice?.id, state.gameOver, state.career.employmentStatus, state.stats.cash, state.career.portfolioCount, state.stats.techXp, state.stats.aiXp, state.stats.reputationXp]);
+  const actions = getAvailableActions(state);
+  const effectiveSelectedActionGroup = visibleActionGroupIds.includes(selectedActionGroup)
+    ? selectedActionGroup
+    : visibleActionGroupIds[0] ?? DEFAULT_ACTION_GROUP;
   const groupActions = useMemo(() => {
-    let filtered = actions.filter(action => action.group === selectedActionGroup && visibleActionGroupIds.includes(action.group));
+    let filtered = actions.filter(action => action.group === effectiveSelectedActionGroup && visibleActionGroupIds.includes(action.group));
     if (searchQuery.trim()) {
       const q = searchQuery.trim().toLowerCase();
       filtered = filtered.filter(action =>
@@ -204,7 +214,7 @@ function GameScreen({
       );
     }
     return filtered;
-  }, [actions, selectedActionGroup, searchQuery, visibleActionGroupIds]);
+  }, [actions, effectiveSelectedActionGroup, searchQuery, visibleActionGroupIds]);
   const cashWan = state.stats.cash / 10000;
   const totalMonths = 23 * 12;
   const progress = Math.min(100, state.month / totalMonths * 100);
@@ -219,12 +229,6 @@ function GameScreen({
     state.crisis.severeIllness.active ? '大病治疗' : null,
     state.crisis.majorUnemployment.active ? '长期待业' : null
   ].filter(Boolean) as string[];
-
-  useEffect(() => {
-    if (!visibleActionGroupIds.includes(selectedActionGroup)) {
-      setSelectedActionGroup(visibleActionGroupIds[0] ?? DEFAULT_ACTION_GROUP);
-    }
-  }, [selectedActionGroup, visibleActionGroupIds]);
 
   function executeActionNow(action: AvailableAction) {
     if (!action.available || state.gameOver || state.pendingEventChoice) return;
@@ -340,7 +344,7 @@ function GameScreen({
             <div className="action-tabs" role="tablist" aria-label="行动分类">
               {ACTION_GROUP_MAP.filter(group => visibleActionGroupIds.includes(group.id)).map(group => (
                 <button
-                  className={group.id === selectedActionGroup ? 'action-tab active' : 'action-tab'}
+                  className={group.id === effectiveSelectedActionGroup ? 'action-tab active' : 'action-tab'}
                   key={group.id}
                   onClick={() => { setSelectedActionGroup(group.id); setSearchQuery(''); }}
                   type="button"

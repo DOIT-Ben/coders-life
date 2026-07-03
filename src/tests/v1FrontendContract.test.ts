@@ -1,19 +1,25 @@
 import { describe, expect, it } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import appSource from '../App.tsx?raw';
 import startProfilesSource from '../config/startProfiles.ts?raw';
 import gameContainerSource from '../components/GameContainer.tsx?raw';
 import panelsSource from '../components/panels.tsx?raw';
 import lifeLogSource from '../components/LifeLog.tsx?raw';
 import gameDialogsSource from '../components/GameDialogs.tsx?raw';
+import modalShellSource from '../components/dialogs/ModalShell.tsx?raw';
+import feedbackDialogSource from '../components/dialogs/FeedbackDialog.tsx?raw';
+import achievementDialogSource from '../components/dialogs/AchievementDialog.tsx?raw';
+import shopDialogSource from '../components/dialogs/ShopDialog.tsx?raw';
 
 const appCss = readFileSync(new URL('../styles/app.css', import.meta.url), 'utf8').replace(/\r\n/g, '\n');
 const ciWorkflow = readFileSync(new URL('../../.github/workflows/ci.yml', import.meta.url), 'utf8');
+const eslintConfig = readFileSync(new URL('../../eslint.config.js', import.meta.url), 'utf8');
+const componentDir = new URL('../components/', import.meta.url);
+const componentPath = componentDir.pathname;
+const dialogSource = modalShellSource + feedbackDialogSource + achievementDialogSource + shopDialogSource;
 
 describe('v1 frontend contract', () => {
-  const worldStatusBarSource = readFileSync(new URL('../components/WorldStatusBar.tsx', import.meta.url), 'utf8');
-  const debugPanelSource = readFileSync(new URL('../components/DebugPanel.tsx', import.meta.url), 'utf8');
-  const source = appSource + gameContainerSource + gameDialogsSource + panelsSource + lifeLogSource;
+  const source = appSource + gameContainerSource + gameDialogsSource + dialogSource + panelsSource + lifeLogSource;
 
   it('keeps v2 implementation labels out of the visible v1 shell', () => {
     expect(source).not.toContain('V2 ENGINE');
@@ -27,14 +33,10 @@ describe('v1 frontend contract', () => {
   });
 
   it('does not surface legacy global AI replacement in status or debug UI', () => {
-    expect(worldStatusBarSource).not.toContain('state.world.aiReplacement');
-    expect(worldStatusBarSource).not.toContain('AI重构');
-    expect(worldStatusBarSource).toContain('deriveRoleAiPressure');
-    expect(worldStatusBarSource).toContain('岗位AI压力');
-
-    expect(debugPanelSource).not.toContain('aiReplacement');
-    expect(debugPanelSource).toContain('deriveRoleAiPressure');
-    expect(debugPanelSource).toContain('laborAiDisruption');
+    expect(source).not.toContain('state.world.aiReplacement');
+    expect(source).not.toContain('AI重构');
+    expect(panelsSource).toContain('deriveCareerStability');
+    expect(panelsSource).toContain('职业稳定');
   });
 
   it('uses categorized action tabs with detailed sub-actions', () => {
@@ -159,9 +161,9 @@ describe('v1 frontend contract', () => {
     const headerSource = gameContainerSource.slice(headerStart, headerEnd);
     expect(headerSource).not.toContain("openModal('feedback')");
     expect(headerSource).not.toContain('feedback-fab');
-    expect(gameDialogsSource).toContain('FeedbackDialog');
+    expect(dialogSource).toContain('FeedbackDialog');
     expect(gameContainerSource).toContain('feedback-fab');
-    expect(gameDialogsSource).toContain('github.com/DOIT-Ben/coders-life/issues/new');
+    expect(dialogSource).toContain('github.com/DOIT-Ben/coders-life/issues/new');
     expect(appCss).toContain('.feedback-fab');
     expect(appCss).toContain('.feedback-grid');
     expect(appCss).toContain('.feedback-option');
@@ -174,19 +176,23 @@ describe('v1 frontend contract', () => {
   it('loads low-frequency dialogs outside the main game container chunk', () => {
     expect(gameContainerSource).toContain("lazy(() => import('./GameDialogs'))");
     expect(gameContainerSource).toContain('<Suspense fallback={null}>');
-    ['FeedbackDialog', 'AchievementDialog', 'ShopDialog', 'BookmarkDialog', 'EndingDialog'].forEach(token => {
+    ['FeedbackDialog', 'AchievementDialog', 'ShopDialog'].forEach(token => {
+      expect(gameContainerSource).not.toContain(`function ${token}`);
+      expect(dialogSource).toContain(`function ${token}`);
+    });
+    ['BookmarkDialog', 'EndingDialog'].forEach(token => {
       expect(gameContainerSource).not.toContain(`function ${token}`);
       expect(gameDialogsSource).toContain(`function ${token}`);
     });
   });
 
   it('uses accessible modal semantics and named close controls', () => {
-    expect(gameDialogsSource).toContain('function ModalShell');
-    expect(gameDialogsSource).toContain('role="dialog"');
-    expect(gameDialogsSource).toContain('aria-modal="true"');
-    expect(gameDialogsSource).toContain('aria-labelledby={titleId}');
-    expect(gameDialogsSource).toContain('aria-label={`关闭${title}`}');
-    expect(gameDialogsSource).toContain("event.key === 'Escape'");
+    expect(dialogSource).toContain('function ModalShell');
+    expect(dialogSource).toContain('role="dialog"');
+    expect(dialogSource).toContain('aria-modal="true"');
+    expect(dialogSource).toContain('aria-labelledby={titleId}');
+    expect(dialogSource).toContain('aria-label={`关闭${title}`}');
+    expect(dialogSource).toContain("event.key === 'Escape'");
   });
 
   it('keeps action detail and category management dialogs in the low-frequency dialog chunk', () => {
@@ -196,21 +202,48 @@ describe('v1 frontend contract', () => {
     expect(gameDialogsSource).toContain('行动详情');
   });
 
+  it('keeps batch 1 engineering debt closed', () => {
+    [
+      'WorldStatusBar.tsx',
+      'DebugPanel.tsx',
+      'StatPanel.tsx',
+      'ActionPanel.tsx',
+      'ShopModal.tsx',
+      'AchievementModal.tsx'
+    ].forEach(fileName => {
+      expect(existsSync(new URL(`../components/${fileName}`, import.meta.url))).toBe(false);
+    });
+
+    const oversizedComponents = readdirSync(componentPath, { recursive: true })
+      .filter(entry => typeof entry === 'string' && entry.endsWith('.tsx'))
+      .map(entry => {
+        const path = `${componentPath}${entry}`;
+        const lines = readFileSync(path, 'utf8').split(/\r?\n/).length;
+        return { entry, lines, isFile: statSync(path).isFile() };
+      })
+      .filter(item => item.isFile && item.lines > 500);
+    expect(oversizedComponents).toEqual([]);
+
+    expect(eslintConfig).toContain("'react-hooks/set-state-in-effect': 'error'");
+    expect(eslintConfig).not.toContain("'react-hooks/set-state-in-effect': 'warn'");
+    expect(gameDialogsSource).toContain("from './dialogs/");
+  });
+
   it('routes shop purchases through durable shop effects', () => {
-    expect(gameDialogsSource).toContain('buyShopItem');
+    expect(dialogSource).toContain('buyShopItem');
     expect(source).not.toContain('applyDelta(state, { cash: -item.price, ...item.effect })');
   });
 
   it('marks purchased shop items with an owned state', () => {
-    expect(gameDialogsSource).toContain('shop-item owned');
-    expect(gameDialogsSource).toContain('已装备');
-    expect(gameDialogsSource).toContain('已购入');
+    expect(dialogSource).toContain('shop-item owned');
+    expect(dialogSource).toContain('已装备');
+    expect(dialogSource).toContain('已购入');
     expect(appCss).toContain('.shop-item.owned');
     expect(appCss).toContain('.btn-buy.owned');
   });
 
   it('keeps shop and action panels scrollable inside the viewport', () => {
-    expect(gameDialogsSource).toContain('shop-list');
+    expect(source).toContain('shop-list');
     expect(appCss).toContain('max-height: min(720px, calc(100dvh - 32px));');
     expect(appCss).toContain('display: flex;\n  flex-direction: column;');
     expect(appCss).toContain('.modal-head {\n  flex: 0 0 auto;');
@@ -244,12 +277,12 @@ describe('v1 frontend contract', () => {
   });
 
   it('shows achievement progress instead of identical locked badges', () => {
-    expect(gameDialogsSource).toContain('getAchievementProgress');
-    expect(gameDialogsSource).toContain('ach-progress');
-    expect(gameDialogsSource).toContain('ach-progress-bar');
-    expect(gameDialogsSource).toContain('ach-desc');
+    expect(dialogSource).toContain('getAchievementProgress');
+    expect(dialogSource).toContain('ach-progress');
+    expect(dialogSource).toContain('ach-progress-bar');
+    expect(dialogSource).toContain('ach-desc');
     ['缓冲', '恢复', '迁移', '近12个月有高压加班记录'].forEach(token => {
-      expect(gameDialogsSource).toContain(token);
+      expect(dialogSource).toContain(token);
     });
     expect(source).not.toContain('工具人的一生');
     expect(appCss).toContain('.ach-progress');
