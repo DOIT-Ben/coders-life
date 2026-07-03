@@ -118,25 +118,27 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.event-choice-option');
   });
 
-  it('supports monthly multi-action planning instead of instant single-action execution', () => {
-    ['行动选择', 'togglePlannedAction', 'submitMonthlyPlan', '收藏'].forEach(token => {
+  it('executes action cards directly with undo detail and management controls', () => {
+    ['行动选择', 'executeActionNow', 'undoLastAction', '管理', '详情', '收藏'].forEach(token => {
       expect(gameContainerSource).toContain(token);
     });
-    expect(gameContainerSource).not.toContain('planMonth(state, [action.id])');
-    expect(gameContainerSource).toContain('plannedActionIds');
-    expect(source).toContain('monthly-budget');
-    expect(appCss).toContain('.monthly-plan-panel');
-    expect(appCss).toContain('.monthly-plan-submit');
+    expect(gameContainerSource).toContain('applyAction(state, action.id)');
+    expect(gameContainerSource).not.toContain('plannedActionIds');
+    expect(gameContainerSource).not.toContain('submitMonthlyPlan');
+    expect(source).not.toContain('monthly-budget');
+    expect(appCss).not.toContain('.monthly-plan-panel');
+    expect(appCss).not.toContain('.monthly-plan-submit');
     expect(appCss).toContain('overflow-y: auto');
   });
 
   it('keeps action cards free of nested interactive bookmark controls', () => {
     expect(gameContainerSource).toContain('action-btn-main');
-    expect(gameContainerSource).toContain('aria-label={`选择行动：${slotAction.name}`}');
+    expect(gameContainerSource).toContain('aria-label={`执行行动：${slotAction.name}`}');
     expect(gameContainerSource).toContain('aria-label={`收藏行动：${slotAction.name}`}');
+    expect(gameContainerSource).toContain('aria-label={`查看详情：${slotAction.name}`}');
     expect(appCss).toMatch(/\.action-btn\s*\{[^}]*display:\s*flex;[^}]*flex-direction:\s*column;[^}]*flex:\s*0 0 auto;/s);
     expect(appCss).toMatch(/\.action-btn-main\s*\{[^}]*position:\s*relative;[^}]*z-index:\s*1;/s);
-    expect(appCss).toMatch(/\.act-bookmark\s*\{[^}]*z-index:\s*2;/s);
+    expect(appCss).toMatch(/\.act-tool-row\s*\{[^}]*display:\s*flex;/s);
     expect(gameContainerSource).not.toContain('role="button" tabIndex={0}');
     expect(gameContainerSource).not.toContain('<span className={`act-bookmark');
   });
@@ -184,6 +186,13 @@ describe('v1 frontend contract', () => {
     expect(gameDialogsSource).toContain("event.key === 'Escape'");
   });
 
+  it('keeps action detail and category management dialogs in the low-frequency dialog chunk', () => {
+    expect(gameDialogsSource).toContain('ActionDetailDialog');
+    expect(gameDialogsSource).toContain('ActionManageDialog');
+    expect(gameDialogsSource).toContain('管理行动分类');
+    expect(gameDialogsSource).toContain('行动详情');
+  });
+
   it('routes shop purchases through durable shop effects', () => {
     expect(gameDialogsSource).toContain('buyShopItem');
     expect(source).not.toContain('applyDelta(state, { cash: -item.price, ...item.effect })');
@@ -214,7 +223,7 @@ describe('v1 frontend contract', () => {
 
   it('keeps mobile controls at touch-friendly sizes without disabling action panel scroll', () => {
     expect(appCss).toContain('@media (max-width: 660px)');
-    ['.btn-h', '.action-tab', '.action-tab-search', '.action-tab-search-clear', '.act-bookmark', '.modal-head button', '.btn-buy', '.monthly-plan-submit'].forEach(selector => {
+    ['.btn-h', '.action-tab', '.action-tab-search', '.action-tab-search-clear', '.act-bookmark', '.act-detail', '.modal-head button', '.btn-buy'].forEach(selector => {
       expect(appCss).toContain(selector);
     });
     expect(appCss).toContain('min-height: 44px');

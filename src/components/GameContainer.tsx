@@ -1,13 +1,14 @@
 import { lazy, Suspense, useEffect, useState, useMemo } from 'react';
 import type { ActionConfig, CareerTrack, CityTier, EffectDelta, GameState, LogType, PlayerValueProfile } from '../types/game';
-import { createInitialState, getAvailableActions, planMonth } from '../core/gameEngine';
+import { applyAction, createInitialState, getAvailableActions } from '../core/gameEngine';
 import { getVisibleStats } from '../core/formulas';
 import { saveGame } from '../storage/saveManager';
 import { getCareer } from '../config/careers';
 import { addLog } from '../core/logs';
 import { getActionInsights, getBodySignal } from '../systems/actionInsightSystem';
-import { actionPlanCost, buildMonthlyPlan, isPlanOverBudget } from '../systems/monthlyPlanSystem';
+import { actionPlanCost } from '../systems/monthlyPlanSystem';
 import { deriveCareerStability, deriveHealthDebt, deriveLifeSatisfaction, derivePressureSnapshot } from '../systems/derivedStateSystem';
+import { useUndoPill } from '../systems/undoSystem';
 
 const GameDialogs = lazy(() => import('./GameDialogs'));
 
@@ -24,7 +25,7 @@ export type AvailableAction = ActionConfig & {
   reason?: string;
 };
 
-export type GameModal = 'ach' | 'shop' | 'ending' | 'bookmark' | 'feedback';
+export type GameModal = 'ach' | 'shop' | 'ending' | 'bookmark' | 'feedback' | 'actionDetail' | 'actionManage';
 
 const ACTION_GROUP_MAP: Array<{ id: ActionConfig['group']; label: string }> = [
   { id: 'learn', label: '学习成长' },
@@ -99,6 +100,9 @@ export default function GameContainer({
   const [state, setState] = useState<GameState>(() => savedState ?? createInitialState(track, cityTier, undefined, valueProfile));
   const [modal, setModal] = useState<GameModal | undefined>();
   const [saveStatus, setSaveStatus] = useState('');
+  const [undoSnapshot, setUndoSnapshot] = useState<GameState | undefined>();
+  const [detailAction, setDetailAction] = useState<AvailableAction | undefined>();
+  const [visibleActionGroupIds, setVisibleActionGroupIds] = useState<ActionConfig['group'][]>(() => ACTION_GROUP_MAP.map(group => group.id));
   const [bookmarkedActionIds, setBookmarkedActionIds] = useState<string[]>(() => {
     try {
       const raw = localStorage.getItem('ms_bookmarks');
@@ -128,19 +132,35 @@ export default function GameContainer({
 
   return (
     <>
-      <GameScreen state={state} setState={setState} openModal={setModal} changeCharacter={onChangeCharacter} saveStatus={saveStatus} setSaveStatus={setSaveStatus} bookmarkedActionIds={bookmarkedActionIds} toggleBookmark={toggleBookmark} />
+      <GameScreen
+        bookmarkedActionIds={bookmarkedActionIds}
+        changeCharacter={onChangeCharacter}
+        openModal={setModal}
+        saveStatus={saveStatus}
+        setDetailAction={setDetailAction}
+        setSaveStatus={setSaveStatus}
+        setState={setState}
+        setUndoSnapshot={setUndoSnapshot}
+        state={state}
+        toggleBookmark={toggleBookmark}
+        undoSnapshot={undoSnapshot}
+        visibleActionGroupIds={visibleActionGroupIds}
+      />
       <button className="feedback-fab" type="button" onClick={() => setModal('feedback')} aria-label="提交反馈">反馈</button>
       {(modal || state.pendingEventChoice) ? (
         <Suspense fallback={null}>
           <GameDialogs
             actions={availableActions}
             bookmarkedIds={bookmarkedActionIds}
+            detailAction={detailAction}
             closeModal={() => setModal(undefined)}
             modal={modal}
             restart={onRestart}
+            setVisibleActionGroupIds={setVisibleActionGroupIds}
             setState={setState}
             state={state}
             toggleBookmark={toggleBookmark}
+            visibleActionGroupIds={visibleActionGroupIds}
           />
         </Suspense>
       ) : null}
@@ -155,6 +175,10 @@ function GameScreen({
   changeCharacter,
   saveStatus,
   setSaveStatus,
+  setUndoSnapshot,
+  undoSnapshot,
+  setDetailAction,
+  visibleActionGroupIds,
   bookmarkedActionIds,
   toggleBookmark
 }: {
@@ -164,24 +188,19 @@ function GameScreen({
   changeCharacter: () => void;
   saveStatus: string;
   setSaveStatus: (status: string) => void;
+  setUndoSnapshot: (snapshot: GameState | undefined) => void;
+  undoSnapshot?: GameState;
+  setDetailAction: (action: AvailableAction | undefined) => void;
+  visibleActionGroupIds: ActionConfig['group'][];
   bookmarkedActionIds: string[];
   toggleBookmark: (actionId: string) => void;
 }) {
   const [selectedActionGroup, setSelectedActionGroup] = useState<ActionConfig['group']>(DEFAULT_ACTION_GROUP);
   const [searchQuery, setSearchQuery] = useState('');
-  const [plannedActionIds, setPlannedActionIds] = useState<string[]>([]);
   const visible = getVisibleStats(state);
   const actions = useMemo(() => getAvailableActions(state), [state.month, state.pendingEventChoice?.id, state.gameOver, state.career.employmentStatus, state.stats.cash, state.career.portfolioCount, state.stats.techXp, state.stats.aiXp, state.stats.reputationXp]);
-  const selectedActions = useMemo(
-    () => plannedActionIds
-      .map(actionId => actions.find(action => action.id === actionId))
-      .filter(Boolean) as AvailableAction[],
-    [actions, plannedActionIds]
-  );
-  const monthlyPlan = useMemo(() => buildMonthlyPlan(state, selectedActions), [state, selectedActions]);
-  const planOverBudget = isPlanOverBudget(monthlyPlan);
   const groupActions = useMemo(() => {
-    let filtered = actions.filter(action => action.group === selectedActionGroup);
+    let filtered = actions.filter(action => action.group === selectedActionGroup && visibleActionGroupIds.includes(action.group));
     if (searchQuery.trim()) {
       const q = searchQuery.trim().toLowerCase();
       filtered = filtered.filter(action =>
@@ -190,7 +209,7 @@ function GameScreen({
       );
     }
     return filtered;
-  }, [actions, selectedActionGroup, searchQuery]);
+  }, [actions, selectedActionGroup, searchQuery, visibleActionGroupIds]);
   const cashWan = state.stats.cash / 10000;
   const totalMonths = 23 * 12;
   const progress = Math.min(100, state.month / totalMonths * 100);
@@ -201,22 +220,26 @@ function GameScreen({
   const recentDecisionLog = [...state.decisionLog].slice(-3).reverse();
 
   useEffect(() => {
-    setPlannedActionIds([]);
-  }, [state.month, state.pendingEventChoice?.id, state.gameOver]);
-
-  function togglePlannedAction(action: AvailableAction) {
-    if (state.gameOver || state.pendingEventChoice) return;
-    if (plannedActionIds.includes(action.id)) {
-      setPlannedActionIds(current => current.filter(actionId => actionId !== action.id));
-      return;
+    if (!visibleActionGroupIds.includes(selectedActionGroup)) {
+      setSelectedActionGroup(visibleActionGroupIds[0] ?? DEFAULT_ACTION_GROUP);
     }
+  }, [selectedActionGroup, visibleActionGroupIds]);
+
+  function executeActionNow(action: AvailableAction) {
     if (!action.available || state.gameOver || state.pendingEventChoice) return;
-    setPlannedActionIds(current => [...current, action.id]);
+    setUndoSnapshot(structuredClone(state));
+    setState(applyAction(state, action.id));
   }
 
-  function submitMonthlyPlan() {
-    if (plannedActionIds.length === 0 || planOverBudget || state.gameOver || state.pendingEventChoice) return;
-    setState(planMonth(state, plannedActionIds));
+  function undoLastAction() {
+    if (!undoSnapshot || (state.inventory.undo_pill ?? 0) <= 0 || state.pendingEventChoice) return;
+    setState(useUndoPill(state, undoSnapshot));
+    setUndoSnapshot(undefined);
+  }
+
+  function openActionDetail(action: AvailableAction) {
+    setDetailAction(action);
+    openModal('actionDetail');
   }
 
   function handleSave() {
@@ -244,6 +267,7 @@ function GameScreen({
           <button className="btn-h" onClick={() => openModal('ach')}>成就</button>
           <button className="btn-h" onClick={() => openModal('shop')}>商店</button>
           <button className="btn-h" onClick={() => openModal('bookmark')}>收藏</button>
+          <button className="btn-h" disabled={!undoSnapshot || (state.inventory.undo_pill ?? 0) <= 0 || Boolean(state.pendingEventChoice)} onClick={undoLastAction}>撤销</button>
           <button className="btn-h" onClick={handleSave}>保存</button>
           <button className="btn-h red" onClick={changeCharacter}>换角色</button>
         </div>
@@ -277,9 +301,12 @@ function GameScreen({
         </div>
         <div className="right-col">
           <div className="action-card">
-            <div className="action-hdr">行动选择</div>
+            <div className="action-hdr">
+              <span>行动选择</span>
+              <button className="action-manage-btn" type="button" onClick={() => openModal('actionManage')}>管理</button>
+            </div>
             <div className="action-tabs" role="tablist" aria-label="行动分类">
-              {ACTION_GROUP_MAP.map(group => (
+              {ACTION_GROUP_MAP.filter(group => visibleActionGroupIds.includes(group.id)).map(group => (
                 <button
                   className={group.id === selectedActionGroup ? 'action-tab active' : 'action-tab'}
                   key={group.id}
@@ -300,34 +327,6 @@ function GameScreen({
                 {searchQuery && <button className="action-tab-search-clear" type="button" onClick={() => setSearchQuery('')}>✕</button>}
               </span>
             </div>
-            <div className={planOverBudget ? 'monthly-plan-panel overloaded' : 'monthly-plan-panel'}>
-              <div className="monthly-budget">
-                <span>本月计划</span>
-                <span>已选择 {plannedActionIds.length} 项</span>
-              </div>
-              <div className="monthly-budget-bars">
-                <span>时间 {monthlyPlan.timeBudget.used}/{monthlyPlan.timeBudget.available}</span>
-                <span>精力 {monthlyPlan.energyBudget.used}/{monthlyPlan.energyBudget.available}</span>
-              </div>
-              <div className="monthly-plan-chips">
-                {selectedActions.length === 0 ? (
-                  <span className="monthly-plan-empty">从下方选择本月行动</span>
-                ) : selectedActions.map(action => (
-                  <button className="monthly-plan-chip" key={action.id} type="button" onClick={() => togglePlannedAction(action)}>
-                    {action.name} ×
-                  </button>
-                ))}
-              </div>
-              {planOverBudget ? <div className="monthly-plan-warning">计划超出本月时间或精力，请减少行动。</div> : null}
-              <button
-                className="monthly-plan-submit"
-                type="button"
-                disabled={plannedActionIds.length === 0 || planOverBudget || state.gameOver || Boolean(state.pendingEventChoice)}
-                onClick={submitMonthlyPlan}
-              >
-                执行本月计划
-              </button>
-            </div>
             <div className="action-list categorized-action-list">
               {groupActions.length === 0 ? (
                 <div className="action-empty-state">当前分类下没有可用行动</div>
@@ -336,32 +335,28 @@ function GameScreen({
                   const insight = getActionInsights(state, slotAction);
                   const isBookmarked = bookmarkedActionIds.includes(slotAction.id);
                   const disabled = !slotAction.available || state.gameOver || Boolean(state.pendingEventChoice);
-                  const selected = plannedActionIds.includes(slotAction.id);
+                  const cost = actionPlanCost(slotAction);
                   return (
                     <article
-                      className={`${selected ? 'action-btn selected' : 'action-btn'}${disabled ? ' disabled' : ''}`}
+                      className={`action-btn${disabled ? ' disabled' : ''}`}
                       key={slotAction.id}
                     >
                       <button
-                        aria-label={`选择行动：${slotAction.name}`}
+                        aria-label={`执行行动：${slotAction.name}`}
                         className="action-btn-main"
                         disabled={disabled}
-                        onClick={() => togglePlannedAction(slotAction)}
+                        onClick={() => executeActionNow(slotAction)}
                         type="button"
                       >
                         <div className="act-head">
                           <span className="act-icon">{slotAction.icon}</span>
                           <span className="act-name">{slotAction.name}</span>
-                          {selected ? <span className="act-check">已计划</span> : null}
                         </div>
-                        <div className="act-chips">{renderEffectChips(slotAction.visibleEffect)}</div>
+                        <div className="act-chips">{renderEffectChips(slotAction.visibleEffect, 3)}</div>
                         <div className="act-cost">
-                          {(() => {
-                            const cost = actionPlanCost(slotAction);
-                            return `时间 ${cost.time} · 精力 ${cost.energy}`;
-                          })()}
+                          时间 {cost.time} · 精力 {cost.energy}
                         </div>
-                        <div className="act-desc">{slotAction.description}</div>
+                        <div className="act-desc">{slotAction.description.split('。')[0]}。</div>
                         <div className="act-meta">
                           <span>{slotAction.benefitLabel}</span>
                           <span>· {slotAction.riskLabel}</span>
@@ -375,14 +370,24 @@ function GameScreen({
                         ) : null}
                         {slotAction.reason ? <div className="act-reason">{slotAction.reason}</div> : null}
                       </button>
-                      <button
-                        aria-label={`收藏行动：${slotAction.name}`}
-                        className={`act-bookmark ${isBookmarked ? 'on' : ''}`}
-                        onClick={() => toggleBookmark(slotAction.id)}
-                        type="button"
-                      >
-                        {isBookmarked ? '★' : '☆'}
-                      </button>
+                      <div className="act-tool-row">
+                        <button
+                          aria-label={`收藏行动：${slotAction.name}`}
+                          className={`act-bookmark ${isBookmarked ? 'on' : ''}`}
+                          onClick={() => toggleBookmark(slotAction.id)}
+                          type="button"
+                        >
+                          {isBookmarked ? '★ 收藏' : '☆ 收藏'}
+                        </button>
+                        <button
+                          aria-label={`查看详情：${slotAction.name}`}
+                          className="act-detail"
+                          onClick={() => openActionDetail(slotAction)}
+                          type="button"
+                        >
+                          详情
+                        </button>
+                      </div>
                     </article>
                   );
                 })

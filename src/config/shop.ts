@@ -17,7 +17,8 @@ const SHOP_ITEM_DEFINITIONS = [
   { id: 'quiet_space', category: 'housing', name: '安静工作角', price: 1200, maxCount: 1, description: '提供无打扰环境，每月+1精神+1专注。', effect: { mental: 1, focus: 1 } },
   { id: 'window_light', category: 'housing', name: '窗边自然光位', price: 300, maxCount: 1, description: '整理出有窗和自然光的位置，每月+1精神+1健康。', effect: { mental: 1, health: 1 } },
   { id: 'screen_time_app', category: 'subscription', name: '屏幕时间工具', price: 120, maxCount: 1, description: '帮助限制短视频和娱乐应用使用，每月+1专注。', effect: { focus: 1 } },
-  { id: 'password_manager', category: 'subscription', name: '密码管理器', price: 120, maxCount: 1, description: '改善账号安全和数字文件整理效率，每月+1工具习惯。', effect: { toolHabitState: 1 } }
+  { id: 'password_manager', category: 'subscription', name: '密码管理器', price: 120, maxCount: 1, description: '改善账号安全和数字文件整理效率，每月+1工具习惯。', effect: { toolHabitState: 1 } },
+  { id: 'undo_pill', category: 'risk', name: '后悔药', price: 10000, description: '撤销最近一次行动。每个阶段最多购买 1 瓶，使用后消耗。', effect: {} }
 ] satisfies ShopItemConfig[];
 
 export const SHOP_ITEMS: ShopItemConfig[] = SHOP_ITEM_DEFINITIONS.map(item => withShopEvidence(item));

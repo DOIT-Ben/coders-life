@@ -22,6 +22,12 @@ function buttonByText(text: string): HTMLButtonElement {
   return button as HTMLButtonElement;
 }
 
+function buttonByLabel(label: string): HTMLButtonElement {
+  const button = document.querySelector(`button[aria-label="${label}"]`);
+  if (!button) throw new Error(`Missing button with aria-label: ${label}`);
+  return button as HTMLButtonElement;
+}
+
 describe('monthly multi-action plan UI', () => {
   beforeEach(() => {
     localStorage.clear();
@@ -33,7 +39,7 @@ describe('monthly multi-action plan UI', () => {
     document.body.innerHTML = '';
   });
 
-  it('keeps selected actions pending until the player submits the monthly plan', async () => {
+  it('executes an action directly from the card and offers detail and management controls', async () => {
     const container = document.createElement('div');
     document.body.appendChild(container);
     const root = createRoot(container);
@@ -54,27 +60,42 @@ describe('monthly multi-action plan UI', () => {
       click(buttonByText('学习成长'));
     });
 
+    expect(document.body.textContent).not.toContain('执行本月计划');
+    expect(document.body.textContent).toContain('管理');
+
+    await act(async () => {
+      click(buttonByText('详情'));
+    });
+
+    await vi.waitFor(() => {
+      expect(document.body.textContent).toContain('行动详情');
+      expect(document.body.textContent).toContain('系统学习');
+      expect(document.body.textContent).toContain('补齐技术底盘');
+    }, { timeout: 5000 });
+
+    await act(async () => {
+      click(buttonByLabel('关闭行动详情'));
+    });
+
+    await act(async () => {
+      click(buttonByText('管理'));
+    });
+
+    await vi.waitFor(() => {
+      expect(document.body.textContent).toContain('管理行动分类');
+      expect(document.body.textContent).toContain('恢复放松');
+    }, { timeout: 5000 });
+
+    await act(async () => {
+      click(buttonByLabel('关闭管理行动分类'));
+    });
+
     await act(async () => {
       click(buttonByText('系统学习'));
     });
 
-    expect(document.body.textContent).toContain('第 0 天');
-    expect(document.body.textContent).toContain('已选择 1 项');
-
-    await act(async () => {
-      click(buttonByText('AI工具训练'));
-    });
-
-    expect(document.body.textContent).toContain('第 0 天');
-    expect(document.body.textContent).toContain('已选择 2 项');
-
-    await act(async () => {
-      click(buttonByText('执行本月计划'));
-    });
-
     expect(document.body.textContent).toContain('第 30 天');
     expect(document.body.textContent).toContain('系统学习');
-    expect(document.body.textContent).toContain('AI工具训练');
 
     await act(async () => {
       root.unmount();

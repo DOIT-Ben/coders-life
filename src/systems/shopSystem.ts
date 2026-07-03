@@ -2,16 +2,30 @@ import { SHOP_ITEMS } from '../config/shop';
 import { addLog } from '../core/logs';
 import type { GameState } from '../types/game';
 
+function undoPillFlagKey(state: GameState): string {
+  return `undo_pill_bought_${state.phase}`;
+}
+
+export function getShopPurchaseBlockReason(state: GameState, id: string): string | undefined {
+  const item = SHOP_ITEMS.find(candidate => candidate.id === id);
+  if (!item) return '商品不存在。';
+  const owned = state.inventory[id] ?? 0;
+  if (id === 'undo_pill' && state.flags[undoPillFlagKey(state)]) return '本阶段已购买';
+  if (item.maxCount && owned >= item.maxCount) return item.maxCount === 1 ? '已拥有' : '已购入';
+  if (state.stats.cash < item.price) return '现金不足';
+  return undefined;
+}
+
 export function buyShopItem(state: GameState, id: string): GameState {
   const item = SHOP_ITEMS.find(candidate => candidate.id === id);
   if (!item) return state;
+  if (getShopPurchaseBlockReason(state, id)) return state;
   const owned = state.inventory[id] ?? 0;
-  if (item.maxCount && owned >= item.maxCount) return state;
-  if (state.stats.cash < item.price) return state;
 
   let next = structuredClone(state);
   next.stats.cash -= item.price;
   next.inventory[id] = owned + 1;
+  if (id === 'undo_pill') next.flags[undoPillFlagKey(state)] = true;
 
   switch (id) {
     case 'dual_monitor':

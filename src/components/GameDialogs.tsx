@@ -1,12 +1,12 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
-import type { ReactNode } from 'react';
+import type { Dispatch, ReactNode, SetStateAction } from 'react';
 import type { ActionConfig, EffectDelta, GameState } from '../types/game';
 import { getVisibleStats } from '../core/formulas';
 import { ACHIEVEMENTS } from '../config/achievements';
 import { SHOP_ITEMS } from '../config/shop';
 import { getCareer } from '../config/careers';
 import { applyEventChoice } from '../systems/eventSystem';
-import { buyShopItem } from '../systems/shopSystem';
+import { buyShopItem, getShopPurchaseBlockReason } from '../systems/shopSystem';
 import type { AvailableAction, GameModal } from './GameContainer';
 
 type AchievementProgress = {
@@ -18,11 +18,14 @@ type DialogProps = {
   actions: AvailableAction[];
   bookmarkedIds: string[];
   closeModal: () => void;
+  detailAction?: AvailableAction;
   modal?: GameModal;
   restart: () => void;
+  setVisibleActionGroupIds: Dispatch<SetStateAction<ActionConfig['group'][]>>;
   setState: (state: GameState) => void;
   state: GameState;
   toggleBookmark: (actionId: string) => void;
+  visibleActionGroupIds: ActionConfig['group'][];
 };
 
 type ModalShellProps = {
@@ -146,17 +149,22 @@ export default function GameDialogs({
   actions,
   bookmarkedIds,
   closeModal,
+  detailAction,
   modal,
   restart,
+  setVisibleActionGroupIds,
   setState,
   state,
-  toggleBookmark
+  toggleBookmark,
+  visibleActionGroupIds
 }: DialogProps) {
   return (
     <>
       {modal === 'ach' && <AchievementDialog state={state} close={closeModal} />}
       {modal === 'shop' && <ShopDialog state={state} setState={setState} close={closeModal} />}
       {modal === 'bookmark' && <BookmarkDialog actions={actions} bookmarkedIds={bookmarkedIds} toggleBookmark={toggleBookmark} close={closeModal} />}
+      {modal === 'actionDetail' && detailAction && <ActionDetailDialog action={detailAction} close={closeModal} />}
+      {modal === 'actionManage' && <ActionManageDialog visibleActionGroupIds={visibleActionGroupIds} setVisibleActionGroupIds={setVisibleActionGroupIds} close={closeModal} />}
       {modal === 'ending' && <EndingDialog state={state} close={closeModal} restart={restart} />}
       {modal === 'feedback' && <FeedbackDialog state={state} close={closeModal} />}
       {state.pendingEventChoice && <EventChoiceDialog state={state} setState={setState} />}
@@ -321,11 +329,7 @@ function getAchievementProgress(state: GameState, achievementId: string): Achiev
 
 function ShopDialog({ state, setState, close }: { state: GameState; setState: (state: GameState) => void; close: () => void }) {
   function buy(id: string) {
-    const item = SHOP_ITEMS.find(x => x.id === id);
-    if (!item) return;
-    const owned = state.inventory[id] ?? 0;
-    if (item.maxCount && owned >= item.maxCount) return;
-    if (state.stats.cash < item.price) return;
+    if (getShopPurchaseBlockReason(state, id)) return;
     setState(buyShopItem(state, id));
   }
 
@@ -334,10 +338,11 @@ function ShopDialog({ state, setState, close }: { state: GameState; setState: (s
       <div className="modal-scroll shop-list">
         {SHOP_ITEMS.map(item => {
           const owned = state.inventory[item.id] ?? 0;
-          const isMaxed = Boolean(item.maxCount && owned >= item.maxCount);
-          const disabled = state.stats.cash < item.price || isMaxed;
-          const buttonText = isMaxed
-            ? item.maxCount === 1 ? '已装备' : '已购入'
+          const blockReason = getShopPurchaseBlockReason(state, item.id);
+          const isMaxed = blockReason === '已拥有' || blockReason === '已购入' || blockReason === '本阶段已购买';
+          const disabled = Boolean(blockReason);
+          const label = blockReason
+            ? blockReason === '已拥有' ? '已装备' : blockReason
             : `¥${item.price.toLocaleString()}`;
           return (
             <div className={owned > 0 ? 'shop-item owned' : 'shop-item'} key={item.id}>
@@ -345,8 +350,104 @@ function ShopDialog({ state, setState, close }: { state: GameState; setState: (s
                 <div className="shop-name">{owned > 0 ? '✓ ' : ''}{item.name}</div>
                 <div className="shop-desc">{item.description}{owned > 0 ? ` · 已拥有 ${owned}` : ''}</div>
               </div>
-              <button className={isMaxed ? 'btn-buy owned' : 'btn-buy'} disabled={disabled} onClick={() => buy(item.id)}>{buttonText}</button>
+              <button className={isMaxed ? 'btn-buy owned' : 'btn-buy'} disabled={disabled} onClick={() => buy(item.id)}>{label}</button>
             </div>
+          );
+        })}
+      </div>
+    </ModalShell>
+  );
+}
+
+function ActionDetailDialog({ action, close }: { action: AvailableAction; close: () => void }) {
+  const requirementRows = action.requirements
+    ? Object.entries(action.requirements).map(([key, value]) => `${key}: ${String(value)}`)
+    : [];
+  const evidence = action.evidence;
+
+  return (
+    <ModalShell close={close} title="行动详情" wide>
+      <div className="modal-scroll action-detail-dialog">
+        <div className="action-detail-title">
+          <span className="act-icon">{action.icon}</span>
+          <span>{action.name}</span>
+        </div>
+        <div className="act-chips">{renderEffectChips(action.visibleEffect, 8)}</div>
+        <div className="action-detail-section">
+          <div className="action-detail-label">行动说明</div>
+          <div className="modal-body">{action.description}</div>
+        </div>
+        <div className="action-detail-grid">
+          <div>
+            <div className="action-detail-label">主要收益</div>
+            <div className="shop-desc">{action.benefitLabel}</div>
+          </div>
+          <div>
+            <div className="action-detail-label">主要风险</div>
+            <div className="shop-desc">{action.riskLabel}</div>
+          </div>
+          <div>
+            <div className="action-detail-label">时间成本</div>
+            <div className="shop-desc">{action.durationMonths} 个月</div>
+          </div>
+          <div>
+            <div className="action-detail-label">压力等级</div>
+            <div className="shop-desc">{action.stressLevel}</div>
+          </div>
+        </div>
+        {requirementRows.length > 0 ? (
+          <div className="action-detail-section">
+            <div className="action-detail-label">执行要求</div>
+            <div className="shop-desc">{requirementRows.join(' / ')}</div>
+          </div>
+        ) : null}
+        {evidence ? (
+          <div className="action-detail-section">
+            <div className="action-detail-label">依据</div>
+            <div className="shop-desc">{evidence.title ?? evidence.source ?? evidence.sourceLevel} · 可信度 {evidence.confidence}</div>
+          </div>
+        ) : null}
+        {action.reason ? <div className="act-reason">{action.reason}</div> : null}
+      </div>
+    </ModalShell>
+  );
+}
+
+function ActionManageDialog({
+  close,
+  setVisibleActionGroupIds,
+  visibleActionGroupIds
+}: {
+  close: () => void;
+  setVisibleActionGroupIds: Dispatch<SetStateAction<ActionConfig['group'][]>>;
+  visibleActionGroupIds: ActionConfig['group'][];
+}) {
+  function toggleGroup(groupId: ActionConfig['group']) {
+    setVisibleActionGroupIds(current => {
+      if (current.includes(groupId)) {
+        return current.length <= 1 ? current : current.filter(id => id !== groupId);
+      }
+      return ACTION_GROUP_MAP.some(group => group.id === groupId) ? [...current, groupId] : current;
+    });
+  }
+
+  return (
+    <ModalShell close={close} title="管理行动分类" wide>
+      <div className="modal-scroll action-manage-list">
+        {ACTION_GROUP_MAP.map(group => {
+          const checked = visibleActionGroupIds.includes(group.id);
+          const locked = checked && visibleActionGroupIds.length <= 1;
+          return (
+            <label className="action-manage-row" key={group.id}>
+              <input
+                checked={checked}
+                disabled={locked}
+                onChange={() => toggleGroup(group.id)}
+                type="checkbox"
+              />
+              <span>{group.label}</span>
+              <small>{checked ? '显示' : '隐藏'}</small>
+            </label>
           );
         })}
       </div>
