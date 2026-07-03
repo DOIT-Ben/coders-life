@@ -7,3 +7,5 @@
 - **Windows 路径**：git bash 重定向的 `/tmp` 与 node `readFileSync('/tmp/...')` 解析不一致；临时文件放项目内 `.codex-run\`。
 - **大文件阈值**：批次 1 已把组件文件压到 500 行以下；当前仍超 500 行的是 `types/game.ts`。后续如果改玩法结构或类型边界，先拆类型再继续堆字段。
 - **视口验证必须 rebuild**：`vite preview` 服务的是 `dist`，源码 CSS 修改后必须先 `npm run build`，否则 Playwright/浏览器检查会读到旧资产并误报。
+- **复盘关系债字段**：关系债真实存储在 `socialProfile.relationshipDebt`，`lifePressure` 没有该字段；展示层若要看综合压力，可用 `derivePressureSnapshot(state).relationshipDebt`。
+- **Canvas 测试分层**：jsdom 没有完整 Canvas 绘图实现。Canvas 纯函数用 fake context 测文本与尺寸，真实生成图片、下载入口和移动端布局必须用 `vite preview` + Playwright 验证。
