@@ -127,11 +127,14 @@ export function createInitialState(
 }
 
 export function getAvailableActions(state: GameState) {
-  return ACTIONS.map(action => ({
-    ...action,
-    available: canExecuteAction(state, action).ok,
-    reason: canExecuteAction(state, action).reason ?? action.disabledReason?.(state)
-  }));
+  return ACTIONS.map(action => {
+    const check = canExecuteAction(state, action);
+    return {
+      ...action,
+      available: check.ok,
+      reason: check.reason ?? action.disabledReason?.(state)
+    };
+  });
 }
 
 export function applyAction(state: GameState, actionId: string): GameState {

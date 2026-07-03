@@ -3,7 +3,6 @@ import { CITY_CONFIG } from '../config/balance';
 import { EVENTS } from '../config/events';
 import { EVENT_CHOICES } from '../config/eventChoices';
 import {
-  DEFAULT_CAREER_PROFILE,
   DEFAULT_CRISIS_STATE,
   DEFAULT_FINANCE_STATE,
   DEFAULT_HEALTH_PROFILE,
@@ -146,7 +145,7 @@ function withDefaults(state: GameState): GameState {
     flags: state.flags ?? {},
     finance: migrateFinance(state),
     healthProfile: { ...DEFAULT_HEALTH_PROFILE, ...(state.healthProfile ?? {}) },
-    careerProfile: { ...createDefaultCareerProfile(state.career?.track ?? 'frontend'), ...DEFAULT_CAREER_PROFILE, ...(state.careerProfile ?? {}) },
+    careerProfile: { ...createDefaultCareerProfile(state.career?.track ?? 'frontend'), ...(state.careerProfile ?? {}) },
     socialProfile: { ...DEFAULT_SOCIAL_PROFILE, ...(state.socialProfile ?? {}) },
     household: { ...DEFAULT_HOUSEHOLD_STATE, ...(state.household ?? {}) },
     laborMarket: { ...DEFAULT_LABOR_MARKET, ...(state.laborMarket ?? {}) },
@@ -158,7 +157,7 @@ function withDefaults(state: GameState): GameState {
       severeIllness: migrateCrisisChapter(state.crisis?.severeIllness, DEFAULT_CRISIS_STATE.severeIllness),
       majorUnemployment: migrateCrisisChapter(state.crisis?.majorUnemployment, DEFAULT_CRISIS_STATE.majorUnemployment)
     },
-    monthlyPlan: { ...DEFAULT_MONTHLY_PLAN, ...(state.monthlyPlan ?? {}) },
+    monthlyPlan: { ...structuredClone(DEFAULT_MONTHLY_PLAN), ...(state.monthlyPlan ?? {}) },
     projects: migrateProjects(state.projects),
     cooldowns: state.cooldowns ?? {},
     inventory: state.inventory ?? {},
