@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import type { ActionConfig, EffectDelta, GameState } from '../types/game';
+import { getVisibleStats } from '../core/formulas';
 import { applyEventChoice } from '../systems/eventSystem';
 import type { AvailableAction, GameModal } from './GameContainer';
 import ModalShell from './dialogs/ModalShell';

@@ -254,7 +254,7 @@ body {
   font-size: 12px; font-weight: 600; cursor: pointer;
   transition: all .15s;
   font-family: var(--font-mono);
-  min-height: 30px;
+  min-height: 44px;
   white-space: nowrap;
 }
 .btn-h:hover {
@@ -551,7 +551,7 @@ body {
   flex-shrink: 0;
 }
 .action-manage-btn {
-  min-height: 30px;
+  min-height: 44px;
   border: 1px solid var(--border);
   border-radius: 7px;
   background: var(--surface2);
@@ -584,7 +584,7 @@ body {
   border-radius: 7px;
   background: var(--surface2);
   color: var(--text2);
-  min-height: 34px;
+  min-height: 44px;
   padding: 4px 8px;
   font-size: 12px;
   font-weight: 700;
@@ -611,7 +611,7 @@ body {
   border-radius: 7px;
   background: var(--card);
   padding: 4px 10px;
-  min-height: 30px;
+  min-height: 44px;
 }
 .action-tab-search-input {
   flex: 1;
@@ -622,7 +622,7 @@ body {
   color: var(--text);
   outline: none;
   min-width: 0;
-  min-height: 26px;
+  min-height: 44px;
   padding: 4px 0;
 }
 .action-tab-search-input::placeholder {
@@ -631,8 +631,8 @@ body {
 }
 .action-tab-search-clear {
   flex-shrink: 0;
-  width: 16px;
-  height: 16px;
+  min-width: 44px;
+  min-height: 44px;
   border: none;
   border-radius: 50%;
   background: rgba(0,0,0,.35);
@@ -840,7 +840,8 @@ body {
 /* Bookmark + detail controls */
 .act-bookmark {
   z-index: 2;
-  min-height: 34px;
+  min-height: 44px;
+  min-width: 44px;
   border: 1px solid var(--border);
   border-radius: 7px;
   background: var(--surface2);
@@ -863,7 +864,8 @@ body {
   color: var(--gold);
 }
 .act-detail {
-  min-height: 34px;
+  min-height: 44px;
+  min-width: 44px;
   border: 1px solid rgba(88,166,255,.25);
   border-radius: 7px;
   background: var(--primary-soft);
@@ -1119,7 +1121,7 @@ body {
   bottom: max(18px, env(safe-area-inset-bottom));
   z-index: 120;
   min-width: 64px;
-  min-height: 40px;
+  min-height: 44px;
   border: 1px solid rgba(102,116,138,.62);
   border-radius: 999px;
   background: rgba(14,17,22,.92);
@@ -1564,8 +1566,8 @@ button.career-card { text-align: left; width: 100%; }
 .term-panel-hint { font-size: 10px; font-weight: 400; color: var(--text3); }
 .term-close {
   flex: 0 0 auto;
-  min-width: 32px;
-  min-height: 32px;
+  min-width: 44px;
+  min-height: 44px;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--surface);
@@ -1596,7 +1598,7 @@ button.career-card { text-align: left; width: 100%; }
 .term-input {
   flex: 1; background: transparent; border: none; outline: none;
   color: var(--text); font-family: var(--font-mono); font-size: 13px;
-  min-height: 28px;
+  min-height: 44px;
 }
 .term-input::placeholder { color: var(--text3); }
 @media (max-width: 660px) {
