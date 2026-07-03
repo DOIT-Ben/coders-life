@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState, useMemo } from 'react';
-import type { ActionConfig, CareerTrack, CityTier, EffectDelta, GameState, LogType, PlayerValueProfile } from '../types/game';
+import type { ActionConfig, CareerTrack, CityTier, EffectDelta, GameState, PlayerValueProfile } from '../types/game';
 import { applyAction, createInitialState, getAvailableActions } from '../core/gameEngine';
 import { getVisibleStats } from '../core/formulas';
 import { saveGame } from '../storage/saveManager';
@@ -7,18 +7,11 @@ import { getCareer } from '../config/careers';
 import { addLog } from '../core/logs';
 import { getActionInsights, getBodySignal } from '../systems/actionInsightSystem';
 import { actionPlanCost } from '../systems/monthlyPlanSystem';
-import { deriveCareerStability, deriveHealthDebt, deriveLifeSatisfaction, derivePressureSnapshot } from '../systems/derivedStateSystem';
 import { consumeUndoPill } from '../systems/undoSystem';
+import { PressureSummary, ProjectProgressPanel, StatCard } from './panels';
+import LifeLog from './LifeLog';
 
 const GameDialogs = lazy(() => import('./GameDialogs'));
-
-type PressureSnapshot = {
-  cashflow: number;
-  healthDebt: number;
-  layoffRisk: number;
-  relationshipDebt: number;
-  marketPressure: number;
-};
 
 export type AvailableAction = ActionConfig & {
   available: boolean;
@@ -296,7 +289,7 @@ function GameScreen({
               <div className="mile" style={{ left: '100%' }}><div className="mile-dot" />45岁</div>
             </div>
           </div>
-          <LifeLogV1 state={state} />
+          <LifeLog state={state} />
           <ProjectProgressPanel state={state} />
         </div>
         <div className="right-col">
@@ -410,7 +403,10 @@ function GameScreen({
                     <div className="mini-log-row" key={entry.id}>
                       <span>D·{entry.month * 30}</span>
                       <span>{entry.actionName}</span>
-                      <span>{[...entry.gains, ...entry.costs].slice(0, 2).join(' / ')}</span>
+                      <span className="mini-log-delta">
+                        {entry.gains.slice(0, 2).map(gain => <span className="diff-add" key={gain}>{gain}</span>)}
+                        {entry.costs.slice(0, 1).map(cost => <span className="diff-del" key={cost}>{cost}</span>)}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -422,137 +418,4 @@ function GameScreen({
       <div className="quote">「AI 改写的是任务结构，长期价值来自判断、责任和领域理解」</div>
     </div>
   );
-}
-
-function createPressureSnapshot(state: GameState): PressureSnapshot {
-  const pressure = derivePressureSnapshot(state);
-  return {
-    cashflow: Math.round(pressure.cashflowStress),
-    healthDebt: Math.round(pressure.healthDebt),
-    layoffRisk: Math.round(pressure.layoffRisk),
-    relationshipDebt: Math.round(pressure.relationshipDebt),
-    marketPressure: Math.round(state.laborMarket.layoffPressure)
-  };
-}
-
-function pressureTone(value: number) {
-  if (value >= 70) return 'bad';
-  if (value >= 40) return 'warn';
-  return 'good';
-}
-
-function PressureSummary({ state }: { state: GameState }) {
-  const pressure = createPressureSnapshot(state);
-  const healthDebt = deriveHealthDebt(state);
-  const careerStability = deriveCareerStability(state);
-  const lifeSatisfaction = deriveLifeSatisfaction(state);
-  const pressureItems = [
-    { key: 'cashflow' as const, label: '现金流', value: pressure.cashflow, tone: pressureTone(pressure.cashflow) },
-    { key: 'healthDebt' as const, label: '健康债', value: Math.round(healthDebt.value), tone: pressureTone(healthDebt.value) },
-    { key: 'layoffRisk' as const, label: '职业稳定', value: Math.round(careerStability.value), tone: pressureTone(100 - careerStability.value) },
-    { key: 'relationshipDebt' as const, label: '关系债', value: pressure.relationshipDebt, tone: pressureTone(pressure.relationshipDebt) },
-    { key: 'marketPressure' as const, label: '生活满意', value: Math.round(lifeSatisfaction.value), tone: pressureTone(100 - lifeSatisfaction.value) }
-  ];
-
-  return (
-    <div className="pressure-card">
-      <div className="pressure-title">现实压力</div>
-      <div className="pressure-grid">
-        {pressureItems.map(item => (
-          <div className={`pressure-item ${item.tone}`} key={item.label}>
-            <span className="pressure-copy">
-              <span className="pressure-label">{item.label}</span>
-              <span className="pressure-bar"><span style={{ width: `${Math.max(4, Math.min(100, item.value))}%` }} /></span>
-            </span>
-            <span className="pressure-metric">
-              <span className="pressure-value">{item.value}</span>
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-
-
-function LifeLogV1({ state }: { state: GameState }) {
-  return (
-    <div className="log-card">
-      <div className="log-hdr">内心独白</div>
-      <div className="log-body">
-        {[...state.logs].reverse().map(log => (
-          <div className="log-msg" key={log.id}>
-            <span className="log-day">D·{log.month * 30}</span>
-            <div className={`log-bubble ${logClass(log.type)}`}>
-              <span className={`log-tag ${logClass(log.type)}`}>{logLabel(log.type)}</span>
-              <span className="log-text"><strong>{log.title}</strong>：{log.text}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function ProjectProgressPanel({ state }: { state: GameState }) {
-  const projects = [
-    { label: '项目实战', project: state.projects.projectPractice },
-    { label: '技术写作', project: state.projects.writing },
-    { label: '开源贡献', project: state.projects.openSource },
-    { label: '副业产品', project: state.projects.sideBusiness }
-  ];
-  const visibleProjects = projects.filter(item => item.project.activeInstance || item.project.completedInstances.length > 0).slice(0, 4);
-  if (visibleProjects.length === 0) return null;
-
-  return (
-    <div className="project-progress-panel">
-      <div className="project-progress-title">项目进度</div>
-      {visibleProjects.map(item => {
-        const activeInstance = item.project.activeInstance;
-        const progress = Math.round(activeInstance?.progress ?? 0);
-        const quality = Math.round(activeInstance?.quality ?? 0);
-        return (
-          <div className="project-progress-row" key={item.label}>
-            <div className="project-progress-meta">
-              <span>{item.label}</span>
-              <span>质量 {quality} · 已发布 {item.project.completedInstances.length}</span>
-            </div>
-            <div className="project-progress-bar">
-              <span style={{ width: `${Math.max(4, Math.min(100, progress))}%` }} />
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-function StatCard({ label, value, color, max = 100, sub }: { label: string; value: number; color: string; max?: number; sub?: string }) {
-  const width = Math.max(0, Math.min(100, Number(value) / max * 100));
-  return (
-    <div className="stat-card">
-      <div className="sc-label">{label}</div>
-      <div className="sc-val">{value}</div>
-      <div className="sc-bar"><div className="sc-fill" style={{ width: `${width}%`, background: color }} /></div>
-      {sub && <div className="sc-sub">{sub}</div>}
-    </div>
-  );
-}
-
-function logClass(type: LogType) {
-  if (type === 'good' || type === 'unlock') return 'lucky';
-  if (type === 'bad' || type === 'ending') return 'bad';
-  if (type === 'warn' || type === 'event') return 'warn';
-  return 'info';
-}
-
-function logLabel(type: LogType) {
-  if (type === 'good') return 'GOOD';
-  if (type === 'unlock') return 'ACH';
-  if (type === 'bad') return 'BAD';
-  if (type === 'ending') return 'END';
-  if (type === 'warn') return 'WARN';
-  if (type === 'event') return 'EVENT';
-  return 'INFO';
 }

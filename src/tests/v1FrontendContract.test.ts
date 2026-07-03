@@ -3,6 +3,8 @@ import { readFileSync } from 'node:fs';
 import appSource from '../App.tsx?raw';
 import startProfilesSource from '../config/startProfiles.ts?raw';
 import gameContainerSource from '../components/GameContainer.tsx?raw';
+import panelsSource from '../components/panels.tsx?raw';
+import lifeLogSource from '../components/LifeLog.tsx?raw';
 import gameDialogsSource from '../components/GameDialogs.tsx?raw';
 
 const appCss = readFileSync(new URL('../styles/app.css', import.meta.url), 'utf8').replace(/\r\n/g, '\n');
@@ -11,7 +13,7 @@ const ciWorkflow = readFileSync(new URL('../../.github/workflows/ci.yml', import
 describe('v1 frontend contract', () => {
   const worldStatusBarSource = readFileSync(new URL('../components/WorldStatusBar.tsx', import.meta.url), 'utf8');
   const debugPanelSource = readFileSync(new URL('../components/DebugPanel.tsx', import.meta.url), 'utf8');
-  const source = appSource + gameContainerSource + gameDialogsSource;
+  const source = appSource + gameContainerSource + gameDialogsSource + panelsSource + lifeLogSource;
 
   it('keeps v2 implementation labels out of the visible v1 shell', () => {
     expect(source).not.toContain('V2 ENGINE');
@@ -63,10 +65,10 @@ describe('v1 frontend contract', () => {
 
   it('shows a compact real-world pressure summary without implementation jargon', () => {
     ['现实压力', '现金流', '健康债', '职业稳定', '关系债', '生活满意'].forEach(label => {
-      expect(gameContainerSource).toContain(label);
+      expect(panelsSource).toContain(label);
     });
     expect(gameContainerSource).toContain('PressureSummary');
-    expect(gameContainerSource).toContain('pressure-bar');
+    expect(panelsSource).toContain('pressure-bar');
     expect(source).not.toContain('realworld kernel');
     expect(source).not.toContain('V2底层');
     expect(appCss).toContain('grid-template-columns: repeat(5, 1fr);');
@@ -255,8 +257,9 @@ describe('v1 frontend contract', () => {
   });
 
   it('shows project progress and quality instead of hiding staged outcomes', () => {
-    ['ProjectProgressPanel', '项目进度', '质量', 'completedInstances', 'activeInstance'].forEach(token => {
-      expect(gameContainerSource).toContain(token);
+    expect(gameContainerSource).toContain('ProjectProgressPanel');
+    ['项目进度', '质量', 'completedInstances', 'activeInstance'].forEach(token => {
+      expect(panelsSource).toContain(token);
     });
     expect(source).not.toContain("immediateText: '作品 +1 / 技术 +12 / 成本 -0.3万'");
     expect(source).not.toContain("immediateText: '声望 +18 / 被动收入 / 精神 -10'");

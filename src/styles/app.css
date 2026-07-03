@@ -1516,3 +1516,41 @@ button.career-card { text-align: left; width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .cursor-blink { animation: none; }
 }
+
+/* ── COMMIT LOG（人生日志） ── */
+.log-hdr { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.log-hdr-cmd { font-size: 10px; color: var(--text3); letter-spacing: .5px; font-weight: 400; }
+.commit-row {
+  display: grid;
+  grid-template-columns: auto auto auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: baseline;
+  padding: 5px 2px;
+  border-bottom: 1px dashed var(--border);
+  font-size: 12px;
+  line-height: 1.55;
+}
+.commit-row:last-child { border-bottom: none; }
+.commit-hash { color: var(--warn-h); font-size: 11px; letter-spacing: .5px; }
+.commit-day { color: var(--text3); font-size: 11px; white-space: nowrap; }
+.commit-tag {
+  font-size: 9px; font-weight: 700; letter-spacing: .8px;
+  padding: 1px 6px; border-radius: 4px;
+  background: var(--surface2); color: var(--text2);
+}
+.commit-tag.lucky { background: var(--good-soft); color: var(--accent-h); }
+.commit-tag.bad   { background: var(--danger-soft); color: var(--danger-h); }
+.commit-tag.warn  { background: var(--warn-soft); color: var(--warn-h); }
+.commit-tag.info  { background: var(--primary-soft); color: var(--primary); }
+.commit-msg { color: var(--text2); min-width: 0; overflow-wrap: anywhere; }
+.commit-msg strong { color: var(--text); font-weight: 700; margin-right: 4px; }
+@media (max-width: 660px) {
+  .commit-row { grid-template-columns: auto auto minmax(0, 1fr); }
+  .commit-hash { display: none; }
+}
+
+/* ── DIFF 着色（决策日志增减） ── */
+.mini-log-delta { display: inline-flex; gap: 8px; flex-wrap: wrap; }
+.diff-add { color: var(--accent-h); }
+.diff-add::before { content: '+'; opacity: 0; width: 0; display: inline-block; }
+.diff-del { color: var(--danger-h); }
