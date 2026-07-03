@@ -17,7 +17,7 @@ function endingState(kind: 'failure' | 'balanced' | 'success'): GameState {
   state.finance.cashflowStress = kind === 'failure' ? 88 : 42;
   state.healthProfile.sleepDebt = kind === 'failure' ? 82 : 34;
   state.careerProfile.layoffRisk = kind === 'failure' ? 81 : 36;
-  state.lifePressure.relationshipDebt = kind === 'failure' ? 74 : 38;
+  state.socialProfile.relationshipDebt = kind === 'failure' ? 74 : 38;
   state.unlockedAchievements = ['first_job', 'first_project'];
   state.turningPoints = [
     {

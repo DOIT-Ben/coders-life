@@ -117,7 +117,7 @@ function buildRootCauses(state: GameState, category: EndingPostmortemCategory): 
     { score: state.healthProfile.healthDebt, text: '健康债持续累积，身体状态开始反过来限制行动质量。' },
     { score: visible.burnout, text: '燃尽水平过高，恢复速度跟不上工作和生活消耗。' },
     { score: state.careerProfile.layoffRisk, text: '职业风险没有及时对冲，收入和机会稳定性下降。' },
-    { score: state.lifePressure.relationshipDebt, text: '关系债越积越厚，支持系统没有在关键阶段托住你。' },
+    { score: state.socialProfile.relationshipDebt, text: '关系债越积越厚，支持系统没有在关键阶段托住你。' },
     { score: 100 - Math.max(visible.tech, visible.ai), text: '能力成长没有形成足够护城河，面对变化时缓冲不足。' }
   ];
 
