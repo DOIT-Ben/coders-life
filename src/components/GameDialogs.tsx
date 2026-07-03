@@ -1,11 +1,11 @@
 import { useMemo, useState } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import type { ActionConfig, EffectDelta, GameState } from '../types/game';
-import { getVisibleStats } from '../core/formulas';
 import { applyEventChoice } from '../systems/eventSystem';
 import type { AvailableAction, GameModal } from './GameContainer';
 import ModalShell from './dialogs/ModalShell';
 import AchievementDialog from './dialogs/AchievementDialog';
+import EndingDialog from './dialogs/EndingDialog';
 import FeedbackDialog from './dialogs/FeedbackDialog';
 import ShopDialog from './dialogs/ShopDialog';
 
@@ -215,39 +215,6 @@ function EventChoiceDialog({ state, setState }: { state: GameState; setState: (s
               <span className="event-choice-text">{choice.text}</span>
             </button>
           ))}
-        </div>
-      </div>
-    </ModalShell>
-  );
-}
-
-function EndingDialog({ state, close, restart }: { state: GameState; close: () => void; restart: () => void }) {
-  const visible = getVisibleStats(state);
-  const log = state.logs[state.logs.length - 1];
-  const turningPoints = [...state.turningPoints].slice(-3).reverse();
-  return (
-    <ModalShell
-      actions={<div className="modal-actions"><button className="btn-mp" onClick={restart}>重新开始</button><button className="btn-ms" onClick={close}>查看结果</button></div>}
-      close={close}
-      title={log?.title ?? '游戏结束'}
-    >
-      <div className="modal-scroll">
-        <div className="go-stats">
-          <div className="go-stat"><div className="go-sv">{state.month}月</div><div className="go-sl">生存时长</div></div>
-          <div className="go-stat"><div className="go-sv">{visible.ai}</div><div className="go-sl">AI协作能力</div></div>
-          <div className="go-stat"><div className="go-sv">{Math.round(state.stats.cash / 10000)}万</div><div className="go-sl">最终存款</div></div>
-          <div className="go-stat"><div className="go-sv">{state.unlockedAchievements.length}</div><div className="go-sl">成就解锁</div></div>
-        </div>
-        <div className="modal-body">{log?.text}</div>
-        <div className="turning-point-box">
-          <div className="turning-point-title">关键转折点</div>
-          {turningPoints.length > 0 ? turningPoints.map(point => (
-            <div className="turning-point-row" key={point.id}>
-              <span>{point.label}</span>
-              <span>{point.value}</span>
-              <span>{point.text}</span>
-            </div>
-          )) : <div className="turning-point-empty">没有明显崩盘节点，更多是长期选择累积的结果。</div>}
         </div>
       </div>
     </ModalShell>

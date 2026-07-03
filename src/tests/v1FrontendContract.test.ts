@@ -9,6 +9,7 @@ import gameDialogsSource from '../components/GameDialogs.tsx?raw';
 import modalShellSource from '../components/dialogs/ModalShell.tsx?raw';
 import feedbackDialogSource from '../components/dialogs/FeedbackDialog.tsx?raw';
 import achievementDialogSource from '../components/dialogs/AchievementDialog.tsx?raw';
+import endingDialogSource from '../components/dialogs/EndingDialog.tsx?raw';
 import shopDialogSource from '../components/dialogs/ShopDialog.tsx?raw';
 
 const appCss = readFileSync(new URL('../styles/app.css', import.meta.url), 'utf8').replace(/\r\n/g, '\n');
@@ -16,7 +17,7 @@ const ciWorkflow = readFileSync(new URL('../../.github/workflows/ci.yml', import
 const eslintConfig = readFileSync(new URL('../../eslint.config.js', import.meta.url), 'utf8');
 const componentDir = new URL('../components/', import.meta.url);
 const componentPath = componentDir.pathname;
-const dialogSource = modalShellSource + feedbackDialogSource + achievementDialogSource + shopDialogSource;
+const dialogSource = modalShellSource + feedbackDialogSource + achievementDialogSource + endingDialogSource + shopDialogSource;
 
 describe('v1 frontend contract', () => {
   const source = appSource + gameContainerSource + gameDialogsSource + dialogSource + panelsSource + lifeLogSource;
@@ -118,9 +119,8 @@ describe('v1 frontend contract', () => {
     ['act-badges', 'act-badge', 'body-signal', 'decision-log-mini'].forEach(token => {
       expect(gameContainerSource).toContain(token);
     });
-    ['关键转折点', 'EventChoiceDialog'].forEach(token => {
-      expect(gameDialogsSource).toContain(token);
-    });
+    expect(endingDialogSource).toContain('事故时间线');
+    expect(gameDialogsSource).toContain('EventChoiceDialog');
     expect(gameContainerSource).toContain('getActionInsights');
     expect(gameContainerSource).toContain('getBodySignal');
     expect(gameDialogsSource).toContain('applyEventChoice');
@@ -184,14 +184,12 @@ describe('v1 frontend contract', () => {
   it('loads low-frequency dialogs outside the main game container chunk', () => {
     expect(gameContainerSource).toContain("lazy(() => import('./GameDialogs'))");
     expect(gameContainerSource).toContain('<Suspense fallback={null}>');
-    ['FeedbackDialog', 'AchievementDialog', 'ShopDialog'].forEach(token => {
+    ['FeedbackDialog', 'AchievementDialog', 'ShopDialog', 'EndingDialog'].forEach(token => {
       expect(gameContainerSource).not.toContain(`function ${token}`);
       expect(dialogSource).toContain(`function ${token}`);
     });
-    ['BookmarkDialog', 'EndingDialog'].forEach(token => {
-      expect(gameContainerSource).not.toContain(`function ${token}`);
-      expect(gameDialogsSource).toContain(`function ${token}`);
-    });
+    expect(gameContainerSource).not.toContain('function BookmarkDialog');
+    expect(gameDialogsSource).toContain('function BookmarkDialog');
   });
 
   it('uses accessible modal semantics and named close controls', () => {
