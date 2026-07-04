@@ -6,6 +6,7 @@ import gameContainerSource from '../components/GameContainer.tsx?raw';
 import panelsSource from '../components/panels.tsx?raw';
 import lifeLogSource from '../components/LifeLog.tsx?raw';
 import gameDialogsSource from '../components/GameDialogs.tsx?raw';
+import effectChipsSource from '../components/effectChips.tsx?raw';
 import modalShellSource from '../components/dialogs/ModalShell.tsx?raw';
 import feedbackDialogSource from '../components/dialogs/FeedbackDialog.tsx?raw';
 import achievementDialogSource from '../components/dialogs/AchievementDialog.tsx?raw';
@@ -20,7 +21,7 @@ const componentPath = componentDir.pathname;
 const dialogSource = modalShellSource + feedbackDialogSource + achievementDialogSource + endingDialogSource + shopDialogSource;
 
 describe('v1 frontend contract', () => {
-  const source = appSource + gameContainerSource + gameDialogsSource + dialogSource + panelsSource + lifeLogSource;
+  const source = appSource + gameContainerSource + gameDialogsSource + dialogSource + panelsSource + lifeLogSource + effectChipsSource;
 
   it('keeps v2 implementation labels out of the visible v1 shell', () => {
     expect(source).not.toContain('V2 ENGINE');
@@ -106,7 +107,7 @@ describe('v1 frontend contract', () => {
   it('uses dynamic action lists with flexible scrolling', () => {
     expect(gameContainerSource).toContain('groupActions');
     expect(gameContainerSource).toContain('renderEffectChips');
-    expect(gameContainerSource).toContain('getEffectChips');
+    expect(effectChipsSource).toContain('getEffectChips');
     expect(gameContainerSource).toContain('ACTION_GROUP_MAP');
     expect(appCss).toContain('min-height: 0;');
     expect(appCss).toContain('flex: 1 1 auto;');
