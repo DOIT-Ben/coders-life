@@ -74,6 +74,21 @@ describe('state-driven real-world events and endings', () => {
     expect(next.endingId).toBe('realworld_health_debt_collapse');
   });
 
+  it('prioritizes the relationship ending when relationship and tech thresholds both qualify', () => {
+    const state = createInitialState('frontend', 'tier2', seed);
+    state.age = 45;
+    state.month = 276;
+    state.stats.techXp = 780;
+    state.stats.aiXp = 430;
+    state.stats.relation = 100;
+    state.stats.cash = 3200000;
+
+    const next = checkEnding(state);
+
+    expect(next.gameOver).toBe(true);
+    expect(next.endingId).toBe('connected_survivor');
+  });
+
   it('excludes health events without health exposure', () => {
     const state = createInitialState('frontend', 'tier2', seed);
     state.healthProfile.healthDebt = 10;

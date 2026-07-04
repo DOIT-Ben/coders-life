@@ -17,10 +17,18 @@ const ACTION_BY_ID = new Map(ACTIONS.map(action => [action.id, action]));
 
 export function chooseMonthlyPlanForLifeScript(state: GameState, program: LifeScriptProgram): string[] {
   const plan: typeof ACTIONS = [];
+  const fallbackRules = program.rules.filter(rule => rule.kind === 'fallback');
 
   for (const rule of program.rules) {
+    if (rule.kind === 'fallback') continue;
     if (rule.kind === 'when' && !evaluateCondition(state, rule.condition)) continue;
     addActionsToPlan(state, rule.actionIds, plan);
+  }
+
+  if (plan.length === 0) {
+    for (const rule of fallbackRules) {
+      addActionsToPlan(state, rule.actionIds, plan);
+    }
   }
 
   return plan.length > 0
@@ -94,6 +102,8 @@ function getFieldValue(state: GameState, field: LifeScriptField): number | boole
       return visible.ai;
     case 'relation':
       return visible.relation;
+    case 'portfolioCount':
+      return state.career.portfolioCount;
     case 'month':
       return state.month;
     case 'age':

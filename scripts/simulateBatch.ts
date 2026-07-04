@@ -5,6 +5,9 @@ import { ENDINGS } from '../src/config/endings';
 import type { CareerTrack, CityTier, GameState } from '../src/types/game';
 import { AUTO_STRATEGIES, chooseMonthlyPlanForStrategy, resolvePendingEventChoiceForSimulation, type AutoStrategyId } from '../src/systems/autoChoiceSystem';
 import { calculateValueFit } from '../src/systems/valueSystem';
+import { getLifeScriptPreset, LIFE_SCRIPT_PRESETS, type LifeScriptPresetId } from '../src/config/lifeScriptPresets';
+import { chooseMonthlyPlanForLifeScript } from '../src/systems/lifeScriptExecutor';
+import { parseLifeScript } from '../src/systems/lifeScriptDsl';
 
 declare const process: {
   argv: string[];
@@ -15,6 +18,7 @@ declare const process: {
 export interface BatchSimulationOptions {
   seedsPerScenario: number;
   strategies?: AutoStrategyId[];
+  lifeScriptStrategies?: LifeScriptPresetId[];
   careers?: CareerTrack[];
   cityTiers?: CityTier[];
   maxMonths?: number;
@@ -61,6 +65,16 @@ export interface BatchSimulationResult {
       coveredEndings: Record<string, number>;
       deterministicReplay: DeterministicReplayEvidence;
       deterministicReplayRate: number;
+      lifeScriptStrategies: {
+        scenarioCount: number;
+        endingFamilies: {
+          success: number;
+          balanced: number;
+          failure: number;
+          none: number;
+        };
+        coveredEndings: Record<string, number>;
+      };
     };
   };
 }
@@ -68,7 +82,8 @@ export interface BatchSimulationResult {
 interface DeterministicReplayEvidence {
   passed: boolean;
   sample: {
-    strategy: AutoStrategyId;
+    kind: ScenarioKind;
+    strategy: AutoStrategyId | LifeScriptPresetId;
     career: CareerTrack;
     cityTier: CityTier;
     seed: number;
@@ -78,20 +93,26 @@ interface DeterministicReplayEvidence {
 }
 
 type ScenarioSummary = {
+  kind: ScenarioKind;
+  strategy: AutoStrategyId | LifeScriptPresetId;
   state: GameState;
   actions: string[];
   planSizes: number[];
   firstOfferMonth?: number;
 };
 
+type ScenarioKind = 'auto' | 'lifeScript';
+
 const DEFAULT_CAREERS: CareerTrack[] = ['frontend', 'backend', 'fullstack', 'ai_product'];
 const DEFAULT_CITIES: CityTier[] = ['tier1', 'tier2', 'tier3'];
 const DEFAULT_CLI_STRATEGIES: AutoStrategyId[] = ['stable_cashflow', 'health_first', 'relationship_first', 'ai_transition'];
+const DEFAULT_CLI_LIFE_SCRIPT_STRATEGIES: LifeScriptPresetId[] = LIFE_SCRIPT_PRESETS.map(preset => preset.id);
 const DEFAULT_CLI_CAREERS: CareerTrack[] = ['frontend', 'backend', 'ai_product'];
 const DEFAULT_CLI_CITIES: CityTier[] = ['tier1', 'tier2', 'tier3'];
 
 export function runBatchSimulation(options: BatchSimulationOptions): BatchSimulationResult {
   const strategies = options.strategies ?? AUTO_STRATEGIES.map(strategy => strategy.id);
+  const lifeScriptStrategies = options.lifeScriptStrategies ?? [];
   const careers = options.careers ?? DEFAULT_CAREERS;
   const cityTiers = options.cityTiers ?? DEFAULT_CITIES;
   const maxMonths = options.maxMonths ?? 280;
@@ -102,6 +123,23 @@ export function runBatchSimulation(options: BatchSimulationOptions): BatchSimula
       cityTiers.forEach(cityTier => {
         for (let seedOffset = 0; seedOffset < options.seedsPerScenario; seedOffset += 1) {
           summaries.push(runScenario({
+            kind: 'auto',
+            strategy,
+            career,
+            cityTier,
+            seed: 20260628 + seedOffset,
+            maxMonths
+          }));
+        }
+      });
+    });
+  });
+  lifeScriptStrategies.forEach(strategy => {
+    careers.forEach(career => {
+      cityTiers.forEach(cityTier => {
+        for (let seedOffset = 0; seedOffset < options.seedsPerScenario; seedOffset += 1) {
+          summaries.push(runScenario({
+            kind: 'lifeScript',
             strategy,
             career,
             cityTier,
@@ -130,6 +168,16 @@ export function runBatchSimulation(options: BatchSimulationOptions): BatchSimula
   const deterministicReplay = validateDeterministicReplay(options);
   const deterministicReplayRate = deterministicReplay.passed ? 1 : 0;
   invariants.deterministicReplay = deterministicReplayRate >= thresholds.minDeterministicReplayRate;
+  const lifeScriptStates = summaries.filter(summary => summary.kind === 'lifeScript').map(summary => summary.state);
+  const lifeScriptCoveredEndings = countBy(lifeScriptStates.map(state => state.endingId).filter((id): id is string => Boolean(id)));
+  const lifeScriptSuccessEndingCount = Object.keys(lifeScriptCoveredEndings).filter(isSuccessEnding).length;
+  const lifeScriptBalancedEndingCount = Object.keys(lifeScriptCoveredEndings).filter(isBalancedEnding).length;
+  const lifeScriptFailureEndingCount = Object.keys(lifeScriptCoveredEndings).filter(isFailureEnding).length;
+  const lifeScriptGatePassed = lifeScriptStates.length === 0 || (
+    lifeScriptSuccessEndingCount >= 1 &&
+    lifeScriptBalancedEndingCount >= 1 &&
+    lifeScriptFailureEndingCount >= 1
+  );
   const bankruptcyRate = rate(bankruptcyCount, scenarioCount);
   const burnoutRate = rate(burnoutCount, scenarioCount);
   const healthCrisisRate = rate(healthCrisisCount, scenarioCount);
@@ -140,6 +188,7 @@ export function runBatchSimulation(options: BatchSimulationOptions): BatchSimula
     invariants.successEndingCoverage &&
     invariants.balancedEndingCoverage &&
     invariants.failureEndingCoverage &&
+    lifeScriptGatePassed &&
     deterministicReplayRate >= thresholds.minDeterministicReplayRate &&
     bankruptcyRate <= thresholds.maxBankruptcyRate &&
     burnoutRate <= thresholds.maxBurnoutRate &&
@@ -184,7 +233,17 @@ export function runBatchSimulation(options: BatchSimulationOptions): BatchSimula
         },
         coveredEndings,
         deterministicReplay,
-        deterministicReplayRate
+        deterministicReplayRate,
+        lifeScriptStrategies: {
+          scenarioCount: lifeScriptStates.length,
+          endingFamilies: {
+            success: lifeScriptSuccessEndingCount,
+            balanced: lifeScriptBalancedEndingCount,
+            failure: lifeScriptFailureEndingCount,
+            none: 0
+          },
+          coveredEndings: lifeScriptCoveredEndings
+        }
       }
     }
   };
@@ -209,14 +268,22 @@ export function validateSimulationInvariants(states: GameState[], coveredEndings
   };
 }
 
-function runScenario(options: { strategy: AutoStrategyId; career: CareerTrack; cityTier: CityTier; seed: number; maxMonths: number }): ScenarioSummary {
+function runScenario(options: { kind: 'auto'; strategy: AutoStrategyId; career: CareerTrack; cityTier: CityTier; seed: number; maxMonths: number } | { kind: 'lifeScript'; strategy: LifeScriptPresetId; career: CareerTrack; cityTier: CityTier; seed: number; maxMonths: number }): ScenarioSummary {
   let state = createInitialState(options.career, options.cityTier, options.seed);
   const actions: string[] = [];
   const planSizes: number[] = [];
   let firstOfferMonth: number | undefined;
+  const lifeScriptProgram = options.kind === 'lifeScript'
+    ? parseLifeScript(getLifeScriptPreset(options.strategy).source)
+    : undefined;
+  if (lifeScriptProgram && !lifeScriptProgram.ok) {
+    throw new Error(`Invalid life script preset ${options.strategy}: ${lifeScriptProgram.errors.join(' / ')}`);
+  }
   while (!state.gameOver && state.month < options.maxMonths) {
     state = resolvePendingEventChoiceForSimulation(state);
-    const actionIds = chooseMonthlyPlanForStrategy(state, options.strategy);
+    const actionIds = lifeScriptProgram?.ok
+      ? chooseMonthlyPlanForLifeScript(state, lifeScriptProgram.program)
+      : chooseMonthlyPlanForStrategy(state, options.strategy as AutoStrategyId);
     actions.push(...actionIds);
     planSizes.push(actionIds.length);
     const beforeOffers = state.career.totalOffers;
@@ -233,12 +300,14 @@ function runScenario(options: { strategy: AutoStrategyId; career: CareerTrack; c
     if (state.logs.length > 50) state = { ...state, logs: state.logs.slice(-50) };
     if (typeof firstOfferMonth === 'undefined' && state.career.totalOffers > beforeOffers) firstOfferMonth = state.month;
   }
-  return { state, actions, planSizes, firstOfferMonth };
+  return { kind: options.kind, strategy: options.strategy, state, actions, planSizes, firstOfferMonth };
 }
 
 function validateDeterministicReplay(options: BatchSimulationOptions): DeterministicReplayEvidence {
+  const useLifeScriptSample = (options.strategies?.length ?? 1) === 0 && (options.lifeScriptStrategies?.length ?? 0) > 0;
   const sampleOptions = {
-    strategy: options.strategies?.[0] ?? 'stable_cashflow',
+    kind: useLifeScriptSample ? 'lifeScript' as const : 'auto' as const,
+    strategy: useLifeScriptSample ? options.lifeScriptStrategies![0] : options.strategies?.[0] ?? 'stable_cashflow',
     career: options.careers?.[0] ?? 'frontend',
     cityTier: options.cityTiers?.[0] ?? 'tier2',
     seed: 424242,
@@ -383,6 +452,7 @@ if (process.argv[1]?.endsWith('simulateBatch.ts')) {
   const result = runBatchSimulation({
     seedsPerScenario,
     strategies: (parseList(process.env.STRATEGIES) as AutoStrategyId[] | undefined) ?? DEFAULT_CLI_STRATEGIES,
+    lifeScriptStrategies: (parseList(process.env.LIFE_SCRIPT_STRATEGIES) as LifeScriptPresetId[] | undefined) ?? DEFAULT_CLI_LIFE_SCRIPT_STRATEGIES,
     careers: (parseList(process.env.CAREERS) as CareerTrack[] | undefined) ?? DEFAULT_CLI_CAREERS,
     cityTiers: (parseList(process.env.CITIES) as CityTier[] | undefined) ?? DEFAULT_CLI_CITIES,
     maxMonths: process.env.MAX_MONTHS ? Number(process.env.MAX_MONTHS) : 280
@@ -412,6 +482,7 @@ function endingCategory(id: string) {
 
 function parseList(value: string | undefined): string[] | undefined {
   if (!value) return undefined;
+  if (value.trim().toLowerCase() === 'none') return [];
   const items = value.split(',').map(item => item.trim()).filter(Boolean);
   return items.length > 0 ? items : undefined;
 }

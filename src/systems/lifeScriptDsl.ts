@@ -8,6 +8,7 @@ export type LifeScriptField =
   | 'tech'
   | 'ai'
   | 'relation'
+  | 'portfolioCount'
   | 'month'
   | 'age'
   | 'cashflowStress'
@@ -93,6 +94,7 @@ const FIELD_NAMES: Record<string, LifeScriptField> = {
   技术: 'tech',
   AI协作: 'ai',
   关系: 'relation',
+  作品: 'portfolioCount',
   月份: 'month',
   年龄: 'age',
   现金流压力: 'cashflowStress',

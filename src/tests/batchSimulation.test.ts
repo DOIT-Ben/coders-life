@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { createInitialState } from '../core/gameEngine';
+import { LIFE_SCRIPT_PRESETS } from '../config/lifeScriptPresets';
 import { AUTO_STRATEGIES, chooseActionForStrategy, chooseMonthlyPlanForStrategy } from '../systems/autoChoiceSystem';
 import { runBatchSimulation, validateSimulationInvariants } from '../../scripts/simulateBatch';
 import thresholds from '../../scripts/releaseThresholds.json';
@@ -117,6 +118,32 @@ describe('batch simulation release gate', () => {
     expect(thresholds.minFailureEndingCount).toBeGreaterThanOrEqual(1);
     expect(thresholds.minDeterministicReplayRate).toBe(1);
   });
+
+  it('defines auditable life script presets for batch simulation', () => {
+    expect(LIFE_SCRIPT_PRESETS.map(preset => preset.id)).toEqual([
+      'cashflow_first',
+      'health_first',
+      'ai_transition',
+      'relationship_first'
+    ]);
+    expect(LIFE_SCRIPT_PRESETS.every(preset => preset.source.includes('当 ') && preset.source.includes('则 '))).toBe(true);
+  });
+
+  it('runs life script strategy scenarios and reports their release gate coverage', () => {
+    const result = runBatchSimulation({
+      seedsPerScenario: 1,
+      strategies: [],
+      lifeScriptStrategies: ['cashflow_first', 'health_first'],
+      careers: ['frontend'],
+      cityTiers: ['tier2'],
+      maxMonths: 36
+    });
+
+    expect(result.scenarioCount).toBe(2);
+    expect(result.releaseGate.evidence.lifeScriptStrategies.scenarioCount).toBe(2);
+    expect(result.releaseGate.evidence.lifeScriptStrategies.coveredEndings).not.toHaveProperty('none');
+    expect(result.releaseGate.evidence.deterministicReplay.sample.kind).toBe('lifeScript');
+  }, 30000);
 
   it('uses the deterministic replay threshold in the release gate', () => {
     const source = readFileSync(new URL('../../scripts/simulateBatch.ts', import.meta.url), 'utf8');

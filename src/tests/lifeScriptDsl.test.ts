@@ -73,4 +73,17 @@ describe('lifeScriptDsl', () => {
 
     expect(validateLifeScript(result.program)).toEqual([]);
   });
+
+  test('parses portfolio count as a structured numeric condition', () => {
+    const result = parseLifeScript('当 作品 >= 1 则 求职投递');
+
+    expect(result.ok).toBe(true);
+    if (!result.ok) throw new Error(result.errors.join(','));
+
+    expect(result.program.rules[0]).toMatchObject({
+      kind: 'when',
+      condition: { kind: 'comparison', field: 'portfolioCount', operator: '>=', value: 1 },
+      actionIds: ['job_hunt']
+    });
+  });
 });
