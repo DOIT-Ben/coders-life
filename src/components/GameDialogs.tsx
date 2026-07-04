@@ -7,6 +7,7 @@ import ModalShell from './dialogs/ModalShell';
 import AchievementDialog from './dialogs/AchievementDialog';
 import EndingDialog from './dialogs/EndingDialog';
 import FeedbackDialog from './dialogs/FeedbackDialog';
+import LifeScriptDialog from './dialogs/LifeScriptDialog';
 import ShopDialog from './dialogs/ShopDialog';
 import { renderEffectChips } from './effectChips';
 
@@ -55,6 +56,7 @@ export default function GameDialogs({
       {modal === 'bookmark' && <BookmarkDialog actions={actions} bookmarkedIds={bookmarkedIds} toggleBookmark={toggleBookmark} close={closeModal} />}
       {modal === 'actionDetail' && detailAction && <ActionDetailDialog action={detailAction} close={closeModal} />}
       {modal === 'actionManage' && <ActionManageDialog visibleActionGroupIds={visibleActionGroupIds} setVisibleActionGroupIds={setVisibleActionGroupIds} close={closeModal} />}
+      {modal === 'script' && <LifeScriptDialog state={state} setState={setState} close={closeModal} />}
       {modal === 'ending' && <EndingDialog state={state} close={closeModal} restart={restart} challengeLabel={challengeLabel} />}
       {modal === 'feedback' && <FeedbackDialog state={state} close={closeModal} />}
       {state.pendingEventChoice && <EventChoiceDialog state={state} setState={setState} />}

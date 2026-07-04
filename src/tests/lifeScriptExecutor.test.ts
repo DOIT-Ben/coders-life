@@ -63,4 +63,11 @@ describe('lifeScriptExecutor', () => {
 
     expect(chooseMonthlyPlanForLifeScript(state, program)).toEqual(['rest']);
   });
+
+  test('uses fallback rules only when no matched rule produced executable actions', () => {
+    const state = createInitialState('frontend', 'tier2', 1006);
+    const program = parseProgram('当 精神 < 90 则 系统学习\n否则 睡眠修复');
+
+    expect(chooseMonthlyPlanForLifeScript(state, program)).toEqual(['system_learning']);
+  });
 });

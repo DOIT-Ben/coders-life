@@ -22,7 +22,7 @@ export type AvailableAction = ActionConfig & {
   reason?: string;
 };
 
-export type GameModal = 'ach' | 'shop' | 'ending' | 'bookmark' | 'feedback' | 'actionDetail' | 'actionManage';
+export type GameModal = 'ach' | 'shop' | 'ending' | 'bookmark' | 'feedback' | 'actionDetail' | 'actionManage' | 'script';
 
 const ACTION_GROUP_MAP: Array<{ id: ActionConfig['group']; label: string }> = [
   { id: 'learn', label: '学习成长' },
@@ -267,6 +267,7 @@ function GameScreen({
         <div className="ghdr-right">
           <button className="btn-h" onClick={() => openModal('ach')}>成就</button>
           <button className="btn-h" onClick={() => openModal('shop')}>商店</button>
+          <button className="btn-h" onClick={() => openModal('script')}>脚本</button>
           <button className="btn-h" onClick={() => openModal('bookmark')}>收藏</button>
           <button
             className={`btn-h${(!undoSnapshot || (state.inventory.undo_pill ?? 0) <= 0) ? ' dim' : ''}`}

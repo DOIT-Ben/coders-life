@@ -1301,6 +1301,67 @@ body {
   box-shadow: 0 3px 10px rgba(88,166,255,.3);
 }
 
+/* LIFE SCRIPT */
+.life-script-modal { max-width: 720px; }
+.life-script-scroll {
+  display: grid;
+  gap: 12px;
+  max-height: min(68dvh, 560px);
+  padding-right: 8px;
+}
+.life-script-status,
+.life-script-preview,
+.life-script-replay,
+.life-script-run-message,
+.life-script-errors {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface2);
+  padding: 10px 12px;
+  color: var(--text2);
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.55;
+}
+.life-script-status {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.life-script-label {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 900;
+}
+.life-script-input {
+  min-height: 190px;
+  resize: vertical;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface2);
+  color: var(--text);
+  padding: 12px;
+  font: 13px/1.55 var(--font-mono);
+}
+.life-script-input:focus {
+  outline: 2px solid rgba(88,166,255,.22);
+  border-color: var(--primary);
+}
+.life-script-errors {
+  border-color: rgba(255,123,114,.42);
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+.life-script-run-message {
+  border-color: rgba(88,166,255,.42);
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.life-script-actions .btn-mp,
+.life-script-actions .btn-ms {
+  min-width: 132px;
+}
+
 /* ACHIEVEMENTS */
 .ach-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
 .ach-badge {
