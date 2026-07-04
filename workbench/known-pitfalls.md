@@ -11,3 +11,6 @@
 - **Canvas 测试分层**：jsdom 没有完整 Canvas 绘图实现。Canvas 纯函数用 fake context 测文本与尺寸，真实生成图片、下载入口和移动端布局必须用 `vite preview` + Playwright 验证。
 - **每日挑战首屏边界**：App 可以静态 import 轻量的日期/历史函数，但不能通过每日挑战把 `createInitialState`、引擎、`saveManager` 或 `config/events` 拉进首屏；创建挑战状态应放在游戏 chunk 或测试专用路径。
 - **GameContainer 行数临界**：批次 3 后 `GameContainer.tsx` 为 499 行，后续任何新增逻辑都应先抽到系统或子组件，否则会触发 500 行契约测试。
+- **人生脚本不是 JS 沙箱**：DSL 必须继续走 `lifeScriptDsl` 白名单 AST，禁止 `eval`、`Function`、对象路径、导入模块；脚本执行只能通过 `canExecuteAction`、`buildMonthlyPlan` 和 `planMonth`。
+- **脚本预设必须有职业入口**：待业脚本必须覆盖“作品集 -> 求职投递 -> 参加面试 -> 接受 offer”，否则默认矩阵会真实掉进现金流陷阱。
+- **脚本矩阵耗时**：默认 `simulate:batch` 已包含 auto + lifeScript 72 条轨迹，耗时明显长于批次 3。CI 若超时应优化执行效率，不能删脚本矩阵或放宽 releaseGate。
