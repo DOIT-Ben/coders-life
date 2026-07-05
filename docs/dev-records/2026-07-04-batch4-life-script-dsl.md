@@ -19,8 +19,17 @@
 - `npm test -- src/tests/lifeScriptRunner.test.ts src/tests/lifeScriptExecutor.test.ts src/tests/lifeScriptDsl.test.ts`：3 files / 13 tests passed。
 - `npm test -- src/tests/lifeScriptUi.test.ts src/tests/lifeScriptRunner.test.ts src/tests/lifeScriptExecutor.test.ts src/tests/lifeScriptDsl.test.ts src/tests/monthlyPlanUi.test.tsx src/tests/v1FrontendContract.test.ts`：6 files / 48 tests passed。
 - `npm test -- src/tests/realworldEventsEndings.test.ts src/tests/batchSimulation.test.ts`：2 files / 40 tests passed。
+- `npm run lint`：通过；0 error / 0 warning。
+- `npm test`：22 files / 226 tests passed。
+- `npm run build`：通过；首屏 `index` chunk 约 211KB，`saveManager`、`events` 和弹窗池数据仍独立分包。
+- `npm run simulate`：通过；同 seed 12 月触发 `realworld_cashflow_trap`。
 - `STRATEGIES=none LIFE_SCRIPT_STRATEGIES=cashflow_first,health_first,ai_transition,relationship_first CAREERS=frontend,backend,ai_product CITIES=tier1,tier2,tier3 npm run simulate:batch`：通过；36 scenarios，脚本矩阵覆盖 `ai_architect`、`connected_survivor`、`burnout`，`releaseGate.passed=true`。
 - `npm run simulate:batch`：通过；72 scenarios，`releaseGate.passed=true`，lifeScriptStrategies 覆盖 success / balanced / failure，`none=0`。
+- `git diff --check`：通过。
+- 三档视口 Chromium/CDP 检查：
+  - 390x844、768x1024、1280x900 均无横向溢出。
+  - 可见 `button/a/input/select/textarea` 无低于 44px 的触控目标。
+  - “人生脚本”弹窗、关闭按钮和“跑 12 个月”按钮均完整位于视口内。
 
 ## 用户可见层审计
 

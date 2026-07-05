@@ -305,14 +305,15 @@ function runScenario(options: { kind: 'auto'; strategy: AutoStrategyId; career: 
 
 function validateDeterministicReplay(options: BatchSimulationOptions): DeterministicReplayEvidence {
   const useLifeScriptSample = (options.strategies?.length ?? 1) === 0 && (options.lifeScriptStrategies?.length ?? 0) > 0;
-  const sampleOptions = {
-    kind: useLifeScriptSample ? 'lifeScript' as const : 'auto' as const,
-    strategy: useLifeScriptSample ? options.lifeScriptStrategies![0] : options.strategies?.[0] ?? 'stable_cashflow',
+  const commonSampleOptions = {
     career: options.careers?.[0] ?? 'frontend',
     cityTier: options.cityTiers?.[0] ?? 'tier2',
     seed: 424242,
     maxMonths: Math.min(options.maxMonths ?? 60, 60)
   };
+  const sampleOptions = useLifeScriptSample
+    ? { ...commonSampleOptions, kind: 'lifeScript' as const, strategy: options.lifeScriptStrategies![0] }
+    : { ...commonSampleOptions, kind: 'auto' as const, strategy: options.strategies?.[0] ?? 'stable_cashflow' as AutoStrategyId };
   const first = runScenario(sampleOptions);
   const second = runScenario(sampleOptions);
   const firstProjected = projectReplayState(first.state);

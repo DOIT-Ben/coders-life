@@ -57,7 +57,7 @@ describe('lifeScriptExecutor', () => {
       id: 'blocked',
       title: '待处理事件',
       text: '需要先处理事件。',
-      choices: [{ id: 'ok', label: '继续', effect: {} }]
+      choices: [{ id: 'ok', label: '继续', text: '继续处理。', effect: {}, memoryKey: 'ok' }]
     };
     const program = parseProgram('当 精神 < 80 则 系统学习');
 
