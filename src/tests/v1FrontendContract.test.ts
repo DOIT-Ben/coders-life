@@ -115,12 +115,15 @@ describe('v1 frontend contract', () => {
     expect(appCss).not.toContain('display: none;\n  grid-template-columns: 1fr;');
   });
 
-  it('keeps dense action cards readable instead of compressing text together', () => {
-    expect(appCss).not.toContain('min-height: 84px');
+  it('keeps action cards compact while preserving readable text flow', () => {
+    expect(appCss).not.toContain('min-height: 100px');
+    expect(appCss).toContain('-webkit-line-clamp: 1');
+    expect(appCss).toContain('text-overflow: ellipsis');
     expect(appCss).toContain('align-items: stretch');
     expect(appCss).toContain('flex-direction: column');
     expect(appCss).toContain('.act-meta');
-    expect(appCss).toContain('gap: 12px');
+    expect(appCss).toContain('gap: 7px');
+    expect(appCss).toMatch(/\.act-tool-row\s*\{[^}]*position:\s*absolute;[^}]*right:\s*8px;[^}]*top:\s*8px;/s);
   });
 
   it('uses dynamic action lists with flexible scrolling', () => {
@@ -133,10 +136,12 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('overflow-y: auto');
     expect(appCss).toContain('overflow: hidden; box-shadow: var(--shadow);');
     expect(appCss).toContain('.action-support-scroll');
+    expect(appCss).not.toContain('.action-list { display: grid; grid-template-columns: 1fr;');
+    expect(appCss).not.toContain('.categorized-action-list { display: grid; grid-template-columns: 1fr;');
   });
 
   it('surfaces first-stage functional guidance without breaking v1 shell', () => {
-    ['act-badges', 'act-badge', 'body-signal', 'decision-log-mini'].forEach(token => {
+    ['act-badges', 'act-badge', 'body-signal'].forEach(token => {
       expect(gameContainerSource).toContain(token);
     });
     expect(endingDialogSource).toContain('事故时间线');
@@ -147,8 +152,16 @@ describe('v1 frontend contract', () => {
     expect(gameDialogsSource).toContain('event-choice-option');
     expect(appCss).toContain('.act-badge');
     expect(appCss).toContain('.body-signal');
-    expect(appCss).toContain('.decision-log-mini');
     expect(appCss).toContain('.event-choice-option');
+  });
+
+  it('keeps the right action panel focused on actions instead of inline decision logs', () => {
+    expect(gameContainerSource).not.toContain('decision-log-mini');
+    expect(gameContainerSource).not.toContain('mini-log-title');
+    expect(gameContainerSource).not.toContain('决策日志');
+    expect(appCss).not.toContain('.decision-log-mini');
+    expect(appCss).not.toContain('.mini-log-row');
+    expect(appCss).not.toContain('.mini-log-delta');
   });
 
   it('executes action cards directly with undo detail and management controls', () => {

@@ -200,7 +200,6 @@ function GameScreen({
   const endingText = state.endingId ? state.logs[state.logs.length - 1]?.text : undefined;
   const day = state.month * 30;
   const bodySignal = getBodySignal(state);
-  const recentDecisionLog = [...state.decisionLog].slice(-3).reverse();
   const activeCrises = [
     state.crisis.burnout.active ? '燃尽修复' : null,
     state.crisis.mentalHealth.active ? '心理重建' : null,
@@ -421,21 +420,6 @@ function GameScreen({
                     <span className="signal-text">{bodySignal.text}</span>
                   </div>
                   <span className="signal-score">{Math.round(bodySignal.severity)}</span>
-                </div>
-              ) : null}
-              {recentDecisionLog.length > 0 ? (
-                <div className="decision-log-mini">
-                  <div className="mini-log-title">决策日志</div>
-                  {recentDecisionLog.map(entry => (
-                    <div className="mini-log-row" key={entry.id}>
-                      <span>D·{entry.month * 30}</span>
-                      <span>{entry.actionName}</span>
-                      <span className="mini-log-delta">
-                        {entry.gains.slice(0, 2).map(gain => <span className="diff-add" key={gain}>{gain}</span>)}
-                        {entry.costs.slice(0, 1).map(cost => <span className="diff-del" key={cost}>{cost}</span>)}
-                      </span>
-                    </div>
-                  ))}
                 </div>
               ) : null}
             </div>
