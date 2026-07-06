@@ -9,6 +9,23 @@ import './styles/app.css';
 
 const GameContainer = lazy(() => import('./components/GameContainer'));
 const DEV_BADGE_TEXT = 'BUGS WELCOME';
+type ThemeId = 'terminal' | 'paper' | 'blackout';
+
+const THEME_STORAGE_KEY = 'coderslife_theme';
+const THEME_OPTIONS: Array<{ id: ThemeId; label: string }> = [
+  { id: 'terminal', label: '终端黑' },
+  { id: 'paper', label: '极简白' },
+  { id: 'blackout', label: '纯黑' }
+];
+
+function readStoredTheme(): ThemeId {
+  try {
+    const value = localStorage.getItem(THEME_STORAGE_KEY);
+    return THEME_OPTIONS.some(option => option.id === value) ? value as ThemeId : 'terminal';
+  } catch {
+    return 'terminal';
+  }
+}
 
 let preloaded = false;
 function preload() {
@@ -44,7 +61,20 @@ export default function App() {
   const [track, setTrack] = useState<CareerTrack>('frontend');
   const [cityTier, setCityTier] = useState<CityTier>('tier2');
   const [valueProfileId, setValueProfileId] = useState(VALUE_PROFILES[0].id);
+  const [theme, setTheme] = useState<ThemeId>(() => readStoredTheme());
   const todayChallenge = getDailyChallenge();
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme === 'paper' ? 'light' : 'dark';
+    const themeColor = window.getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+    if (themeColor) document.querySelector('meta[name="theme-color"]')?.setAttribute('content', themeColor);
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, theme);
+    } catch {
+      // 本地存储不可用时只影响偏好记忆，不影响游戏。
+    }
+  }, [theme]);
 
   useEffect(() => {
     preload();
@@ -89,7 +119,7 @@ export default function App() {
 
   return (
     <div className="wrap">
-      <TitleCard hasSave={hasSave} inGame={inGame} onContinue={continueGame} />
+      <TitleCard hasSave={hasSave} inGame={inGame} onContinue={continueGame} setTheme={setTheme} theme={theme} />
       {!gameConfig ? (
         <CareerScreen
           track={track} setTrack={setTrack}
@@ -130,12 +160,37 @@ function LoadingScreen() {
   );
 }
 
-function TitleCard({ hasSave, inGame, onContinue }: { hasSave: boolean; inGame: boolean; onContinue: () => void }) {
+function TitleCard({
+  hasSave,
+  inGame,
+  onContinue,
+  setTheme,
+  theme
+}: {
+  hasSave: boolean;
+  inGame: boolean;
+  onContinue: () => void;
+  setTheme: (theme: ThemeId) => void;
+  theme: ThemeId;
+}) {
   return (
     <div className={inGame ? 'title-card in-game' : 'title-card'}>
-      <div className="term-bar" aria-hidden="true">
-        <span className="term-dot red" /><span className="term-dot amber" /><span className="term-dot green" />
+      <div className="term-bar">
+        <span className="term-dot red" aria-hidden="true" /><span className="term-dot amber" aria-hidden="true" /><span className="term-dot green" aria-hidden="true" />
         <span className="term-title">coder@life: ~/{inGame ? '本局人生' : '选择出身'}</span>
+        <div className="theme-switch" role="group" aria-label="界面主题">
+          {THEME_OPTIONS.map(option => (
+            <button
+              aria-pressed={theme === option.id}
+              className={theme === option.id ? 'theme-option active' : 'theme-option'}
+              key={option.id}
+              onClick={() => setTheme(option.id)}
+              type="button"
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
       </div>
       {import.meta.env.DEV ? <div className="bugs-tag">{DEV_BADGE_TEXT}</div> : null}
       <h1 className="t-main"><span className="t-prompt">❯</span>程序员生存模拟器<span className="cursor-blink">▌</span></h1>

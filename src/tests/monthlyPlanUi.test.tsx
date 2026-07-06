@@ -37,6 +37,54 @@ describe('monthly multi-action plan UI', () => {
   afterEach(() => {
     vi.restoreAllMocks();
     document.body.innerHTML = '';
+    delete document.documentElement.dataset.theme;
+    document.documentElement.style.colorScheme = '';
+  });
+
+  it('switches between terminal, paper, and blackout themes and persists the choice', async () => {
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    const root = createRoot(container);
+
+    await act(async () => {
+      root.render(<App />);
+    });
+
+    expect(document.documentElement.dataset.theme).toBe('terminal');
+    expect(document.body.textContent).toContain('终端黑');
+    expect(document.body.textContent).toContain('极简白');
+    expect(document.body.textContent).toContain('纯黑');
+
+    await act(async () => {
+      click(buttonByText('极简白'));
+    });
+
+    expect(document.documentElement.dataset.theme).toBe('paper');
+    expect(localStorage.getItem('coderslife_theme')).toBe('paper');
+
+    await act(async () => {
+      click(buttonByText('纯黑'));
+    });
+
+    expect(document.documentElement.dataset.theme).toBe('blackout');
+    expect(localStorage.getItem('coderslife_theme')).toBe('blackout');
+
+    await act(async () => {
+      root.unmount();
+    });
+
+    const secondContainer = document.createElement('div');
+    document.body.appendChild(secondContainer);
+    const secondRoot = createRoot(secondContainer);
+    await act(async () => {
+      secondRoot.render(<App />);
+    });
+
+    expect(document.documentElement.dataset.theme).toBe('blackout');
+
+    await act(async () => {
+      secondRoot.unmount();
+    });
   });
 
   it('executes an action directly from the card and offers detail and management controls', async () => {
