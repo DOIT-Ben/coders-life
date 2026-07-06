@@ -1679,6 +1679,13 @@ body {
 .bookmark-list {
   max-height: none;
 }
+.bookmark-icon {
+  display: inline-block;
+  margin-right: 8px;
+}
+.bookmark-chips {
+  margin-top: 4px;
+}
 .shop-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
 .shop-item.owned {
   margin: 0 -8px;
@@ -1814,6 +1821,37 @@ button.career-card { text-align: left; width: 100%; }
 .danger { color: var(--red); }
 @media (max-width: 660px) { .city-line { align-items: stretch; flex-direction: column; } }
 
+.loading-screen,
+.error-screen {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  min-height: 40vh;
+}
+.error-screen {
+  text-align: center;
+}
+.loading-copy {
+  color: var(--text2);
+  font-size: 14px;
+  font-weight: 600;
+}
+.loading-hint {
+  color: var(--text3);
+  font-size: 11px;
+}
+.error-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+.error-copy {
+  color: var(--text2);
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 420px;
+}
 .loading-spinner {
   width: 36px;
   height: 36px;

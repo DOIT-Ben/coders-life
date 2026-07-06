@@ -152,10 +152,10 @@ export default function App() {
 
 function LoadingScreen() {
   return (
-    <div className="screen active" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '40vh', gap: 16 }}>
+    <div className="screen active loading-screen">
       <div className="loading-spinner" />
-      <div style={{ fontSize: 14, color: 'var(--text2)', fontWeight: 600 }}>加载游戏引擎...</div>
-      <div style={{ fontSize: 11, color: 'var(--text3)' }}>首次加载约需 2-5 秒</div>
+      <div className="loading-copy">加载游戏引擎...</div>
+      <div className="loading-hint">首次加载约需 2-5 秒</div>
     </div>
   );
 }

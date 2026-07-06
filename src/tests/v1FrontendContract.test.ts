@@ -6,6 +6,7 @@ import gameContainerSource from '../components/GameContainer.tsx?raw';
 import panelsSource from '../components/panels.tsx?raw';
 import lifeLogSource from '../components/LifeLog.tsx?raw';
 import gameDialogsSource from '../components/GameDialogs.tsx?raw';
+import errorBoundarySource from '../components/ErrorBoundary.tsx?raw';
 import effectChipsSource from '../components/effectChips.tsx?raw';
 import modalShellSource from '../components/dialogs/ModalShell.tsx?raw';
 import feedbackDialogSource from '../components/dialogs/FeedbackDialog.tsx?raw';
@@ -60,6 +61,24 @@ describe('v1 frontend contract', () => {
     expect(gameContainerSource).toContain('saveStatus');
     expect(gameContainerSource).toContain('action-list categorized-action-list');
     expect(gameContainerSource).toContain('game-layout');
+  });
+
+  it('keeps static visible styling in CSS classes instead of inline theme leaks', () => {
+    expect(appSource).not.toContain('style={{ display:');
+    expect(appSource).toContain('className="screen active loading-screen"');
+    expect(appSource).toContain('className="loading-copy"');
+    expect(appSource).toContain('className="loading-hint"');
+    expect(errorBoundarySource).not.toContain('style={{');
+    expect(errorBoundarySource).toContain('className="screen active error-screen"');
+    expect(errorBoundarySource).toContain('className="error-title"');
+    expect(errorBoundarySource).toContain('className="error-copy"');
+    expect(gameDialogsSource).not.toContain('style={{ marginRight:');
+    expect(gameDialogsSource).not.toContain('style={{ marginTop:');
+    expect(gameDialogsSource).toContain('className="bookmark-icon"');
+    expect(gameDialogsSource).toContain('className="act-chips bookmark-chips"');
+    ['.loading-screen', '.loading-copy', '.loading-hint', '.error-screen', '.error-title', '.error-copy', '.bookmark-icon', '.bookmark-chips'].forEach(selector => {
+      expect(appCss).toContain(selector);
+    });
   });
 
   it('keeps action details inline instead of floating over other controls', () => {

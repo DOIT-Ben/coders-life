@@ -239,11 +239,11 @@ function BookmarkDialog({
               <div className={isBookmarked ? 'shop-item owned' : 'shop-item'} key={action.id}>
                 <div>
                   <div className="shop-name">
-                    <span style={{ marginRight: 8 }}>{action.icon}</span>
+                    <span className="bookmark-icon">{action.icon}</span>
                     {action.name}
                   </div>
                   <div className="shop-desc">{action.description}</div>
-                  <div className="act-chips" style={{ marginTop: 4 }}>{renderEffectChips(action.visibleEffect)}</div>
+                  <div className="act-chips bookmark-chips">{renderEffectChips(action.visibleEffect)}</div>
                 </div>
                 <button
                   className={isBookmarked ? 'btn-buy owned' : 'btn-buy'}

@@ -17,9 +17,9 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
   render() {
     if (!this.state.hasError) return this.props.children;
     return (
-      <div className="screen active" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '40vh', gap: 16, textAlign: 'center' }}>
-        <div style={{ fontSize: 16, fontWeight: 700 }}>这段人生遇到了意外中断</div>
-        <div style={{ fontSize: 13, color: 'var(--text2)', maxWidth: 420, lineHeight: 1.6 }}>
+      <div className="screen active error-screen">
+        <div className="error-title">这段人生遇到了意外中断</div>
+        <div className="error-copy">
           你的进度会随每次行动自动保存在本机。重新加载后可以从最近一次记录继续，不会丢失存档。
         </div>
         <button className="btn-continue" onClick={() => window.location.reload()}>重新加载</button>
