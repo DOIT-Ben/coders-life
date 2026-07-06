@@ -271,6 +271,11 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.action-tabs');
     expect(appCss).toContain('.action-card');
     expect(appCss).toContain('min-height: 0;');
+    expect(appCss).toContain('.action-list');
+    expect(appCss).toContain('flex: 1 1 auto;');
+    expect(appCss).toContain('overflow-y: auto');
+    expect(appCss).toContain('.action-support-scroll');
+    expect(appCss).toContain('max-height: min(22dvh, 180px);');
   });
 
   it('keeps mobile controls at touch-friendly sizes without disabling action panel scroll', () => {

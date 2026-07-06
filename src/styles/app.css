@@ -730,7 +730,7 @@ body {
   border-bottom: 1px solid var(--border);
   background: var(--surface2);
   flex: 0 0 auto;
-  max-height: 140px;
+  max-height: min(24dvh, 140px);
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
@@ -1058,8 +1058,9 @@ body {
   padding: 28px 12px;
 }
 .action-support-scroll {
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   min-height: 0;
+  max-height: min(22dvh, 180px);
   overflow-y: auto;
   overscroll-behavior: contain;
   border-top: 1px solid var(--border);
@@ -1722,6 +1723,7 @@ body {
   .left-col { height: auto; min-height: 0; }
   .right-col { height: min(76dvh, 720px); min-height: 420px; }
   .action-list { display: grid; grid-template-columns: 1fr; gap: var(--action-slot-gap); }
+  .action-support-scroll { max-height: 150px; }
   .v1-action-grid { grid-template-rows: none; }
   .categorized-action-list { display: grid; grid-template-columns: 1fr; }
   .action-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }

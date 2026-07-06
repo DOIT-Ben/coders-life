@@ -239,4 +239,33 @@ describe('monthly multi-action plan UI', () => {
       root.unmount();
     });
   });
+
+  it('shows a Chinese reason on disabled action cards instead of silently blocking them', async () => {
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    const root = createRoot(container);
+
+    await act(async () => {
+      root.render(<App />);
+    });
+
+    await act(async () => {
+      click(buttonByText('开始生存'));
+    });
+
+    await vi.waitFor(() => {
+      expect(document.body.textContent).toContain('第 0 天');
+    }, { timeout: 5000 });
+
+    await act(async () => {
+      click(buttonByText('职业机会'));
+    });
+
+    const disabledReason = document.querySelector('.action-btn.disabled .act-reason');
+    expect(disabledReason?.textContent).toMatch(/当前条件不足|作品集|面试|offer|在职|现金|技术|AI|冷却|请先处理当前事件/);
+
+    await act(async () => {
+      root.unmount();
+    });
+  });
 });
