@@ -306,6 +306,12 @@ describe('v1 frontend contract', () => {
     expect(appCss).not.toContain('.left-col, .right-col { height: auto; min-height: 0; }');
   });
 
+  it('keeps globally visible controls at touch-friendly height across all viewports', () => {
+    expect(appCss).toContain('.theme-option {\n  min-height: 44px;');
+    expect(appCss).toContain('.btn-continue {\n  min-height: 44px;');
+    expect(appCss).toContain('.btn-buy {\n  min-height: 44px;');
+  });
+
   it('runs CI verification on master pushes as well as remediation branches', () => {
     expect(ciWorkflow).toContain('pull_request:');
     expect(ciWorkflow).toContain('npm test');

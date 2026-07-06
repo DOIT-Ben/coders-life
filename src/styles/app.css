@@ -195,6 +195,7 @@ body {
   margin-bottom: 14px;
 }
 .btn-continue {
+  min-height: 44px;
   display: inline-block;
   background: var(--primary); color: var(--on-accent);
   border: none; border-radius: 8px;
@@ -1697,6 +1698,7 @@ body {
 .shop-name { font-size: 14px; font-weight: 600; }
 .shop-desc { font-size: 12px; color: var(--text2); margin-top: 2px; }
 .btn-buy {
+  min-height: 44px;
   background: var(--accent); color: var(--on-accent); border: none;
   border-radius: 7px; padding: 7px 16px;
   font-size: 13px; font-weight: 600; cursor: pointer;
@@ -1895,7 +1897,7 @@ button.career-card { text-align: left; width: 100%; }
   padding: 3px;
 }
 .theme-option {
-  min-height: 32px;
+  min-height: 44px;
   border: 1px solid transparent;
   border-radius: 999px;
   background: transparent;

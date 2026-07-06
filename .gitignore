@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .codex-run/
+browser-audit/
 *.tsbuildinfo
 .DS_Store
 .env
