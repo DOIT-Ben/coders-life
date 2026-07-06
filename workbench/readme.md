@@ -1,6 +1,6 @@
 # workbench
 
-## 当前状态（2026-07-04）
+## 当前状态（2026-07-06）
 
 - 存档链路已修通：App 经 `saveManager.loadGame()` 读档（含迁移），「继续上次生存」可用。
 - 弹窗事件池异步分包：引擎消费 `EVENTS` 前必须 `await ensureGameDataLoaded()`（App/脚本/测试 setup 已接）。
@@ -10,10 +10,12 @@
 - 留存入口：启动页已接入“今日人生”每日挑战，UTC 日期派生 seed，挑战局不覆盖普通存档，结局写入本地 30 天历史。
 - 策略玩法：游戏内已接入“人生脚本”受限 DSL，支持白名单条件/行动、多行动月度计划、跑 12 个月/跑到结局和批量模拟脚本矩阵。
 - 可访问性：人生终端具备焦点圈闭；390/768/1280 三档视口无横向溢出、无低于 44px 的可见交互目标。
-- 测试：22 files / 226 tests 通过；lint / build / simulate / simulate:batch 门禁通过。
+- 前端主题：已接入终端黑、极简白、纯黑三套主题；弹窗与右侧行动区采用固定头尾和内部滚动边界。
+- 测试：22 files / 222 tests 通过；build / simulate / simulate:batch / git diff --check 门禁通过。
 
 ## 最近变更摘要
 
+- 2026-07-06：前端主题润色（三主题切换、主题令牌守护、弹窗滚动边界、行动区滚动、可见样式收敛），详见 `docs\dev-records\2026-07-06-frontend-polish-themes.md`。
 - 2026-07-04：批次 3 每日挑战（日期 seed、今日人生入口、本地 30 天历史、战报日期标签、排行榜接口 stub），详见 `docs\dev-records\2026-07-04-batch3-daily-challenge.md`。
 - 2026-07-04：批次 4 人生脚本 DSL（受限 parser、真实月度执行器、脚本跑局 UI、批量模拟脚本矩阵、关系结局优先级修正），详见 `docs\dev-records\2026-07-04-batch4-life-script-dsl.md`。
 - 2026-07-04：批次 2 结局 Postmortem + 战报卡片（结构化复盘、Canvas PNG、三类结局测试、三档视口审计），详见 `docs\dev-records\2026-07-04-batch2-ending-postmortem-share-card.md`。
