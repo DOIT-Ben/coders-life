@@ -201,4 +201,42 @@ describe('monthly multi-action plan UI', () => {
       root.unmount();
     });
   });
+
+  it('keeps shop modal close control outside the scroll region while the item list scrolls', async () => {
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    const root = createRoot(container);
+
+    await act(async () => {
+      root.render(<App />);
+    });
+
+    await act(async () => {
+      click(buttonByText('开始生存'));
+    });
+
+    await vi.waitFor(() => {
+      expect(document.body.textContent).toContain('第 0 天');
+    }, { timeout: 5000 });
+
+    await act(async () => {
+      click(buttonByText('商店'));
+    });
+
+    const modal = document.querySelector('.modal');
+    const head = document.querySelector('.modal-head');
+    const bodySlot = document.querySelector('.modal-body-slot');
+    const scroll = document.querySelector('.modal-scroll.shop-list');
+    const close = document.querySelector('button[aria-label="关闭补给商店"]');
+    expect(modal).not.toBeNull();
+    expect(head).not.toBeNull();
+    expect(bodySlot).not.toBeNull();
+    expect(scroll).not.toBeNull();
+    expect(close).not.toBeNull();
+    expect(scroll?.contains(close)).toBe(false);
+
+    await act(async () => {
+      root.unmount();
+    });
+  });
 });

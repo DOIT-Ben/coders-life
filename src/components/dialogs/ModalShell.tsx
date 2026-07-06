@@ -40,8 +40,10 @@ export default function ModalShell({ actions, children, className = '', close, t
           <div className="modal-title" id={titleId}>{title}</div>
           {close ? <button aria-label={`关闭${title}`} onClick={close} type="button">×</button> : null}
         </div>
-        {children}
-        {actions}
+        <div className="modal-body-slot">
+          {children}
+        </div>
+        {actions ? <div className="modal-actions-slot">{actions}</div> : null}
       </div>
     </div>
   );

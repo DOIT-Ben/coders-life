@@ -1149,16 +1149,22 @@ body {
 .modal-overlay.open { display: flex; }
 .modal {
   background: var(--card); border: 1px solid var(--border);
-  border-radius: 14px; padding: 24px;
+  border-radius: 14px; padding: 20px;
   max-width: 420px; width: 100%;
   max-height: min(720px, calc(100dvh - 32px));
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 24px 64px rgba(0,0,0,.4);
+  box-shadow: var(--shadow-md);
 }
 .modal-title { font-size: 21px; font-weight: 700; margin-bottom: 8px; }
 .modal-body { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 20px; white-space: pre-line; }
+.modal-body-slot {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
 .modal-scroll {
   min-height: 0;
   overflow-y: auto;
@@ -1167,7 +1173,15 @@ body {
   scrollbar-width: thin;
   scrollbar-color: var(--track) transparent;
 }
-.modal-actions { flex: 0 0 auto; display: flex; gap: 8px; }
+.modal-actions-slot {
+  flex: 0 0 auto;
+  padding-top: 12px;
+}
+.modal-actions {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 8px;
+}
 .btn-mp {
   flex: 1; min-height: 44px; padding: 11px; background: var(--primary); color: var(--on-accent);
   border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer;
@@ -1299,7 +1313,10 @@ body {
 .feedback-scroll {
   display: grid;
   gap: 16px;
-  max-height: min(68dvh, 520px);
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
+  overflow-y: auto;
   padding-right: 8px;
 }
 .feedback-section {
@@ -1390,7 +1407,10 @@ body {
 .life-script-scroll {
   display: grid;
   gap: 12px;
-  max-height: min(68dvh, 560px);
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
+  overflow-y: auto;
   padding-right: 8px;
 }
 .life-script-status,
@@ -1487,7 +1507,10 @@ body {
 .ending-postmortem {
   display: grid;
   gap: 16px;
-  max-height: min(70dvh, 640px);
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
+  overflow-y: auto;
   padding-right: 8px;
 }
 .postmortem-hero {
@@ -1643,8 +1666,9 @@ body {
 
 /* SHOP */
 .shop-list {
+  flex: 1 1 auto;
   min-height: 0;
-  max-height: min(64dvh, 560px);
+  max-height: none;
   overflow-y: auto;
   overscroll-behavior: contain;
   padding-right: 6px;
@@ -1652,7 +1676,7 @@ body {
   scrollbar-color: var(--track) transparent;
 }
 .bookmark-list {
-  max-height: min(60dvh, 480px);
+  max-height: none;
 }
 .shop-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
 .shop-item.owned {

@@ -179,7 +179,9 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.feedback-textarea');
     expect(appCss).toContain('.feedback-submit');
     expect(appCss).toContain('position: fixed;');
-    expect(appCss).toContain('max-height: min(68dvh, 520px);');
+    expect(appCss).toContain('.modal-body-slot');
+    expect(appCss).toContain('.feedback-scroll');
+    expect(appCss).toContain('max-height: none;');
   });
 
   it('loads low-frequency dialogs outside the main game container chunk', () => {
@@ -249,15 +251,22 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.btn-buy.owned');
   });
 
-  it('keeps shop and action panels scrollable inside the viewport', () => {
+  it('keeps modal chrome fixed and modal content scrollable inside the viewport', () => {
+    expect(dialogSource).toContain('function ModalShell');
+    expect(dialogSource).toContain('className="modal-body-slot"');
     expect(source).toContain('shop-list');
+    expect(appCss).toContain('.modal {');
     expect(appCss).toContain('max-height: min(720px, calc(100dvh - 32px));');
     expect(appCss).toContain('display: flex;\n  flex-direction: column;');
     expect(appCss).toContain('.modal-head {\n  flex: 0 0 auto;');
-    expect(appCss).toContain('.modal-scroll');
+    expect(appCss).toContain('.modal-body-slot {\n  flex: 1 1 auto;');
+    expect(appCss).toContain('.modal-scroll {\n  min-height: 0;\n  overflow-y: auto;');
+    expect(appCss).toContain('.modal-actions {\n  flex: 0 0 auto;');
     expect(appCss).toContain('.shop-list');
     expect(appCss).toContain('overflow-y: auto');
-    expect(appCss).toContain('max-height: min(64dvh, 560px);');
+  });
+
+  it('keeps action panels scrollable inside the viewport', () => {
     expect(appCss).toContain('.right-col { display: flex; flex-direction: column; min-height: 0; height: min(72dvh, 680px); overflow: hidden; }');
     expect(appCss).toContain('.action-tabs');
     expect(appCss).toContain('.action-card');
