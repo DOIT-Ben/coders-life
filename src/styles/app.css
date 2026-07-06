@@ -1,8 +1,10 @@
 
 :root {
+  color-scheme: dark;
   /* Palette — 深夜工作区终端：墨蓝底、日志级别语义色（+绿 -红 WARN琥珀 INFO蓝） */
   --bg:       #0E1116;
   --card:     #151B23;
+  --surface:  #111720;
   --surface2: #1B232E;
   --track:    #232E3B;
   --border:   #253040;
@@ -18,7 +20,8 @@
 
   --accent:        #3FB950;  /* diff-add green — positive */
   --accent-h:      #56D364;
-  --good-soft:     #16281B;
+  --accent-soft:   #16281B;
+  --good-soft:     var(--accent-soft);
 
   --warn:          #D29922;  /* amber — caution */
   --warn-h:        #E3B341;
@@ -47,8 +50,92 @@
   --text3:    #8593AA;
 
   --r:        10px;
+  --overlay:  rgba(0,0,0,.38);
+  --focus-ring: rgba(88,166,255,.22);
   --shadow:   0 2px 10px rgba(0,0,0,.35);
   --shadow-md: 0 6px 20px rgba(0,0,0,.5);
+}
+
+[data-theme="paper"] {
+  color-scheme: light;
+  --bg:       #F7F8FA;
+  --card:     #FFFFFF;
+  --surface:  #FBFCFE;
+  --surface2: #EEF2F7;
+  --track:    #D8E0EA;
+  --border:   #C8D2DE;
+  --border2:  #9BAABE;
+  --primary:       #075FB8;
+  --primary-h:     #044A91;
+  --primary-soft:  #E6F0FA;
+  --accent:        #167A35;
+  --accent-h:      #0B5F28;
+  --accent-soft:   #E4F5E9;
+  --good-soft:     var(--accent-soft);
+  --warn:          #8A5A00;
+  --warn-h:        #684300;
+  --warn-soft:     #FFF1CC;
+  --amber:         var(--warn);
+  --danger:        #B42318;
+  --danger-h:      #8F1D16;
+  --danger-soft:   #FDE8E6;
+  --danger-border: #E3A19C;
+  --red:           var(--danger);
+  --gold:          #8A5A00;
+  --on-accent:     #FFFFFF;
+  --avatar-bg:     #F2E8DA;
+  --teal:     #00796B;
+  --sky:      #075FB8;
+  --mint:     #167A35;
+  --purple:   #6741A5;
+  --text:     #151A22;
+  --text2:    #3C4656;
+  --text3:    #566274;
+  --overlay:  rgba(15,23,42,.28);
+  --focus-ring: rgba(7,95,184,.24);
+  --shadow:   0 2px 10px rgba(15,23,42,.10);
+  --shadow-md: 0 12px 30px rgba(15,23,42,.16);
+}
+
+[data-theme="blackout"] {
+  color-scheme: dark;
+  --bg:       #000000;
+  --card:     #050505;
+  --surface:  #080808;
+  --surface2: #111111;
+  --track:    #1E1E1E;
+  --border:   #2A2A2A;
+  --border2:  #464646;
+  --primary:       #7AB7FF;
+  --primary-h:     #A8D1FF;
+  --primary-soft:  #071A2E;
+  --accent:        #52D273;
+  --accent-h:      #7AF09A;
+  --accent-soft:   #061F0D;
+  --good-soft:     var(--accent-soft);
+  --warn:          #E0B84C;
+  --warn-h:        #F2D06F;
+  --warn-soft:     #251C05;
+  --amber:         var(--warn);
+  --danger:        #FF7D75;
+  --danger-h:      #FFA39E;
+  --danger-soft:   #2A0808;
+  --danger-border: #6E2B2B;
+  --red:           var(--danger);
+  --gold:          #F2D06F;
+  --on-accent:     #000000;
+  --avatar-bg:     #F6EFE4;
+  --teal:     #5EEAD4;
+  --sky:      #7AB7FF;
+  --mint:     #7AF09A;
+  --purple:   #C4B5FD;
+  --text:     #F5F7FA;
+  --text2:    #C5CCD6;
+  --text3:    #A7B0BE;
+  --overlay:  rgba(0,0,0,.72);
+  --focus-ring: rgba(122,183,255,.30);
+  --shadow:   0 2px 10px rgba(0,0,0,.72);
+  --shadow-md: 0 10px 34px rgba(0,0,0,.82);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -58,10 +145,7 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(ellipse 55% 45% at 96% 4%,  rgba(88,166,255,.12) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 45% at 3%  92%, rgba(63,185,80,.12) 0%, transparent 55%),
-    var(--bg);
+  background: var(--bg);
   color: var(--text);
   font-family: var(--font-mono);
   min-height: 100vh;
@@ -1058,7 +1142,7 @@ body {
 /* MODAL */
 .modal-overlay {
   position: fixed; inset: 0;
-  background: rgba(0,0,0,.38); backdrop-filter: blur(4px);
+  background: var(--overlay); backdrop-filter: blur(4px);
   display: none; align-items: center; justify-content: center;
   z-index: 200; padding: 16px;
 }
@@ -1267,7 +1351,7 @@ body {
   line-height: 1.55;
 }
 .feedback-textarea:focus {
-  outline: 2px solid rgba(88,166,255,.22);
+  outline: 2px solid var(--focus-ring);
   border-color: var(--primary);
 }
 .feedback-context {
@@ -1344,7 +1428,7 @@ body {
   font: 13px/1.55 var(--font-mono);
 }
 .life-script-input:focus {
-  outline: 2px solid rgba(88,166,255,.22);
+  outline: 2px solid var(--focus-ring);
   border-color: var(--primary);
 }
 .life-script-errors {
@@ -1736,6 +1820,36 @@ button.career-card { text-align: left; width: 100%; }
   font-size: 11px; color: var(--text3); letter-spacing: .5px;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
+.theme-switch {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  padding: 3px;
+}
+.theme-option {
+  min-height: 32px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text2);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+}
+.theme-option:hover,
+.theme-option:focus-visible {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.theme-option.active {
+  background: var(--primary);
+  color: var(--on-accent);
+}
 .t-prompt { color: var(--accent); margin-right: 10px; }
 .cursor-blink {
   display: inline-block; margin-left: 6px;
@@ -1862,6 +1976,17 @@ button.career-card { text-align: left; width: 100%; }
 @media (max-width: 660px) {
   .term-overlay { padding-top: 6vh; }
   .term-fab { bottom: 18px; }
+  .term-bar { flex-wrap: wrap; }
+  .theme-switch {
+    order: 2;
+    width: 100%;
+    justify-content: stretch;
+    margin-left: 0;
+  }
+  .theme-option {
+    flex: 1;
+    min-height: 44px;
+  }
 }
 
 /* ── P0 告警条（危机激活） ── */
