@@ -55,6 +55,13 @@ function contrast(fg: string, bg: string): number {
   return (hi + 0.05) / (lo + 0.05);
 }
 
+function ruleFor(selector: string): string {
+  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const match = appCss.match(new RegExp(`${escaped}\\s*\\{([\\s\\S]*?)\\n\\}`, 'm'));
+  if (!match) throw new Error(`app.css 缺少规则 ${selector}`);
+  return match[1];
+}
+
 describe('theme token guard', () => {
   it('defines every CSS variable reference somewhere in app.css', () => {
     const referenced = Array.from(appCss.matchAll(/var\(--([a-zA-Z0-9_-]+)\)/g)).map(match => match[1]);
@@ -62,6 +69,14 @@ describe('theme token guard', () => {
     for (const name of referenced) {
       expect(defined.has(name), `app.css should define --${name}`).toBe(true);
     }
+  });
+
+  it('keeps visible floating and owned-state surfaces theme-token driven', () => {
+    ['.feedback-fab', '.action-tab-search-clear', '.shop-item.owned'].forEach(selector => {
+      const rule = ruleFor(selector);
+      expect(rule, `${selector} should use tokenized surface colors`).not.toMatch(/rgba?\([^)]*\)|#[0-9a-fA-F]{3,8}/);
+      expect(rule, `${selector} should reference theme tokens`).toContain('var(--');
+    });
   });
 
   const pairs: Array<[fg: string, bg: string, min: number, why: string]> = [
