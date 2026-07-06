@@ -11,7 +11,7 @@
 - 策略玩法：游戏内已接入“人生脚本”受限 DSL，支持白名单条件/行动、多行动月度计划、跑 12 个月/跑到结局和批量模拟脚本矩阵。
 - 可访问性：人生终端具备焦点圈闭；390/768/1280 三档视口无横向溢出、无低于 44px 的可见交互目标。
 - 前端主题：已接入终端黑、极简白、纯黑三套主题；弹窗与右侧行动区采用固定头尾和内部滚动边界。
-- 测试：22 files / 222 tests 通过；build / simulate / simulate:batch / git diff --check 门禁通过。
+- 测试：22 files / 223 tests 通过；lint / build / simulate / simulate:batch / git diff --check 门禁通过。
 
 ## 最近变更摘要
 
