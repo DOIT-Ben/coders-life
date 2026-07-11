@@ -2,7 +2,8 @@ import { useMemo, useState } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import type { ActionConfig, GameState } from '../types/game';
 import { applyEventChoice } from '../systems/eventSystem';
-import type { AvailableAction, GameModal } from './GameContainer';
+import { ACTION_GROUPS } from './gameUiTypes';
+import type { AvailableAction, GameModal } from './gameUiTypes';
 import ModalShell from './dialogs/ModalShell';
 import AchievementDialog from './dialogs/AchievementDialog';
 import EndingDialog from './dialogs/EndingDialog';
@@ -25,15 +26,6 @@ type DialogProps = {
   toggleBookmark: (actionId: string) => void;
   visibleActionGroupIds: ActionConfig['group'][];
 };
-
-const ACTION_GROUP_MAP: Array<{ id: ActionConfig['group']; label: string }> = [
-  { id: 'learn', label: '学习成长' },
-  { id: 'work', label: '工作赚钱' },
-  { id: 'career', label: '职业机会' },
-  { id: 'money', label: '副业收入' },
-  { id: 'recover', label: '恢复放松' },
-  { id: 'relationship', label: '社交关系' },
-];
 
 export default function GameDialogs({
   actions,
@@ -132,14 +124,14 @@ function ActionManageDialog({
       if (current.includes(groupId)) {
         return current.length <= 1 ? current : current.filter(id => id !== groupId);
       }
-      return ACTION_GROUP_MAP.some(group => group.id === groupId) ? [...current, groupId] : current;
+      return ACTION_GROUPS.some(group => group.id === groupId) ? [...current, groupId] : current;
     });
   }
 
   return (
     <ModalShell close={close} title="管理行动分类" wide>
       <div className="modal-scroll action-manage-list">
-        {ACTION_GROUP_MAP.map(group => {
+        {ACTION_GROUPS.map(group => {
           const checked = visibleActionGroupIds.includes(group.id);
           const locked = checked && visibleActionGroupIds.length <= 1;
           return (
@@ -218,7 +210,7 @@ function BookmarkDialog({
         >
           已收藏
         </button>
-        {ACTION_GROUP_MAP.map(group => (
+        {ACTION_GROUPS.map(group => (
           <button
             className={group.id === tab ? 'action-tab active' : 'action-tab'}
             key={group.id}

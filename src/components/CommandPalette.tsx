@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { GameState } from '../types/game';
 import { getVisibleStats } from '../core/formulas';
 import { getCareer } from '../config/careers';
-import type { AvailableAction, GameModal } from './GameContainer';
+import type { AvailableAction, GameModal } from './gameUiTypes';
 
 type OutputTone = 'plain' | 'good' | 'bad' | 'warn' | 'cmd';
 type OutputLine = { id: number; text: string; tone: OutputTone };

@@ -1,8 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import appSource from '../App.tsx?raw';
+import careerSetupSource from '../components/CareerSetupScreen.tsx?raw';
 import startProfilesSource from '../config/startProfiles.ts?raw';
 import gameContainerSource from '../components/GameContainer.tsx?raw';
+import gameScreenSource from '../components/GameScreen.tsx?raw';
+import gameUiTypesSource from '../components/gameUiTypes.ts?raw';
 import panelsSource from '../components/panels.tsx?raw';
 import lifeLogSource from '../components/LifeLog.tsx?raw';
 import gameDialogsSource from '../components/GameDialogs.tsx?raw';
@@ -22,7 +25,7 @@ const componentPath = componentDir.pathname;
 const dialogSource = modalShellSource + feedbackDialogSource + achievementDialogSource + endingDialogSource + shopDialogSource;
 
 describe('v1 frontend contract', () => {
-  const source = appSource + gameContainerSource + gameDialogsSource + dialogSource + panelsSource + lifeLogSource + effectChipsSource;
+  const source = appSource + careerSetupSource + gameContainerSource + gameScreenSource + gameUiTypesSource + gameDialogsSource + dialogSource + panelsSource + lifeLogSource + effectChipsSource;
 
   it('keeps v2 implementation labels out of the visible v1 shell', () => {
     expect(source).not.toContain('V2 ENGINE');
@@ -44,23 +47,23 @@ describe('v1 frontend contract', () => {
 
   it('uses categorized action tabs with detailed sub-actions', () => {
     ['学习成长', '工作赚钱', '职业机会', '副业收入', '恢复放松', '社交关系'].forEach(label => {
-      expect(gameContainerSource).toContain(label);
+      expect(gameUiTypesSource).toContain(label);
     });
-    expect(gameContainerSource).toContain('selectedActionGroup');
-    expect(gameContainerSource).toContain('action-tabs');
+    expect(gameScreenSource).toContain('selectedActionGroup');
+    expect(gameScreenSource).toContain('action-tabs');
   });
 
   it('keeps save feedback and character switching separate', () => {
-    expect(gameContainerSource).toContain('进度已保存');
+    expect(gameScreenSource).toContain('进度已保存');
     expect(gameContainerSource).toContain('const [saveStatus');
     expect(appSource).toContain('function changeCharacter');
     expect(source).not.toContain('<button className="btn-h red" onClick={resetGame}>换角色</button>');
   });
 
   it('uses stable layout hooks for regular game panels', () => {
-    expect(gameContainerSource).toContain('saveStatus');
-    expect(gameContainerSource).toContain('action-list categorized-action-list');
-    expect(gameContainerSource).toContain('game-layout');
+    expect(gameScreenSource).toContain('saveStatus');
+    expect(gameScreenSource).toContain('action-list categorized-action-list');
+    expect(gameScreenSource).toContain('game-layout');
   });
 
   it('keeps static visible styling in CSS classes instead of inline theme leaks', () => {
@@ -82,7 +85,7 @@ describe('v1 frontend contract', () => {
   });
 
   it('keeps action details inline instead of floating over other controls', () => {
-    expect(gameContainerSource).toContain('act-desc');
+    expect(gameScreenSource).toContain('act-desc');
     expect(source).not.toContain('className="a-tip"');
   });
 
@@ -98,7 +101,7 @@ describe('v1 frontend contract', () => {
     ['现实压力', '现金流', '健康债', '职业稳定', '关系债', '生活满意'].forEach(label => {
       expect(panelsSource).toContain(label);
     });
-    expect(gameContainerSource).toContain('PressureSummary');
+    expect(gameScreenSource).toContain('PressureSummary');
     expect(panelsSource).toContain('pressure-bar');
     expect(source).not.toContain('realworld kernel');
     expect(source).not.toContain('V2底层');
@@ -108,10 +111,10 @@ describe('v1 frontend contract', () => {
   });
 
   it('shows action cards with effect chips and benefit/risk meta', () => {
-    expect(gameContainerSource).toContain('benefitLabel');
-    expect(gameContainerSource).toContain('riskLabel');
-    expect(gameContainerSource).toContain('act-chips');
-    expect(gameContainerSource).toContain('act-meta');
+    expect(gameScreenSource).toContain('benefitLabel');
+    expect(gameScreenSource).toContain('riskLabel');
+    expect(gameScreenSource).toContain('act-chips');
+    expect(gameScreenSource).toContain('act-meta');
     expect(appCss).not.toContain('display: none;\n  grid-template-columns: 1fr;');
   });
 
@@ -127,10 +130,10 @@ describe('v1 frontend contract', () => {
   });
 
   it('uses dynamic action lists with flexible scrolling', () => {
-    expect(gameContainerSource).toContain('groupActions');
-    expect(gameContainerSource).toContain('renderEffectChips');
+    expect(gameScreenSource).toContain('groupActions');
+    expect(gameScreenSource).toContain('renderEffectChips');
     expect(effectChipsSource).toContain('getEffectChips');
-    expect(gameContainerSource).toContain('ACTION_GROUP_MAP');
+    expect(gameScreenSource).toContain('ACTION_GROUPS');
     expect(appCss).toContain('min-height: 0;');
     expect(appCss).toContain('flex: 1 1 auto;');
     expect(appCss).toContain('overflow-y: auto');
@@ -142,12 +145,12 @@ describe('v1 frontend contract', () => {
 
   it('surfaces first-stage functional guidance without breaking v1 shell', () => {
     ['act-badges', 'act-badge', 'body-signal'].forEach(token => {
-      expect(gameContainerSource).toContain(token);
+      expect(gameScreenSource).toContain(token);
     });
     expect(endingDialogSource).toContain('事故时间线');
     expect(gameDialogsSource).toContain('EventChoiceDialog');
-    expect(gameContainerSource).toContain('getActionInsights');
-    expect(gameContainerSource).toContain('getBodySignal');
+    expect(gameScreenSource).toContain('getActionInsights');
+    expect(gameScreenSource).toContain('getBodySignal');
     expect(gameDialogsSource).toContain('applyEventChoice');
     expect(gameDialogsSource).toContain('event-choice-option');
     expect(appCss).toContain('.act-badge');
@@ -156,9 +159,9 @@ describe('v1 frontend contract', () => {
   });
 
   it('keeps the right action panel focused on actions instead of inline decision logs', () => {
-    expect(gameContainerSource).not.toContain('decision-log-mini');
-    expect(gameContainerSource).not.toContain('mini-log-title');
-    expect(gameContainerSource).not.toContain('决策日志');
+    expect(gameScreenSource).not.toContain('decision-log-mini');
+    expect(gameScreenSource).not.toContain('mini-log-title');
+    expect(gameScreenSource).not.toContain('决策日志');
     expect(appCss).not.toContain('.decision-log-mini');
     expect(appCss).not.toContain('.mini-log-row');
     expect(appCss).not.toContain('.mini-log-delta');
@@ -166,11 +169,11 @@ describe('v1 frontend contract', () => {
 
   it('executes action cards directly with undo detail and management controls', () => {
     ['行动选择', 'executeActionNow', 'undoLastAction', '管理', '详情', '收藏'].forEach(token => {
-      expect(gameContainerSource).toContain(token);
+      expect(gameScreenSource).toContain(token);
     });
-    expect(gameContainerSource).toContain('applyAction(state, action.id)');
-    expect(gameContainerSource).not.toContain('plannedActionIds');
-    expect(gameContainerSource).not.toContain('submitMonthlyPlan');
+    expect(gameScreenSource).toContain('applyAction(state, action.id)');
+    expect(gameScreenSource).not.toContain('plannedActionIds');
+    expect(gameScreenSource).not.toContain('submitMonthlyPlan');
     expect(source).not.toContain('monthly-budget');
     expect(appCss).not.toContain('.monthly-plan-panel');
     expect(appCss).not.toContain('.monthly-plan-submit');
@@ -178,28 +181,28 @@ describe('v1 frontend contract', () => {
   });
 
   it('keeps action cards free of nested interactive bookmark controls', () => {
-    expect(gameContainerSource).toContain('action-btn-main');
-    expect(gameContainerSource).toContain('aria-label={`执行行动：${slotAction.name}`}');
-    expect(gameContainerSource).toContain('aria-label={`收藏行动：${slotAction.name}`}');
-    expect(gameContainerSource).toContain('aria-label={`查看详情：${slotAction.name}`}');
+    expect(gameScreenSource).toContain('action-btn-main');
+    expect(gameScreenSource).toContain('aria-label={`执行行动：${slotAction.name}`}');
+    expect(gameScreenSource).toContain('aria-label={`收藏行动：${slotAction.name}`}');
+    expect(gameScreenSource).toContain('aria-label={`查看详情：${slotAction.name}`}');
     expect(appCss).toMatch(/\.action-btn\s*\{[^}]*display:\s*flex;[^}]*flex-direction:\s*column;[^}]*flex:\s*0 0 auto;/s);
     expect(appCss).toMatch(/\.action-btn-main\s*\{[^}]*position:\s*relative;[^}]*z-index:\s*1;/s);
     expect(appCss).toMatch(/\.act-tool-row\s*\{[^}]*display:\s*flex;/s);
-    expect(gameContainerSource).not.toContain('role="button" tabIndex={0}');
-    expect(gameContainerSource).not.toContain('<span className={`act-bookmark');
+    expect(gameScreenSource).not.toContain('role="button" tabIndex={0}');
+    expect(gameScreenSource).not.toContain('<span className={`act-bookmark');
   });
 
   it('exposes bookmark navigation in header and opens a bookmark management modal', () => {
-    expect(gameContainerSource).toContain("openModal('bookmark')");
+    expect(gameScreenSource).toContain("openModal('bookmark')");
     ['成就', '商店', '收藏', '保存'].forEach(token => {
-      expect(gameContainerSource).toContain(token);
+      expect(gameScreenSource).toContain(token);
     });
   });
 
   it('keeps feedback as a low-weight standalone entry instead of a game header action', () => {
-    const headerStart = gameContainerSource.indexOf('<div className="ghdr-right">');
-    const headerEnd = gameContainerSource.indexOf('</div>', headerStart);
-    const headerSource = gameContainerSource.slice(headerStart, headerEnd);
+    const headerStart = gameScreenSource.indexOf('<div className="ghdr-right">');
+    const headerEnd = gameScreenSource.indexOf('</div>', headerStart);
+    const headerSource = gameScreenSource.slice(headerStart, headerEnd);
     expect(headerSource).not.toContain("openModal('feedback')");
     expect(headerSource).not.toContain('feedback-fab');
     expect(dialogSource).toContain('FeedbackDialog');
@@ -349,7 +352,7 @@ describe('v1 frontend contract', () => {
   });
 
   it('shows project progress and quality instead of hiding staged outcomes', () => {
-    expect(gameContainerSource).toContain('ProjectProgressPanel');
+    expect(gameScreenSource).toContain('ProjectProgressPanel');
     ['项目进度', '质量', 'completedInstances', 'activeInstance'].forEach(token => {
       expect(panelsSource).toContain(token);
     });
@@ -361,7 +364,7 @@ describe('v1 frontend contract', () => {
 
   it('lets players choose a value profile before starting a game', () => {
     ['valueProfileId', 'VALUE_PROFILES'].forEach(token => {
-      expect(appSource).toContain(token);
+      expect(appSource + careerSetupSource).toContain(token);
     });
     ['财富缓冲', '健康关系', '创造探索'].forEach(token => {
       expect(startProfilesSource).toContain(token);
@@ -372,7 +375,7 @@ describe('v1 frontend contract', () => {
 
   it('exposes daily challenge without pulling save or event data into the first screen', () => {
     ['今日人生', 'dailyChallenge', 'startDailyChallenge'].forEach(token => {
-      expect(appSource).toContain(token);
+      expect(appSource + careerSetupSource).toContain(token);
     });
     expect(appSource).toContain('readDailyChallengeHistory');
     expect(appSource).not.toContain("from './storage/saveManager'");
@@ -385,7 +388,7 @@ describe('v1 frontend contract', () => {
 
   it('uses respectful crisis age and AI copy in the visible shell', () => {
     ['职业转型窗口', 'AI协作能力', '恢复窗口'].forEach(label => {
-      expect(gameContainerSource).toContain(label);
+      expect(gameScreenSource).toContain(label);
     });
     ['35岁危机最严重', '不会用AI的程序员在消失', '崩溃'].forEach(label => {
       expect(source).not.toContain(label);
