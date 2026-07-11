@@ -1,6 +1,7 @@
 import type { ActionConfig, DecisionLogEntry, GameState } from '../types/game';
 import { createInitialState } from '../core/gameEngine';
 import { getVisibleStats } from '../core/formulas';
+import { currentOffers } from './careerSystem';
 import { chooseActionForStrategy } from './autoChoiceSystem';
 import type { AvailableAction } from '../components/gameUiTypes';
 
@@ -98,6 +99,7 @@ export function buildFirstYearReview(state: GameState): FirstYearReview {
   const visible = getVisibleStats(state);
   const baselineState = createInitialState(state.career.track, state.career.cityTier, 0, state.values);
   const baseline = getVisibleStats(baselineState);
+  const hasCurrentOffer = currentOffers(state).length > 0;
   const primaryRisk = selectPrimaryRisk(state);
   const decisions = state.decisionLog.length > 0
     ? state.decisionLog.slice(-3).map(formatDecision)
@@ -109,7 +111,7 @@ export function buildFirstYearReview(state: GameState): FirstYearReview {
 
   return {
     title: '第一年提交记录',
-    summary: buildReviewSummary(state),
+    summary: buildReviewSummary(state, hasCurrentOffer),
     metrics: [
       { label: '作品集', value: `${state.career.portfolioCount} 个` },
       { label: '投递/面试', value: `${state.career.totalApplications}/${state.career.totalInterviews}` },
@@ -119,11 +121,11 @@ export function buildFirstYearReview(state: GameState): FirstYearReview {
       { label: '技术/AI', value: `${visible.tech}/${visible.ai}`, delta: `${formatDelta(visible.tech - baseline.tech)}/${formatDelta(visible.ai - baseline.ai)}` },
     ],
     decisions,
-    strength: buildStrength(state),
+    strength: buildStrength(state, hasCurrentOffer),
     risk: primaryRisk.score >= 40
       ? primaryRisk.text
       : '当前没有单一风险失控，但仍需要避免长期重复同一种行动。',
-    nextStep: buildNextStep(state, primaryRisk),
+    nextStep: buildNextStep(state, primaryRisk, hasCurrentOffer),
   };
 }
 
@@ -192,17 +194,17 @@ function formatDecision(entry: DecisionLogEntry) {
   };
 }
 
-function buildReviewSummary(state: GameState): string {
+function buildReviewSummary(state: GameState, hasCurrentOffer: boolean): string {
   if (state.career.employmentStatus === 'employed') return '你走完了从准备、求职到第一份工作的转换，接下来要证明这条路可以持续。';
-  if (state.career.activeOffers.some(offer => offer.status === 'active')) return '你已经拿到仍在有效期内的 Offer，第一年的最后一步是把机会变成真实入职。';
+  if (hasCurrentOffer) return '你已经拿到仍在有效期内的 Offer，第一年的最后一步是把机会变成真实入职。';
   if (state.career.totalInterviews > 0) return '你已经进入真实招聘流程，但机会还没有转化为稳定收入。';
   if (state.career.portfolioCount > 0) return '你已经建立了入场作品，下一步需要提高投递和面试转化。';
   return '第一年主要消耗在准备和生存上，入行所需的作品证据仍未形成。';
 }
 
-function buildStrength(state: GameState): string {
+function buildStrength(state: GameState, hasCurrentOffer: boolean): string {
   if (state.career.employmentStatus === 'employed') return '你把能力、作品和机会连接成了真实入职，而不是停留在准备阶段。';
-  if (state.career.activeOffers.some(offer => offer.status === 'active')) return '你已经把面试转成了有效 Offer，市场开始给出正向反馈。';
+  if (hasCurrentOffer) return '你已经把面试转成了有效 Offer，市场开始给出正向反馈。';
   if (state.career.totalInterviews > 0) return '你进入了真实面试场景，开始用外部反馈校准能力。';
   if (state.career.portfolioCount > 0) return '你完成了可展示的作品，不再只用学习时长证明自己。';
   return '你保住了第一年的选择空间，还可以重新组织入行节奏。';
@@ -219,11 +221,11 @@ function selectPrimaryRisk(state: GameState): FirstYearRisk {
   return risks[0];
 }
 
-function buildNextStep(state: GameState, primaryRisk: FirstYearRisk): string {
+function buildNextStep(state: GameState, primaryRisk: FirstYearRisk, hasCurrentOffer: boolean): string {
   let careerStep = '继续稳定交付，同时保留学习和恢复，让职业增长保持可复制。';
   if (state.career.portfolioCount < 1) {
     careerStep = '下一阶段先完成一个作品集项目，再把学习投入转成求职证据。';
-  } else if (state.career.activeOffers.some(offer => offer.status === 'active')) {
+  } else if (hasCurrentOffer) {
     careerStep = '优先处理当前 Offer，避免机会过期后重新回到投递起点。';
   } else if (state.career.employmentStatus !== 'employed') {
     careerStep = '保持投递、面试和复盘连续，不再用无限准备替代真实市场反馈。';

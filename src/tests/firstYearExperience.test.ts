@@ -154,4 +154,27 @@ describe('first-year experience', () => {
     expect(review.risk).toContain('关系支持');
     expect(review.nextStep).toContain('关系支持');
   });
+
+  it('does not describe an expired historical offer as current', () => {
+    const state = newGuidedState();
+    state.month = 12;
+    state.career.portfolioCount = 1;
+    state.career.totalOffers = 1;
+    state.career.activeOffers.push({
+      id: 'expired-offer',
+      companyType: 'private',
+      jobLevel: 1,
+      salaryMonthly: 16000,
+      createdMonth: 8,
+      expiresMonth: 11,
+      status: 'active',
+    });
+
+    const review = buildFirstYearReview(state);
+
+    expect(review.summary).toContain('入场作品');
+    expect(review.strength).toContain('可展示的作品');
+    expect(review.nextStep).toContain('保持投递');
+    expect(review.nextStep).not.toContain('当前 Offer');
+  });
 });
