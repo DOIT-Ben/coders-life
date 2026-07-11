@@ -24,6 +24,7 @@ export type GameScreenProps = {
   state: GameState;
   setState: (state: GameState) => void;
   openModal: (modal: GameModal) => void;
+  onOpenFirstYearReview: () => void;
   changeCharacter: () => void;
   saveStatus: string;
   dailyChallenge?: DailyChallenge;
@@ -40,6 +41,7 @@ export default function GameScreen({
   state,
   setState,
   openModal,
+  onOpenFirstYearReview,
   changeCharacter,
   saveStatus,
   dailyChallenge,
@@ -85,6 +87,8 @@ export default function GameScreen({
   const endingText = state.endingId ? state.logs[state.logs.length - 1]?.text : undefined;
   const day = state.month * 30;
   const bodySignal = getBodySignal(state);
+  const canReopenFirstYearReview = state.flags.v21_first_year_experience === true
+    && state.flags.v21_first_year_review_seen === true;
   const activeCrises = [
     state.crisis.burnout.active ? '燃尽修复' : null,
     state.crisis.mentalHealth.active ? '心理重建' : null,
@@ -194,7 +198,15 @@ export default function GameScreen({
       <div className="game-layout">
         <div className="left-col">
           <div className="time-card">
-            <div className="time-head"><span>生存时间轴</span><span>第 {day} 天 · {state.age}岁</span></div>
+            <div className="time-head">
+              <span>生存时间轴</span>
+              <div className="time-head-meta">
+                <span>第 {day} 天 · {state.age}岁</span>
+                {canReopenFirstYearReview ? (
+                  <button className="first-year-review-command" onClick={onOpenFirstYearReview} type="button">第一年复盘</button>
+                ) : null}
+              </div>
+            </div>
             <div className="time-track"><div className="time-fill" style={{ width: `${progress}%` }} /></div>
             <div className="time-miles">
               <div className="mile danger" style={{ left: `${13 / 23 * 100}%` }}><div className="mile-dot" />职业转型窗口</div>

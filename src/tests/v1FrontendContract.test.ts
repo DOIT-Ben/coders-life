@@ -17,13 +17,14 @@ import feedbackDialogSource from '../components/dialogs/FeedbackDialog.tsx?raw';
 import achievementDialogSource from '../components/dialogs/AchievementDialog.tsx?raw';
 import endingDialogSource from '../components/dialogs/EndingDialog.tsx?raw';
 import shopDialogSource from '../components/dialogs/ShopDialog.tsx?raw';
+import firstYearReviewDialogSource from '../components/dialogs/FirstYearReviewDialog.tsx?raw';
 
 const appCss = readFileSync(new URL('../styles/app.css', import.meta.url), 'utf8').replace(/\r\n/g, '\n');
 const ciWorkflow = readFileSync(new URL('../../.github/workflows/ci.yml', import.meta.url), 'utf8');
 const eslintConfig = readFileSync(new URL('../../eslint.config.js', import.meta.url), 'utf8');
 const componentDir = new URL('../components/', import.meta.url);
 const componentPath = componentDir.pathname;
-const dialogSource = modalShellSource + feedbackDialogSource + achievementDialogSource + endingDialogSource + shopDialogSource;
+const dialogSource = modalShellSource + feedbackDialogSource + achievementDialogSource + endingDialogSource + shopDialogSource + firstYearReviewDialogSource;
 
 describe('v1 frontend contract', () => {
   const source = appSource + careerSetupSource + gameContainerSource + gameScreenSource + gameUiTypesSource + firstYearProgressBandSource + gameDialogsSource + dialogSource + panelsSource + lifeLogSource + effectChipsSource;
@@ -223,7 +224,7 @@ describe('v1 frontend contract', () => {
   it('loads low-frequency dialogs outside the main game container chunk', () => {
     expect(gameContainerSource).toContain("lazy(() => import('./GameDialogs'))");
     expect(gameContainerSource).toContain('<Suspense fallback={null}>');
-    ['FeedbackDialog', 'AchievementDialog', 'ShopDialog', 'EndingDialog'].forEach(token => {
+    ['FeedbackDialog', 'AchievementDialog', 'ShopDialog', 'EndingDialog', 'FirstYearReviewDialog'].forEach(token => {
       expect(gameContainerSource).not.toContain(`function ${token}`);
       expect(dialogSource).toContain(`function ${token}`);
     });
@@ -381,7 +382,8 @@ describe('v1 frontend contract', () => {
       'return dailyChallenge ? initial : enableFirstYearExperience(initial);'
     );
 
-    expect(gameContainerSource).toContain("import { enableFirstYearExperience } from '../systems/firstYearExperienceSystem'");
+    expect(gameContainerSource).toContain('enableFirstYearExperience,');
+    expect(gameContainerSource).toContain("from '../systems/firstYearExperienceSystem'");
     expect(savedStateGuard).toBeGreaterThan(-1);
     expect(initialStateCreation).toBeGreaterThan(savedStateGuard);
     expect(normalGameEnablement).toBeGreaterThan(initialStateCreation);
@@ -394,6 +396,23 @@ describe('v1 frontend contract', () => {
     expect(gameScreenSource).toContain("' recommended'");
     expect(firstYearProgressBandSource).toContain('aria-label="第一年进度"');
     expect(firstYearProgressBandSource).not.toContain('applyAction');
+  });
+
+  it('keeps first-year review idempotent and behind events, endings, and explicit tools', () => {
+    const eventPriority = gameContainerSource.indexOf('state.pendingEventChoice');
+    const endingPriority = gameContainerSource.indexOf('state.gameOver && closedEndingKey');
+    const explicitToolPriority = gameContainerSource.indexOf('modal ??');
+    const reviewPriority = gameContainerSource.indexOf('shouldShowFirstYearReview(state)');
+
+    expect(eventPriority).toBeGreaterThan(-1);
+    expect(endingPriority).toBeGreaterThan(eventPriority);
+    expect(explicitToolPriority).toBeGreaterThan(endingPriority);
+    expect(reviewPriority).toBeGreaterThan(explicitToolPriority);
+    expect(gameContainerSource).toContain('markFirstYearReviewSeen(state)');
+    expect(gameDialogsSource).toContain('FirstYearReviewDialog');
+    expect(firstYearReviewDialogSource).toContain('buildFirstYearReview(state)');
+    expect(gameScreenSource).toContain('第一年复盘');
+    expect(appCss).toContain('.first-year-review-metrics');
   });
 
   it('exposes daily challenge without pulling save or event data into the first screen', () => {

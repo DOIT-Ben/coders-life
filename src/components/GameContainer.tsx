@@ -5,7 +5,11 @@ import { saveGame } from '../storage/saveManager';
 import GameScreen from './GameScreen';
 import type { DailyChallenge, DailyChallengeResult } from '../systems/dailyChallengeSystem';
 import { recordDailyChallengeEnding } from '../systems/dailyChallengeResultSystem';
-import { enableFirstYearExperience } from '../systems/firstYearExperienceSystem';
+import {
+  enableFirstYearExperience,
+  markFirstYearReviewSeen,
+  shouldShowFirstYearReview,
+} from '../systems/firstYearExperienceSystem';
 import type { AvailableAction, GameModal } from './gameUiTypes';
 
 const GameDialogs = lazy(() => import('./GameDialogs'));
@@ -89,9 +93,14 @@ export default function GameContainer({
 
   const availableActions = getAvailableActions(state);
   const currentEndingKey = state.endingId ?? `${state.month}-${state.logs[state.logs.length - 1]?.id ?? 'ending'}`;
-  const effectiveModal = modal ?? (state.gameOver && closedEndingKey !== currentEndingKey ? 'ending' : undefined);
+  const effectiveModal: GameModal | undefined = state.pendingEventChoice
+    ? undefined
+    : state.gameOver && closedEndingKey !== currentEndingKey
+      ? 'ending'
+      : modal ?? (!dailyChallenge && shouldShowFirstYearReview(state) ? 'firstYearReview' : undefined);
 
   function closeModal() {
+    if (effectiveModal === 'firstYearReview') setState(markFirstYearReviewSeen(state));
     if (effectiveModal === 'ending') setClosedEndingKey(currentEndingKey);
     setModal(undefined);
   }
@@ -102,6 +111,7 @@ export default function GameContainer({
         bookmarkedActionIds={bookmarkedActionIds}
         changeCharacter={onChangeCharacter}
         openModal={setModal}
+        onOpenFirstYearReview={() => setModal('firstYearReview')}
         saveStatus={saveStatus}
         dailyChallenge={dailyChallenge}
         setDetailAction={setDetailAction}

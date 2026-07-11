@@ -10,6 +10,7 @@ import EndingDialog from './dialogs/EndingDialog';
 import FeedbackDialog from './dialogs/FeedbackDialog';
 import LifeScriptDialog from './dialogs/LifeScriptDialog';
 import ShopDialog from './dialogs/ShopDialog';
+import FirstYearReviewDialog from './dialogs/FirstYearReviewDialog';
 import { renderEffectChips } from './effectChips';
 
 type DialogProps = {
@@ -50,6 +51,7 @@ export default function GameDialogs({
       {modal === 'actionManage' && <ActionManageDialog visibleActionGroupIds={visibleActionGroupIds} setVisibleActionGroupIds={setVisibleActionGroupIds} close={closeModal} />}
       {modal === 'script' && <LifeScriptDialog state={state} setState={setState} close={closeModal} />}
       {modal === 'ending' && <EndingDialog state={state} close={closeModal} restart={restart} challengeLabel={challengeLabel} />}
+      {modal === 'firstYearReview' && <FirstYearReviewDialog state={state} close={closeModal} restart={restart} />}
       {modal === 'feedback' && <FeedbackDialog state={state} close={closeModal} />}
       {state.pendingEventChoice && <EventChoiceDialog state={state} setState={setState} />}
     </>
