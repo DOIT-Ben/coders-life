@@ -2,6 +2,7 @@ node_modules/
 dist/
 .codex-run/
 browser-audit/
+.playwright-cli/
 *.tsbuildinfo
 .DS_Store
 .env

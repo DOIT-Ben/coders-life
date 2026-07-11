@@ -2318,6 +2318,21 @@ button.career-card { text-align: left; width: 100%; }
     min-height: 44px;
   }
 }
+@media (max-width: 1200px) {
+  .term-fab,
+  .feedback-fab {
+    position: static;
+    display: block;
+    width: fit-content;
+    margin-top: 10px;
+    transform: none;
+  }
+  .term-fab { margin-right: auto; }
+  .feedback-fab { margin-left: auto; }
+  .term-fab:hover,
+  .term-fab:focus-visible,
+  .feedback-fab:hover { transform: none; }
+}
 
 /* ── P0 告警条（危机激活） ── */
 .p0-alert {

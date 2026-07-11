@@ -21,6 +21,7 @@ import shopDialogSource from '../components/dialogs/ShopDialog.tsx?raw';
 import firstYearReviewDialogSource from '../components/dialogs/FirstYearReviewDialog.tsx?raw';
 
 const appCss = readFileSync(new URL('../styles/app.css', import.meta.url), 'utf8').replace(/\r\n/g, '\n');
+const indexHtml = readFileSync(new URL('../../index.html', import.meta.url), 'utf8');
 const ciWorkflow = readFileSync(new URL('../../.github/workflows/ci.yml', import.meta.url), 'utf8');
 const eslintConfig = readFileSync(new URL('../../eslint.config.js', import.meta.url), 'utf8');
 const componentDir = new URL('../components/', import.meta.url);
@@ -34,6 +35,11 @@ describe('v1 frontend contract', () => {
     expect(source).not.toContain('V2 ENGINE');
     expect(source).not.toContain('AI重构');
     expect(source).not.toContain('隐藏状态');
+  });
+
+  it('provides a bundled favicon without a missing browser request', () => {
+    expect(indexHtml).toContain('rel="icon"');
+    expect(indexHtml).toContain('/src/assets/avatars/frontend-fox.svg');
   });
 
   it('keeps internal feedback labels out of production title chrome', () => {
@@ -234,6 +240,11 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.modal-body-slot');
     expect(appCss).toContain('.feedback-scroll');
     expect(appCss).toContain('max-height: none;');
+  });
+
+  it('docks floating utilities before narrow side gutters can cover game content', () => {
+    expect(appCss).toContain('@media (max-width: 1200px) {');
+    expect(appCss).toContain('.term-fab,\n  .feedback-fab {\n    position: static;');
   });
 
   it('loads low-frequency dialogs outside the main game container chunk', () => {
