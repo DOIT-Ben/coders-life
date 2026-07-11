@@ -22,6 +22,12 @@ function buttonByText(text: string): HTMLButtonElement {
   return button as HTMLButtonElement;
 }
 
+function buttonByLabel(label: string): HTMLButtonElement {
+  const button = document.querySelector(`button[aria-label="${label}"]`);
+  if (!button) throw new Error(`Missing button with aria-label: ${label}`);
+  return button as HTMLButtonElement;
+}
+
 async function startGame() {
   const container = document.createElement('div');
   document.body.appendChild(container);
@@ -30,7 +36,7 @@ async function startGame() {
     root.render(<App />);
   });
   await act(async () => {
-    click(buttonByText('开始生存'));
+    click(buttonByText('开始新人生'));
   });
   await vi.waitFor(() => {
     expect(document.body.textContent).toContain('第 0 天');
@@ -52,6 +58,9 @@ describe('life script UI', () => {
   it('opens the script dialog and runs a 12-month script through the real game loop', async () => {
     const root = await startGame();
 
+    await act(async () => {
+      click(buttonByLabel('打开人生工具'));
+    });
     await act(async () => {
       click(buttonByText('脚本'));
     });
@@ -77,6 +86,9 @@ describe('life script UI', () => {
   it('shows productized errors for invalid script source without advancing time', async () => {
     const root = await startGame();
 
+    await act(async () => {
+      click(buttonByLabel('打开人生工具'));
+    });
     await act(async () => {
       click(buttonByText('脚本'));
     });

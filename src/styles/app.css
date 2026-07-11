@@ -423,7 +423,7 @@ body {
   background: var(--primary-soft);
 }
 .ghdr-div { color: var(--border2); }
-.ghdr-right { display: grid; grid-template-columns: repeat(4, minmax(54px, auto)); gap: 6px; flex-shrink: 0; }
+.ghdr-right { display: flex; align-items: center; justify-content: flex-end; gap: 6px; flex-shrink: 0; }
 
 /* Header action buttons — slim, outlined style */
 .btn-h {
@@ -449,6 +449,61 @@ body {
 .btn-h.red:hover {
   background: var(--danger-soft);
   border-color: var(--danger);
+}
+.game-tools {
+  position: relative;
+  display: flex;
+}
+.game-tools-trigger {
+  display: inline-grid;
+  place-items: center;
+  min-width: 44px;
+  padding: 5px 10px;
+  font-size: 20px;
+  line-height: 1;
+}
+.game-tools-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 150;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  width: min(280px, calc(100vw - 32px));
+  min-width: min(220px, calc(100vw - 32px));
+  max-height: min(70dvh, 360px);
+  overflow-y: auto;
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+  box-shadow: var(--shadow-md);
+  padding: 8px;
+}
+.game-tools-command {
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface2);
+  color: var(--text2);
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: left;
+}
+.game-tools-command:hover,
+.game-tools-command:focus-visible {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.game-tools-command.danger {
+  border-color: var(--danger-border);
+  color: var(--danger);
+}
+@media (min-width: 560px) {
+  .game-tools-menu { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* STATS ROW */
@@ -1941,7 +1996,7 @@ body {
   .career-avatar { width: 46px; height: 46px; border-radius: 12px; }
   .game-hdr { align-items: stretch; flex-direction: column; gap: 8px; }
   .ghdr-left { flex-wrap: wrap; }
-  .ghdr-right { grid-template-columns: repeat(4, 1fr); }
+  .ghdr-right { justify-content: flex-end; }
   .stats-row { gap: 8px; }
   .stat-card { padding: 10px; }
   .pressure-card { grid-template-columns: 1fr; gap: 7px; }

@@ -17,6 +17,7 @@ import { ACTION_GROUPS } from './gameUiTypes';
 import type { AvailableAction, GameModal } from './gameUiTypes';
 import { deriveFirstYearGuide } from '../systems/firstYearExperienceSystem';
 import FirstYearProgressBand from './FirstYearProgressBand';
+import GameToolsMenu from './GameToolsMenu';
 
 const DEFAULT_ACTION_GROUP: ActionConfig['group'] = 'recover';
 
@@ -153,10 +154,6 @@ export default function GameScreen({
           <div className="ghdr-pill">{state.age} 岁</div>
         </div>
         <div className="ghdr-right">
-          <button className="btn-h" onClick={() => openModal('ach')}>成就</button>
-          <button className="btn-h" onClick={() => openModal('shop')}>商店</button>
-          <button className="btn-h" onClick={() => openModal('script')}>脚本</button>
-          <button className="btn-h" onClick={() => openModal('bookmark')}>收藏</button>
           <button
             className={`btn-h${(!undoSnapshot || (state.inventory.undo_pill ?? 0) <= 0) ? ' dim' : ''}`}
             onClick={undoLastAction}
@@ -164,8 +161,7 @@ export default function GameScreen({
           >
             撤销{(state.inventory.undo_pill ?? 0) > 0 ? ` ×${state.inventory.undo_pill}` : ''}
           </button>
-          <button className="btn-h" onClick={handleSave}>保存</button>
-          <button className="btn-h red" onClick={changeCharacter}>换角色</button>
+          <GameToolsMenu openModal={openModal} onSave={handleSave} onChangeCharacter={changeCharacter} />
         </div>
       </div>
       <div className={saveStatus ? 'save-toast show' : 'save-toast'}>{saveStatus}</div>

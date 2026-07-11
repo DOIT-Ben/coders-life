@@ -82,7 +82,7 @@ describe('save wiring between App and saveManager', () => {
     const root = await renderApp();
 
     await act(async () => {
-      click(buttonByText('开始生存') as HTMLButtonElement);
+      click(buttonByText('开始新人生') as HTMLButtonElement);
     });
 
     await vi.waitFor(() => {

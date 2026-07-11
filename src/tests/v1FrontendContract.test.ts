@@ -7,6 +7,7 @@ import gameContainerSource from '../components/GameContainer.tsx?raw';
 import gameScreenSource from '../components/GameScreen.tsx?raw';
 import gameUiTypesSource from '../components/gameUiTypes.ts?raw';
 import firstYearProgressBandSource from '../components/FirstYearProgressBand.tsx?raw';
+import gameToolsMenuSource from '../components/GameToolsMenu.tsx?raw';
 import panelsSource from '../components/panels.tsx?raw';
 import lifeLogSource from '../components/LifeLog.tsx?raw';
 import gameDialogsSource from '../components/GameDialogs.tsx?raw';
@@ -27,7 +28,7 @@ const componentPath = componentDir.pathname;
 const dialogSource = modalShellSource + feedbackDialogSource + achievementDialogSource + endingDialogSource + shopDialogSource + firstYearReviewDialogSource;
 
 describe('v1 frontend contract', () => {
-  const source = appSource + careerSetupSource + gameContainerSource + gameScreenSource + gameUiTypesSource + firstYearProgressBandSource + gameDialogsSource + dialogSource + panelsSource + lifeLogSource + effectChipsSource;
+  const source = appSource + careerSetupSource + gameContainerSource + gameScreenSource + gameUiTypesSource + firstYearProgressBandSource + gameToolsMenuSource + gameDialogsSource + dialogSource + panelsSource + lifeLogSource + effectChipsSource;
 
   it('keeps v2 implementation labels out of the visible v1 shell', () => {
     expect(source).not.toContain('V2 ENGINE');
@@ -195,10 +196,24 @@ describe('v1 frontend contract', () => {
   });
 
   it('exposes bookmark navigation in header and opens a bookmark management modal', () => {
-    expect(gameScreenSource).toContain("openModal('bookmark')");
+    expect(gameToolsMenuSource).toContain("openModal('bookmark')");
     ['成就', '商店', '收藏', '保存'].forEach(token => {
-      expect(gameScreenSource).toContain(token);
+      expect(gameToolsMenuSource).toContain(token);
     });
+  });
+
+  it('consolidates secondary commands while keeping undo directly available', () => {
+    expect(gameScreenSource).toContain('<GameToolsMenu');
+    expect(gameScreenSource).toContain('undoLastAction');
+    expect(gameToolsMenuSource).toContain('aria-label="打开人生工具"');
+    expect(gameToolsMenuSource).toContain('aria-expanded={open}');
+    expect(gameToolsMenuSource).toContain('aria-controls="game-tools-menu"');
+    expect(gameToolsMenuSource).toContain("event.key === 'Escape'");
+    ['成就', '商店', '脚本', '收藏', '保存', '换角色'].forEach(label => {
+      expect(gameToolsMenuSource).toContain(`label: '${label}'`);
+    });
+    expect(appCss).toContain('.game-tools-menu');
+    expect(appCss).toContain('.game-tools-command');
   });
 
   it('keeps feedback as a low-weight standalone entry instead of a game header action', () => {

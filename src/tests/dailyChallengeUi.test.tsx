@@ -22,6 +22,12 @@ function buttonByText(text: string): HTMLButtonElement {
   return button as HTMLButtonElement;
 }
 
+function buttonByLabel(label: string): HTMLButtonElement {
+  const button = document.querySelector(`button[aria-label="${label}"]`);
+  if (!button) throw new Error(`Missing button with aria-label: ${label}`);
+  return button as HTMLButtonElement;
+}
+
 async function renderApp() {
   const container = document.createElement('div');
   document.body.appendChild(container);
@@ -104,6 +110,9 @@ describe('daily challenge UI', () => {
     const state = createInitialState('frontend', 'tier2', challenge.seed, DEFAULT_PLAYER_VALUES);
     const root = renderGameContainer(state);
 
+    await act(async () => {
+      click(buttonByLabel('打开人生工具'));
+    });
     await act(async () => {
       click(buttonByText('保存'));
     });

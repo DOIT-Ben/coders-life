@@ -72,7 +72,7 @@ describe('theme token guard', () => {
   });
 
   it('keeps visible floating and owned-state surfaces theme-token driven', () => {
-    ['.feedback-fab', '.action-tab-search-clear', '.shop-item.owned'].forEach(selector => {
+    ['.feedback-fab', '.action-tab-search-clear', '.shop-item.owned', '.game-tools-menu', '.game-tools-command'].forEach(selector => {
       const rule = ruleFor(selector);
       expect(rule, `${selector} should use tokenized surface colors`).not.toMatch(/rgba?\([^)]*\)|#[0-9a-fA-F]{3,8}/);
       expect(rule, `${selector} should reference theme tokens`).toContain('var(--');

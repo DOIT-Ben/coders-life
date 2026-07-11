@@ -10,6 +10,10 @@ function click(element: Element) {
   element.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
 }
 
+function keydown(element: Element, key: string) {
+  element.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, cancelable: true, key }));
+}
+
 function input(element: HTMLTextAreaElement, value: string) {
   const setter = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value')?.set;
   setter?.call(element, value);
@@ -91,6 +95,68 @@ describe('monthly multi-action plan UI', () => {
     });
 
     expect(document.querySelector('.action-tab.active')?.textContent).toContain('恢复放松');
+
+    await act(async () => {
+      root.unmount();
+    });
+  });
+
+  it('keeps secondary commands in one accessible tools menu', async () => {
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    const root = createRoot(container);
+
+    await act(async () => {
+      root.render(<App />);
+    });
+    await act(async () => {
+      click(buttonByText('开始新人生'));
+    });
+    await vi.waitFor(() => {
+      expect(document.body.textContent).toContain('第 0 天');
+    }, { timeout: 5000 });
+
+    const trigger = buttonByLabel('打开人生工具');
+    expect(trigger.getAttribute('aria-expanded')).toBe('false');
+    expect(document.querySelector('#game-tools-menu')).toBeNull();
+    ['成就', '商店', '脚本', '收藏', '保存', '换角色'].forEach(label => {
+      expect(document.querySelector(`.game-tools-command[data-command="${label}"]`)).toBeNull();
+    });
+
+    await act(async () => {
+      click(trigger);
+    });
+
+    expect(trigger.getAttribute('aria-expanded')).toBe('true');
+    const menu = document.querySelector('#game-tools-menu');
+    expect(menu?.getAttribute('role')).toBe('menu');
+    ['成就', '商店', '脚本', '收藏', '保存', '换角色'].forEach(label => {
+      expect(menu?.textContent).toContain(label);
+    });
+    expect(document.activeElement?.textContent).toContain('成就');
+
+    await act(async () => {
+      keydown(document.activeElement as Element, 'ArrowDown');
+    });
+    expect(document.activeElement?.textContent).toContain('商店');
+
+    await act(async () => {
+      keydown(document.activeElement as Element, 'Escape');
+    });
+    expect(trigger.getAttribute('aria-expanded')).toBe('false');
+    expect(document.activeElement).toBe(trigger);
+
+    await act(async () => {
+      click(trigger);
+    });
+
+    await act(async () => {
+      click(buttonByText('成就'));
+    });
+    await vi.waitFor(() => {
+      expect(document.body.textContent).toContain('成就系统');
+    }, { timeout: 5000 });
+    expect(trigger.getAttribute('aria-expanded')).toBe('false');
 
     await act(async () => {
       root.unmount();
@@ -275,6 +341,9 @@ describe('monthly multi-action plan UI', () => {
       expect(document.body.textContent).toContain('第 0 天');
     }, { timeout: 5000 });
 
+    await act(async () => {
+      click(buttonByLabel('打开人生工具'));
+    });
     await act(async () => {
       click(buttonByText('商店'));
     });

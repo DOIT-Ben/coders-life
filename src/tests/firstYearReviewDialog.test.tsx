@@ -23,6 +23,12 @@ function buttonByText(text: string): HTMLButtonElement {
   return button as HTMLButtonElement;
 }
 
+function buttonByLabel(label: string): HTMLButtonElement {
+  const button = document.querySelector(`button[aria-label="${label}"]`);
+  if (!button) throw new Error(`Missing button with aria-label: ${label}`);
+  return button as HTMLButtonElement;
+}
+
 function reviewState(): GameState {
   const state = enableFirstYearExperience(createInitialState('frontend', 'tier2', 424242));
   state.month = 12;
@@ -119,6 +125,9 @@ describe('first-year review modal', () => {
   it('keeps an explicit tool ahead of the automatic review', async () => {
     renderGame(reviewState());
 
+    act(() => {
+      click(buttonByLabel('打开人生工具'));
+    });
     act(() => {
       click(buttonByText('商店'));
     });
