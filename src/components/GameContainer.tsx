@@ -5,6 +5,7 @@ import { saveGame } from '../storage/saveManager';
 import GameScreen from './GameScreen';
 import type { DailyChallenge, DailyChallengeResult } from '../systems/dailyChallengeSystem';
 import { recordDailyChallengeEnding } from '../systems/dailyChallengeResultSystem';
+import { enableFirstYearExperience } from '../systems/firstYearExperienceSystem';
 import type { AvailableAction, GameModal } from './gameUiTypes';
 
 const GameDialogs = lazy(() => import('./GameDialogs'));
@@ -30,7 +31,11 @@ export default function GameContainer({
   onChangeCharacter: () => void;
   onRestart: () => void;
 }) {
-  const [state, setState] = useState<GameState>(() => savedState ?? createInitialState(track, cityTier, dailyChallenge?.seed, valueProfile));
+  const [state, setState] = useState<GameState>(() => {
+    if (savedState) return savedState;
+    const initial = createInitialState(track, cityTier, dailyChallenge?.seed, valueProfile);
+    return dailyChallenge ? initial : enableFirstYearExperience(initial);
+  });
   const [modal, setModal] = useState<GameModal | undefined>();
   const [saveStatus, setSaveStatus] = useState('');
   const [undoSnapshot, setUndoSnapshot] = useState<GameState | undefined>();

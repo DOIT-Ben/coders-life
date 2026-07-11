@@ -30,6 +30,10 @@ export default function CareerSetupScreen({
   startDailyChallenge,
   preload
 }: CareerSetupScreenProps) {
+  const selectedCareer = CAREERS.find(career => career.id === track) ?? CAREERS[0];
+  const selectedCity = START_CITY_OPTIONS.find(option => option.id === cityTier) ?? START_CITY_OPTIONS[0];
+  const selectedValue = VALUE_PROFILES.find(profile => profile.id === valueProfileId) ?? VALUE_PROFILES[0];
+
   return (
     <div className="screen active">
       <div className="section-label">&gt; 选择你的职业路径 _</div>
@@ -84,9 +88,16 @@ export default function CareerSetupScreen({
             </div>
           ) : <div className="daily-history empty">还没有本地挑战记录</div>}
         </div>
-        <button className="btn-daily" onClick={startDailyChallenge} onMouseEnter={preload} type="button">今日人生</button>
       </div>
-      <button className="btn-start" onClick={startGame} onMouseEnter={preload}>&gt; 开始生存 _</button>
+      <div className="start-command-bar">
+        <div className="start-config-summary">
+          {selectedCareer.name} · {selectedCity.label} · {selectedValue.label}
+        </div>
+        <div className="start-command-actions">
+          <button className="btn-start" onClick={startGame} onMouseEnter={preload} type="button">开始新人生</button>
+          <button className="btn-daily" onClick={startDailyChallenge} onMouseEnter={preload} type="button">今日人生</button>
+        </div>
+      </div>
       <div className="quote">「AI 改写的是任务结构，长期价值来自判断、责任和领域理解」</div>
     </div>
   );

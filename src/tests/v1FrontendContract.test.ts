@@ -373,6 +373,19 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.value-profile-grid');
   });
 
+  it('enables first-year guidance only for new normal games', () => {
+    const savedStateGuard = gameContainerSource.indexOf('if (savedState) return savedState;');
+    const initialStateCreation = gameContainerSource.indexOf('const initial = createInitialState');
+    const normalGameEnablement = gameContainerSource.indexOf(
+      'return dailyChallenge ? initial : enableFirstYearExperience(initial);'
+    );
+
+    expect(gameContainerSource).toContain("import { enableFirstYearExperience } from '../systems/firstYearExperienceSystem'");
+    expect(savedStateGuard).toBeGreaterThan(-1);
+    expect(initialStateCreation).toBeGreaterThan(savedStateGuard);
+    expect(normalGameEnablement).toBeGreaterThan(initialStateCreation);
+  });
+
   it('exposes daily challenge without pulling save or event data into the first screen', () => {
     ['今日人生', 'dailyChallenge', 'startDailyChallenge'].forEach(token => {
       expect(appSource + careerSetupSource).toContain(token);

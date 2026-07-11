@@ -41,6 +41,29 @@ describe('monthly multi-action plan UI', () => {
     document.documentElement.style.colorScheme = '';
   });
 
+  it('summarizes the selected normal-game configuration beside the start command', async () => {
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    const root = createRoot(container);
+
+    await act(async () => {
+      root.render(<App />);
+    });
+
+    const commandBar = document.querySelector('.start-command-bar');
+    expect(commandBar).not.toBeNull();
+    expect(commandBar?.textContent ?? '').toContain('产品界面工程师');
+    expect(commandBar?.textContent ?? '').toContain('二线');
+    expect(commandBar?.textContent ?? '').toContain('财富缓冲');
+    const commands = commandBar?.querySelectorAll('button');
+    expect(commands?.[0]?.textContent).toContain('开始新人生');
+    expect(commands?.[1]?.textContent).toContain('今日人生');
+
+    await act(async () => {
+      root.unmount();
+    });
+  });
+
   it('switches between terminal, paper, and blackout themes and persists the choice', async () => {
     const container = document.createElement('div');
     document.body.appendChild(container);
@@ -97,7 +120,7 @@ describe('monthly multi-action plan UI', () => {
     });
 
     await act(async () => {
-      click(buttonByText('开始生存'));
+      click(buttonByText('开始新人生'));
     });
 
     await vi.waitFor(() => {
@@ -160,7 +183,7 @@ describe('monthly multi-action plan UI', () => {
     });
 
     await act(async () => {
-      click(buttonByText('开始生存'));
+      click(buttonByText('开始新人生'));
     });
 
     await vi.waitFor(() => {
@@ -212,7 +235,7 @@ describe('monthly multi-action plan UI', () => {
     });
 
     await act(async () => {
-      click(buttonByText('开始生存'));
+      click(buttonByText('开始新人生'));
     });
 
     await vi.waitFor(() => {
@@ -250,7 +273,7 @@ describe('monthly multi-action plan UI', () => {
     });
 
     await act(async () => {
-      click(buttonByText('开始生存'));
+      click(buttonByText('开始新人生'));
     });
 
     await vi.waitFor(() => {

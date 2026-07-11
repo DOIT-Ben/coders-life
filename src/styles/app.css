@@ -259,13 +259,8 @@ body {
 @media (max-width: 660px) { .value-profile-grid { grid-template-columns: 1fr; } }
 
 .daily-challenge-panel {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 14px;
-  align-items: center;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: linear-gradient(180deg, rgba(88,166,255,.08), rgba(30,36,48,.66));
+  border-block: 1px solid var(--border);
+  background: var(--surface2);
   margin: 8px 0 12px;
   padding: 14px;
 }
@@ -306,10 +301,10 @@ body {
 .btn-daily {
   min-width: 118px;
   min-height: 44px;
-  border: 1px solid rgba(88,166,255,.42);
+  border: 1px solid var(--border2);
   border-radius: 8px;
-  background: var(--primary);
-  color: var(--on-accent);
+  background: transparent;
+  color: var(--text);
   cursor: pointer;
   font-family: var(--font-mono);
   font-size: 14px;
@@ -317,13 +312,9 @@ body {
   transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
 }
 .btn-daily:hover {
-  background: var(--primary-h);
-  box-shadow: 0 4px 14px rgba(88,166,255,.3);
+  border-color: var(--primary);
+  background: var(--primary-soft);
   transform: translateY(-1px);
-}
-@media (max-width: 660px) {
-  .daily-challenge-panel { grid-template-columns: 1fr; }
-  .btn-daily { width: 100%; }
 }
 
 .career-card {
@@ -370,7 +361,7 @@ body {
 .c-traits { border-top: 1px solid var(--border); padding-top: 10px; display: flex; flex-direction: column; gap: 5px; }
 .trait { display: flex; gap: 6px; align-items: flex-start; font-size: 12px; line-height: 1.4; color: var(--text2); }
 .btn-start {
-  width: 100%; padding: 13px;
+  width: 100%; min-height: 44px; padding: 13px;
   background: var(--primary); color: var(--on-accent);
   border: none; border-radius: 8px;
   font-size: 15px; font-weight: 600;
@@ -380,6 +371,37 @@ body {
 .btn-start:hover { background: var(--primary-h); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(88,166,255,.3); }
 .btn-start:active { transform: translateY(0); }
 .btn-start:disabled { background: var(--track); color: var(--text3); cursor: not-allowed; transform: none; box-shadow: none; }
+.start-command-bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, auto);
+  gap: 16px;
+  align-items: center;
+  border-block: 1px solid var(--border);
+  padding: 12px 0;
+}
+.start-config-summary {
+  min-width: 0;
+  color: var(--text2);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.start-command-actions {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) minmax(118px, auto);
+  gap: 8px;
+}
+.start-command-actions .btn-start,
+.start-command-actions .btn-daily {
+  width: 100%;
+  margin: 0;
+}
+@media (max-width: 660px) {
+  .start-command-bar { grid-template-columns: 1fr; }
+  .start-command-actions { grid-template-columns: 1fr; }
+}
 
 /* ── GAME SCREEN ── */
 .game-hdr {
