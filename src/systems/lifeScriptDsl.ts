@@ -112,6 +112,9 @@ const FLAG_NAMES: Record<string, LifeScriptField> = {
 
 const CONDITION_OPERATORS: LifeScriptComparisonOperator[] = ['<=', '>=', '!=', '<', '>', '='];
 const ACTION_NAME_TO_ID = new Map(ACTIONS.map(action => [action.name, action.id]));
+const LEGACY_ACTION_NAME_TO_ID = new Map([
+  ['在职跳槽', 'C2002'],
+]);
 
 export function parseLifeScript(source: string): LifeScriptParseResult {
   const errors: string[] = [];
@@ -235,7 +238,7 @@ function parseActions(source: string, lineNumber: number, errors: string[]): str
   const actionNames = source.split(/[、，]/).map(name => name.trim()).filter(Boolean);
   const actionIds: string[] = [];
   for (const name of actionNames) {
-    const actionId = ACTION_NAME_TO_ID.get(name);
+    const actionId = ACTION_NAME_TO_ID.get(name) ?? LEGACY_ACTION_NAME_TO_ID.get(name);
     if (!actionId) {
       errors.push(`第 ${lineNumber} 行：找不到行动“${name}”。`);
       continue;

@@ -17,7 +17,7 @@ describe('lifeScriptExecutor', () => {
     expect(chooseMonthlyPlanForLifeScript(state, program)).toEqual(['system_learning', 'ai_training']);
   });
 
-  test('selects C2002 when the script matches a current active offer', () => {
+  test('selects C2002 for both the current and legacy offer action names', () => {
     const state = createInitialState('frontend', 'tier2', 1002);
     state.career.activeOffers = [{
       id: 'offer-script',
@@ -28,9 +28,11 @@ describe('lifeScriptExecutor', () => {
       expiresMonth: state.month + 2,
       status: 'active'
     }];
-    const program = parseProgram('当 当前offer 可用 则 在职跳槽');
+    const currentProgram = parseProgram('当 当前offer 可用 则 接受当前 Offer');
+    const legacyProgram = parseProgram('当 当前offer 可用 则 在职跳槽');
 
-    expect(chooseMonthlyPlanForLifeScript(state, program)).toEqual(['C2002']);
+    expect(chooseMonthlyPlanForLifeScript(state, currentProgram)).toEqual(['C2002']);
+    expect(chooseMonthlyPlanForLifeScript(state, legacyProgram)).toEqual(['C2002']);
   });
 
   test('skips unavailable actions without fabricating execution', () => {

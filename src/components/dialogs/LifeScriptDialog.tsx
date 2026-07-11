@@ -6,7 +6,7 @@ import ModalShell from './ModalShell';
 
 const DEFAULT_SCRIPT = [
   '当 精神 < 45 或者 健康 < 55 则 睡眠修复',
-  '当 当前offer 可用 则 在职跳槽',
+  '当 当前offer 可用 则 接受当前 Offer',
   '当 现金 < 50000 则 理财整理',
   '否则 系统学习'
 ].join('\n');

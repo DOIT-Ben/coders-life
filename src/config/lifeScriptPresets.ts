@@ -15,7 +15,7 @@ export const LIFE_SCRIPT_PRESETS: LifeScriptPreset[] = [
     id: 'cashflow_first',
     label: '现金流优先',
     source: [
-      '当 当前offer 可用 则 在职跳槽',
+      '当 当前offer 可用 则 接受当前 Offer',
       '当 当前面试 可用 则 参加面试',
       '当 待业 并且 作品 < 1 则 项目实战',
       '当 待业 并且 作品 >= 1 则 求职投递',
@@ -28,7 +28,7 @@ export const LIFE_SCRIPT_PRESETS: LifeScriptPreset[] = [
     id: 'health_first',
     label: '健康优先',
     source: [
-      '当 当前offer 可用 则 在职跳槽',
+      '当 当前offer 可用 则 接受当前 Offer',
       '当 当前面试 可用 则 参加面试',
       '当 待业 并且 作品 < 1 则 项目实战',
       '当 待业 并且 作品 >= 1 则 求职投递',
@@ -41,7 +41,7 @@ export const LIFE_SCRIPT_PRESETS: LifeScriptPreset[] = [
     id: 'ai_transition',
     label: 'AI转型',
     source: [
-      '当 当前offer 可用 则 在职跳槽',
+      '当 当前offer 可用 则 接受当前 Offer',
       '当 当前面试 可用 则 参加面试',
       '当 待业 并且 作品 < 1 则 项目实战',
       '当 待业 并且 作品 >= 1 则 求职投递',
@@ -54,7 +54,7 @@ export const LIFE_SCRIPT_PRESETS: LifeScriptPreset[] = [
     id: 'relationship_first',
     label: '关系优先',
     source: [
-      '当 当前offer 可用 则 在职跳槽',
+      '当 当前offer 可用 则 接受当前 Offer',
       '当 当前面试 可用 则 参加面试',
       '当 待业 并且 作品 < 1 则 项目实战',
       '当 待业 并且 作品 >= 1 则 求职投递',
