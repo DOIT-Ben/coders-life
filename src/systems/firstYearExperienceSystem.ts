@@ -217,7 +217,8 @@ function selectPrimaryRisk(state: GameState): FirstYearRisk {
     { id: 'health', score: state.healthProfile.healthDebt, text: '健康债正在累积，后续高压行动的承载力会下降。' },
     { id: 'burnout', score: visible.burnout, text: '燃尽水平偏高，短期冲刺已经开始影响恢复质量。' },
     { id: 'relationship', score: state.socialProfile.relationshipDebt, text: '关系支持不足，遇到职业波动时缺少缓冲。' },
-  ].sort((a, b) => b.score - a.score);
+  ];
+  risks.sort((a, b) => b.score - a.score);
   return risks[0];
 }
 
