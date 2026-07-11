@@ -14,13 +14,13 @@
 - 策略玩法：游戏内已接入“人生脚本”受限 DSL，支持白名单条件/行动、多行动月度计划、跑 12 个月/跑到结局和批量模拟脚本矩阵。
 - 可访问性：人生终端具备焦点圈闭；390/768/1280 三档视口无横向溢出、无低于 44px 的可见交互目标。
 - 前端主题：已接入终端黑、极简白、纯黑三套主题；弹窗与右侧行动区采用固定头尾和内部滚动边界。
-- 测试：24 files / 252 tests 通过；lint / build / simulate / simulate:batch / git diff --check 门禁通过；72 场景 `releaseGate.passed=true`、确定性回放率 1。
-- 浏览器：390x844、768x1024、1280x800 三档 27 场景通过，三主题均覆盖，控制台和网络错误为 0。
+- 测试：24 files / 256 tests 通过；typecheck / lint / build / simulate / simulate:batch / git diff --check 门禁通过；72 场景 `releaseGate.passed=true`、确定性回放率 1。
+- 浏览器：390x844、768x1024、1280x800 三档 27 场景通过，三主题均覆盖；另有 6 项审查专项回归通过，控制台和网络错误为 0。
 - 产品验证：产品指标待真实用户验证，未把技术验收当作留存结论。
 
 ## 最近变更摘要
 
-- 2026-07-11：V2.1 入行第一年体验（新局主命令、阶段目标、状态建议、年度复盘、工具降噪与兼容修正），详见 `docs\dev-records\2026-07-11-v2.1-first-year-experience.md`。
+- 2026-07-11：V2.1 入行第一年体验（新局主命令、阶段目标、状态建议、年度复盘、工具降噪、兼容修正与合入前五轴审查），详见 `docs\dev-records\2026-07-11-v2.1-first-year-experience.md`。
 - 2026-07-06：前端主题润色（三主题切换、主题令牌守护、弹窗滚动边界、行动区滚动、可见样式收敛），详见 `docs\dev-records\2026-07-06-frontend-polish-themes.md`。
 - 2026-07-04：批次 3 每日挑战（日期 seed、今日人生入口、本地 30 天历史、战报日期标签、排行榜接口 stub），详见 `docs\dev-records\2026-07-04-batch3-daily-challenge.md`。
 - 2026-07-04：批次 4 人生脚本 DSL（受限 parser、真实月度执行器、脚本跑局 UI、批量模拟脚本矩阵、关系结局优先级修正），详见 `docs\dev-records\2026-07-04-batch4-life-script-dsl.md`。
