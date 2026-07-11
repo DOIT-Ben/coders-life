@@ -58,8 +58,9 @@ export default function GameScreen({
     group: ActionConfig['group'];
     month: number;
   } | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [actionSearch, setActionSearch] = useState({ query: '', month: state.month });
   const [rewinding, setRewinding] = useState(false);
+  const searchQuery = actionSearch.month === state.month ? actionSearch.query : '';
   const visible = getVisibleStats(state);
   const actions = getAvailableActions(state);
   const firstYearGuide = deriveFirstYearGuide(state, actions);
@@ -100,7 +101,12 @@ export default function GameScreen({
   function executeActionNow(action: AvailableAction) {
     if (!action.available || state.gameOver || state.pendingEventChoice) return;
     setUndoSnapshot(structuredClone(state));
+    setCurrentMonthSearch('');
     setState(applyAction(state, action.id));
+  }
+
+  function setCurrentMonthSearch(query: string) {
+    setActionSearch({ query, month: state.month });
   }
 
   function undoLastAction() {
@@ -226,7 +232,7 @@ export default function GameScreen({
                   key={group.id}
                   onClick={() => {
                     setManualActionGroup({ group: group.id, month: state.month });
-                    setSearchQuery('');
+                    setCurrentMonthSearch('');
                   }}
                   type="button"
                 >
@@ -239,9 +245,9 @@ export default function GameScreen({
                   type="text"
                   placeholder="搜索..."
                   value={searchQuery}
-                  onChange={e => setSearchQuery(e.target.value)}
+                  onChange={e => setCurrentMonthSearch(e.target.value)}
                 />
-                {searchQuery && <button className="action-tab-search-clear" type="button" onClick={() => setSearchQuery('')}>✕</button>}
+                {searchQuery && <button className="action-tab-search-clear" type="button" onClick={() => setCurrentMonthSearch('')}>✕</button>}
               </span>
             </div>
             <div className="action-list categorized-action-list">

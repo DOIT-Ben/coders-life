@@ -20,6 +20,12 @@ function input(element: HTMLTextAreaElement, value: string) {
   element.dispatchEvent(new InputEvent('input', { bubbles: true, cancelable: true, data: value }));
 }
 
+function inputText(element: HTMLInputElement, value: string) {
+  const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+  setter?.call(element, value);
+  element.dispatchEvent(new InputEvent('input', { bubbles: true, cancelable: true, data: value }));
+}
+
 function buttonByText(text: string): HTMLButtonElement {
   const button = Array.from(document.querySelectorAll('button')).find(item => item.textContent?.includes(text));
   if (!button) throw new Error(`Missing button containing text: ${text}`);
@@ -95,6 +101,41 @@ describe('monthly multi-action plan UI', () => {
     });
 
     expect(document.querySelector('.action-tab.active')?.textContent).toContain('恢复放松');
+
+    await act(async () => {
+      root.unmount();
+    });
+  });
+
+  it('clears action search when first-year guidance advances to a new month', async () => {
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    const root = createRoot(container);
+
+    await act(async () => {
+      root.render(<App />);
+    });
+    await act(async () => {
+      click(buttonByText('开始新人生'));
+    });
+    await vi.waitFor(() => {
+      expect(document.querySelector('.first-year-progress-band')).not.toBeNull();
+    }, { timeout: 5000 });
+
+    const search = document.querySelector('.action-tab-search-input') as HTMLInputElement;
+    await act(async () => {
+      inputText(search, '项目实战');
+    });
+    expect(search.value).toBe('项目实战');
+
+    await act(async () => {
+      click(buttonByLabel('执行行动：项目实战'));
+    });
+
+    expect(document.body.textContent).toContain('第 30 天');
+    expect(search.value).toBe('');
+    expect(document.body.textContent).toContain('系统学习');
+    expect(document.querySelector('.action-btn.recommended')).not.toBeNull();
 
     await act(async () => {
       root.unmount();
