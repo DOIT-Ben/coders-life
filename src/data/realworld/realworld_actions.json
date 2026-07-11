@@ -2402,7 +2402,7 @@
   },
   {
     "action_id": "C2002",
-    "name": "在职跳槽",
+    "name": "接受当前 Offer",
     "primary_category": "career",
     "subcategory": "job_change",
     "duration_months": "1",
@@ -2423,7 +2423,7 @@
     "cooldown_months": "0",
     "requirement": "有 offer",
     "risk_label": "两边拉扯",
-    "benefit_label": "薪资跃迁",
+    "benefit_label": "完成入职或职业跃迁",
     "real_world_logic": "Levels.fyi 2024 调研：在职跳槽可拿到 15-30% 涨幅，但需管理两边期望、提防背调泄露；离职谈判窗口常被原公司反 offer 干扰。",
     "source_name": "Levels.fyi 2024 Compensation Report",
     "source_url": "https://www.levels.fyi/",
