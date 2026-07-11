@@ -10,7 +10,11 @@
 - **复盘关系债字段**：关系债真实存储在 `socialProfile.relationshipDebt`，`lifePressure` 没有该字段；展示层若要看综合压力，可用 `derivePressureSnapshot(state).relationshipDebt`。
 - **Canvas 测试分层**：jsdom 没有完整 Canvas 绘图实现。Canvas 纯函数用 fake context 测文本与尺寸，真实生成图片、下载入口和移动端布局必须用 `vite preview` + Playwright 验证。
 - **每日挑战首屏边界**：App 可以静态 import 轻量的日期/历史函数，但不能通过每日挑战把 `createInitialState`、引擎、`saveManager` 或 `config/events` 拉进首屏；创建挑战状态应放在游戏 chunk 或测试专用路径。
-- **GameContainer 行数临界**：批次 3 后 `GameContainer.tsx` 为 499 行，后续任何新增逻辑都应先抽到系统或子组件，否则会触发 500 行契约测试。
+- **GameContainer 只做编排**：V2.1 已把主屏拆到 `GameScreen.tsx`，`GameContainer.tsx` 约 147 行。后续继续只放状态、存档和弹窗优先级，不把跨区域 UI 堆回容器。
 - **人生脚本不是 JS 沙箱**：DSL 必须继续走 `lifeScriptDsl` 白名单 AST，禁止 `eval`、`Function`、对象路径、导入模块；脚本执行只能通过 `canExecuteAction`、`buildMonthlyPlan` 和 `planMonth`。
 - **脚本预设必须有职业入口**：待业脚本必须覆盖“作品集 -> 求职投递 -> 参加面试 -> 接受 offer”，否则默认矩阵会真实掉进现金流陷阱。
 - **脚本矩阵耗时**：默认 `simulate:batch` 已包含 auto + lifeScript 72 条轨迹，耗时明显长于批次 3。CI 若超时应优化执行效率，不能删脚本矩阵或放宽 releaseGate。
+- **第一年资格隔离**：只有没有 `savedState` 且没有 `dailyChallenge` 的新建普通局写入 `v21_first_year_experience`。旧存档和每日挑战不得补写或迁移该标记。
+- **弹窗优先级不可交换**：严格保持“待处理事件 > 人生结局 > 玩家主动工具 > 第一年度复盘”。关闭第一年度复盘时先写 `v21_first_year_review_seen`，再清理弹窗状态。
+- **行动显示名影响人生脚本**：DSL 用行动显示名解析 ID。改名时必须同步 `tools\data\realworld\04_actions.csv`、运行时 JSON、默认脚本、四套预设和测试；已有用户名称通过显式 legacy alias 兼容。
+- **窄屏固定入口会遮挡内容**：反馈和命令入口仅在宽屏侧边留白足够时固定；1200px 以下必须进入正常文档流。浏览器审查需同时检查固定入口与 `.wrap` 是否相交。

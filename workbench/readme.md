@@ -1,7 +1,10 @@
 # workbench
 
-## 当前状态（2026-07-06）
+## 当前状态（2026-07-11）
 
+- V2.1“入行第一年”发布候选已在 `feat/v2.1-first-year-experience` 完成，尚未合入或部署；基线为 `v2.0` / `e8d0cd0`。
+- 普通新局具备阶段目标、真实行动建议和第 12 月年度复盘；旧存档与每日挑战不强制进入该流程。
+- 启动页主命令已收敛并显示职业、城市、价值观摘要；次级游戏工具收进可访问菜单，撤销保持直接可见。
 - 存档链路已修通：App 经 `saveManager.loadGame()` 读档（含迁移），「继续上次生存」可用。
 - 弹窗事件池异步分包：引擎消费 `EVENTS` 前必须 `await ensureGameDataLoaded()`（App/脚本/测试 setup 已接）。
 - 工程护栏：`npm run lint` 0 error / 0 warning，`react-hooks/set-state-in-effect` 已升回 error，已入 CI。
@@ -11,10 +14,13 @@
 - 策略玩法：游戏内已接入“人生脚本”受限 DSL，支持白名单条件/行动、多行动月度计划、跑 12 个月/跑到结局和批量模拟脚本矩阵。
 - 可访问性：人生终端具备焦点圈闭；390/768/1280 三档视口无横向溢出、无低于 44px 的可见交互目标。
 - 前端主题：已接入终端黑、极简白、纯黑三套主题；弹窗与右侧行动区采用固定头尾和内部滚动边界。
-- 测试：22 files / 224 tests 通过；lint / build / simulate / simulate:batch / git diff --check 门禁通过；Chromium 三档响应式审查 15 场景通过。
+- 测试：24 files / 252 tests 通过；lint / build / simulate / simulate:batch / git diff --check 门禁通过；72 场景 `releaseGate.passed=true`、确定性回放率 1。
+- 浏览器：390x844、768x1024、1280x800 三档 27 场景通过，三主题均覆盖，控制台和网络错误为 0。
+- 产品验证：产品指标待真实用户验证，未把技术验收当作留存结论。
 
 ## 最近变更摘要
 
+- 2026-07-11：V2.1 入行第一年体验（新局主命令、阶段目标、状态建议、年度复盘、工具降噪与兼容修正），详见 `docs\dev-records\2026-07-11-v2.1-first-year-experience.md`。
 - 2026-07-06：前端主题润色（三主题切换、主题令牌守护、弹窗滚动边界、行动区滚动、可见样式收敛），详见 `docs\dev-records\2026-07-06-frontend-polish-themes.md`。
 - 2026-07-04：批次 3 每日挑战（日期 seed、今日人生入口、本地 30 天历史、战报日期标签、排行榜接口 stub），详见 `docs\dev-records\2026-07-04-batch3-daily-challenge.md`。
 - 2026-07-04：批次 4 人生脚本 DSL（受限 parser、真实月度执行器、脚本跑局 UI、批量模拟脚本矩阵、关系结局优先级修正），详见 `docs\dev-records\2026-07-04-batch4-life-script-dsl.md`。
