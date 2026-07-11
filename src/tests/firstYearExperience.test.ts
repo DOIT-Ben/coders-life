@@ -102,6 +102,13 @@ describe('first-year experience', () => {
     expect(deriveFirstYearGuide(state, getAvailableActions(state))).toBeNull();
   });
 
+  it('does not keep first-year guidance active after an ending', () => {
+    const state = newGuidedState();
+    state.gameOver = true;
+
+    expect(deriveFirstYearGuide(state, getAvailableActions(state))).toBeNull();
+  });
+
   it('shows the first-year review once at month 12', () => {
     const state = newGuidedState();
     state.month = 12;

@@ -120,6 +120,7 @@ describe('first-year review modal', () => {
       expect(document.body.textContent).toContain('事故时间线');
     }, { timeout: 5000 });
     expect(document.body.textContent).not.toContain('第一年提交记录');
+    expect(document.querySelector('.first-year-progress-band')).toBeNull();
   });
 
   it('keeps an explicit tool ahead of the automatic review', async () => {

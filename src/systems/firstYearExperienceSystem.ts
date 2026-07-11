@@ -78,7 +78,7 @@ export function shouldShowFirstYearReview(state: GameState): boolean {
 }
 
 export function deriveFirstYearGuide(state: GameState, actions: AvailableAction[]): FirstYearGuide | null {
-  if (state.flags[ELIGIBLE_FLAG] !== true || state.flags[REVIEW_SEEN_FLAG] === true) return null;
+  if (state.flags[ELIGIBLE_FLAG] !== true || state.flags[REVIEW_SEEN_FLAG] === true || state.gameOver) return null;
 
   const stage = deriveStage(state);
   const preferredActionId = chooseActionForStrategy(state, 'stable_cashflow');
