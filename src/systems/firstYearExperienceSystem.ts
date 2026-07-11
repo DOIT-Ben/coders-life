@@ -39,6 +39,12 @@ export type FirstYearReview = {
   nextStep: string;
 };
 
+type FirstYearRisk = {
+  id: 'cashflow' | 'health' | 'burnout' | 'relationship';
+  score: number;
+  text: string;
+};
+
 const ELIGIBLE_FLAG = 'v21_first_year_experience';
 const REVIEW_SEEN_FLAG = 'v21_first_year_review_seen';
 
@@ -92,6 +98,7 @@ export function buildFirstYearReview(state: GameState): FirstYearReview {
   const visible = getVisibleStats(state);
   const baselineState = createInitialState(state.career.track, state.career.cityTier, 0, state.values);
   const baseline = getVisibleStats(baselineState);
+  const primaryRisk = selectPrimaryRisk(state);
   const decisions = state.decisionLog.length > 0
     ? state.decisionLog.slice(-3).map(formatDecision)
     : [{
@@ -113,8 +120,10 @@ export function buildFirstYearReview(state: GameState): FirstYearReview {
     ],
     decisions,
     strength: buildStrength(state),
-    risk: buildRisk(state),
-    nextStep: buildNextStep(state),
+    risk: primaryRisk.score >= 40
+      ? primaryRisk.text
+      : '当前没有单一风险失控，但仍需要避免长期重复同一种行动。',
+    nextStep: buildNextStep(state, primaryRisk),
   };
 }
 
@@ -199,24 +208,46 @@ function buildStrength(state: GameState): string {
   return '你保住了第一年的选择空间，还可以重新组织入行节奏。';
 }
 
-function buildRisk(state: GameState): string {
+function selectPrimaryRisk(state: GameState): FirstYearRisk {
   const visible = getVisibleStats(state);
-  const risks = [
-    { score: state.finance.cashflowStress, text: '现金流压力最高，继续等待会进一步压缩求职选择。' },
-    { score: state.healthProfile.healthDebt, text: '健康债正在累积，后续高压行动的承载力会下降。' },
-    { score: visible.burnout, text: '燃尽水平偏高，短期冲刺已经开始影响恢复质量。' },
-    { score: state.socialProfile.relationshipDebt, text: '关系支持不足，遇到职业波动时缺少缓冲。' },
+  const risks: FirstYearRisk[] = [
+    { id: 'cashflow', score: state.finance.cashflowStress, text: '现金流压力最高，继续等待会进一步压缩求职选择。' },
+    { id: 'health', score: state.healthProfile.healthDebt, text: '健康债正在累积，后续高压行动的承载力会下降。' },
+    { id: 'burnout', score: visible.burnout, text: '燃尽水平偏高，短期冲刺已经开始影响恢复质量。' },
+    { id: 'relationship', score: state.socialProfile.relationshipDebt, text: '关系支持不足，遇到职业波动时缺少缓冲。' },
   ].sort((a, b) => b.score - a.score);
-  return risks[0].score >= 40 ? risks[0].text : '当前没有单一风险失控，但仍需要避免长期重复同一种行动。';
+  return risks[0];
 }
 
-function buildNextStep(state: GameState): string {
-  if (state.career.portfolioCount < 1) return '下一阶段先完成一个作品集项目，再把学习投入转成求职证据。';
-  if (state.career.activeOffers.some(offer => offer.status === 'active')) return '优先处理当前 Offer，避免机会过期后重新回到投递起点。';
-  if (state.career.employmentStatus !== 'employed') return '保持投递、面试和复盘连续，不再用无限准备替代真实市场反馈。';
-  if (state.finance.cashflowStress >= 55) return '先把固定支出和应急缓冲稳定下来，再考虑高风险职业跃迁。';
-  if (state.healthProfile.healthDebt >= 55 || state.stats.burnout >= 55) return '把恢复安排进固定节奏，避免第一份工作迅速变成长期透支。';
-  return '继续稳定交付，同时保留学习和恢复，让职业增长保持可复制。';
+function buildNextStep(state: GameState, primaryRisk: FirstYearRisk): string {
+  let careerStep = '继续稳定交付，同时保留学习和恢复，让职业增长保持可复制。';
+  if (state.career.portfolioCount < 1) {
+    careerStep = '下一阶段先完成一个作品集项目，再把学习投入转成求职证据。';
+  } else if (state.career.activeOffers.some(offer => offer.status === 'active')) {
+    careerStep = '优先处理当前 Offer，避免机会过期后重新回到投递起点。';
+  } else if (state.career.employmentStatus !== 'employed') {
+    careerStep = '保持投递、面试和复盘连续，不再用无限准备替代真实市场反馈。';
+  }
+
+  if (primaryRisk.score < 40) return careerStep;
+
+  const isEmployed = state.career.employmentStatus === 'employed';
+  const riskStep: Record<FirstYearRisk['id'], string> = {
+    cashflow: isEmployed
+      ? '同时稳定固定支出和应急缓冲，再考虑高风险职业跃迁。'
+      : '同时压低固定支出并保留求职缓冲，避免被迫接受不合适的机会。',
+    health: isEmployed
+      ? '同时把恢复安排进固定节奏，先偿还已经形成的健康债。'
+      : '同时保留固定恢复窗口，避免健康债继续削弱求职承载力。',
+    burnout: isEmployed
+      ? '同时收紧额外冲刺，让交付回到可以长期维持的强度。'
+      : '同时停止无边界加压，用可持续强度继续求职。',
+    relationship: isEmployed
+      ? '同时主动恢复关系支持，避免工作压力挤掉全部外部缓冲。'
+      : '同时重建一条稳定的关系支持，避免独自承担全部求职波动。',
+  };
+
+  return `${careerStep}${riskStep[primaryRisk.id]}`;
 }
 
 function employmentLabel(state: GameState): string {

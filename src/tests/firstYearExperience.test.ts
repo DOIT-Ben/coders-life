@@ -139,4 +139,19 @@ describe('first-year experience', () => {
     expect(review.risk.length).toBeGreaterThan(0);
     expect(review.nextStep.length).toBeGreaterThan(0);
   });
+
+  it('bases the next step on the highest first-year risk', () => {
+    const state = newGuidedState();
+    state.month = 12;
+    state.career.portfolioCount = 1;
+    state.finance.cashflowStress = 10;
+    state.healthProfile.healthDebt = 20;
+    state.stats.burnout = 30;
+    state.socialProfile.relationshipDebt = 80;
+
+    const review = buildFirstYearReview(state);
+
+    expect(review.risk).toContain('关系支持');
+    expect(review.nextStep).toContain('关系支持');
+  });
 });
