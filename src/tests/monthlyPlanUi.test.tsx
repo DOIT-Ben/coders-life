@@ -64,6 +64,39 @@ describe('monthly multi-action plan UI', () => {
     });
   });
 
+  it('guides a normal first year while preserving the current-month tab choice', async () => {
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    const root = createRoot(container);
+
+    await act(async () => {
+      root.render(<App />);
+    });
+
+    await act(async () => {
+      click(buttonByText('开始新人生'));
+    });
+
+    await vi.waitFor(() => {
+      expect(document.querySelector('.first-year-progress-band')).not.toBeNull();
+    }, { timeout: 5000 });
+
+    expect(document.body.textContent).toContain('建立入场券');
+    expect(document.body.textContent).toContain('项目实战');
+    expect(document.querySelector('.action-btn.recommended')).not.toBeNull();
+    expect(document.querySelector('.action-tab.active')?.textContent).toContain('学习成长');
+
+    await act(async () => {
+      click(buttonByText('恢复放松'));
+    });
+
+    expect(document.querySelector('.action-tab.active')?.textContent).toContain('恢复放松');
+
+    await act(async () => {
+      root.unmount();
+    });
+  });
+
   it('switches between terminal, paper, and blackout themes and persists the choice', async () => {
     const container = document.createElement('div');
     document.body.appendChild(container);

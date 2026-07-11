@@ -15,6 +15,8 @@ import type { DailyChallenge } from '../systems/dailyChallengeSystem';
 import { renderEffectChips } from './effectChips';
 import { ACTION_GROUPS } from './gameUiTypes';
 import type { AvailableAction, GameModal } from './gameUiTypes';
+import { deriveFirstYearGuide } from '../systems/firstYearExperienceSystem';
+import FirstYearProgressBand from './FirstYearProgressBand';
 
 const DEFAULT_ACTION_GROUP: ActionConfig['group'] = 'recover';
 
@@ -49,11 +51,19 @@ export default function GameScreen({
   bookmarkedActionIds,
   toggleBookmark
 }: GameScreenProps) {
-  const [selectedActionGroup, setSelectedActionGroup] = useState<ActionConfig['group']>(DEFAULT_ACTION_GROUP);
+  const [manualActionGroup, setManualActionGroup] = useState<{
+    group: ActionConfig['group'];
+    month: number;
+  } | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [rewinding, setRewinding] = useState(false);
   const visible = getVisibleStats(state);
   const actions = getAvailableActions(state);
+  const firstYearGuide = deriveFirstYearGuide(state, actions);
+  const suggestedGroup = firstYearGuide?.recommendedGroup ?? DEFAULT_ACTION_GROUP;
+  const selectedActionGroup = manualActionGroup?.month === state.month
+    ? manualActionGroup.group
+    : suggestedGroup;
   const effectiveSelectedActionGroup = visibleActionGroupIds.includes(selectedActionGroup)
     ? selectedActionGroup
     : visibleActionGroupIds[0] ?? DEFAULT_ACTION_GROUP;
@@ -162,6 +172,8 @@ export default function GameScreen({
         </div>
       )}
 
+      {firstYearGuide ? <FirstYearProgressBand guide={firstYearGuide} /> : null}
+
       <div className="stats-row">
         <StatCard label="技术能力" value={visible.tech} color="var(--teal)" sub="核心竞争力" />
         <StatCard label="精神状态" value={visible.mental} color={visible.mental < 25 ? 'var(--red)' : visible.mental < 50 ? 'var(--amber)' : 'var(--sky)'} sub="影响决策质量" />
@@ -204,7 +216,10 @@ export default function GameScreen({
                 <button
                   className={group.id === effectiveSelectedActionGroup ? 'action-tab active' : 'action-tab'}
                   key={group.id}
-                  onClick={() => { setSelectedActionGroup(group.id); setSearchQuery(''); }}
+                  onClick={() => {
+                    setManualActionGroup({ group: group.id, month: state.month });
+                    setSearchQuery('');
+                  }}
                   type="button"
                 >
                   {group.label}
@@ -229,10 +244,11 @@ export default function GameScreen({
                   const insight = getActionInsights(state, slotAction);
                   const isBookmarked = bookmarkedActionIds.includes(slotAction.id);
                   const disabled = !slotAction.available || state.gameOver || Boolean(state.pendingEventChoice);
+                  const isRecommended = slotAction.id === firstYearGuide?.recommendedActionId && !disabled;
                   const cost = actionPlanCost(slotAction);
                   return (
                     <article
-                      className={`action-btn${disabled ? ' disabled' : ''}`}
+                      className={`action-btn${isRecommended ? ' recommended' : ''}${disabled ? ' disabled' : ''}`}
                       key={slotAction.id}
                     >
                       <button

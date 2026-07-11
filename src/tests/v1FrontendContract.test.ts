@@ -6,6 +6,7 @@ import startProfilesSource from '../config/startProfiles.ts?raw';
 import gameContainerSource from '../components/GameContainer.tsx?raw';
 import gameScreenSource from '../components/GameScreen.tsx?raw';
 import gameUiTypesSource from '../components/gameUiTypes.ts?raw';
+import firstYearProgressBandSource from '../components/FirstYearProgressBand.tsx?raw';
 import panelsSource from '../components/panels.tsx?raw';
 import lifeLogSource from '../components/LifeLog.tsx?raw';
 import gameDialogsSource from '../components/GameDialogs.tsx?raw';
@@ -25,7 +26,7 @@ const componentPath = componentDir.pathname;
 const dialogSource = modalShellSource + feedbackDialogSource + achievementDialogSource + endingDialogSource + shopDialogSource;
 
 describe('v1 frontend contract', () => {
-  const source = appSource + careerSetupSource + gameContainerSource + gameScreenSource + gameUiTypesSource + gameDialogsSource + dialogSource + panelsSource + lifeLogSource + effectChipsSource;
+  const source = appSource + careerSetupSource + gameContainerSource + gameScreenSource + gameUiTypesSource + firstYearProgressBandSource + gameDialogsSource + dialogSource + panelsSource + lifeLogSource + effectChipsSource;
 
   it('keeps v2 implementation labels out of the visible v1 shell', () => {
     expect(source).not.toContain('V2 ENGINE');
@@ -384,6 +385,15 @@ describe('v1 frontend contract', () => {
     expect(savedStateGuard).toBeGreaterThan(-1);
     expect(initialStateCreation).toBeGreaterThan(savedStateGuard);
     expect(normalGameEnablement).toBeGreaterThan(initialStateCreation);
+  });
+
+  it('renders first-year guidance from derived state without automatic actions', () => {
+    expect(gameScreenSource).toContain('deriveFirstYearGuide(state, actions)');
+    expect(gameScreenSource).toContain('<FirstYearProgressBand guide={firstYearGuide} />');
+    expect(gameScreenSource).toContain("manualActionGroup?.month === state.month");
+    expect(gameScreenSource).toContain("' recommended'");
+    expect(firstYearProgressBandSource).toContain('aria-label="第一年进度"');
+    expect(firstYearProgressBandSource).not.toContain('applyAction');
   });
 
   it('exposes daily challenge without pulling save or event data into the first screen', () => {

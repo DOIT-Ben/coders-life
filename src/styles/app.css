@@ -609,6 +609,91 @@ body {
   margin: -4px 0 8px;
 }
 
+.first-year-progress-band {
+  display: grid;
+  grid-template-columns: minmax(150px, .8fr) minmax(0, 1.5fr) minmax(180px, 1fr);
+  gap: 14px;
+  align-items: center;
+  border-block: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text);
+  margin-bottom: 10px;
+  padding: 11px 12px;
+}
+.first-year-stage {
+  min-width: 0;
+  color: var(--text);
+}
+.first-year-stage > span {
+  display: block;
+  color: var(--primary);
+  font-size: 10px;
+  font-weight: 800;
+  margin-bottom: 3px;
+}
+.first-year-stage strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.35;
+}
+.first-year-stage p {
+  color: var(--text2);
+  font-size: 11px;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
+.first-year-nodes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  min-width: 0;
+}
+.first-year-node {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 2px 6px;
+  align-items: center;
+  border-left: 2px solid var(--border2);
+  color: var(--text2);
+  min-width: 0;
+  padding-left: 8px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.first-year-node.done {
+  border-left-color: var(--accent);
+  color: var(--accent-h);
+}
+.first-year-node small {
+  grid-column: 2;
+  color: var(--text3);
+  font-size: 10px;
+  font-weight: 600;
+}
+.first-year-recommendation {
+  border-left: 2px solid var(--primary);
+  color: var(--text2);
+  display: grid;
+  gap: 3px;
+  margin: 0;
+  min-width: 0;
+  padding-left: 10px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.first-year-recommendation strong {
+  color: var(--primary);
+  font-size: 10px;
+}
+@media (max-width: 820px) {
+  .first-year-progress-band { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+  .first-year-recommendation { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  .first-year-progress-band { grid-template-columns: 1fr; }
+  .first-year-recommendation { grid-column: auto; }
+}
+
 /* GAME LAYOUT */
 .game-layout {
   display: grid;
@@ -872,6 +957,10 @@ body {
   border-color: var(--primary);
   background: var(--primary-soft);
   box-shadow: inset 0 0 0 1px rgba(88,166,255,.12);
+}
+.action-btn.recommended {
+  border-color: var(--primary);
+  box-shadow: inset 3px 0 0 var(--primary);
 }
 .action-btn.disabled {
   background: var(--surface2);

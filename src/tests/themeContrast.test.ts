@@ -79,6 +79,21 @@ describe('theme token guard', () => {
     });
   });
 
+  it('keeps first-year guidance surfaces theme-token driven', () => {
+    [
+      '.first-year-progress-band',
+      '.first-year-stage',
+      '.first-year-node',
+      '.first-year-node.done',
+      '.first-year-recommendation',
+      '.action-btn.recommended'
+    ].forEach(selector => {
+      const rule = ruleFor(selector);
+      expect(rule, `${selector} should use tokenized colors`).not.toMatch(/rgba?\([^)]*\)|#[0-9a-fA-F]{3,8}/);
+      expect(rule, `${selector} should reference theme tokens`).toContain('var(--');
+    });
+  });
+
   const pairs: Array<[fg: string, bg: string, min: number, why: string]> = [
     ['text', 'card', 7, '正文'],
     ['text', 'bg', 7, '正文/页面底'],
