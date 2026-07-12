@@ -144,6 +144,13 @@ describe('v1 frontend contract', () => {
     expect(gameScreenSource).not.toContain('<StatCard label="技术能力"');
   });
 
+  it('keeps desktop action controls in one toolbar and uses a two-column workbench list', () => {
+    expect(appCss).toContain('.decision-workbench');
+    expect(appCss).toContain('.action-toolbar');
+    expect(appCss).toMatch(/\.categorized-action-list\s*\{[^}]*grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\)/s);
+    expect(appCss).toMatch(/\.action-tabs\s*\{[^}]*grid-auto-flow:\s*column;[^}]*overflow-x:\s*auto/s);
+  });
+
   it('shows action cards with effect chips and benefit/risk meta', () => {
     expect(gameScreenSource).toContain('benefitLabel');
     expect(gameScreenSource).toContain('riskLabel');
