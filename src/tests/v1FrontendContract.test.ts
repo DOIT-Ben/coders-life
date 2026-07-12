@@ -9,6 +9,7 @@ import gameUiTypesSource from '../components/gameUiTypes.ts?raw';
 import firstYearProgressBandSource from '../components/FirstYearProgressBand.tsx?raw';
 import gameToolsMenuSource from '../components/GameToolsMenu.tsx?raw';
 import panelsSource from '../components/panels.tsx?raw';
+import decisionStatusStripSource from '../components/DecisionStatusStrip.tsx?raw';
 import lifeLogSource from '../components/LifeLog.tsx?raw';
 import gameDialogsSource from '../components/GameDialogs.tsx?raw';
 import errorBoundarySource from '../components/ErrorBoundary.tsx?raw';
@@ -29,7 +30,7 @@ const componentPath = componentDir.pathname;
 const dialogSource = modalShellSource + feedbackDialogSource + achievementDialogSource + endingDialogSource + shopDialogSource + firstYearReviewDialogSource;
 
 describe('v1 frontend contract', () => {
-  const source = appSource + careerSetupSource + gameContainerSource + gameScreenSource + gameUiTypesSource + firstYearProgressBandSource + gameToolsMenuSource + gameDialogsSource + dialogSource + panelsSource + lifeLogSource + effectChipsSource;
+  const source = appSource + careerSetupSource + gameContainerSource + gameScreenSource + gameUiTypesSource + firstYearProgressBandSource + gameToolsMenuSource + gameDialogsSource + dialogSource + panelsSource + decisionStatusStripSource + lifeLogSource + effectChipsSource;
 
   it('keeps v2 implementation labels out of the visible v1 shell', () => {
     expect(source).not.toContain('V2 ENGINE');
@@ -117,6 +118,14 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('grid-template-columns: repeat(5, 1fr);');
     expect(appCss).not.toContain('grid-template-columns: repeat(3, minmax(120px, 1fr));');
     expect(appCss).toContain('.pressure-grid');
+  });
+
+  it('renders compact status semantics without changing the game engine', () => {
+    expect(decisionStatusStripSource).toContain('aria-label="核心状态"');
+    ['技术能力', '精神状态', '存款 (万)', 'AI协作能力', '现金流', '健康债', '职业稳定', '关系债', '生活满意']
+      .forEach(label => expect(decisionStatusStripSource).toContain(label));
+    expect(decisionStatusStripSource).toContain('derivePressureSnapshot');
+    expect(decisionStatusStripSource).not.toContain('applyAction');
   });
 
   it('shows action cards with effect chips and benefit/risk meta', () => {

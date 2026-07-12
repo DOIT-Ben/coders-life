@@ -6,7 +6,7 @@ export type FirstYearProgressBandProps = {
 
 export default function FirstYearProgressBand({ guide }: FirstYearProgressBandProps) {
   return (
-    <section className="first-year-progress-band" aria-label="第一年进度">
+    <section className="first-year-progress-band decision-context-bar" aria-label="第一年进度">
       <div className="first-year-stage">
         <span>当前阶段</span>
         <strong>{guide.stageLabel}</strong>
