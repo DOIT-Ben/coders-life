@@ -2440,7 +2440,7 @@ button.career-card { text-align: left; width: 100%; }
 .decision-workbench {
   container-type: inline-size;
   min-width: 0;
-  height: clamp(440px, calc(100dvh - 342px), 720px);
+  height: clamp(440px, calc(100dvh - 370px), 720px);
 }
 .decision-workbench .action-card { height: 100%; }
 .action-toolbar {
@@ -2455,6 +2455,7 @@ button.career-card { text-align: left; width: 100%; }
 }
 .action-tabs {
   display: grid;
+  grid-template-columns: none;
   grid-auto-flow: column;
   grid-auto-columns: max-content;
   gap: 5px;
@@ -2473,6 +2474,7 @@ button.career-card { text-align: left; width: 100%; }
   align-content: start;
 }
 .decision-workbench .action-list { padding: 8px; }
+.decision-workbench .action-btn { min-height: 152px; }
 .decision-workbench .action-btn-main { min-height: 118px; padding-right: 108px; }
 .decision-workbench .action-support-scroll { max-height: 78px; }
 .secondary-history {
@@ -2496,6 +2498,12 @@ button.career-card { text-align: left; width: 100%; }
   .decision-pressure-metrics { --metric-columns: 5; }
   .decision-workbench { height: min(64dvh, 680px); min-height: 500px; }
 }
+@media (min-width: 661px) {
+  .title-card.in-game { padding: 0 16px 8px; margin-bottom: 8px; }
+  .title-card.in-game .term-bar { margin: 0 -16px 8px; padding: 6px 12px; }
+  .title-card.in-game .t-main { font-size: 26px; margin-bottom: 3px; }
+  .title-card.in-game .t-sub { font-size: 11px; }
+}
 @media (max-height: 800px) and (min-width: 661px) {
   .title-card.in-game { padding-block: 8px; margin-bottom: 8px; }
   .title-card.in-game .t-main { font-size: 26px; }
@@ -2504,15 +2512,35 @@ button.career-card { text-align: left; width: 100%; }
   .decision-workbench { height: calc(100dvh - 246px); min-height: 430px; }
 }
 @media (max-width: 660px) {
+  .decision-context-bar { grid-template-columns: 1fr; }
   .decision-status-strip { grid-template-columns: 1fr; }
   .decision-primary-metrics { --metric-columns: 2; }
   .decision-pressure-metrics { --metric-columns: 3; }
   .decision-workbench { height: auto; min-height: 420px; }
   .action-toolbar { grid-template-columns: 1fr; }
+  .action-tabs {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    overflow-x: auto;
+  }
   .action-tab { min-height: 44px; }
   .action-tab-search,
   .action-tab-search-input { min-height: 44px; }
   .action-tab-search-clear { min-width: 44px; min-height: 44px; }
   .secondary-history { grid-template-columns: 1fr; }
   .secondary-history .time-card { grid-column: auto; }
+}
+
+@media (max-width: 1500px) and (min-width: 1201px) {
+  .term-fab,
+  .feedback-fab {
+    position: static;
+    display: block;
+    width: fit-content;
+    margin-top: 10px;
+    transform: none;
+  }
+  .term-fab { margin-right: auto; }
+  .feedback-fab { margin-left: auto; }
 }

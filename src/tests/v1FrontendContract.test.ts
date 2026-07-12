@@ -149,6 +149,7 @@ describe('v1 frontend contract', () => {
     expect(appCss).toContain('.action-toolbar');
     expect(appCss).toMatch(/\.categorized-action-list\s*\{[^}]*grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\)/s);
     expect(appCss).toMatch(/\.action-tabs\s*\{[^}]*grid-auto-flow:\s*column;[^}]*overflow-x:\s*auto/s);
+    expect(appCss).toMatch(/\.decision-workbench \.action-btn\s*\{[^}]*min-height:\s*152px/s);
   });
 
   it('shows action cards with effect chips and benefit/risk meta', () => {
