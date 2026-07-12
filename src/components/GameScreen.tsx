@@ -8,8 +8,9 @@ import { addLog } from '../core/logs';
 import { getActionInsights, getBodySignal } from '../systems/actionInsightSystem';
 import { actionPlanCost } from '../systems/monthlyPlanSystem';
 import { consumeUndoPill } from '../systems/undoSystem';
-import { PressureSummary, ProjectProgressPanel, StatCard } from './panels';
+import { ProjectProgressPanel } from './panels';
 import LifeLog from './LifeLog';
+import DecisionStatusStrip from './DecisionStatusStrip';
 import CommandPalette from './CommandPalette';
 import type { DailyChallenge } from '../systems/dailyChallengeSystem';
 import { renderEffectChips } from './effectChips';
@@ -82,7 +83,6 @@ export default function GameScreen({
     }
     return filtered;
   }, [actions, effectiveSelectedActionGroup, searchQuery, visibleActionGroupIds]);
-  const cashWan = state.stats.cash / 10000;
   const totalMonths = 23 * 12;
   const progress = Math.min(100, state.month / totalMonths * 100);
   const careerConfig = getCareer(state.career.track);
@@ -180,13 +180,7 @@ export default function GameScreen({
 
       {firstYearGuide ? <FirstYearProgressBand guide={firstYearGuide} /> : null}
 
-      <div className="stats-row">
-        <StatCard label="技术能力" value={visible.tech} color="var(--teal)" sub="核心竞争力" />
-        <StatCard label="精神状态" value={visible.mental} color={visible.mental < 25 ? 'var(--red)' : visible.mental < 50 ? 'var(--amber)' : 'var(--sky)'} sub="影响决策质量" />
-        <StatCard label="存款 (万)" value={Number(cashWan.toFixed(1))} max={100} color="var(--amber)" sub={cashWan >= 100 ? '已达 100万应急垫' : '目标：100万应急垫'} />
-        <StatCard label="AI协作能力" value={visible.ai} color="var(--mint)" sub="人机协作效率" />
-      </div>
-      <PressureSummary state={state} />
+      <DecisionStatusStrip state={state} />
 
       {activeCrises.length > 0 && !state.gameOver && (
         <div className="p0-alert" role="alert">
@@ -197,140 +191,75 @@ export default function GameScreen({
       <div className={visible.mental < 25 ? 'crisis show' : 'crisis'}>⚠ 精神状态危急，正在进入恢复窗口...</div>
       {state.gameOver && <div className="crisis show">人生结局：{state.logs[state.logs.length - 1]?.title}。{endingText}</div>}
 
-      <div className="game-layout">
-        <div className="left-col">
-          <div className="time-card">
-            <div className="time-head">
-              <span>生存时间轴</span>
-              <div className="time-head-meta">
-                <span>第 {day} 天 · {state.age}岁</span>
-                {canReopenFirstYearReview ? (
-                  <button className="first-year-review-command" onClick={onOpenFirstYearReview} type="button">第一年复盘</button>
-                ) : null}
-              </div>
-            </div>
-            <div className="time-track"><div className="time-fill" style={{ width: `${progress}%` }} /></div>
-            <div className="time-miles">
-              <div className="mile danger" style={{ left: `${13 / 23 * 100}%` }}><div className="mile-dot" />职业转型窗口</div>
-              <div className="mile" style={{ left: `${18 / 23 * 100}%` }}><div className="mile-dot" />40岁</div>
-              <div className="mile" style={{ left: '100%' }}><div className="mile-dot" />45岁</div>
-            </div>
+      <section className="decision-workbench" aria-label="本月行动">
+        <div className="action-card">
+          <div className="action-hdr">
+            <span>行动选择</span>
+            <button className="action-manage-btn" type="button" onClick={() => openModal('actionManage')}>管理</button>
           </div>
-          <LifeLog state={state} />
-          <ProjectProgressPanel state={state} />
-        </div>
-        <div className="right-col">
-          <div className="action-card">
-            <div className="action-hdr">
-              <span>行动选择</span>
-              <button className="action-manage-btn" type="button" onClick={() => openModal('actionManage')}>管理</button>
-            </div>
+          <div className="action-toolbar">
             <div className="action-tabs" role="tablist" aria-label="行动分类">
               {ACTION_GROUPS.filter(group => visibleActionGroupIds.includes(group.id)).map(group => (
-                <button
-                  className={group.id === effectiveSelectedActionGroup ? 'action-tab active' : 'action-tab'}
-                  key={group.id}
-                  onClick={() => {
-                    setManualActionGroup({ group: group.id, month: state.month });
-                    setCurrentMonthSearch('');
-                  }}
-                  type="button"
-                >
+                <button className={group.id === effectiveSelectedActionGroup ? 'action-tab active' : 'action-tab'} key={group.id} onClick={() => { setManualActionGroup({ group: group.id, month: state.month }); setCurrentMonthSearch(''); }} type="button">
                   {group.label}
                 </button>
               ))}
-              <span className="action-tab-search">
-                <input
-                  className="action-tab-search-input"
-                  type="text"
-                  placeholder="搜索..."
-                  value={searchQuery}
-                  onChange={e => setCurrentMonthSearch(e.target.value)}
-                />
-                {searchQuery && <button className="action-tab-search-clear" type="button" onClick={() => setCurrentMonthSearch('')}>✕</button>}
-              </span>
             </div>
-            <div className="action-list categorized-action-list">
-              {groupActions.length === 0 ? (
-                <div className="action-empty-state">当前分类下没有可用行动</div>
-              ) : (
-                groupActions.map(slotAction => {
-                  const insight = getActionInsights(state, slotAction);
-                  const isBookmarked = bookmarkedActionIds.includes(slotAction.id);
-                  const disabled = !slotAction.available || state.gameOver || Boolean(state.pendingEventChoice);
-                  const isRecommended = slotAction.id === firstYearGuide?.recommendedActionId && !disabled;
-                  const cost = actionPlanCost(slotAction);
-                  return (
-                    <article
-                      className={`action-btn${isRecommended ? ' recommended' : ''}${disabled ? ' disabled' : ''}`}
-                      key={slotAction.id}
-                    >
-                      <button
-                        aria-label={`执行行动：${slotAction.name}`}
-                        className="action-btn-main"
-                        disabled={disabled}
-                        onClick={() => executeActionNow(slotAction)}
-                        type="button"
-                      >
-                        <div className="act-head">
-                          <span className="act-icon">{slotAction.icon}</span>
-                          <span className="act-name">{slotAction.name}</span>
-                        </div>
-                        <div className="act-chips">{renderEffectChips(slotAction.visibleEffect, 3)}</div>
-                        <div className="act-cost">
-                          时间 {cost.time} · 精力 {cost.energy}
-                        </div>
-                        <div className="act-desc">{slotAction.description.split('。')[0]}。</div>
-                        <div className="act-meta">
-                          <span>{slotAction.benefitLabel}</span>
-                          <span>· {slotAction.riskLabel}</span>
-                        </div>
-                        {insight && insight.badges.length > 0 ? (
-                          <div className="act-badges">
-                            {insight.badges.slice(0, 3).map(badge => (
-                              <span className={`act-badge ${badge.tone}`} key={`${slotAction.id}-${badge.label}`}>{badge.label}</span>
-                            ))}
-                          </div>
-                        ) : null}
-                        {slotAction.reason ? <div className="act-reason">{slotAction.reason}</div> : null}
-                      </button>
-                      <div className="act-tool-row">
-                        <button
-                          aria-label={`收藏行动：${slotAction.name}`}
-                          className={`act-bookmark ${isBookmarked ? 'on' : ''}`}
-                          onClick={() => toggleBookmark(slotAction.id)}
-                          type="button"
-                        >
-                          {isBookmarked ? '★ 收藏' : '☆ 收藏'}
-                        </button>
-                        <button
-                          aria-label={`查看详情：${slotAction.name}`}
-                          className="act-detail"
-                          onClick={() => openActionDetail(slotAction)}
-                          type="button"
-                        >
-                          详情
-                        </button>
-                      </div>
-                    </article>
-                  );
-                })
-              )}
-            </div>
-            <div className="action-support-scroll">
-              {bodySignal ? (
-                <div className="body-signal">
-                  <div>
-                    <span className="signal-title">{bodySignal.title}</span>
-                    <span className="signal-text">{bodySignal.text}</span>
+            <span className="action-tab-search">
+              <input className="action-tab-search-input" type="text" placeholder="搜索..." value={searchQuery} onChange={e => setCurrentMonthSearch(e.target.value)} />
+              {searchQuery && <button className="action-tab-search-clear" type="button" onClick={() => setCurrentMonthSearch('')}>✕</button>}
+            </span>
+          </div>
+          <div className="action-list categorized-action-list">
+            {groupActions.length === 0 ? <div className="action-empty-state">当前分类下没有可用行动</div> : groupActions.map(slotAction => {
+              const insight = getActionInsights(state, slotAction);
+              const isBookmarked = bookmarkedActionIds.includes(slotAction.id);
+              const disabled = !slotAction.available || state.gameOver || Boolean(state.pendingEventChoice);
+              const isRecommended = slotAction.id === firstYearGuide?.recommendedActionId && !disabled;
+              const cost = actionPlanCost(slotAction);
+              return (
+                <article className={`action-btn${isRecommended ? ' recommended' : ''}${disabled ? ' disabled' : ''}`} key={slotAction.id}>
+                  <button aria-label={`执行行动：${slotAction.name}`} className="action-btn-main" disabled={disabled} onClick={() => executeActionNow(slotAction)} type="button">
+                    <div className="act-head"><span className="act-icon">{slotAction.icon}</span><span className="act-name">{slotAction.name}</span></div>
+                    <div className="act-chips">{renderEffectChips(slotAction.visibleEffect, 3)}</div>
+                    <div className="act-cost">时间 {cost.time} · 精力 {cost.energy}</div>
+                    <div className="act-desc">{slotAction.description.split('。')[0]}。</div>
+                    <div className="act-meta"><span>{slotAction.benefitLabel}</span><span>· {slotAction.riskLabel}</span></div>
+                    {insight && insight.badges.length > 0 ? <div className="act-badges">{insight.badges.slice(0, 3).map(badge => <span className={`act-badge ${badge.tone}`} key={`${slotAction.id}-${badge.label}`}>{badge.label}</span>)}</div> : null}
+                    {slotAction.reason ? <div className="act-reason">{slotAction.reason}</div> : null}
+                  </button>
+                  <div className="act-tool-row">
+                    <button aria-label={`收藏行动：${slotAction.name}`} className={`act-bookmark ${isBookmarked ? 'on' : ''}`} onClick={() => toggleBookmark(slotAction.id)} type="button">{isBookmarked ? '★ 收藏' : '☆ 收藏'}</button>
+                    <button aria-label={`查看详情：${slotAction.name}`} className="act-detail" onClick={() => openActionDetail(slotAction)} type="button">详情</button>
                   </div>
-                  <span className="signal-score">{Math.round(bodySignal.severity)}</span>
-                </div>
-              ) : null}
-            </div>
+                </article>
+              );
+            })}
+          </div>
+          <div className="action-support-scroll">
+            {bodySignal ? <div className="body-signal"><div><span className="signal-title">{bodySignal.title}</span><span className="signal-text">{bodySignal.text}</span></div><span className="signal-score">{Math.round(bodySignal.severity)}</span></div> : null}
           </div>
         </div>
-      </div>
+      </section>
+      <section className="secondary-history" aria-label="履历与日志">
+        <div className="time-card">
+          <div className="time-head">
+            <span>生存时间轴</span>
+            <div className="time-head-meta">
+              <span>第 {day} 天 · {state.age}岁</span>
+              {canReopenFirstYearReview ? <button className="first-year-review-command" onClick={onOpenFirstYearReview} type="button">第一年复盘</button> : null}
+            </div>
+          </div>
+          <div className="time-track"><div className="time-fill" style={{ width: `${progress}%` }} /></div>
+          <div className="time-miles">
+            <div className="mile danger" style={{ left: `${13 / 23 * 100}%` }}><div className="mile-dot" />职业转型窗口</div>
+            <div className="mile" style={{ left: `${18 / 23 * 100}%` }}><div className="mile-dot" />40岁</div>
+            <div className="mile" style={{ left: '100%' }}><div className="mile-dot" />45岁</div>
+          </div>
+        </div>
+        <LifeLog state={state} />
+        <ProjectProgressPanel state={state} />
+      </section>
       <div className="quote">「AI 改写的是任务结构，长期价值来自判断、责任和领域理解」</div>
       <CommandPalette
         actions={actions}

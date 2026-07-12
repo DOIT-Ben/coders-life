@@ -73,7 +73,8 @@ describe('v1 frontend contract', () => {
   it('uses stable layout hooks for regular game panels', () => {
     expect(gameScreenSource).toContain('saveStatus');
     expect(gameScreenSource).toContain('action-list categorized-action-list');
-    expect(gameScreenSource).toContain('game-layout');
+    expect(gameScreenSource).toContain('decision-workbench');
+    expect(gameScreenSource).toContain('secondary-history');
   });
 
   it('keeps static visible styling in CSS classes instead of inline theme leaks', () => {
@@ -111,7 +112,8 @@ describe('v1 frontend contract', () => {
     ['现实压力', '现金流', '健康债', '职业稳定', '关系债', '生活满意'].forEach(label => {
       expect(panelsSource).toContain(label);
     });
-    expect(gameScreenSource).toContain('PressureSummary');
+    expect(gameScreenSource).toContain('DecisionStatusStrip');
+    expect(decisionStatusStripSource).toContain('decision-pressure-metrics');
     expect(panelsSource).toContain('pressure-bar');
     expect(source).not.toContain('realworld kernel');
     expect(source).not.toContain('V2底层');
@@ -126,6 +128,20 @@ describe('v1 frontend contract', () => {
       .forEach(label => expect(decisionStatusStripSource).toContain(label));
     expect(decisionStatusStripSource).toContain('derivePressureSnapshot');
     expect(decisionStatusStripSource).not.toContain('applyAction');
+  });
+
+  it('places actions before secondary history in the decision workbench', () => {
+    expect(gameScreenSource).toContain('<DecisionStatusStrip state={state} />');
+    expect(gameScreenSource).toContain('className="decision-workbench"');
+    expect(gameScreenSource).toContain('className="secondary-history"');
+    expect(gameScreenSource.indexOf('className="decision-workbench"'))
+      .toBeLessThan(gameScreenSource.indexOf('className="secondary-history"'));
+    expect(gameScreenSource.indexOf('<DecisionStatusStrip state={state} />'))
+      .toBeLessThan(gameScreenSource.indexOf('className="decision-workbench"'));
+    expect(gameScreenSource.indexOf('<LifeLog state={state} />'))
+      .toBeGreaterThan(gameScreenSource.indexOf('className="decision-workbench"'));
+    expect(gameScreenSource).not.toContain('<PressureSummary state={state} />');
+    expect(gameScreenSource).not.toContain('<StatCard label="技术能力"');
   });
 
   it('shows action cards with effect chips and benefit/risk meta', () => {
@@ -465,7 +481,7 @@ describe('v1 frontend contract', () => {
 
   it('uses respectful crisis age and AI copy in the visible shell', () => {
     ['职业转型窗口', 'AI协作能力', '恢复窗口'].forEach(label => {
-      expect(gameScreenSource).toContain(label);
+      expect(source).toContain(label);
     });
     ['35岁危机最严重', '不会用AI的程序员在消失', '崩溃'].forEach(label => {
       expect(source).not.toContain(label);
