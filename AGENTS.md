@@ -7,6 +7,9 @@
 - 技术栈：HTML、CSS、原生 JavaScript、本地 JSON/JS 数据文件
 - 主要入口：`程序员生存模拟器.html`
 - 主要资源：`程序员生存模拟器_弹窗库_2026-06-18.js`、`data/`、`docs/`、`tools/`
+- 阿里云开发入口：`/srv/codex-workspace/CodersLife`，所有者为 `codex-dev`。
+- 本仓库是历史单页版本；当前 React/Vite 版本在 `/srv/codex-workspace/CodersLife-v2`。
+- `/var/www/coderslife/current` 是发布产物目录，不是源码开发目录。
 
 ## 工作规则
 
@@ -17,7 +20,8 @@
 
 ## 运行与验证
 
-- 运行方式：直接双击 `程序员生存模拟器.html`，或用浏览器打开 `file:///E:/desktop/coders-life/程序员生存模拟器.html`。
+- 本地运行：直接打开项目根目录的 `程序员生存模拟器.html`。
+- 阿里云预览：在项目根目录运行 `python3 -m http.server 8080 --bind 127.0.0.1`，通过 SSH 隧道访问。
 - 基础验证：页面能打开，职业选择可进入游戏，行动按钮能生成事件，控制台无阻断错误。
 - 弹窗库验证：浏览器控制台检查 `window.PROGRAMMER_POPUP_POOL.length` 应为当前弹窗池数量。
 

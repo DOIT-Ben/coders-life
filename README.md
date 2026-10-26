@@ -1,6 +1,6 @@
 # coders-life
 
-程序员生存模拟器的大体量弹窗版。
+程序员生存模拟器的大体量弹窗版。本仓库保留历史单页实现；当前 React/Vite 工程位于阿里云 `/srv/codex-workspace/CodersLife-v2`。
 
 当前正式弹窗池：`1325` 条。
 
@@ -49,16 +49,16 @@
 ## 部署
 
 - 生产访问地址：
-  - `https://doitbenai.cloud`
-  - `https://www.doitbenai.cloud`
   - `https://coderslife.doitbenai.cloud`
+- `doitbenai.cloud` 与 `www.doitbenai.cloud` 当前属于个人站，不再由本仓库发布。
+- 当前生产发布物来自 `CodersLife-v2`；本历史仓库不得默认覆盖现有生产目录。
 - 生产发布目录只需要：
   - `程序员生存模拟器.html`
   - 头像已内联到 HTML，当前线上不需要额外静态资源
 - 发布脚本：`deploy/publish-static-site.sh`
 - `nginx` 配置模板：`deploy/nginx-coderslife.conf`
 - 子域名 HTTPS 配置：`deploy/nginx-coderslife-subdomain.conf`
-- 默认发布到：`/var/www/coderslife/current`
+- 历史脚本默认发布到：`/var/www/coderslife/current`。执行前必须确认用户明确要求回退到单页版本。
 
 ## 验证
 
